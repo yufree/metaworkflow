@@ -1,0 +1,160 @@
+# Demo
+
+**xcms** does not support all of the Raw files from every mass spectrometry manufacturers. You need to convert your Raw data into some open-source [data format](https://en.wikipedia.org/wiki/Mass_spectrometry_data_format) such as mzData, mzXML or CDF files. The tool is **MScovert** from [**ProteoWizard**](http://proteowizard.sourceforge.net/).
+
+Here is a demo:
+
+```{r demo1,message=F,warning=FALSE}
+# install the packages for data analysis and 
+# source("https://bioconductor.org/biocLite.R")
+# biocLite(c("multtest","faahKO","xcms","qvalue","CAMERA"))
+# load the functions and dataset for demo
+
+library(multtest)
+library(xcms)
+library(faahKO)
+# get the demo data in faahKO packages
+cdfpath <- system.file("cdf",package = "faahKO")
+# show the name of demo data
+list.files(cdfpath,recursive = T)
+```
+
+Here is a demo for *xcmsSet*:
+
+```{r demo3,warning=F}
+cdffiles <- list.files(cdfpath, recursive = TRUE, full.names = TRUE)
+xset <- xcmsSet(cdffiles)
+xset
+```
+
+## Find the peaks
+
+The first step to process the MS data is that find the peaks against the noises. In **xcms**, all of related staffs are handled by *xcmsSet* function. 
+
+For any functions in **xcms** or **R**, you could get their documents by type `?` before certain function. Another geek way is input the name of the function in the console of Rstudio and press F1 for help.
+
+```{r demo2,eval=F}
+?xcmsSet
+```
+
+In the document of *xcmsset*, we could set the sample classes, profmethod, profparam, polarity,etc. In the online version, such configurations are shown in certain windows. In the local analysis environment, such parameters are setup by yourselves. However, I think the default configurations could satisfied most of the analysis because related information should have been recorded in your Raw data and **xcms** could find them. All you need to do is that show the data dictionary for *xcmsSet*. 
+
+If your data have many groups such as control and treated group, just put them in separate subfolder of the data folder and *xcmsSet* would read them as separated groups.
+
+The output was an object with class of *xcmsSet*. You could see a summary by type the name. In this cases, *xcmsSet* found 4721 peaks with time range 41.8-69.1 min and mass range 200.1-599.3338 m/z in the 12 samples.
+
+Another function which might be useful is `group`. This function will add additional information about the same analytes for `xcmsSet` objects.
+
+```{r demo4}
+xset <- group(xset)
+xset
+```
+
+Now you see there are 403 groups in the demo data, which meant 403 analytes are found across 4721 peaks.
+
+## Data correction
+
+Reasons of data correction might come from many aspects such as the unstable instrument and pollution on column. In **xcms**, the most important correction is retention time correction. 
+
+Remember the original retention time might changed and use another object to save the new object:
+
+```{r demo5}
+xset2 <- retcor(xset, method = "obiwarp")
+xset2
+# you need group the peaks again for this corrected data
+xset2 <- group(xset2)
+xset2
+```
+
+You see one more peak groups after the correction. After the retention time correction, we also need to correct the peak groups by filling the missing peaks. Such function calls *fillpeaks*:
+
+```{r demo6}
+xset3 <- fillPeaks(xset2)
+xset3
+```
+
+You see more peaks found.
+
+## Statistic analysis
+
+Right now we get peaks across samples, the next step is finding the differences between two groups. You will find the P values of t-test for pairwise comparison:
+
+```{r demo7}
+reporttab <- diffreport(xset3, "WT", "KO", "example")
+reporttab[1:3,]
+```
+
+Now you have got the ions that varies a lot between groups. Such ions are things we should take care of. In a ideal case, this is the endpoint of your study and the left work is making a report of your finding.
+
+However,we need q-values to control FDR. To get the q-values, you need input p-values and use the function from **qvalue** package.
+
+```{r demo8}
+library(qvalue)
+# extract the p-value to caculate q-value
+qvalue <- qvalue(p=reporttab$pvalue)
+# add qvalue to reporttab
+reporttab$qvalue <- qvalue$qvalues
+reporttab[1:3,]
+```
+
+For further information about q-value, check [here](https://en.wikipedia.org/wiki/False_discovery_rate#q-value).
+
+After the FDR control, the following steps depend on your study.
+
+## Annotation
+
+I suggest **CAMERA** package to handle this task. You need to prepare an object of class *xcmsSet*, for example, *xset3*(remember to use *fillpeaks* to get the ions group).
+
+```{r demo9}
+library(CAMERA)
+# Create an xsAnnotate object
+xsa <- xsAnnotate(xset3)
+# Group after RT value of the xcms grouped peak
+xsaF <- groupFWHM(xsa, perfwhm=0.6)
+# Verify grouping
+xsaC <- groupCorr(xsaF)
+# Annotate isotopes, could be done before groupCorr
+xsaFI <- findIsotopes(xsaC)
+# Annotate adducts
+xsaFA <- findAdducts(xsaFI, polarity="positive")
+# See the results
+getPeaklist(xsaFA)[1:3,]
+# Get final peaktable and store on harddrive
+# write.csv(getPeaklist(xsaFA),file="data/result_CAMERA.csv")
+```
+
+Any steps after the *annotation* could be operated solo and you may not need the isotopes or adducts. You could also use *annotateDiffreport* to show the results as *diffreport* in **xcms**.
+
+```{r demo10}
+# make a diffreport with CAMERA result and extract the fold change higher than 3
+dreport <- annotateDiffreport(xset3, fc_th = 3)
+# extract the p-value to caculate q-value
+qvalue <- qvalue(p=dreport$pvalue)
+# add qvalue to reporttab
+dreport$qvalue <- qvalue$qvalues
+# See the results
+dreport[1:3,]
+# save on harddrive
+# write.csv(dreport,file='data/diffreport.csv')
+```
+
+## Omics analysis
+
+Since we have got the annotations, Omics analysis could be performed. In **xcms**, the default database is **metlin**. You could directly get the link to certain compounds when you generate the differences report.
+
+```{r demo11}
+# make a diffreport with CAMERA result and extract the fold change higher than 3, add the metlin links
+dreport <- annotateDiffreport(xset3, fc_th = 3, metlin = T)
+# extract the p-value to caculate q-value
+qvalue <- qvalue(p=dreport$pvalue)
+# add qvalue to reporttab
+dreport$qvalue <- qvalue$qvalues
+# See the results
+dreport[1:3,]
+# save on harddrive
+# write.csv(dreport,file='data/diffreport.csv')
+```
+
+This is the offline metaboliomics data process workflow. For each study, details would be different and F1 is always your best friend. 
+
+Enjoy yourself in data mining!

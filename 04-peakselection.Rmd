@@ -1,0 +1,7 @@
+# Peaks selection
+
+After we get corrected peaks across samples, the next step is finding the differences between two groups. Actually, you could perform ANOVA or Kruskal-Wallis Test for comparison among more than two groups. The basic idea behind statistic analysis is to find the meaningful differences between groups and extract such ions or peak groups. 
+
+So how to find the differences? In most metabolomics software, such task is completed by a t-test and report p-value and fold changes. If you only compare two groups on one peaks, that's OK. However, if you compare two groups on thousands of peaks, statistic textbook would tell you to notice the false discovery rate(FDR). For one comparasion, the confidence level is 0.05, which means 5% chances to get false positive result. For two comparasions, such chances would be $1-0.95^2$. For 10 comparasions, such chances would be $1-0.95^{10} = 0.4012631$. For 100 comparasions, such chances would be $1-0.95^{100} = 0.9940795$. You would almost certainly to make mistakes for your results.
+
+In statistics, FDR control is always mentioned in omics studies. I suggested using q-values to control FDR. If q-value is less than 0.05, we should expect a lower than 5% chances we make the wrong selections for all of the comparisions.

@@ -1,0 +1,31 @@
+--- 
+title: "Meta-Workflow"
+author: "Miao YU"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: yufree/metaworkflow
+description: "This is a workflow for metabolomics studies."
+---
+
+# Introduction
+
+This is a _workflow_ book written in **Markdown**. You could contribute it by a pull request.
+
+[**R**](https://www.r-project.org/) and [**Rstudio**](https://www.rstudio.com/) are the softwares needed in this workflow.
+
+The software package used for metabolomics data analysis is **xcms**
+
+The workflow of the metabolomic study always began with data collection and ended with certain scientific problem. It always showed the following workflow:
+
+1. Project Setup
+2. Experimental design(DoE)
+3. Raw data pretreatment
+4. Peaks selection
+5. Omics analysis
+6. Common analysis methods for metabolomics
+7. Demo

@@ -1,0 +1,9 @@
+# Omics analysis
+
+When you get the filtered ions, the next step is making annotations for them. Such annotations would be helpful for omics studies.
+
+Since we have got the annotations, Omics analysis could be performed.Upload the data obtained from the **xcms** to other tools or databases.
+
+You will get an updated database list [here](http://metabolomicssociety.org/resources/metabolomics-databases)
+
+Right now, it is hard to connect different omics databases such as gene, protein and metabolites together for a whole scope of certain biological process. However, you might select few metabolites across those databases and find something interesting.
