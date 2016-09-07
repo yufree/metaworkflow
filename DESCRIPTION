@@ -2,4 +2,3 @@ Package: placeholder
 Title: Does not matter.
 Version: 0.0.1
 Imports: bookdown,multtest,xcms,faahKO,qvalue,CAMERA
-Remotes: yufree/metaworkflow
