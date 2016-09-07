@@ -7,7 +7,7 @@ git config --global user.name "Yufree"
 
 # clone the repository to the book-output directory
 git clone -b gh-pages \
-  https://yufree@github.com/metaworkflow.git \
+  https://github.com/yufree/metaworkflow.git \
   book-output
 cd book-output
 cp -r ../_book/* ./
