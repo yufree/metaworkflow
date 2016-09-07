@@ -12,17 +12,6 @@ cache:
   directories:
   - $TRAVIS_BUILD_DIR/_bookdown_files
 apt_packages: libnetcdf-dev
-after_success: |
-  if [ -n "$GITHUB_API_KEY" ]; then
-    cd "$TRAVIS_BUILD_DIR"
-    git clone -b gh-pages \
-    https://github.com/yufree/metaworkflow.git \
-    book-output
-    cd book-output
-    cp -r ../_book/* ./
-    git add --all *
-    git commit -m"Update the book"
-    git push origin gh-pages
-  fi
-deploy:
-  api_key: '$GITHUB_API_KEY'
+env:
+  global:
+    secure: IP9MLYB+QlxAhx1inNkp6y7GHirAJUfDZt66mbbhx2X6VpNUmciVW+6qq4imoQpyiqBrXezZoz5nMyz8vnJ50K/GpYcz3/uZB1bLk0tSpnfXq6n0Mtz/UyJbFHpK+oxWnuq09YBn5DTWJQSJ7G5+labqMy21hmvtsQRuKy7QuC9mQnF0VAHNPNef+DMCbskCDJ6Jh7drxK8nJvREbOuezo4dIoy1nSLccMEap8AqowKl79+i8EMOfmRPhUa5KoIt0kbWjkilhHbfDaGW7T42k1bkjIaE1UuywjaY8oVGmwC8nyoG2n51RGSrwpi0MAvw9homUYOc8yQndhK3jabUs0G9tk7ZzFhMV2iFPwUcL82oFczQK+3XjnKcy9RpO5fOumsnmRYJ0VKpzUa72VFkqhMT3XTR3v8sN1xopWzL1ohkp+io4ykY+ws5VMlkxAKcCfSvuX8sOeilDDMIt9pEGPfxzB2kT92WG8QHLwAONCwMwbwcThf1dftQP83iKoFWVJtPJdTku08JvG8gkZabGZSOt/qn7nOhpC5C38J1zeQkbwk0mPG1udiztXb6INDisZu34vYfMe895h9Knd+zMRgHb15lgJ7tH/fhzUjOgW8AgkwnVSPZnqpU0EoqSIcF1bmukNiQcSULH4leBVA/f0ciETXYo94eTlLfQwoHS4Y=
