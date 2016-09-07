@@ -1,0 +1,15 @@
+# Useful links
+
+- [Workshop slides](https://docs.google.com/presentation/d/1wuOiLa6XMZcoM_IRirQgT3z3fhnoGy4SRZYDNPI2J2o/edit?usp=sharing)
+
+- [The Elements of Statistical Learning: Data Mining, Inference, and Prediction.](http://statweb.stanford.edu/~tibs/ElemStatLearn/)
+
+- [Multivariate Analysis in Metabolomics](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC4465187/)
+
+- [Ropls packages](http://bioconductor.org/packages/release/bioc/html/ropls.html)
+
+- [A tutorial review: Metabolomics and partial least squares-discriminant analysis – a marriage of convenience or a shotgun wedding](http://www.sciencedirect.com/science/article/pii/S0003267015001889)
+
+This is the offline metaboliomics data process workflow. For each study, details would be different and F1 is always your best friend. 
+
+Enjoy yourself in data mining!
