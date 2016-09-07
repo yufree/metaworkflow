@@ -1,19 +1,17 @@
 language: r
 r: bioc-release
-
 before_script:
-  - chmod +x ./_build.sh
-  - chmod +x ./_deploy.sh
-
+- chmod +x ./_build.sh
+- chmod +x ./_deploy.sh
 script:
-  - ./_build.sh
-  - ./_deploy.sh
-  
+- ./_build.sh
+- ./_deploy.sh
 sudo: true
-
 cache:
-  packages: yes
+  packages: true
   directories:
-    - $TRAVIS_BUILD_DIR/_bookdown_files
-    
+  - $TRAVIS_BUILD_DIR/_bookdown_files
 apt_packages: libnetcdf-dev
+env:
+  global:
+    secure: ek7gtqBVo6w5xp4ygjBSo7t1Dnw4E5scKcUNOVUWGP7jI9ravIOnmpxf76igTCl22cwcpjB2xnHZvIDchEw/e2v35on4Bw7sNL7QZs8PR0U5WbiZs7yHyCwUo1/c4Q/IGDfka1TXzMsmP/ZOWbVorlNh7kYcwCXsihD68PxbtIE7HexBAGZF1HuSuyyVhYKN9bmGrLh1NCU0IP30943RBdMZfB89u9SFUNV6u63vx6juT4M+h29Bt37oj1SLdiCL1cdtIrCoJIYejGyInJgAqmf6MRPyO1NyDxC/N/TIaw1PoCmIPtOA1U6jylAlRVA/JRZ/6QdcNu1jfC9qPvM4gBoWe60uDi29NcoOgekkBwBPEQsrFODh5Vuy2koH423KwPeHrMN+gCHzm3QBugk1jkS5MWdSPBoa3AUbusmijpITBsJMVGGxGyaM0wiXHwB9dxCbe3PCyYqrCQecQ5rQeT7TxUt0gjfqjBL45/rnVHkMT7TdJ0xpu5zbVhgavEpW03rUgXXojvd+q7xchRQRVaef/YUGXpkDsCRkYYrNJuSrF32bmKDloCnvnN+/imUKhTR7CWaBW34xAjNb3XJneQwUdykwFm285FcprVMoD4/366aM332tkKVsaRffnvjNy2vvAcstnc3EEFN/PjbBJrlXtTvrfiGHdeWy5RofQQU=
