@@ -25,7 +25,7 @@
 
 <meta name="author" content="Miao YU">
 
-<meta name="date" content="2016-09-06">
+<meta name="date" content="2016-09-13">
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -56,43 +56,6 @@ MathJax.Hub.Config({
 
 
 
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -117,15 +80,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>6</b> Omics analysis</a></li>
 <li class="chapter" data-level="7" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html"><i class="fa fa-check"></i><b>7</b> Common analysis methods for metabolomics</a><ul>
 <li class="chapter" data-level="7.1" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#pca"><i class="fa fa-check"></i><b>7.1</b> PCA</a></li>
-<li class="chapter" data-level="7.2" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#pls-da"><i class="fa fa-check"></i><b>7.2</b> PLS-DA</a></li>
+<li class="chapter" data-level="7.2" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#cluster-analysis"><i class="fa fa-check"></i><b>7.2</b> Cluster Analysis</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="demo.html"><a href="demo.html"><i class="fa fa-check"></i><b>8</b> Demo</a><ul>
-<li class="chapter" data-level="8.1" data-path="demo.html"><a href="demo.html#find-the-peaks"><i class="fa fa-check"></i><b>8.1</b> Find the peaks</a></li>
-<li class="chapter" data-level="8.2" data-path="demo.html"><a href="demo.html#data-correction"><i class="fa fa-check"></i><b>8.2</b> Data correction</a></li>
-<li class="chapter" data-level="8.3" data-path="demo.html"><a href="demo.html#statistic-analysis"><i class="fa fa-check"></i><b>8.3</b> Statistic analysis</a></li>
-<li class="chapter" data-level="8.4" data-path="demo.html"><a href="demo.html#annotation"><i class="fa fa-check"></i><b>8.4</b> Annotation</a></li>
-<li class="chapter" data-level="8.5" data-path="demo.html"><a href="demo.html#omics-analysis-1"><i class="fa fa-check"></i><b>8.5</b> Omics analysis</a></li>
-</ul></li>
+<li class="chapter" data-level="8" data-path="demo.html"><a href="demo.html"><i class="fa fa-check"></i><b>8</b> Demo</a></li>
 <li class="chapter" data-level="9" data-path="useful-links.html"><a href="useful-links.html"><i class="fa fa-check"></i><b>9</b> Useful links</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/yufree/metaworkflow" target="blank">Published with bookdown</a></li>
@@ -158,8 +115,44 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Another issue is how to find the relationship between the compounds. We could use PCA to find the relationship between samples. However, we could also extract the influences of the compounds on certain PCs. You might find many compounds showed the same loading on the first PC. That means the concentrations pattern between the compounds are looked similar. So PCA could also be used to explore the relationship between the compounds.</p>
 <p>OK, next time you might recall PCA when you need it instead of other paper showed them.</p>
 </div>
-<div id="pls-da" class="section level2">
-<h2><span class="header-section-number">7.2</span> PLS-DA</h2>
+<div id="cluster-analysis" class="section level2">
+<h2><span class="header-section-number">7.2</span> Cluster Analysis</h2>
+<p>After we got a lot of samples and analyzed the concentrations of many compounds in them, we may ask about the relationship between the samples. You might have the sampling information such as the date and the position and you could use boxplot or violin plot to explore the relationships among those categorical variables. However, you could also use the data to find some potential relationship.</p>
+<p>But how? if two samples’ data were almost the same, we might think those samples were from the same potential group. On the other hand, how do we define the “same” in the data?</p>
+<p>Cluster analysis told us that just define a “distances” to measure the similarity between samples. Mathematically, such distances would be shown in many different manners such as the sum of the absolute values of the differences between samples.</p>
+<p>For example, we analyzed the amounts of compound A, B and C in two samples and get the results:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Compounds(ng)</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sample 1</td>
+<td>10</td>
+<td>13</td>
+<td>21</td>
+</tr>
+<tr class="even">
+<td>Sample 2</td>
+<td>54</td>
+<td>23</td>
+<td>16</td>
+</tr>
+</tbody>
+</table>
+<p>The distance could be:</p>
+<p><span class="math display">\[
+distance = |10-54|+|13-23|+|21-16| = 59
+\]</span></p>
+<p>Also you could use the sum of squares or other way to stand for the similarity. After you defined a “distance”, you could get the distances between all of pairs for your samples. If two samples’ distance was the smallest, put them together as one group. Then calculate the distances again to combine the small group into big group until all of the samples were include in one group. Then draw a dendrogram for those process.</p>
+<p>The following issue is that how to cluster samples? You might set a cut-off and directly get the group from the dendrogram. However, sometimes you were ordered to cluster the samples into certain numbers of groups such as three. In such situation, you need K means cluster analysis.</p>
+<p>The basic idea behind the K means is that generate three virtual samples and calculate the distances between those three virtual samples and all of the other samples. There would be three values for each samples. Choose the smallest values and class that sample into this group. Then your samples were classified into three groups. You need to calculate the center of those three groups and get three new virtual samples. Repeat such process until the group members unchanged and you get your samples classified.</p>
+<p>OK, the basic idea behind the cluster analysis could be summarized as define the distances, set your cut-off and find the group. By this way, you might show potential relationships among samples.</p>
 
 </div>
 </div>
