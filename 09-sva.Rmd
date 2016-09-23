@@ -1,0 +1,58 @@
+# Batch effect
+
+## Remove batch effect without batch information
+
+```{r cars,cache=TRUE}
+library(multtest)
+library(xcms)
+library(faahKO)
+# get the demo data in faahKO packages
+cdfpath <- system.file("cdf",package = "faahKO")
+# show the name of demo data
+list.files(cdfpath,recursive = T)
+cdffiles <- list.files(cdfpath, recursive = TRUE, full.names = TRUE)
+xset <- xcmsSet(cdffiles)
+xset
+xset <- group(xset)
+xset
+xset2 <- retcor(xset, method = "obiwarp")
+xset2
+# you need group the peaks again for this corrected data
+xset2 <- group(xset2)
+xset2
+xset3 <- fillPeaks(xset2)
+xset3
+library(CAMERA)
+dreport <- annotateDiffreport(xset3)
+pdreport <- dreport[,14:25]
+
+library('sva')
+library('limma')
+lv <- gl(2,6)
+mod <- model.matrix(~lv)
+svafit <- sva(as.matrix(pdreport),mod)
+
+svaX <- model.matrix(~lv+svafit$sv)
+lmfit <- lmFit(pdreport,svaX)
+
+tt<- lmfit$coef[,2]*sqrt(lmfit$df.residual)/(2*lmfit$sigma)
+
+Batch<- lmfit$coef[,3]%*%t(svaX[,3])
+Signal<-lmfit$coef[,1:2]%*%t(svaX[,1:2])
+error <- pdreport-Signal-Batch
+##demean for plot
+Signal <-Signal-rowMeans(Signal)
+mat <- pdreport-rowMeans(pdreport)
+
+library(rafalib)
+library(RColorBrewer)
+mypar(1,4,mar = c(2.75, 4.5, 2.6, 1.1))
+icolors <- colorRampPalette(rev(brewer.pal(11,"RdYlBu")))(100)
+
+image(t(mat),col=icolors,xaxt="n",yaxt="n")
+image(t(Signal),col=icolors,xaxt="n",yaxt="n")
+image(t(Batch),col=icolors,xaxt="n",yaxt="n")
+image(t(error),col=icolors,xaxt="n",yaxt="n")
+
+```
+
