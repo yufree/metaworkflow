@@ -25,7 +25,7 @@
 
 <meta name="author" content="Miao YU">
 
-<meta name="date" content="2016-09-13">
+<meta name="date" content="2016-10-06">
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -81,9 +81,11 @@ MathJax.Hub.Config({
 <li class="chapter" data-level="7" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html"><i class="fa fa-check"></i><b>7</b> Common analysis methods for metabolomics</a><ul>
 <li class="chapter" data-level="7.1" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#pca"><i class="fa fa-check"></i><b>7.1</b> PCA</a></li>
 <li class="chapter" data-level="7.2" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#cluster-analysis"><i class="fa fa-check"></i><b>7.2</b> Cluster Analysis</a></li>
+<li class="chapter" data-level="7.3" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#plsda"><i class="fa fa-check"></i><b>7.3</b> PLSDA</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="demo.html"><a href="demo.html"><i class="fa fa-check"></i><b>8</b> Demo</a></li>
 <li class="chapter" data-level="9" data-path="useful-links.html"><a href="useful-links.html"><i class="fa fa-check"></i><b>9</b> Useful links</a></li>
+<li class="chapter" data-level="10" data-path="batch-effect.html"><a href="batch-effect.html"><i class="fa fa-check"></i><b>10</b> Batch effect</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/yufree/metaworkflow" target="blank">Published with bookdown</a></li>
 
@@ -153,6 +155,9 @@ distance = |10-54|+|13-23|+|21-16| = 59
 <p>The following issue is that how to cluster samples? You might set a cut-off and directly get the group from the dendrogram. However, sometimes you were ordered to cluster the samples into certain numbers of groups such as three. In such situation, you need K means cluster analysis.</p>
 <p>The basic idea behind the K means is that generate three virtual samples and calculate the distances between those three virtual samples and all of the other samples. There would be three values for each samples. Choose the smallest values and class that sample into this group. Then your samples were classified into three groups. You need to calculate the center of those three groups and get three new virtual samples. Repeat such process until the group members unchanged and you get your samples classified.</p>
 <p>OK, the basic idea behind the cluster analysis could be summarized as define the distances, set your cut-off and find the group. By this way, you might show potential relationships among samples.</p>
+</div>
+<div id="plsda" class="section level2">
+<h2><span class="header-section-number">7.3</span> PLSDA</h2>
 
 </div>
 </div>

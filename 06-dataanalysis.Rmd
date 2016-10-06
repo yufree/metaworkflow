@@ -43,3 +43,4 @@ The basic idea behind the K means is that generate three virtual samples and cal
 
 OK, the basic idea behind the cluster analysis could be summarized as define the distances, set your cut-off and find the group. By this way, you might show potential relationships among samples.
 
+## PLSDA
