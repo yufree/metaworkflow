@@ -7,10 +7,9 @@ library(faahKO)
 source('https://raw.githubusercontent.com/yufree/democode/master/meta/svaplotdefalt.R')
 # get the demo data in faahKO packages
 path <- system.file("cdf",package = "faahKO")
-# show the DoE
-lv <- gl(2,6)
-df <- svadata(path,nSlaves = 4)
-dd <- svaplot(df,lv)
+df <- getopmsdata(path)
+lv <- c(rep(1,6),rep(2,6))
+svaplot(df,lv)
 
 ddanova <- svaplot(df,lv,pqvalues = 'anova')
 ddsa <- svaplot(df,lv,pqvalues = 'sv')
@@ -30,8 +29,9 @@ source('https://raw.githubusercontent.com/yufree/democode/master/meta/svaplot.R'
 path <- system.file("cdf",package = "faahKO")
 # show the DoE
 lv <- gl(2,6)
-df <- svadata(path,nSlaves = 4)
-dd <- svaplot(df,lv)
+df <- getdata(path,pmethod='hplcqtof')
+dd <- svaplot(df,lv,pqvalues = "sv",scale = F)
+dd2 <- svaplot(df,lv,pqvalues = "sv",scale = T)
 
 ddanova <- svaplot(df,lv,pqvalues = 'anova')
 ddsa <- svaplot(df,lv,pqvalues = 'sv')

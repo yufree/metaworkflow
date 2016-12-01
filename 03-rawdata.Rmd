@@ -2,13 +2,13 @@
 
 Collection of your Raw data from the instrument such as LC-MS or GC-MS is the beginning of data analysis.
 
-However, Raw data were hard to be analyzed. GC/LC-MS data are usually be shown by a matrix with column standing for retention time and row standing for mass. Noises are so much that such data could not be processed effeciently.
+However, Raw data were hard to be analyzed. GC/LC-MS data are usually be shown as a matrix with column standing for retention times and row standing for masses. Noises are so much that such data could not be processed effeciently.
 
 ```{r singledata, fig.show='hold', fig.cap='Demo of GC/LC-MS data',echo=FALSE}
 knitr::include_graphics('images/singledata.png')
 ```
 
-Conversation from the mass-retention time matrix into a vector with selected MS peaks at certain retention time is the basic idea of the Raw data pretreatment.
+Conversation from the mass-retention time matrix into a vector with selected MS peaks at certain retention time is the basic idea of the Raw data pretreatment. 
 
 With many groups of samples, you will get another data matrix with column standing for ions at cerntain retention time and row standing for samples after the Raw data pretreatment.
 
@@ -17,3 +17,5 @@ knitr::include_graphics('images/multidata.png')
 ```
 
 However, before you get the peaks, some corrections should be performed such as mass shift and retention time shift. The basic idea behind retention time correction is that use the high quality grouped peaks to make a new retention time. You might choose obiwarp(based on similarity, recommended, see this [paper](http://pubs.acs.org/doi/abs/10.1021/ac0605344)) or loess regression method to get the corrected retention time for all of the samples. Remember the original retention times might be changed and you might need cross-correct for mass data correction.
+
+Mass drift for high-resolution mass spectrum also affect the peak selection. For example, if the 

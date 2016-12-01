@@ -178,6 +178,42 @@ If you find some significant peaks, the best way to check them is data visulizat
 eic <- groups(xset3)
 index <- which(eic[,"rtmed"] > 2500 & eic[,"rtmed"<2600])[1]
 ```
+## Optimation of XCMS
+
+IPO package could be used to optimaze the parameters for XCMS. Try the following code.
+
+```{r IPO}
+mzdatapath <- system.file("cdf",package = "faahKO")
+mzdatafiles <- list.files(mzdatapath, recursive = TRUE, full.names=TRUE)
+library(IPO)
+peakpickingParameters <- getDefaultXcmsSetStartingParams('matchedFilter')
+#setting levels for min_peakwidth to 10 and 20 (hence 15 is the center point)
+peakpickingParameters$min_peakwidth <- c(10,20) 
+peakpickingParameters$max_peakwidth <- c(26,42)
+#setting only one value for ppm therefore this parameter is not optimized
+peakpickingParameters$ppm <- 20 
+resultPeakpicking <- 
+  optimizeXcmsSet(files = mzdatafiles[6:9], 
+                  params = peakpickingParameters, 
+                  nSlaves = 4, 
+                  subdir = 'rsmDirectory')
+
+optimizedXcmsSetObject <- resultPeakpicking$best_settings$xset
+
+retcorGroupParameters <- getDefaultRetGroupStartingParams()
+retcorGroupParameters$profStep <- 1
+resultRetcorGroup <-
+  optimizeRetGroup(xset = optimizedXcmsSetObject, 
+                   params = retcorGroupParameters, 
+                   nSlaves = 4, 
+                   subdir = "rsmDirectory")
+
+
+writeRScript(resultPeakpicking$best_settings$parameters, 
+             resultRetcorGroup$best_settings, 
+             nSlaves=12)
+# https://github.com/rietho/IPO/blob/master/vignettes/IPO.Rmd
+```
 
 
 ## Summary

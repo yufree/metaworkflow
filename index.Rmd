@@ -14,7 +14,7 @@ description: "This is a workflow for metabolomics studies."
 
 # Introduction
 
-This is a _workflow_ book written in **Markdown**. You could contribute it by a pull request.
+This is a _workflow_ book written in **Bookdown**. You could contribute it by a pull request.
 
 [**R**](https://www.r-project.org/) and [**Rstudio**](https://www.rstudio.com/) are the softwares needed in this workflow.
 
