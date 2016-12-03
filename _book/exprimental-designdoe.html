@@ -8,7 +8,7 @@
   <title>Meta-Workflow</title>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="This is a workflow for metabolomics studies.">
-  <meta name="generator" content="bookdown 0.1.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
 
   <meta property="og:title" content="Meta-Workflow" />
   <meta property="og:type" content="book" />
@@ -25,13 +25,8 @@
 
 <meta name="author" content="Miao YU">
 
-<meta name="date" content="2016-09-06">
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: { equationNumbers: { autoNumber: "AMS" } }
-});
-</script>
+<meta name="date" content="2016-12-02">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -115,18 +110,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html"><i class="fa fa-check"></i><b>4</b> Raw data pretreatment</a></li>
 <li class="chapter" data-level="5" data-path="peaks-selection.html"><a href="peaks-selection.html"><i class="fa fa-check"></i><b>5</b> Peaks selection</a></li>
 <li class="chapter" data-level="6" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>6</b> Omics analysis</a></li>
-<li class="chapter" data-level="7" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html"><i class="fa fa-check"></i><b>7</b> Common analysis methods for metabolomics</a><ul>
-<li class="chapter" data-level="7.1" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#pca"><i class="fa fa-check"></i><b>7.1</b> PCA</a></li>
-<li class="chapter" data-level="7.2" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#pls-da"><i class="fa fa-check"></i><b>7.2</b> PLS-DA</a></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="demo.html"><a href="demo.html"><i class="fa fa-check"></i><b>8</b> Demo</a><ul>
-<li class="chapter" data-level="8.1" data-path="demo.html"><a href="demo.html#find-the-peaks"><i class="fa fa-check"></i><b>8.1</b> Find the peaks</a></li>
-<li class="chapter" data-level="8.2" data-path="demo.html"><a href="demo.html#data-correction"><i class="fa fa-check"></i><b>8.2</b> Data correction</a></li>
-<li class="chapter" data-level="8.3" data-path="demo.html"><a href="demo.html#statistic-analysis"><i class="fa fa-check"></i><b>8.3</b> Statistic analysis</a></li>
-<li class="chapter" data-level="8.4" data-path="demo.html"><a href="demo.html#annotation"><i class="fa fa-check"></i><b>8.4</b> Annotation</a></li>
-<li class="chapter" data-level="8.5" data-path="demo.html"><a href="demo.html#omics-analysis-1"><i class="fa fa-check"></i><b>8.5</b> Omics analysis</a></li>
-</ul></li>
+<li class="chapter" data-level="7" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html"><i class="fa fa-check"></i><b>7</b> Common analysis methods for metabolomics</a></li>
+<li class="chapter" data-level="8" data-path="demo.html"><a href="demo.html"><i class="fa fa-check"></i><b>8</b> Demo</a></li>
 <li class="chapter" data-level="9" data-path="useful-links.html"><a href="useful-links.html"><i class="fa fa-check"></i><b>9</b> Useful links</a></li>
+<li class="chapter" data-level="10" data-path="batch-effect.html"><a href="batch-effect.html"><i class="fa fa-check"></i><b>10</b> Batch effect</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/yufree/metaworkflow" target="blank">Published with bookdown</a></li>
 
@@ -149,7 +136,33 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="exprimental-designdoe" class="section level1">
 <h1><span class="header-section-number">Chapter 3</span> Exprimental design(DoE)</h1>
-<p>Before you perform any metabolomic studies, a clean and meaningful experimental design is always the best start. You need two groups at least: treated group and control group.</p>
+<p>Before you perform any metabolomic studies, a clean and meaningful experimental design is the best start. You need two groups at least: treated group and control group.</p>
+<p>The numbers of samples in each group should be carefully designed. Supposing the metaoblites of certain biological process only have few compounds, the first goal of the exprimenal design is to find the differences of each compound in different group. For each compounds, such comparision could be treated as one t-test. So you might need to perform a Power analysis to make sure the fold changes that show you the answer to your experimental design.</p>
+<p>For example, we have two groups of samples with 10 samples in each group. Then we set the power at 0.9, which means 1 minus Type II error probability, the standard deviation at 1 and the significance level(Type 1 error probability) at 0.05. Then we get the meanful delta between the two groups should be higher than 1.53367 under this experiment design. Also we could set the delta to get the minimized numbers of the samples in each group. To get those data such as the standard deviation or delta for power analysis, you need to perform pre-experiment.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">power.t.test</span>(<span class="dt">n=</span><span class="dv">10</span>,<span class="dt">sd=</span><span class="dv">1</span>,<span class="dt">sig.level =</span> <span class="fl">0.05</span>,<span class="dt">power =</span> <span class="fl">0.9</span>)</code></pre></div>
+<pre><code>## 
+##      Two-sample t test power calculation 
+## 
+##               n = 10
+##           delta = 1.53367
+##              sd = 1
+##       sig.level = 0.05
+##           power = 0.9
+##     alternative = two.sided
+## 
+## NOTE: n is number in *each* group</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">power.t.test</span>(<span class="dt">delta =</span> <span class="dv">5</span>,<span class="dt">sd=</span><span class="dv">1</span>,<span class="dt">sig.level =</span> <span class="fl">0.05</span>,<span class="dt">power =</span> <span class="fl">0.9</span>)</code></pre></div>
+<pre><code>## 
+##      Two-sample t test power calculation 
+## 
+##               n = 2.328877
+##           delta = 5
+##              sd = 1
+##       sig.level = 0.05
+##           power = 0.9
+##     alternative = two.sided
+## 
+## NOTE: n is number in *each* group</code></pre>
 <p>If there are other co-factors, a linear model or randomizing would be applied to eliminated their influences. You need to record the values of those co-factors for further data analysis. Common co-factors in metabolomic studies are age, gender, location, etc.</p>
 <p>If you need data correction, some background or calibration samples are required. However, control samples could also be used for data correction in certain DoE.</p>
 
@@ -173,6 +186,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
+"github": false,
 "facebook": true,
 "twitter": true,
 "google": false,
@@ -188,7 +202,7 @@ gitbook.start({
 },
 "edit": {
 "link": "https://github.com/yufree/metaworkflow/edit/master/02-doe.Rmd",
-"text": null
+"text": "Edit"
 },
 "download": null,
 "toc": {
@@ -198,17 +212,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

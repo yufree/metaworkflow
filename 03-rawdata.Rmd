@@ -1,8 +1,11 @@
 # Raw data pretreatment
 
-Collection of your Raw data from the instrument such as LC-MS or GC-MS is the beginning of data analysis.
+Raw data from the instruments such as LC-MS or GC-MS were hard to be analyzed. To make it clear, the structure of those data could be summarised as:
 
-However, Raw data were hard to be analyzed. GC/LC-MS data are usually be shown as a matrix with column standing for retention times and row standing for masses. Noises are so much that such data could not be processed effeciently.
+- to get full infomation in the samples, full scan is perferred;
+- full scan is performed with the seperation process;
+
+GC/LC-MS data are usually be shown as a matrix with column standing for retention times and row standing for masses. Noises are so much that such data could not be processed effeciently.
 
 ```{r singledata, fig.show='hold', fig.cap='Demo of GC/LC-MS data',echo=FALSE}
 knitr::include_graphics('images/singledata.png')

@@ -182,7 +182,7 @@ index <- which(eic[,"rtmed"] > 2500 & eic[,"rtmed"<2600])[1]
 
 IPO package could be used to optimaze the parameters for XCMS. Try the following code.
 
-```{r IPO eval = F}
+```{r IPO, eval = F}
 mzdatapath <- system.file("cdf",package = "faahKO")
 mzdatafiles <- list.files(mzdatapath, recursive = TRUE, full.names=TRUE)
 library(IPO)
