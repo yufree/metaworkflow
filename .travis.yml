@@ -8,6 +8,8 @@ script:
 - ./_build.sh
 - ./_deploy.sh
 sudo: true
+r_github_packages:
+  - cran/survival
 cache:
   packages: true
   directories:
