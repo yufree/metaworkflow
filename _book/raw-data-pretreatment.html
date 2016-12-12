@@ -8,7 +8,7 @@
   <title>Meta-Workflow</title>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="This is a workflow for metabolomics studies.">
-  <meta name="generator" content="bookdown 0.1.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
 
   <meta property="og:title" content="Meta-Workflow" />
   <meta property="og:type" content="book" />
@@ -25,13 +25,8 @@
 
 <meta name="author" content="Miao YU">
 
-<meta name="date" content="2016-09-06">
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: { equationNumbers: { autoNumber: "AMS" } }
-});
-</script>
+<meta name="date" content="2016-12-11">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -109,24 +104,57 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="./">Metabolomics Workflow</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="project-setup.html"><a href="project-setup.html"><i class="fa fa-check"></i><b>2</b> Project Setup</a></li>
-<li class="chapter" data-level="3" data-path="exprimental-designdoe.html"><a href="exprimental-designdoe.html"><i class="fa fa-check"></i><b>3</b> Exprimental design(DoE)</a></li>
-<li class="chapter" data-level="4" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html"><i class="fa fa-check"></i><b>4</b> Raw data pretreatment</a></li>
-<li class="chapter" data-level="5" data-path="peaks-selection.html"><a href="peaks-selection.html"><i class="fa fa-check"></i><b>5</b> Peaks selection</a></li>
-<li class="chapter" data-level="6" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>6</b> Omics analysis</a></li>
-<li class="chapter" data-level="7" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html"><i class="fa fa-check"></i><b>7</b> Common analysis methods for metabolomics</a><ul>
-<li class="chapter" data-level="7.1" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#pca"><i class="fa fa-check"></i><b>7.1</b> PCA</a></li>
-<li class="chapter" data-level="7.2" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#pls-da"><i class="fa fa-check"></i><b>7.2</b> PLS-DA</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="exprimental-designdoe.html"><a href="exprimental-designdoe.html"><i class="fa fa-check"></i><b>2</b> Exprimental design(DoE)</a></li>
+<li class="chapter" data-level="3" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html"><i class="fa fa-check"></i><b>3</b> Raw data pretreatment</a><ul>
+<li class="chapter" data-level="3.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#spectral-deconvolution"><i class="fa fa-check"></i><b>3.1</b> Spectral deconvolution</a></li>
+<li class="chapter" data-level="3.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#correction"><i class="fa fa-check"></i><b>3.2</b> Correction</a></li>
+<li class="chapter" data-level="3.3" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#non-detects"><i class="fa fa-check"></i><b>3.3</b> Non-detects</a></li>
+<li class="chapter" data-level="3.4" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#adjust-for-unwanted-variance-with-known-batch"><i class="fa fa-check"></i><b>3.4</b> Adjust for unwanted variance with known batch</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#centering"><i class="fa fa-check"></i><b>3.4.1</b> Centering</a></li>
+<li class="chapter" data-level="3.4.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#scaling"><i class="fa fa-check"></i><b>3.4.2</b> Scaling</a></li>
+<li class="chapter" data-level="3.4.3" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#quantile"><i class="fa fa-check"></i><b>3.4.3</b> Quantile</a></li>
+<li class="chapter" data-level="3.4.4" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#ratio-based-calibraton"><i class="fa fa-check"></i><b>3.4.4</b> Ratio based calibraton</a></li>
+<li class="chapter" data-level="3.4.5" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#linear-normalizer"><i class="fa fa-check"></i><b>3.4.5</b> Linear Normalizer</a></li>
+<li class="chapter" data-level="3.4.6" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#regression-calibration"><i class="fa fa-check"></i><b>3.4.6</b> Regression calibration</a></li>
+<li class="chapter" data-level="3.4.7" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#batch-normalizer"><i class="fa fa-check"></i><b>3.4.7</b> Batch Normalizer</a></li>
+<li class="chapter" data-level="3.4.8" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#internal-standards"><i class="fa fa-check"></i><b>3.4.8</b> Internal standards</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="demo.html"><a href="demo.html"><i class="fa fa-check"></i><b>8</b> Demo</a><ul>
-<li class="chapter" data-level="8.1" data-path="demo.html"><a href="demo.html#find-the-peaks"><i class="fa fa-check"></i><b>8.1</b> Find the peaks</a></li>
-<li class="chapter" data-level="8.2" data-path="demo.html"><a href="demo.html#data-correction"><i class="fa fa-check"></i><b>8.2</b> Data correction</a></li>
-<li class="chapter" data-level="8.3" data-path="demo.html"><a href="demo.html#statistic-analysis"><i class="fa fa-check"></i><b>8.3</b> Statistic analysis</a></li>
-<li class="chapter" data-level="8.4" data-path="demo.html"><a href="demo.html#annotation"><i class="fa fa-check"></i><b>8.4</b> Annotation</a></li>
-<li class="chapter" data-level="8.5" data-path="demo.html"><a href="demo.html#omics-analysis-1"><i class="fa fa-check"></i><b>8.5</b> Omics analysis</a></li>
+<li class="chapter" data-level="3.5" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#adjust-for-unwanted-variance-with-unknown-batch"><i class="fa fa-check"></i><b>3.5</b> Adjust for unwanted variance with unknown batch</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#sva"><i class="fa fa-check"></i><b>3.5.1</b> SVA</a></li>
+<li class="chapter" data-level="3.5.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#ruv"><i class="fa fa-check"></i><b>3.5.2</b> RUV</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="useful-links.html"><a href="useful-links.html"><i class="fa fa-check"></i><b>9</b> Useful links</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="peaks-selection.html"><a href="peaks-selection.html"><i class="fa fa-check"></i><b>4</b> Peaks selection</a></li>
+<li class="chapter" data-level="5" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>5</b> Omics analysis</a><ul>
+<li class="chapter" data-level="5.1" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-analysis"><i class="fa fa-check"></i><b>5.1</b> Pathway analysis</a></li>
+<li class="chapter" data-level="5.2" data-path="omics-analysis.html"><a href="omics-analysis.html#network-analysis"><i class="fa fa-check"></i><b>5.2</b> Network analysis</a></li>
+<li class="chapter" data-level="5.3" data-path="omics-analysis.html"><a href="omics-analysis.html#omics-integration"><i class="fa fa-check"></i><b>5.3</b> Omics integration</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html"><i class="fa fa-check"></i><b>6</b> Common analysis methods for metabolomics</a><ul>
+<li class="chapter" data-level="6.1" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#pca"><i class="fa fa-check"></i><b>6.1</b> PCA</a></li>
+<li class="chapter" data-level="6.2" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#cluster-analysis"><i class="fa fa-check"></i><b>6.2</b> Cluster Analysis</a></li>
+<li class="chapter" data-level="6.3" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#plsda"><i class="fa fa-check"></i><b>6.3</b> PLSDA</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="demo.html"><a href="demo.html"><i class="fa fa-check"></i><b>7</b> Demo</a><ul>
+<li class="chapter" data-level="7.1" data-path="demo.html"><a href="demo.html#project-setup"><i class="fa fa-check"></i><b>7.1</b> Project Setup</a></li>
+<li class="chapter" data-level="7.2" data-path="demo.html"><a href="demo.html#data-input"><i class="fa fa-check"></i><b>7.2</b> Data input</a></li>
+<li class="chapter" data-level="7.3" data-path="demo.html"><a href="demo.html#find-the-peaks"><i class="fa fa-check"></i><b>7.3</b> Find the peaks</a></li>
+<li class="chapter" data-level="7.4" data-path="demo.html"><a href="demo.html#data-correction"><i class="fa fa-check"></i><b>7.4</b> Data correction</a></li>
+<li class="chapter" data-level="7.5" data-path="demo.html"><a href="demo.html#statistic-analysis"><i class="fa fa-check"></i><b>7.5</b> Statistic analysis</a></li>
+<li class="chapter" data-level="7.6" data-path="demo.html"><a href="demo.html#annotation"><i class="fa fa-check"></i><b>7.6</b> Annotation</a></li>
+<li class="chapter" data-level="7.7" data-path="demo.html"><a href="demo.html#omics-analysis-1"><i class="fa fa-check"></i><b>7.7</b> Omics analysis</a></li>
+<li class="chapter" data-level="7.8" data-path="demo.html"><a href="demo.html#metaboanalyst"><i class="fa fa-check"></i><b>7.8</b> MetaboAnalyst</a></li>
+<li class="chapter" data-level="7.9" data-path="demo.html"><a href="demo.html#visulizing-peaks"><i class="fa fa-check"></i><b>7.9</b> Visulizing Peaks</a></li>
+<li class="chapter" data-level="7.10" data-path="demo.html"><a href="demo.html#optimation-of-xcms"><i class="fa fa-check"></i><b>7.10</b> Optimation of XCMS</a></li>
+<li class="chapter" data-level="7.11" data-path="demo.html"><a href="demo.html#summary"><i class="fa fa-check"></i><b>7.11</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="batch-effect.html"><a href="batch-effect.html"><i class="fa fa-check"></i><b>8</b> Batch effect</a><ul>
+<li class="chapter" data-level="8.0.1" data-path="batch-effect.html"><a href="batch-effect.html#detection-of-unmodeled-factors"><i class="fa fa-check"></i><b>8.0.1</b> Detection of unmodeled factors</a></li>
+<li class="chapter" data-level="8.0.2" data-path="batch-effect.html"><a href="batch-effect.html#construction-of-surrogate-variables"><i class="fa fa-check"></i><b>8.0.2</b> Construction of surrogate variables</a></li>
+<li class="chapter" data-level="8.0.3" data-path="batch-effect.html"><a href="batch-effect.html#case-study"><i class="fa fa-check"></i><b>8.0.3</b> Case study</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/yufree/metaworkflow" target="blank">Published with bookdown</a></li>
 
@@ -148,25 +176,219 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="raw-data-pretreatment" class="section level1">
-<h1><span class="header-section-number">Chapter 4</span> Raw data pretreatment</h1>
-<p>Collection of your Raw data from the instrument such as LC-MS or GC-MS is the beginning of data analysis.</p>
-<p>However, Raw data were hard to be analyzed. GC/LC-MS data are usually be shown by a matrix with column standing for retention time and row standing for mass. Noises are so much that such data could not be processed effeciently.</p>
+<h1><span class="header-section-number">Chapter 3</span> Raw data pretreatment</h1>
+<p>Raw data from the instruments such as LC-MS or GC-MS were hard to be analyzed. To make it clear, the structure of those data could be summarised as:</p>
+<ul>
+<li>to get full infomation in the samples, full scan is perferred;</li>
+<li>full scan is performed with the seperation process;</li>
+</ul>
+<p>GC/LC-MS data are usually be shown as a matrix with column standing for retention times and row standing for masses. Noises are so much that such data could not be processed effeciently.</p>
 <div class="figure"><span id="fig:singledata"></span>
-<img src="images/singledata.png" alt="Demo of GC/LC-MS data"  />
+<img src="images/singledata.png" alt="Demo of GC/LC-MS data" width="636" />
 <p class="caption">
-Figure 4.1: Demo of GC/LC-MS data
+Figure 3.1: Demo of GC/LC-MS data
 </p>
 </div>
 <p>Conversation from the mass-retention time matrix into a vector with selected MS peaks at certain retention time is the basic idea of the Raw data pretreatment.</p>
 <p>With many groups of samples, you will get another data matrix with column standing for ions at cerntain retention time and row standing for samples after the Raw data pretreatment.</p>
 <div class="figure"><span id="fig:multidata"></span>
-<img src="images/multidata.png" alt="Demo of many GC/LC-MS data"  />
+<img src="images/multidata.png" alt="Demo of many GC/LC-MS data" width="633" />
 <p class="caption">
-Figure 4.2: Demo of many GC/LC-MS data
+Figure 3.2: Demo of many GC/LC-MS data
 </p>
 </div>
-<p>However, before you get the peaks, some corrections should be performed such as mass shift and retention time shift. The basic idea behind retention time correction is that use the high quality grouped peaks to make a new retention time. You might choose obiwarp(based on similarity, recommended, see this <a href="http://pubs.acs.org/doi/abs/10.1021/ac0605344">paper</a>) or loess regression method to get the corrected retention time for all of the samples. Remember the original retention times might be changed and you might need cross-correct for mass data correction.</p>
+<div id="spectral-deconvolution" class="section level2">
+<h2><span class="header-section-number">3.1</span> Spectral deconvolution</h2>
+<p>Without fracmental infomation about certain compound, the peak extraction would suffer influnces from other compounds. At the same retention time, co-elute compounds might share similar mass. So it would be hard to distighuish the co-elute peaks’ origin and deconvolution method<span class="citation">(Du and Zeisel <a href="#ref-du_spectral_2013">2013</a>)</span> could be used to seperate different groups according to the similar chromatogragh beheviors.</p>
+</div>
+<div id="correction" class="section level2">
+<h2><span class="header-section-number">3.2</span> Correction</h2>
+<p>However, before you get the peaks, some corrections should be performed such as mass shift and retention time shift. The basic idea behind retention time correction is that use the high quality grouped peaks to make a new retention time. You might choose obiwarp or loess regression method to get the corrected retention time for all of the samples. Remember the original retention times might be changed and you might need cross-correct for mass data correction.</p>
+</div>
+<div id="non-detects" class="section level2">
+<h2><span class="header-section-number">3.3</span> Non-detects</h2>
+<p>Some of the data were limited by the detect of limitation. Thus we need some methods to impute the data if we don’t want to lose information by deleting the NA or 0.</p>
+<p>Tobit regression is preferred. Also you might choose maximum likelihood estimation(Estimation of mean and standard deviation by MLE. Creating 10 complete samples. Pool the results from 10 individual analyses).</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;http://www.ats.ucla.edu/stat/data/tobit.csv&quot;</span>)
+<span class="kw">summary</span>(dat)</code></pre></div>
+<pre><code>##        id              read            math               prog    
+##  Min.   :  1.00   Min.   :28.00   Min.   :33.00   academic  : 45  
+##  1st Qu.: 50.75   1st Qu.:44.00   1st Qu.:45.00   general   :105  
+##  Median :100.50   Median :50.00   Median :52.00   vocational: 50  
+##  Mean   :100.50   Mean   :52.23   Mean   :52.65                   
+##  3rd Qu.:150.25   3rd Qu.:60.00   3rd Qu.:59.00                   
+##  Max.   :200.00   Max.   :76.00   Max.   :75.00                   
+##       apt       
+##  Min.   :352.0  
+##  1st Qu.:575.5  
+##  Median :633.0  
+##  Mean   :640.0  
+##  3rd Qu.:705.2  
+##  Max.   :800.0</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">hist</span>(dat$apt)</code></pre></div>
+<p><img src="Metabolomics_files/figure-html/tobit-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(AER)
+tfit &lt;-<span class="st"> </span><span class="kw">tobit</span>(apt ~<span class="st"> </span>read +<span class="st"> </span>math +<span class="st"> </span>prog, <span class="dt">right =</span> <span class="dv">800</span>,<span class="dt">data=</span>dat)
+<span class="kw">summary</span>(tfit)</code></pre></div>
+<pre><code>## 
+## Call:
+## tobit(formula = apt ~ read + math + prog, right = 800, data = dat)
+## 
+## Observations:
+##          Total  Left-censored     Uncensored Right-censored 
+##            200              0            183             17 
+## 
+## Coefficients:
+##                 Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)    209.56597   32.77196   6.395 1.61e-10 ***
+## read             2.69794    0.61881   4.360 1.30e-05 ***
+## math             5.91448    0.70982   8.332  &lt; 2e-16 ***
+## proggeneral    -12.71476   12.40646  -1.025 0.305434    
+## progvocational -46.14390   13.72419  -3.362 0.000773 ***
+## Log(scale)       4.18474    0.05301  78.946  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Scale: 65.68 
+## 
+## Gaussian distribution
+## Number of Newton-Raphson Iterations: 6 
+## Log-likelihood: -1041 on 6 Df
+## Wald-statistic: 297.3 on 4 Df, p-value: &lt; 2.22e-16</code></pre>
+</div>
+<div id="adjust-for-unwanted-variance-with-known-batch" class="section level2">
+<h2><span class="header-section-number">3.4</span> Adjust for unwanted variance with known batch</h2>
+<div id="centering" class="section level3">
+<h3><span class="header-section-number">3.4.1</span> Centering</h3>
+<p>For peak p of sample s in batch b, the corrected abundance I is:</p>
+<p><span class="math display">\[\hat I_{p,s,b} = I_{p,s,b} - mean(I_{p,b}) + median(I_{p,qc})\]</span></p>
+<p>For example, we have the intensities of one peak from ten samples in two batches like the following demo:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">42</span>)
+<span class="co"># raw data</span>
+I =<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="fl">0.5</span>),<span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dt">mean =</span> <span class="dv">1</span>, <span class="dt">sd =</span> <span class="fl">0.5</span>))
+<span class="co"># batch</span>
+B =<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">10</span>),<span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">10</span>))
+<span class="co"># qc</span>
+Iqc =<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">1</span>,<span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="fl">0.5</span>),<span class="kw">rnorm</span>(<span class="dv">1</span>,<span class="dt">mean =</span> <span class="dv">1</span>, <span class="dt">sd =</span> <span class="fl">0.5</span>))
+<span class="co"># corrected data</span>
+Icor =<span class="st"> </span>I -<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="kw">mean</span>(I[<span class="dv">1</span>:<span class="dv">10</span>]),<span class="dv">10</span>),<span class="kw">rep</span>(<span class="kw">mean</span>(I[<span class="dv">11</span>:<span class="dv">20</span>]),<span class="dv">10</span>)) +<span class="st"> </span><span class="kw">median</span>(Iqc)
+<span class="co"># plot the result</span>
+<span class="kw">plot</span>(I)</code></pre></div>
+<p><img src="Metabolomics_files/figure-html/center-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(Icor)</code></pre></div>
+<p><img src="Metabolomics_files/figure-html/center-2.png" width="672" /></p>
+</div>
+<div id="scaling" class="section level3">
+<h3><span class="header-section-number">3.4.2</span> Scaling</h3>
+<p>For peak p of sample s in certain batch b, the corrected abundance I is:</p>
+<p><span class="math display">\[\hat I_{p,s,b} = \frac{I_{p,s,b} - mean(I_{p,b})}{std_{p,b}} * std_{p,qc,b} + mean(I_{p,qc,b})\]</span></p>
+<p>For example, we have the intensities of one peak from ten samples in two batches like the following demo:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">42</span>)
+<span class="co"># raw data</span>
+I =<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="fl">0.3</span>),<span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dt">mean =</span> <span class="dv">1</span>, <span class="dt">sd =</span> <span class="fl">0.5</span>))
+<span class="co"># batch</span>
+B =<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">10</span>),<span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">10</span>))
+<span class="co"># qc</span>
+Iqc =<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">1</span>,<span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="fl">0.3</span>),<span class="kw">rnorm</span>(<span class="dv">1</span>,<span class="dt">mean =</span> <span class="dv">1</span>, <span class="dt">sd =</span> <span class="fl">0.5</span>))
+<span class="co"># corrected data</span>
+Icor =<span class="st"> </span>(I -<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="kw">mean</span>(I[<span class="dv">1</span>:<span class="dv">10</span>]),<span class="dv">10</span>),<span class="kw">rep</span>(<span class="kw">mean</span>(I[<span class="dv">11</span>:<span class="dv">20</span>]),<span class="dv">10</span>)))/<span class="kw">c</span>(<span class="kw">sd</span>(I[<span class="dv">1</span>:<span class="dv">10</span>]),<span class="kw">sd</span>(I[<span class="dv">11</span>:<span class="dv">20</span>]))*<span class="kw">c</span>(<span class="kw">rep</span>(<span class="fl">0.3</span>,<span class="dv">10</span>),<span class="kw">rep</span>(<span class="fl">0.5</span>,<span class="dv">10</span>)) +<span class="st"> </span>Iqc[<span class="dv">1</span>]
+<span class="co"># plot the result</span>
+<span class="kw">plot</span>(I)</code></pre></div>
+<p><img src="Metabolomics_files/figure-html/scaling-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(Icor)</code></pre></div>
+<p><img src="Metabolomics_files/figure-html/scaling-2.png" width="672" /></p>
+</div>
+<div id="quantile" class="section level3">
+<h3><span class="header-section-number">3.4.3</span> Quantile</h3>
+<p>The idea of quantile calibration is that alignment of the intensities in certain samples according to quantiles in each sample.</p>
+<p>Here is the demo:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">42</span>)
+a &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1000</span>)
+<span class="co"># b sufferred batch effect with a bias of 10</span>
+b &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1000</span>,<span class="dv">10</span>)
+<span class="kw">hist</span>(a,<span class="dt">xlim=</span><span class="kw">c</span>(-<span class="dv">5</span>,<span class="dv">15</span>),<span class="dt">breaks =</span> <span class="dv">50</span>)
+<span class="kw">hist</span>(b,<span class="dt">col =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">breaks =</span> <span class="dv">50</span>, <span class="dt">add=</span>T)
+<span class="co"># quantile normalized</span>
+cor &lt;-<span class="st"> </span>(a[<span class="kw">order</span>(a)]+b[<span class="kw">order</span>(b)])/<span class="dv">2</span>
+<span class="co"># reorder</span>
+cor &lt;-<span class="st"> </span>cor[<span class="kw">order</span>(<span class="kw">order</span>(a))]
+<span class="kw">hist</span>(cor,<span class="dt">col =</span> <span class="st">&#39;red&#39;</span>, <span class="dt">breaks =</span> <span class="dv">50</span>, <span class="dt">add=</span>T)</code></pre></div>
+<p><img src="Metabolomics_files/figure-html/quantile-1.png" width="672" /></p>
+</div>
+<div id="ratio-based-calibraton" class="section level3">
+<h3><span class="header-section-number">3.4.4</span> Ratio based calibraton</h3>
+<p>This method calibrates samples by the ratio between qc samples in all samples and in certain batch.For peak p of sample s in certain batch b, the corrected abundance I is:</p>
+<p><span class="math display">\[\hat I_{p,s,b} = \frac{I_{p,s,b} * median(I_{p,qc})}{mean_{p,qc,b}}\]</span></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">42</span>)
+<span class="co"># raw data</span>
+I =<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="fl">0.3</span>),<span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dt">mean =</span> <span class="dv">1</span>, <span class="dt">sd =</span> <span class="fl">0.5</span>))
+<span class="co"># batch</span>
+B =<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">10</span>),<span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">10</span>))
+<span class="co"># qc</span>
+Iqc =<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">1</span>,<span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="fl">0.3</span>),<span class="kw">rnorm</span>(<span class="dv">1</span>,<span class="dt">mean =</span> <span class="dv">1</span>, <span class="dt">sd =</span> <span class="fl">0.5</span>))
+<span class="co"># corrected data</span>
+Icor =<span class="st"> </span>I *<span class="st"> </span><span class="kw">median</span>(<span class="kw">c</span>(<span class="kw">rep</span>(Iqc[<span class="dv">1</span>],<span class="dv">10</span>),<span class="kw">rep</span>(Iqc[<span class="dv">2</span>],<span class="dv">10</span>)))/<span class="kw">mean</span>(<span class="kw">c</span>(<span class="kw">rep</span>(Iqc[<span class="dv">1</span>],<span class="dv">10</span>),<span class="kw">rep</span>(Iqc[<span class="dv">2</span>],<span class="dv">10</span>)))
+<span class="co"># plot the result</span>
+<span class="kw">plot</span>(I)</code></pre></div>
+<p><img src="Metabolomics_files/figure-html/ratio-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(Icor)</code></pre></div>
+<p><img src="Metabolomics_files/figure-html/ratio-2.png" width="672" /></p>
+</div>
+<div id="linear-normalizer" class="section level3">
+<h3><span class="header-section-number">3.4.5</span> Linear Normalizer</h3>
+<p>This method initially scales each sample so that the sum of all peak abundances equals one. In this study, by multiplying the median sum of all peak abundances across all samples,we got the corrected data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">set.seed</span>(<span class="dv">42</span>)
+<span class="co"># raw data</span>
+peaksa &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="fl">0.3</span>),<span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dt">mean =</span> <span class="dv">20</span>, <span class="dt">sd =</span> <span class="fl">0.5</span>))
+peaksb &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="fl">0.3</span>),<span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dt">mean =</span> <span class="dv">20</span>, <span class="dt">sd =</span> <span class="fl">0.5</span>))
 
+df &lt;-<span class="st"> </span><span class="kw">rbind</span>(peaksa,peaksb)
+dfcor &lt;-<span class="st"> </span>df/<span class="kw">apply</span>(df,<span class="dv">2</span>,sum)*<span class="st"> </span><span class="kw">sum</span>(<span class="kw">apply</span>(df,<span class="dv">2</span>,median))
+
+<span class="kw">image</span>(df)</code></pre></div>
+<p><img src="Metabolomics_files/figure-html/Linear-1.png" width="672" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">image</span>(dfcor)</code></pre></div>
+<p><img src="Metabolomics_files/figure-html/Linear-2.png" width="672" /></p>
+</div>
+<div id="regression-calibration" class="section level3">
+<h3><span class="header-section-number">3.4.6</span> Regression calibration</h3>
+<p>Considering the batch effect of injection order, regress the data by a linear model to get the calibration.</p>
+</div>
+<div id="batch-normalizer" class="section level3">
+<h3><span class="header-section-number">3.4.7</span> Batch Normalizer</h3>
+<p>Use the total abundance scale and then fit with the regression line<span class="citation">(Wang, Kuo, and Tseng <a href="#ref-wang_batch_2013">2013</a>)</span>.</p>
+</div>
+<div id="internal-standards" class="section level3">
+<h3><span class="header-section-number">3.4.8</span> Internal standards</h3>
+<p><span class="math display">\[\hat I_{p,s} = \frac{I_{p,s} * median(I_{IS})}{I_{IS,s}}\]</span></p>
+<p>Some methods also use pooled calibration samples and multiple internal standard strategy to correct the data<span class="citation">(van der Kloet et al. <a href="#ref-van_der_kloet_analytical_2009">2009</a>)</span>. Also some methods only use QC samples to handle the data<span class="citation">(Kuligowski et al. <a href="#ref-kuligowski_intra-batch_2015">2015</a>)</span>.</p>
+</div>
+</div>
+<div id="adjust-for-unwanted-variance-with-unknown-batch" class="section level2">
+<h2><span class="header-section-number">3.5</span> Adjust for unwanted variance with unknown batch</h2>
+<div id="sva" class="section level3">
+<h3><span class="header-section-number">3.5.1</span> SVA</h3>
+</div>
+<div id="ruv" class="section level3">
+<h3><span class="header-section-number">3.5.2</span> RUV</h3>
+
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-du_spectral_2013">
+<p>Du, Xiuxia, and Steven H Zeisel. 2013. “SPECTRAL DECONVOLUTION FOR GAS CHROMATOGRAPHY MASS SPECTROMETRY-BASED METABOLOMICS: CURRENT STATUS AND FUTURE PERSPECTIVES.” <em>Computational and Structural Biotechnology Journal</em> 4 (5): 1–10. doi:<a href="https://doi.org/10.5936/csbj.201301013">10.5936/csbj.201301013</a>.</p>
+</div>
+<div id="ref-wang_batch_2013">
+<p>Wang, San-Yuan, Ching-Hua Kuo, and Yufeng J. Tseng. 2013. “Batch Normalizer: A Fast Total Abundance Regression Calibration Method to Simultaneously Adjust Batch and Injection Order Effects in Liquid Chromatography/Time-of-Flight Mass Spectrometry-Based Metabolomics Data and Comparison with Current Calibration Methods.” <em>Analytical Chemistry</em> 85 (2): 1037–46. doi:<a href="https://doi.org/10.1021/ac302877x">10.1021/ac302877x</a>.</p>
+</div>
+<div id="ref-van_der_kloet_analytical_2009">
+<p>van der Kloet, Frans M., Ivana Bobeldijk, Elwin R. Verheij, and Renger H. Jellema. 2009. “Analytical Error Reduction Using Single Point Calibration for Accurate and Precise Metabolomic Phenotyping.” <em>Journal of Proteome Research</em> 8 (11): 5132–41. doi:<a href="https://doi.org/10.1021/pr900499r">10.1021/pr900499r</a>.</p>
+</div>
+<div id="ref-kuligowski_intra-batch_2015">
+<p>Kuligowski, Julia, Ángel Sánchez-Illana, Daniel Sanjuán-Herráez, Máximo Vento, and Guillermo Quintás. 2015. “Intra-Batch Effect Correction in Liquid Chromatography-Mass Spectrometry Using Quality Control Samples and Support Vector Regression (QC-SVRC).” <em>Analyst</em> 140 (22): 7810–7. doi:<a href="https://doi.org/10.1039/C5AN01638J">10.1039/C5AN01638J</a>.</p>
+</div>
 </div>
             </section>
 
@@ -187,6 +409,7 @@ Figure 4.2: Demo of many GC/LC-MS data
 require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
+"github": false,
 "facebook": true,
 "twitter": true,
 "google": false,
@@ -202,7 +425,7 @@ gitbook.start({
 },
 "edit": {
 "link": "https://github.com/yufree/metaworkflow/edit/master/03-rawdata.Rmd",
-"text": null
+"text": "Edit"
 },
 "download": null,
 "toc": {

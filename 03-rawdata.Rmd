@@ -19,6 +19,155 @@ With many groups of samples, you will get another data matrix with column standi
 knitr::include_graphics('images/multidata.png')
 ```
 
-However, before you get the peaks, some corrections should be performed such as mass shift and retention time shift. The basic idea behind retention time correction is that use the high quality grouped peaks to make a new retention time. You might choose obiwarp(based on similarity, recommended, see this [paper](http://pubs.acs.org/doi/abs/10.1021/ac0605344)) or loess regression method to get the corrected retention time for all of the samples. Remember the original retention times might be changed and you might need cross-correct for mass data correction.
+## Spectral deconvolution
 
-Mass drift for high-resolution mass spectrum also affect the peak selection. For example, if the 
+Without fracmental infomation about certain compound, the peak extraction would suffer influnces from other compounds. At the same retention time, co-elute compounds might share similar mass. So it would be hard to distighuish the co-elute peaks' origin and deconvolution method[@du_spectral_2013] could be used to seperate different groups according to the similar chromatogragh beheviors.
+
+## Correction
+
+However, before you get the peaks, some corrections should be performed such as mass shift and retention time shift. The basic idea behind retention time correction is that use the high quality grouped peaks to make a new retention time. You might choose obiwarp or loess regression method to get the corrected retention time for all of the samples. Remember the original retention times might be changed and you might need cross-correct for mass data correction.
+
+
+## Non-detects
+
+Some of the data were limited by the detect of limitation. Thus we need some methods to impute the data if we don't want to lose information by deleting the NA or 0.
+
+Tobit regression is preferred. Also you might choose  maximum likelihood estimation(Estimation of mean and standard deviation by MLE. Creating 10 complete samples. Pool the results from 10 individual analyses).
+
+```{r tobit}
+dat <- read.csv("http://www.ats.ucla.edu/stat/data/tobit.csv")
+summary(dat)
+hist(dat$apt)
+library(AER)
+tfit <- tobit(apt ~ read + math + prog, right = 800,data=dat)
+summary(tfit)
+```
+
+## Adjust for unwanted variance with known batch
+
+### Centering
+
+For peak p of sample s in batch b, the corrected abundance I is:
+
+$$\hat I_{p,s,b} = I_{p,s,b} - mean(I_{p,b}) + median(I_{p,qc})$$
+
+For example, we have the intensities of one peak from ten samples in two batches like the following demo:
+
+```{r center}
+set.seed(42)
+# raw data
+I = c(rnorm(10,mean = 0, sd = 0.5),rnorm(10,mean = 1, sd = 0.5))
+# batch
+B = c(rep(0,10),rep(1,10))
+# qc
+Iqc = c(rnorm(1,mean = 0, sd = 0.5),rnorm(1,mean = 1, sd = 0.5))
+# corrected data
+Icor = I - c(rep(mean(I[1:10]),10),rep(mean(I[11:20]),10)) + median(Iqc)
+# plot the result
+plot(I)
+plot(Icor)
+```
+
+### Scaling
+
+For peak p of sample s in certain batch b, the corrected abundance I is:
+
+$$\hat I_{p,s,b} = \frac{I_{p,s,b} - mean(I_{p,b})}{std_{p,b}} * std_{p,qc,b} + mean(I_{p,qc,b})$$
+
+For example, we have the intensities of one peak from ten samples in two batches like the following demo:
+
+```{r scaling}
+set.seed(42)
+# raw data
+I = c(rnorm(10,mean = 0, sd = 0.3),rnorm(10,mean = 1, sd = 0.5))
+# batch
+B = c(rep(0,10),rep(1,10))
+# qc
+Iqc = c(rnorm(1,mean = 0, sd = 0.3),rnorm(1,mean = 1, sd = 0.5))
+# corrected data
+Icor = (I - c(rep(mean(I[1:10]),10),rep(mean(I[11:20]),10)))/c(sd(I[1:10]),sd(I[11:20]))*c(rep(0.3,10),rep(0.5,10)) + Iqc[1]
+# plot the result
+plot(I)
+plot(Icor)
+```
+
+### Quantile
+
+The idea of quantile calibration is that alignment of the intensities in certain samples according to quantiles in each sample.
+
+Here is the demo:
+
+```{r quantile}
+set.seed(42)
+a <- rnorm(1000)
+# b sufferred batch effect with a bias of 10
+b <- rnorm(1000,10)
+hist(a,xlim=c(-5,15),breaks = 50)
+hist(b,col = 'black', breaks = 50, add=T)
+# quantile normalized
+cor <- (a[order(a)]+b[order(b)])/2
+# reorder
+cor <- cor[order(order(a))]
+hist(cor,col = 'red', breaks = 50, add=T)
+```
+
+### Ratio based calibraton
+
+This method calibrates samples by the ratio between qc samples in all samples and in certain batch.For peak p of sample s in certain batch b, the corrected abundance I is:
+
+$$\hat I_{p,s,b} = \frac{I_{p,s,b} * median(I_{p,qc})}{mean_{p,qc,b}}$$
+
+```{r ratio}
+set.seed(42)
+# raw data
+I = c(rnorm(10,mean = 0, sd = 0.3),rnorm(10,mean = 1, sd = 0.5))
+# batch
+B = c(rep(0,10),rep(1,10))
+# qc
+Iqc = c(rnorm(1,mean = 0, sd = 0.3),rnorm(1,mean = 1, sd = 0.5))
+# corrected data
+Icor = I * median(c(rep(Iqc[1],10),rep(Iqc[2],10)))/mean(c(rep(Iqc[1],10),rep(Iqc[2],10)))
+# plot the result
+plot(I)
+plot(Icor)
+```
+
+### Linear Normalizer
+
+This method initially scales each sample so that the sum of all
+peak abundances equals one. In this study, by multiplying the median sum of all peak abundances across all samples,we got the corrected data.
+
+```{r Linear}
+set.seed(42)
+# raw data
+peaksa <- c(rnorm(10,mean = 10, sd = 0.3),rnorm(10,mean = 20, sd = 0.5))
+peaksb <- c(rnorm(10,mean = 10, sd = 0.3),rnorm(10,mean = 20, sd = 0.5))
+
+df <- rbind(peaksa,peaksb)
+dfcor <- df/apply(df,2,sum)* sum(apply(df,2,median))
+
+image(df)
+image(dfcor)
+```
+
+### Regression calibration
+
+Considering the batch effect of injection order, regress the data by a linear model to get the calibration.
+
+### Batch Normalizer
+
+Use the total abundance scale and then fit with the regression line[@wang_batch_2013].
+
+### Internal standards
+
+$$\hat I_{p,s} = \frac{I_{p,s} * median(I_{IS})}{I_{IS,s}}$$
+
+Some methods also use pooled calibration samples and multiple internal standard strategy to correct the data[@van_der_kloet_analytical_2009]. Also some methods only use QC samples to handle the data[@kuligowski_intra-batch_2015].
+
+
+## Adjust for unwanted variance with unknown batch
+
+### SVA
+
+### RUV
+

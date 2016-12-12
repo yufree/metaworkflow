@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="introduction.html">
-<link rel="next" href="raw-data-pretreatment.html">
+<link rel="prev" href="index.html">
+<link rel="next" href="exprimental-designdoe.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -175,45 +175,25 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="exprimental-designdoe" class="section level1">
-<h1><span class="header-section-number">Chapter 2</span> Exprimental design(DoE)</h1>
-<p>Before you perform any metabolomic studies, a clean and meaningful experimental design is the best start. You need at least two groups: treated group and control group. Also you could treat this group infomation as the one primary variable or primary variables to be explored for certain research purposes.</p>
-<p>The numbers of samples in each group should be carefully calculated. Supposing the metaoblites of certain biological process only have a few metabolites, the first goal of the exprimenal design is to find the differences of each metabolite in different group. For each metabolite, such comparision could be treated as one t-test. You need to perform a Power analysis to get the numbers. For example, we have two groups of samples with 10 samples in each group. Then we set the power at 0.9, which means 1 minus Type II error probability, the standard deviation at 1 and the significance level(Type 1 error probability) at 0.05. Then we get the meanful delta between the two groups should be higher than 1.53367 under this experiment design. Also we could set the delta to get the minimized numbers of the samples in each group. To get those data such as the standard deviation or delta for power analysis, you need to perform pre-experiments.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">power.t.test</span>(<span class="dt">n=</span><span class="dv">10</span>,<span class="dt">sd=</span><span class="dv">1</span>,<span class="dt">sig.level =</span> <span class="fl">0.05</span>,<span class="dt">power =</span> <span class="fl">0.9</span>)</code></pre></div>
-<pre><code>## 
-##      Two-sample t test power calculation 
-## 
-##               n = 10
-##           delta = 1.53367
-##              sd = 1
-##       sig.level = 0.05
-##           power = 0.9
-##     alternative = two.sided
-## 
-## NOTE: n is number in *each* group</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">power.t.test</span>(<span class="dt">delta =</span> <span class="dv">5</span>,<span class="dt">sd=</span><span class="dv">1</span>,<span class="dt">sig.level =</span> <span class="fl">0.05</span>,<span class="dt">power =</span> <span class="fl">0.9</span>)</code></pre></div>
-<pre><code>## 
-##      Two-sample t test power calculation 
-## 
-##               n = 2.328877
-##           delta = 5
-##              sd = 1
-##       sig.level = 0.05
-##           power = 0.9
-##     alternative = two.sided
-## 
-## NOTE: n is number in *each* group</code></pre>
-<p>If there are other co-factors, a linear model or randomizing would be applied to eliminated their influences. You need to record the values of those co-factors for further data analysis. Common co-factors in metabolomic studies are age, gender, location, etc.</p>
-<p>If you need data correction, some background or calibration samples are required. However, control samples could also be used for data correction in certain DoE.</p>
+<div id="introduction" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
+<p>Metabolomics (i.e., the profiling and quantitation of metabolites in body fluids) is new field of “omics” studies<span class="citation">(Lu and Xu <a href="#ref-wang_lc-ms_2008">2008</a>)</span>. Information in living organism commuicates along the Genomics, Transcriptomics and Proteomics to Metabolomics in Central dogma. Following such stream, we might answer certain problems in different scales from individual, population, community to ecosystem.</p>
+<p>Different from other “omics” studies, metabolomics always focused on small moleculars with much lower mass than polypeptide, around m/z 100-1000. Metabolomics studies are always performed in GC/MS, LC/MS or NMR. This workflow concerns mass spectrum based metabolomics.</p>
 
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-wang_lc-ms_2008">
+<p>Lu, Xin, and Guowang Xu. 2008. “LC-MS Metabonomics Methodology in Biomarker Discovery.” In <em>Biomarker Methods in Drug Discovery and Development</em>, edited by Feng Wang, 291–315. Methods in Pharmacology and Toxicology. Humana Press. doi:<a href="https://doi.org/10.1007/978-1-59745-463-6_14">10.1007/978-1-59745-463-6_14</a>.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="raw-data-pretreatment.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="exprimental-designdoe.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
@@ -241,7 +221,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/yufree/metaworkflow/edit/master/02-doe.Rmd",
+"link": "https://github.com/yufree/metaworkflow/edit/master/01-introduction.Rmd",
 "text": "Edit"
 },
 "download": null,

@@ -8,7 +8,7 @@
   <title>Meta-Workflow</title>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="This is a workflow for metabolomics studies.">
-  <meta name="generator" content="bookdown 0.1.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
 
   <meta property="og:title" content="Meta-Workflow" />
   <meta property="og:type" content="book" />
@@ -25,13 +25,8 @@
 
 <meta name="author" content="Miao YU">
 
-<meta name="date" content="2016-09-06">
 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: { equationNumbers: { autoNumber: "AMS" } }
-});
-</script>
+<meta name="date" content="2016-12-11">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -109,24 +104,57 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="./">Metabolomics Workflow</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="project-setup.html"><a href="project-setup.html"><i class="fa fa-check"></i><b>2</b> Project Setup</a></li>
-<li class="chapter" data-level="3" data-path="exprimental-designdoe.html"><a href="exprimental-designdoe.html"><i class="fa fa-check"></i><b>3</b> Exprimental design(DoE)</a></li>
-<li class="chapter" data-level="4" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html"><i class="fa fa-check"></i><b>4</b> Raw data pretreatment</a></li>
-<li class="chapter" data-level="5" data-path="peaks-selection.html"><a href="peaks-selection.html"><i class="fa fa-check"></i><b>5</b> Peaks selection</a></li>
-<li class="chapter" data-level="6" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>6</b> Omics analysis</a></li>
-<li class="chapter" data-level="7" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html"><i class="fa fa-check"></i><b>7</b> Common analysis methods for metabolomics</a><ul>
-<li class="chapter" data-level="7.1" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#pca"><i class="fa fa-check"></i><b>7.1</b> PCA</a></li>
-<li class="chapter" data-level="7.2" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#pls-da"><i class="fa fa-check"></i><b>7.2</b> PLS-DA</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="exprimental-designdoe.html"><a href="exprimental-designdoe.html"><i class="fa fa-check"></i><b>2</b> Exprimental design(DoE)</a></li>
+<li class="chapter" data-level="3" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html"><i class="fa fa-check"></i><b>3</b> Raw data pretreatment</a><ul>
+<li class="chapter" data-level="3.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#spectral-deconvolution"><i class="fa fa-check"></i><b>3.1</b> Spectral deconvolution</a></li>
+<li class="chapter" data-level="3.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#correction"><i class="fa fa-check"></i><b>3.2</b> Correction</a></li>
+<li class="chapter" data-level="3.3" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#non-detects"><i class="fa fa-check"></i><b>3.3</b> Non-detects</a></li>
+<li class="chapter" data-level="3.4" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#adjust-for-unwanted-variance-with-known-batch"><i class="fa fa-check"></i><b>3.4</b> Adjust for unwanted variance with known batch</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#centering"><i class="fa fa-check"></i><b>3.4.1</b> Centering</a></li>
+<li class="chapter" data-level="3.4.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#scaling"><i class="fa fa-check"></i><b>3.4.2</b> Scaling</a></li>
+<li class="chapter" data-level="3.4.3" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#quantile"><i class="fa fa-check"></i><b>3.4.3</b> Quantile</a></li>
+<li class="chapter" data-level="3.4.4" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#ratio-based-calibraton"><i class="fa fa-check"></i><b>3.4.4</b> Ratio based calibraton</a></li>
+<li class="chapter" data-level="3.4.5" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#linear-normalizer"><i class="fa fa-check"></i><b>3.4.5</b> Linear Normalizer</a></li>
+<li class="chapter" data-level="3.4.6" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#regression-calibration"><i class="fa fa-check"></i><b>3.4.6</b> Regression calibration</a></li>
+<li class="chapter" data-level="3.4.7" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#batch-normalizer"><i class="fa fa-check"></i><b>3.4.7</b> Batch Normalizer</a></li>
+<li class="chapter" data-level="3.4.8" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#internal-standards"><i class="fa fa-check"></i><b>3.4.8</b> Internal standards</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="demo.html"><a href="demo.html"><i class="fa fa-check"></i><b>8</b> Demo</a><ul>
-<li class="chapter" data-level="8.1" data-path="demo.html"><a href="demo.html#find-the-peaks"><i class="fa fa-check"></i><b>8.1</b> Find the peaks</a></li>
-<li class="chapter" data-level="8.2" data-path="demo.html"><a href="demo.html#data-correction"><i class="fa fa-check"></i><b>8.2</b> Data correction</a></li>
-<li class="chapter" data-level="8.3" data-path="demo.html"><a href="demo.html#statistic-analysis"><i class="fa fa-check"></i><b>8.3</b> Statistic analysis</a></li>
-<li class="chapter" data-level="8.4" data-path="demo.html"><a href="demo.html#annotation"><i class="fa fa-check"></i><b>8.4</b> Annotation</a></li>
-<li class="chapter" data-level="8.5" data-path="demo.html"><a href="demo.html#omics-analysis-1"><i class="fa fa-check"></i><b>8.5</b> Omics analysis</a></li>
+<li class="chapter" data-level="3.5" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#adjust-for-unwanted-variance-with-unknown-batch"><i class="fa fa-check"></i><b>3.5</b> Adjust for unwanted variance with unknown batch</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#sva"><i class="fa fa-check"></i><b>3.5.1</b> SVA</a></li>
+<li class="chapter" data-level="3.5.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#ruv"><i class="fa fa-check"></i><b>3.5.2</b> RUV</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="useful-links.html"><a href="useful-links.html"><i class="fa fa-check"></i><b>9</b> Useful links</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="peaks-selection.html"><a href="peaks-selection.html"><i class="fa fa-check"></i><b>4</b> Peaks selection</a></li>
+<li class="chapter" data-level="5" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>5</b> Omics analysis</a><ul>
+<li class="chapter" data-level="5.1" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-analysis"><i class="fa fa-check"></i><b>5.1</b> Pathway analysis</a></li>
+<li class="chapter" data-level="5.2" data-path="omics-analysis.html"><a href="omics-analysis.html#network-analysis"><i class="fa fa-check"></i><b>5.2</b> Network analysis</a></li>
+<li class="chapter" data-level="5.3" data-path="omics-analysis.html"><a href="omics-analysis.html#omics-integration"><i class="fa fa-check"></i><b>5.3</b> Omics integration</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html"><i class="fa fa-check"></i><b>6</b> Common analysis methods for metabolomics</a><ul>
+<li class="chapter" data-level="6.1" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#pca"><i class="fa fa-check"></i><b>6.1</b> PCA</a></li>
+<li class="chapter" data-level="6.2" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#cluster-analysis"><i class="fa fa-check"></i><b>6.2</b> Cluster Analysis</a></li>
+<li class="chapter" data-level="6.3" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#plsda"><i class="fa fa-check"></i><b>6.3</b> PLSDA</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="demo.html"><a href="demo.html"><i class="fa fa-check"></i><b>7</b> Demo</a><ul>
+<li class="chapter" data-level="7.1" data-path="demo.html"><a href="demo.html#project-setup"><i class="fa fa-check"></i><b>7.1</b> Project Setup</a></li>
+<li class="chapter" data-level="7.2" data-path="demo.html"><a href="demo.html#data-input"><i class="fa fa-check"></i><b>7.2</b> Data input</a></li>
+<li class="chapter" data-level="7.3" data-path="demo.html"><a href="demo.html#find-the-peaks"><i class="fa fa-check"></i><b>7.3</b> Find the peaks</a></li>
+<li class="chapter" data-level="7.4" data-path="demo.html"><a href="demo.html#data-correction"><i class="fa fa-check"></i><b>7.4</b> Data correction</a></li>
+<li class="chapter" data-level="7.5" data-path="demo.html"><a href="demo.html#statistic-analysis"><i class="fa fa-check"></i><b>7.5</b> Statistic analysis</a></li>
+<li class="chapter" data-level="7.6" data-path="demo.html"><a href="demo.html#annotation"><i class="fa fa-check"></i><b>7.6</b> Annotation</a></li>
+<li class="chapter" data-level="7.7" data-path="demo.html"><a href="demo.html#omics-analysis-1"><i class="fa fa-check"></i><b>7.7</b> Omics analysis</a></li>
+<li class="chapter" data-level="7.8" data-path="demo.html"><a href="demo.html#metaboanalyst"><i class="fa fa-check"></i><b>7.8</b> MetaboAnalyst</a></li>
+<li class="chapter" data-level="7.9" data-path="demo.html"><a href="demo.html#visulizing-peaks"><i class="fa fa-check"></i><b>7.9</b> Visulizing Peaks</a></li>
+<li class="chapter" data-level="7.10" data-path="demo.html"><a href="demo.html#optimation-of-xcms"><i class="fa fa-check"></i><b>7.10</b> Optimation of XCMS</a></li>
+<li class="chapter" data-level="7.11" data-path="demo.html"><a href="demo.html#summary"><i class="fa fa-check"></i><b>7.11</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="batch-effect.html"><a href="batch-effect.html"><i class="fa fa-check"></i><b>8</b> Batch effect</a><ul>
+<li class="chapter" data-level="8.0.1" data-path="batch-effect.html"><a href="batch-effect.html#detection-of-unmodeled-factors"><i class="fa fa-check"></i><b>8.0.1</b> Detection of unmodeled factors</a></li>
+<li class="chapter" data-level="8.0.2" data-path="batch-effect.html"><a href="batch-effect.html#construction-of-surrogate-variables"><i class="fa fa-check"></i><b>8.0.2</b> Construction of surrogate variables</a></li>
+<li class="chapter" data-level="8.0.3" data-path="batch-effect.html"><a href="batch-effect.html#case-study"><i class="fa fa-check"></i><b>8.0.3</b> Case study</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/yufree/metaworkflow" target="blank">Published with bookdown</a></li>
 
@@ -148,7 +176,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="peaks-selection" class="section level1">
-<h1><span class="header-section-number">Chapter 5</span> Peaks selection</h1>
+<h1><span class="header-section-number">Chapter 4</span> Peaks selection</h1>
 <p>After we get corrected peaks across samples, the next step is finding the differences between two groups. Actually, you could perform ANOVA or Kruskal-Wallis Test for comparison among more than two groups. The basic idea behind statistic analysis is to find the meaningful differences between groups and extract such ions or peak groups.</p>
 <p>So how to find the differences? In most metabolomics software, such task is completed by a t-test and report p-value and fold changes. If you only compare two groups on one peaks, that’s OK. However, if you compare two groups on thousands of peaks, statistic textbook would tell you to notice the false discovery rate(FDR). For one comparasion, the confidence level is 0.05, which means 5% chances to get false positive result. For two comparasions, such chances would be <span class="math inline">\(1-0.95^2\)</span>. For 10 comparasions, such chances would be <span class="math inline">\(1-0.95^{10} = 0.4012631\)</span>. For 100 comparasions, such chances would be <span class="math inline">\(1-0.95^{100} = 0.9940795\)</span>. You would almost certainly to make mistakes for your results.</p>
 <p>In statistics, FDR control is always mentioned in omics studies. I suggested using q-values to control FDR. If q-value is less than 0.05, we should expect a lower than 5% chances we make the wrong selections for all of the comparisions.</p>
@@ -173,6 +201,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
+"github": false,
 "facebook": true,
 "twitter": true,
 "google": false,
@@ -188,7 +217,7 @@ gitbook.start({
 },
 "edit": {
 "link": "https://github.com/yufree/metaworkflow/edit/master/04-peakselection.Rmd",
-"text": null
+"text": "Edit"
 },
 "download": null,
 "toc": {
