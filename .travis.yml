@@ -1,6 +1,7 @@
 language: r
 r: bioc-release
 pandoc_version: 1.17.2
+apt_packages: libnetcdf-dev
 before_script:
 - chmod +x ./_build.sh
 - chmod +x ./_deploy.sh
@@ -14,7 +15,6 @@ cache:
   packages: true
   directories:
   - $TRAVIS_BUILD_DIR/_bookdown_files
-apt_packages: libnetcdf-dev
 env:
   global:
   - secure: nhwEO7a6gAeJd9OzDQ+hqZmg3rgoculAZ33OWkEw/5EEdzYEBokplOHPdtEINL0vItXnzzE9AdajipIc7sjnwnmRMyAaeb3auf5nn8DsJc0x+WDsq8HhjMVCHTOxbso5ptheiRf7oWuopmHBlb9Hg7FC8iOImX3PFYfG7Sw3QSK7qREZYHWtT0wpavl6sPwk3fIGyyEt1K3ELTm96amqTV1ywbLPB1WCX5gPwxh9cTbnbTTihniBIGwzZmEQ1QpLqrIS64KsiE3TPj+gWf5dHGz11o9UXiR4X1UiLTXdsC+p0t0gKYgxkDpxJbLeiQGQGDPkzEAIsM9rnQazV7rqm5VrASe3YZV+StRkUiuYBlkjQq3ngGCuP5UEN5oTH84C/0BxbA20bNlCdW1r3A0dXuLzlWJNEa1rH99QrCUI0UjS8KK0uiCWaLe2ww1WFdg4SZBd3NW5OGxJ9jLdv83fP3ivd2zjfOWfy/Fl2HglGwP91wtidq2lWrIC0+QXXHZKQr+NWO4A8JDRwgppgVCEuqBnmMZr+m3PA+r65+ZwYyurDTAr+aevEL1eV4EQ4bFJ8eIhoQ2h+8VDJ1A1u1JXnedkMie1Q9DvWLpd4StacybSi3W2qax1Uga4ezYzZ/c4LT0xP6uAPXY5GkA8YkFrm2+xKGIMqw44G93RHBw8+Yc=

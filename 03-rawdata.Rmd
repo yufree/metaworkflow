@@ -11,7 +11,8 @@ GC/LC-MS data are usually be shown as a matrix with column standing for retentio
 knitr::include_graphics('images/singledata.png')
 ```
 
-Conversation from the mass-retention time matrix into a vector with selected MS peaks at certain retention time is the basic idea of the Raw data pretreatment. 
+Conversation from the mass-retention time matrix into a vector with selected MS peaks at certain retention time is the basic idea of the Raw data pretreatment. The **Centwave** algorithm based on detection of regions of interest(ROI) and the following Continuous Wavelet Transform (CWT) for the peaks is preferred for high-resolution mass spectrum.
+
 
 With many groups of samples, you will get another data matrix with column standing for ions at cerntain retention time and row standing for samples after the Raw data pretreatment.
 
