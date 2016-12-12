@@ -35,11 +35,11 @@ Some of the data were limited by the detect of limitation. Thus we need some met
 Tobit regression is preferred. Also you might choose  maximum likelihood estimation(Estimation of mean and standard deviation by MLE. Creating 10 complete samples. Pool the results from 10 individual analyses).
 
 ```{r tobit}
-dat <- read.csv("http://www.ats.ucla.edu/stat/data/tobit.csv")
-summary(dat)
-hist(dat$apt)
+x <- rnorm(1000,1)
+x[x<0] <- 0
+y <- x*10+1
 library(AER)
-tfit <- tobit(apt ~ read + math + prog, right = 800,data=dat)
+tfit <- tobit(y ~ x, left = 0)
 summary(tfit)
 ```
 
