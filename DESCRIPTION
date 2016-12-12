@@ -1,4 +1,4 @@
 Package: placeholder
-Title: Does not matter.
+Title: Metabolomics Workflow
 Version: 0.0.1
-Imports: bookdown,multtest,xcms,faahKO,qvalue,CAMERA,sva,limma,rafalib,RColorBrewer
+Imports: bookdown,multtest,xcms,faahKO,qvalue,CAMERA,sva,limma,RColorBrewer,AER
