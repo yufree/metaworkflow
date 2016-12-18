@@ -1,0 +1,3 @@
+# Pretreatment
+
+Pretreatment will affect the results of metabolomics. For example, feces collected with 95% ethanol or FOBT would be more reproducible and stable[@loftfield_comparison_2016].
