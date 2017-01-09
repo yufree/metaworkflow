@@ -14,326 +14,45 @@ description: "This is a workflow for metabolomics studies."
 
 # Preface {-}
 
-This is a book written in **Bookdown**. You could contribute it by a pull request in Github.
-
-[**R**](https://www.r-project.org/) and [**Rstudio**](https://www.rstudio.com/) are the softwares needed in this workflow.
-
-The software package used for metabolomics data analysis is **xcms**.
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-43118729-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
 <!--chapter:end:index.Rmd-->
+
 
 # Introduction
 
-Metabolomics (i.e., the profiling and quantitation of metabolites in body fluids) is new field of "omics" studies[@wang_lc-ms_2008]. Information in living organism commuicates along the Genomics, Transcriptomics and Proteomics to Metabolomics in Central dogma. Following such stream, we might answer certain problems in different scales from individual, population, community to ecosystem.
-
-Different from other "omics" studies, metabolomics always focused on small moleculars with much lower mass than polypeptide, around m/z 100-1000. Metabolomics studies are always performed in GC/MS, LC/MS or NMR. This workflow concerns mass spectrum based metabolomics.
-
 <!--chapter:end:01-introduction.Rmd-->
+
 
 # Exprimental design(DoE)
 
-Before you perform any metabolomic studies, a clean and meaningful experimental design is the best start. You need at least two groups: treated group and control group. Also you could treat this group infomation as the one primary variable or primary variables to be explored for certain research purposes.
-
-The numbers of samples in each group should be carefully calculated. Supposing the metaoblites of certain biological process only have a few metabolites, the first goal of the exprimenal design is to find the differences of each metabolite in different group. For each metabolite, such comparision could be treated as one t-test. You need to perform a Power analysis to get the numbers. For example, we have two groups of samples with 10 samples in each group. Then we set the power at 0.9, which means 1 minus Type II error probability, the standard deviation at 1 and the significance level(Type 1 error probability) at 0.05. Then we get the meanful delta between the two groups should be higher than 1.53367 under this experiment design. Also we could set the delta to get the minimized numbers of the samples in each group. To get those data such as the standard deviation or delta for power analysis, you need to perform pre-experiments.
-
-```{r}
-power.t.test(n=10,sd=1,sig.level = 0.05,power = 0.9)
-power.t.test(delta = 5,sd=1,sig.level = 0.05,power = 0.9)
-```
-
-
-If there are other co-factors, a linear model or randomizing would be applied to eliminated their influences. You need to record the values of those co-factors for further data analysis. Common co-factors in metabolomic studies are age, gender, location, etc.
-
-If you need data correction, some background or calibration samples are required. However, control samples could also be used for data correction in certain DoE.
-
 <!--chapter:end:02-doe.Rmd-->
+
 
 # Pretreatment
 
-Pretreatment will affect the results of metabolomics. For example, feces collected with 95% ethanol or FOBT would be more reproducible and stable[@loftfield_comparison_2016].
-
 <!--chapter:end:03-pretreatment.Rmd-->
+
 
 # Raw data pretreatment
 
-Raw data from the instruments such as LC-MS or GC-MS were hard to be analyzed. To make it clear, the structure of those data could be summarised as:
-
-- to get full infomation in the samples, full scan is perferred;
-- full scan is performed with the seperation process;
-
-GC/LC-MS data are usually be shown as a matrix with column standing for retention times and row standing for masses. Noises are so much that such data could not be processed effeciently.
-
-```{r singledata, fig.show='hold', fig.cap='Demo of GC/LC-MS data',echo=FALSE}
-knitr::include_graphics('images/singledata.png')
-```
-
-Conversation from the mass-retention time matrix into a vector with selected MS peaks at certain retention time is the basic idea of the Raw data pretreatment. The **Centwave** algorithm based on detection of regions of interest(ROI) and the following Continuous Wavelet Transform (CWT) for the peaks is preferred for high-resolution mass spectrum.
-
-
-With many groups of samples, you will get another data matrix with column standing for ions at cerntain retention time and row standing for samples after the Raw data pretreatment.
-
-```{r multidata, fig.show='hold', fig.cap='Demo of many GC/LC-MS data',echo=FALSE}
-knitr::include_graphics('images/multidata.png')
-```
-
-## Spectral deconvolution
-
-Without fracmental infomation about certain compound, the peak extraction would suffer influnces from other compounds. At the same retention time, co-elute compounds might share similar mass. Hard electron ionization methods such as electron impact ionization (EI), APPI suffer this issue. So it would be hard to distighuish the co-elute peaks' origin and deconvolution method[@du_spectral_2013] could be used to seperate different groups according to the similar chromatogragh beheviors. Another computational tool **eRah** could be a better solution for the whole process[@domingo-almenara_erah:_2016]. Also the **ADAD-GC3.0** could also be helpful for such issue[@ni_adap-gc_2016].
-
-## Correction
-
-However, before you get the peaks, some corrections should be performed such as mass shift and retention time shift. The basic idea behind retention time correction is that use the high quality grouped peaks to make a new retention time. You might choose obiwarp or loess regression method to get the corrected retention time for all of the samples. Remember the original retention times might be changed and you might need cross-correct for mass data correction.
-
-
-
-
-## Dynamic Range
-
-Another issue is the Dynamic Range. For metabolomics, peaks could be below the detection limit or over the detection limit. Such Dynamic range issues might raise the loss of information.
-
-### Non-detects
-
-Some of the data were limited by the detect of limitation. Thus we need some methods to impute the data if we don't want to lose information by deleting the NA or 0.
-
-Tobit regression is preferred. Also you might choose  maximum likelihood estimation(Estimation of mean and standard deviation by MLE. Creating 10 complete samples. Pool the results from 10 individual analyses).
-
-```{r tobit}
-x <- rnorm(1000,1)
-x[x<0] <- 0
-y <- x*10+1
-library(AER)
-tfit <- tobit(y ~ x, left = 0)
-summary(tfit)
-```
-
-### Over detection limit
-
-**CorrectOverloadedPeaks** could be used to correct the Peaks Exceeding the Detection Limit issue[@lisec_extending_2016].
-
-## Adjust for unwanted variances with known batch
-
-### Centering
-
-For peak p of sample s in batch b, the corrected abundance I is:
-
-$$\hat I_{p,s,b} = I_{p,s,b} - mean(I_{p,b}) + median(I_{p,qc})$$
-
-For example, we have the intensities of one peak from ten samples in two batches like the following demo:
-
-```{r center}
-set.seed(42)
-# raw data
-I = c(rnorm(10,mean = 0, sd = 0.5),rnorm(10,mean = 1, sd = 0.5))
-# batch
-B = c(rep(0,10),rep(1,10))
-# qc
-Iqc = c(rnorm(1,mean = 0, sd = 0.5),rnorm(1,mean = 1, sd = 0.5))
-# corrected data
-Icor = I - c(rep(mean(I[1:10]),10),rep(mean(I[11:20]),10)) + median(Iqc)
-# plot the result
-plot(I)
-plot(Icor)
-```
-
-### Scaling
-
-For peak p of sample s in certain batch b, the corrected abundance I is:
-
-$$\hat I_{p,s,b} = \frac{I_{p,s,b} - mean(I_{p,b})}{std_{p,b}} * std_{p,qc,b} + mean(I_{p,qc,b})$$
-
-For example, we have the intensities of one peak from ten samples in two batches like the following demo:
-
-```{r scaling}
-set.seed(42)
-# raw data
-I = c(rnorm(10,mean = 0, sd = 0.3),rnorm(10,mean = 1, sd = 0.5))
-# batch
-B = c(rep(0,10),rep(1,10))
-# qc
-Iqc = c(rnorm(1,mean = 0, sd = 0.3),rnorm(1,mean = 1, sd = 0.5))
-# corrected data
-Icor = (I - c(rep(mean(I[1:10]),10),rep(mean(I[11:20]),10)))/c(sd(I[1:10]),sd(I[11:20]))*c(rep(0.3,10),rep(0.5,10)) + Iqc[1]
-# plot the result
-plot(I)
-plot(Icor)
-```
-
-### Quantile
-
-The idea of quantile calibration is that alignment of the intensities in certain samples according to quantiles in each sample.
-
-Here is the demo:
-
-```{r quantile}
-set.seed(42)
-a <- rnorm(1000)
-# b sufferred batch effect with a bias of 10
-b <- rnorm(1000,10)
-hist(a,xlim=c(-5,15),breaks = 50)
-hist(b,col = 'black', breaks = 50, add=T)
-# quantile normalized
-cor <- (a[order(a)]+b[order(b)])/2
-# reorder
-cor <- cor[order(order(a))]
-hist(cor,col = 'red', breaks = 50, add=T)
-```
-
-### Ratio based calibraton
-
-This method calibrates samples by the ratio between qc samples in all samples and in certain batch.For peak p of sample s in certain batch b, the corrected abundance I is:
-
-$$\hat I_{p,s,b} = \frac{I_{p,s,b} * median(I_{p,qc})}{mean_{p,qc,b}}$$
-
-```{r ratio}
-set.seed(42)
-# raw data
-I = c(rnorm(10,mean = 0, sd = 0.3),rnorm(10,mean = 1, sd = 0.5))
-# batch
-B = c(rep(0,10),rep(1,10))
-# qc
-Iqc = c(rnorm(1,mean = 0, sd = 0.3),rnorm(1,mean = 1, sd = 0.5))
-# corrected data
-Icor = I * median(c(rep(Iqc[1],10),rep(Iqc[2],10)))/mean(c(rep(Iqc[1],10),rep(Iqc[2],10)))
-# plot the result
-plot(I)
-plot(Icor)
-```
-
-### Linear Normalizer
-
-This method initially scales each sample so that the sum of all
-peak abundances equals one. In this study, by multiplying the median sum of all peak abundances across all samples,we got the corrected data.
-
-```{r Linear}
-set.seed(42)
-# raw data
-peaksa <- c(rnorm(10,mean = 10, sd = 0.3),rnorm(10,mean = 20, sd = 0.5))
-peaksb <- c(rnorm(10,mean = 10, sd = 0.3),rnorm(10,mean = 20, sd = 0.5))
-
-df <- rbind(peaksa,peaksb)
-dfcor <- df/apply(df,2,sum)* sum(apply(df,2,median))
-
-image(df)
-image(dfcor)
-```
-
-### Regression calibration
-
-Considering the batch effect of injection order, regress the data by a linear model to get the calibration.
-
-### Batch Normalizer
-
-Use the total abundance scale and then fit with the regression line[@wang_batch_2013].
-
-### Internal standards
-
-$$\hat I_{p,s} = \frac{I_{p,s} * median(I_{IS})}{I_{IS,s}}$$
-
-Some methods also use pooled calibration samples and multiple internal standard strategy to correct the data[@van_der_kloet_analytical_2009]. Also some methods only use QC samples to handle the data[@kuligowski_intra-batch_2015].
-
-
-## Adjust for unwanted variance with unknown batch
-
-### SVA
-
-### RUV
-
-
 <!--chapter:end:04-rawdata.Rmd-->
+
 
 # Peaks selection
 
-After we get corrected peaks across samples, the next step is finding the differences between two groups. Actually, you could perform ANOVA or Kruskal-Wallis Test for comparison among more than two groups. The basic idea behind statistic analysis is to find the meaningful differences between groups and extract such ions or peak groups. 
-
-So how to find the differences? In most metabolomics software, such task is completed by a t-test and report p-value and fold changes. If you only compare two groups on one peaks, that's OK. However, if you compare two groups on thousands of peaks, statistic textbook would tell you to notice the false discovery rate(FDR). For one comparasion, the confidence level is 0.05, which means 5% chances to get false positive result. For two comparasions, such chances would be $1-0.95^2$. For 10 comparasions, such chances would be $1-0.95^{10} = 0.4012631$. For 100 comparasions, such chances would be $1-0.95^{100} = 0.9940795$. You would almost certainly to make mistakes for your results.
-
-In statistics, FDR control is always mentioned in omics studies. I suggested using q-values to control FDR. If q-value is less than 0.05, we should expect a lower than 5% chances we make the wrong selections for all of the comparisions.
-
 <!--chapter:end:05-peakselection.Rmd-->
+
 
 # Annotation
 
-When you get the peaks table or features table, annotation of the peaks would help you. Obviously, peaks with similar retention time might come from the same compound such as isotopic peaks, addictions from the analysis process. **CAMERA** package or **Ramcluster** could be used to make such annotation. Also this package could be used to group the peaks together for further analysis.
-
-There are two major annotation ideas:  multi-stage MS analysis and similarity analysis. The former requires certain instruments and database for MS/MS data. The later needs algorithms to predict the structures.
-
 <!--chapter:end:06-annotation.Rmd-->
+
 
 # Omics analysis
 
-When you get the filtered ions, the next step is making annotations for them. Such annotations would be helpful for omics studies.
-
-Since we have got the annotations, Omics analysis could be performed.Upload the data obtained from the **xcms** to other tools or databases.
-
-You will get an updated database list [here](http://metabolomicssociety.org/resources/metabolomics-databases)
-
-Right now, it is hard to connect different omics databases such as gene, protein and metabolites together for a whole scope of certain biological process. However, you might select few metabolites across those databases and find something interesting.
-
-## Pathway analysis
-
-## Network analysis
-
-## Omics integration
-
 <!--chapter:end:07-omics.Rmd-->
 
+
 # Common analysis methods for metabolomics
-
-## PCA
-
-In most cases, PCA is used as an exploratory data analysis(EDA) method. In most of those most cases, PCA is just served as visualization method. I mean, when I need to visualize some high-dimension data, I would use PCA.
-
-So, the basic idea behind PCA is compression. When you have 100 samples with concentrations of certain compound, you could plot the concentrations with samples' ID. However, if you have 100 compounds to be analyzed, it would by hard to show the relationship between the samples. Actually, you need to show a matrix with sample and compounds (100 * 100 with the concentrations filled into the matrix) in an informal way.
-
-The PCA would say: OK, guys, I could convert your data into only 100 * 2 matrix with the loss of information minimized. Yeah, that is what the mathematical guys or computer programmer do. You just run the command of PCA. The new two "compounds" might have the cor-relationship between the original 100 compounds and retain the variances between them. After such projection, you would see the compressed relationship between the 100 samples. If some samples' data are similar, they would be projected together in new two "compounds" plot. That is why PCA could be used for cluster and the new "compounds" could be referred as principal components(PCs).
-
-However, you might ask why only two new compounds could finished such task. I have to say, two PCs are just good for visualization. In most cases, we need to collect PCs standing for more than 80% variances in our data if you want to recovery the data with PCs. If each compound have no relationship between each other, the PCs are still those 100 compounds. So you have found a property of the PCs: PCs are orthogonal between each other.
-
-Another issue is how to find the relationship between the compounds. We could use PCA to find the relationship between samples. However, we could also extract the influences of the compounds on certain PCs. You might find many compounds showed the same loading on the first PC. That means the concentrations pattern between the compounds are looked similar. So PCA could also be used to explore the relationship between the compounds.
-
-OK, next time you might recall PCA when you need it instead of other paper showed them.
-
-## Cluster Analysis
-
-After we got a lot of samples and analyzed the concentrations of many compounds in them, we may ask about the relationship between the samples. You might have the sampling information such as the date and the position and you could use boxplot or violin plot to explore the relationships among those categorical variables. However, you could also use the data to find some potential relationship.
-
-But how? if two samples' data were almost the same, we might think those samples were from the same potential group. On the other hand, how do we define the "same" in the data?
-
-Cluster analysis told us that just define a "distances" to measure the similarity between samples. Mathematically, such distances would be shown in many different manners such as the sum of the absolute values of the differences between samples. 
-
-For example, we analyzed the amounts of compound A, B and C in two samples and get the results:
-
-| Compounds(ng) | A | B | C |
-| ------------- |---|---|---|
-| Sample 1      | 10| 13| 21|
-| Sample 2      | 54| 23| 16|
-
-The distance could be:
-
-$$
-distance = |10-54|+|13-23|+|21-16| = 59
-$$
-
-Also you could use the sum of squares or other way to stand for the similarity. After you defined a "distance", you could get the distances between all of pairs for your samples. If two samples' distance was the smallest, put them together as one group. Then calculate the distances again to combine the small group into big group until all of the samples were include in one group. Then draw a dendrogram for those process.
-
-The following issue is that how to cluster samples? You might set a cut-off and directly get the group from the dendrogram. However, sometimes you were ordered to cluster the samples into certain numbers of groups such as three. In such situation, you need K means cluster analysis.
-
-The basic idea behind the K means is that generate three virtual samples and calculate the distances between those three virtual samples and all of the other samples. There would be three values for each samples. Choose the smallest values and class that sample into this group. Then your samples were classified into three groups. You need to calculate the center of those three groups and get three new virtual samples. Repeat such process until the group members unchanged and you get your samples classified.
-
-OK, the basic idea behind the cluster analysis could be summarized as define the distances, set your cut-off and find the group. By this way, you might show potential relationships among samples.
-
-## PLSDA
 
 <!--chapter:end:08-dataanalysis.Rmd-->
 
@@ -381,7 +100,7 @@ list.files(cdfpath,recursive = T)
 
 Here is a demo for *xcmsSet*:
 
-```{r ImputData,warning=F}
+```{r ImputData,warning=F,message=F}
 cdffiles <- list.files(cdfpath, recursive = TRUE, full.names = TRUE)
 xset <- xcmsSet(cdffiles)
 xset
