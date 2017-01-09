@@ -1,5 +1,5 @@
 # Introduction
 
-Metabolomics (i.e., the profiling and quantitation of metabolites in body fluids) is new field of "omics" studies[@wang_lc-ms_2008]. Information in living organism commuicates along the Genomics, Transcriptomics and Proteomics to Metabolomics in Central dogma. Following such stream, we might answer certain problems in different scales from individual, population, community to ecosystem.
+Metabolomics (i.e., the profiling and quantitation of metabolites in body fluids) is new field of "omics" studies. Information in living organism commuicates along the Genomics, Transcriptomics, Proteomics and Metabolomics in Central dogma. Following such stream, we might answer certain problems in different scales from individual, population, community to ecosystem.
 
-Different from other "omics" studies, metabolomics always focused on small moleculars with much lower mass than polypeptide, around m/z 100-1000. Metabolomics studies are always performed in GC/MS, LC/MS or NMR. This workflow concerns mass spectrum based metabolomics.
+Different from other omics studies, metabolomics always focused on small moleculars with much lower mass than polypeptide, around m/z 100-1000. Metabolomics studies are always performed in GC/MS, LC/MS or NMR. This workflow concerns mass spectrum based metabolomics.

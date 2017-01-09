@@ -8,7 +8,7 @@
   <title>Meta-Workflow</title>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="This is a workflow for metabolomics studies.">
-  <meta name="generator" content="bookdown 0.1.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
 
   <meta property="og:title" content="Meta-Workflow" />
   <meta property="og:type" content="book" />
@@ -25,8 +25,8 @@
 
 <meta name="author" content="Miao YU">
 
-<meta name="date" content="2016-12-12">
 
+<meta name="date" content="2017-01-09">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -70,12 +70,13 @@
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
 <li class="chapter" data-level="2" data-path="exprimental-designdoe.html"><a href="exprimental-designdoe.html"><i class="fa fa-check"></i><b>2</b> Exprimental design(DoE)</a></li>
-<li class="chapter" data-level="3" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html"><i class="fa fa-check"></i><b>3</b> Raw data pretreatment</a></li>
-<li class="chapter" data-level="4" data-path="peaks-selection.html"><a href="peaks-selection.html"><i class="fa fa-check"></i><b>4</b> Peaks selection</a></li>
-<li class="chapter" data-level="5" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>5</b> Omics analysis</a></li>
-<li class="chapter" data-level="6" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html"><i class="fa fa-check"></i><b>6</b> Common analysis methods for metabolomics</a></li>
-<li class="chapter" data-level="7" data-path="demo.html"><a href="demo.html"><i class="fa fa-check"></i><b>7</b> Demo</a></li>
-<li class="chapter" data-level="8" data-path="batch-effect.html"><a href="batch-effect.html"><i class="fa fa-check"></i><b>8</b> Batch effect</a></li>
+<li class="chapter" data-level="3" data-path="pretreatment.html"><a href="pretreatment.html"><i class="fa fa-check"></i><b>3</b> Pretreatment</a></li>
+<li class="chapter" data-level="4" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html"><i class="fa fa-check"></i><b>4</b> Raw data pretreatment</a></li>
+<li class="chapter" data-level="5" data-path="peaks-selection.html"><a href="peaks-selection.html"><i class="fa fa-check"></i><b>5</b> Peaks selection</a></li>
+<li class="chapter" data-level="6" data-path="annotation.html"><a href="annotation.html"><i class="fa fa-check"></i><b>6</b> Annotation</a></li>
+<li class="chapter" data-level="7" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>7</b> Omics analysis</a></li>
+<li class="chapter" data-level="8" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html"><i class="fa fa-check"></i><b>8</b> Common analysis methods for metabolomics</a></li>
+<li class="chapter" data-level="9" data-path="demo.html"><a href="demo.html"><i class="fa fa-check"></i><b>9</b> Demo</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/yufree/metaworkflow" target="blank">Published with bookdown</a></li>
 
@@ -98,15 +99,9 @@
             <section class="normal" id="section-">
 <div id="introduction" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
-<p>Metabolomics (i.e., the profiling and quantitation of metabolites in body fluids) is new field of “omics” studies<span class="citation">(Lu and Xu <a href="#ref-wang_lc-ms_2008">2008</a>)</span>. Information in living organism commuicates along the Genomics, Transcriptomics and Proteomics to Metabolomics in Central dogma. Following such stream, we might answer certain problems in different scales from individual, population, community to ecosystem.</p>
-<p>Different from other “omics” studies, metabolomics always focused on small moleculars with much lower mass than polypeptide, around m/z 100-1000. Metabolomics studies are always performed in GC/MS, LC/MS or NMR. This workflow concerns mass spectrum based metabolomics.</p>
+<p>Metabolomics (i.e., the profiling and quantitation of metabolites in body fluids) is new field of “omics” studies. Information in living organism commuicates along the Genomics, Transcriptomics, Proteomics and Metabolomics in Central dogma. Following such stream, we might answer certain problems in different scales from individual, population, community to ecosystem.</p>
+<p>Different from other omics studies, metabolomics always focused on small moleculars with much lower mass than polypeptide, around m/z 100-1000. Metabolomics studies are always performed in GC/MS, LC/MS or NMR. This workflow concerns mass spectrum based metabolomics.</p>
 
-</div>
-<h3> Batch effect</h3>
-<div id="refs" class="references">
-<div id="ref-wang_lc-ms_2008">
-<p>Lu, Xin, and Guowang Xu. 2008. “LC-MS Metabonomics Methodology in Biomarker Discovery.” In <em>Biomarker Methods in Drug Discovery and Development</em>, edited by Feng Wang, 291–315. Methods in Pharmacology and Toxicology. Humana Press. doi:<a href="https://doi.org/10.1007/978-1-59745-463-6_14">10.1007/978-1-59745-463-6_14</a>.</p>
-</div>
 </div>
             </section>
 
@@ -127,6 +122,7 @@
 require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
+"github": false,
 "facebook": true,
 "twitter": true,
 "google": false,
@@ -142,7 +138,7 @@ gitbook.start({
 },
 "edit": {
 "link": "https://github.com/yufree/metaworkflow/edit/master/01-introduction.Rmd",
-"text": null
+"text": "Edit"
 },
 "download": null,
 "toc": {

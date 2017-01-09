@@ -34,6 +34,7 @@ Here is a demo:
 library(multtest)
 library(xcms)
 library(faahKO)
+library(BiocParallel)
 # get the demo data in faahKO packages
 cdfpath <- system.file("cdf",package = "faahKO")
 # show the name of demo data
@@ -42,9 +43,9 @@ list.files(cdfpath,recursive = T)
 
 Here is a demo for *xcmsSet*:
 
-```{r ImputData,warning=F}
+```{r ImputData,warning=F,message=F}
 cdffiles <- list.files(cdfpath, recursive = TRUE, full.names = TRUE)
-xset <- xcmsSet(cdffiles)
+xset <- xcmsSet(cdffiles,BPPARAM=SnowParam())
 xset
 ```
 
@@ -89,8 +90,8 @@ xset2
 
 You see one more peak groups after the correction. After the retention time correction, we also need to correct the peak groups by filling the missing peaks. Such function calls *fillpeaks*:
 
-```{r FillMissing}
-xset3 <- fillPeaks(xset2)
+```{r FillMissing,message=F}
+xset3 <- fillPeaks(xset2,BPPARAM=SnowParam())
 xset3
 ```
 

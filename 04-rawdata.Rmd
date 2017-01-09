@@ -22,14 +22,11 @@ knitr::include_graphics('images/multidata.png')
 
 ## Spectral deconvolution
 
-Without fracmental infomation about certain compound, the peak extraction would suffer influnces from other compounds. At the same retention time, co-elute compounds might share similar mass. Hard electron ionization methods such as electron impact ionization (EI), APPI suffer this issue. So it would be hard to distighuish the co-elute peaks' origin and deconvolution method[@du_spectral_2013] could be used to seperate different groups according to the similar chromatogragh beheviors. Another computational tool **eRah** could be a better solution for the whole process[@domingo-almenara_erah:_2016]. Also the **ADAD-GC3.0** could also be helpful for such issue[@ni_adap-gc_2016].
+Without fracmental infomation about certain compound, the peak extraction would suffer influnces from other compounds. At the same retention time, co-elute compounds might share similar mass. Hard electron ionization methods such as electron impact ionization (EI), APPI suffer this issue. So it would be hard to distighuish the co-elute peaks' origin and deconvolution method[du_spectral_2013] could be used to seperate different groups according to the similar chromatogragh beheviors. Another computational tool **eRah** could be a better solution for the whole process[domingo-almenara_erah:_2016]. Also the **ADAD-GC3.0** could also be helpful for such issue[ni_adap-gc_2016].
 
 ## Correction
 
 However, before you get the peaks, some corrections should be performed such as mass shift and retention time shift. The basic idea behind retention time correction is that use the high quality grouped peaks to make a new retention time. You might choose obiwarp or loess regression method to get the corrected retention time for all of the samples. Remember the original retention times might be changed and you might need cross-correct for mass data correction.
-
-
-
 
 ## Dynamic Range
 
@@ -52,7 +49,7 @@ summary(tfit)
 
 ### Over detection limit
 
-**CorrectOverloadedPeaks** could be used to correct the Peaks Exceeding the Detection Limit issue[@lisec_extending_2016].
+**CorrectOverloadedPeaks** could be used to correct the Peaks Exceeding the Detection Limit issue[lisec_extending_2016].
 
 ## Adjust for unwanted variances with known batch
 
@@ -167,13 +164,13 @@ Considering the batch effect of injection order, regress the data by a linear mo
 
 ### Batch Normalizer
 
-Use the total abundance scale and then fit with the regression line[@wang_batch_2013].
+Use the total abundance scale and then fit with the regression line[wang_batch_2013].
 
 ### Internal standards
 
 $$\hat I_{p,s} = \frac{I_{p,s} * median(I_{IS})}{I_{IS,s}}$$
 
-Some methods also use pooled calibration samples and multiple internal standard strategy to correct the data[@van_der_kloet_analytical_2009]. Also some methods only use QC samples to handle the data[@kuligowski_intra-batch_2015].
+Some methods also use pooled calibration samples and multiple internal standard strategy to correct the data[van_der_kloet_analytical_2009]. Also some methods only use QC samples to handle the data[kuligowski_intra-batch_2015].
 
 
 ## Adjust for unwanted variance with unknown batch
