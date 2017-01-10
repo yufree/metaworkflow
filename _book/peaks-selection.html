@@ -26,7 +26,7 @@
 <meta name="author" content="Miao YU">
 
 
-<meta name="date" content="2017-01-09">
+<meta name="date" content="2017-01-10">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -77,6 +77,7 @@
 <li class="chapter" data-level="7" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>7</b> Omics analysis</a></li>
 <li class="chapter" data-level="8" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html"><i class="fa fa-check"></i><b>8</b> Common analysis methods for metabolomics</a></li>
 <li class="chapter" data-level="9" data-path="demo.html"><a href="demo.html"><i class="fa fa-check"></i><b>9</b> Demo</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/yufree/metaworkflow" target="blank">Published with bookdown</a></li>
 
@@ -100,8 +101,8 @@
 <div id="peaks-selection" class="section level1">
 <h1><span class="header-section-number">Chapter 5</span> Peaks selection</h1>
 <p>After we get corrected peaks across samples, the next step is finding the differences between two groups. Actually, you could perform ANOVA or Kruskal-Wallis Test for comparison among more than two groups. The basic idea behind statistic analysis is to find the meaningful differences between groups and extract such ions or peak groups.</p>
-<p>So how to find the differences? In most metabolomics software, such task is completed by a t-test and report p-value and fold changes. If you only compare two groups on one peaks, that’s OK. However, if you compare two groups on thousands of peaks, statistic textbook would tell you to notice the false discovery rate(FDR). For one comparasion, the confidence level is 0.05, which means 5% chances to get false positive result. For two comparasions, such chances would be <span class="math inline">\(1-0.95^2\)</span>. For 10 comparasions, such chances would be <span class="math inline">\(1-0.95^{10} = 0.4012631\)</span>. For 100 comparasions, such chances would be <span class="math inline">\(1-0.95^{100} = 0.9940795\)</span>. You would almost certainly to make mistakes for your results.</p>
-<p>In statistics, FDR control is always mentioned in omics studies. I suggested using q-values to control FDR. If q-value is less than 0.05, we should expect a lower than 5% chances we make the wrong selections for all of the comparisions.</p>
+<p>So how to find the differences? In most metabolomics software, such task is completed by a t-test and report p-value and fold changes. If you only compare two groups on one peaks, that’s OK. However, if you compare two groups on thousands of peaks, statistic textbook would tell you to notice the false positive. For one comparasion, the confidence level is 0.05, which means 5% chances to get false positive result. For two comparasions, such chances would be <span class="math inline">\(1-0.95^2\)</span>. For 10 comparasions, such chances would be <span class="math inline">\(1-0.95^{10} = 0.4012631\)</span>. For 100 comparasions, such chances would be <span class="math inline">\(1-0.95^{100} = 0.9940795\)</span>. You would almost certainly to make mistakes for your results.</p>
+<p>In statistics, the false discovery rate(FDR) control is always mentioned in omics studies for mutiple tests. I suggested using q-values to control FDR. If q-value is less than 0.05, we should expect a lower than 5% chances we make the wrong selections for all of the comparisions showed lower q-values in the whole dataset. Also we could use local false discovery rate, which showed the FDR for certain peaks. However, such values are hard to be estimated accurately.</p>
 
 </div>
             </section>

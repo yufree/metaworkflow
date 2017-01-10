@@ -26,7 +26,7 @@
 <meta name="author" content="Miao YU">
 
 
-<meta name="date" content="2017-01-09">
+<meta name="date" content="2017-01-10">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -135,6 +135,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="7" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>7</b> Omics analysis</a></li>
 <li class="chapter" data-level="8" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html"><i class="fa fa-check"></i><b>8</b> Common analysis methods for metabolomics</a></li>
 <li class="chapter" data-level="9" data-path="demo.html"><a href="demo.html"><i class="fa fa-check"></i><b>9</b> Demo</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/yufree/metaworkflow" target="blank">Published with bookdown</a></li>
 
@@ -159,8 +160,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1><span class="header-section-number">Chapter 4</span> Raw data pretreatment</h1>
 <p>Raw data from the instruments such as LC-MS or GC-MS were hard to be analyzed. To make it clear, the structure of those data could be summarised as:</p>
 <ul>
-<li>to get full infomation in the samples, full scan is perferred;</li>
-<li>full scan is performed with the seperation process;</li>
+<li>to get full infomation in the samples, full scan is perferred</li>
+<li>full scan is performed synchronously with the seperation process</li>
 </ul>
 <p>GC/LC-MS data are usually be shown as a matrix with column standing for retention times and row standing for masses. Noises are so much that such data could not be processed effeciently.</p>
 <div class="figure"><span id="fig:singledata"></span>
@@ -169,7 +170,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 Figure 4.1: Demo of GC/LC-MS data
 </p>
 </div>
-<p>Conversation from the mass-retention time matrix into a vector with selected MS peaks at certain retention time is the basic idea of the Raw data pretreatment. The <strong>Centwave</strong> algorithm based on detection of regions of interest(ROI) and the following Continuous Wavelet Transform (CWT) for the peaks is preferred for high-resolution mass spectrum.</p>
+<p>Conversation from the mass-retention time matrix into a vector with selected MS peaks at certain retention time is the basic idea of the Raw data pretreatment. The <strong>Centwave</strong> algorithm<span class="citation">(Tautenhahn, Böttcher, and Neumann <a href="#ref-tautenhahn2008">2008</a>)</span> based on detection of regions of interest(ROI) and the following Continuous Wavelet Transform (CWT) for the peaks is preferred for high-resolution mass spectrum.</p>
 <p>With many groups of samples, you will get another data matrix with column standing for ions at cerntain retention time and row standing for samples after the Raw data pretreatment.</p>
 <div class="figure"><span id="fig:multidata"></span>
 <img src="images/multidata.png" alt="Demo of many GC/LC-MS data" width="633" />
@@ -179,11 +180,11 @@ Figure 4.2: Demo of many GC/LC-MS data
 </div>
 <div id="spectral-deconvolution" class="section level2">
 <h2><span class="header-section-number">4.1</span> Spectral deconvolution</h2>
-<p>Without fracmental infomation about certain compound, the peak extraction would suffer influnces from other compounds. At the same retention time, co-elute compounds might share similar mass. Hard electron ionization methods such as electron impact ionization (EI), APPI suffer this issue. So it would be hard to distighuish the co-elute peaks’ origin and deconvolution method[du_spectral_2013] could be used to seperate different groups according to the similar chromatogragh beheviors. Another computational tool <strong>eRah</strong> could be a better solution for the whole process[domingo-almenara_erah:_2016]. Also the <strong>ADAD-GC3.0</strong> could also be helpful for such issue[ni_adap-gc_2016].</p>
+<p>Without fracmental infomation about certain compound, the peak extraction would suffer influnces from other compounds. At the same retention time, co-elute compounds might share similar mass. Hard electron ionization methods such as electron impact ionization (EI), APPI suffer this issue. So it would be hard to distighuish the co-elute peaks’ origin and deconvolution method<span class="citation">(Du and Zeisel <a href="#ref-du2013">2013</a>)</span> could be used to seperate different groups according to the similar chromatogragh beheviors. Another computational tool <strong>eRah</strong> could be a better solution for the whole process<span class="citation">(Domingo-Almenara et al. <a href="#ref-domingo-almenara2016">2016</a>)</span>. Also the <strong>ADAD-GC3.0</strong> could also be helpful for such issue<span class="citation">(Ni et al. <a href="#ref-ni2016">2016</a>)</span>.</p>
 </div>
 <div id="correction" class="section level2">
 <h2><span class="header-section-number">4.2</span> Correction</h2>
-<p>However, before you get the peaks, some corrections should be performed such as mass shift and retention time shift. The basic idea behind retention time correction is that use the high quality grouped peaks to make a new retention time. You might choose obiwarp or loess regression method to get the corrected retention time for all of the samples. Remember the original retention times might be changed and you might need cross-correct for mass data correction.</p>
+<p>However, before you get the peaks, some corrections should be performed such as mass shift and retention time shift. The basic idea behind retention time correction is that use the high quality grouped peaks to make a new retention time. You might choose obiwarp or loess regression method to get the corrected retention time for all of the samples. Remember the original retention times might be changed and you might need cross-correct the data.</p>
 </div>
 <div id="dynamic-range" class="section level2">
 <h2><span class="header-section-number">4.3</span> Dynamic Range</h2>
@@ -218,22 +219,22 @@ y &lt;-<span class="st"> </span>x*<span class="dv">10+1</span>
 ## 
 ## Coefficients:
 ##             Estimate Std. Error z value Pr(&gt;|z|)    
-## (Intercept)   1.0000     0.4369   2.289   0.0221 *  
+## (Intercept)   1.0000     0.4475   2.235   0.0254 *  
 ## x            10.0000     0.3162  31.623   &lt;2e-16 ***
-## Log(scale)    2.1605     0.0000     Inf   &lt;2e-16 ***
+## Log(scale)    2.1813     0.0000     Inf   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Scale: 8.675 
+## Scale: 8.858 
 ## 
 ## Gaussian distribution
 ## Number of Newton-Raphson Iterations: 1 
-## Log-likelihood: -3079 on 3 Df
+## Log-likelihood: -3100 on 3 Df
 ## Wald-statistic:  1000 on 1 Df, p-value: &lt; 2.22e-16</code></pre>
 </div>
 <div id="over-detection-limit" class="section level3">
 <h3><span class="header-section-number">4.3.2</span> Over detection limit</h3>
-<p><strong>CorrectOverloadedPeaks</strong> could be used to correct the Peaks Exceeding the Detection Limit issue[lisec_extending_2016].</p>
+<p><strong>CorrectOverloadedPeaks</strong> could be used to correct the Peaks Exceeding the Detection Limit issue<span class="citation">(Lisec et al. <a href="#ref-lisec2016">2016</a>)</span>.</p>
 </div>
 </div>
 <div id="adjust-for-unwanted-variances-with-known-batch" class="section level2">
@@ -336,12 +337,12 @@ dfcor &lt;-<span class="st"> </span>df/<span class="kw">apply</span>(df,<span cl
 </div>
 <div id="batch-normalizer" class="section level3">
 <h3><span class="header-section-number">4.4.7</span> Batch Normalizer</h3>
-<p>Use the total abundance scale and then fit with the regression line[wang_batch_2013].</p>
+<p>Use the total abundance scale and then fit with the regression line<span class="citation">(Wang, Kuo, and Tseng <a href="#ref-wang2013">2013</a>)</span>.</p>
 </div>
 <div id="internal-standards" class="section level3">
 <h3><span class="header-section-number">4.4.8</span> Internal standards</h3>
 <p><span class="math display">\[\hat I_{p,s} = \frac{I_{p,s} * median(I_{IS})}{I_{IS,s}}\]</span></p>
-<p>Some methods also use pooled calibration samples and multiple internal standard strategy to correct the data[van_der_kloet_analytical_2009]. Also some methods only use QC samples to handle the data[kuligowski_intra-batch_2015].</p>
+<p>Some methods also use pooled calibration samples and multiple internal standard strategy to correct the data<span class="citation">(<span class="citeproc-not-found" data-reference-id="van_der_kloet2009"><strong>???</strong></span>)</span>. Also some methods only use QC samples to handle the data<span class="citation">(Kuligowski et al. <a href="#ref-kuligowski2015">2015</a>)</span>.</p>
 </div>
 </div>
 <div id="adjust-for-unwanted-variance-with-unknown-batch" class="section level2">
@@ -353,6 +354,30 @@ dfcor &lt;-<span class="st"> </span>df/<span class="kw">apply</span>(df,<span cl
 <h3><span class="header-section-number">4.5.2</span> RUV</h3>
 
 </div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-tautenhahn2008">
+<p>Tautenhahn, Ralf, Christoph Böttcher, and Steffen Neumann. 2008. “Highly Sensitive Feature Detection for High Resolution LC/MS.” <em>BMC Bioinformatics</em> 9: 504. doi:<a href="https://doi.org/10.1186/1471-2105-9-504">10.1186/1471-2105-9-504</a>.</p>
+</div>
+<div id="ref-du2013">
+<p>Du, Xiuxia, and Steven H Zeisel. 2013. “SPECTRAL DECONVOLUTION FOR GAS CHROMATOGRAPHY MASS SPECTROMETRY-BASED METABOLOMICS: CURRENT STATUS AND FUTURE PERSPECTIVES.” <em>Computational and Structural Biotechnology Journal</em> 4 (5): 1–10. doi:<a href="https://doi.org/10.5936/csbj.201301013">10.5936/csbj.201301013</a>.</p>
+</div>
+<div id="ref-domingo-almenara2016">
+<p>Domingo-Almenara, Xavier, Jesus Brezmes, Maria Vinaixa, Sara Samino, Noelia Ramirez, Marta Ramon-Krauel, Carles Lerin, et al. 2016. “ERah: A Computational Tool Integrating Spectral Deconvolution and Alignment with Quantification and Identification of Metabolites in GC/MS-Based Metabolomics.” <em>Analytical Chemistry</em> 88 (19): 9821–9. doi:<a href="https://doi.org/10.1021/acs.analchem.6b02927">10.1021/acs.analchem.6b02927</a>.</p>
+</div>
+<div id="ref-ni2016">
+<p>Ni, Yan, Mingming Su, Yunping Qiu, Wei Jia, and Xiuxia Du. 2016. “ADAP-GC 3.0: Improved Peak Detection and Deconvolution of Co-Eluting Metabolites from GC/TOF-MS Data for Metabolomics Studies.” <em>Analytical Chemistry</em> 88 (17): 8802–11. doi:<a href="https://doi.org/10.1021/acs.analchem.6b02222">10.1021/acs.analchem.6b02222</a>.</p>
+</div>
+<div id="ref-lisec2016">
+<p>Lisec, Jan, Friederike Hoffmann, Clemens Schmitt, and Carsten Jaeger. 2016. “Extending the Dynamic Range in Metabolomics Experiments by Automatic Correction of Peaks Exceeding the Detection Limit.” <em>Analytical Chemistry</em> 88 (15): 7487–92. doi:<a href="https://doi.org/10.1021/acs.analchem.6b02515">10.1021/acs.analchem.6b02515</a>.</p>
+</div>
+<div id="ref-wang2013">
+<p>Wang, San-Yuan, Ching-Hua Kuo, and Yufeng J. Tseng. 2013. “Batch Normalizer: A Fast Total Abundance Regression Calibration Method to Simultaneously Adjust Batch and Injection Order Effects in Liquid Chromatography/Time-of-Flight Mass Spectrometry-Based Metabolomics Data and Comparison with Current Calibration Methods.” <em>Analytical Chemistry</em> 85 (2): 1037–46. doi:<a href="https://doi.org/10.1021/ac302877x">10.1021/ac302877x</a>.</p>
+</div>
+<div id="ref-kuligowski2015">
+<p>Kuligowski, Julia, Ángel Sánchez-Illana, Daniel Sanjuán-Herráez, Máximo Vento, and Guillermo Quintás. 2015. “Intra-Batch Effect Correction in Liquid Chromatography-Mass Spectrometry Using Quality Control Samples and Support Vector Regression (QC-SVRC).” <em>Analyst</em> 140 (22): 7810–7. doi:<a href="https://doi.org/10.1039/C5AN01638J">10.1039/C5AN01638J</a>.</p>
 </div>
 </div>
             </section>
