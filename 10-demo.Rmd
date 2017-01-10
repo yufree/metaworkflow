@@ -235,7 +235,6 @@ writeRScript(resultPeakpicking$best_settings$parameters,
 # https://github.com/rietho/IPO/blob/master/vignettes/IPO.Rmd
 ```
 
-
 ## Summary
 
 This is the offline metaboliomics data process workflow. For each study, details would be different and F1 is always your best friend. 

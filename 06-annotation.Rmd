@@ -1,6 +1,6 @@
 # Annotation
 
-When you get the peaks table or features table, annotation of the peaks would help you. Obviously, peaks with similar retention time might come from the same compound such as isotopic peaks, addictions from the analysis process. **CAMERA** package or **Ramcluster** could be used to make such annotation. Also this package could be used to group the peaks together for further analysis.
+When you get the peaks table or features table, annotation of the peaks would help you. Obviously, peaks with similar retention time might come from the same compound such as isotopic peaks, addictions from the analysis process. **CAMERA** [@kuhl2012] or **Ramcluster**[@broeckling2014] package could be used to make such annotation. Also this package could be used to group the peaks together for further analysis.
 
 There are two major annotation ideas:  multi-stage MS analysis and similarity analysis. The former requires certain instruments and database for MS/MS data. The later needs algorithms to predict the structures.
 
