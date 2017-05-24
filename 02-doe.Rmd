@@ -9,6 +9,7 @@ power.t.test(n=10,sd=1,sig.level = 0.05,power = 0.9)
 power.t.test(delta = 5,sd=1,sig.level = 0.05,power = 0.9)
 ```
 
+However, since sometimes we could not perform prelimintery experiment, we could directly compute the power based on false discovery rate control. If the power is lower than certain value, say 0.8, we just exclude this peak as significant features. Other study @blaise2016a show a method based on simulation to estimate the sample size. They usd BY correction to limit the influnces from correlationship. However, the nature of omics study make the power analysis hard to use one numbers and all the methods are trying to find a balance to represent more peaks with least samples(save money).
 
 If there are other co-factors, a linear model or randomizing would be applied to eliminated their influences. You need to record the values of those co-factors for further data analysis. Common co-factors in metabolomic studies are age, gender, location, etc.
 
@@ -17,3 +18,5 @@ If you need data correction, some background or calibration samples are required
 Another important factors are instrumentals. High-resolution mass spectrum is always preferred. As shown in Lukas's study @najdekr2016: 
 
 > the most effective mass resolving powers for profiling analyses of metabolite rich biofluids on the Orbitrap Elite were around 60000–120000 fwhm to retrieve the highest amount of information. The region between 400–800 m/z was influenced the most by resolution.
+
+However, filts of peaks with high RSD% within group were always omited by most study. Based on pre-experiment, you could get a description of RSD% distribution and set cut-off to use stable peaks for further data analysis.
