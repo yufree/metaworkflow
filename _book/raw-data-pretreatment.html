@@ -6,9 +6,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Meta-Workflow</title>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="This is a workflow for metabolomics studies.">
-  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
 
   <meta property="og:title" content="Meta-Workflow" />
   <meta property="og:type" content="book" />
@@ -26,7 +25,7 @@
 <meta name="author" content="Miao YU">
 
 
-<meta name="date" content="2017-01-10">
+<meta name="date" content="2017-07-04">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -35,7 +34,6 @@
   
 <link rel="prev" href="pretreatment.html">
 <link rel="next" href="peaks-selection.html">
-
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -95,6 +93,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <body>
 
 
+
   <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
 
     <div class="book-summary">
@@ -105,7 +104,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#reviews-and-tutorials"><i class="fa fa-check"></i><b>1.1</b> Reviews and tutorials</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="exprimental-designdoe.html"><a href="exprimental-designdoe.html"><i class="fa fa-check"></i><b>2</b> Exprimental design(DoE)</a></li>
 <li class="chapter" data-level="3" data-path="pretreatment.html"><a href="pretreatment.html"><i class="fa fa-check"></i><b>3</b> Pretreatment</a></li>
 <li class="chapter" data-level="4" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html"><i class="fa fa-check"></i><b>4</b> Raw data pretreatment</a><ul>
@@ -131,11 +132,41 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="peaks-selection.html"><a href="peaks-selection.html"><i class="fa fa-check"></i><b>5</b> Peaks selection</a></li>
-<li class="chapter" data-level="6" data-path="annotation.html"><a href="annotation.html"><i class="fa fa-check"></i><b>6</b> Annotation</a></li>
-<li class="chapter" data-level="7" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>7</b> Omics analysis</a></li>
-<li class="chapter" data-level="8" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html"><i class="fa fa-check"></i><b>8</b> Common analysis methods for metabolomics</a></li>
-<li class="chapter" data-level="9" data-path="demo.html"><a href="demo.html"><i class="fa fa-check"></i><b>9</b> Demo</a></li>
+<li class="chapter" data-level="6" data-path="annotation.html"><a href="annotation.html"><i class="fa fa-check"></i><b>6</b> Annotation</a><ul>
+<li class="chapter" data-level="6.1" data-path="annotation.html"><a href="annotation.html#tools"><i class="fa fa-check"></i><b>6.1</b> Tools</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>7</b> Omics analysis</a><ul>
+<li class="chapter" data-level="7.1" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-analysis"><i class="fa fa-check"></i><b>7.1</b> Pathway analysis</a></li>
+<li class="chapter" data-level="7.2" data-path="omics-analysis.html"><a href="omics-analysis.html#network-analysis"><i class="fa fa-check"></i><b>7.2</b> Network analysis</a></li>
+<li class="chapter" data-level="7.3" data-path="omics-analysis.html"><a href="omics-analysis.html#omics-integration"><i class="fa fa-check"></i><b>7.3</b> Omics integration</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html"><i class="fa fa-check"></i><b>8</b> Common analysis methods for metabolomics</a><ul>
+<li class="chapter" data-level="8.1" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#pca"><i class="fa fa-check"></i><b>8.1</b> PCA</a></li>
+<li class="chapter" data-level="8.2" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#cluster-analysis"><i class="fa fa-check"></i><b>8.2</b> Cluster Analysis</a></li>
+<li class="chapter" data-level="8.3" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#plsda"><i class="fa fa-check"></i><b>8.3</b> PLSDA</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="demo.html"><a href="demo.html"><i class="fa fa-check"></i><b>9</b> Demo</a><ul>
+<li class="chapter" data-level="9.1" data-path="demo.html"><a href="demo.html#project-setup"><i class="fa fa-check"></i><b>9.1</b> Project Setup</a></li>
+<li class="chapter" data-level="9.2" data-path="demo.html"><a href="demo.html#data-input"><i class="fa fa-check"></i><b>9.2</b> Data input</a></li>
+<li class="chapter" data-level="9.3" data-path="demo.html"><a href="demo.html#find-the-peaks"><i class="fa fa-check"></i><b>9.3</b> Find the peaks</a></li>
+<li class="chapter" data-level="9.4" data-path="demo.html"><a href="demo.html#data-correction"><i class="fa fa-check"></i><b>9.4</b> Data correction</a></li>
+<li class="chapter" data-level="9.5" data-path="demo.html"><a href="demo.html#statistic-analysis"><i class="fa fa-check"></i><b>9.5</b> Statistic analysis</a></li>
+<li class="chapter" data-level="9.6" data-path="demo.html"><a href="demo.html#annotation-1"><i class="fa fa-check"></i><b>9.6</b> Annotation</a></li>
+<li class="chapter" data-level="9.7" data-path="demo.html"><a href="demo.html#omics-analysis-1"><i class="fa fa-check"></i><b>9.7</b> Omics analysis</a></li>
+<li class="chapter" data-level="9.8" data-path="demo.html"><a href="demo.html#metaboanalyst"><i class="fa fa-check"></i><b>9.8</b> MetaboAnalyst</a></li>
+<li class="chapter" data-level="9.9" data-path="demo.html"><a href="demo.html#visulizing-peaks"><i class="fa fa-check"></i><b>9.9</b> Visulizing Peaks</a></li>
+<li class="chapter" data-level="9.10" data-path="demo.html"><a href="demo.html#optimation-of-xcms"><i class="fa fa-check"></i><b>9.10</b> Optimation of XCMS</a></li>
+<li class="chapter" data-level="9.11" data-path="demo.html"><a href="demo.html#summary"><i class="fa fa-check"></i><b>9.11</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="case-studyselected.html"><a href="case-studyselected.html"><i class="fa fa-check"></i><b>10</b> Case Study(selected)</a><ul>
+<li class="chapter" data-level="10.1" data-path="case-studyselected.html"><a href="case-studyselected.html#cancer"><i class="fa fa-check"></i><b>10.1</b> Cancer</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="11" data-path="batch-effect.html"><a href="batch-effect.html"><i class="fa fa-check"></i><b>11</b> Batch effect</a><ul>
+<li class="chapter" data-level="11.0.1" data-path="batch-effect.html"><a href="batch-effect.html#detection-of-unmodeled-factors"><i class="fa fa-check"></i><b>11.0.1</b> Detection of unmodeled factors</a></li>
+<li class="chapter" data-level="11.0.2" data-path="batch-effect.html"><a href="batch-effect.html#construction-of-surrogate-variables"><i class="fa fa-check"></i><b>11.0.2</b> Construction of surrogate variables</a></li>
+<li class="chapter" data-level="11.0.3" data-path="batch-effect.html"><a href="batch-effect.html#case-study"><i class="fa fa-check"></i><b>11.0.3</b> Case study</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/yufree/metaworkflow" target="blank">Published with bookdown</a></li>
 
@@ -219,17 +250,17 @@ y &lt;-<span class="st"> </span>x*<span class="dv">10+1</span>
 ## 
 ## Coefficients:
 ##             Estimate Std. Error z value Pr(&gt;|z|)    
-## (Intercept)   1.0000     0.4475   2.235   0.0254 *  
+## (Intercept)   1.0000     0.4423   2.261   0.0238 *  
 ## x            10.0000     0.3162  31.623   &lt;2e-16 ***
-## Log(scale)    2.1813     0.0000     Inf   &lt;2e-16 ***
+## Log(scale)    2.1763     0.0000     Inf   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Scale: 8.858 
+## Scale: 8.814 
 ## 
 ## Gaussian distribution
 ## Number of Newton-Raphson Iterations: 1 
-## Log-likelihood: -3100 on 3 Df
+## Log-likelihood: -3095 on 3 Df
 ## Wald-statistic:  1000 on 1 Df, p-value: &lt; 2.22e-16</code></pre>
 </div>
 <div id="over-detection-limit" class="section level3">
@@ -386,8 +417,9 @@ dfcor &lt;-<span class="st"> </span>df/<span class="kw">apply</span>(df,<span cl
         </div>
       </div>
 <a href="pretreatment.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="peaks-selection.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
-
+<a href="peaks-selection.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
@@ -430,7 +462,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(script.src))
       script.src  = script.src.replace(/^https?:/, '');
     document.getElementsByTagName("head")[0].appendChild(script);

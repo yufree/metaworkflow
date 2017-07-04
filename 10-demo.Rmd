@@ -45,7 +45,7 @@ Here is a demo for *xcmsSet*:
 
 ```{r ImputData,warning=F,message=F}
 cdffiles <- list.files(cdfpath, recursive = TRUE, full.names = TRUE)
-xset <- xcmsSet(cdffiles,BPPARAM=SnowParam())
+xset <- xcmsSet(cdffiles)
 xset
 ```
 

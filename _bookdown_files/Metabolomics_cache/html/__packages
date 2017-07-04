@@ -1,10 +1,4 @@
 base
-methods
-datasets
-utils
-grDevices
-graphics
-stats
 shiny
 car
 zoo
@@ -12,7 +6,6 @@ lmtest
 sandwich
 survival
 AER
-parallel
 BiocGenerics
 Biobase
 multtest
@@ -30,3 +23,4 @@ sva
 limma
 BiocParallel
 RColorBrewer
+MSnbase

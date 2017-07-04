@@ -6,9 +6,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Meta-Workflow</title>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="This is a workflow for metabolomics studies.">
-  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
 
   <meta property="og:title" content="Meta-Workflow" />
   <meta property="og:type" content="book" />
@@ -26,7 +25,7 @@
 <meta name="author" content="Miao YU">
 
 
-<meta name="date" content="2017-01-09">
+<meta name="date" content="2017-07-04">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,8 +33,7 @@
   
   
 <link rel="prev" href="common-analysis-methods-for-metabolomics.html">
-
-
+<link rel="next" href="case-studyselected.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -95,6 +93,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <body>
 
 
+
   <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
 
     <div class="book-summary">
@@ -105,14 +104,47 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#reviews-and-tutorials"><i class="fa fa-check"></i><b>1.1</b> Reviews and tutorials</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="exprimental-designdoe.html"><a href="exprimental-designdoe.html"><i class="fa fa-check"></i><b>2</b> Exprimental design(DoE)</a></li>
 <li class="chapter" data-level="3" data-path="pretreatment.html"><a href="pretreatment.html"><i class="fa fa-check"></i><b>3</b> Pretreatment</a></li>
-<li class="chapter" data-level="4" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html"><i class="fa fa-check"></i><b>4</b> Raw data pretreatment</a></li>
+<li class="chapter" data-level="4" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html"><i class="fa fa-check"></i><b>4</b> Raw data pretreatment</a><ul>
+<li class="chapter" data-level="4.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#spectral-deconvolution"><i class="fa fa-check"></i><b>4.1</b> Spectral deconvolution</a></li>
+<li class="chapter" data-level="4.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#correction"><i class="fa fa-check"></i><b>4.2</b> Correction</a></li>
+<li class="chapter" data-level="4.3" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#dynamic-range"><i class="fa fa-check"></i><b>4.3</b> Dynamic Range</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#non-detects"><i class="fa fa-check"></i><b>4.3.1</b> Non-detects</a></li>
+<li class="chapter" data-level="4.3.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#over-detection-limit"><i class="fa fa-check"></i><b>4.3.2</b> Over detection limit</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#adjust-for-unwanted-variances-with-known-batch"><i class="fa fa-check"></i><b>4.4</b> Adjust for unwanted variances with known batch</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#centering"><i class="fa fa-check"></i><b>4.4.1</b> Centering</a></li>
+<li class="chapter" data-level="4.4.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#scaling"><i class="fa fa-check"></i><b>4.4.2</b> Scaling</a></li>
+<li class="chapter" data-level="4.4.3" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#quantile"><i class="fa fa-check"></i><b>4.4.3</b> Quantile</a></li>
+<li class="chapter" data-level="4.4.4" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#ratio-based-calibraton"><i class="fa fa-check"></i><b>4.4.4</b> Ratio based calibraton</a></li>
+<li class="chapter" data-level="4.4.5" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#linear-normalizer"><i class="fa fa-check"></i><b>4.4.5</b> Linear Normalizer</a></li>
+<li class="chapter" data-level="4.4.6" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#regression-calibration"><i class="fa fa-check"></i><b>4.4.6</b> Regression calibration</a></li>
+<li class="chapter" data-level="4.4.7" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#batch-normalizer"><i class="fa fa-check"></i><b>4.4.7</b> Batch Normalizer</a></li>
+<li class="chapter" data-level="4.4.8" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#internal-standards"><i class="fa fa-check"></i><b>4.4.8</b> Internal standards</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#adjust-for-unwanted-variance-with-unknown-batch"><i class="fa fa-check"></i><b>4.5</b> Adjust for unwanted variance with unknown batch</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#sva"><i class="fa fa-check"></i><b>4.5.1</b> SVA</a></li>
+<li class="chapter" data-level="4.5.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#ruv"><i class="fa fa-check"></i><b>4.5.2</b> RUV</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="peaks-selection.html"><a href="peaks-selection.html"><i class="fa fa-check"></i><b>5</b> Peaks selection</a></li>
-<li class="chapter" data-level="6" data-path="annotation.html"><a href="annotation.html"><i class="fa fa-check"></i><b>6</b> Annotation</a></li>
-<li class="chapter" data-level="7" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>7</b> Omics analysis</a></li>
-<li class="chapter" data-level="8" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html"><i class="fa fa-check"></i><b>8</b> Common analysis methods for metabolomics</a></li>
+<li class="chapter" data-level="6" data-path="annotation.html"><a href="annotation.html"><i class="fa fa-check"></i><b>6</b> Annotation</a><ul>
+<li class="chapter" data-level="6.1" data-path="annotation.html"><a href="annotation.html#tools"><i class="fa fa-check"></i><b>6.1</b> Tools</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>7</b> Omics analysis</a><ul>
+<li class="chapter" data-level="7.1" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-analysis"><i class="fa fa-check"></i><b>7.1</b> Pathway analysis</a></li>
+<li class="chapter" data-level="7.2" data-path="omics-analysis.html"><a href="omics-analysis.html#network-analysis"><i class="fa fa-check"></i><b>7.2</b> Network analysis</a></li>
+<li class="chapter" data-level="7.3" data-path="omics-analysis.html"><a href="omics-analysis.html#omics-integration"><i class="fa fa-check"></i><b>7.3</b> Omics integration</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html"><i class="fa fa-check"></i><b>8</b> Common analysis methods for metabolomics</a><ul>
+<li class="chapter" data-level="8.1" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#pca"><i class="fa fa-check"></i><b>8.1</b> PCA</a></li>
+<li class="chapter" data-level="8.2" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#cluster-analysis"><i class="fa fa-check"></i><b>8.2</b> Cluster Analysis</a></li>
+<li class="chapter" data-level="8.3" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#plsda"><i class="fa fa-check"></i><b>8.3</b> PLSDA</a></li>
+</ul></li>
 <li class="chapter" data-level="9" data-path="demo.html"><a href="demo.html"><i class="fa fa-check"></i><b>9</b> Demo</a><ul>
 <li class="chapter" data-level="9.1" data-path="demo.html"><a href="demo.html#project-setup"><i class="fa fa-check"></i><b>9.1</b> Project Setup</a></li>
 <li class="chapter" data-level="9.2" data-path="demo.html"><a href="demo.html#data-input"><i class="fa fa-check"></i><b>9.2</b> Data input</a></li>
@@ -125,6 +157,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.9" data-path="demo.html"><a href="demo.html#visulizing-peaks"><i class="fa fa-check"></i><b>9.9</b> Visulizing Peaks</a></li>
 <li class="chapter" data-level="9.10" data-path="demo.html"><a href="demo.html#optimation-of-xcms"><i class="fa fa-check"></i><b>9.10</b> Optimation of XCMS</a></li>
 <li class="chapter" data-level="9.11" data-path="demo.html"><a href="demo.html#summary"><i class="fa fa-check"></i><b>9.11</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="case-studyselected.html"><a href="case-studyselected.html"><i class="fa fa-check"></i><b>10</b> Case Study(selected)</a><ul>
+<li class="chapter" data-level="10.1" data-path="case-studyselected.html"><a href="case-studyselected.html#cancer"><i class="fa fa-check"></i><b>10.1</b> Cancer</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="11" data-path="batch-effect.html"><a href="batch-effect.html"><i class="fa fa-check"></i><b>11</b> Batch effect</a><ul>
+<li class="chapter" data-level="11.0.1" data-path="batch-effect.html"><a href="batch-effect.html#detection-of-unmodeled-factors"><i class="fa fa-check"></i><b>11.0.1</b> Detection of unmodeled factors</a></li>
+<li class="chapter" data-level="11.0.2" data-path="batch-effect.html"><a href="batch-effect.html#construction-of-surrogate-variables"><i class="fa fa-check"></i><b>11.0.2</b> Construction of surrogate variables</a></li>
+<li class="chapter" data-level="11.0.3" data-path="batch-effect.html"><a href="batch-effect.html#case-study"><i class="fa fa-check"></i><b>11.0.3</b> Case study</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/yufree/metaworkflow" target="blank">Published with bookdown</a></li>
@@ -183,7 +224,7 @@ cdfpath &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span 
 ## [11] &quot;WT/wt21.CDF&quot; &quot;WT/wt22.CDF&quot;</code></pre>
 <p>Here is a demo for <em>xcmsSet</em>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">cdffiles &lt;-<span class="st"> </span><span class="kw">list.files</span>(cdfpath, <span class="dt">recursive =</span> <span class="ot">TRUE</span>, <span class="dt">full.names =</span> <span class="ot">TRUE</span>)
-xset &lt;-<span class="st"> </span><span class="kw">xcmsSet</span>(cdffiles,<span class="dt">BPPARAM=</span><span class="kw">SnowParam</span>())
+xset &lt;-<span class="st"> </span><span class="kw">xcmsSet</span>(cdffiles)
 xset</code></pre></div>
 <pre><code>## An &quot;xcmsSet&quot; object with 12 samples
 ## 
@@ -193,11 +234,12 @@ xset</code></pre></div>
 ## Peak Groups: 0 
 ## Sample classes: KO, WT 
 ## 
-## Peak picking was performed on MS1.
+## Feature detection:
+##  o Peak picking performed on MS1.
 ## Profile settings: method = bin
 ##                   step = 0.1
 ## 
-## Memory usage: 0.714 MB</code></pre>
+## Memory usage: 0.741 MB</code></pre>
 </div>
 <div id="find-the-peaks" class="section level2">
 <h2><span class="header-section-number">9.3</span> Find the peaks</h2>
@@ -209,7 +251,8 @@ xset</code></pre></div>
 <p>The output was an object with class of <em>xcmsSet</em>. You could see a summary by type the name. In this cases, <em>xcmsSet</em> found 4721 peaks with time range 41.8-69.1 min and mass range 200.1-599.3338 m/z in the 12 samples.</p>
 <p>Another function which might be useful is <code>group</code>. This function will add additional information about the same analytes for <code>xcmsSet</code> objects.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">xset &lt;-<span class="st"> </span><span class="kw">group</span>(xset)</code></pre></div>
-<pre><code>## 262 325 387 450 512 575</code></pre>
+<pre><code>## Processing 3195 mz slices ...</code></pre>
+<pre><code>## OK</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">xset</code></pre></div>
 <pre><code>## An &quot;xcmsSet&quot; object with 12 samples
 ## 
@@ -219,11 +262,12 @@ xset</code></pre></div>
 ## Peak Groups: 403 
 ## Sample classes: KO, WT 
 ## 
-## Peak picking was performed on MS1.
+## Feature detection:
+##  o Peak picking performed on MS1.
 ## Profile settings: method = bin
 ##                   step = 0.1
 ## 
-## Memory usage: 0.777 MB</code></pre>
+## Memory usage: 0.805 MB</code></pre>
 <p>Now you see there are 403 groups in the demo data, which meant 403 analytes are found across 4721 peaks.</p>
 </div>
 <div id="data-correction" class="section level2">
@@ -232,7 +276,31 @@ xset</code></pre></div>
 <p>Remember the original retention time might changed and use another object to save the new object:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">xset2 &lt;-<span class="st"> </span><span class="kw">retcor</span>(xset, <span class="dt">method =</span> <span class="st">&quot;obiwarp&quot;</span>)</code></pre></div>
 <pre><code>## center sample:  ko16 
-## Processing: ko15  ko18  ko19  ko21  ko22  wt15  wt16  wt18  wt19  wt21  wt22</code></pre>
+## Processing: ko15</code></pre>
+<pre><code>## Create profile matrix with method &#39;bin&#39; and step 1 ...</code></pre>
+<pre><code>## OK</code></pre>
+<pre><code>## Create profile matrix with method &#39;bin&#39; and step 1 ...</code></pre>
+<pre><code>## OK</code></pre>
+<pre><code>## ko18</code></pre>
+<pre><code>## Create profile matrix with method &#39;bin&#39; and step 1 ... OK</code></pre>
+<pre><code>## ko19</code></pre>
+<pre><code>## Create profile matrix with method &#39;bin&#39; and step 1 ... OK</code></pre>
+<pre><code>## ko21</code></pre>
+<pre><code>## Create profile matrix with method &#39;bin&#39; and step 1 ... OK</code></pre>
+<pre><code>## ko22</code></pre>
+<pre><code>## Create profile matrix with method &#39;bin&#39; and step 1 ... OK</code></pre>
+<pre><code>## wt15</code></pre>
+<pre><code>## Create profile matrix with method &#39;bin&#39; and step 1 ... OK</code></pre>
+<pre><code>## wt16</code></pre>
+<pre><code>## Create profile matrix with method &#39;bin&#39; and step 1 ... OK</code></pre>
+<pre><code>## wt18</code></pre>
+<pre><code>## Create profile matrix with method &#39;bin&#39; and step 1 ... OK</code></pre>
+<pre><code>## wt19</code></pre>
+<pre><code>## Create profile matrix with method &#39;bin&#39; and step 1 ... OK</code></pre>
+<pre><code>## wt21</code></pre>
+<pre><code>## Create profile matrix with method &#39;bin&#39; and step 1 ... OK</code></pre>
+<pre><code>## wt22</code></pre>
+<pre><code>## Create profile matrix with method &#39;bin&#39; and step 1 ... OK</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">xset2</code></pre></div>
 <pre><code>## An &quot;xcmsSet&quot; object with 12 samples
 ## 
@@ -242,14 +310,15 @@ xset</code></pre></div>
 ## Peak Groups: 0 
 ## Sample classes: KO, WT 
 ## 
-## Peak picking was performed on MS1.
+## Feature detection:
+##  o Peak picking performed on MS1.
 ## Profile settings: method = bin
 ##                   step = 0.1
 ## 
-## Memory usage: 0.714 MB</code></pre>
+## Memory usage: 0.741 MB</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># you need group the peaks again for this corrected data</span>
 xset2 &lt;-<span class="st"> </span><span class="kw">group</span>(xset2)</code></pre></div>
-<pre><code>## 262 325 387 450 512 575</code></pre>
+<pre><code>## Processing 3195 mz slices ... OK</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">xset2</code></pre></div>
 <pre><code>## An &quot;xcmsSet&quot; object with 12 samples
 ## 
@@ -259,11 +328,12 @@ xset2 &lt;-<span class="st"> </span><span class="kw">group</span>(xset2)</code><
 ## Peak Groups: 404 
 ## Sample classes: KO, WT 
 ## 
-## Peak picking was performed on MS1.
+## Feature detection:
+##  o Peak picking performed on MS1.
 ## Profile settings: method = bin
 ##                   step = 0.1
 ## 
-## Memory usage: 0.777 MB</code></pre>
+## Memory usage: 0.805 MB</code></pre>
 <p>You see one more peak groups after the correction. After the retention time correction, we also need to correct the peak groups by filling the missing peaks. Such function calls <em>fillpeaks</em>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">xset3 &lt;-<span class="st"> </span><span class="kw">fillPeaks</span>(xset2,<span class="dt">BPPARAM=</span><span class="kw">SnowParam</span>())
 xset3</code></pre></div>
@@ -275,11 +345,12 @@ xset3</code></pre></div>
 ## Peak Groups: 404 
 ## Sample classes: KO, WT 
 ## 
-## Peak picking was performed on MS1.
+## Feature detection:
+##  o Peak picking performed on MS1.
 ## Profile settings: method = bin
 ##                   step = 0.1
 ## 
-## Memory usage: 0.918 MB</code></pre>
+## Memory usage: 0.946 MB</code></pre>
 <p>You see more peaks found.</p>
 </div>
 <div id="statistic-analysis" class="section level2">
@@ -527,9 +598,10 @@ resultRetcorGroup &lt;-
           </div>
         </div>
       </div>
-<a href="common-analysis-methods-for-metabolomics.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
-
+<a href="common-analysis-methods-for-metabolomics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="case-studyselected.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
@@ -567,6 +639,17 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
