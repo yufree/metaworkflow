@@ -227,18 +227,8 @@ Figure 4.2: Demo of many GC/LC-MS data
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1000</span>,<span class="dv">1</span>)
 x[x&lt;<span class="dv">0</span>] &lt;-<span class="st"> </span><span class="dv">0</span>
 y &lt;-<span class="st"> </span>x*<span class="dv">10+1</span>
-<span class="kw">library</span>(AER)</code></pre></div>
-<pre><code>## Loading required package: car</code></pre>
-<pre><code>## Loading required package: lmtest</code></pre>
-<pre><code>## Loading required package: zoo</code></pre>
-<pre><code>## 
-## Attaching package: &#39;zoo&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     as.Date, as.Date.numeric</code></pre>
-<pre><code>## Loading required package: sandwich</code></pre>
-<pre><code>## Loading required package: survival</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">tfit &lt;-<span class="st"> </span><span class="kw">tobit</span>(y ~<span class="st"> </span>x, <span class="dt">left =</span> <span class="dv">0</span>)
+<span class="kw">library</span>(AER)
+tfit &lt;-<span class="st"> </span><span class="kw">tobit</span>(y ~<span class="st"> </span>x, <span class="dt">left =</span> <span class="dv">0</span>)
 <span class="kw">summary</span>(tfit)</code></pre></div>
 <pre><code>## 
 ## Call:
@@ -250,17 +240,17 @@ y &lt;-<span class="st"> </span>x*<span class="dv">10+1</span>
 ## 
 ## Coefficients:
 ##             Estimate Std. Error z value Pr(&gt;|z|)    
-## (Intercept)   1.0000     0.4423   2.261   0.0238 *  
+## (Intercept)   1.0000     0.4303   2.324   0.0201 *  
 ## x            10.0000     0.3162  31.623   &lt;2e-16 ***
-## Log(scale)    2.1763     0.0000     Inf   &lt;2e-16 ***
+## Log(scale)    2.1502     0.0000     Inf   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Scale: 8.814 
+## Scale: 8.587 
 ## 
 ## Gaussian distribution
 ## Number of Newton-Raphson Iterations: 1 
-## Log-likelihood: -3095 on 3 Df
+## Log-likelihood: -3069 on 3 Df
 ## Wald-statistic:  1000 on 1 Df, p-value: &lt; 2.22e-16</code></pre>
 </div>
 <div id="over-detection-limit" class="section level3">
