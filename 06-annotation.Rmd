@@ -4,6 +4,17 @@ When you get the peaks table or features table, annotation of the peaks would he
 
 There are two major annotation ideas:  multi-stage MS analysis and similarity analysis. The former requires certain instruments and database for MS/MS data. The later needs algorithms to predict the structures.
 
+## Annotation v.s. identification
+
+According to the defination from the Chemical Analysis Working Group of the Metabolomics Standards Intitvative[@sumner2007;@viant2017]. Four levels of confidence could be assigned to identification:
+
+- Level 1 'identified metabolites'
+- Level 2 'Putatively annotated compounds'
+- Level 3 'Putatively characterised compound classes'
+- Level 4 'Unknown'
+
+In practice, data analysis based annotation could reach level 2. For level 1, we need at extra methods such as MS/MS, retention time, accurate mass, 2D NMR spectra, and so on to confirm the compounds. However, standards are always required for solid proof.
+
 ## Tools
 
 - Plantmat: excel library based pridiction for plant metabolites[@qiu2016].

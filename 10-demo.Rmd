@@ -43,7 +43,7 @@ list.files(cdfpath,recursive = T)
 
 Here is a demo for *xcmsSet*:
 
-```{r ImputData,warning=F,message=F}
+```{r ImputData,warning=F,message=F,cache=T}
 cdffiles <- list.files(cdfpath, recursive = TRUE, full.names = TRUE)
 xset <- xcmsSet(cdffiles)
 xset

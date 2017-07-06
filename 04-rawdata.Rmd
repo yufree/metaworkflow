@@ -38,7 +38,7 @@ Some of the data were limited by the detect of limitation. Thus we need some met
 
 Tobit regression is preferred. Also you might choose  maximum likelihood estimation(Estimation of mean and standard deviation by MLE. Creating 10 complete samples. Pool the results from 10 individual analyses).
 
-```{r tobit}
+```{r tobit,cache=TRUE}
 x <- rnorm(1000,1)
 x[x<0] <- 0
 y <- x*10+1
@@ -105,7 +105,7 @@ The idea of quantile calibration is that alignment of the intensities in certain
 
 Here is the demo:
 
-```{r quantile}
+```{r quantile, cache=T}
 set.seed(42)
 a <- rnorm(1000)
 # b sufferred batch effect with a bias of 10

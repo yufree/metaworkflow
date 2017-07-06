@@ -8,3 +8,14 @@ In statistics, the false discovery rate(FDR) control is always mentioned in omic
 
 Karin Ortmayr thought fold change might be better than p-values to find the differences[@ortmayr2016].
 
+## Peak misidentification
+
+- Isomer
+
+Use seperation methods such as chromatography, ion mobility MS, MS/MS. Reversed-phase ion-pairing chromatography and HILIC is useful and chemical derivatization is another options.
+
+- Interfering compounds
+
+20ppm is the least resolution and accuracy
+
+- In-source degradation products

@@ -2,6 +2,32 @@
 
 Information in living organism commuicates along the Genomics, Transcriptomics, Proteomics and Metabolomics in Central dogma. Following such stream, we might answer certain problems in different scales from individual, population, community to ecosystem. Metabolomics (i.e., the profiling and quantitation of metabolites in body fluids) is a relatively new field of "omics" studies. Different from other omics studies, metabolomics always focused on small moleculars with much lower mass than polypeptide, around m/z 100-1000. Metabolomics studies are always performed in GC/MS, GC*GC/MS[@tian2016], LC/MS or NMR. This workflow concerns mass spectrum based metabolomics.
 
+## History
+
+According to this book section[@kusonmano2016]:
+
+```{r history, fig.show='hold', fig.cap='Metabolomics timeline during pre- and post-metabolomics era',echo=FALSE}
+knitr::include_graphics('images/metahistory.gif')
+```
+
+- 2000-1500 BC some traditional Chinese doctors who began to evaluate the glucose level in urine of diabetic patients using ants
+
+- 300 BC ancient Egypt and Greece that traditionally determine the urine taste to diagnose human diseases
+
+- 1913 Joseph John Thomson and Francis William Aston mass spectrometry 
+
+- 1946 Felix Bloch and Edward Purcell Nuclear magnetic resonance
+
+- late 1960s chromatographic separation technique
+
+- 1971 Pauling’s research team "Quantitative Analysis of Urine Vapor and Breath by Gas–Liquid Partition Chromatography"
+
+- Willmitzer and his research team pioneer group in metabolomics which suggested the promotion of the metabolomics field and its potential applications from agriculture to medicine and other related areas in the biological sciences
+
+- 2007 Human Metabolome Project consists of databases of approximately 2500 metabolites, 1200 drugs, and 3500 food components
+
+- post-metabolomics era high-throughput analytical techniques 
+
 ## Reviews and tutorials
 
 Some new reviews and tutorials related to this workflow could be found in those papers[@alonso2015; @cajka2016; @lu2008; @schrimpe-rutledge2016; @townsend2016; @barnes2016; @barnes2016a].
