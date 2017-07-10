@@ -31,3 +31,43 @@ knitr::include_graphics('images/metahistory.gif')
 ## Reviews and tutorials
 
 Some new reviews and tutorials related to this workflow could be found in those papers[@alonso2015; @cajka2016; @lu2008; @schrimpe-rutledge2016; @townsend2016; @barnes2016; @barnes2016a].
+
+## Platform for metabolomics
+
+### XCMS online
+
+[XCMS online](https://xcmsonline.scripps.edu/landing_page.php?pgcontent=mainPage) is hosted by Scripps Institute. If your datasets are not large, XCMS online would be the best option for you. Recently they updated the online version to support more functions for systems biology. They use metlin and iso metlin to annotate the MS/MS data. Pathway analysis is also supported. Besides, to accelerate the process, xcms online employed stream (windows only). You could use stream to connect your instrument workstation to their server and process the data along with the data acquisition automate. They also developed apps for xcms online, but I think apps for slack would be even cooler to control the data processing.
+
+### PRIMe
+
+[PRIMe](http://prime.psc.riken.jp/Metabolomics_Software/) is from RIKEN and UC Davis. It supports mzML and major MS vendor formats. They defined own file format ABF and eco-system for omics studies. The software are updated almost everyday. You could use MS-DIAL for untargeted analysis and MRMOROBS for targeted analysis. For annotation, they developed MS-FINDER and statistic tools with excel. This platform could replaced the dear software from company and well prepared for MS/MS data analysis and lipidomics. They are open source, work on Windows and also could run within mathmamtics. However, they don't cover pathway analysis. Another feature is they always show the most recently spectral records from public repositories. You could always get the updated MSP spectra files for your own data analysis.
+
+If you make GC-MS based metabolomics, this paper[@matsuo2017] could be nice start.
+
+### OpenMS
+
+[OpenMS](https://www.openms.de/) is another good platform for mass spectrum data analysis developed with C++. You could use them as plugin of [KNIME](https://www.knime.org/). I suggest anyone who want to be a data scientist to get familiar with platform like KNIME because they supplied various API for different programme language, which is easy to use and show every steps for others. Also TOPPView in OpenMS could be the best software to visualize the MS data. You could always use the metabolomics workflow to train starter about details in data processing. pyOpenMS and OpenSWATH are also used in this platform. If you want to turn into industry, this platform fit you best because you might get a clear idea about solution and workflow. 
+
+### MZmine 2
+
+[MZmine 2](http://mzmine.github.io/) has three version developed on Java platform and the lastest version is included into [MSDK](https://msdk.github.io/). Similar function could be found from MZmine 2 as shown in XCMS online. However, MZmine 2 do not have pathway analysis. You could use metaboanalyst for that purpose. Actually, you could go into MSDK to find similar function supplied by [ProteoSuite](http://www.proteosuite.org) and [Openchrom](https://www.openchrom.net/). If you are a experienced coder for Java, you should start here.
+
+### XCMS
+
+[xcms](https://bioconductor.org/packages/release/bioc/html/xcms.html) is different from xcms online while they might share the same code. I used it almost every data to run local metabolomics data analysis. Recently, they will change their version to xcms 3 with major update for object class. Their data format would integrate into the MSnbase package and the parameters would be easy to set up for each step. Normally, I will use msconvert-IPO-xcms-xMSannotator-metaboanalyst as workflow to process the offline data. It could accelerate the process by parallel processing. However, if you are not familiar with R, you would better to choose some software above.
+
+### Emory MaHPIC
+
+This platform is composed by several R packages from Emory University including [apLCMS](https://sourceforge.net/projects/aplcms/) to collect the data, [xMSanalyzer](https://sourceforge.net/projects/xmsanalyzer/) to handle automated pipeline for large-scale, non-targeted metabolomics data, [xMSannotator](https://sourceforge.net/projects/xmsannotator/) for annotation of LC-MS data and [Mummichog](https://code.google.com/archive/p/atcg/wikis/mummichog_for_metabolomics.wiki) for pathway and network analysis for high-throughput metabolomics. This platform would be preferred by someone from environmental science to study exposome. I always use xMSannotator to annotate the LC-MS data.
+
+### Others
+
+- [MAVEN](http://genomics-pubs.princeton.edu/mzroll/index.php?show=index) from Princeton University
+
+- [RAMclustR](https://vpr.colostate.edu/pmf/wp-content/uploads/sites/23/2015/06/Broeckling_2014.pdf) from Colorado State University
+
+- [MAIT](https://www.bioconductor.org/packages/release/bioc/html/MAIT.html) based on xcms
+
+- [enviGCMS](https://github.com/yufree/enviGCMS) from me
+
+- [Metabolights](http://www.ebi.ac.uk/metabolights/) for sharing data
