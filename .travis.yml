@@ -2,6 +2,7 @@ language: r
 r: bioc-release
 pandoc_version: 1.17.2
 apt_packages: libnetcdf-dev
+r_github_packages: PMassicotte/gtrendsR
 before_script:
 - chmod +x ./_build.sh
 - chmod +x ./_deploy.sh
