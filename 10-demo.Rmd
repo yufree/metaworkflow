@@ -1,4 +1,7 @@
 # Demo
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(cache = TRUE,warning = F,message = F)
+```
 
 ## Project Setup
 

@@ -71,3 +71,23 @@ This platform is composed by several R packages from Emory University including 
 - [enviGCMS](https://github.com/yufree/enviGCMS) from me
 
 - [Metabolights](http://www.ebi.ac.uk/metabolights/) for sharing data
+
+## Trends in Metabolomics
+
+```{r gtrends}
+library(gtrendsR)
+res <- gtrends(c("metabolomics", "metabolomics"), geo = c("CA","US"))
+plot(res)
+```
+
+### Quantitative Metabolomics
+
+Those papers [@kapoore2016b; @jorge2016a].
+
+### High throughput Metabolomics
+
+Those papers [@zampieri2017]
+
+- Cohort size
+- Temporal resolution
+- Spatial resolution

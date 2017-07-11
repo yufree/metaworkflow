@@ -25,7 +25,7 @@
 <meta name="author" content="Miao YU">
 
 
-<meta name="date" content="2017-07-10">
+<meta name="date" content="2017-07-11">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -107,6 +107,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#history"><i class="fa fa-check"></i><b>1.1</b> History</a></li>
 <li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#reviews-and-tutorials"><i class="fa fa-check"></i><b>1.2</b> Reviews and tutorials</a></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#platform-for-metabolomics"><i class="fa fa-check"></i><b>1.3</b> Platform for metabolomics</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="introduction.html"><a href="introduction.html#xcms-online"><i class="fa fa-check"></i><b>1.3.1</b> XCMS online</a></li>
+<li class="chapter" data-level="1.3.2" data-path="introduction.html"><a href="introduction.html#prime"><i class="fa fa-check"></i><b>1.3.2</b> PRIMe</a></li>
+<li class="chapter" data-level="1.3.3" data-path="introduction.html"><a href="introduction.html#openms"><i class="fa fa-check"></i><b>1.3.3</b> OpenMS</a></li>
+<li class="chapter" data-level="1.3.4" data-path="introduction.html"><a href="introduction.html#mzmine-2"><i class="fa fa-check"></i><b>1.3.4</b> MZmine 2</a></li>
+<li class="chapter" data-level="1.3.5" data-path="introduction.html"><a href="introduction.html#xcms"><i class="fa fa-check"></i><b>1.3.5</b> XCMS</a></li>
+<li class="chapter" data-level="1.3.6" data-path="introduction.html"><a href="introduction.html#emory-mahpic"><i class="fa fa-check"></i><b>1.3.6</b> Emory MaHPIC</a></li>
+<li class="chapter" data-level="1.3.7" data-path="introduction.html"><a href="introduction.html#others"><i class="fa fa-check"></i><b>1.3.7</b> Others</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#trends-in-metabolomics"><i class="fa fa-check"></i><b>1.4</b> Trends in Metabolomics</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="introduction.html"><a href="introduction.html#quantitative-metabolomics"><i class="fa fa-check"></i><b>1.4.1</b> Quantitative Metabolomics</a></li>
+<li class="chapter" data-level="1.4.2" data-path="introduction.html"><a href="introduction.html#high-throughput-metabolomics"><i class="fa fa-check"></i><b>1.4.2</b> High throughput Metabolomics</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="exprimental-designdoe.html"><a href="exprimental-designdoe.html"><i class="fa fa-check"></i><b>2</b> Exprimental design(DoE)</a></li>
 <li class="chapter" data-level="3" data-path="pretreatment.html"><a href="pretreatment.html"><i class="fa fa-check"></i><b>3</b> Pretreatment</a><ul>
@@ -258,10 +271,8 @@ xset</code></pre></div>
 <p>If your data have many groups such as control and treated group, just put them in separate subfolder of the data folder and <em>xcmsSet</em> would read them as separated groups.</p>
 <p>The output was an object with class of <em>xcmsSet</em>. You could see a summary by type the name. In this cases, <em>xcmsSet</em> found 4721 peaks with time range 41.8-69.1 min and mass range 200.1-599.3338 m/z in the 12 samples.</p>
 <p>Another function which might be useful is <code>group</code>. This function will add additional information about the same analytes for <code>xcmsSet</code> objects.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">xset &lt;-<span class="st"> </span><span class="kw">group</span>(xset)</code></pre></div>
-<pre><code>## Processing 3195 mz slices ...</code></pre>
-<pre><code>## OK</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">xset</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">xset &lt;-<span class="st"> </span><span class="kw">group</span>(xset)
+xset</code></pre></div>
 <pre><code>## An &quot;xcmsSet&quot; object with 12 samples
 ## 
 ## Time range: 2506.1-4147.7 seconds (41.8-69.1 minutes)
@@ -284,31 +295,7 @@ xset</code></pre></div>
 <p>Remember the original retention time might changed and use another object to save the new object:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">xset2 &lt;-<span class="st"> </span><span class="kw">retcor</span>(xset, <span class="dt">method =</span> <span class="st">&quot;obiwarp&quot;</span>)</code></pre></div>
 <pre><code>## center sample:  ko16 
-## Processing: ko15</code></pre>
-<pre><code>## Create profile matrix with method &#39;bin&#39; and step 1 ...</code></pre>
-<pre><code>## OK</code></pre>
-<pre><code>## Create profile matrix with method &#39;bin&#39; and step 1 ...</code></pre>
-<pre><code>## OK</code></pre>
-<pre><code>## ko18</code></pre>
-<pre><code>## Create profile matrix with method &#39;bin&#39; and step 1 ... OK</code></pre>
-<pre><code>## ko19</code></pre>
-<pre><code>## Create profile matrix with method &#39;bin&#39; and step 1 ... OK</code></pre>
-<pre><code>## ko21</code></pre>
-<pre><code>## Create profile matrix with method &#39;bin&#39; and step 1 ... OK</code></pre>
-<pre><code>## ko22</code></pre>
-<pre><code>## Create profile matrix with method &#39;bin&#39; and step 1 ... OK</code></pre>
-<pre><code>## wt15</code></pre>
-<pre><code>## Create profile matrix with method &#39;bin&#39; and step 1 ... OK</code></pre>
-<pre><code>## wt16</code></pre>
-<pre><code>## Create profile matrix with method &#39;bin&#39; and step 1 ... OK</code></pre>
-<pre><code>## wt18</code></pre>
-<pre><code>## Create profile matrix with method &#39;bin&#39; and step 1 ... OK</code></pre>
-<pre><code>## wt19</code></pre>
-<pre><code>## Create profile matrix with method &#39;bin&#39; and step 1 ... OK</code></pre>
-<pre><code>## wt21</code></pre>
-<pre><code>## Create profile matrix with method &#39;bin&#39; and step 1 ... OK</code></pre>
-<pre><code>## wt22</code></pre>
-<pre><code>## Create profile matrix with method &#39;bin&#39; and step 1 ... OK</code></pre>
+## Processing: ko15  ko18  ko19  ko21  ko22  wt15  wt16  wt18  wt19  wt21  wt22</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">xset2</code></pre></div>
 <pre><code>## An &quot;xcmsSet&quot; object with 12 samples
 ## 
@@ -325,9 +312,8 @@ xset</code></pre></div>
 ## 
 ## Memory usage: 0.741 MB</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># you need group the peaks again for this corrected data</span>
-xset2 &lt;-<span class="st"> </span><span class="kw">group</span>(xset2)</code></pre></div>
-<pre><code>## Processing 3195 mz slices ... OK</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">xset2</code></pre></div>
+xset2 &lt;-<span class="st"> </span><span class="kw">group</span>(xset2)
+xset2</code></pre></div>
 <pre><code>## An &quot;xcmsSet&quot; object with 12 samples
 ## 
 ## Time range: 2506.3-4162.2 seconds (41.8-69.4 minutes)
