@@ -32,6 +32,8 @@ knitr::include_graphics('images/metahistory.gif')
 
 Some new reviews and tutorials related to this workflow could be found in those papers[@alonso2015; @cajka2016; @lu2008; @schrimpe-rutledge2016; @townsend2016; @barnes2016; @barnes2016a].
 
+Also I noticed more and more papers showed a bunch of data process methods as strategy for metabolomics[@watrous2017;@robbatjr.2017]. If you only need metabolomics as tools to tell your story, such stratrgy could be a quick start for you.
+
 ## Platform for metabolomics
 
 ### XCMS online
@@ -91,3 +93,51 @@ Those papers [@zampieri2017]
 - Cohort size
 - Temporal resolution
 - Spatial resolution
+
+## Data sharing
+
+### Data hosting
+
+See this paper[@haug2017]:
+
+- [MetaboLights](http://www.ebi.ac.uk/metabolights/) EU based
+- [The Metabolomics Workbench](http://www.metabolomicsworkbench.org/) US based
+- [MetabolomeXchange](http://www.metabolomexchange.org/site/) search engine
+
+### MS Database with annotation
+
+#### MS/MS
+
+- [MassBank](http://www.massbank.jp/?lang=en)
+
+- [GNPS](https://gnps.ucsd.edu/ProteoSAFe/static/gnps-splash.jsp)
+
+- [ReSpect](http://spectra.psc.riken.jp/): phytochemicals
+
+- [Metlin](https://metlin.scripps.edu/)
+
+- [LipidBlast](http://fiehnlab.ucdavis.edu/projects/LipidBlast): in silico prediction
+
+- [NIST](https://www.nist.gov/srd/nist-standard-reference-database-1a-v17): No free
+
+#### MS
+
+- [MassBank](http://www.massbank.jp/?lang=en)
+
+- [Fiehn Lab](http://fiehnlab.ucdavis.edu/projects/binbase-setup)
+
+- [NIST](https://www.nist.gov/srd/nist-standard-reference-database-1a-v17): No free
+
+### Compounds Database
+
+- [HMDB](http://www.hmdb.ca/)
+
+- [Lipid Maps](http://www.lipidmaps.org/)
+
+- [KEGG](http://www.genome.jp/kegg/)
+
+- [PubChem](https://pubchem.ncbi.nlm.nih.gov/)
+
+- [Chemspider](http://www.chemspider.com/)
+
+- [T3DB](http://www.t3db.ca/)

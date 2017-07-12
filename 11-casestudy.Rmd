@@ -4,4 +4,13 @@
 
 - LC-QToF, Urine, Prostate [@fernandez-peralbo2016a]
 
-- Muti, tobacco, Senescence[@li2016]
+- Muti, tobacco, Senescence [@li2016]
+
+- Serum [@itoi2017]
+
+-
+
+
+## Interestion papers
+
+- Ionmoics[@konz2017]

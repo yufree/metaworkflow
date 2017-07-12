@@ -47,4 +47,6 @@ OK, the basic idea behind the cluster analysis could be summarized as define the
 
 ## PLSDA
 
+PLS-DA, OPLS-DA and HPSO-OPLS-DA[@yang2017a] could be used.
+
 ## Self-organizing map

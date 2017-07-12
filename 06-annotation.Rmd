@@ -17,4 +17,10 @@ In practice, data analysis based annotation could reach level 2. For level 1, we
 
 ## Tools
 
-- Plantmat: excel library based pridiction for plant metabolites[@qiu2016].
+- [Plantmat](https://sourceforge.net/projects/plantmat/): excel library based pridiction for plant metabolites[@qiu2016].
+
+- [MetFamily](https://msbi.ipb-halle.de/MetFamily/): Shiny app for MS and MS/MS data annotation[@treutler2016c].
+
+- [xMSannotator](https://sourceforge.net/projects/xmsannotator/): R pacakges, from Emory University[@uppal2017].
+
+- [Lipidmatch](http://secim.ufl.edu/secim-tools/lipidmatch/): in silico lipid mass spectrum search [@koelmel2017]

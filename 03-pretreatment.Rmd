@@ -4,7 +4,7 @@ Pretreatment will affect the results of metabolomics. For example, feces collect
 
 Dmitri et.al[@sitnikov2016] thought the most orthogonal methods to methanol-based precipitation were ion-exchange solid-phase extraction and liquid-liquid extraction using methyl-tertbutyl ether. 
 
-## QUENCHING
+## Quenching
 
 Quenching solvent is always used to stop stop enzymatic activity. 
 
