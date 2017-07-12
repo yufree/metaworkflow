@@ -10,6 +10,10 @@ Right now, it is hard to connect different omics databases such as gene, protein
 
 ## Pathway analysis
 
+Pathwat analysis maps annotated data into known pathway and make statistical analysis to find the influenced pathway or the compounds with high inflences on certain pathway.
+
 ## Network analysis
+
+[Mummichog](https://code.google.com/archive/p/atcg/wikis/mummichog_for_metabolomics.wiki) could make pathway and network analysis without annotation. 
 
 ## Omics integration

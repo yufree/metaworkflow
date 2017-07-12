@@ -2,7 +2,7 @@
 
 When you get the peaks table or features table, annotation of the peaks would help you. Obviously, peaks with similar retention time might come from the same compound such as isotopic peaks, addictions from the analysis process. **CAMERA** [@kuhl2012] or **Ramcluster**[@broeckling2014] package could be used to make such annotation. Also this package could be used to group the peaks together for further analysis.
 
-There are two major annotation ideas:  multi-stage MS analysis and similarity analysis. The former requires certain instruments and database for MS/MS data. The later needs algorithms to predict the structures.
+There are two major annotation ideas:  multi-stage MS analysis and similarity analysis. The former requires certain instruments and database for MS/MS data. The later needs algorithms to predict the structures. This is a nice review for annotation[@allard2017].
 
 ## Annotation v.s. identification
 
@@ -14,6 +14,10 @@ According to the defination from the Chemical Analysis Working Group of the Meta
 - Level 4 'Unknown'
 
 In practice, data analysis based annotation could reach level 2. For level 1, we need at extra methods such as MS/MS, retention time, accurate mass, 2D NMR spectra, and so on to confirm the compounds. However, standards are always required for solid proof.
+
+## Network analysis
+
+Network analysis is based on the inner correlationship in the data and make network analysis at peaks' level instand of annotated compounds. Usually such analysis could also be used to annotated peaks with supports from mass spectrum database. [GNPS](https://gnps.ucsd.edu/ProteoSAFe/static/gnps-splash.jsp) use such ananlysis to annotate the data, as well as [Metscape](http://metscape.med.umich.edu/) based on Debiased Sparse Partial Correlation (DSPC) algorithm[@basu2017].
 
 ## Tools
 

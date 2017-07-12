@@ -101,7 +101,9 @@ Those papers [@zampieri2017]
 See this paper[@haug2017]:
 
 - [MetaboLights](http://www.ebi.ac.uk/metabolights/) EU based
+
 - [The Metabolomics Workbench](http://www.metabolomicsworkbench.org/) US based
+
 - [MetabolomeXchange](http://www.metabolomexchange.org/site/) search engine
 
 ### MS Database with annotation
@@ -118,11 +120,11 @@ See this paper[@haug2017]:
 
 - [LipidBlast](http://fiehnlab.ucdavis.edu/projects/LipidBlast): in silico prediction
 
+- [MZcloud](https://www.mzcloud.org/)
+
 - [NIST](https://www.nist.gov/srd/nist-standard-reference-database-1a-v17): No free
 
 #### MS
-
-- [MassBank](http://www.massbank.jp/?lang=en)
 
 - [Fiehn Lab](http://fiehnlab.ucdavis.edu/projects/binbase-setup)
 
@@ -141,3 +143,5 @@ See this paper[@haug2017]:
 - [Chemspider](http://www.chemspider.com/)
 
 - [T3DB](http://www.t3db.ca/)
+
+### Pathway Database
