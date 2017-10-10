@@ -2,8 +2,8 @@
 
 Raw data from the instruments such as LC-MS or GC-MS were hard to be analyzed. To make it clear, the structure of those data could be summarised as:
 
-- to get full infomation in the samples, full scan is perferred
-- full scan is performed synchronously with the seperation process
+- To get full infomation in the samples, full scan is perferred
+- Full scan is performed synchronously with the seperation process
 
 GC/LC-MS data are usually be shown as a matrix with column standing for retention times and row standing for masses. Noises are so much that such data could not be processed effeciently.
 
@@ -24,7 +24,7 @@ knitr::include_graphics('images/multidata.png')
 Without fracmental infomation about certain compound, the peak extraction would suffer influnces from other compounds. At the same retention time, co-elute compounds might share similar mass. Hard electron ionization methods such as electron impact ionization (EI), APPI suffer this issue. So it would be hard to distighuish the co-elute peaks' origin and deconvolution method[
 @du2013] could be used to seperate different groups according to the similar chromatogragh beheviors. Another computational tool **eRah** could be a better solution for the whole process[@domingo-almenara2016]. Also the **ADAD-GC3.0** could also be helpful for such issue[@ni2016].
 
-## Correction
+## Retention Time Correction
 
 However, before you get the peaks, some corrections should be performed such as mass shift and retention time shift. The basic idea behind retention time correction is that use the high quality grouped peaks to make a new retention time. You might choose obiwarp or loess regression method to get the corrected retention time for all of the samples. Remember the original retention times might be changed and you might need cross-correct the data.
 
@@ -36,7 +36,9 @@ Another issue is the Dynamic Range. For metabolomics, peaks could be below the d
 
 Some of the data were limited by the detect of limitation. Thus we need some methods to impute the data if we don't want to lose information by deleting the NA or 0.
 
-Tobit regression is preferred. Also you might choose  maximum likelihood estimation(Estimation of mean and standard deviation by MLE. Creating 10 complete samples. Pool the results from 10 individual analyses).
+Two major imputation way could be used. The first way is use model-free method such as half the minimum of the values across the data, 0, 1, mean/median across the data( `enviGCMS` package could do this via `getimputation` function). The second way is use model-based method such as linear model, random forest, KNN, PCA. Try `simputation` package for various imputation methods.
+
+Tobit regression is preferred for censored data. Also you might choose  maximum likelihood estimation(Estimation of mean and standard deviation by MLE. Creating 10 complete samples. Pool the results from 10 individual analyses).
 
 ```{r tobit,cache=TRUE}
 x <- rnorm(1000,1)
@@ -47,11 +49,115 @@ tfit <- tobit(y ~ x, left = 0)
 summary(tfit)
 ```
 
-### Over detection limit
+### Over Detection Limit
 
 **CorrectOverloadedPeaks** could be used to correct the Peaks Exceeding the Detection Limit issue[@lisec2016].
 
-## Adjust for unwanted variances with known batch
+## RSD Filter
+
+Some peaks need to be rule out due to high RSD%.
+
+## Power Analysis Filter
+
+The power analysis in metabolomics is ad-hoc since you don't know too much before you perform the experiment. However, we could perform power analysis after the experiment done. That is, we just rule out the peaks with a lower power in exsit DoE.
+
+## Batch Effects
+
+### Distribution of intensity
+
+Intensity collects from LC/GC-MS always showed a right-skewed distribution. Log transformation is often necessary for further statistical analysis. In some case, a Log-transformated intensity could be visulizated easily.
+
+Here is a simulation of such data:
+
+```{r simintensity}
+rtmzsim <- function(npeaks = 1000, nspeaks = 50, nbatch = 3, ncond = 2, npercond = 10,
+                       basemean = 10000, ppstep = 50, bbstep = 2000, ccstep = 800,
+                       basedisp = 100, bdispstep = 10, swvar = 1000, seed = 42) {
+        set.seed(seed)
+        mu <- seq(0, length.out = npeaks, by = ppstep)
+        bmu <- seq(0, length.out = nbatch, by = bbstep)
+        cmu <- seq(0, length.out = ncond, by = ccstep)
+        bsize <- seq(basedisp, length.out = nbatch, by = bdispstep)
+        ncol <- nbatch * ncond * npercond
+        batch <- rep(1:nbatch, each=ncond*npercond)
+        condition <- rep(rep(1:ncond, each=npercond), nbatch)
+        bc <- paste0('C',condition,'B',batch)
+        A.matrix <- matrix(0, nrow = npeaks, ncol = ncol)
+        colnames(A.matrix) <- bc
+
+        samplewisevar <- swvar*rbeta(ncol,2,2)
+        for (i in 1:nspeaks) {
+                peaki <- c()
+                for (j in 1:nbatch) {
+                        for (k in 1:ncond) {
+                                for (l in 1:npercond) {
+                                        peaki <- c(peaki, rnbinom(1, size = bsize[j],
+                                                                  mu = basemean+mu[i]+bmu[j]+cmu[k]+samplewisevar[j*k*l]))
+                                }
+                        }
+                }
+                A.matrix[i, ] <- peaki
+        }
+        for (i in (nspeaks+1):npeaks) {
+                peaki <- c()
+                for (l in 1:npercond) {
+                                        peaki <- c(peaki, rnbinom(1, size = bsize[j],
+                                                                  mu = basemean+mu[i]+mean(cmu)+mean(bmu)+samplewisevar[j*l]))
+                                }
+                A.matrix[i, ] <- peaki
+        }
+        rownames(A.matrix) <- paste0('P',c(1:npeaks))
+        return(A.matrix)
+}
+sim <- rtmzsim()
+hist(sim)
+
+library(BioMark)
+data("SpikePos")
+data <- t(SpikePos$data)
+lv <- as.factor(c(rep('C',10),rep('1',10),rep('2',10),rep('3',10)))
+lv <- relevel(lv, "C")
+
+plotrla <- function(data, lv, rsdcf = 30, inscf = 1, type = 'g'){
+        mean <- stats::aggregate(t(data), list(lv), mean)
+        sd <- stats::aggregate(t(data), list(lv), sd)
+        suppressWarnings(rsd <- sd / mean * 100)
+        rsd0 <- as.matrix(rsd[,-1])
+        rsd0[is.nan(rsd0)] <- 0
+        indexrsd <-
+                        apply(t(rsd0), 1, function(x)
+                                any(x < rsdcf))
+                indexmean <-
+                        apply(t(mean[,-1]), 1, function(x)
+                                any(x > 10 ^ (inscf)))
+
+                index <- indexrsd & indexmean
+        data <- data[index,]
+        data <- log10(data)
+        data[is.nan(data)] <- 0
+        outmat = NULL
+        
+        if(type == 'g'){
+        for (lvi in levels(lv)) {
+            submat <- data[,lv == lvi]
+            median <- apply(submat, 1, median)
+            tempmat <- sweep(submat, 1, median, "-")
+            outmat <- cbind(outmat,tempmat)
+        }
+        }else{
+              median <- apply(data, 1, median)
+              outmat <- sweep(data, 1, median, "-")
+          
+        }
+        
+        boxplot(outmat,col = as.numeric(lv))
+        abline(h=0)
+}
+
+dx <- plotrla(data,lv,rsdcf = 5,inscf = 3)
+dx <- plotrla(data,lv,rsdcf = 10,type = 's')
+```
+
 
 ### Centering
 
