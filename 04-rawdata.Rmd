@@ -199,7 +199,7 @@ Considering the batch effect of injection order, regress the data by a linear mo
 
 Use the total abundance scale and then fit with the regression line[@wang2013].
 
-#### SVA
+#### Surrogate Variable Analysis(SVA)
 
 We have a data matrix(M*N) with M stands for indentity peaks from one sample and N stand for individual samples. For one sample, $X = (x_{i1},...,x_{in})^T$ stands for the normalized intensities of peaks. We use $Y = (y_i,...,y_m)^T$ stands for the group infomation of our data. Then we could build such modles:
 
@@ -229,7 +229,7 @@ Here is the details of the algorithm:
 
 ##### Detection of unmodeled factors
 
-- Estimate $\hat\mu_i$ and $f_i$ by fitting the model $x_{ij} = \mu_i + f_i(y_i) + e_{ij}$ and get the residual $r_{ij} = x_{ij}-\hat\mu_i - \hat f_i(y_i) $. Then we have the residual matrix R.
+- Estimate $\hat\mu_i$ and $f_i$ by fitting the model $x_{ij} = \mu_i + f_i(y_i) + e_{ij}$ and get the residual $r_{ij} = x_{ij}-\hat\mu_i - \hat f_i(y_i)$. Then we have the residual matrix R.
 
 - Perform the singular value decompositon(SVD) of the residual matrix $R = UDV^T$
 
@@ -241,7 +241,7 @@ to show the variance explained by the $k$th eigenvalue.
 
 - Permute each row of R to remove the structure in the matrix and get $R^*$.
 
-- Fit the model $r_{ij}^* = \mu_i^* + f_i^*(y_i) + e^*_{ij}$ and get $r_{ij}^0 = r^*_{ij}-\hat\mu^*_i - \hat f^*_i(y_i) $ as a null matrix $R_0$
+- Fit the model $r_{ij}^* = \mu_i^* + f_i^*(y_i) + e^*_{ij}$ and get $r_{ij}^0 = r^*_{ij}-\hat\mu^*_i - \hat f^*_i(y_i)$ as a null matrix $R_0$
 
 - Perform the singular value decompositon(SVD) of the residual matrix $R_0 = U_0D_0V_0^T$
 
@@ -261,7 +261,7 @@ $$p_k = \frac{\#{T_k^{0b}\geq T_k;b=1,...,B }}{B}$$
 
 ##### Construction of surrogate variables
 
-- Estimate $\hat\mu_i$ and $f_i$ by fitting the model $x_{ij} = \mu_i + f_i(y_i) + e_{ij}$ and get the residual $r_{ij} = x_{ij}-\hat\mu_i - \hat f_i(y_i) $. Then we have the residual matrix R.
+- Estimate $\hat\mu_i$ and $f_i$ by fitting the model $x_{ij} = \mu_i + f_i(y_i) + e_{ij}$ and get the residual $r_{ij} = x_{ij}-\hat\mu_i - \hat f_i(y_i)$. Then we have the residual matrix R.
 
 - Perform the singular value decompositon(SVD) of the residual matrix $R = UDV^T$. Let $e_k = (e_{k1},...,e_{kn})^T$ be the $k$th column of V
 
@@ -275,9 +275,15 @@ $$p_k = \frac{\#{T_k^{0b}\geq T_k;b=1,...,B }}{B}$$
 
 - Let $j^* = argmax_{1\leq j \leq n}cor(e_k,e_j^r)$ and set $\hat h_k=e_j^r$. Set the estimate of the surrogate variable to be the eigenvalue of the reduced matrix most correlated with the corresponding residual eigenvalue. Since the reduced matrix is enriched for peaks associated with this residual eigenvalue, this is a principled choice for the estimated surrogate variable that allows for correlation with the primary variable.
 
-- Employ the $ \mu_i + f_i(y_i) + \sum_{k = 1}^K \gamma_{ki}\hat h_{kj} + e_{ij}$ as te estimate of the ideal model $ \mu_i + f_i(y_i) + \sum_{k = 1}^K \gamma_{ki}h_{kj} + e_{ij}$
+- Employ the $\mu_i + f_i(y_i) + \sum_{k = 1}^K \gamma_{ki}\hat h_{kj} + e_{ij}$ as te estimate of the ideal model $\mu_i + f_i(y_i) + \sum_{k = 1}^K \gamma_{ki}h_{kj} + e_{ij}$
 
-This method could found the potentical variables for the data. However, such idea could be improved by a iteratively re-weighted least squares approach for estimating surrogate variables. I will show a case study to show such iteratively process. 
+This method could found the potentical unwanted variables for the data. SVA were introduced by Jeff Leek[@leek2012; @leek2007; @leek2008] and EigenMS package implement SVA with modifications including analysis of data with missing values that are typical in LC-MS experiments[@karpievitch2014a].
 
-#### RUV
+#### RUV (Remove Unwanted Variation)
+
+This method's performance is similar to SVA. Instead find surrogate variable from the whole dataset. RUA use control or pool QC to find the unwanted variances and remove them to find the peaks related to experimental design. RUA-random[@livera2015] furthor use linear mixed model to estimate the variances of random error. This method could be used with suitable control, which is commen in metabolomics DoE. 
+
+#### RRmix
+
+RRmix also use a latent factor models correct the data[@jr2017]. This method could be treated as linear mixed model version SVA. No control samples are required and the unwanted variances could be removed by factor analysis. This method might be the best choise to remove the unwanted variables with commen experiment design.
 

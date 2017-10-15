@@ -404,8 +404,8 @@ dfcor &lt;-<span class="st"> </span>df<span class="op">/</span><span class="kw">
 <h4><span class="header-section-number">4.6.2.2</span> Batch Normalizer</h4>
 <p>Use the total abundance scale and then fit with the regression line<span class="citation">(Wang, Kuo, and Tseng <a href="#ref-wang2013">2013</a>)</span>.</p>
 </div>
-<div id="sva" class="section level4">
-<h4><span class="header-section-number">4.6.2.3</span> SVA</h4>
+<div id="surrogate-variable-analysissva" class="section level4">
+<h4><span class="header-section-number">4.6.2.3</span> Surrogate Variable Analysis(SVA)</h4>
 <p>We have a data matrix(M*N) with M stands for indentity peaks from one sample and N stand for individual samples. For one sample, <span class="math inline">\(X = (x_{i1},...,x_{in})^T\)</span> stands for the normalized intensities of peaks. We use <span class="math inline">\(Y = (y_i,...,y_m)^T\)</span> stands for the group infomation of our data. Then we could build such modles:</p>
 <p><span class="math display">\[x_{ij} = \mu_i + f_i(y_i) + e_{ij}\]</span></p>
 <p><span class="math inline">\(\mu_i\)</span> stands for the baseline of the peak intensities in a normal state. Then we have:</p>
@@ -425,7 +425,7 @@ x_{ij} = \mu_i + f_i(y_i) + \sum_{l = 1}^L \gamma_{li}p_{lj} + e_{ij}^*\\
 <div id="detection-of-unmodeled-factors" class="section level5">
 <h5><span class="header-section-number">4.6.2.3.1</span> Detection of unmodeled factors</h5>
 <ul>
-<li><p>Estimate <span class="math inline">\(\hat\mu_i\)</span> and <span class="math inline">\(f_i\)</span> by fitting the model <span class="math inline">\(x_{ij} = \mu_i + f_i(y_i) + e_{ij}\)</span> and get the residual $r_{ij} = x_{ij}-_i - f_i(y_i) $. Then we have the residual matrix R.</p></li>
+<li><p>Estimate <span class="math inline">\(\hat\mu_i\)</span> and <span class="math inline">\(f_i\)</span> by fitting the model <span class="math inline">\(x_{ij} = \mu_i + f_i(y_i) + e_{ij}\)</span> and get the residual <span class="math inline">\(r_{ij} = x_{ij}-\hat\mu_i - \hat f_i(y_i)\)</span>. Then we have the residual matrix R.</p></li>
 <li><p>Perform the singular value decompositon(SVD) of the residual matrix <span class="math inline">\(R = UDV^T\)</span></p></li>
 <li><p>Let <span class="math inline">\(d_l\)</span> be the <span class="math inline">\(l\)</span>th eigenvalue of the diagonal matrix D for <span class="math inline">\(l = 1,...,n\)</span>. Set <span class="math inline">\(df\)</span> as the freedom of the model <span class="math inline">\(\hat\mu_i + \hat f_i(y_i)\)</span>. We could build a statistic <span class="math inline">\(T_k\)</span> as:</p></li>
 </ul>
@@ -433,7 +433,7 @@ x_{ij} = \mu_i + f_i(y_i) + \sum_{l = 1}^L \gamma_{li}p_{lj} + e_{ij}^*\\
 <p>to show the variance explained by the <span class="math inline">\(k\)</span>th eigenvalue.</p>
 <ul>
 <li><p>Permute each row of R to remove the structure in the matrix and get <span class="math inline">\(R^*\)</span>.</p></li>
-<li><p>Fit the model <span class="math inline">\(r_{ij}^* = \mu_i^* + f_i^*(y_i) + e^*_{ij}\)</span> and get $r_{ij}^0 = r^*_{ij}-^*_i - f^*_i(y_i) $ as a null matrix <span class="math inline">\(R_0\)</span></p></li>
+<li><p>Fit the model <span class="math inline">\(r_{ij}^* = \mu_i^* + f_i^*(y_i) + e^*_{ij}\)</span> and get <span class="math inline">\(r_{ij}^0 = r^*_{ij}-\hat\mu^*_i - \hat f^*_i(y_i)\)</span> as a null matrix <span class="math inline">\(R_0\)</span></p></li>
 <li><p>Perform the singular value decompositon(SVD) of the residual matrix <span class="math inline">\(R_0 = U_0D_0V_0^T\)</span></p></li>
 <li><p>Compute the null statistic:</p></li>
 </ul>
@@ -452,20 +452,25 @@ T_k^0 = \frac{d_{0k}^2}{\sum_{l=1}^{n-df}d_{0l}^2}
 <div id="construction-of-surrogate-variables" class="section level5">
 <h5><span class="header-section-number">4.6.2.3.2</span> Construction of surrogate variables</h5>
 <ul>
-<li><p>Estimate <span class="math inline">\(\hat\mu_i\)</span> and <span class="math inline">\(f_i\)</span> by fitting the model <span class="math inline">\(x_{ij} = \mu_i + f_i(y_i) + e_{ij}\)</span> and get the residual $r_{ij} = x_{ij}-_i - f_i(y_i) $. Then we have the residual matrix R.</p></li>
+<li><p>Estimate <span class="math inline">\(\hat\mu_i\)</span> and <span class="math inline">\(f_i\)</span> by fitting the model <span class="math inline">\(x_{ij} = \mu_i + f_i(y_i) + e_{ij}\)</span> and get the residual <span class="math inline">\(r_{ij} = x_{ij}-\hat\mu_i - \hat f_i(y_i)\)</span>. Then we have the residual matrix R.</p></li>
 <li><p>Perform the singular value decompositon(SVD) of the residual matrix <span class="math inline">\(R = UDV^T\)</span>. Let <span class="math inline">\(e_k = (e_{k1},...,e_{kn})^T\)</span> be the <span class="math inline">\(k\)</span>th column of V</p></li>
 <li><p>Set <span class="math inline">\(\hat K\)</span> as the significant eigenvalues found by the first step.</p></li>
 <li><p>Regress each <span class="math inline">\(e_k\)</span> on <span class="math inline">\(x_i\)</span>, get the p-value for the association.</p></li>
 <li><p>Set <span class="math inline">\(\pi_0\)</span> as the proportion of the peak intensitity <span class="math inline">\(x_i\)</span> not associate with <span class="math inline">\(e_k\)</span> and find the numbers <span class="math inline">\(\hat m =[1-\hat \pi_0 \times m]\)</span> and the indices of the peaks associated with the eigenvalues</p></li>
 <li><p>Form the matrix <span class="math inline">\(\hat m_1 \times N\)</span>, this matrix<span class="math inline">\(X_r\)</span> stand for the potiential variables. As was done for R, get the eigengents of <span class="math inline">\(X_r\)</span> and denote these by <span class="math inline">\(e_j^r\)</span></p></li>
 <li><p>Let <span class="math inline">\(j^* = argmax_{1\leq j \leq n}cor(e_k,e_j^r)\)</span> and set <span class="math inline">\(\hat h_k=e_j^r\)</span>. Set the estimate of the surrogate variable to be the eigenvalue of the reduced matrix most correlated with the corresponding residual eigenvalue. Since the reduced matrix is enriched for peaks associated with this residual eigenvalue, this is a principled choice for the estimated surrogate variable that allows for correlation with the primary variable.</p></li>
-<li><p>Employ the $ <em>i + f_i(y_i) + </em>{k = 1}^K <em>{ki}h</em>{kj} + e_{ij}$ as te estimate of the ideal model $ <em>i + f_i(y_i) + </em>{k = 1}^K <em>{ki}h</em>{kj} + e_{ij}$</p></li>
+<li><p>Employ the <span class="math inline">\(\mu_i + f_i(y_i) + \sum_{k = 1}^K \gamma_{ki}\hat h_{kj} + e_{ij}\)</span> as te estimate of the ideal model <span class="math inline">\(\mu_i + f_i(y_i) + \sum_{k = 1}^K \gamma_{ki}h_{kj} + e_{ij}\)</span></p></li>
 </ul>
-<p>This method could found the potentical variables for the data. However, such idea could be improved by a iteratively re-weighted least squares approach for estimating surrogate variables. I will show a case study to show such iteratively process.</p>
+<p>This method could found the potentical unwanted variables for the data. SVA were introduced by Jeff Leek<span class="citation">(Leek et al. <a href="#ref-leek2012">2012</a>; Leek and Storey <a href="#ref-leek2007">2007</a>; Leek and Storey <a href="#ref-leek2008">2008</a>)</span> and EigenMS package implement SVA with modifications including analysis of data with missing values that are typical in LC-MS experiments<span class="citation">(Karpievitch et al. <a href="#ref-karpievitch2014a">2014</a>)</span>.</p>
 </div>
 </div>
-<div id="ruv" class="section level4">
-<h4><span class="header-section-number">4.6.2.4</span> RUV</h4>
+<div id="ruv-remove-unwanted-variation" class="section level4">
+<h4><span class="header-section-number">4.6.2.4</span> RUV (Remove Unwanted Variation)</h4>
+<p>This method’s performance is similar to SVA. Instead find surrogate variable from the whole dataset. RUA use control or pool QC to find the unwanted variances and remove them to find the peaks related to experimental design. RUA-random<span class="citation">(Livera et al. <a href="#ref-livera2015">2015</a>)</span> furthor use linear mixed model to estimate the variances of random error. This method could be used with suitable control, which is commen in metabolomics DoE.</p>
+</div>
+<div id="rrmix" class="section level4">
+<h4><span class="header-section-number">4.6.2.5</span> RRmix</h4>
+<p>RRmix also use a latent factor models correct the data<span class="citation">(Jr et al. <a href="#ref-jr2017">2017</a>)</span>. This method could be treated as linear mixed model version SVA. No control samples are required and the unwanted variances could be removed by factor analysis. This method might be the best choise to remove the unwanted variables with commen experiment design.</p>
 
 </div>
 </div>
@@ -502,6 +507,24 @@ T_k^0 = \frac{d_{0k}^2}{\sum_{l=1}^{n-df}d_{0l}^2}
 </div>
 <div id="ref-wang2013">
 <p>Wang, San-Yuan, Ching-Hua Kuo, and Yufeng J. Tseng. 2013. “Batch Normalizer: A Fast Total Abundance Regression Calibration Method to Simultaneously Adjust Batch and Injection Order Effects in Liquid Chromatography/Time-of-Flight Mass Spectrometry-Based Metabolomics Data and Comparison with Current Calibration Methods.” <em>Analytical Chemistry</em> 85 (2): 1037–46. doi:<a href="https://doi.org/10.1021/ac302877x">10.1021/ac302877x</a>.</p>
+</div>
+<div id="ref-leek2012">
+<p>Leek, Jeffrey T., W. Evan Johnson, Hilary S. Parker, Andrew E. Jaffe, and John D. Storey. 2012. “The Sva Package for Removing Batch Effects and Other Unwanted Variation in High-Throughput Experiments.” <em>Bioinformatics</em> 28 (6): 882–83. doi:<a href="https://doi.org/10.1093/bioinformatics/bts034">10.1093/bioinformatics/bts034</a>.</p>
+</div>
+<div id="ref-leek2007">
+<p>Leek, Jeffrey T., and John D. Storey. 2007. “Capturing Heterogeneity in Gene Expression Studies by Surrogate Variable Analysis.” <em>PLOS Genet</em> 3 (9): e161. doi:<a href="https://doi.org/10.1371/journal.pgen.0030161">10.1371/journal.pgen.0030161</a>.</p>
+</div>
+<div id="ref-leek2008">
+<p>Leek, Jeffrey T., and John D. Storey. 2007. “Capturing Heterogeneity in Gene Expression Studies by Surrogate Variable Analysis.” <em>PLOS Genet</em> 3 (9): e161. doi:<a href="https://doi.org/10.1371/journal.pgen.0030161">10.1371/journal.pgen.0030161</a>.</p> 2008. “A General Framework for Multiple Testing Dependence.” <em>Proceedings of the National Academy of Sciences</em> 105 (48): 18718–23. doi:<a href="https://doi.org/10.1073/pnas.0808709105">10.1073/pnas.0808709105</a>.</p>
+</div>
+<div id="ref-karpievitch2014a">
+<p>Karpievitch, Yuliya V., Sonja B. Nikolic, Richard Wilson, James E. Sharman, and Lindsay M. Edwards. 2014. “Metabolomics Data Normalization with EigenMS.” <em>PLOS ONE</em> 9 (12): e116221. doi:<a href="https://doi.org/10.1371/journal.pone.0116221">10.1371/journal.pone.0116221</a>.</p>
+</div>
+<div id="ref-livera2015">
+<p>Livera, Alysha M. De, Marko Sysi-Aho, Laurent Jacob, Johann A. Gagnon-Bartsch, Sandra Castillo, Julie A. Simpson, and Terence P. Speed. 2015. “Statistical Methods for Handling Unwanted Variation in Metabolomics Data.” <em>Analytical Chemistry</em> 87 (7): 3606–15. doi:<a href="https://doi.org/10.1021/ac502439y">10.1021/ac502439y</a>.</p>
+</div>
+<div id="ref-jr2017">
+<p>Jr, Stephen Salerno, Mahya Mehrmohamadi, Maria V. Liberti, Muting Wan, Martin T. Wells, James G. Booth, and Jason W. Locasale. 2017. “RRmix: A Method for Simultaneous Batch Effect Correction and Analysis of Metabolomics Data in the Absence of Internal Standards.” <em>PLOS ONE</em> 12 (6): e0179530. doi:<a href="https://doi.org/10.1371/journal.pone.0179530">10.1371/journal.pone.0179530</a>.</p>
 </div>
 </div>
             </section>
