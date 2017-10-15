@@ -55,111 +55,29 @@ summary(tfit)
 
 ## RSD Filter
 
-Some peaks need to be rule out due to high RSD%.
+Some peaks need to be rule out due to high RSD%. See [Exprimental design(DoE)]
 
 ## Power Analysis Filter
 
-The power analysis in metabolomics is ad-hoc since you don't know too much before you perform the experiment. However, we could perform power analysis after the experiment done. That is, we just rule out the peaks with a lower power in exsit DoE.
+As shown in [Exprimental design(DoE)], the power analysis in metabolomics is ad-hoc since you don't know too much before you perform the experiment. However, we could perform power analysis after the experiment done. That is, we just rule out the peaks with a lower power in exsit Exprimental design.
 
-## Batch Effects
+## Normalization
 
-### Distribution of intensity
+Variances among the samples across all the extracted peaks might be affected by factors other than the experiment design. To make the samples comparable, normailization across the samples are always needed. There are more than 20 methods to make normalization. We could devided those methods into two category: unsupervised and supervised.
+
+Unsupervised methods only consider the normalization peaks intensity distribution across the samples. For example, quantile calibration try to make the intensity distribution among the samples similar. Such methods are preferred to explore the inner structures of the samples. Internal standards or pool QC samples also belong to this category. However, it's hard to take a few peaks standing for all peaks extracted.
+
+Supervised methods will use the group information or batch information in experimental design to normalize the data. A linear model is always used to model the unwanted variances and remove them for further analysis.
+
+Since the real batch effects are always unknown, it's hard to make validation for different normalization methods. Wu et.al preferred to make comparision between new methods and conventional methods[@wu2016]. Li et.al developed NOREVA to make comparision among 25 correction method[@li2017a]. Another idea is use spiked-in samples to validate the methods[@franceschi2012], which might be good for targeted analysis instead of non-targeted analysis.
+
+### Unsupervised methods
+
+#### Distribution of intensity
 
 Intensity collects from LC/GC-MS always showed a right-skewed distribution. Log transformation is often necessary for further statistical analysis. In some case, a Log-transformated intensity could be visulizated easily.
 
-Here is a simulation of such data:
-
-```{r simintensity}
-rtmzsim <- function(npeaks = 1000, nspeaks = 50, nbatch = 3, ncond = 2, npercond = 10,
-                       basemean = 10000, ppstep = 50, bbstep = 2000, ccstep = 800,
-                       basedisp = 100, bdispstep = 10, swvar = 1000, seed = 42) {
-        set.seed(seed)
-        mu <- seq(0, length.out = npeaks, by = ppstep)
-        bmu <- seq(0, length.out = nbatch, by = bbstep)
-        cmu <- seq(0, length.out = ncond, by = ccstep)
-        bsize <- seq(basedisp, length.out = nbatch, by = bdispstep)
-        ncol <- nbatch * ncond * npercond
-        batch <- rep(1:nbatch, each=ncond*npercond)
-        condition <- rep(rep(1:ncond, each=npercond), nbatch)
-        bc <- paste0('C',condition,'B',batch)
-        A.matrix <- matrix(0, nrow = npeaks, ncol = ncol)
-        colnames(A.matrix) <- bc
-
-        samplewisevar <- swvar*rbeta(ncol,2,2)
-        for (i in 1:nspeaks) {
-                peaki <- c()
-                for (j in 1:nbatch) {
-                        for (k in 1:ncond) {
-                                for (l in 1:npercond) {
-                                        peaki <- c(peaki, rnbinom(1, size = bsize[j],
-                                                                  mu = basemean+mu[i]+bmu[j]+cmu[k]+samplewisevar[j*k*l]))
-                                }
-                        }
-                }
-                A.matrix[i, ] <- peaki
-        }
-        for (i in (nspeaks+1):npeaks) {
-                peaki <- c()
-                for (l in 1:npercond) {
-                                        peaki <- c(peaki, rnbinom(1, size = bsize[j],
-                                                                  mu = basemean+mu[i]+mean(cmu)+mean(bmu)+samplewisevar[j*l]))
-                                }
-                A.matrix[i, ] <- peaki
-        }
-        rownames(A.matrix) <- paste0('P',c(1:npeaks))
-        return(A.matrix)
-}
-sim <- rtmzsim()
-hist(sim)
-
-library(BioMark)
-data("SpikePos")
-data <- t(SpikePos$data)
-lv <- as.factor(c(rep('C',10),rep('1',10),rep('2',10),rep('3',10)))
-lv <- relevel(lv, "C")
-
-plotrla <- function(data, lv, rsdcf = 30, inscf = 1, type = 'g'){
-        mean <- stats::aggregate(t(data), list(lv), mean)
-        sd <- stats::aggregate(t(data), list(lv), sd)
-        suppressWarnings(rsd <- sd / mean * 100)
-        rsd0 <- as.matrix(rsd[,-1])
-        rsd0[is.nan(rsd0)] <- 0
-        indexrsd <-
-                        apply(t(rsd0), 1, function(x)
-                                any(x < rsdcf))
-                indexmean <-
-                        apply(t(mean[,-1]), 1, function(x)
-                                any(x > 10 ^ (inscf)))
-
-                index <- indexrsd & indexmean
-        data <- data[index,]
-        data <- log10(data)
-        data[is.nan(data)] <- 0
-        outmat = NULL
-        
-        if(type == 'g'){
-        for (lvi in levels(lv)) {
-            submat <- data[,lv == lvi]
-            median <- apply(submat, 1, median)
-            tempmat <- sweep(submat, 1, median, "-")
-            outmat <- cbind(outmat,tempmat)
-        }
-        }else{
-              median <- apply(data, 1, median)
-              outmat <- sweep(data, 1, median, "-")
-          
-        }
-        
-        boxplot(outmat,col = as.numeric(lv))
-        abline(h=0)
-}
-
-dx <- plotrla(data,lv,rsdcf = 5,inscf = 3)
-dx <- plotrla(data,lv,rsdcf = 10,type = 's')
-```
-
-
-### Centering
+#### Centering
 
 For peak p of sample s in batch b, the corrected abundance I is:
 
@@ -182,7 +100,7 @@ plot(I)
 plot(Icor)
 ```
 
-### Scaling
+#### Scaling
 
 For peak p of sample s in certain batch b, the corrected abundance I is:
 
@@ -205,7 +123,7 @@ plot(I)
 plot(Icor)
 ```
 
-### Quantile
+#### Quantile
 
 The idea of quantile calibration is that alignment of the intensities in certain samples according to quantiles in each sample.
 
@@ -225,7 +143,7 @@ cor <- cor[order(order(a))]
 hist(cor,col = 'red', breaks = 50, add=T)
 ```
 
-### Ratio based calibraton
+#### Ratio based calibraton
 
 This method calibrates samples by the ratio between qc samples in all samples and in certain batch.For peak p of sample s in certain batch b, the corrected abundance I is:
 
@@ -246,7 +164,7 @@ plot(I)
 plot(Icor)
 ```
 
-### Linear Normalizer
+#### Linear Normalizer
 
 This method initially scales each sample so that the sum of all
 peak abundances equals one. In this study, by multiplying the median sum of all peak abundances across all samples,we got the corrected data.
@@ -264,24 +182,102 @@ image(df)
 image(dfcor)
 ```
 
-### Regression calibration
-
-Considering the batch effect of injection order, regress the data by a linear model to get the calibration.
-
-### Batch Normalizer
-
-Use the total abundance scale and then fit with the regression line[@wang2013].
-
-### Internal standards
+#### Internal standards
 
 $$\hat I_{p,s} = \frac{I_{p,s} * median(I_{IS})}{I_{IS,s}}$$
 
 Some methods also use pooled calibration samples and multiple internal standard strategy to correct the data[@van_der_kloet2009]. Also some methods only use QC samples to handle the data[@kuligowski2015].
 
 
-## Adjust for unwanted variance with unknown batch
+### Supervised methods
 
-### SVA
+#### Regression calibration
 
-### RUV
+Considering the batch effect of injection order, regress the data by a linear model to get the calibration.
+
+#### Batch Normalizer
+
+Use the total abundance scale and then fit with the regression line[@wang2013].
+
+#### SVA
+
+We have a data matrix(M*N) with M stands for indentity peaks from one sample and N stand for individual samples. For one sample, $X = (x_{i1},...,x_{in})^T$ stands for the normalized intensities of peaks. We use $Y = (y_i,...,y_m)^T$ stands for the group infomation of our data. Then we could build such modles:
+
+$$x_{ij} = \mu_i + f_i(y_i) + e_{ij}$$
+
+$\mu_i$ stands for the baseline of the peak intensities in a normal state. Then we have:
+
+$$f_i(y_i) = E(x_{ij}|y_j) - \mu_i$$
+
+stands for the biological variations caused by the our group, for example, whether treated by pollutions or not.
+
+However, considering the batch effects, the real model could be:
+
+$$x_{ij} = \mu_i + f_i(y_i) + \sum_{l = 1}^L \gamma_{li}p_{lj} + e_{ij}^*$$
+ $\gamma_{li}$ stands for the peak-specific coefficient for potentical factor $l$. $p_{lj}$ stands for the potential factors across the samples. Actually, the error item $e_{ij}$ in real sample could always be decomposed as $e_{ij} = \sum_{l = 1}^L \gamma_{li}p_{lj} + e_{ij}^*$ with $e_{ij}^*$ standing for the real random error in certain sample for certain peak.
+ 
+We could not get the potential factors directly. Since we don't care the details of the unknown factors, we could estimate orthogonal vectors $h_k$ standing for such potential factors. Thus we have:
+
+$$
+x_{ij} = \mu_i + f_i(y_i) + \sum_{l = 1}^L \gamma_{li}p_{lj} + e_{ij}^*\\ 
+= \mu_i + f_i(y_i) + \sum_{k = 1}^K \lambda_{ki}h_{kj} + e_{ij}
+$$
+
+Here is the details of the algorithm:
+
+> The algorithm is decomposed into two parts: detection of unmodeled factors and construction of surrogate variables
+
+##### Detection of unmodeled factors
+
+- Estimate $\hat\mu_i$ and $f_i$ by fitting the model $x_{ij} = \mu_i + f_i(y_i) + e_{ij}$ and get the residual $r_{ij} = x_{ij}-\hat\mu_i - \hat f_i(y_i) $. Then we have the residual matrix R.
+
+- Perform the singular value decompositon(SVD) of the residual matrix $R = UDV^T$
+
+- Let $d_l$ be the $l$th eigenvalue of the diagonal matrix D for $l = 1,...,n$. Set $df$ as the freedom of the model $\hat\mu_i + \hat f_i(y_i)$. We could build a statistic $T_k$ as:
+
+$$T_k = \frac{d_k^2}{\sum_{l=1}^{n-df}d_l^2}$$
+
+to show the variance explained by the $k$th eigenvalue.
+
+- Permute each row of R to remove the structure in the matrix and get $R^*$.
+
+- Fit the model $r_{ij}^* = \mu_i^* + f_i^*(y_i) + e^*_{ij}$ and get $r_{ij}^0 = r^*_{ij}-\hat\mu^*_i - \hat f^*_i(y_i) $ as a null matrix $R_0$
+
+- Perform the singular value decompositon(SVD) of the residual matrix $R_0 = U_0D_0V_0^T$
+
+- Compute the null statistic:
+
+$$
+T_k^0 = \frac{d_{0k}^2}{\sum_{l=1}^{n-df}d_{0l}^2}
+$$
+
+- Repeat permuting the row B times to get the null statistics $T_k^{0b}$
+
+- Get the p-value for eigengene:
+
+$$p_k = \frac{\#{T_k^{0b}\geq T_k;b=1,...,B }}{B}$$
+
+- For a significance level $\alpha$, treat k as a significant signature of residual R if $p_k\leq\alpha$
+
+##### Construction of surrogate variables
+
+- Estimate $\hat\mu_i$ and $f_i$ by fitting the model $x_{ij} = \mu_i + f_i(y_i) + e_{ij}$ and get the residual $r_{ij} = x_{ij}-\hat\mu_i - \hat f_i(y_i) $. Then we have the residual matrix R.
+
+- Perform the singular value decompositon(SVD) of the residual matrix $R = UDV^T$. Let $e_k = (e_{k1},...,e_{kn})^T$ be the $k$th column of V
+
+- Set $\hat K$ as the significant eigenvalues found by the first step.
+
+- Regress each $e_k$ on $x_i$, get the p-value for the association.
+
+- Set $\pi_0$ as the proportion of the peak intensitity $x_i$ not associate with $e_k$ and find the numbers $\hat m =[1-\hat \pi_0 \times m]$ and the indices of the peaks associated with the eigenvalues
+
+- Form the matrix $\hat m_1 \times N$, this matrix$X_r$ stand for the potiential variables. As was done for R, get the eigengents of $X_r$ and denote these by $e_j^r$
+
+- Let $j^* = argmax_{1\leq j \leq n}cor(e_k,e_j^r)$ and set $\hat h_k=e_j^r$. Set the estimate of the surrogate variable to be the eigenvalue of the reduced matrix most correlated with the corresponding residual eigenvalue. Since the reduced matrix is enriched for peaks associated with this residual eigenvalue, this is a principled choice for the estimated surrogate variable that allows for correlation with the primary variable.
+
+- Employ the $ \mu_i + f_i(y_i) + \sum_{k = 1}^K \gamma_{ki}\hat h_{kj} + e_{ij}$ as te estimate of the ideal model $ \mu_i + f_i(y_i) + \sum_{k = 1}^K \gamma_{ki}h_{kj} + e_{ij}$
+
+This method could found the potentical variables for the data. However, such idea could be improved by a iteratively re-weighted least squares approach for estimating surrogate variables. I will show a case study to show such iteratively process. 
+
+#### RUV
 

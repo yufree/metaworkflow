@@ -25,14 +25,14 @@
 <meta name="author" content="Miao YU">
 
 
-<meta name="date" content="2017-10-10">
+<meta name="date" content="2017-10-15">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="batch-effect.html">
+<link rel="prev" href="case-studyselected.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -141,20 +141,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="4.4" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#rsd-filter"><i class="fa fa-check"></i><b>4.4</b> RSD Filter</a></li>
 <li class="chapter" data-level="4.5" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#power-analysis-filter"><i class="fa fa-check"></i><b>4.5</b> Power Analysis Filter</a></li>
-<li class="chapter" data-level="4.6" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#batch-effects"><i class="fa fa-check"></i><b>4.6</b> Batch Effects</a><ul>
-<li class="chapter" data-level="4.6.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#distribution-of-intensity"><i class="fa fa-check"></i><b>4.6.1</b> Distribution of intensity</a></li>
-<li class="chapter" data-level="4.6.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#centering"><i class="fa fa-check"></i><b>4.6.2</b> Centering</a></li>
-<li class="chapter" data-level="4.6.3" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#scaling"><i class="fa fa-check"></i><b>4.6.3</b> Scaling</a></li>
-<li class="chapter" data-level="4.6.4" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#quantile"><i class="fa fa-check"></i><b>4.6.4</b> Quantile</a></li>
-<li class="chapter" data-level="4.6.5" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#ratio-based-calibraton"><i class="fa fa-check"></i><b>4.6.5</b> Ratio based calibraton</a></li>
-<li class="chapter" data-level="4.6.6" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#linear-normalizer"><i class="fa fa-check"></i><b>4.6.6</b> Linear Normalizer</a></li>
-<li class="chapter" data-level="4.6.7" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#regression-calibration"><i class="fa fa-check"></i><b>4.6.7</b> Regression calibration</a></li>
-<li class="chapter" data-level="4.6.8" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#batch-normalizer"><i class="fa fa-check"></i><b>4.6.8</b> Batch Normalizer</a></li>
-<li class="chapter" data-level="4.6.9" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#internal-standards"><i class="fa fa-check"></i><b>4.6.9</b> Internal standards</a></li>
-</ul></li>
-<li class="chapter" data-level="4.7" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#adjust-for-unwanted-variance-with-unknown-batch"><i class="fa fa-check"></i><b>4.7</b> Adjust for unwanted variance with unknown batch</a><ul>
-<li class="chapter" data-level="4.7.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#sva"><i class="fa fa-check"></i><b>4.7.1</b> SVA</a></li>
-<li class="chapter" data-level="4.7.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#ruv"><i class="fa fa-check"></i><b>4.7.2</b> RUV</a></li>
+<li class="chapter" data-level="4.6" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#normalization"><i class="fa fa-check"></i><b>4.6</b> Normalization</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#unsupervised-methods"><i class="fa fa-check"></i><b>4.6.1</b> Unsupervised methods</a></li>
+<li class="chapter" data-level="4.6.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#supervised-methods"><i class="fa fa-check"></i><b>4.6.2</b> Supervised methods</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="peaks-selection.html"><a href="peaks-selection.html"><i class="fa fa-check"></i><b>5</b> Peaks selection</a><ul>
@@ -193,11 +182,6 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="10.1" data-path="case-studyselected.html"><a href="case-studyselected.html#cancer"><i class="fa fa-check"></i><b>10.1</b> Cancer</a></li>
 <li class="chapter" data-level="10.2" data-path="case-studyselected.html"><a href="case-studyselected.html#mental-health"><i class="fa fa-check"></i><b>10.2</b> Mental Health</a></li>
 <li class="chapter" data-level="10.3" data-path="case-studyselected.html"><a href="case-studyselected.html#interestion-papers"><i class="fa fa-check"></i><b>10.3</b> Interestion papers</a></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="batch-effect.html"><a href="batch-effect.html"><i class="fa fa-check"></i><b>11</b> Batch effect</a><ul>
-<li class="chapter" data-level="11.0.1" data-path="batch-effect.html"><a href="batch-effect.html#detection-of-unmodeled-factors"><i class="fa fa-check"></i><b>11.0.1</b> Detection of unmodeled factors</a></li>
-<li class="chapter" data-level="11.0.2" data-path="batch-effect.html"><a href="batch-effect.html#construction-of-surrogate-variables"><i class="fa fa-check"></i><b>11.0.2</b> Construction of surrogate variables</a></li>
-<li class="chapter" data-level="11.0.3" data-path="batch-effect.html"><a href="batch-effect.html#case-study"><i class="fa fa-check"></i><b>11.0.3</b> Case study</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -249,6 +233,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Broeckling, C. D., F. A. Afsar, S. Neumann, A. Ben-Hur, and J. E. Prenni. 2014. “RAMClust: A Novel Feature Clustering Method Enables Spectral-Matching-Based Annotation for Metabolomics Data.” <em>Analytical Chemistry</em> 86 (14): 6812–7. doi:<a href="https://doi.org/10.1021/ac501530d">10.1021/ac501530d</a>.</p>
 </div>
 <div>
+<p>Cai, Qingpo, Jessica A. Alvarez, Jian Kang, and Tianwei Yu. 2017. “Network Marker Selection for Untargeted LC.” <em>Journal of Proteome Research</em> 16 (3): 1261–9. doi:<a href="https://doi.org/10.1021/acs.jproteome.6b00861">10.1021/acs.jproteome.6b00861</a>.</p>
+</div>
+<div>
 <p>Cajka, Tomas, and Oliver Fiehn. 2016. “Toward Merging Untargeted and Targeted Methods in Mass Spectrometry-Based Metabolomics and Lipidomics.” <em>Analytical Chemistry</em> 88 (1): 524–45. doi:<a href="https://doi.org/10.1021/acs.analchem.5b04491">10.1021/acs.analchem.5b04491</a>.</p>
 </div>
 <div>
@@ -259,6 +246,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div>
 <p>Du, Xiuxia, and Steven H Zeisel. 2013. “SPECTRAL DECONVOLUTION FOR GAS CHROMATOGRAPHY MASS SPECTROMETRY-BASED METABOLOMICS: CURRENT STATUS AND FUTURE PERSPECTIVES.” <em>Computational and Structural Biotechnology Journal</em> 4 (5): 1–10. doi:<a href="https://doi.org/10.5936/csbj.201301013">10.5936/csbj.201301013</a>.</p>
+</div>
+<div>
+<p>Franceschi, Pietro, Domenico Masuero, Urska Vrhovsek, Fulvio Mattivi, and Ron Wehrens. 2012. “A Benchmark Spike-in Data Set for Biomarker Identification in Metabolomics.” <em>Journal of Chemometrics</em> 26 (1-2): 16–24. doi:<a href="https://doi.org/10.1002/cem.1420">10.1002/cem.1420</a>.</p>
 </div>
 <div>
 <p>Haug, Kenneth, Reza M Salek, and Christoph Steinbeck. 2017. “Global Open Data Management in Metabolomics.” <em>Current Opinion in Chemical Biology</em>, Omics, 36 (February): 58–63. doi:<a href="https://doi.org/10.1016/j.cbpa.2016.12.024">10.1016/j.cbpa.2016.12.024</a>.</p>
@@ -286,6 +276,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div>
 <p>Kusonmano, Kanthida, Wanwipa Vongsangnak, and Pramote Chumnanpuen. 2016. “Informatics for Metabolomics.” In <em>Translational Biomedical Informatics</em>, 91–115. Advances in Experimental Medicine and Biology. Springer, Singapore. doi:<a href="https://doi.org/10.1007/978-981-10-1503-8_5">10.1007/978-981-10-1503-8_5</a>.</p>
+</div>
+<div>
+<p>Li, Bo, Jing Tang, Qingxia Yang, Shuang Li, Xuejiao Cui, Yinghong Li, Yuzong Chen, Weiwei Xue, Xiaofeng Li, and Feng Zhu. 2017. “NOREVA: Normalization and Evaluation of MS-Based Metabolomics Data.” <em>Nucleic Acids Research</em> 45 (W1): W162–W170. doi:<a href="https://doi.org/10.1093/nar/gkx449">10.1093/nar/gkx449</a>.</p>
 </div>
 <div>
 <p>Li, Lili, Jieyu Zhao, Yanni Zhao, Xin Lu, Zhihui Zhou, Chunxia Zhao, and Guowang Xu. 2016. “Comprehensive Investigation of Tobacco Leaves During Natural Early Senescence via Multi-Platform Metabolomics Analyses.” <em>Scientific Reports</em> 6 (November). doi:<a href="https://doi.org/10.1038/srep37976">10.1038/srep37976</a>.</p>
@@ -348,6 +341,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Watrous, Jeramie D., Mir Henglin, Brian Claggett, Kim A. Lehmann, Martin G. Larson, Susan Cheng, and Mohit Jain. 2017. “Visualization, Quantification, and Alignment of Spectral Drift in Population Scale Untargeted Metabolomics Data.” <em>Analytical Chemistry</em> 89 (3): 1399–1404. doi:<a href="https://doi.org/10.1021/acs.analchem.6b04337">10.1021/acs.analchem.6b04337</a>.</p>
 </div>
 <div>
+<p>Wu, Yiman, and Liang Li. 2016. “Sample Normalization Methods in Quantitative Metabolomics.” <em>Journal of Chromatography A</em>, Editors’ choice x, 1430 (January): 80–95. doi:<a href="https://doi.org/10.1016/j.chroma.2015.12.007">10.1016/j.chroma.2015.12.007</a>.</p>
+</div>
+<div>
 <p>Yamamoto, Hiroyuki, Tamaki Fujimori, Hajime Sato, Gen Ishikawa, Kenjiro Kami, and Yoshiaki Ohashi. 2014. “Statistical Hypothesis Testing of Factor Loading in Principal Component Analysis and Its Application to Metabolite Set Enrichment Analysis.” <em>BMC Bioinformatics</em> 15 (February): 51. doi:<a href="https://doi.org/10.1186/1471-2105-15-51">10.1186/1471-2105-15-51</a>.</p>
 </div>
 <div>
@@ -363,7 +359,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="batch-effect.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="case-studyselected.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>
@@ -393,7 +389,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/yufree/metaworkflow/edit/master/13-Reference.Rmd",
+"link": "https://github.com/yufree/metaworkflow/edit/master/12-Reference.Rmd",
 "text": "Edit"
 },
 "download": null,

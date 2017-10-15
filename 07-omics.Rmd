@@ -16,4 +16,6 @@ Pathwat analysis maps annotated data into known pathway and make statistical ana
 
 [Mummichog](https://code.google.com/archive/p/atcg/wikis/mummichog_for_metabolomics.wiki) could make pathway and network analysis without annotation. 
 
+[MSS](http://web1.sph.emory.edu/users/tyu8/MSS): sequential feature screening procedure to select important sub-network and identify the optimal matching for metabolimics data [@cai2017]
+
 ## Omics integration
