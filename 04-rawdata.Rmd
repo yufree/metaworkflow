@@ -28,6 +28,8 @@ Without fracmental infomation about certain compound, the peak extraction would 
 
 However, before you get the peaks, some corrections should be performed such as mass shift and retention time shift. The basic idea behind retention time correction is that use the high quality grouped peaks to make a new retention time. You might choose obiwarp or loess regression method to get the corrected retention time for all of the samples. Remember the original retention times might be changed and you might need cross-correct the data.
 
+[@fu2017] show a matlab based shift correction methods
+
 ## Dynamic Range
 
 Another issue is the Dynamic Range. For metabolomics, peaks could be below the detection limit or over the detection limit. Such Dynamic range issues might raise the loss of information.
@@ -70,6 +72,10 @@ Unsupervised methods only consider the normalization peaks intensity distributio
 Supervised methods will use the group information or batch information in experimental design to normalize the data. A linear model is always used to model the unwanted variances and remove them for further analysis.
 
 Since the real batch effects are always unknown, it's hard to make validation for different normalization methods. Wu et.al preferred to make comparision between new methods and conventional methods[@wu2016]. Li et.al developed NOREVA to make comparision among 25 correction method[@li2017a]. Another idea is use spiked-in samples to validate the methods[@franceschi2012], which might be good for targeted analysis instead of non-targeted analysis.
+
+Relative log abundance (RLA) plots[@delivera2012] and heatmap often used to show the variances among the samples.
+
+[@thonusin2017] some methods for batch correction in excel
 
 ### Unsupervised methods
 

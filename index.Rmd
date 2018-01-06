@@ -10,6 +10,7 @@ biblio-style: apalike
 link-citations: yes
 github-repo: yufree/metaworkflow
 description: "This is a workflow for metabolomics studies."
+always_allow_html: yes
 ---
 
 # Preface {-}

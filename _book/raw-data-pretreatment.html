@@ -25,7 +25,7 @@
 <meta name="author" content="Miao YU">
 
 
-<meta name="date" content="2017-10-15">
+<meta name="date" content="2018-01-06">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -47,6 +47,10 @@
 
 
 
+<script src="libs/htmlwidgets-0.9/htmlwidgets.js"></script>
+<script src="libs/viz-0.3/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-0.9.2/grViz.js"></script>
 
 
 <style type="text/css">
@@ -126,6 +130,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1.5.3" data-path="introduction.html"><a href="introduction.html#compounds-database"><i class="fa fa-check"></i><b>1.5.3</b> Compounds Database</a></li>
 <li class="chapter" data-level="1.5.4" data-path="introduction.html"><a href="introduction.html#pathway-database"><i class="fa fa-check"></i><b>1.5.4</b> Pathway Database</a></li>
 </ul></li>
+<li class="chapter" data-level="1.6" data-path="introduction.html"><a href="introduction.html#workflow"><i class="fa fa-check"></i><b>1.6</b> Workflow</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="exprimental-designdoe.html"><a href="exprimental-designdoe.html"><i class="fa fa-check"></i><b>2</b> Exprimental design(DoE)</a></li>
 <li class="chapter" data-level="3" data-path="pretreatment.html"><a href="pretreatment.html"><i class="fa fa-check"></i><b>3</b> Pretreatment</a><ul>
@@ -213,18 +218,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul>
 <p>GC/LC-MS data are usually be shown as a matrix with column standing for retention times and row standing for masses. Noises are so much that such data could not be processed effeciently.</p>
 <div class="figure"><span id="fig:singledata"></span>
-<img src="images/singledata.png" alt="Demo of GC/LC-MS data" width="636" />
-<p class="caption">
-Figure 4.1: Demo of GC/LC-MS data
-</p>
+<img src="images/singledata.png" alt="Demo of GC/LC-MS data" />
+<p class="caption">Figure 4.1: Demo of GC/LC-MS data</p>
 </div>
 <p>Conversation from the mass-retention time matrix into a vector with selected MS peaks at certain retention time is the basic idea of the Raw data pretreatment. The <strong>Centwave</strong> algorithm<span class="citation">(Tautenhahn, Böttcher, and Neumann <a href="#ref-tautenhahn2008">2008</a>)</span> based on detection of regions of interest(ROI) and the following Continuous Wavelet Transform (CWT) for the peaks is preferred for high-resolution mass spectrum.</p>
 <p>With many groups of samples, you will get another data matrix with column standing for ions at cerntain retention time and row standing for samples after the Raw data pretreatment.</p>
 <div class="figure"><span id="fig:multidata"></span>
-<img src="images/multidata.png" alt="Demo of many GC/LC-MS data" width="633" />
-<p class="caption">
-Figure 4.2: Demo of many GC/LC-MS data
-</p>
+<img src="images/multidata.png" alt="Demo of many GC/LC-MS data" />
+<p class="caption">Figure 4.2: Demo of many GC/LC-MS data</p>
 </div>
 <div id="spectral-deconvolution" class="section level2">
 <h2><span class="header-section-number">4.1</span> Spectral deconvolution</h2>
@@ -233,6 +234,7 @@ Figure 4.2: Demo of many GC/LC-MS data
 <div id="retention-time-correction" class="section level2">
 <h2><span class="header-section-number">4.2</span> Retention Time Correction</h2>
 <p>However, before you get the peaks, some corrections should be performed such as mass shift and retention time shift. The basic idea behind retention time correction is that use the high quality grouped peaks to make a new retention time. You might choose obiwarp or loess regression method to get the corrected retention time for all of the samples. Remember the original retention times might be changed and you might need cross-correct the data.</p>
+<p><span class="citation">(Fu et al. <a href="#ref-fu2017">2017</a>)</span> show a matlab based shift correction methods</p>
 </div>
 <div id="dynamic-range" class="section level2">
 <h2><span class="header-section-number">4.3</span> Dynamic Range</h2>
@@ -290,6 +292,8 @@ tfit &lt;-<span class="st"> </span><span class="kw">tobit</span>(y <span class="
 <p>Unsupervised methods only consider the normalization peaks intensity distribution across the samples. For example, quantile calibration try to make the intensity distribution among the samples similar. Such methods are preferred to explore the inner structures of the samples. Internal standards or pool QC samples also belong to this category. However, it’s hard to take a few peaks standing for all peaks extracted.</p>
 <p>Supervised methods will use the group information or batch information in experimental design to normalize the data. A linear model is always used to model the unwanted variances and remove them for further analysis.</p>
 <p>Since the real batch effects are always unknown, it’s hard to make validation for different normalization methods. Wu et.al preferred to make comparision between new methods and conventional methods<span class="citation">(Wu and Li <a href="#ref-wu2016">2016</a>)</span>. Li et.al developed NOREVA to make comparision among 25 correction method<span class="citation">(Li et al. <a href="#ref-li2017a">2017</a>)</span>. Another idea is use spiked-in samples to validate the methods<span class="citation">(Franceschi et al. <a href="#ref-franceschi2012">2012</a>)</span>, which might be good for targeted analysis instead of non-targeted analysis.</p>
+<p>Relative log abundance (RLA) plots<span class="citation">(De Livera et al. <a href="#ref-delivera2012">2012</a>)</span> and heatmap often used to show the variances among the samples.</p>
+<p><span class="citation">(Thonusin et al. <a href="#ref-thonusin2017">2017</a>)</span> some methods for batch correction in excel</p>
 <div id="unsupervised-methods" class="section level3">
 <h3><span class="header-section-number">4.6.1</span> Unsupervised methods</h3>
 <div id="distribution-of-intensity" class="section level4">
@@ -485,28 +489,37 @@ T_k^0 = \frac{d_{0k}^2}{\sum_{l=1}^{n-df}d_{0l}^2}
 <p>Du, Xiuxia, and Steven H Zeisel. 2013. “SPECTRAL DECONVOLUTION FOR GAS CHROMATOGRAPHY MASS SPECTROMETRY-BASED METABOLOMICS: CURRENT STATUS AND FUTURE PERSPECTIVES.” <em>Computational and Structural Biotechnology Journal</em> 4 (5): 1–10. doi:<a href="https://doi.org/10.5936/csbj.201301013">10.5936/csbj.201301013</a>.</p>
 </div>
 <div id="ref-domingo-almenara2016">
-<p>Domingo-Almenara, Xavier, Jesus Brezmes, Maria Vinaixa, Sara Samino, Noelia Ramirez, Marta Ramon-Krauel, Carles Lerin, et al. 2016. “eRah: A Computational Tool Integrating Spectral Deconvolution and Alignment with Quantification and Identification of Metabolites in GC/MS-Based Metabolomics.” <em>Analytical Chemistry</em> 88 (19): 9821–9. doi:<a href="https://doi.org/10.1021/acs.analchem.6b02927">10.1021/acs.analchem.6b02927</a>.</p>
+<p>Domingo-Almenara, Xavier, Jesus Brezmes, Maria Vinaixa, Sara Samino, Noelia Ramirez, Marta Ramon-Krauel, Carles Lerin, et al. 2016. “eRah: A Computational Tool Integrating Spectral Deconvolution and Alignment with Quantification and Identification of Metabolites in GC/MS-Based Metabolomics.” <em>Anal. Chem.</em> 88 (19): 9821–9. doi:<a href="https://doi.org/10.1021/acs.analchem.6b02927">10.1021/acs.analchem.6b02927</a>.</p>
 </div>
 <div id="ref-ni2016">
-<p>Ni, Yan, Mingming Su, Yunping Qiu, Wei Jia, and Xiuxia Du. 2016. “ADAP-GC 3.0: Improved Peak Detection and Deconvolution of Co-Eluting Metabolites from GC/TOF-MS Data for Metabolomics Studies.” <em>Analytical Chemistry</em> 88 (17): 8802–11. doi:<a href="https://doi.org/10.1021/acs.analchem.6b02222">10.1021/acs.analchem.6b02222</a>.</p>
+<p>Ni, Yan, Mingming Su, Yunping Qiu, Wei Jia, and Xiuxia Du. 2016. “ADAP-GC 3.0: Improved Peak Detection and Deconvolution of Co-Eluting Metabolites from GC/TOF-MS Data for Metabolomics Studies.” <em>Anal. Chem.</em> 88 (17): 8802–11. doi:<a href="https://doi.org/10.1021/acs.analchem.6b02222">10.1021/acs.analchem.6b02222</a>.</p>
+</div>
+<div id="ref-fu2017">
+<p>Fu, Hai-Yan, Ou Hu, Yue-Ming Zhang, Li Zhang, Jing-Jing Song, Peang Lu, Qing-Xia Zheng, et al. 2017. “Mass-Spectra-Based Peak Alignment for Automatic Nontargeted Metabolic Profiling Analysis for Biomarker Screening in Plant Samples.” <em>Journal of Chromatography A</em> 1513 (Supplement C): 201–9. doi:<a href="https://doi.org/10.1016/j.chroma.2017.07.044">10.1016/j.chroma.2017.07.044</a>.</p>
 </div>
 <div id="ref-lisec2016">
-<p>Lisec, Jan, Friederike Hoffmann, Clemens Schmitt, and Carsten Jaeger. 2016. “Extending the Dynamic Range in Metabolomics Experiments by Automatic Correction of Peaks Exceeding the Detection Limit.” <em>Analytical Chemistry</em> 88 (15): 7487–92. doi:<a href="https://doi.org/10.1021/acs.analchem.6b02515">10.1021/acs.analchem.6b02515</a>.</p>
+<p>Lisec, Jan, Friederike Hoffmann, Clemens Schmitt, and Carsten Jaeger. 2016. “Extending the Dynamic Range in Metabolomics Experiments by Automatic Correction of Peaks Exceeding the Detection Limit.” <em>Anal. Chem.</em> 88 (15): 7487–92. doi:<a href="https://doi.org/10.1021/acs.analchem.6b02515">10.1021/acs.analchem.6b02515</a>.</p>
 </div>
 <div id="ref-wu2016">
 <p>Wu, Yiman, and Liang Li. 2016. “Sample Normalization Methods in Quantitative Metabolomics.” <em>Journal of Chromatography A</em>, Editors’ choice x, 1430 (January): 80–95. doi:<a href="https://doi.org/10.1016/j.chroma.2015.12.007">10.1016/j.chroma.2015.12.007</a>.</p>
 </div>
 <div id="ref-li2017a">
-<p>Li, Bo, Jing Tang, Qingxia Yang, Shuang Li, Xuejiao Cui, Yinghong Li, Yuzong Chen, Weiwei Xue, Xiaofeng Li, and Feng Zhu. 2017. “NOREVA: Normalization and Evaluation of MS-Based Metabolomics Data.” <em>Nucleic Acids Research</em> 45 (W1): W162–W170. doi:<a href="https://doi.org/10.1093/nar/gkx449">10.1093/nar/gkx449</a>.</p>
+<p>Li, Bo, Jing Tang, Qingxia Yang, Shuang Li, Xuejiao Cui, Yinghong Li, Yuzong Chen, Weiwei Xue, Xiaofeng Li, and Feng Zhu. 2017. “NOREVA: Normalization and Evaluation of MS-Based Metabolomics Data.” <em>Nucleic Acids Res</em> 45 (W1): W162–W170. doi:<a href="https://doi.org/10.1093/nar/gkx449">10.1093/nar/gkx449</a>.</p>
 </div>
 <div id="ref-franceschi2012">
-<p>Franceschi, Pietro, Domenico Masuero, Urska Vrhovsek, Fulvio Mattivi, and Ron Wehrens. 2012. “A Benchmark Spike-in Data Set for Biomarker Identification in Metabolomics.” <em>Journal of Chemometrics</em> 26 (1-2): 16–24. doi:<a href="https://doi.org/10.1002/cem.1420">10.1002/cem.1420</a>.</p>
+<p>Franceschi, Pietro, Domenico Masuero, Urska Vrhovsek, Fulvio Mattivi, and Ron Wehrens. 2012. “A Benchmark Spike-in Data Set for Biomarker Identification in Metabolomics.” <em>J. Chemometrics</em> 26 (1-2): 16–24. doi:<a href="https://doi.org/10.1002/cem.1420">10.1002/cem.1420</a>.</p>
+</div>
+<div id="ref-delivera2012">
+<p>De Livera, Alysha M., Daniel A. Dias, David De Souza, Thusitha Rupasinghe, James Pyke, Dedreia Tull, Ute Roessner, Malcolm McConville, and Terence P. Speed. 2012. “Normalizing and Integrating Metabolomics Data.” <em>Anal. Chem.</em> 84 (24): 10768–76. doi:<a href="https://doi.org/10.1021/ac302748b">10.1021/ac302748b</a>.</p>
+</div>
+<div id="ref-thonusin2017">
+<p>Thonusin, Chanisa, Heidi B. IglayReger, Tanu Soni, Amy E. Rothberg, Charles F. Burant, and Charles R. Evans. 2017. “Evaluation of Intensity Drift Correction Strategies Using MetaboDrift, a Normalization Tool for Multi-Batch Metabolomics Data.” <em>Journal of Chromatography A</em>, Pushing the boundaries of chromatography and electrophoresis, 1523 (Supplement C): 265–74. doi:<a href="https://doi.org/10.1016/j.chroma.2017.09.023">10.1016/j.chroma.2017.09.023</a>.</p>
 </div>
 <div id="ref-kuligowski2015">
 <p>Kuligowski, Julia, Ángel Sánchez-Illana, Daniel Sanjuán-Herráez, Máximo Vento, and Guillermo Quintás. 2015. “Intra-Batch Effect Correction in Liquid Chromatography-Mass Spectrometry Using Quality Control Samples and Support Vector Regression (QC-SVRC).” <em>Analyst</em> 140 (22): 7810–7. doi:<a href="https://doi.org/10.1039/C5AN01638J">10.1039/C5AN01638J</a>.</p>
 </div>
 <div id="ref-wang2013">
-<p>Wang, San-Yuan, Ching-Hua Kuo, and Yufeng J. Tseng. 2013. “Batch Normalizer: A Fast Total Abundance Regression Calibration Method to Simultaneously Adjust Batch and Injection Order Effects in Liquid Chromatography/Time-of-Flight Mass Spectrometry-Based Metabolomics Data and Comparison with Current Calibration Methods.” <em>Analytical Chemistry</em> 85 (2): 1037–46. doi:<a href="https://doi.org/10.1021/ac302877x">10.1021/ac302877x</a>.</p>
+<p>Wang, San-Yuan, Ching-Hua Kuo, and Yufeng J. Tseng. 2013. “Batch Normalizer: A Fast Total Abundance Regression Calibration Method to Simultaneously Adjust Batch and Injection Order Effects in Liquid Chromatography/Time-of-Flight Mass Spectrometry-Based Metabolomics Data and Comparison with Current Calibration Methods.” <em>Anal. Chem.</em> 85 (2): 1037–46. doi:<a href="https://doi.org/10.1021/ac302877x">10.1021/ac302877x</a>.</p>
 </div>
 <div id="ref-leek2012">
 <p>Leek, Jeffrey T., W. Evan Johnson, Hilary S. Parker, Andrew E. Jaffe, and John D. Storey. 2012. “The Sva Package for Removing Batch Effects and Other Unwanted Variation in High-Throughput Experiments.” <em>Bioinformatics</em> 28 (6): 882–83. doi:<a href="https://doi.org/10.1093/bioinformatics/bts034">10.1093/bioinformatics/bts034</a>.</p>
@@ -515,13 +528,13 @@ T_k^0 = \frac{d_{0k}^2}{\sum_{l=1}^{n-df}d_{0l}^2}
 <p>Leek, Jeffrey T., and John D. Storey. 2007. “Capturing Heterogeneity in Gene Expression Studies by Surrogate Variable Analysis.” <em>PLOS Genet</em> 3 (9): e161. doi:<a href="https://doi.org/10.1371/journal.pgen.0030161">10.1371/journal.pgen.0030161</a>.</p>
 </div>
 <div id="ref-leek2008">
-<p>Leek, Jeffrey T., and John D. Storey. 2007. “Capturing Heterogeneity in Gene Expression Studies by Surrogate Variable Analysis.” <em>PLOS Genet</em> 3 (9): e161. doi:<a href="https://doi.org/10.1371/journal.pgen.0030161">10.1371/journal.pgen.0030161</a>.</p> 2008. “A General Framework for Multiple Testing Dependence.” <em>Proceedings of the National Academy of Sciences</em> 105 (48): 18718–23. doi:<a href="https://doi.org/10.1073/pnas.0808709105">10.1073/pnas.0808709105</a>.</p>
+<p>Leek, Jeffrey T., and John D. Storey. 2007. “Capturing Heterogeneity in Gene Expression Studies by Surrogate Variable Analysis.” <em>PLOS Genet</em> 3 (9): e161. doi:<a href="https://doi.org/10.1371/journal.pgen.0030161">10.1371/journal.pgen.0030161</a>.</p> 2008. “A General Framework for Multiple Testing Dependence.” <em>PNAS</em> 105 (48): 18718–23. doi:<a href="https://doi.org/10.1073/pnas.0808709105">10.1073/pnas.0808709105</a>.</p>
 </div>
 <div id="ref-karpievitch2014a">
 <p>Karpievitch, Yuliya V., Sonja B. Nikolic, Richard Wilson, James E. Sharman, and Lindsay M. Edwards. 2014. “Metabolomics Data Normalization with EigenMS.” <em>PLOS ONE</em> 9 (12): e116221. doi:<a href="https://doi.org/10.1371/journal.pone.0116221">10.1371/journal.pone.0116221</a>.</p>
 </div>
 <div id="ref-livera2015">
-<p>Livera, Alysha M. De, Marko Sysi-Aho, Laurent Jacob, Johann A. Gagnon-Bartsch, Sandra Castillo, Julie A. Simpson, and Terence P. Speed. 2015. “Statistical Methods for Handling Unwanted Variation in Metabolomics Data.” <em>Analytical Chemistry</em> 87 (7): 3606–15. doi:<a href="https://doi.org/10.1021/ac502439y">10.1021/ac502439y</a>.</p>
+<p>Livera, Alysha M. De, Marko Sysi-Aho, Laurent Jacob, Johann A. Gagnon-Bartsch, Sandra Castillo, Julie A. Simpson, and Terence P. Speed. 2015. “Statistical Methods for Handling Unwanted Variation in Metabolomics Data.” <em>Anal. Chem.</em> 87 (7): 3606–15. doi:<a href="https://doi.org/10.1021/ac502439y">10.1021/ac502439y</a>.</p>
 </div>
 <div id="ref-jr2017">
 <p>Jr, Stephen Salerno, Mahya Mehrmohamadi, Maria V. Liberti, Muting Wan, Martin T. Wells, James G. Booth, and Jason W. Locasale. 2017. “RRmix: A Method for Simultaneous Batch Effect Correction and Analysis of Metabolomics Data in the Absence of Internal Standards.” <em>PLOS ONE</em> 12 (6): e0179530. doi:<a href="https://doi.org/10.1371/journal.pone.0179530">10.1371/journal.pone.0179530</a>.</p>
