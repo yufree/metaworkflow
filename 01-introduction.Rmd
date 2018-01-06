@@ -7,7 +7,7 @@ Information in living organism commuicates along the Genomics, Transcriptomics, 
 According to this book section[@kusonmano2016]:
 
 ```{r history, fig.show='hold', fig.cap='Metabolomics timeline during pre- and post-metabolomics era',echo=FALSE}
-knitr::include_graphics('images/metahistory.gif')
+knitr::include_graphics('images/metahistory.jpg')
 ```
 
 - 2000-1500 BC some traditional Chinese doctors who began to evaluate the glucose level in urine of diabetic patients using ants
