@@ -12,7 +12,7 @@
   <meta property="og:title" content="Meta-Workflow" />
   <meta property="og:type" content="book" />
   
-  
+  <meta property="og:image" content="images/cover.png" />
   <meta property="og:description" content="This is a workflow for metabolomics studies." />
   <meta name="github-repo" content="yufree/metaworkflow" />
 
@@ -20,12 +20,12 @@
   <meta name="twitter:title" content="Meta-Workflow" />
   
   <meta name="twitter:description" content="This is a workflow for metabolomics studies." />
-  
+  <meta name="twitter:image" content="images/cover.png" />
 
 <meta name="author" content="Miao YU">
 
 
-<meta name="date" content="2018-01-06">
+<meta name="date" content="2018-01-18">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -218,14 +218,18 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul>
 <p>GC/LC-MS data are usually be shown as a matrix with column standing for retention times and row standing for masses. Noises are so much that such data could not be processed effeciently.</p>
 <div class="figure"><span id="fig:singledata"></span>
-<img src="images/singledata.png" alt="Demo of GC/LC-MS data" />
-<p class="caption">Figure 4.1: Demo of GC/LC-MS data</p>
+<img src="images/singledata.png" alt="Demo of GC/LC-MS data" width="636" />
+<p class="caption">
+Figure 4.1: Demo of GC/LC-MS data
+</p>
 </div>
 <p>Conversation from the mass-retention time matrix into a vector with selected MS peaks at certain retention time is the basic idea of the Raw data pretreatment. The <strong>Centwave</strong> algorithm<span class="citation">(Tautenhahn, Böttcher, and Neumann <a href="#ref-tautenhahn2008">2008</a>)</span> based on detection of regions of interest(ROI) and the following Continuous Wavelet Transform (CWT) for the peaks is preferred for high-resolution mass spectrum.</p>
 <p>With many groups of samples, you will get another data matrix with column standing for ions at cerntain retention time and row standing for samples after the Raw data pretreatment.</p>
 <div class="figure"><span id="fig:multidata"></span>
-<img src="images/multidata.png" alt="Demo of many GC/LC-MS data" />
-<p class="caption">Figure 4.2: Demo of many GC/LC-MS data</p>
+<img src="images/multidata.png" alt="Demo of many GC/LC-MS data" width="633" />
+<p class="caption">
+Figure 4.2: Demo of many GC/LC-MS data
+</p>
 </div>
 <div id="spectral-deconvolution" class="section level2">
 <h2><span class="header-section-number">4.1</span> Spectral deconvolution</h2>
@@ -578,7 +582,7 @@ gitbook.start({
 "link": "https://github.com/yufree/metaworkflow/edit/master/04-rawdata.Rmd",
 "text": "Edit"
 },
-"download": null,
+"download": ["Metabolomics.pdf", "Metabolomics.epub"],
 "toc": {
 "collapse": "subsection"
 }

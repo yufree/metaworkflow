@@ -84,6 +84,23 @@ res <- gtrends(c("metabolomics", "metabolomics"), geo = c("CA","US"))
 plot(res)
 ```
 
+```{r}
+library(rentrez)
+papers_by_year <- function(years, search_term){
+    return(sapply(years, function(y) entrez_search(db="pubmed",term=search_term, mindate=y, maxdate=y, retmax=0)$count))
+}
+years <- 1987:2017
+total_papers <- papers_by_year(years, "")
+omics <- c("genomic", "epigenomic", "metabolomics", "metagenomic", "proteomic", "transcriptomic", "pharmacogenomic", "connectomic")
+trend_data <- sapply(omics, function(t) papers_by_year(years, t))
+trend_props <- trend_data/total_papers
+library(reshape)
+library(ggplot2)
+trend_df <- melt(data.frame(years, trend_data), id.vars="years")
+p <- ggplot(trend_df, aes(years, value, colour=variable))
+p + geom_line(size=1) + scale_y_log10("number of papers")
+```
+
 ### Quantitative Metabolomics
 
 Those papers [@kapoore2016b; @jorge2016a].
