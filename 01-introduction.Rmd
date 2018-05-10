@@ -1,6 +1,6 @@
 # Introduction
 
-Information in living organism commuicates along the Genomics, Transcriptomics, Proteomics and Metabolomics in Central dogma. Following such stream, we might answer certain problems in different scales from individual, population, community to ecosystem. Metabolomics (i.e., the profiling and quantitation of metabolites in body fluids) is a relatively new field of "omics" studies. Different from other omics studies, metabolomics always focused on small moleculars with much lower mass than polypeptide, around m/z 100-1000. Metabolomics studies are always performed in GC/MS, GC*GC/MS[@tian2016], LC/MS or NMR. This workflow concerns mass spectrum based metabolomics.
+Information in living organism commuicates along the Genomics, Transcriptomics, Proteomics and Metabolomics in Central dogma. Following such stream, we might answer certain problems in different scales from individual, population, community to ecosystem. Metabolomics (i.e., the profiling and quantitation of metabolites in body fluids) is a relatively new field of "omics" studies. Different from other omics studies, metabolomics always focused on small moleculars with much lower mass than polypeptide with single or doubled charged ions. Metabolomics studies are always performed in GC-MS, GC*GC-MS[@tian2016], LC-MS, LC-MS/MS or NMR. This workflow would only cover mass spectrometry based metabolomics or XC-MS based research.
 
 ## History
 
@@ -143,7 +143,7 @@ See this paper[@haug2017]:
 
 - [MZcloud](https://www.mzcloud.org/)
 
-- [NIST](https://www.nist.gov/srd/nist-standard-reference-database-1a-v17): No free
+- [NIST](https://www.nist.gov/srd/nist-standard-reference-database-1a-v17): Not free
 
 #### MS
 

@@ -1,8 +1,24 @@
 # Annotation
 
-When you get the peaks table or features table, annotation of the peaks would help you. Obviously, peaks with similar retention time might come from the same compound such as isotopic peaks, addictions from the analysis process. **CAMERA** [@kuhl2012] or **Ramcluster**[@broeckling2014] package could be used to make such annotation. Also this package could be used to group the peaks together for further analysis.
+When you get the peaks table or features table, annotation of the peaks would help you. Check this review[@domingo-almenara2018] for a detailed notes on annotation. They proposed five levels regarding currently computational annotation strategies.
 
-There are two major annotation ideas:  multi-stage MS analysis and similarity analysis. The former requires certain instruments and database for MS/MS data. The later needs algorithms to predict the structures. This is a nice review for annotation[@allard2017].
+- Level 1: Peak Grouping: MS Psedospectra extraction based on peak shape similarity and peak abundance correlation
+
+- Level 2: Peak Annotation: Adducts, Neutral losses, isotopes, and other mass relationships based on mass distances
+
+- Level 3: Biochemical knowledge based on putative identification, potential biochemical reaction and related statistical analysis 
+
+- Level 4: Use and intergration of tandem MS data based on data dependant/independent acquistion mode or **in silico** predction
+
+- Level 5: Retention time prediction based on library-available retention index or quantitative structure-retnetion relationships (QSRR) models.
+
+Most of the softwares are at level 1 or 2. 
+
+## Issues in annotation
+
+The major issue in annotation is the redundancy peaks from same metabolite. Unlike genomcis, peaks or featuers from peak selection are not independant with each other. Adducts, in-source fragments and isotopes would lead to missannotation. A commen solution is that use known adducts, neutral losses, molecular multimers or multipley charged ions to compare mass distances.
+
+Another issue is about the MS/MS database. Only 10% of known metabolites in databases have experimental spectral data. Thus **in silico** prediction are required. Some works try to fill the gap between experimental data, theoretical values(from chemical database like chemspider) and prediction together. Here is a nice review about MS/MS prediction[@hufsky2014].
 
 ## Annotation v.s. identification
 
@@ -14,17 +30,3 @@ According to the defination from the Chemical Analysis Working Group of the Meta
 - Level 4 'Unknown'
 
 In practice, data analysis based annotation could reach level 2. For level 1, we need at extra methods such as MS/MS, retention time, accurate mass, 2D NMR spectra, and so on to confirm the compounds. However, standards are always required for solid proof.
-
-## Network analysis
-
-Network analysis is based on the inner correlationship in the data and make network analysis at peaks' level instand of annotated compounds. Usually such analysis could also be used to annotated peaks with supports from mass spectrum database. [GNPS](https://gnps.ucsd.edu/ProteoSAFe/static/gnps-splash.jsp) use such ananlysis to annotate the data, as well as [Metscape](http://metscape.med.umich.edu/) based on Debiased Sparse Partial Correlation (DSPC) algorithm[@basu2017].
-
-## Tools
-
-- [Plantmat](https://sourceforge.net/projects/plantmat/): excel library based pridiction for plant metabolites[@qiu2016].
-
-- [MetFamily](https://msbi.ipb-halle.de/MetFamily/): Shiny app for MS and MS/MS data annotation[@treutler2016c].
-
-- [xMSannotator](https://sourceforge.net/projects/xmsannotator/): R pacakges, from Emory University[@uppal2017].
-
-- [Lipidmatch](http://secim.ufl.edu/secim-tools/lipidmatch/): in silico lipid mass spectrum search [@koelmel2017]

@@ -1,0 +1,121 @@
+# Software/Application/Website
+
+## Rocker image
+
+## Peak picking
+
+### MS-DIAL
+
+### MetDIA
+
+## Batch correction
+
+## Annotation
+
+### CAMERA
+
+Common [annotation](https://bioconductor.org/packages/release/bioc/html/CAMERA.html) for xcms workflow[@kuhl2012].
+
+### RAMClustR
+
+The software could be found [here](https://github.com/cbroeckl/RAMClustR)[@broeckling2014]. The package included a vignette as usages. Use the following code to read:
+
+```{r RAMClustR,eval=FALSE}
+vignette('RAMClustR',package = 'RAMClustR')
+```
+
+### xMSannotator
+
+The software could be found [here](https://github.com/yufree/xMSannotator)[@uppal2017].
+
+### mzmatch
+
+Use the following code to install this package:
+
+```{r mzmatch,eval=FALSE}
+source("http://bioconductor.org/biocLite.R")
+biocLite(c("xcms", "multtest", "mzR"))
+install.packages(c("rJava", "XML", "snow", "caTools",
+   "bitops", "ptw", "gplots", "tcltk2"))
+source ("http://puma.ibls.gla.ac.uk/mzmatch.R/install_mzmatch.R")
+```
+
+### mz.unity
+
+You could find source code [here](https://github.com/nathaniel-mahieu/mz.unity)[@mahieu2016a].
+
+### MAIT
+
+You could find source code [here](https://github.com/jpgroup/MAIT)[@fernandez-albert2014a].
+
+### ProbMetab
+
+You could find source code [here](https://github.com/rsilvabioinfo/ProbMetab)[@silva2014].
+
+### RAMSI
+
+You could find paper here[@baran2013].
+
+### MI-Pack
+
+You could find python software [here](http://www.biosciences-labs.bham.ac.uk/viant/mipack/)[@weber2010]
+
+### Plantmat
+
+[excel library](https://sourceforge.net/projects/plantmat/) based pridiction for plant metabolites[@qiu2016].
+
+### MetFamily
+
+[Shiny app](https://msbi.ipb-halle.de/MetFamily/) for MS and MS/MS data annotation[@treutler2016c].
+
+### Lipidmatch
+
+[in silico](http://secim.ufl.edu/secim-tools/lipidmatch/): in silico lipid mass spectrum search[@koelmel2017].
+
+### MolFind
+
+JAVA based [MolFind](http://metabolomics.pharm.uconn.edu/?q=Software.html) could make annotation for unknown chemical structure by prediction based on RI, ECOM50, drift time and CID spectra[@menikarachchi2012].
+
+### MetFusion
+
+Java based [integration](https://github.com/mgerlich/MetFusion) of compound identiﬁcation strategies. You could access the application [here](https://msbi.ipb-halle.de/MetFusion/)[@gerlich2013].
+
+### MS-FINDER
+
+[Workflow](http://prime.psc.riken.jp/Metabolomics_Software/MS-FINDER/) for metabolomics from Riken. They update their database frequently[@tsugawa2016].
+
+### CSI:FingerID
+
+This application has been integrated into [SIRIUS](https://bio.informatik.uni-jena.de/software/sirius/)[@duhrkop2015]. It's also based on prediction.
+
+### iMet
+
+This online [application](http://imet.seeslab.net/) is a network-based computation method for annotation[@aguilar-mogas2017].
+
+### Metscape
+
+[Metscape](http://metscape.med.umich.edu/) based on Debiased Sparse Partial Correlation (DSPC) algorithm[@basu2017] to make annotation.
+
+### MetFrag
+
+[MetFrag](http://c-ruttkies.github.io/MetFrag/) could be used to make **in silico** prediction/match of MS/MS data[@ruttkies2016].
+
+### LipidFrag
+
+[LipidFrag](https://msbi.ipb-halle.de/msbi/lipidfrag)  could be used to make **in silico** prediction/match of lipid related MS/MS data[@witting2017].
+
+### MycompoundID
+
+[MycompoundID](http://www.mycompoundid.org/mycompoundid_IsoMS/single.jsp) could be used to search known and unknown metabolites[@li2013a] online.
+
+### CFM-ID
+
+[CFM-ID](https://sourceforge.net/projects/cfm-id/) use Metlin's data to make prediction[@allen2014].
+
+### GNPS
+
+[GNPS](https://gnps.ucsd.edu/ProteoSAFe/static/gnps-splash.jsp) use  inner correlationship in the data and make network analysis at peaks' level instand of annotated compounds to annotate the data[@wang2016b].
+
+### Metlin
+
+[Metlin](https://metlin.scripps.edu/) is another useful online application for annotation[@guijas2018].

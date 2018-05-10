@@ -16,3 +16,7 @@
 ## Interestion papers
 
 - Ionmoics[@konz2017]
+
+## Environmental pulltions
+
+- BDE-3[@wei2018a]

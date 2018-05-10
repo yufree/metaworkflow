@@ -16,11 +16,17 @@ always_allow_html: yes
 
 # Preface {-}
 
+This is an online handout for data analysis in mass spectrometry based metabolomics. It would cover a full reproducible metabolomics workflow for data analysis and important topics related to metabolomics. Here is a list:
+
+- Software selection
+- Pretreatment
+- Batch correction
+- Annotation
+- Omics analysis
+
 This is a book written in **Bookdown**. You could contribute it by a pull request in Github.
 
 [**R**](https://www.r-project.org/) and [**Rstudio**](https://www.rstudio.com/) are the softwares needed in this workflow.
-
-The software package used for metabolomics data analysis is **xcms**.
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
