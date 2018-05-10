@@ -78,7 +78,7 @@ This platform is composed by several R packages from Emory University including 
 
 ## Trends in Metabolomics
 
-```{r gtrends,eval=FALSE}
+```{r gtrends}
 library(gtrendsR)
 res <- gtrends(c("metabolomics", "metabolomics"), geo = c("CA","US"))
 plot(res)
