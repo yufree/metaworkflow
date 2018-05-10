@@ -6,7 +6,7 @@ So how to find the differences? In most metabolomics software, such task is comp
 
 In statistics, the false discovery rate(FDR) control is always mentioned in omics studies for mutiple tests. I suggested using q-values to control FDR. If q-value is less than 0.05, we should expect a lower than 5% chances we make the wrong selections for all of the comparisions showed lower q-values in the whole dataset. Also we could use local false discovery rate, which showed the FDR for certain peaks. However, such values are hard to be estimated accurately.
 
-Karin Ortmayr thought fold change might be better than p-values to find the differences[@ortmayr2016].
+Karin Ortmayr thought fold change might be better than p-values to find the differences[@ortmayr2016a].
 
 ## Peak misidentification
 

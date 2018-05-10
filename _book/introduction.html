@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Meta-Workflow</title>
   <meta name="description" content="This is a workflow for metabolomics studies.">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
   <meta property="og:title" content="Meta-Workflow" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Miao YU">
 
 
-<meta name="date" content="2018-01-18">
+<meta name="date" content="2018-05-10">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -47,10 +47,10 @@
 
 
 
-<script src="libs/htmlwidgets-0.9/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/grViz-binding-0.9.2/grViz.js"></script>
+<script src="libs/grViz-binding-1.0.0/grViz.js"></script>
 
 
 <style type="text/css">
@@ -155,13 +155,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.1" data-path="peaks-selection.html"><a href="peaks-selection.html#peak-misidentification"><i class="fa fa-check"></i><b>5.1</b> Peak misidentification</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="annotation.html"><a href="annotation.html"><i class="fa fa-check"></i><b>6</b> Annotation</a><ul>
-<li class="chapter" data-level="6.1" data-path="annotation.html"><a href="annotation.html#annotation-v.s.-identification"><i class="fa fa-check"></i><b>6.1</b> Annotation v.s. identification</a></li>
-<li class="chapter" data-level="6.2" data-path="annotation.html"><a href="annotation.html#network-analysis"><i class="fa fa-check"></i><b>6.2</b> Network analysis</a></li>
-<li class="chapter" data-level="6.3" data-path="annotation.html"><a href="annotation.html#tools"><i class="fa fa-check"></i><b>6.3</b> Tools</a></li>
+<li class="chapter" data-level="6.1" data-path="annotation.html"><a href="annotation.html#issues-in-annotation"><i class="fa fa-check"></i><b>6.1</b> Issues in annotation</a></li>
+<li class="chapter" data-level="6.2" data-path="annotation.html"><a href="annotation.html#annotation-v.s.-identification"><i class="fa fa-check"></i><b>6.2</b> Annotation v.s. identification</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>7</b> Omics analysis</a><ul>
 <li class="chapter" data-level="7.1" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-analysis"><i class="fa fa-check"></i><b>7.1</b> Pathway analysis</a></li>
-<li class="chapter" data-level="7.2" data-path="omics-analysis.html"><a href="omics-analysis.html#network-analysis-1"><i class="fa fa-check"></i><b>7.2</b> Network analysis</a></li>
+<li class="chapter" data-level="7.2" data-path="omics-analysis.html"><a href="omics-analysis.html#network-analysis"><i class="fa fa-check"></i><b>7.2</b> Network analysis</a></li>
 <li class="chapter" data-level="7.3" data-path="omics-analysis.html"><a href="omics-analysis.html#omics-integration"><i class="fa fa-check"></i><b>7.3</b> Omics integration</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html"><i class="fa fa-check"></i><b>8</b> Common analysis methods for metabolomics</a><ul>
@@ -183,10 +182,45 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="9.10" data-path="demo.html"><a href="demo.html#optimation-of-xcms"><i class="fa fa-check"></i><b>9.10</b> Optimation of XCMS</a></li>
 <li class="chapter" data-level="9.11" data-path="demo.html"><a href="demo.html#summary"><i class="fa fa-check"></i><b>9.11</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="case-studyselected.html"><a href="case-studyselected.html"><i class="fa fa-check"></i><b>10</b> Case Study(selected)</a><ul>
-<li class="chapter" data-level="10.1" data-path="case-studyselected.html"><a href="case-studyselected.html#cancer"><i class="fa fa-check"></i><b>10.1</b> Cancer</a></li>
-<li class="chapter" data-level="10.2" data-path="case-studyselected.html"><a href="case-studyselected.html#mental-health"><i class="fa fa-check"></i><b>10.2</b> Mental Health</a></li>
-<li class="chapter" data-level="10.3" data-path="case-studyselected.html"><a href="case-studyselected.html#interestion-papers"><i class="fa fa-check"></i><b>10.3</b> Interestion papers</a></li>
+<li class="chapter" data-level="10" data-path="softwareapplicationwebsite.html"><a href="softwareapplicationwebsite.html"><i class="fa fa-check"></i><b>10</b> Software/Application/Website</a><ul>
+<li class="chapter" data-level="10.1" data-path="softwareapplicationwebsite.html"><a href="softwareapplicationwebsite.html#rocker-image"><i class="fa fa-check"></i><b>10.1</b> Rocker image</a></li>
+<li class="chapter" data-level="10.2" data-path="softwareapplicationwebsite.html"><a href="softwareapplicationwebsite.html#peak-picking"><i class="fa fa-check"></i><b>10.2</b> Peak picking</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="softwareapplicationwebsite.html"><a href="softwareapplicationwebsite.html#ms-dial"><i class="fa fa-check"></i><b>10.2.1</b> MS-DIAL</a></li>
+<li class="chapter" data-level="10.2.2" data-path="softwareapplicationwebsite.html"><a href="softwareapplicationwebsite.html#metdia"><i class="fa fa-check"></i><b>10.2.2</b> MetDIA</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="softwareapplicationwebsite.html"><a href="softwareapplicationwebsite.html#batch-correction"><i class="fa fa-check"></i><b>10.3</b> Batch correction</a></li>
+<li class="chapter" data-level="10.4" data-path="softwareapplicationwebsite.html"><a href="softwareapplicationwebsite.html#annotation-2"><i class="fa fa-check"></i><b>10.4</b> Annotation</a><ul>
+<li class="chapter" data-level="10.4.1" data-path="softwareapplicationwebsite.html"><a href="softwareapplicationwebsite.html#camera"><i class="fa fa-check"></i><b>10.4.1</b> CAMERA</a></li>
+<li class="chapter" data-level="10.4.2" data-path="softwareapplicationwebsite.html"><a href="softwareapplicationwebsite.html#ramclustr"><i class="fa fa-check"></i><b>10.4.2</b> RAMClustR</a></li>
+<li class="chapter" data-level="10.4.3" data-path="softwareapplicationwebsite.html"><a href="softwareapplicationwebsite.html#xmsannotator"><i class="fa fa-check"></i><b>10.4.3</b> xMSannotator</a></li>
+<li class="chapter" data-level="10.4.4" data-path="softwareapplicationwebsite.html"><a href="softwareapplicationwebsite.html#mzmatch"><i class="fa fa-check"></i><b>10.4.4</b> mzmatch</a></li>
+<li class="chapter" data-level="10.4.5" data-path="softwareapplicationwebsite.html"><a href="softwareapplicationwebsite.html#mz.unity"><i class="fa fa-check"></i><b>10.4.5</b> mz.unity</a></li>
+<li class="chapter" data-level="10.4.6" data-path="softwareapplicationwebsite.html"><a href="softwareapplicationwebsite.html#mait"><i class="fa fa-check"></i><b>10.4.6</b> MAIT</a></li>
+<li class="chapter" data-level="10.4.7" data-path="softwareapplicationwebsite.html"><a href="softwareapplicationwebsite.html#probmetab"><i class="fa fa-check"></i><b>10.4.7</b> ProbMetab</a></li>
+<li class="chapter" data-level="10.4.8" data-path="softwareapplicationwebsite.html"><a href="softwareapplicationwebsite.html#ramsi"><i class="fa fa-check"></i><b>10.4.8</b> RAMSI</a></li>
+<li class="chapter" data-level="10.4.9" data-path="softwareapplicationwebsite.html"><a href="softwareapplicationwebsite.html#mi-pack"><i class="fa fa-check"></i><b>10.4.9</b> MI-Pack</a></li>
+<li class="chapter" data-level="10.4.10" data-path="softwareapplicationwebsite.html"><a href="softwareapplicationwebsite.html#plantmat"><i class="fa fa-check"></i><b>10.4.10</b> Plantmat</a></li>
+<li class="chapter" data-level="10.4.11" data-path="softwareapplicationwebsite.html"><a href="softwareapplicationwebsite.html#metfamily"><i class="fa fa-check"></i><b>10.4.11</b> MetFamily</a></li>
+<li class="chapter" data-level="10.4.12" data-path="softwareapplicationwebsite.html"><a href="softwareapplicationwebsite.html#lipidmatch"><i class="fa fa-check"></i><b>10.4.12</b> Lipidmatch</a></li>
+<li class="chapter" data-level="10.4.13" data-path="softwareapplicationwebsite.html"><a href="softwareapplicationwebsite.html#molfind"><i class="fa fa-check"></i><b>10.4.13</b> MolFind</a></li>
+<li class="chapter" data-level="10.4.14" data-path="softwareapplicationwebsite.html"><a href="softwareapplicationwebsite.html#metfusion"><i class="fa fa-check"></i><b>10.4.14</b> MetFusion</a></li>
+<li class="chapter" data-level="10.4.15" data-path="softwareapplicationwebsite.html"><a href="softwareapplicationwebsite.html#ms-finder"><i class="fa fa-check"></i><b>10.4.15</b> MS-FINDER</a></li>
+<li class="chapter" data-level="10.4.16" data-path="softwareapplicationwebsite.html"><a href="softwareapplicationwebsite.html#csifingerid"><i class="fa fa-check"></i><b>10.4.16</b> CSI:FingerID</a></li>
+<li class="chapter" data-level="10.4.17" data-path="softwareapplicationwebsite.html"><a href="softwareapplicationwebsite.html#imet"><i class="fa fa-check"></i><b>10.4.17</b> iMet</a></li>
+<li class="chapter" data-level="10.4.18" data-path="softwareapplicationwebsite.html"><a href="softwareapplicationwebsite.html#metscape"><i class="fa fa-check"></i><b>10.4.18</b> Metscape</a></li>
+<li class="chapter" data-level="10.4.19" data-path="softwareapplicationwebsite.html"><a href="softwareapplicationwebsite.html#metfrag"><i class="fa fa-check"></i><b>10.4.19</b> MetFrag</a></li>
+<li class="chapter" data-level="10.4.20" data-path="softwareapplicationwebsite.html"><a href="softwareapplicationwebsite.html#lipidfrag"><i class="fa fa-check"></i><b>10.4.20</b> LipidFrag</a></li>
+<li class="chapter" data-level="10.4.21" data-path="softwareapplicationwebsite.html"><a href="softwareapplicationwebsite.html#mycompoundid"><i class="fa fa-check"></i><b>10.4.21</b> MycompoundID</a></li>
+<li class="chapter" data-level="10.4.22" data-path="softwareapplicationwebsite.html"><a href="softwareapplicationwebsite.html#cfm-id"><i class="fa fa-check"></i><b>10.4.22</b> CFM-ID</a></li>
+<li class="chapter" data-level="10.4.23" data-path="softwareapplicationwebsite.html"><a href="softwareapplicationwebsite.html#gnps"><i class="fa fa-check"></i><b>10.4.23</b> GNPS</a></li>
+<li class="chapter" data-level="10.4.24" data-path="softwareapplicationwebsite.html"><a href="softwareapplicationwebsite.html#metlin"><i class="fa fa-check"></i><b>10.4.24</b> Metlin</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="case-studyselected.html"><a href="case-studyselected.html"><i class="fa fa-check"></i><b>11</b> Case Study(selected)</a><ul>
+<li class="chapter" data-level="11.1" data-path="case-studyselected.html"><a href="case-studyselected.html#cancer"><i class="fa fa-check"></i><b>11.1</b> Cancer</a></li>
+<li class="chapter" data-level="11.2" data-path="case-studyselected.html"><a href="case-studyselected.html#mental-health"><i class="fa fa-check"></i><b>11.2</b> Mental Health</a></li>
+<li class="chapter" data-level="11.3" data-path="case-studyselected.html"><a href="case-studyselected.html#interestion-papers"><i class="fa fa-check"></i><b>11.3</b> Interestion papers</a></li>
+<li class="chapter" data-level="11.4" data-path="case-studyselected.html"><a href="case-studyselected.html#environmental-pulltions"><i class="fa fa-check"></i><b>11.4</b> Environmental pulltions</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -211,7 +245,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="introduction" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
-<p>Information in living organism commuicates along the Genomics, Transcriptomics, Proteomics and Metabolomics in Central dogma. Following such stream, we might answer certain problems in different scales from individual, population, community to ecosystem. Metabolomics (i.e., the profiling and quantitation of metabolites in body fluids) is a relatively new field of “omics” studies. Different from other omics studies, metabolomics always focused on small moleculars with much lower mass than polypeptide, around m/z 100-1000. Metabolomics studies are always performed in GC/MS, GC*GC/MS<span class="citation">(Tian et al. <a href="#ref-tian2016">2016</a>)</span>, LC/MS or NMR. This workflow concerns mass spectrum based metabolomics.</p>
+<p>Information in living organism commuicates along the Genomics, Transcriptomics, Proteomics and Metabolomics in Central dogma. Following such stream, we might answer certain problems in different scales from individual, population, community to ecosystem. Metabolomics (i.e., the profiling and quantitation of metabolites in body fluids) is a relatively new field of “omics” studies. Different from other omics studies, metabolomics always focused on small moleculars with much lower mass than polypeptide with single or doubled charged ions. Metabolomics studies are always performed in GC-MS, GC*GC-MS<span class="citation">(Tian et al. <a href="#ref-tian2016">2016</a>)</span>, LC-MS, LC-MS/MS or NMR. This workflow would only cover mass spectrometry based metabolomics or XC-MS based research.</p>
 <div id="history" class="section level2">
 <h2><span class="header-section-number">1.1</span> History</h2>
 <p>According to this book section<span class="citation">(Kusonmano, Vongsangnak, and Chumnanpuen <a href="#ref-kusonmano2016">2016</a>)</span>:</p>
@@ -336,7 +370,7 @@ p <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</
 <li><p><a href="https://metlin.scripps.edu/">Metlin</a></p></li>
 <li><p><a href="http://fiehnlab.ucdavis.edu/projects/LipidBlast">LipidBlast</a>: in silico prediction</p></li>
 <li><p><a href="https://www.mzcloud.org/">MZcloud</a></p></li>
-<li><p><a href="https://www.nist.gov/srd/nist-standard-reference-database-1a-v17">NIST</a>: No free</p></li>
+<li><p><a href="https://www.nist.gov/srd/nist-standard-reference-database-1a-v17">NIST</a>: Not free</p></li>
 </ul>
 </div>
 <div id="ms" class="section level4">
@@ -364,8 +398,8 @@ p <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</
 </div>
 <div id="workflow" class="section level2">
 <h2><span class="header-section-number">1.6</span> Workflow</h2>
-<div id="htmlwidget-8565efc7489ec18b616f" style="width:672px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8565efc7489ec18b616f">{"x":{"diagram":"digraph workflow {\nnode [shape = box]\nA [label = \"Raw data\"]\nB [label = \"mzxml or CDF\"]\nC [label = \"DoE folder\"]\nD [label = \"peaks list\"]\nE [label = \"retention time correction\"]\nF [label = \"peaks grouping\"]\nG [label = \"peaks filling\"]\nH [label = \"raw peaks\"]\nI [label = \"data visulization\"]\nJ [label = \"batch effects correction\"]\nK [label = \"corrected peaks\"]\nL [label = \"annotation\"]\nM [label = \"metabolomics pathway analysis\"]\nN [label = \"omics analysis\"]\nO [label = \"biomarkers discovery/diagnoise\"]\n\nA -> B -> C -> D -> E -> F -> G -> H\nH -> I\nI -> J\nH -> J -> K -> L\nL -> M -> N\nL -> O\n                  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-1031c4d0f6b5c0a1cb56" style="width:672px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1031c4d0f6b5c0a1cb56">{"x":{"diagram":"digraph workflow {\nnode [shape = box]\nA [label = \"Raw data\"]\nB [label = \"mzxml or CDF\"]\nC [label = \"DoE folder\"]\nD [label = \"peaks list\"]\nE [label = \"retention time correction\"]\nF [label = \"peaks grouping\"]\nG [label = \"peaks filling\"]\nH [label = \"raw peaks\"]\nI [label = \"data visulization\"]\nJ [label = \"batch effects correction\"]\nK [label = \"corrected peaks\"]\nL [label = \"annotation\"]\nM [label = \"metabolomics pathway analysis\"]\nN [label = \"omics analysis\"]\nO [label = \"biomarkers discovery/diagnoise\"]\n\nA -> B -> C -> D -> E -> F -> G -> H\nH -> I\nI -> J\nH -> J -> K -> L\nL -> M -> N\nL -> O\n                  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 
 </div>
 </div>
@@ -450,10 +484,11 @@ gitbook.start({
 "facebook": true,
 "twitter": true,
 "google": false,
+"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -477,9 +512,11 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

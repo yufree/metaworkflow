@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="raw-data-pretreatment.html">
-<link rel="next" href="annotation.html">
+<link rel="prev" href="demo.html">
+<link rel="next" href="case-studyselected.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -243,32 +243,200 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="peaks-selection" class="section level1">
-<h1><span class="header-section-number">Chapter 5</span> Peaks selection</h1>
-<p>After we get corrected peaks across samples, the next step is finding the differences between two groups. Actually, you could perform ANOVA or Kruskal-Wallis Test for comparison among more than two groups. The basic idea behind statistic analysis is to find the meaningful differences between groups and extract such ions or peak groups.</p>
-<p>So how to find the differences? In most metabolomics software, such task is completed by a t-test and report p-value and fold changes. If you only compare two groups on one peaks, that’s OK. However, if you compare two groups on thousands of peaks, statistic textbook would tell you to notice the false positive. For one comparasion, the confidence level is 0.05, which means 5% chances to get false positive result. For two comparasions, such chances would be <span class="math inline">\(1-0.95^2\)</span>. For 10 comparasions, such chances would be <span class="math inline">\(1-0.95^{10} = 0.4012631\)</span>. For 100 comparasions, such chances would be <span class="math inline">\(1-0.95^{100} = 0.9940795\)</span>. You would almost certainly to make mistakes for your results.</p>
-<p>In statistics, the false discovery rate(FDR) control is always mentioned in omics studies for mutiple tests. I suggested using q-values to control FDR. If q-value is less than 0.05, we should expect a lower than 5% chances we make the wrong selections for all of the comparisions showed lower q-values in the whole dataset. Also we could use local false discovery rate, which showed the FDR for certain peaks. However, such values are hard to be estimated accurately.</p>
-<p>Karin Ortmayr thought fold change might be better than p-values to find the differences<span class="citation">(Ortmayr et al. <a href="#ref-ortmayr2016a">2016</a>)</span>.</p>
-<div id="peak-misidentification" class="section level2">
-<h2><span class="header-section-number">5.1</span> Peak misidentification</h2>
-<ul>
-<li>Isomer</li>
-</ul>
-<p>Use seperation methods such as chromatography, ion mobility MS, MS/MS. Reversed-phase ion-pairing chromatography and HILIC is useful and chemical derivatization is another options.</p>
-<ul>
-<li>Interfering compounds</li>
-</ul>
-<p>20ppm is the least resolution and accuracy</p>
-<ul>
-<li>In-source degradation products</li>
-</ul>
+<div id="softwareapplicationwebsite" class="section level1">
+<h1><span class="header-section-number">Chapter 10</span> Software/Application/Website</h1>
+<div id="rocker-image" class="section level2">
+<h2><span class="header-section-number">10.1</span> Rocker image</h2>
+</div>
+<div id="peak-picking" class="section level2">
+<h2><span class="header-section-number">10.2</span> Peak picking</h2>
+<div id="ms-dial" class="section level3">
+<h3><span class="header-section-number">10.2.1</span> MS-DIAL</h3>
+</div>
+<div id="metdia" class="section level3">
+<h3><span class="header-section-number">10.2.2</span> MetDIA</h3>
+</div>
+</div>
+<div id="batch-correction" class="section level2">
+<h2><span class="header-section-number">10.3</span> Batch correction</h2>
+</div>
+<div id="annotation-2" class="section level2">
+<h2><span class="header-section-number">10.4</span> Annotation</h2>
+<div id="camera" class="section level3">
+<h3><span class="header-section-number">10.4.1</span> CAMERA</h3>
+<p>Common <a href="https://bioconductor.org/packages/release/bioc/html/CAMERA.html">annotation</a> for xcms workflow<span class="citation">(Kuhl et al. <a href="#ref-kuhl2012">2012</a>)</span>.</p>
+</div>
+<div id="ramclustr" class="section level3">
+<h3><span class="header-section-number">10.4.2</span> RAMClustR</h3>
+<p>The software could be found <a href="https://github.com/cbroeckl/RAMClustR">here</a><span class="citation">(Broeckling et al. <a href="#ref-broeckling2014">2014</a>)</span>. The package included a vignette as usages. Use the following code to read:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">vignette</span>(<span class="st">&#39;RAMClustR&#39;</span>,<span class="dt">package =</span> <span class="st">&#39;RAMClustR&#39;</span>)</code></pre></div>
+</div>
+<div id="xmsannotator" class="section level3">
+<h3><span class="header-section-number">10.4.3</span> xMSannotator</h3>
+<p>The software could be found <a href="https://github.com/yufree/xMSannotator">here</a><span class="citation">(Uppal, Walker, and Jones <a href="#ref-uppal2017">2017</a>)</span>.</p>
+</div>
+<div id="mzmatch" class="section level3">
+<h3><span class="header-section-number">10.4.4</span> mzmatch</h3>
+<p>Use the following code to install this package:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">source</span>(<span class="st">&quot;http://bioconductor.org/biocLite.R&quot;</span>)
+<span class="kw">biocLite</span>(<span class="kw">c</span>(<span class="st">&quot;xcms&quot;</span>, <span class="st">&quot;multtest&quot;</span>, <span class="st">&quot;mzR&quot;</span>))
+<span class="kw">install.packages</span>(<span class="kw">c</span>(<span class="st">&quot;rJava&quot;</span>, <span class="st">&quot;XML&quot;</span>, <span class="st">&quot;snow&quot;</span>, <span class="st">&quot;caTools&quot;</span>,
+   <span class="st">&quot;bitops&quot;</span>, <span class="st">&quot;ptw&quot;</span>, <span class="st">&quot;gplots&quot;</span>, <span class="st">&quot;tcltk2&quot;</span>))
+<span class="kw">source</span> (<span class="st">&quot;http://puma.ibls.gla.ac.uk/mzmatch.R/install_mzmatch.R&quot;</span>)</code></pre></div>
+</div>
+<div id="mz.unity" class="section level3">
+<h3><span class="header-section-number">10.4.5</span> mz.unity</h3>
+<p>You could find source code <a href="https://github.com/nathaniel-mahieu/mz.unity">here</a><span class="citation">(Mahieu et al. <a href="#ref-mahieu2016a">2016</a>)</span>.</p>
+</div>
+<div id="mait" class="section level3">
+<h3><span class="header-section-number">10.4.6</span> MAIT</h3>
+<p>You could find source code <a href="https://github.com/jpgroup/MAIT">here</a><span class="citation">(Fernández-Albert et al. <a href="#ref-fernandez-albert2014a">2014</a>)</span>.</p>
+</div>
+<div id="probmetab" class="section level3">
+<h3><span class="header-section-number">10.4.7</span> ProbMetab</h3>
+<p>You could find source code <a href="https://github.com/rsilvabioinfo/ProbMetab">here</a><span class="citation">(Silva et al. <a href="#ref-silva2014">2014</a>)</span>.</p>
+</div>
+<div id="ramsi" class="section level3">
+<h3><span class="header-section-number">10.4.8</span> RAMSI</h3>
+<p>You could find paper here<span class="citation">(Baran and Northen <a href="#ref-baran2013">2013</a>)</span>.</p>
+</div>
+<div id="mi-pack" class="section level3">
+<h3><span class="header-section-number">10.4.9</span> MI-Pack</h3>
+<p>You could find python software <a href="http://www.biosciences-labs.bham.ac.uk/viant/mipack/">here</a><span class="citation">(Weber and Viant <a href="#ref-weber2010">2010</a>)</span></p>
+</div>
+<div id="plantmat" class="section level3">
+<h3><span class="header-section-number">10.4.10</span> Plantmat</h3>
+<p><a href="https://sourceforge.net/projects/plantmat/">excel library</a> based pridiction for plant metabolites<span class="citation">(Qiu et al. <a href="#ref-qiu2016">2016</a>)</span>.</p>
+</div>
+<div id="metfamily" class="section level3">
+<h3><span class="header-section-number">10.4.11</span> MetFamily</h3>
+<p><a href="https://msbi.ipb-halle.de/MetFamily/">Shiny app</a> for MS and MS/MS data annotation<span class="citation">(Treutler et al. <a href="#ref-treutler2016">2016</a>)</span>.</p>
+</div>
+<div id="lipidmatch" class="section level3">
+<h3><span class="header-section-number">10.4.12</span> Lipidmatch</h3>
+<p><a href="http://secim.ufl.edu/secim-tools/lipidmatch/">in silico</a>: in silico lipid mass spectrum search<span class="citation">(Koelmel et al. <a href="#ref-koelmel2017">2017</a>)</span>.</p>
+</div>
+<div id="molfind" class="section level3">
+<h3><span class="header-section-number">10.4.13</span> MolFind</h3>
+<p>JAVA based <a href="http://metabolomics.pharm.uconn.edu/?q=Software.html">MolFind</a> could make annotation for unknown chemical structure by prediction based on RI, ECOM50, drift time and CID spectra<span class="citation">(Menikarachchi et al. <a href="#ref-menikarachchi2012">2012</a>)</span>.</p>
+</div>
+<div id="metfusion" class="section level3">
+<h3><span class="header-section-number">10.4.14</span> MetFusion</h3>
+<p>Java based <a href="https://github.com/mgerlich/MetFusion">integration</a> of compound identiﬁcation strategies. You could access the application <a href="https://msbi.ipb-halle.de/MetFusion/">here</a><span class="citation">(Gerlich and Neumann <a href="#ref-gerlich2013">2013</a>)</span>.</p>
+</div>
+<div id="ms-finder" class="section level3">
+<h3><span class="header-section-number">10.4.15</span> MS-FINDER</h3>
+<p><a href="http://prime.psc.riken.jp/Metabolomics_Software/MS-FINDER/">Workflow</a> for metabolomics from Riken. They update their database frequently<span class="citation">(Tsugawa et al. <a href="#ref-tsugawa2016">2016</a>)</span>.</p>
+</div>
+<div id="csifingerid" class="section level3">
+<h3><span class="header-section-number">10.4.16</span> CSI:FingerID</h3>
+<p>This application has been integrated into <a href="https://bio.informatik.uni-jena.de/software/sirius/">SIRIUS</a><span class="citation">(Dührkop et al. <a href="#ref-duhrkop2015">2015</a>)</span>. It’s also based on prediction.</p>
+</div>
+<div id="imet" class="section level3">
+<h3><span class="header-section-number">10.4.17</span> iMet</h3>
+<p>This online <a href="http://imet.seeslab.net/">application</a> is a network-based computation method for annotation<span class="citation">(Aguilar-Mogas et al. <a href="#ref-aguilar-mogas2017">2017</a>)</span>.</p>
+</div>
+<div id="metscape" class="section level3">
+<h3><span class="header-section-number">10.4.18</span> Metscape</h3>
+<p><a href="http://metscape.med.umich.edu/">Metscape</a> based on Debiased Sparse Partial Correlation (DSPC) algorithm<span class="citation">(Basu et al. <a href="#ref-basu2017">2017</a>)</span> to make annotation.</p>
+</div>
+<div id="metfrag" class="section level3">
+<h3><span class="header-section-number">10.4.19</span> MetFrag</h3>
+<p><a href="http://c-ruttkies.github.io/MetFrag/">MetFrag</a> could be used to make <strong>in silico</strong> prediction/match of MS/MS data<span class="citation">(Ruttkies et al. <a href="#ref-ruttkies2016">2016</a>)</span>.</p>
+</div>
+<div id="lipidfrag" class="section level3">
+<h3><span class="header-section-number">10.4.20</span> LipidFrag</h3>
+<p><a href="https://msbi.ipb-halle.de/msbi/lipidfrag">LipidFrag</a> could be used to make <strong>in silico</strong> prediction/match of lipid related MS/MS data<span class="citation">(Witting et al. <a href="#ref-witting2017">2017</a>)</span>.</p>
+</div>
+<div id="mycompoundid" class="section level3">
+<h3><span class="header-section-number">10.4.21</span> MycompoundID</h3>
+<p><a href="http://www.mycompoundid.org/mycompoundid_IsoMS/single.jsp">MycompoundID</a> could be used to search known and unknown metabolites<span class="citation">(Li et al. <a href="#ref-li2013a">2013</a>)</span> online.</p>
+</div>
+<div id="cfm-id" class="section level3">
+<h3><span class="header-section-number">10.4.22</span> CFM-ID</h3>
+<p><a href="https://sourceforge.net/projects/cfm-id/">CFM-ID</a> use Metlin’s data to make prediction<span class="citation">(Allen et al. <a href="#ref-allen2014">2014</a>)</span>.</p>
+</div>
+<div id="gnps" class="section level3">
+<h3><span class="header-section-number">10.4.23</span> GNPS</h3>
+<p><a href="https://gnps.ucsd.edu/ProteoSAFe/static/gnps-splash.jsp">GNPS</a> use inner correlationship in the data and make network analysis at peaks’ level instand of annotated compounds to annotate the data<span class="citation">(Wang et al. <a href="#ref-wang2016b">2016</a>)</span>.</p>
+</div>
+<div id="metlin" class="section level3">
+<h3><span class="header-section-number">10.4.24</span> Metlin</h3>
+<p><a href="https://metlin.scripps.edu/">Metlin</a> is another useful online application for annotation<span class="citation">(Guijas et al. <a href="#ref-guijas2018">2018</a>)</span>.</p>
 
+</div>
 </div>
 </div>
 <h3>References</h3>
 <div id="refs" class="references">
-<div id="ref-ortmayr2016a">
-<p>Ortmayr, Karin, Verena Charwat, Cornelia Kasper, Stephan Hann, and Gunda Koellensperger. 2016. “Uncertainty Budgeting in Fold Change Determination and Implications for Non-Targeted Metabolomics Studies in Model Systems.” <em>Analyst</em> 142 (1): 80–90. doi:<a href="https://doi.org/10.1039/C6AN01342B">10.1039/C6AN01342B</a>.</p>
+<div id="ref-kuhl2012">
+<p>Kuhl, Carsten, Ralf Tautenhahn, Christoph Böttcher, Tony R. Larson, and Steffen Neumann. 2012. “CAMERA: An Integrated Strategy for Compound Spectra Extraction and Annotation of Liquid Chromatography/Mass Spectrometry Data Sets.” <em>Anal. Chem.</em> 84 (1): 283–89. doi:<a href="https://doi.org/10.1021/ac202450g">10.1021/ac202450g</a>.</p>
+</div>
+<div id="ref-broeckling2014">
+<p>Broeckling, C. D., F. A. Afsar, S. Neumann, A. Ben-Hur, and J. E. Prenni. 2014. “RAMClust: A Novel Feature Clustering Method Enables Spectral-Matching-Based Annotation for Metabolomics Data.” <em>Anal. Chem.</em> 86 (14): 6812–7. doi:<a href="https://doi.org/10.1021/ac501530d">10.1021/ac501530d</a>.</p>
+</div>
+<div id="ref-uppal2017">
+<p>Uppal, Karan, Douglas I. Walker, and Dean P. Jones. 2017. “xMSannotator: An R Package for Network-Based Annotation of High-Resolution Metabolomics Data.” <em>Anal. Chem.</em> 89 (2): 1063–7. doi:<a href="https://doi.org/10.1021/acs.analchem.6b01214">10.1021/acs.analchem.6b01214</a>.</p>
+</div>
+<div id="ref-mahieu2016a">
+<p>Mahieu, Nathaniel G., Jonathan L. Spalding, Susan J. Gelman, and Gary J. Patti. 2016. “Defining and Detecting Complex Peak Relationships in Mass Spectral Data: The Mz.Unity Algorithm.” <em>Anal. Chem.</em> 88 (18): 9037–46. doi:<a href="https://doi.org/10.1021/acs.analchem.6b01702">10.1021/acs.analchem.6b01702</a>.</p>
+</div>
+<div id="ref-fernandez-albert2014a">
+<p>Fernández-Albert, Francesc, Rafael Llorach, Cristina Andrés-Lacueva, and Alexandre Perera. 2014. “An R Package to Analyse LC/MS Metabolomic Data: MAIT (Metabolite Automatic Identification Toolkit).” <em>Bioinformatics</em> 30 (13): 1937–9. doi:<a href="https://doi.org/10.1093/bioinformatics/btu136">10.1093/bioinformatics/btu136</a>.</p>
+</div>
+<div id="ref-silva2014">
+<p>Silva, Ricardo R., Fabien Jourdan, Diego M. Salvanha, Fabien Letisse, Emilien L. Jamin, Simone Guidetti-Gonzalez, Carlos A. Labate, and Ricardo Z. N. Vêncio. 2014. “ProbMetab: An R Package for Bayesian Probabilistic Annotation of LC-Based Metabolomics.” <em>Bioinformatics</em> 30 (9): 1336–7. doi:<a href="https://doi.org/10.1093/bioinformatics/btu019">10.1093/bioinformatics/btu019</a>.</p>
+</div>
+<div id="ref-baran2013">
+<p>Baran, Richard, and Trent R. Northen. 2013. “Robust Automated Mass Spectra Interpretation and Chemical Formula Calculation Using Mixed Integer Linear Programming.” <em>Anal. Chem.</em> 85 (20): 9777–84. doi:<a href="https://doi.org/10.1021/ac402180c">10.1021/ac402180c</a>.</p>
+</div>
+<div id="ref-weber2010">
+<p>Weber, Ralf J. M., and Mark R. Viant. 2010. “MI-Pack: Increased Confidence of Metabolite Identification in Mass Spectra by Integrating Accurate Masses and Metabolic Pathways.” <em>Chemometrics and Intelligent Laboratory Systems</em>, OMICS, 104 (1): 75–82. doi:<a href="https://doi.org/10.1016/j.chemolab.2010.04.010">10.1016/j.chemolab.2010.04.010</a>.</p>
+</div>
+<div id="ref-qiu2016">
+<p>Qiu, Feng, Dennis D. Fine, Daniel J. Wherritt, Zhentian Lei, and Lloyd W. Sumner. 2016. “PlantMAT: A Metabolomics Tool for Predicting the Specialized Metabolic Potential of a System and for Large-Scale Metabolite Identifications.” <em>Anal. Chem.</em> 88 (23): 11373–83. doi:<a href="https://doi.org/10.1021/acs.analchem.6b00906">10.1021/acs.analchem.6b00906</a>.</p>
+</div>
+<div id="ref-treutler2016">
+<p>Treutler, Hendrik, Hiroshi Tsugawa, Andrea Porzel, Karin Gorzolka, Alain Tissier, Steffen Neumann, and Gerd Ulrich Balcke. 2016. “Discovering Regulated Metabolite Families in Untargeted Metabolomics Studies.” <em>Anal. Chem.</em> 88 (16): 8082–90. doi:<a href="https://doi.org/10.1021/acs.analchem.6b01569">10.1021/acs.analchem.6b01569</a>.</p>
+</div>
+<div id="ref-koelmel2017">
+<p>Koelmel, Jeremy P., Nicholas M. Kroeger, Candice Z. Ulmer, John A. Bowden, Rainey E. Patterson, Jason A. Cochran, Christopher W. W. Beecher, Timothy J. Garrett, and Richard A. Yost. 2017. “LipidMatch: An Automated Workflow for Rule-Based Lipid Identification Using Untargeted High-Resolution Tandem Mass Spectrometry Data.” <em>BMC Bioinformatics</em> 18 (July): 331. doi:<a href="https://doi.org/10.1186/s12859-017-1744-3">10.1186/s12859-017-1744-3</a>.</p>
+</div>
+<div id="ref-menikarachchi2012">
+<p>Menikarachchi, Lochana C., Shannon Cawley, Dennis W. Hill, L. Mark Hall, Lowell Hall, Steven Lai, Janine Wilder, and David F. Grant. 2012. “MolFind: A Software Package Enabling HPLC/MS-Based Identification of Unknown Chemical Structures.” <em>Anal. Chem.</em> 84 (21): 9388–94. doi:<a href="https://doi.org/10.1021/ac302048x">10.1021/ac302048x</a>.</p>
+</div>
+<div id="ref-gerlich2013">
+<p>Gerlich, Michael, and Steffen Neumann. 2013. “MetFusion: Integration of Compound Identification Strategies.” <em>J. Mass Spectrom.</em> 48 (3): 291–98. doi:<a href="https://doi.org/10.1002/jms.3123">10.1002/jms.3123</a>.</p>
+</div>
+<div id="ref-tsugawa2016">
+<p>Tsugawa, Hiroshi, Tobias Kind, Ryo Nakabayashi, Daichi Yukihira, Wataru Tanaka, Tomas Cajka, Kazuki Saito, Oliver Fiehn, and Masanori Arita. 2016. “Hydrogen Rearrangement Rules: Computational MS/MS Fragmentation and Structure Elucidation Using MS-FINDER Software.” <em>Anal. Chem.</em> 88 (16): 7946–58. doi:<a href="https://doi.org/10.1021/acs.analchem.6b00770">10.1021/acs.analchem.6b00770</a>.</p>
+</div>
+<div id="ref-duhrkop2015">
+<p>Dührkop, Kai, Huibin Shen, Marvin Meusel, Juho Rousu, and Sebastian Böcker. 2015. “Searching Molecular Structure Databases with Tandem Mass Spectra Using CSI:FingerID.” <em>PNAS</em> 112 (41): 12580–5. doi:<a href="https://doi.org/10.1073/pnas.1509788112">10.1073/pnas.1509788112</a>.</p>
+</div>
+<div id="ref-aguilar-mogas2017">
+<p>Aguilar-Mogas, Antoni, Marta Sales-Pardo, Miriam Navarro, Roger Guimerà, and Oscar Yanes. 2017. “iMet: A Network-Based Computational Tool to Assist in the Annotation of Metabolites from Tandem Mass Spectra.” <em>Anal. Chem.</em> 89 (6): 3474–82. doi:<a href="https://doi.org/10.1021/acs.analchem.6b04512">10.1021/acs.analchem.6b04512</a>.</p>
+</div>
+<div id="ref-basu2017">
+<p>Basu, Sumanta, William Duren, Charles R. Evans, Charles F. Burant, George Michailidis, and Alla Karnovsky. 2017. “Sparse Network Modeling and Metscape-Based Visualization Methods for the Analysis of Large-Scale Metabolomics Data.” <em>Bioinformatics</em> 33 (10): 1545–53. doi:<a href="https://doi.org/10.1093/bioinformatics/btx012">10.1093/bioinformatics/btx012</a>.</p>
+</div>
+<div id="ref-ruttkies2016">
+<p>Ruttkies, Christoph, Emma L. Schymanski, Sebastian Wolf, Juliane Hollender, and Steffen Neumann. 2016. “MetFrag Relaunched: Incorporating Strategies Beyond in Silico Fragmentation.” <em>Journal of Cheminformatics</em> 8 (January): 3. doi:<a href="https://doi.org/10.1186/s13321-016-0115-9">10.1186/s13321-016-0115-9</a>.</p>
+</div>
+<div id="ref-witting2017">
+<p>Witting, Michael, Christoph Ruttkies, Steffen Neumann, and Philippe Schmitt-Kopplin. 2017. “LipidFrag: Improving Reliability of in Silico Fragmentation of Lipids and Application to the Caenorhabditis Elegans Lipidome.” <em>PLOS ONE</em> 12 (3): e0172311. doi:<a href="https://doi.org/10.1371/journal.pone.0172311">10.1371/journal.pone.0172311</a>.</p>
+</div>
+<div id="ref-li2013a">
+<p>Li, Liang, Ronghong Li, Jianjun Zhou, Azeret Zuniga, Avalyn E. Stanislaus, Yiman Wu, Tao Huan, et al. 2013. “MyCompoundID: Using an Evidence-Based Metabolome Library for Metabolite Identification.” <em>Anal. Chem.</em> 85 (6): 3401–8. doi:<a href="https://doi.org/10.1021/ac400099b">10.1021/ac400099b</a>.</p>
+</div>
+<div id="ref-allen2014">
+<p>Allen, Felicity, Allison Pon, Michael Wilson, Russ Greiner, and David Wishart. 2014. “CFM-ID: A Web Server for Annotation, Spectrum Prediction and Metabolite Identification from Tandem Mass Spectra.” <em>Nucleic Acids Res</em> 42 (W1): W94–W99. doi:<a href="https://doi.org/10.1093/nar/gku436">10.1093/nar/gku436</a>.</p>
+</div>
+<div id="ref-wang2016b">
+<p>Wang, Mingxun, Jeremy J. Carver, Vanessa V. Phelan, Laura M. Sanchez, Neha Garg, Yao Peng, Don Duy Nguyen, et al. 2016. “Sharing and Community Curation of Mass Spectrometry Data with Global Natural Products Social Molecular Networking.” <em>Nat. Biotechnol.</em> 34 (8): 828–37. doi:<a href="https://doi.org/10.1038/nbt.3597">10.1038/nbt.3597</a>.</p>
+</div>
+<div id="ref-guijas2018">
+<p>Guijas, Carlos, J. Rafael Montenegro-Burke, Xavier Domingo-Almenara, Amelia Palermo, Benedikt Warth, Gerrit Hermann, Gunda Koellensperger, et al. 2018. “METLIN: A Technology Platform for Identifying Knowns and Unknowns.” <em>Anal. Chem.</em> 90 (5): 3156–64. doi:<a href="https://doi.org/10.1021/acs.analchem.7b04424">10.1021/acs.analchem.7b04424</a>.</p>
 </div>
 </div>
             </section>
@@ -276,8 +444,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="raw-data-pretreatment.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="annotation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="demo.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="case-studyselected.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -307,7 +475,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/yufree/metaworkflow/edit/master/05-peakselection.Rmd",
+"link": "https://github.com/yufree/metaworkflow/edit/master/11-rocker.Rmd",
 "text": "Edit"
 },
 "download": ["Metabolomics.pdf", "Metabolomics.epub"],
