@@ -49,4 +49,18 @@ OK, the basic idea behind the cluster analysis could be summarized as define the
 
 PLS-DA, OPLS-DA and HPSO-OPLS-DA[@yang2017a] could be used.
 
+Partial least squares discriminant analysis(PLSDA) was first used in the 1990s. However, Partial least squares(PLS) was proposed in the 1960s by Hermann Wold. Principal components analysis produces the weight matrix reflecting the covariance structure between the variables, while partial least squares produces the weight matrix reflecting the covariance structure between the variables and classes. After rotation by weight matrix, the new variables would contain relationship with classes. 
+
+The classification performance of PLSDA is identical to linear discriminant analysis(LDA) if class sizes are balanced, or the columns are adjusted according to the mean of the class mean. If the number of variables exceeds the number of samples, LDA can be performed on the principal components. Quadratic discriminant analysis(QDA) could model nonlinearity relationship between variables while PLSDA is better for collinear variables. However, as a classifier, there is little advantage for PLSDA. The advantages of PLSDA is that this modle could show relationship between variables, which is not the goal of regular classifier.
+
+Different algorithms[@andersson2009] for PLSDA would show different score, while PCA always show the same score with fixed algorithm. For PCA, both new variables and classes are orthognal. However, for PLS(Wold), only new classes are orthognal. For PLS(Martens), only new variables are orthognal. This paper show the details of using such methods[@brereton2018].
+
+Sparse PLS discriminant analysis(sPLS-DA) make a L1 penal on the variable selection to remove the influnces from unrelated variables, which make sense for high-throughput omics data[@lecao2011].
+
+For o-PLS-DA, s-plot could be used to find features.[@wiklund2008]
+
 ## Self-organizing map
+
+## Canonical correlation analysis 
+
+Find the correlationship between two datasets.

@@ -4,9 +4,39 @@ Information in living organism commuicates along the Genomics, Transcriptomics, 
 
 ## History
 
+### History of Mass Spectrometry
+
+- 1913, Sir Joseph John Thomson "Rays of Positive Electricity and Their Application to Chemical Analyses."
+
+```{r history, fig.show='hold', fig.cap='Sir Joseph John Thomson "Rays of Positive Electricity and Their Application to Chemical Analyses."',echo=FALSE}
+knitr::include_graphics('images/mshistory.jpg')
+```
+
+- Petroleum industry bring mass spectrometry from physics to chemistry
+
+- The first commercial mass spectrometer is from Consolidated Engineering Corp to analysis simple gas mixtures from petroleum
+
+- In World War II, U.S. use mass spectrometer to separate and enrich isotopes of uranium in Manhattan Project
+
+- U.S. also use mass spectrometer for organic compounds during wartime and extend the application of mass spectrometer
+
+- 1946, TOF, William E. Stephens
+
+- 1970s, quadrupole mass analyzer
+
+- 1970s, R. Graham Cooks developed mass-analyzed ion kinetic energy spectrometry, or MIKES to make MRM analysis for multi-stage mass sepctrometry
+
+- 1980s, MALDI rescue TOF and mass spectrometry move into biological application
+
+- 1990s, Orbitrap mass spectrometry
+
+- 2010s, Aperture Coding mass spectrometry
+
+### History of Metabolomcis
+
 According to this book section[@kusonmano2016]:
 
-```{r history, fig.show='hold', fig.cap='Metabolomics timeline during pre- and post-metabolomics era',echo=FALSE}
+```{r history2, fig.show='hold', fig.cap='Metabolomics timeline during pre- and post-metabolomics era',echo=FALSE}
 knitr::include_graphics('images/metahistory.jpg')
 ```
 
@@ -84,7 +114,7 @@ res <- gtrends(c("metabolomics", "metabolomics"), geo = c("CA","US"))
 plot(res)
 ```
 
-```{r}
+```{r rentrez}
 library(rentrez)
 papers_by_year <- function(years, search_term){
     return(sapply(years, function(y) entrez_search(db="pubmed",term=search_term, mindate=y, maxdate=y, retmax=0)$count))

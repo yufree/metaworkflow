@@ -2,18 +2,49 @@
 
 Raw data from the instruments such as LC-MS or GC-MS were hard to be analyzed. To make it clear, the structure of those data could be summarised as:
 
-- To get full infomation in the samples, full scan is perferred
-- Full scan is performed synchronously with the seperation process
+- Indexed scan with time-stamp
 
-GC/LC-MS data are usually be shown as a matrix with column standing for retention times and row standing for masses. Noises are so much that such data could not be processed effeciently.
+- Each scan contain a full scan mass spetrum with intensities
+
+## Peak extraction
+
+GC/LC-MS data are usually be shown as a matrix with column standing for retention times and row standing for masses after bin them into small cell.
 
 ```{r singledata, fig.show='hold', fig.cap='Demo of GC/LC-MS data',echo=FALSE}
 knitr::include_graphics('images/singledata.png')
 ```
 
-Conversation from the mass-retention time matrix into a vector with selected MS peaks at certain retention time is the basic idea of the Raw data pretreatment. The **Centwave** algorithm[@tautenhahn2008] based on detection of regions of interest(ROI) and the following Continuous Wavelet Transform (CWT) for the peaks is preferred for high-resolution mass spectrum.
+Conversation from the mass-retention time matrix into a vector with selected MS peaks at certain retention time is the basic idea of Peak extraction. You could EIC for each mass to charge ratio and use the change of trace slope  to determine whether there is a peak or not. Then we could make integration for this peak and get peak area and retention time.
 
-With many groups of samples, you will get another data matrix with column standing for ions at cerntain retention time and row standing for samples after the Raw data pretreatment.
+```{r demoeic, fig.show='hold', fig.cap='Demo of EIC with peak'}
+intensity <- c(10,10,10,10,10,14,19,25,30,33,26,21,16,12,11,10,9,10,11,10)
+time <- c(1:20)
+plot(trace~time, type = 'o', main = 'EIC')
+```
+
+However, in mass spectrumetry dataset, the EIC is not that simple for full scan. Due to the accuracy of instrument, the detected mass to charge ratio would have some shift and EIC would fail if different scan get the intensity from different mass to charge ratio. 
+
+In the `matchedfilter` algorithm[@smith2006], they solve this issue by bin the data in m/z dimension. The adjacent chromatographic slices could be combined to find a clean signal fitting fixed second-derivative Gaussian with full width at half-maximum
+(fwhm) of 30s to find peaks with about 1.5-4 times the signal peak width. The the integration is performed on the fitted area.
+
+```{r matchedfilter, fig.show='hold', fig.cap='Demo of matchedfilter',echo=FALSE}
+knitr::include_graphics('images/matchedfilter.jpg')
+```
+
+
+The `Centwave` algorithm[@tautenhahn2008] based on detection of regions of interest(ROI) and the following Continuous Wavelet Transform (CWT) is preferred for high-resolution mass spectrum. ROI means a regine with stable mass for a certain time. When we find the ROIs, the peak shape is evaluated and ROI could be extended if needed. This algotithm use `prefilter` to accelerate the processing speed. `prefilter` with 3 and 100 means the ROI should contain 3 scan with intensity above 100. Centwave use a peak width range which should be checked on pool QC. Another important parameter is `ppm`. It is the maximum allowed deviation between scans when locating regions of interest (ROIs), which is different from vendor number and you need to extend them larger than the company claimed. For `profparam`, it's used for fill peaks or align peaks instead of peak picking. `snthr` is the cutoff of signal to noise ratio.
+
+## Retention Time Correction
+
+For single file, we could get peaks. However, we should make the peaks align across samples for subsquece analysis and retention time corrections should be performed. The basic idea behind retention time correction is that use the high quality grouped peaks to make a new retention time. You might choose `obiwarp`(for dramatic shifts) or loess regression(fast) method to get the corrected retention time for all of the samples. Remember the original retention times might be changed and you might need cross-correct the data. After the correction, you could group the peaks again for a better cross-sample peaks list. However, if you directly use `obiwarp`, you don't have to group peaks before correction.
+
+[@fu2017] show a matlab based shift correction methods
+
+## Filling missing values
+
+Too many zeros in peaks list are problematic for statistics. Then we usually need to integreate the area exsiting a peak. `xcms 3` could use profile matrix instead of profil matrix, which limited the range.
+
+With many groups of samples, you will get another data matrix with column standing for peaks at cerntain retention time and row standing for samples after the Raw data pretreatment.
 
 ```{r multidata, fig.show='hold', fig.cap='Demo of many GC/LC-MS data',echo=FALSE}
 knitr::include_graphics('images/multidata.png')
@@ -23,12 +54,6 @@ knitr::include_graphics('images/multidata.png')
 
 Without fracmental infomation about certain compound, the peak extraction would suffer influnces from other compounds. At the same retention time, co-elute compounds might share similar mass. Hard electron ionization methods such as electron impact ionization (EI), APPI suffer this issue. So it would be hard to distighuish the co-elute peaks' origin and deconvolution method[
 @du2013] could be used to seperate different groups according to the similar chromatogragh beheviors. Another computational tool **eRah** could be a better solution for the whole process[@domingo-almenara2016]. Also the **ADAD-GC3.0** could also be helpful for such issue[@ni2016].
-
-## Retention Time Correction
-
-However, before you get the peaks, some corrections should be performed such as mass shift and retention time shift. The basic idea behind retention time correction is that use the high quality grouped peaks to make a new retention time. You might choose obiwarp or loess regression method to get the corrected retention time for all of the samples. Remember the original retention times might be changed and you might need cross-correct the data.
-
-[@fu2017] show a matlab based shift correction methods
 
 ## Dynamic Range
 

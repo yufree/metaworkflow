@@ -25,3 +25,9 @@ In this review[@lu2017], authors said:
 > In our experience, for both cell and tissue specimens, 40:40:20 acetonitrile:methanol:water with 0.1 M formic acid (and subsequent neutralization with ammonium bicarbonate) is generally an effective solvent system for both quenching and extraction, including for ATP and other high-energy phosphorylated compounds. We typically use approximately 1 mL of solvent mix to extract 25 mg of biological specimen. ...Thus, although drying is acceptable for most metabolites, care must be taken with redox-active species.
 
 [@luo2017a] nano LC-MS could be used to analysis small numbers of cells
+
+## Instrumental analysis
+
+To get more infomation in the samples, full scan is perferred on GC/LC-MS. Each scan would generat a mass spectrum to cover the setting mass range. If you narrow down your mass range and keep the same scan time, each mass would gain the collection time and you would get a higher sensitivity. However, if you expand your scan range, the sensitivity for each mass would decrease. You could also extend the collection time for each scan. However, it would affect the seperation process.
+
+Full scan is performed synchronously with the seperation process. For a better seperation on chromotograph, each peak should have at least 10 point to get a nice peak shape. If you want to seperate two peaks with a retention time differences of 10s. Assuming the half peak width is 5s, you need to collect 10 mass spectrum within 10s. So the drwell time for each scan is 1s. If you use a high resolution column and the half peak width is 1s, you need to finish a scan within 0.2s. As we talked above, shorter drwell time would decrease the sensitivity. Thus there is a trade-off between seperation and sensitivity. If you use UPLC, the seperation could be finished within 20 min while you need to calculate if you mass spectrumetry could still show a good sensitivity.
