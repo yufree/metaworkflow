@@ -19,7 +19,7 @@ Conversation from the mass-retention time matrix into a vector with selected MS 
 ```{r demoeic, fig.show='hold', fig.cap='Demo of EIC with peak'}
 intensity <- c(10,10,10,10,10,14,19,25,30,33,26,21,16,12,11,10,9,10,11,10)
 time <- c(1:20)
-plot(trace~time, type = 'o', main = 'EIC')
+plot(intensity~time, type = 'o', main = 'EIC')
 ```
 
 However, in mass spectrumetry dataset, the EIC is not that simple for full scan. Due to the accuracy of instrument, the detected mass to charge ratio would have some shift and EIC would fail if different scan get the intensity from different mass to charge ratio. 
