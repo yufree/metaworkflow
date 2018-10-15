@@ -277,7 +277,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">4.1</span> Peak extraction</h2>
 <p>GC/LC-MS data are usually be shown as a matrix with column standing for retention times and row standing for masses after bin them into small cell.</p>
 <div class="figure"><span id="fig:singledata"></span>
-<img src="images/singledata.png" alt="Demo of GC/LC-MS data" width="633" />
+<img src="images/singledata.png" alt="Demo of GC/LC-MS data" width="90%" />
 <p class="caption">
 Figure 4.1: Demo of GC/LC-MS data
 </p>
@@ -295,7 +295,7 @@ Figure 4.2: Demo of EIC with peak
 <p>However, in mass spectrumetry dataset, the EIC is not that simple for full scan. Due to the accuracy of instrument, the detected mass to charge ratio would have some shift and EIC would fail if different scan get the intensity from different mass to charge ratio.</p>
 <p>In the <code>matchedfilter</code> algorithm<span class="citation">(Smith et al. <a href="#ref-smith2006">2006</a>)</span>, they solve this issue by bin the data in m/z dimension. The adjacent chromatographic slices could be combined to find a clean signal fitting fixed second-derivative Gaussian with full width at half-maximum (fwhm) of 30s to find peaks with about 1.5-4 times the signal peak width. The the integration is performed on the fitted area.</p>
 <div class="figure"><span id="fig:matchedfilter"></span>
-<img src="images/matchedfilter.jpg" alt="Demo of matchedfilter" width="425" />
+<img src="images/matchedfilter.jpg" alt="Demo of matchedfilter" width="90%" />
 <p class="caption">
 Figure 4.3: Demo of matchedfilter
 </p>
@@ -312,7 +312,7 @@ Figure 4.3: Demo of matchedfilter
 <p>Too many zeros in peaks list are problematic for statistics. Then we usually need to integreate the area exsiting a peak. <code>xcms 3</code> could use profile matrix instead of profil matrix, which limited the range.</p>
 <p>With many groups of samples, you will get another data matrix with column standing for peaks at cerntain retention time and row standing for samples after the Raw data pretreatment.</p>
 <div class="figure"><span id="fig:multidata"></span>
-<img src="images/multidata.png" alt="Demo of many GC/LC-MS data" width="636" />
+<img src="images/multidata.png" alt="Demo of many GC/LC-MS data" width="90%" />
 <p class="caption">
 Figure 4.4: Demo of many GC/LC-MS data
 </p>

@@ -10,7 +10,7 @@ Raw data from the instruments such as LC-MS or GC-MS were hard to be analyzed. T
 
 GC/LC-MS data are usually be shown as a matrix with column standing for retention times and row standing for masses after bin them into small cell.
 
-```{r singledata, fig.show='hold', fig.cap='Demo of GC/LC-MS data',echo=FALSE}
+```{r singledata, fig.show='hold', fig.cap='Demo of GC/LC-MS data',echo=FALSE,out.width='90%'}
 knitr::include_graphics('images/singledata.png')
 ```
 
@@ -27,7 +27,7 @@ However, in mass spectrumetry dataset, the EIC is not that simple for full scan.
 In the `matchedfilter` algorithm[@smith2006], they solve this issue by bin the data in m/z dimension. The adjacent chromatographic slices could be combined to find a clean signal fitting fixed second-derivative Gaussian with full width at half-maximum
 (fwhm) of 30s to find peaks with about 1.5-4 times the signal peak width. The the integration is performed on the fitted area.
 
-```{r matchedfilter, fig.show='hold', fig.cap='Demo of matchedfilter',echo=FALSE}
+```{r matchedfilter, fig.show='hold', fig.cap='Demo of matchedfilter',echo=FALSE,out.width='90%'}
 knitr::include_graphics('images/matchedfilter.jpg')
 ```
 
@@ -46,7 +46,7 @@ Too many zeros in peaks list are problematic for statistics. Then we usually nee
 
 With many groups of samples, you will get another data matrix with column standing for peaks at cerntain retention time and row standing for samples after the Raw data pretreatment.
 
-```{r multidata, fig.show='hold', fig.cap='Demo of many GC/LC-MS data',echo=FALSE}
+```{r multidata, fig.show='hold', fig.cap='Demo of many GC/LC-MS data',echo=FALSE,,out.width='90%'}
 knitr::include_graphics('images/multidata.png')
 ```
 
