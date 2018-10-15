@@ -1,5 +1,43 @@
 # Common analysis methods for metabolomics
 
+The general purposes for metabolomics study are strongly associated with research goal. However, since metabolomics are usually performed in a non-targeted mode, statistical analysis methods are always started with the exploratory analysis. The basic target for an exploratory analysis is:
+
+- Find the relationship among variables
+
+- Find the relationship among samples/group of samples.
+
+This is basically unsurpvised analysis.
+
+However, sometimes we have group information which could be used to find biomarkers or correlationship between variables and groups or continous variables. This type of data need supervised methods to process. Before we talk the details of algorithms, let's cover some basic statistical concepts.
+
+## Basic Statistical Analysis
+
+**Statistic** is used to describe certain property or variables among the samples. It could be designed for certain purpose to extract signal and remove noise. Statistical models and inference are both based on statistic instead of the data.
+
+$$Statistic = f(sample_1,sample_2,...,sample_n)$$
+
+**Null Hypothesis Significance Testing (NHST)** is often used to make statistical inference. P value is the probability of certain statistics happens under H0 (pre-defined distribution).
+
+For omics studies, you should realise **Multiple Comparision** issue when you perform a lot of(more than 20) comparisions or tests at the same time. **False Discovery Rate(FDR) control** is required for multiple tests to make sure the results are not false positive. You could use Benjamini-Hochberg method to adjust raw p values or directly use Storey Q value to make FDR control.
+
+NHST is famous for the failure of p-value interpretation as well as multiple comparision issues. **Bayesian Hypothesis Testing** could be an options to cover some drawbacks of NHST. Bayesian Hypothesis Testing use Bayes factor to show the differences between null hypothesis and any other hypothesis. 
+
+$$Bayes\ factor = \frac{p(D|Ha)}{p(D|H0)} = \frac{posterior\ odds}{prior\ odds}$$
+
+**Statistical model** use statistics to make prediction/explanation. Most of the statistical model need to be tuned for parpameters to show a better performance. Statistical model is build on real data and could be diagnosed by other general statistics such as $R^2$, $ROC curve$. When the models are built or compared, model selection could be preformed.
+
+$$Target = g(Statistic) = g(f(sample_1,sample_2,...,sample_n))$$
+
+**Bias-Variance Tradeoff** is an important concept regarding statistical models. Certain models could be overfitted(small Bias, large variance) or underfitted(large Bias, small variance) when the parameters of models are not well selected.
+
+$$E[(y - \hat f)^2] = \sigma^2 + Var[\hat f] + Bias[\hat f]$$
+
+**Cross validation** could be used to find the best model based on training-testing strategy such as Jacknife, bootstraping resampling and n-fold cross validation. 
+
+**Regularization** for models could also be used to find the model with best prediction performance. Rigid regression, LASSO or other general regularization could be employed to build a robust models.
+
+For supervised models, linear model and tree based model are two basic categories. **Linear model** could be useful to tell the independant or correlated relationship of variables and the influnces on the predicted variables. **Tree based model**, on the other hand, try to build a hierarchical structure for the variables such as bagging, random forest or boosting. Linear model could be treated as special case of tree based model with single layer. Other models like Support Vector Machine (SVM), Artificial Neural Network (ANN) or Deep Learning are also make various assumptions on the data. However, if you final target is prediction, you could try any of those models or even weighted combine their prediciton to make meta-prediction.
+
 ## PCA
 
 In most cases, PCA is used as an exploratory data analysis(EDA) method. In most of those most cases, PCA is just served as visualization method. I mean, when I need to visualize some high-dimension data, I would use PCA.
@@ -65,7 +103,8 @@ For o-PLS-DA, s-plot could be used to find features.[@wiklund2008]
 
 Find the correlationship between two datasets.
 
-## Software&platform
+## Software
 
 - [MetaboAnalystR](https://github.com/xia-lab/MetaboAnalystR)
 
+- [caret](http://caret.r-forge.r-project.org/) could employ more than 200 statistical models in a general framework to build/select models. You could also show the variable importance for some of the models.

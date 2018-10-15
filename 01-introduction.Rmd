@@ -66,6 +66,19 @@ Also I noticed more and more papers showed a bunch of data process methods as st
 
 For software, check this review[@misra2016].
 
+Here is the slides for metabolomics data analysis workshop and I have made presentations twice in UWaterloo and UC Irvine. Such slides would be updated silent.
+
+- [Introduction](http://yufree.github.io/presentation/metabolomics/introduction#1)
+
+- [Statistical Analysis](http://yufree.github.io/presentation/metabolomics/StatisticalAnalysis#1)
+
+- [Batch Correction](http://yufree.github.io/presentation/metabolomics/BatchCorrection#1)
+
+- [Annotation](http://yufree.github.io/presentation/metabolomics/Annotation#1)
+
+- [Demo](http://yufree.github.io/presentation/metabolomics/demo#1)
+
+
 ## Trends in Metabolomics
 
 ```{r gtrends}

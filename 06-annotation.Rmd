@@ -12,7 +12,7 @@ When you get the peaks table or features table, annotation of the peaks would he
 
 - Level 5: Retention time prediction based on library-available retention index or quantitative structure-retnetion relationships (QSRR) models.
 
-Most of the softwares are at level 1 or 2. 
+Most of the softwares are at level 1 or 2. If we only have compounds structure, we could guess ions under different ionization method. If we have mass spectrum, we could match the mass spectral by a similarity analysis to the database. In metabolomics, we only have mass spectrum or mass-to-charge ratios. Single mass-to-charge ratio is not enough for identification. That's the one bottleneck for annotation. So prediction is always performed on MS/MS data.
 
 ## Issues in annotation
 
@@ -76,6 +76,18 @@ In practice, data analysis based annotation could reach level 2. For level 1, we
 ### Adducts list
 
 You could find adducts list [here](https://github.com/stanstrup/commonMZ) from commonMZ project.
+
+### Molgen
+
+[molgen](http://molgen.de) generating all structures (connectivity isomers, constitutions) that correspond to a given molecular formula, with optional further restrictions, e.g. presence or absence of particular substructures.
+
+### Isotope
+
+[Isotope](https://www.envipat.eawag.ch/index.php) pattern prediction
+
+### mfFinder
+
+[mfFinder](http://www.chemcalc.org/mf_finder/mfFinder_em_new) predict formula based on accurate mass
 
 ### CAMERA
 

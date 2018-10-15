@@ -1,4 +1,5 @@
 # Demo
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(cache = TRUE,warning = F,message = F)
 ```
@@ -26,33 +27,110 @@ I suggest building your data analysis projects in RStudio(Click File - New proje
 
 **xcms** does not support all of the Raw files from every mass spectrometry manufacturers. You need to convert your Raw data into some open-source [data format](https://en.wikipedia.org/wiki/Mass_spectrometry_data_format) such as mzData, mzXML or CDF files. The tool is **MScovert** from [**ProteoWizard**](http://proteowizard.sourceforge.net/).
 
-Here is a demo:
+## Optimization
 
-```{r preinstall,message=F,warning=FALSE}
-# install the packages for data analysis and 
-# source("https://bioconductor.org/biocLite.R")
-# biocLite(c("multtest","faahKO","xcms","qvalue","CAMERA"))
-# load the functions and dataset for demo
+IPO package could be used to optimaze the parameters for XCMS. Try the following code.
 
-library(multtest)
+```{r IPOpos,eval=F}
+library(IPO)
 library(xcms)
-library(faahKO)
-library(BiocParallel)
-# get the demo data in faahKO packages
-cdfpath <- system.file("cdf",package = "faahKO")
-# show the name of demo data
-list.files(cdfpath,recursive = T)
+peakpickingParameters <- getDefaultXcmsSetStartingParams('centWave')
+path <- list.files('D:/metademo/data/oq/',full.names = T,recursive = T)
+# change to 5 for obitrap
+peakpickingParameters$ppm <- 15
+resultPeakpicking <- 
+  optimizeXcmsSet(files = path[c(1,2,3)], 
+                  params = peakpickingParameters,
+                  nSlaves = 1,
+                  subdir = NULL)
+
+optimizedXcmsSetObject <- resultPeakpicking$best_settings$xset
+retcorGroupParameters <- getDefaultRetGroupStartingParams()
+resultRetcorGroup <-
+  optimizeRetGroup(xset = optimizedXcmsSetObject, 
+                   params = retcorGroupParameters, 
+                   subdir = NULL)
+writeRScript(resultPeakpicking$best_settings$parameters, 
+             resultRetcorGroup$best_settings)
+para <- capture.output(writeRScript(resultPeakpicking$best_settings$parameters, resultRetcorGroup$best_settings), type = "message")
+save(para,file = 'para.RData')
+sessionInfo()
 ```
 
-Here is a demo for *xcmsSet*:
+## Wrap function
 
-```{r ImputData,warning=F,message=F}
-cdffiles <- list.files(cdfpath, recursive = TRUE, full.names = TRUE)
-xset <- xcmsSet(cdffiles)
-xset
+Here we would use the optimized parameters for peak picking, retention time correction and peaks filling.
+
+```{r eval=F}
+library(xcms)
+library(Rmpi)
+library(stringr)
+getrtmz <- function(path,index = NULL){
+  load('para.RData')
+peakwidth <- as.numeric(unlist(str_extract_all(para[grepl('peakwidth',para)],'\\d+\\.*\\d*')))
+ppm <- as.numeric(unlist(str_extract_all(para[grepl('ppm',para)],'\\d+')))
+noise <- as.numeric(unlist(str_extract_all(para[grepl('noise',para)],'\\d+')))
+snthresh <- as.numeric(unlist(str_extract_all(para[grepl('snthresh',para)],'\\d+')))
+mzdiff <- as.numeric(unlist(str_extract_all(para[grepl('mzdiff',para)],'\\d+\\.*\\d*')))
+prefilter <- as.numeric(unlist(str_extract_all(para[grepl('prefilter',para)],'\\d+\\.*\\d*')))
+integrate <- as.numeric(unlist(str_extract_all(para[grepl('integrate',para)],'\\d+')))
+profStep <- round(as.numeric(unlist(str_extract_all(para[grepl('profStep',para)],'\\d+\\.*\\d*'))),1)
+center <- as.numeric(unlist(str_extract_all(para[grepl('center',para)],'\\d+')))
+response <- as.numeric(unlist(str_extract_all(para[grepl('response',para)],'\\d+')))
+gapInit <- as.numeric(unlist(str_extract_all(para[grepl('gapInit',para)],'\\d+\\.*\\d*')))
+gapExtend <- as.numeric(unlist(str_extract_all(para[grepl('gapExtend',para)],'\\d+\\.*\\d*')))
+factorDiag <- as.numeric(unlist(str_extract_all(para[grepl('factorDiag',para)],'\\d+')))
+factorGap <- as.numeric(unlist(str_extract_all(para[grepl('factorGap',para)],'\\d+')))
+localAlignment <- as.numeric(unlist(str_extract_all(para[grepl('localAlignment',para)],'\\d+')))
+bw <- as.numeric(unlist(str_extract_all(para[grepl('bw',para)],'\\d+\\.*\\d*')))
+mzwid <- as.numeric(unlist(str_extract_all(para[grepl('mzwid',para)],'\\d+\\.*\\d*')))
+minfrac <- as.numeric(unlist(str_extract_all(para[grepl('minfrac',para)],'\\d+\\.*\\d*')))
+minsamp <- as.numeric(unlist(str_extract_all(para[grepl('minsamp',para)],'\\d+')))
+max <-  as.numeric(unlist(str_extract_all(para[grepl('max',para)],'\\d+')))
+  files <- list.files(path,full.names = T,recursive = T)
+  if(!is.null(index)){
+    files <- files[index]
+  }
+  xset <- xcmsSet(files,
+  method = "centWave",
+  peakwidth       = peakwidth,
+  ppm             = ppm,
+  noise           = noise,
+  snthresh        = snthresh,
+  mzdiff          = mzdiff,
+  prefilter       = prefilter,
+  mzCenterFun     = "wMean",
+  integrate       = integrate,
+  fitgauss        = FALSE,
+  verbose.columns = FALSE)
+xset <- retcor( 
+  xset,
+  method         = "obiwarp",
+  plottype       = "none",
+  distFunc       = "cor_opt",
+  profStep       = profStep,
+  center         = center,
+  response       = response,
+  gapInit        = gapInit,
+  gapExtend      = gapExtend,
+  factorDiag     = factorDiag,
+  factorGap      = factorGap,
+  localAlignment = localAlignment)
+xset <- group( 
+  xset,
+  method  = "density",
+  bw      = bw,
+  mzwid   = mzwid,
+  minfrac = minfrac,
+  minsamp = minsamp,
+  max     = max)
+
+xset <- fillPeaks(xset)
+return(xset)
+}
 ```
 
-## Find the peaks
+### Peak picking
 
 The first step to process the MS data is that find the peaks against the noises. In **xcms**, all of related staffs are handled by *xcmsSet* function. 
 
@@ -66,118 +144,148 @@ In the document of *xcmsset*, we could set the sample classes, profmethod, profp
 
 If your data have many groups such as control and treated group, just put them in separate subfolder of the data folder and *xcmsSet* would read them as separated groups.
 
-The output was an object with class of *xcmsSet*. You could see a summary by type the name. In this cases, *xcmsSet* found 4721 peaks with time range 41.8-69.1 min and mass range 200.1-599.3338 m/z in the 12 samples.
+### Data correction
 
-Another function which might be useful is `group`. This function will add additional information about the same analytes for `xcmsSet` objects.
+Reasons of data correction might come from many aspects such as the unstable instrument and pollution on column. In **xcms**, the most important correction is retention time correction. Remember the original retention time might changed and use another object to save the new object.
 
-```{r GroupPeaks}
-xset <- group(xset)
-xset
+### Peaks filling
+
+After the retention time correction, filling the missing peaks could be done by *fillpeaks*. Peaks filling could avoid two many NAs for false statistical analysis. The algorithm could use the baseline signal to impute the data.
+
+## Peaks list
+
+Then we could extract the peaks list from `xcmsSet` objects.
+
+```{r eval=F}
+library(enviGCMS)
+# get the xcmsset object
+neg <- getrtmz('D:/metademo/data/')
+# back up the xcmsset object
+save(neg,file = 'neg.Rdata')
+# get the number
+npeaks <- nrow(neg@groups)
+# get the EIC, boxplot and diffreport, eixmax should be equal to the numbers of peaks groups in the pos objects 
+report <- CAMERA::annotateDiffreport(neg,filebase = 'peaklistneg',metlin = T, eicmax = npeaks, classeic = neg@phenoData$class)
+# save the report as a csv file
+write.csv(report,file = 'all.csv')
 ```
 
-Now you see there are 403 groups in the demo data, which meant 403 analytes are found across 4721 peaks.
+## Peaks filtering
 
-## Data correction
+After we get the peaks list, it's nessary to filter the peaks list to retain the peaks with high quality for further analysis. Normally, we could use the relative standard deviation of blank and pooled QC samples to control the peaks list.
 
-Reasons of data correction might come from many aspects such as the unstable instrument and pollution on column. In **xcms**, the most important correction is retention time correction. 
+```{r eval=F}
+load('neg.Rdata')
+# get the peak intensity, m/z, retention time and group information as list
+mzrt <- enviGCMS::getmzrt(neg)
+# get the mean and rsd for each group
+mzrtm <- enviGCMS::getdoe(mzrt)
+gm <- mzrtm$groupmean
+gr <- mzrtm$grouprsd
+# find the blank group and pool QC group
+blk <- grepl('k',colnames(gm))
+pqc <- grepl('q',colnames(gm))
+# filter by pool QC and blank's group mean intensity(pool QC should larger than three times of blank), return numbers and index
+sum(indexmean <- apply(gm,1,function(x) all(x[pqc]>= 3*x[blk])))
+# filt by pool qc rsd%, return numbers and index
+rsdcf <- 30
+sum(indexrsd <- apply(gr,1,function(x) ifelse(is.na(x[pqc]),T,x[pqc]<rsdcf)))
+# overlap with rsd% and mean filter
+sum(index <- indexmean&indexrsd)
 
-Remember the original retention time might changed and use another object to save the new object:
+# new list, update group and remove pool qc/blk
+qcindex <- grepl('k',mzrt$group$class) | grepl('q',mzrt$group$class)
+mzrtfilter <- list(data = mzrt$data[index,!qcindex],
+                   mz = mzrt$mz[index],
+                   rt = mzrt$rt[index],
+                   group = droplevels(mzrt$group$class[!qcindex,drop =T]))
+# get the filtered csv
+enviGCMS::getupload(mzrtfilter,name = 'peakfilter')
 
-```{r RetCor}
-xset2 <- retcor(xset, method = "obiwarp")
-xset2
-# you need group the peaks again for this corrected data
-xset2 <- group(xset2)
-xset2
 ```
 
-You see one more peak groups after the correction. After the retention time correction, we also need to correct the peak groups by filling the missing peaks. Such function calls *fillpeaks*:
+## Normalization (Optional)
 
-```{r FillMissing,message=F}
-xset3 <- fillPeaks(xset2,BPPARAM=SnowParam())
-xset3
+Normailizaiton is nesscery if you data are collected at different batch or runned in differen instrument parameters.
+
+```{r eval=F}
+# visulize the batch effect
+mzrtsim::rlaplot(mzrt$data,lv = mzrt$group$class)
+mzrtsim::ridgesplot(mzrt$data,lv = mzrt$group$class)
+# get the simulation data and test on NOREVA
+sim <- mzrtsim::simmzrt(mzrt$data)
+mzrtsim::simdata(sim)
+# correct the batch effect by sva
+mzrtcor <- mzrtsim::svacor(mzrt$data,lv = mzrt$group$class)
+# visulize the batch effect correction
+li <- mzrtsim::limmaplot(mzrtcor,lv = mzrt$group$class)
+# return the corrected data
+mzrt$data <- mzrtcor$dataCorrected
 ```
-
-You see more peaks found.
 
 ## Statistic analysis
 
-Right now we get peaks across samples, the next step is finding the differences between two groups. You will find the P values of t-test for pairwise comparison:
+Here we could use `caret` package to perform statistical analysis.
 
-```{r diffreport}
-reporttab <- diffreport(xset3, "WT", "KO", "example")
-reporttab[1:3,]
+```{r eval=F}
+library(caret)
+## Spliting data
+trainIndex <- createDataPartition(mzrtfilter$data, p = .8, 
+                                  list = FALSE, 
+                                  times = 1)
+## Get the training and testing datasets
+Train <- data[ trainIndex,]
+Test  <- data[-trainIndex,]
+## Set the cross validation method
+fitControl <- trainControl(## 10-fold CV
+                           method = "repeatedcv",
+                           number = 10,
+                           ## repeated ten times
+                           repeats = 10)
+# extra papameters for GBM 
+gbmGrid <-  expand.grid(interaction.depth = c(1, 5, 9), 
+                        n.trees = (1:30)*50, 
+                        shrinkage = 0.1,
+                        n.minobsinnode = 20)
+
+set.seed(825)
+gbmFit <- train(mzrtfilter$group ~ ., data = training, 
+                 method = "gbm", 
+                 trControl = fitControl, 
+                 verbose = FALSE, 
+                 ## Now specify the exact models 
+                 ## to evaluate:
+                 tuneGrid = gbmGrid)
+# show the fitting process
+plot(gbmFit)  
+# ANOVA analysis for model selection
+anova(fit1,fit2)
+# find the important variables
+Imp <- varImp(fit)
+plot(Imp)
 ```
-
-Now you have got the ions that varies a lot between groups. Such ions are things we should take care of. In a ideal case, this is the endpoint of your study and the left work is making a report of your finding.
-
-However,we need q-values to control FDR. To get the q-values, you need input p-values and use the function from **qvalue** package.
-
-```{r qvalue}
-library(qvalue)
-# extract the p-value to caculate q-value
-qvalue <- qvalue(p=reporttab$pvalue)
-# add qvalue to reporttab
-reporttab$qvalue <- qvalue$qvalues
-# reporttab[1:3,]
-```
-
-For further information about q-value, check [here](https://en.wikipedia.org/wiki/False_discovery_rate#q-value).
-
-After the FDR control, the following steps depend on your study.
 
 ## Annotation
 
-I suggest **CAMERA** package to handle this task. You need to prepare an object of class *xcmsSet*, for example, *xset3*(remember to use *fillpeaks* to get the ions group).
+Here I use `xMSannotator` package to make annotation with HMDB as reference database.
 
-```{r annotation}
-library(CAMERA)
-# Create an xsAnnotate object
-xsa <- xsAnnotate(xset3)
-# Group after RT value of the xcms grouped peak
-xsaF <- groupFWHM(xsa, perfwhm=0.6)
-# Verify grouping
-xsaC <- groupCorr(xsaF)
-# Annotate isotopes, could be done before groupCorr
-xsaFI <- findIsotopes(xsaC)
-# Annotate adducts
-xsaFA <- findAdducts(xsaFI, polarity="positive")
-# See the results
-getPeaklist(xsaFA)[1:3,]
-# Get final peaktable and store on harddrive
-# write.csv(getPeaklist(xsaFA),file="data/result_CAMERA.csv")
+```{r annotation, eval=F}
+library(xMSannotator)
+num_nodes = 10
+data("adduct_weights")
+negsub <- getrtmz('D:/metademo/data/oq/')
+anno <- xsetplus::fanno(negsub,outloc = 'D:/metademo/anno',mode = 'neg')
 ```
 
-Any steps after the *annotation* could be operated solo and you may not need the isotopes or adducts. You could also use *annotateDiffreport* to show the results as *diffreport* in **xcms**.
+## Pathway Analysis
 
-```{r FinalDiffreport}
-# make a diffreport with CAMERA result and extract the fold change higher than 3
-dreport <- annotateDiffreport(xset3, fc_th = 3)
-# extract the p-value to caculate q-value
-qvalue <- qvalue(p=dreport$pvalue)
-# add qvalue to reporttab
-dreport$qvalue <- qvalue$qvalues
-# See the results
-# dreport[1:3,]
-# save on harddrive
-# write.csv(dreport,file='data/diffreport.csv')
-```
+We could output the files for online pathway analysis with mummichog algorithm.
 
-## Omics analysis
-
-Since we have got the annotations, Omics analysis could be performed. In **xcms**, the default database is **metlin**. You could directly get the link to certain compounds when you generate the differences report.
-
-```{r metlin}
-# make a diffreport with CAMERA result and extract the fold change higher than 3, add the metlin links
-dreport <- annotateDiffreport(xset3, fc_th = 3, metlin = T)
-# extract the p-value to caculate q-value
-qvalue <- qvalue(p=dreport$pvalue)
-# add qvalue to reporttab
-dreport$qvalue <- qvalue$qvalues
-# See the results
-dreport[1:3,]
-# save on harddrive
-# write.csv(dreport,file='data/diffreport.csv')
+```{r pathway, eval=F}
+# get the file
+xsetplus::mumdata(neg,lv = mzrt$group$class)
+# http://mummichog.org/index.html
+# mummichog1 -f 'test.txt' -o myResult
 ```
 
 ## MetaboAnalyst
@@ -186,56 +294,9 @@ Actully, after you perform data correction, you have got the data matrix for sta
 
 The input data format for **MetaboAnalyst** should be rows for peaks and colomns for samples. You could also add groups infomation if possible. Use the following code to get the data for analysis.
 
-```{r MetaboAnalyst}
-MAdata <- groupval(xset3,method = "medret", intensity = "into")
-MAdata <- rbind(group = as.character(phenoData(xset)$class),MAdata)
-# output the data for MetaboAnalyst
-# write.csv(MAdata, file = "data/MAdata.csv")
-```
-
-## Visulizing Peaks
-
-If you find some significant peaks, the best way to check them is data visulization. **xcms** supplies such functions. All you need are the retention time and ions' range.
-
-```{r EIC}
-eic <- groups(xset3)
-index <- which(eic[,"rtmed"] > 2500 & eic[,"rtmed"<2600])[1]
-```
-## Optimation of XCMS
-
-IPO package could be used to optimaze the parameters for XCMS. Try the following code.
-
-```{r IPO, eval = F}
-mzdatapath <- system.file("cdf",package = "faahKO")
-mzdatafiles <- list.files(mzdatapath, recursive = TRUE, full.names=TRUE)
-library(IPO)
-peakpickingParameters <- getDefaultXcmsSetStartingParams('matchedFilter')
-#setting levels for min_peakwidth to 10 and 20 (hence 15 is the center point)
-peakpickingParameters$min_peakwidth <- c(10,20) 
-peakpickingParameters$max_peakwidth <- c(26,42)
-#setting only one value for ppm therefore this parameter is not optimized
-peakpickingParameters$ppm <- 20 
-resultPeakpicking <- 
-  optimizeXcmsSet(files = mzdatafiles[6:9], 
-                  params = peakpickingParameters, 
-                  nSlaves = 4, 
-                  subdir = 'rsmDirectory')
-
-optimizedXcmsSetObject <- resultPeakpicking$best_settings$xset
-
-retcorGroupParameters <- getDefaultRetGroupStartingParams()
-retcorGroupParameters$profStep <- 1
-resultRetcorGroup <-
-  optimizeRetGroup(xset = optimizedXcmsSetObject, 
-                   params = retcorGroupParameters, 
-                   nSlaves = 4, 
-                   subdir = "rsmDirectory")
-
-
-writeRScript(resultPeakpicking$best_settings$parameters, 
-             resultRetcorGroup$best_settings, 
-             nSlaves=12)
-# https://github.com/rietho/IPO/blob/master/vignettes/IPO.Rmd
+```{r MetaboAnalyst,eval=F}
+# get the csv file for Metaboanalyst.ca
+enviGCMS::getupload(neg,name = 'metabo')
 ```
 
 ## Summary
