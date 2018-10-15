@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="annotation.html">
-<link rel="next" href="common-analysis-methods-for-metabolomics.html">
+<link rel="prev" href="demo.html">
+<link rel="next" href="case-studyselected.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -263,54 +263,91 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="omics-analysis" class="section level1">
-<h1><span class="header-section-number">Chapter 7</span> Omics analysis</h1>
-<p>When you get the filtered ions, the next step is making annotations for them. Such annotations would be helpful for omics studies.</p>
-<p>Since we have got the annotations, Omics analysis could be performed.Upload the data obtained from the <strong>xcms</strong> to other tools or databases.</p>
-<p>You will get an updated database list <a href="http://metabolomicssociety.org/resources/metabolomics-databases">here</a></p>
-<p>Right now, it is hard to connect different omics databases such as gene, protein and metabolites together for a whole scope of certain biological process. However, you might select few metabolites across those databases and find something interesting.</p>
-<div id="pathway-analysis" class="section level2">
-<h2><span class="header-section-number">7.1</span> Pathway analysis</h2>
-<p>Pathwat analysis maps annotated data into known pathway and make statistical analysis to find the influenced pathway or the compounds with high inflences on certain pathway.</p>
-<div id="pathway-database" class="section level3">
-<h3><span class="header-section-number">7.1.1</span> Pathway Database</h3>
+<div id="softwareweb-applicationworkflow" class="section level1">
+<h1><span class="header-section-number">Chapter 10</span> Software/Web Application/Workflow</h1>
+<div id="platform-for-metabolomics" class="section level2">
+<h2><span class="header-section-number">10.1</span> Platform for metabolomics</h2>
+<p>Here is a list for related open source <a href="http://strimmerlab.org/notes/mass-spectrometry.html">projects</a></p>
+<div id="xcms-online" class="section level3">
+<h3><span class="header-section-number">10.1.1</span> XCMS online</h3>
+<p><a href="https://xcmsonline.scripps.edu/landing_page.php?pgcontent=mainPage">XCMS online</a> is hosted by Scripps Institute. If your datasets are not large, XCMS online would be the best option for you. Recently they updated the online version to support more functions for systems biology. They use metlin and iso metlin to annotate the MS/MS data. Pathway analysis is also supported. Besides, to accelerate the process, xcms online employed stream (windows only). You could use stream to connect your instrument workstation to their server and process the data along with the data acquisition automate. They also developed apps for xcms online, but I think apps for slack would be even cooler to control the data processing.</p>
+</div>
+<div id="prime" class="section level3">
+<h3><span class="header-section-number">10.1.2</span> PRIMe</h3>
+<p><a href="http://prime.psc.riken.jp/Metabolomics_Software/">PRIMe</a> is from RIKEN and UC Davis. They update their database frequently<span class="citation">(Tsugawa et al. <a href="#ref-tsugawa2016">2016</a>)</span>. It supports mzML and major MS vendor formats. They defined own file format ABF and eco-system for omics studies. The software are updated almost everyday. You could use MS-DIAL for untargeted analysis and MRMOROBS for targeted analysis. For annotation, they developed MS-FINDER and statistic tools with excel. This platform could replaced the dear software from company and well prepared for MS/MS data analysis and lipidomics. They are open source, work on Windows and also could run within mathmamtics. However, they don’t cover pathway analysis. Another feature is they always show the most recently spectral records from public repositories. You could always get the updated MSP spectra files for your own data analysis.</p>
+<p>If you make GC-MS based metabolomics, this paper<span class="citation">(Matsuo et al. <a href="#ref-matsuo2017">2017</a>)</span> could be nice start.</p>
+</div>
+<div id="openms" class="section level3">
+<h3><span class="header-section-number">10.1.3</span> OpenMS</h3>
+<p><a href="https://www.openms.de/">OpenMS</a> is another good platform for mass spectrum data analysis developed with C++. You could use them as plugin of <a href="https://www.knime.org/">KNIME</a>. I suggest anyone who want to be a data scientist to get familiar with platform like KNIME because they supplied various API for different programme language, which is easy to use and show every steps for others. Also TOPPView in OpenMS could be the best software to visualize the MS data. You could always use the metabolomics workflow to train starter about details in data processing. pyOpenMS and OpenSWATH are also used in this platform. If you want to turn into industry, this platform fit you best because you might get a clear idea about solution and workflow.</p>
+</div>
+<div id="mzmine-2" class="section level3">
+<h3><span class="header-section-number">10.1.4</span> MZmine 2</h3>
+<p><a href="http://mzmine.github.io/">MZmine 2</a> has three version developed on Java platform and the lastest version is included into <a href="https://msdk.github.io/">MSDK</a>. Similar function could be found from MZmine 2 as shown in XCMS online. However, MZmine 2 do not have pathway analysis. You could use metaboanalyst for that purpose. Actually, you could go into MSDK to find similar function supplied by <a href="http://www.proteosuite.org">ProteoSuite</a> and <a href="https://www.openchrom.net/">Openchrom</a>. If you are a experienced coder for Java, you should start here.</p>
+</div>
+<div id="xcms" class="section level3">
+<h3><span class="header-section-number">10.1.5</span> XCMS</h3>
+<p><a href="https://bioconductor.org/packages/release/bioc/html/xcms.html">xcms</a> is different from xcms online while they might share the same code. I used it almost every data to run local metabolomics data analysis. Recently, they will change their version to xcms 3 with major update for object class. Their data format would integrate into the MSnbase package and the parameters would be easy to set up for each step. Normally, I will use msconvert-IPO-xcms-xMSannotator-metaboanalyst as workflow to process the offline data. It could accelerate the process by parallel processing. However, if you are not familiar with R, you would better to choose some software above.</p>
+</div>
+<div id="emory-mahpic" class="section level3">
+<h3><span class="header-section-number">10.1.6</span> Emory MaHPIC</h3>
+<p>This platform is composed by several R packages from Emory University including <a href="https://sourceforge.net/projects/aplcms/">apLCMS</a> to collect the data, <a href="https://sourceforge.net/projects/xmsanalyzer/">xMSanalyzer</a> to handle automated pipeline for large-scale, non-targeted metabolomics data, <a href="https://sourceforge.net/projects/xmsannotator/">xMSannotator</a> for annotation of LC-MS data and <a href="https://code.google.com/archive/p/atcg/wikis/mummichog_for_metabolomics.wiki">Mummichog</a> for pathway and network analysis for high-throughput metabolomics. This platform would be preferred by someone from environmental science to study exposome. I always use xMSannotator to annotate the LC-MS data.</p>
+</div>
+<div id="dia-data-analysis" class="section level3">
+<h3><span class="header-section-number">10.1.7</span> DIA data analysis</h3>
+<p><a href="https://skyline.ms/project/home/software/Skyline/begin.view">Skyline</a> is a freely-available and open source Windows client application for building Selected Reaction Monitoring (SRM) / Multiple Reaction Monitoring (MRM), Parallel Reaction Monitoring (PRM - Targeted MS/MS), Data Independent Acquisition (DIA/SWATH) and targeted DDA with MS1 quantitative methods and analyzing the resulting mass spectrometer data.</p>
+<p><a href="https://github.com/MeenaChoi/MSstats">MSstats</a> is an R-based/Bioconductor package for statistical relative quantification of peptides and proteins in mass spectrometry-based proteomic experiments. It is applicable to multiple types of sample preparation, including label-free workflows, workflows that use stable isotope labeled reference proteins and peptides, and work-flows that use fractionation. It is applicable to targeted Selected Reactin Monitoring(SRM), Data-Dependent Acquisiton(DDA or shotgun), and Data-Independent Acquisition(DIA or SWATH-MS). This github page is for sharing source and testing.</p>
+</div>
+<div id="others" class="section level3">
+<h3><span class="header-section-number">10.1.8</span> Others</h3>
 <ul>
-<li><p><a href="http://smpdb.ca/view">SMPDB</a> (The Small Molecule Pathway Database) is an interactive, visual database containing more than 618 small molecule pathways found in humans. More than 70% of these pathways (&gt;433) are not found in any other pathway database. The pathways include metabolic, drug, and disease pathways.</p></li>
-<li><p><a href="https://www.genome.jp/kegg/">KEGG</a> (Kyoto Encyclopedia of Genes and Genomes) is one of the most complete and widely used databases containing metabolic pathways (495 reference pathways) from a wide variety of organisms (&gt;4,700). These pathways are hyperlinked to metabolite and protein/enzyme information. Currently KEGG has &gt;17,000 compounds (from animals, plants and bacteria), 10,000 drugs (including different salt forms and drug carriers) and nearly 11,000 glycan structures.</p></li>
-<li><p><a href="https://biocyc.org/">BioCyc</a> is a collection of 14558 Pathway/Genome Databases (PGDBs), plus software tools for exploring them.</p></li>
-<li><p><a href="https://reactome.org/what-is-reactome">Reactome</a> is an open-source, open access, manually curated and peer-reviewed pathway database. Our goal is to provide intuitive bioinformatics tools for the visualization, interpretation and analysis of pathway knowledge to support basic and clinical research, genome analysis, modeling, systems biology and education.</p></li>
-<li><p><a href="https://www.wikipathways.org/index.php/WikiPathways">WikiPathway</a> is a database of biological pathways maintained by and for the scientific community.</p></li>
+<li><p><a href="http://genomics-pubs.princeton.edu/mzroll/index.php?show=index">MAVEN</a> from Princeton University</p></li>
+<li><p><a href="https://www.bioconductor.org/packages/release/bioc/html/MAIT.html">MAIT</a> based on xcms and you could find source code <a href="https://github.com/jpgroup/MAIT">here</a><span class="citation">(Fernández-Albert et al. <a href="#ref-fernandez-albert2014a">2014</a>)</span>.</p></li>
+<li><p><a href="https://github.com/cran/metabolomics">metabolomics</a> is a CRAN package for analysis of metabolomics data.</p></li>
+<li><p><a href="https://github.com/ODonnell-Lipidomics/LipidFinder">LipidFinder</a> A computational workflow for discovery of new lipid molecular species</p></li>
+<li><p><a href="https://github.com/yufree/enviGCMS">enviGCMS</a> from environmental non-targeted analysis.</p></li>
+<li><p><a href="https://github.com/alexandrovteam/pySM">pySM</a> provides a reference implementation of our pipeline for False Discovery Rate-controlled metabolite annotation of high-resolution imaging mass spectrometry data.</p></li>
+<li><p><a href="https://www.metabolome-express.org/">MetabolomeExpress</a> a public place to process, interpret and share GC/MS metabolomics datasets.</p></li>
+<li><p><a href="https://portal.phenomenal-h2020.eu/home">PhenoMeNal</a> is an easy-to-use, cloud-based metabolomic research environment.</p></li>
+<li><p><a href="https://www.wur.nl/en/show/MetAlign.htm">MetAlign&amp;MSClust</a></p></li>
+<li><p><a href="http://md.tu-bs.de/node/3">MetaboliteDetector</a> is a QT4 based software package for the analysis of GC/MS based metabolomics data.</p></li>
 </ul>
 </div>
-<div id="pathway-software" class="section level3">
-<h3><span class="header-section-number">7.1.2</span> Pathway software</h3>
+</div>
+<div id="data-sharing" class="section level2">
+<h2><span class="header-section-number">10.2</span> Data sharing</h2>
+<p>See this paper<span class="citation">(Haug, Salek, and Steinbeck <a href="#ref-haug2017">2017</a>)</span>:</p>
 <ul>
-<li><p><a href="http://www.pathwaycommons.org/">Pathway Commons</a> online tools for pathway analysis</p></li>
-<li><p><a href="https://github.com/Mathelab/RaMP-DB">RaMP</a> could make pathway analysis for batch search</p></li>
-<li><p><a href="https://github.com/kwanjeeraw/metabox">metabox</a> could make pathway analysis</p></li>
-<li><p><a href="http://impala.molgen.mpg.de/">impala</a> is used for pathway enrichment analysis</p></li>
+<li><p><a href="http://www.ebi.ac.uk/metabolights/">MetaboLights</a> EU based</p></li>
+<li><p><a href="http://www.metabolomicsworkbench.org/">The Metabolomics Workbench</a> US based</p></li>
+<li><p><a href="http://www.metabolomexchange.org/site/">MetabolomeXchange</a> search engine</p></li>
+<li><p><a href="http://workflow4metabolomics.org/">W4M<span class="citation">(Guitton et al. <a href="#ref-guitton2017">2017</a>)</span></a></p></li>
 </ul>
 </div>
-</div>
-<div id="network-analysis" class="section level2">
-<h2><span class="header-section-number">7.2</span> Network analysis</h2>
-<p><a href="https://code.google.com/archive/p/atcg/wikis/mummichog_for_metabolomics.wiki">Mummichog</a> could make pathway and network analysis without annotation.</p>
-<p><a href="http://web1.sph.emory.edu/users/tyu8/MSS">MSS</a>: sequential feature screening procedure to select important sub-network and identify the optimal matching for metabolimics data <span class="citation">(Cai et al. <a href="#ref-cai2017">2017</a>)</span></p>
-</div>
-<div id="omics-integration" class="section level2">
-<h2><span class="header-section-number">7.3</span> Omics integration</h2>
+<div id="contest" class="section level2">
+<h2><span class="header-section-number">10.3</span> Contest</h2>
 <ul>
-<li><p><a href="https://blast.ncbi.nlm.nih.gov/Blast.cgi">Blast</a> finds regions of similarity between biological sequences. The program compares nucleotide or protein sequences to sequence databases and calculates the statistical significance.</p></li>
-<li><p><a href="https://www.omicsdi.org/">The Omics Discovery Index (OmicsDI)</a> provides a knowledge discovery framework across heterogeneous omics data (genomics, proteomics, transcriptomics and metabolomics).</p></li>
-<li><p><a href="https://github.com/cran/mixOmics">Omics Data Integration Project</a></p></li>
+<li><a href="http://www.casmi-contest.org/">CASMI</a> predict smail molecular contest</li>
 </ul>
 
 </div>
 </div>
 <h3>References</h3>
 <div id="refs" class="references">
-<div id="ref-cai2017">
-<p>Cai, Qingpo, Jessica A. Alvarez, Jian Kang, and Tianwei Yu. 2017. “Network Marker Selection for Untargeted LC.” <em>J. Proteome Res.</em> 16 (3): 1261–9. doi:<a href="https://doi.org/10.1021/acs.jproteome.6b00861">10.1021/acs.jproteome.6b00861</a>.</p>
+<div id="ref-tsugawa2016">
+<p>Tsugawa, Hiroshi, Tobias Kind, Ryo Nakabayashi, Daichi Yukihira, Wataru Tanaka, Tomas Cajka, Kazuki Saito, Oliver Fiehn, and Masanori Arita. 2016. “Hydrogen Rearrangement Rules: Computational MS/MS Fragmentation and Structure Elucidation Using MS-FINDER Software.” <em>Anal. Chem.</em> 88 (16): 7946–58. doi:<a href="https://doi.org/10.1021/acs.analchem.6b00770">10.1021/acs.analchem.6b00770</a>.</p>
+</div>
+<div id="ref-matsuo2017">
+<p>Matsuo, Teruko, Hiroshi Tsugawa, Hiromi Miyagawa, and Eiichiro Fukusaki. 2017. “Integrated Strategy for Unknown EI, Multivariate Analysis, EI, and Retention Index Prediction.” <em>Anal. Chem.</em> 89 (12): 6766–73. doi:<a href="https://doi.org/10.1021/acs.analchem.7b01010">10.1021/acs.analchem.7b01010</a>.</p>
+</div>
+<div id="ref-fernandez-albert2014a">
+<p>Fernández-Albert, Francesc, Rafael Llorach, Cristina Andrés-Lacueva, and Alexandre Perera. 2014. “An R Package to Analyse LC/MS Metabolomic Data: MAIT (Metabolite Automatic Identification Toolkit).” <em>Bioinformatics</em> 30 (13): 1937–9. doi:<a href="https://doi.org/10.1093/bioinformatics/btu136">10.1093/bioinformatics/btu136</a>.</p>
+</div>
+<div id="ref-haug2017">
+<p>Haug, Kenneth, Reza M Salek, and Christoph Steinbeck. 2017. “Global Open Data Management in Metabolomics.” <em>Current Opinion in Chemical Biology</em>, Omics, 36 (February): 58–63. doi:<a href="https://doi.org/10.1016/j.cbpa.2016.12.024">10.1016/j.cbpa.2016.12.024</a>.</p>
+</div>
+<div id="ref-guitton2017">
+<p>Guitton, Yann, Marie Tremblay-Franco, Gildas Le Corguillé, Jean-François Martin, Mélanie Pétéra, Pierrick Roger-Mele, Alexis Delabrière, et al. 2017. “Create, Run, Share, Publish, and Reference Your LC, FIA, GC, and NMR Data Analysis Workflows with the Workflow4Metabolomics 3.0 Galaxy Online Infrastructure for Metabolomics.” <em>The International Journal of Biochemistry &amp; Cell Biology</em> 93 (Supplement C): 89–101. doi:<a href="https://doi.org/10.1016/j.biocel.2017.07.002">10.1016/j.biocel.2017.07.002</a>.</p>
 </div>
 </div>
             </section>
@@ -318,8 +355,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="annotation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="common-analysis-methods-for-metabolomics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="demo.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="case-studyselected.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -349,7 +386,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/yufree/metaworkflow/edit/master/07-omics.Rmd",
+"link": "https://github.com/yufree/metaworkflow/edit/master/11-rocker.Rmd",
 "text": "Edit"
 },
 "download": ["Metabolomics.pdf", "Metabolomics.epub"],

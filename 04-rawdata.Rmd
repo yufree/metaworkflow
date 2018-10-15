@@ -318,3 +318,12 @@ This method's performance is similar to SVA. Instead find surrogate variable fro
 
 RRmix also use a latent factor models correct the data[@jr2017]. This method could be treated as linear mixed model version SVA. No control samples are required and the unwanted variances could be removed by factor analysis. This method might be the best choise to remove the unwanted variables with commen experiment design.
 
+## Software
+
+- [BatchCorrMetabolomics](https://github.com/rwehrens/BatchCorrMetabolomics) is for improved batch correction in untargeted MS-based metabolomics
+
+- [MetNorm](https://github.com/cran/MetNorm) show Statistical Methods for Normalizing Metabolomics Data.
+
+- [BatchQC](https://github.com/mani2012/BatchQC) could be used to make batch effect simulation.
+
+- [Noreva](http://idrb.zju.edu.cn/noreva/) could make online batch correction.

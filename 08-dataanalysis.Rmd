@@ -64,3 +64,8 @@ For o-PLS-DA, s-plot could be used to find features.[@wiklund2008]
 ## Canonical correlation analysis 
 
 Find the correlationship between two datasets.
+
+## Software&platform
+
+- [MetaboAnalystR](https://github.com/xia-lab/MetaboAnalystR)
+

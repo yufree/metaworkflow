@@ -19,3 +19,15 @@ Use seperation methods such as chromatography, ion mobility MS, MS/MS. Reversed-
 20ppm is the least resolution and accuracy
 
 - In-source degradation products
+
+## Software
+
+- [IPO](https://github.com/rietho/IPO) A Tool for automated Optimization of XCMS Parameters.
+
+- [xcms](https://github.com/sneumann/xcms) LC/MS and GC/MS Data Analysis
+
+- [Warpgroup](https://github.com/nathaniel-mahieu/warpgroup) is used for chromatogram subregion detection, consensus integration bound determination and accurate missing value integration
+
+- [Paired Mass Distance(PMD)](https://github.com/yufree/pmd) analysis for GC/LC-MS based nontarget analysis.
+
+- [FTMSVisualization](https://github.com/wkew/FTMSVisualization) is a suite of tools for visualizing complex mixture FT-MS data
