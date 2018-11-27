@@ -1,6 +1,12 @@
 # Introduction
 
-Information in living organism commuicates along the Genomics, Transcriptomics, Proteomics and Metabolomics in Central dogma. Following such stream, we might answer certain problems in different scales from individual, population, community to ecosystem. Metabolomics (i.e., the profiling and quantitation of metabolites in body fluids) is a relatively new field of "omics" studies. Different from other omics studies, metabolomics always focused on small moleculars with much lower mass than polypeptide with single or doubled charged ions. Metabolomics studies are always performed in GC-MS, GC*GC-MS[@tian2016], LC-MS, LC-MS/MS or NMR. This workflow would only cover mass spectrometry based metabolomics or XC-MS based research.
+Information in living organism commuicates along the Genomics, Transcriptomics, Proteomics and Metabolomics in Central dogma. Following such stream, we might answer certain problems in different scales from individual, population, community to ecosystem. Metabolomics (i.e., the profiling and quantitation of metabolites in body fluids) is a relatively new field of "omics" studies. Different from other omics studies, metabolomics always focused on small moleculars with much lower mass than polypeptide with single or doubled charged ions. Here is a demo of the position of metabolomics in "omics" studies[@b.dunn2011].
+
+```{r metaintro, fig.show='hold', fig.cap='The complex interactions of functional levels in biological systems.',echo=FALSE,out.width='90%'}
+knitr::include_graphics('images/metaintro.png')
+```
+
+Metabolomics studies are always performed in GC-MS[@theodoridis2012], GC*GC-MS[@tian2016], LC-MS[@gika2014], LC-MS/MS[@begou2017] or NMR[@zhang2012a;@b.dunn2011]. This workflow would only cover mass spectrometry based metabolomics or XC-MS based research.
 
 ## History
 
@@ -58,13 +64,30 @@ knitr::include_graphics('images/metahistory.jpg')
 
 - post-metabolomics era high-throughput analytical techniques 
 
+### Defination
+
+Metabolomics is actually a comprehensive analysis with identification and quantification of both known and unknown compounds in an unbiased way. Metabolic fingerprinting is working on fast classification of samples based on metabolite data without quantifying or identification of the metabolites. Metabolite profiling always need a pre-defined metabolites to be quantification.[@madsen2010]
+
 ## Reviews and tutorials
 
-Some new reviews and tutorials related to this workflow could be found in those papers[@alonso2015; @cajka2016; @lu2008; @schrimpe-rutledge2016; @townsend2016; @barnes2016; @barnes2016a].
+Some nice reviews and tutorials related to this workflow could be found in those papers or directly online:
 
-Also I noticed more and more papers showed a bunch of data process methods as strategy for metabolomics[@watrous2017;@robbatjr.2017]. If you only need metabolomics as tools to tell your story, such stratrgy could be a quick start for you.
+### Workflow
 
-For software, check this review[@misra2016].
+Those papers are recommended[@barnes2016a; @cajka2016; @lu2008; @fiehn2002] for general metabolomics related topics. For targeted metaabolomics, you could check those reviews[@begou2017; @zhou2016; @lu2008a; @weljie2006; @yuan2012; @griffiths2010].
+
+### Data analysis
+
+You could firstly read those papers[@barnes2016; @alonso2015; @kusonmano2016; @madsen2010; @uppal2016] to get the concepts and issues for data analysis in metabolomics. Then this paper[@gromski2015] could be treated as a step-by-step tutorial.
+
+- For annotation, this paper[@domingo-almenara2018] is an well organized review.
+
+- For database used in metabolomics, you could check this review[@vinaixa2016]. 
+- For metabolomics software, check this series of reviews for each year[@misra2016; @misra2017; @misra2018]. 
+
+- For open sourced software, this review[@spicer2017] could be a good start.
+
+- For DIA or DDA metabolomics, check those papers[@bilbao2015; @fenaille2017].
 
 Here is the slides for metabolomics data analysis workshop and I have made presentations twice in UWaterloo and UC Irvine. Such slides would be updated silent.
 
@@ -78,6 +101,30 @@ Here is the slides for metabolomics data analysis workshop and I have made prese
 
 - [Demo](http://yufree.github.io/presentation/metabolomics/demo#1)
 
+### Application
+
+- For environmental research related metabolomics or exposome, check those papers[@bundy2009; @warth2017].
+
+- For food chemistry, check this[@castro-puyana2017] and this paper for livestock[@goldansaz2017] and those one for nutrients[@allam-ndoul2016; @jones2012]
+
+- For disease related metabolomics such as oncology[@spratlin2009; @tumas2016], ophthalmology[@tan2016], Cardiovascular[@cheng2017] and chronic kidney disease[@hocher2017a], check those papers.
+
+- Check this piece[@wishart2016] for drug discovery and precision medicine
+
+- The object could be plant[@jorge2016a; @sumner2003], microbial and mammalian[@kapoore2016b], brain[@gonzalez-riano2016], human gut microbiota[@smirnov2016].
+
+- For single cell metabolomics analysis, check here[@fessenden2016; @zenobi2013].
+
+### Challenge
+
+- High throughput Metabolomics related issues could be found here [@zampieri2017].
+        - Cohort size
+        - Temporal resolution
+        - Spatial resolution
+
+- Quantitative Metabolomics related issues could be found here[@kapoore2016b; @jorge2016a].
+
+- For quality control issues, check here[@dudzik2018; @siskos2017].
 
 ## Trends in Metabolomics
 
@@ -92,9 +139,9 @@ library(rentrez)
 papers_by_year <- function(years, search_term){
     return(sapply(years, function(y) entrez_search(db="pubmed",term=search_term, mindate=y, maxdate=y, retmax=0)$count))
 }
-years <- 1987:2017
+years <- 1987:2018
 total_papers <- papers_by_year(years, "")
-omics <- c("genomic", "epigenomic", "metabolomics", "metagenomic", "proteomic", "transcriptomic", "pharmacogenomic", "connectomic")
+omics <- c("genomic", "epigenomic",  "metagenomic", "proteomic", "transcriptomic","metabolomics","exposome", "pharmacogenomic", "connectomic")
 trend_data <- sapply(omics, function(t) papers_by_year(years, t))
 trend_props <- trend_data/total_papers
 library(reshape)
@@ -104,17 +151,9 @@ p <- ggplot(trend_df, aes(years, value, colour=variable))
 p + geom_line(size=1) + scale_y_log10("number of papers")
 ```
 
-### Quantitative Metabolomics
 
-Those papers [@kapoore2016b; @jorge2016a].
 
-### High throughput Metabolomics
 
-Those papers [@zampieri2017]
-
-- Cohort size
-- Temporal resolution
-- Spatial resolution
 
 ## Workflow
 

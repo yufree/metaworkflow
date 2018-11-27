@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="omics-analysis.html">
-<link rel="next" href="workflow-2.html">
+<link rel="prev" href="common-analysis-methods-for-metabolomics.html">
+<link rel="next" href="demo-1.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -304,134 +304,94 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="common-analysis-methods-for-metabolomics" class="section level1">
-<h1><span class="header-section-number">Chapter 9</span> Common analysis methods for metabolomics</h1>
-<p>The general purposes for metabolomics study are strongly associated with research goal. However, since metabolomics are usually performed in a non-targeted mode, statistical analysis methods are always started with the exploratory analysis. The basic target for an exploratory analysis is:</p>
+<div id="workflow-2" class="section level1">
+<h1><span class="header-section-number">Chapter 10</span> Workflow</h1>
+<div id="platform-for-metabolomics" class="section level2">
+<h2><span class="header-section-number">10.1</span> Platform for metabolomics</h2>
+<p>Here is a list for related open source <a href="http://strimmerlab.org/notes/mass-spectrometry.html">projects</a></p>
+<div id="xcms-online" class="section level3">
+<h3><span class="header-section-number">10.1.1</span> XCMS online</h3>
+<p><a href="https://xcmsonline.scripps.edu/landing_page.php?pgcontent=mainPage">XCMS online</a> is hosted by Scripps Institute. If your datasets are not large, XCMS online would be the best option for you. Recently they updated the online version to support more functions for systems biology. They use metlin and iso metlin to annotate the MS/MS data. Pathway analysis is also supported. Besides, to accelerate the process, xcms online employed stream (windows only). You could use stream to connect your instrument workstation to their server and process the data along with the data acquisition automate. They also developed apps for xcms online, but I think apps for slack would be even cooler to control the data processing.</p>
+</div>
+<div id="prime" class="section level3">
+<h3><span class="header-section-number">10.1.2</span> PRIMe</h3>
+<p><a href="http://prime.psc.riken.jp/Metabolomics_Software/">PRIMe</a> is from RIKEN and UC Davis. They update their database frequently<span class="citation">(Tsugawa et al. <a href="#ref-tsugawa2016">2016</a>)</span>. It supports mzML and major MS vendor formats. They defined own file format ABF and eco-system for omics studies. The software are updated almost everyday. You could use MS-DIAL for untargeted analysis and MRMOROBS for targeted analysis. For annotation, they developed MS-FINDER and statistic tools with excel. This platform could replaced the dear software from company and well prepared for MS/MS data analysis and lipidomics. They are open source, work on Windows and also could run within mathmamtics. However, they don’t cover pathway analysis. Another feature is they always show the most recently spectral records from public repositories. You could always get the updated MSP spectra files for your own data analysis.</p>
+<p>If you make GC-MS based metabolomics, this paper<span class="citation">(Matsuo et al. <a href="#ref-matsuo2017">2017</a>)</span> could be nice start.</p>
+</div>
+<div id="openms" class="section level3">
+<h3><span class="header-section-number">10.1.3</span> OpenMS</h3>
+<p><a href="https://www.openms.de/">OpenMS</a> is another good platform for mass spectrum data analysis developed with C++. You could use them as plugin of <a href="https://www.knime.org/">KNIME</a>. I suggest anyone who want to be a data scientist to get familiar with platform like KNIME because they supplied various API for different programme language, which is easy to use and show every steps for others. Also TOPPView in OpenMS could be the best software to visualize the MS data. You could always use the metabolomics workflow to train starter about details in data processing. pyOpenMS and OpenSWATH are also used in this platform. If you want to turn into industry, this platform fit you best because you might get a clear idea about solution and workflow.</p>
+</div>
+<div id="mzmine-2" class="section level3">
+<h3><span class="header-section-number">10.1.4</span> MZmine 2</h3>
+<p><a href="http://mzmine.github.io/">MZmine 2</a> has three version developed on Java platform and the lastest version is included into <a href="https://msdk.github.io/">MSDK</a>. Similar function could be found from MZmine 2 as shown in XCMS online. However, MZmine 2 do not have pathway analysis. You could use metaboanalyst for that purpose. Actually, you could go into MSDK to find similar function supplied by <a href="http://www.proteosuite.org">ProteoSuite</a> and <a href="https://www.openchrom.net/">Openchrom</a>. If you are a experienced coder for Java, you should start here.</p>
+</div>
+<div id="xcms" class="section level3">
+<h3><span class="header-section-number">10.1.5</span> XCMS</h3>
+<p><a href="https://bioconductor.org/packages/release/bioc/html/xcms.html">xcms</a> is different from xcms online while they might share the same code. I used it almost every data to run local metabolomics data analysis. Recently, they will change their version to xcms 3 with major update for object class. Their data format would integrate into the MSnbase package and the parameters would be easy to set up for each step. Normally, I will use msconvert-IPO-xcms-xMSannotator-metaboanalyst as workflow to process the offline data. It could accelerate the process by parallel processing. However, if you are not familiar with R, you would better to choose some software above.</p>
+</div>
+<div id="emory-mahpic" class="section level3">
+<h3><span class="header-section-number">10.1.6</span> Emory MaHPIC</h3>
+<p>This platform is composed by several R packages from Emory University including <a href="https://sourceforge.net/projects/aplcms/">apLCMS</a> to collect the data, <a href="https://sourceforge.net/projects/xmsanalyzer/">xMSanalyzer</a> to handle automated pipeline for large-scale, non-targeted metabolomics data, <a href="https://sourceforge.net/projects/xmsannotator/">xMSannotator</a> for annotation of LC-MS data and <a href="https://code.google.com/archive/p/atcg/wikis/mummichog_for_metabolomics.wiki">Mummichog</a> for pathway and network analysis for high-throughput metabolomics. This platform would be preferred by someone from environmental science to study exposome. I always use xMSannotator to annotate the LC-MS data.</p>
+</div>
+<div id="dia-data-analysis" class="section level3">
+<h3><span class="header-section-number">10.1.7</span> DIA data analysis</h3>
+<p><a href="https://skyline.ms/project/home/software/Skyline/begin.view">Skyline</a> is a freely-available and open source Windows client application for building Selected Reaction Monitoring (SRM) / Multiple Reaction Monitoring (MRM), Parallel Reaction Monitoring (PRM - Targeted MS/MS), Data Independent Acquisition (DIA/SWATH) and targeted DDA with MS1 quantitative methods and analyzing the resulting mass spectrometer data.</p>
+<p><a href="https://github.com/MeenaChoi/MSstats">MSstats</a> is an R-based/Bioconductor package for statistical relative quantification of peptides and proteins in mass spectrometry-based proteomic experiments. It is applicable to multiple types of sample preparation, including label-free workflows, workflows that use stable isotope labeled reference proteins and peptides, and work-flows that use fractionation. It is applicable to targeted Selected Reactin Monitoring(SRM), Data-Dependent Acquisiton(DDA or shotgun), and Data-Independent Acquisition(DIA or SWATH-MS). This github page is for sharing source and testing.</p>
+<p>MS-DAIL is also an option for DIA.</p>
+</div>
+<div id="others" class="section level3">
+<h3><span class="header-section-number">10.1.8</span> Others</h3>
 <ul>
-<li><p>Find the relationship among variables</p></li>
-<li><p>Find the relationship among samples/group of samples.</p></li>
+<li><p><a href="http://genomics-pubs.princeton.edu/mzroll/index.php?show=index">MAVEN</a> from Princeton University</p></li>
+<li><p><a href="https://www.bioconductor.org/packages/release/bioc/html/MAIT.html">MAIT</a> based on xcms and you could find source code <a href="https://github.com/jpgroup/MAIT">here</a><span class="citation">(Fernández-Albert et al. <a href="#ref-fernandez-albert2014a">2014</a>)</span>.</p></li>
+<li><p><a href="https://github.com/cran/metabolomics">metabolomics</a> is a CRAN package for analysis of metabolomics data.</p></li>
+<li><p><a href="https://github.com/ODonnell-Lipidomics/LipidFinder">LipidFinder</a> A computational workflow for discovery of new lipid molecular species</p></li>
+<li><p><a href="https://github.com/yufree/enviGCMS">enviGCMS</a> from environmental non-targeted analysis.</p></li>
+<li><p><a href="https://github.com/alexandrovteam/pySM">pySM</a> provides a reference implementation of our pipeline for False Discovery Rate-controlled metabolite annotation of high-resolution imaging mass spectrometry data.</p></li>
+<li><p><a href="https://www.metabolome-express.org/">MetabolomeExpress</a> a public place to process, interpret and share GC/MS metabolomics datasets.</p></li>
+<li><p><a href="https://portal.phenomenal-h2020.eu/home">PhenoMeNal</a> is an easy-to-use, cloud-based metabolomic research environment.</p></li>
+<li><p><a href="https://www.wur.nl/en/show/MetAlign.htm">MetAlign&amp;MSClust</a></p></li>
+<li><p><a href="http://md.tu-bs.de/node/3">MetaboliteDetector</a> is a QT4 based software package for the analysis of GC/MS based metabolomics data.</p></li>
 </ul>
-<p>This is basically unsurpvised analysis.</p>
-<p>However, sometimes we have group information which could be used to find biomarkers or correlationship between variables and groups or continous variables. This type of data need supervised methods to process. Before we talk the details of algorithms, let’s cover some basic statistical concepts.</p>
-<div id="basic-statistical-analysis" class="section level2">
-<h2><span class="header-section-number">9.1</span> Basic Statistical Analysis</h2>
-<p><strong>Statistic</strong> is used to describe certain property or variables among the samples. It could be designed for certain purpose to extract signal and remove noise. Statistical models and inference are both based on statistic instead of the data.</p>
-<p><span class="math display">\[Statistic = f(sample_1,sample_2,...,sample_n)\]</span></p>
-<p><strong>Null Hypothesis Significance Testing (NHST)</strong> is often used to make statistical inference. P value is the probability of certain statistics happens under H0 (pre-defined distribution).</p>
-<p>For omics studies, you should realise <strong>Multiple Comparision</strong> issue when you perform a lot of(more than 20) comparisions or tests at the same time. <strong>False Discovery Rate(FDR) control</strong> is required for multiple tests to make sure the results are not false positive. You could use Benjamini-Hochberg method to adjust raw p values or directly use Storey Q value to make FDR control.</p>
-<p>NHST is famous for the failure of p-value interpretation as well as multiple comparision issues. <strong>Bayesian Hypothesis Testing</strong> could be an options to cover some drawbacks of NHST. Bayesian Hypothesis Testing use Bayes factor to show the differences between null hypothesis and any other hypothesis.</p>
-<p><span class="math display">\[Bayes\ factor = \frac{p(D|Ha)}{p(D|H0)} = \frac{posterior\ odds}{prior\ odds}\]</span></p>
-<p><strong>Statistical model</strong> use statistics to make prediction/explanation. Most of the statistical model need to be tuned for parpameters to show a better performance. Statistical model is build on real data and could be diagnosed by other general statistics such as <span class="math inline">\(R^2\)</span>, <span class="math inline">\(ROC curve\)</span>. When the models are built or compared, model selection could be preformed.</p>
-<p><span class="math display">\[Target = g(Statistic) = g(f(sample_1,sample_2,...,sample_n))\]</span></p>
-<p><strong>Bias-Variance Tradeoff</strong> is an important concept regarding statistical models. Certain models could be overfitted(small Bias, large variance) or underfitted(large Bias, small variance) when the parameters of models are not well selected.</p>
-<p><span class="math display">\[E[(y - \hat f)^2] = \sigma^2 + Var[\hat f] + Bias[\hat f]\]</span></p>
-<p><strong>Cross validation</strong> could be used to find the best model based on training-testing strategy such as Jacknife, bootstraping resampling and n-fold cross validation.</p>
-<p><strong>Regularization</strong> for models could also be used to find the model with best prediction performance. Rigid regression, LASSO or other general regularization could be employed to build a robust models.</p>
-<p>For supervised models, linear model and tree based model are two basic categories. <strong>Linear model</strong> could be useful to tell the independant or correlated relationship of variables and the influnces on the predicted variables. <strong>Tree based model</strong>, on the other hand, try to build a hierarchical structure for the variables such as bagging, random forest or boosting. Linear model could be treated as special case of tree based model with single layer. Other models like Support Vector Machine (SVM), Artificial Neural Network (ANN) or Deep Learning are also make various assumptions on the data. However, if you final target is prediction, you could try any of those models or even weighted combine their prediciton to make meta-prediction.</p>
 </div>
-<div id="differences-analysis" class="section level2">
-<h2><span class="header-section-number">9.2</span> Differences analysis</h2>
-<p>After we get corrected peaks across samples, the next step is to find the differences between two groups. Actually, you could perform ANOVA or Kruskal-Wallis Test for comparison among more than two groups. The basic idea behind statistic analysis is to find the meaningful differences between groups and extract such ions or peak groups.</p>
-<p>So how to find the differences? In most metabolomics software, such task is completed by a t-test and report p-value and fold changes. If you only compare two groups on one peaks, that’s OK. However, if you compare two groups on thousands of peaks, statistic textbook would tell you to notice the false positive. For one comparasion, the confidence level is 0.05, which means 5% chances to get false positive result. For two comparasions, such chances would be <span class="math inline">\(1-0.95^2\)</span>. For 10 comparasions, such chances would be <span class="math inline">\(1-0.95^{10} = 0.4012631\)</span>. For 100 comparasions, such chances would be <span class="math inline">\(1-0.95^{100} = 0.9940795\)</span>. You would almost certainly to make mistakes for your results.</p>
-<p>In statistics, the false discovery rate(FDR) control is always mentioned in omics studies for mutiple tests. I suggested using q-values to control FDR. If q-value is less than 0.05, we should expect a lower than 5% chances we make the wrong selections for all of the comparisions showed lower q-values in the whole dataset. Also we could use local false discovery rate, which showed the FDR for certain peaks. However, such values are hard to be estimated accurately.</p>
-<p>Karin Ortmayr thought fold change might be better than p-values to find the differences<span class="citation">(Ortmayr et al. <a href="#ref-ortmayr2016a">2016</a>)</span>.</p>
 </div>
-<div id="pca" class="section level2">
-<h2><span class="header-section-number">9.3</span> PCA</h2>
-<p>In most cases, PCA is used as an exploratory data analysis(EDA) method. In most of those most cases, PCA is just served as visualization method. I mean, when I need to visualize some high-dimension data, I would use PCA.</p>
-<p>So, the basic idea behind PCA is compression. When you have 100 samples with concentrations of certain compound, you could plot the concentrations with samples’ ID. However, if you have 100 compounds to be analyzed, it would by hard to show the relationship between the samples. Actually, you need to show a matrix with sample and compounds (100 * 100 with the concentrations filled into the matrix) in an informal way.</p>
-<p>The PCA would say: OK, guys, I could convert your data into only 100 * 2 matrix with the loss of information minimized. Yeah, that is what the mathematical guys or computer programmer do. You just run the command of PCA. The new two “compounds” might have the cor-relationship between the original 100 compounds and retain the variances between them. After such projection, you would see the compressed relationship between the 100 samples. If some samples’ data are similar, they would be projected together in new two “compounds” plot. That is why PCA could be used for cluster and the new “compounds” could be referred as principal components(PCs).</p>
-<p>However, you might ask why only two new compounds could finished such task. I have to say, two PCs are just good for visualization. In most cases, we need to collect PCs standing for more than 80% variances in our data if you want to recovery the data with PCs. If each compound have no relationship between each other, the PCs are still those 100 compounds. So you have found a property of the PCs: PCs are orthogonal between each other.</p>
-<p>Another issue is how to find the relationship between the compounds. We could use PCA to find the relationship between samples. However, we could also extract the influences of the compounds on certain PCs. You might find many compounds showed the same loading on the first PC. That means the concentrations pattern between the compounds are looked similar. So PCA could also be used to explore the relationship between the compounds.</p>
-<p>OK, next time you might recall PCA when you need it instead of other paper showed them.</p>
-<p>Besides, there are some other usage of PCA. Loadings are actually correlation coefficients between peaks and their PC scores. Yamamoto et.al.<span class="citation">(Yamamoto et al. <a href="#ref-yamamoto2014">2014</a>)</span> used t-test on this correlation coefficient and thought the peaks with statistically significant correlation to the PC score have biological meanings for further study such as annotation. However, such analysis works better when few PCs could explain most of the variances in the datasets.</p>
-</div>
-<div id="cluster-analysis" class="section level2">
-<h2><span class="header-section-number">9.4</span> Cluster Analysis</h2>
-<p>After we got a lot of samples and analyzed the concentrations of many compounds in them, we may ask about the relationship between the samples. You might have the sampling information such as the date and the position and you could use boxplot or violin plot to explore the relationships among those categorical variables. However, you could also use the data to find some potential relationship.</p>
-<p>But how? if two samples’ data were almost the same, we might think those samples were from the same potential group. On the other hand, how do we define the “same” in the data?</p>
-<p>Cluster analysis told us that just define a “distances” to measure the similarity between samples. Mathematically, such distances would be shown in many different manners such as the sum of the absolute values of the differences between samples.</p>
-<p>For example, we analyzed the amounts of compound A, B and C in two samples and get the results:</p>
-<table>
-<thead>
-<tr class="header">
-<th>Compounds(ng)</th>
-<th>A</th>
-<th>B</th>
-<th>C</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Sample 1</td>
-<td>10</td>
-<td>13</td>
-<td>21</td>
-</tr>
-<tr class="even">
-<td>Sample 2</td>
-<td>54</td>
-<td>23</td>
-<td>16</td>
-</tr>
-</tbody>
-</table>
-<p>The distance could be:</p>
-<p><span class="math display">\[
-distance = |10-54|+|13-23|+|21-16| = 59
-\]</span></p>
-<p>Also you could use the sum of squares or other way to stand for the similarity. After you defined a “distance”, you could get the distances between all of pairs for your samples. If two samples’ distance was the smallest, put them together as one group. Then calculate the distances again to combine the small group into big group until all of the samples were include in one group. Then draw a dendrogram for those process.</p>
-<p>The following issue is that how to cluster samples? You might set a cut-off and directly get the group from the dendrogram. However, sometimes you were ordered to cluster the samples into certain numbers of groups such as three. In such situation, you need K means cluster analysis.</p>
-<p>The basic idea behind the K means is that generate three virtual samples and calculate the distances between those three virtual samples and all of the other samples. There would be three values for each samples. Choose the smallest values and class that sample into this group. Then your samples were classified into three groups. You need to calculate the center of those three groups and get three new virtual samples. Repeat such process until the group members unchanged and you get your samples classified.</p>
-<p>OK, the basic idea behind the cluster analysis could be summarized as define the distances, set your cut-off and find the group. By this way, you might show potential relationships among samples.</p>
-</div>
-<div id="plsda" class="section level2">
-<h2><span class="header-section-number">9.5</span> PLSDA</h2>
-<p>PLS-DA, OPLS-DA and HPSO-OPLS-DA<span class="citation">(Yang et al. <a href="#ref-yang2017a">2017</a>)</span> could be used.</p>
-<p>Partial least squares discriminant analysis(PLSDA) was first used in the 1990s. However, Partial least squares(PLS) was proposed in the 1960s by Hermann Wold. Principal components analysis produces the weight matrix reflecting the covariance structure between the variables, while partial least squares produces the weight matrix reflecting the covariance structure between the variables and classes. After rotation by weight matrix, the new variables would contain relationship with classes.</p>
-<p>The classification performance of PLSDA is identical to linear discriminant analysis(LDA) if class sizes are balanced, or the columns are adjusted according to the mean of the class mean. If the number of variables exceeds the number of samples, LDA can be performed on the principal components. Quadratic discriminant analysis(QDA) could model nonlinearity relationship between variables while PLSDA is better for collinear variables. However, as a classifier, there is little advantage for PLSDA. The advantages of PLSDA is that this modle could show relationship between variables, which is not the goal of regular classifier.</p>
-<p>Different algorithms<span class="citation">(Andersson <a href="#ref-andersson2009">2009</a>)</span> for PLSDA would show different score, while PCA always show the same score with fixed algorithm. For PCA, both new variables and classes are orthognal. However, for PLS(Wold), only new classes are orthognal. For PLS(Martens), only new variables are orthognal. This paper show the details of using such methods<span class="citation">(Brereton and Lloyd <a href="#ref-brereton2018">2018</a>)</span>.</p>
-<p>Sparse PLS discriminant analysis(sPLS-DA) make a L1 penal on the variable selection to remove the influnces from unrelated variables, which make sense for high-throughput omics data<span class="citation">(Lê Cao, Boitard, and Besse <a href="#ref-lecao2011">2011</a>)</span>.</p>
-<p>For o-PLS-DA, s-plot could be used to find features.<span class="citation">(Wiklund et al. <a href="#ref-wiklund2008">2008</a>)</span></p>
-</div>
-<div id="self-organizing-map" class="section level2">
-<h2><span class="header-section-number">9.6</span> Self-organizing map</h2>
-</div>
-<div id="canonical-correlation-analysis" class="section level2">
-<h2><span class="header-section-number">9.7</span> Canonical correlation analysis</h2>
-<p>Find the correlationship between two datasets.</p>
-</div>
-<div id="software-4" class="section level2">
-<h2><span class="header-section-number">9.8</span> Software</h2>
+<div id="data-sharing" class="section level2">
+<h2><span class="header-section-number">10.2</span> Data sharing</h2>
+<p>See this paper<span class="citation">(Haug, Salek, and Steinbeck <a href="#ref-haug2017">2017</a>)</span>:</p>
 <ul>
-<li><p><a href="https://github.com/xia-lab/MetaboAnalystR">MetaboAnalystR</a></p></li>
-<li><p><a href="http://caret.r-forge.r-project.org/">caret</a> could employ more than 200 statistical models in a general framework to build/select models. You could also show the variable importance for some of the models.</p></li>
+<li><p><a href="http://www.ebi.ac.uk/metabolights/">MetaboLights</a> EU based</p></li>
+<li><p><a href="http://www.metabolomicsworkbench.org/">The Metabolomics Workbench</a> US based</p></li>
+<li><p><a href="http://www.metabolomexchange.org/site/">MetabolomeXchange</a> search engine</p></li>
+<li><p><a href="http://workflow4metabolomics.org/">W4M<span class="citation">(Guitton et al. <a href="#ref-guitton2017">2017</a>)</span></a></p></li>
 </ul>
-
+</div>
+<div id="contest" class="section level2">
+<h2><span class="header-section-number">10.3</span> Contest</h2>
+<ul>
+<li><a href="http://www.casmi-contest.org/">CASMI</a> predict smail molecular contest</li>
+</ul>
+</div>
+<div id="demo" class="section level2">
+<h2><span class="header-section-number">10.4</span> Demo</h2>
 </div>
 </div>
 <h3>References</h3>
 <div id="refs" class="references">
-<div id="ref-ortmayr2016a">
-<p>Ortmayr, Karin, Verena Charwat, Cornelia Kasper, Stephan Hann, and Gunda Koellensperger. 2016. “Uncertainty Budgeting in Fold Change Determination and Implications for Non-Targeted Metabolomics Studies in Model Systems” 142 (1): 80–90. <a href="https://doi.org/10.1039/C6AN01342B">https://doi.org/10.1039/C6AN01342B</a>.</p>
+<div id="ref-tsugawa2016">
+<p>Tsugawa, Hiroshi, Tobias Kind, Ryo Nakabayashi, Daichi Yukihira, Wataru Tanaka, Tomas Cajka, Kazuki Saito, Oliver Fiehn, and Masanori Arita. 2016. “Hydrogen Rearrangement Rules: Computational MS/MS Fragmentation and Structure Elucidation Using MS-FINDER Software.” <em>Anal. Chem.</em> 88 (16): 7946–58. <a href="https://doi.org/10.1021/acs.analchem.6b00770">https://doi.org/10.1021/acs.analchem.6b00770</a>.</p>
 </div>
-<div id="ref-yamamoto2014">
-<p>Yamamoto, Hiroyuki, Tamaki Fujimori, Hajime Sato, Gen Ishikawa, Kenjiro Kami, and Yoshiaki Ohashi. 2014. “Statistical Hypothesis Testing of Factor Loading in Principal Component Analysis and Its Application to Metabolite Set Enrichment Analysis.” <em>BMC Bioinformatics</em> 15 (February): 51. <a href="https://doi.org/10.1186/1471-2105-15-51">https://doi.org/10.1186/1471-2105-15-51</a>.</p>
+<div id="ref-matsuo2017">
+<p>Matsuo, Teruko, Hiroshi Tsugawa, Hiromi Miyagawa, and Eiichiro Fukusaki. 2017. “Integrated Strategy for Unknown EIMS Identification Using Quality Control Calibration Curve, Multivariate Analysis, EIMS Spectral Database, and Retention Index Prediction.” <em>Anal. Chem.</em> 89 (12): 6766–73. <a href="https://doi.org/10.1021/acs.analchem.7b01010">https://doi.org/10.1021/acs.analchem.7b01010</a>.</p>
 </div>
-<div id="ref-yang2017a">
-<p>Yang, Qin, Shan-Shan Lin, Jiang-Tao Yang, Li-Juan Tang, and Ru-Qin Yu. 2017. “Detection of Inborn Errors of Metabolism Utilizing GC-MS Urinary Metabolomics Coupled with a Modified Orthogonal Partial Least Squares Discriminant Analysis.” <em>Talanta</em> 165 (April): 545–52. <a href="https://doi.org/10.1016/j.talanta.2017.01.018">https://doi.org/10.1016/j.talanta.2017.01.018</a>.</p>
+<div id="ref-fernandez-albert2014a">
+<p>Fernández-Albert, Francesc, Rafael Llorach, Cristina Andrés-Lacueva, and Alexandre Perera. 2014. “An R Package to Analyse LC/MS Metabolomic Data: MAIT (Metabolite Automatic Identification Toolkit).” <em>Bioinformatics</em> 30 (13): 1937–9. <a href="https://doi.org/10.1093/bioinformatics/btu136">https://doi.org/10.1093/bioinformatics/btu136</a>.</p>
 </div>
-<div id="ref-andersson2009">
-<p>Andersson, Martin. 2009. “A Comparison of Nine PLS1 Algorithms.” <em>J. Chemom.</em> 23 (10): 518–29. <a href="https://doi.org/10.1002/cem.1248">https://doi.org/10.1002/cem.1248</a>.</p>
+<div id="ref-haug2017">
+<p>Haug, Kenneth, Reza M Salek, and Christoph Steinbeck. 2017. “Global Open Data Management in Metabolomics.” <em>Current Opinion in Chemical Biology</em>, Omics, 36 (February): 58–63. <a href="https://doi.org/10.1016/j.cbpa.2016.12.024">https://doi.org/10.1016/j.cbpa.2016.12.024</a>.</p>
 </div>
-<div id="ref-brereton2018">
-<p>Brereton, Richard G., and Gavin R. Lloyd. 2018. “Partial Least Squares Discriminant Analysis for Chemometrics and Metabolomics: How Scores, Loadings, and Weights Differ According to Two Common Algorithms.” <em>J. Chemom.</em> 32 (4): e3028. <a href="https://doi.org/10.1002/cem.3028">https://doi.org/10.1002/cem.3028</a>.</p>
-</div>
-<div id="ref-lecao2011">
-<p>Lê Cao, Kim-Anh, Simon Boitard, and Philippe Besse. 2011. “Sparse PLS Discriminant Analysis: Biologically Relevant Feature Selection and Graphical Displays for Multiclass Problems.” <em>BMC Bioinformatics</em> 12 (June): 253. <a href="https://doi.org/10.1186/1471-2105-12-253">https://doi.org/10.1186/1471-2105-12-253</a>.</p>
-</div>
-<div id="ref-wiklund2008">
-<p>Wiklund, Susanne, Erik Johansson, Lina Sjöström, Ewa J. Mellerowicz, Ulf Edlund, John P. Shockcor, Johan Gottfries, Thomas Moritz, and Johan Trygg. 2008. “Visualization of GC/TOF-MS-Based Metabolomics Data for Identification of Biochemically Interesting Compounds Using OPLS Class Models.” <em>Anal. Chem.</em> 80 (1): 115–22. <a href="https://doi.org/10.1021/ac0713510">https://doi.org/10.1021/ac0713510</a>.</p>
+<div id="ref-guitton2017">
+<p>Guitton, Yann, Marie Tremblay-Franco, Gildas Le Corguillé, Jean-François Martin, Mélanie Pétéra, Pierrick Roger-Mele, Alexis Delabrière, et al. 2017. “Create, Run, Share, Publish, and Reference Your LCMS, FIAMS, GCMS, and NMR Data Analysis Workflows with the Workflow4Metabolomics 3.0 Galaxy Online Infrastructure for Metabolomics.” <em>The International Journal of Biochemistry &amp; Cell Biology</em> 93 (Supplement C): 89–101. <a href="https://doi.org/10.1016/j.biocel.2017.07.002">https://doi.org/10.1016/j.biocel.2017.07.002</a>.</p>
 </div>
 </div>
             </section>
@@ -439,8 +399,8 @@ distance = |10-54|+|13-23|+|21-16| = 59
           </div>
         </div>
       </div>
-<a href="omics-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="workflow-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="common-analysis-methods-for-metabolomics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="demo-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -470,7 +430,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/yufree/metaworkflow/edit/master/09-statistics.Rmd",
+"link": "https://github.com/yufree/metaworkflow/edit/master/10-workflow.Rmd",
 "text": "Edit"
 },
 "download": null,
