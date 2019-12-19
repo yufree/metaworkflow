@@ -1,10 +1,13 @@
 # Exposome
 
+Nature or nurture debate has a similar paradigm in environmental study: is the ecological system and human health risk dominated by heredity or environment? Twins and siblings study[@lakhani2019; @polderman2015] show that both heritability and environmental factors could explain the phenotypic variance among population. The contribution of environment among different disease functional domain such as hematological and endocrine could achieve almost half of the total variances [@polderman2015]. However, besides those epidemiology proof, little is known about the influences of overall environmental exposure process at molecular level. Conventional exposure study always investigate one or several specific compounds and their environmental fate or toxicology endpoint. Exposome, on the other hand, tries to access multiple exposure factors from biological or environmental samples as much as possible without a predefined compounds list. Those endogenous and exogenous molecules can reveal the exposure process in details. Exposome could not only help to investigate the comprehensive molecules level changes, but also the interactions among molecules in an non-targeted design. By following annotation of captured compounds, exposome can discover exposure markers for certain type of pollution, as well as biomarkers for certain exposure process and discuss related physiological process.
+
 According to [CDC](https://www.cdc.gov/niosh/topics/exposome/default.html), The exposome can be defined as the measure of all the exposures of an individual in a lifetime and how those exposures relate to health. Exposomics is the study of the exposome and relies on the application of internal and external exposure assessment methods. 
 
 - Internal exposure relies on fields of study such as genomics, metabolomics, lipidomics, transcriptomics and proteomics.
 
 - External exposure assessment relies on measuring environmental stressors. 
+
 
 ## Internal exposure
 
@@ -29,6 +32,8 @@ According to [CDC](https://www.cdc.gov/niosh/topics/exposome/default.html), The 
 - [QSPR molecular descriptor generate tools list](http://www.moleculardescriptors.eu/resources/resources.htm)
 
 - [Spark](http://www.archemcalc.com/sparc.html) uses computational algorithms based on fundamental chemical structure theory to estimate a wide variety of reactivity parameters strictly from molecular structure.
+
+- [OPERA](https://jcheminf.biomedcentral.com/articles/10.1186/s13321-018-0263-1) OPERA models for predicting physicochemical properties and environmental fate endpoints[@mansouri2018].
 
 LogP is important for analytical chemistry. Mannhold [@mannhold2009] report a comprehensive comparison of logP algorithms. Later, [Rajarshi Guha](http://blog.rguha.net/?p=896) make a comparison with logP algorithms with CDK based on logPstar dataset. Commercial software such as Spark, ACS Labs and ChemAxon might always claim a better performance on in-house dataset compared with public software like KowWIN within EPI Suite. However, we should be careful to evaluate the influnce of logP accuracy on the metabolites or unknown compounds.
 
@@ -63,3 +68,5 @@ LogP is important for analytical chemistry. Mannhold [@mannhold2009] report a co
 - [Drugbank](https://www.drugbank.ca/releases/latest) is a unique bioinformatics and cheminformatics resource that combines detailed drug data with comprehensive drug target information.
 
 - [LMDB](http://lmdb.ca) is a freely available electronic database containing detailed information about small molecule metabolites found in different livestock species.
+
+- [HPV](https://iaspub.epa.gov/oppthpv/hpv_hc_characterization.get_report?doctype=2) High Production Volume Information System

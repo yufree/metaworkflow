@@ -31,6 +31,12 @@ According to the defination from the Chemical Analysis Working Group of the Meta
 
 In practice, data analysis based annotation could reach level 2. For level 1, we need at extra methods such as MS/MS, retention time, accurate mass, 2D NMR spectra, and so on to confirm the compounds. However, standards are always required for solid proof.
 
+## Cheminformatics
+
+- [RDKit](https://www.rdkit.org/) Open-Source Cheminformatics Software
+- [cdk](https://sourceforge.net/projects/cdk/) The Chemistry Development Kit (CDK) is a scientific, LGPL-ed library for bio- and cheminformatics and computational chemistry written in Java.
+- [Open Babel](http://openbabel.org/wiki/Main_Page) Open Babel is a chemical toolbox designed to speak the many languages of chemical data.
+ 
 ## MS Database for annotation
 
 ### MS/MS
@@ -70,6 +76,8 @@ In practice, data analysis based annotation could reach level 2. For level 1, we
 - [ChEBI](https://www.ebi.ac.uk/chebi/) is a freely available dictionary of molecular entities focused on ‘small’ chemical compounds. 
 
 - [RefMet](http://www.metabolomicsworkbench.org/databases/refmet/index.php) A Reference list of Metabolite names.
+
+- [CAS](https://www.cas.org/support/documentation/chemical-substances/cas-registry-100-millionth-fun-facts) Largest substance database
 
 ## Software
 
@@ -209,6 +217,10 @@ This online [application](http://imet.seeslab.net/) is a network-based computati
 ### magma
 
 [magma](http://www.emetabolomics.org/magma) could predict and match MS/MS files.
+
+### MetExpert
+
+[MetExpert](https://sourceforge.net/projects/metexpert/) is an expert system to assist users with limited expertise in informatics to interpret GCMS data for metabolite identification without querying spectral databases[@qiu2018]
 
 ## MS-DIA
 

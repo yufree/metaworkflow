@@ -6,6 +6,8 @@ Raw data from the instruments such as LC-MS or GC-MS were hard to be analyzed. T
 
 - Each scan contain a full scan mass spetrum with intensities
 
+Commen formats for open source mass spectrum data are mzxml, mzml or CDF. However, masscomp might shrink the data size[@yang2019].
+
 ## Peak extraction
 
 GC/LC-MS data are usually be shown as a matrix with column standing for retention times and row standing for masses after bin them into small cell.
@@ -42,7 +44,7 @@ For single file, we could get peaks. However, we should make the peaks align acr
 
 ## Filling missing values
 
-Too many zeros in peaks list are problematic for statistics. Then we usually need to integreate the area exsiting a peak. `xcms 3` could use profile matrix instead of profil matrix, which limited the range.
+Too many zeros or NA in peaks list are problematic for statistics. Then we usually need to integreate the area exsiting a peak. `xcms 3` could use profile matrix to fill the blank. They also have function to impute the NA data by replace missing values with a proportion of the row minimum or random numbers based on the row minimum. It depends on the user to select imputation methods as well as control the minimum fraction of featuers appeared in single group.
 
 With many groups of samples, you will get another data matrix with column standing for peaks at cerntain retention time and row standing for samples after the Raw data pretreatment.
 
@@ -63,7 +65,7 @@ Another issue is the Dynamic Range. For metabolomics, peaks could be below the d
 
 Some of the data were limited by the detect of limitation. Thus we need some methods to impute the data if we don't want to lose information by deleting the NA or 0.
 
-Two major imputation way could be used. The first way is use model-free method such as half the minimum of the values across the data, 0, 1, mean/median across the data( `enviGCMS` package could do this via `getimputation` function). The second way is use model-based method such as linear model, random forest, KNN, PCA. Try `simputation` package for various imputation methods.
+Two major imputation way could be used. The first way is use model-free method such as half the minimum of the values across the data, 0, 1, mean/median across the data( `enviGCMS` package could do this via `getimputation` function). The second way is use model-based method such as linear model, random forest, KNN, PCA. Try `simputation` package for various imputation methods. As mentioned before, you could also use `imputeRowMin` or `imputeRowMinRand` within `xcms` package to perform imputation.
 
 Tobit regression is preferred for censored data. Also you might choose  maximum likelihood estimation(Estimation of mean and standard deviation by MLE. Creating 10 complete samples. Pool the results from 10 individual analyses).
 
@@ -114,6 +116,8 @@ summary(tfit)
 
 - [msPurity](https://pubs.acs.org/doi/10.1021/acs.analchem.6b04358) Automated Evaluation of Precursor Ion Purity for Mass Spectrometry-Based Fragmentation in Metabolomics[@lawson2017]
 
+- [ULSA](https://pubs.acs.org/doi/suppl/10.1021/acs.est.8b00259/suppl_file/es8b00259_si_001.pdf) Deconvolution algorithm and a universal library search algorithm (ULSA) for the analysis of complex spectra generated via data-independent acquisition based on Matlab [@samanipour2018]
+
 ### Improved Peak picking
 
 - [IPO](https://github.com/rietho/IPO) A Tool for automated Optimization of XCMS Parameters[@libiseller2015].
@@ -123,3 +127,39 @@ summary(tfit)
 - [xMSanalyzer](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-14-15) improved Peak picking for xcms and apLCMS[@uppal2013]
 
 - [ms-flo](https://bitbucket.org/fiehnlab/ms-flo/src/657d85ec7bdd?at=master) A Tool To Minimize False Positive Peak Reports in Untargeted Liquid Chromatography–Mass Spectroscopy (LC-MS) Data Processing[@defelice2017]
+
+## Tips
+
+- Convert XCMSnExp object into xcmsSet object
+
+```{r eval=F}
+xcmsSetdemo <- as(XCMSnExpdemo,'xcmsSet')
+```
+
+- Split xcmsSet with multiple groups object into a list with single group object
+
+```{r eval=F}
+list <- split(xcmsSetdemo,xcmsSetdemo@phenoData$sample_group)
+# re-group the peaks with parallel computation
+list2 <- BiocParallel::bplapply(list,group)
+```
+
+- Combine single group xcmsSet objects into one xcmsSet
+
+```{r eval=F}
+xcmsSetdemoagain <- Reduce('c',list2)
+# for more higher order function in R, check here: http://www.johnmyleswhite.com/notebook/2010/09/23/higher-order-functions-in-r/
+```
+
+- Use warpgroup to get peaks with better quality
+
+```{r eval=F}
+library(doParallel)
+cl = makeCluster(detectCores() - 1)
+registerDoParallel(cl)
+
+xseteiclist = lapply(xcmsSetdemo@filepaths, xcmsRaw, profstep=0)
+xwarpgroup = group.warpgroup(xcmsSetdemo, xseteiclist, rt.max.drift = 20, ppm.max.drift = 3, rt.aligned.lim = 5)
+
+```
+

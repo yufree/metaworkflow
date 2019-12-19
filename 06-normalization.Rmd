@@ -38,7 +38,7 @@ Relative log abundance (RLA) plots[@delivera2012] and heatmap often used to show
 
 #### Distribution of intensity
 
-Intensity collects from LC/GC-MS always showed a right-skewed distribution. Log transformation is often necessary for further statistical analysis. In some case, a Log-transformated intensity could be visulizated easily.
+Intensity collects from LC/GC-MS always showed a right-skewed distribution. Log transformation is often necessary for further statistical analysis. 
 
 #### Centering
 
@@ -46,45 +46,48 @@ For peak p of sample s in batch b, the corrected abundance I is:
 
 $$\hat I_{p,s,b} = I_{p,s,b} - mean(I_{p,b}) + median(I_{p,qc})$$
 
-For example, we have the intensities of one peak from ten samples in two batches like the following demo:
+If no quality control samples used, the corrected abundance I would be:
 
-```{r center}
-set.seed(42)
-# raw data
-I = c(rnorm(10,mean = 0, sd = 0.5),rnorm(10,mean = 1, sd = 0.5))
-# batch
-B = c(rep(0,10),rep(1,10))
-# qc
-Iqc = c(rnorm(1,mean = 0, sd = 0.5),rnorm(1,mean = 1, sd = 0.5))
-# corrected data
-Icor = I - c(rep(mean(I[1:10]),10),rep(mean(I[11:20]),10)) + median(Iqc)
-# plot the result
-plot(I)
-plot(Icor)
-```
+$$\hat I_{p,s,b} = I_{p,s,b} - mean(I_{p,b})$$
 
 #### Scaling
 
 For peak p of sample s in certain batch b, the corrected abundance I is:
 
 $$\hat I_{p,s,b} = \frac{I_{p,s,b} - mean(I_{p,b})}{std_{p,b}} * std_{p,qc,b} + mean(I_{p,qc,b})$$
+If no quality control samples used, the corrected abundance I would be:
 
-For example, we have the intensities of one peak from ten samples in two batches like the following demo:
+$$\hat I_{p,s,b} = \frac{I_{p,s,b} - mean(I_{p,b})}{std_{p,b}}$$
 
-```{r scaling}
-set.seed(42)
-# raw data
-I = c(rnorm(10,mean = 0, sd = 0.3),rnorm(10,mean = 1, sd = 0.5))
-# batch
-B = c(rep(0,10),rep(1,10))
-# qc
-Iqc = c(rnorm(1,mean = 0, sd = 0.3),rnorm(1,mean = 1, sd = 0.5))
-# corrected data
-Icor = (I - c(rep(mean(I[1:10]),10),rep(mean(I[11:20]),10)))/c(sd(I[1:10]),sd(I[11:20]))*c(rep(0.3,10),rep(0.5,10)) + Iqc[1]
-# plot the result
-plot(I)
-plot(Icor)
-```
+#### Pareto Scaling
+
+For peak p of sample s in certain batch b, the corrected abundance I is:
+
+$$\hat I_{p,s,b} = \frac{I_{p,s,b} - mean(I_{p,b})}{Sqrt(std_{p,b})} * Sqrt(std_{p,qc,b}) + mean(I_{p,qc,b})$$
+
+If no quality control samples used, the corrected abundance I would be:
+
+$$\hat I_{p,s,b} = \frac{I_{p,s,b} - mean(I_{p,b})}{Sqrt(std_{p,b})}$$
+
+#### Range Scaling
+
+For peak p of sample s in certain batch b, the corrected abundance I is:
+
+$$\hat I_{p,s,b} = \frac{I_{p,s,b} - mean(I_{p,b})}{max(I_{p,b}) - min(I_{p,b})} * (max(I_{p,qc,b}) - min(I_{p,qc,b})) + mean(I_{p,qc,b})$$
+
+If no quality control samples used, the corrected abundance I would be:
+
+$$\hat I_{p,s,b} = \frac{I_{p,s,b} - mean(I_{p,b})}{max(I_{p,b}) - min(I_{p,b})} $$
+
+#### Level scaling
+
+For peak p of sample s in certain batch b, the corrected abundance I is:
+
+$$\hat I_{p,s,b} = \frac{I_{p,s,b} - mean(I_{p,b})}{mean(I_{p,b})} * mean(I_{p,qc,b}) + mean(I_{p,qc,b})$$
+
+If no quality control samples used, the corrected abundance I would be:
+
+$$\hat I_{p,s,b} = \frac{I_{p,s,b} - mean(I_{p,b})}{mean(I_{p,b})} $$
 
 #### Quantile
 
