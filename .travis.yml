@@ -1,7 +1,9 @@
 language: r
 r: bioc-release
 pandoc_version: 1.17.2
-apt_packages: libnetcdf-dev
+apt_packages: 
+  - libnetcdf-dev
+  - netcdf-bin
 before_script:
 - chmod +x ./_build.sh
 - chmod +x ./_deploy.sh
