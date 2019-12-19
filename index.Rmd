@@ -16,13 +16,16 @@ always_allow_html: yes
 
 # Preface {-}
 
-This is an online handout for data analysis in mass spectrometry based metabolomics. It would cover a full reproducible metabolomics workflow for data analysis and important topics related to metabolomics. Here is a list:
+This is an online handout for mass spectrometry based metabolomics data analysis. It would cover a full reproducible metabolomics workflow for data analysis and important topics related to metabolomics. Here is a list of topics:
 
-- Software selection
+- Sample collection
 - Pretreatment
+- Principles of metabolomics data analysis
+- Software selection
 - Batch correction
 - Annotation
 - Omics analysis
+- Exposome
 
 This is a book written in **Bookdown**. You could contribute it by a pull request in Github.
 
