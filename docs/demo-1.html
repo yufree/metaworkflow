@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Meta-Workflow</title>
-  <meta name="description" content="This is a workflow for metabolomics studies.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 11 Demo | Meta-Workflow</title>
+  <meta name="description" content="This is a workflow for metabolomics studies." />
+  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Meta-Workflow" />
+  <meta property="og:title" content="Chapter 11 Demo | Meta-Workflow" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
@@ -17,23 +16,23 @@
   <meta name="github-repo" content="yufree/metaworkflow" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Meta-Workflow" />
+  <meta name="twitter:title" content="Chapter 11 Demo | Meta-Workflow" />
   
   <meta name="twitter:description" content="This is a workflow for metabolomics studies." />
   <meta name="twitter:image" content="images/cover.png" />
 
-<meta name="author" content="Miao YU">
+<meta name="author" content="Miao YU" />
 
 
-<meta name="date" content="2018-11-27">
+<meta name="date" content="2019-12-20" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="workflow-2.html">
-<link rel="next" href="exposome.html">
+<link rel="prev" href="workflow-2.html"/>
+<link rel="next" href="exposome.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -41,6 +40,7 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -48,10 +48,12 @@
 
 
 
-<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+
+
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/grViz-binding-1.0.0/grViz.js"></script>
+<script src="libs/grViz-binding-1.0.1/grViz.js"></script>
 
 
 <style type="text/css">
@@ -60,7 +62,6 @@ a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -150,14 +151,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#trends-in-metabolomics"><i class="fa fa-check"></i><b>1.3</b> Trends in Metabolomics</a></li>
 <li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#workflow-1"><i class="fa fa-check"></i><b>1.4</b> Workflow</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="exprimental-designdoe.html"><a href="exprimental-designdoe.html"><i class="fa fa-check"></i><b>2</b> Exprimental design(DoE)</a><ul>
-<li class="chapter" data-level="2.1" data-path="exprimental-designdoe.html"><a href="exprimental-designdoe.html#software"><i class="fa fa-check"></i><b>2.1</b> Software</a></li>
+<li class="chapter" data-level="2" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html"><i class="fa fa-check"></i><b>2</b> Experimental design(DoE)</a><ul>
+<li class="chapter" data-level="2.1" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#homogeneity-study"><i class="fa fa-check"></i><b>2.1</b> Homogeneity study</a></li>
+<li class="chapter" data-level="2.2" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#heterogeneity-study"><i class="fa fa-check"></i><b>2.2</b> Heterogeneity study</a></li>
+<li class="chapter" data-level="2.3" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#sample-size"><i class="fa fa-check"></i><b>2.3</b> Sample size</a></li>
+<li class="chapter" data-level="2.4" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#software"><i class="fa fa-check"></i><b>2.4</b> Software</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="pretreatment.html"><a href="pretreatment.html"><i class="fa fa-check"></i><b>3</b> Pretreatment</a><ul>
 <li class="chapter" data-level="3.1" data-path="pretreatment.html"><a href="pretreatment.html#quenching"><i class="fa fa-check"></i><b>3.1</b> Quenching</a></li>
 <li class="chapter" data-level="3.2" data-path="pretreatment.html"><a href="pretreatment.html#extraction"><i class="fa fa-check"></i><b>3.2</b> Extraction</a></li>
+<li class="chapter" data-level="3.3" data-path="pretreatment.html"><a href="pretreatment.html#derivatization"><i class="fa fa-check"></i><b>3.3</b> Derivatization</a></li>
+<li class="chapter" data-level="3.4" data-path="pretreatment.html"><a href="pretreatment.html#storage"><i class="fa fa-check"></i><b>3.4</b> Storage</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html"><i class="fa fa-check"></i><b>4</b> Instrumental analysis</a></li>
+<li class="chapter" data-level="4" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html"><i class="fa fa-check"></i><b>4</b> Instrumental analysis</a><ul>
+<li class="chapter" data-level="4.1" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#column-and-gradient-selection"><i class="fa fa-check"></i><b>4.1</b> Column and gradient selection</a></li>
+<li class="chapter" data-level="4.2" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#pooled-qc-samples"><i class="fa fa-check"></i><b>4.2</b> Pooled QC samples</a></li>
+<li class="chapter" data-level="4.3" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#mass-resolution"><i class="fa fa-check"></i><b>4.3</b> Mass resolution</a></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html"><i class="fa fa-check"></i><b>5</b> Raw data pretreatment</a><ul>
 <li class="chapter" data-level="5.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#peak-extraction"><i class="fa fa-check"></i><b>5.1</b> Peak extraction</a></li>
 <li class="chapter" data-level="5.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#retention-time-correction"><i class="fa fa-check"></i><b>5.2</b> Retention Time Correction</a></li>
@@ -172,6 +182,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.6.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#for-msms"><i class="fa fa-check"></i><b>5.6.2</b> For MS/MS</a></li>
 <li class="chapter" data-level="5.6.3" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#improved-peak-picking"><i class="fa fa-check"></i><b>5.6.3</b> Improved Peak picking</a></li>
 </ul></li>
+<li class="chapter" data-level="5.7" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#tips"><i class="fa fa-check"></i><b>5.7</b> Tips</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="peaks-normalization.html"><a href="peaks-normalization.html"><i class="fa fa-check"></i><b>6</b> Peaks normalization</a><ul>
 <li class="chapter" data-level="6.1" data-path="peaks-normalization.html"><a href="peaks-normalization.html#peak-misidentification"><i class="fa fa-check"></i><b>6.1</b> Peak misidentification</a></li>
@@ -186,45 +197,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="annotation.html"><a href="annotation.html"><i class="fa fa-check"></i><b>7</b> Annotation</a><ul>
 <li class="chapter" data-level="7.1" data-path="annotation.html"><a href="annotation.html#issues-in-annotation"><i class="fa fa-check"></i><b>7.1</b> Issues in annotation</a></li>
 <li class="chapter" data-level="7.2" data-path="annotation.html"><a href="annotation.html#annotation-v.s.-identification"><i class="fa fa-check"></i><b>7.2</b> Annotation v.s. identification</a></li>
-<li class="chapter" data-level="7.3" data-path="annotation.html"><a href="annotation.html#ms-database-for-annotation"><i class="fa fa-check"></i><b>7.3</b> MS Database for annotation</a><ul>
-<li class="chapter" data-level="7.3.1" data-path="annotation.html"><a href="annotation.html#msms"><i class="fa fa-check"></i><b>7.3.1</b> MS/MS</a></li>
-<li class="chapter" data-level="7.3.2" data-path="annotation.html"><a href="annotation.html#ms"><i class="fa fa-check"></i><b>7.3.2</b> MS</a></li>
+<li class="chapter" data-level="7.3" data-path="annotation.html"><a href="annotation.html#cheminformatics"><i class="fa fa-check"></i><b>7.3</b> Cheminformatics</a></li>
+<li class="chapter" data-level="7.4" data-path="annotation.html"><a href="annotation.html#ms-database-for-annotation"><i class="fa fa-check"></i><b>7.4</b> MS Database for annotation</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="annotation.html"><a href="annotation.html#msms"><i class="fa fa-check"></i><b>7.4.1</b> MS/MS</a></li>
+<li class="chapter" data-level="7.4.2" data-path="annotation.html"><a href="annotation.html#ms"><i class="fa fa-check"></i><b>7.4.2</b> MS</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="annotation.html"><a href="annotation.html#compounds-database"><i class="fa fa-check"></i><b>7.4</b> Compounds Database</a></li>
-<li class="chapter" data-level="7.5" data-path="annotation.html"><a href="annotation.html#software-3"><i class="fa fa-check"></i><b>7.5</b> Software</a><ul>
-<li class="chapter" data-level="7.5.1" data-path="annotation.html"><a href="annotation.html#adducts-list"><i class="fa fa-check"></i><b>7.5.1</b> Adducts list</a></li>
-<li class="chapter" data-level="7.5.2" data-path="annotation.html"><a href="annotation.html#molgen"><i class="fa fa-check"></i><b>7.5.2</b> Molgen</a></li>
-<li class="chapter" data-level="7.5.3" data-path="annotation.html"><a href="annotation.html#isotope"><i class="fa fa-check"></i><b>7.5.3</b> Isotope</a></li>
-<li class="chapter" data-level="7.5.4" data-path="annotation.html"><a href="annotation.html#mffinder"><i class="fa fa-check"></i><b>7.5.4</b> mfFinder</a></li>
-<li class="chapter" data-level="7.5.5" data-path="annotation.html"><a href="annotation.html#camera"><i class="fa fa-check"></i><b>7.5.5</b> CAMERA</a></li>
-<li class="chapter" data-level="7.5.6" data-path="annotation.html"><a href="annotation.html#ramclustr"><i class="fa fa-check"></i><b>7.5.6</b> RAMClustR</a></li>
-<li class="chapter" data-level="7.5.7" data-path="annotation.html"><a href="annotation.html#pmd"><i class="fa fa-check"></i><b>7.5.7</b> pmd</a></li>
-<li class="chapter" data-level="7.5.8" data-path="annotation.html"><a href="annotation.html#nontarget"><i class="fa fa-check"></i><b>7.5.8</b> nontarget</a></li>
-<li class="chapter" data-level="7.5.9" data-path="annotation.html"><a href="annotation.html#xmsannotator"><i class="fa fa-check"></i><b>7.5.9</b> xMSannotator</a></li>
-<li class="chapter" data-level="7.5.10" data-path="annotation.html"><a href="annotation.html#cfm-id"><i class="fa fa-check"></i><b>7.5.10</b> CFM-ID</a></li>
-<li class="chapter" data-level="7.5.11" data-path="annotation.html"><a href="annotation.html#mine"><i class="fa fa-check"></i><b>7.5.11</b> MINE</a></li>
-<li class="chapter" data-level="7.5.12" data-path="annotation.html"><a href="annotation.html#interpretmsspectrum"><i class="fa fa-check"></i><b>7.5.12</b> InterpretMSSpectrum</a></li>
-<li class="chapter" data-level="7.5.13" data-path="annotation.html"><a href="annotation.html#for-ident"><i class="fa fa-check"></i><b>7.5.13</b> For Ident</a></li>
-<li class="chapter" data-level="7.5.14" data-path="annotation.html"><a href="annotation.html#mzmatch"><i class="fa fa-check"></i><b>7.5.14</b> mzmatch</a></li>
-<li class="chapter" data-level="7.5.15" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>7.5.15</b> mz.unity</a></li>
-<li class="chapter" data-level="7.5.16" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>7.5.16</b> MAIT</a></li>
-<li class="chapter" data-level="7.5.17" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>7.5.17</b> ProbMetab</a></li>
-<li class="chapter" data-level="7.5.18" data-path="annotation.html"><a href="annotation.html#ramsi"><i class="fa fa-check"></i><b>7.5.18</b> RAMSI</a></li>
-<li class="chapter" data-level="7.5.19" data-path="annotation.html"><a href="annotation.html#sirius"><i class="fa fa-check"></i><b>7.5.19</b> Sirius</a></li>
-<li class="chapter" data-level="7.5.20" data-path="annotation.html"><a href="annotation.html#mi-pack"><i class="fa fa-check"></i><b>7.5.20</b> MI-Pack</a></li>
-<li class="chapter" data-level="7.5.21" data-path="annotation.html"><a href="annotation.html#plantmat"><i class="fa fa-check"></i><b>7.5.21</b> Plantmat</a></li>
-<li class="chapter" data-level="7.5.22" data-path="annotation.html"><a href="annotation.html#metfamily"><i class="fa fa-check"></i><b>7.5.22</b> MetFamily</a></li>
-<li class="chapter" data-level="7.5.23" data-path="annotation.html"><a href="annotation.html#lipidmatch"><i class="fa fa-check"></i><b>7.5.23</b> Lipidmatch</a></li>
-<li class="chapter" data-level="7.5.24" data-path="annotation.html"><a href="annotation.html#molfind"><i class="fa fa-check"></i><b>7.5.24</b> MolFind</a></li>
-<li class="chapter" data-level="7.5.25" data-path="annotation.html"><a href="annotation.html#metfusion"><i class="fa fa-check"></i><b>7.5.25</b> MetFusion</a></li>
-<li class="chapter" data-level="7.5.26" data-path="annotation.html"><a href="annotation.html#imet"><i class="fa fa-check"></i><b>7.5.26</b> iMet</a></li>
-<li class="chapter" data-level="7.5.27" data-path="annotation.html"><a href="annotation.html#metscape"><i class="fa fa-check"></i><b>7.5.27</b> Metscape</a></li>
-<li class="chapter" data-level="7.5.28" data-path="annotation.html"><a href="annotation.html#metfrag"><i class="fa fa-check"></i><b>7.5.28</b> MetFrag</a></li>
-<li class="chapter" data-level="7.5.29" data-path="annotation.html"><a href="annotation.html#lipidfrag"><i class="fa fa-check"></i><b>7.5.29</b> LipidFrag</a></li>
-<li class="chapter" data-level="7.5.30" data-path="annotation.html"><a href="annotation.html#mycompoundid"><i class="fa fa-check"></i><b>7.5.30</b> MycompoundID</a></li>
-<li class="chapter" data-level="7.5.31" data-path="annotation.html"><a href="annotation.html#magma"><i class="fa fa-check"></i><b>7.5.31</b> magma</a></li>
+<li class="chapter" data-level="7.5" data-path="annotation.html"><a href="annotation.html#compounds-database"><i class="fa fa-check"></i><b>7.5</b> Compounds Database</a></li>
+<li class="chapter" data-level="7.6" data-path="annotation.html"><a href="annotation.html#software-3"><i class="fa fa-check"></i><b>7.6</b> Software</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="annotation.html"><a href="annotation.html#adducts-list"><i class="fa fa-check"></i><b>7.6.1</b> Adducts list</a></li>
+<li class="chapter" data-level="7.6.2" data-path="annotation.html"><a href="annotation.html#molgen"><i class="fa fa-check"></i><b>7.6.2</b> Molgen</a></li>
+<li class="chapter" data-level="7.6.3" data-path="annotation.html"><a href="annotation.html#isotope"><i class="fa fa-check"></i><b>7.6.3</b> Isotope</a></li>
+<li class="chapter" data-level="7.6.4" data-path="annotation.html"><a href="annotation.html#mffinder"><i class="fa fa-check"></i><b>7.6.4</b> mfFinder</a></li>
+<li class="chapter" data-level="7.6.5" data-path="annotation.html"><a href="annotation.html#camera"><i class="fa fa-check"></i><b>7.6.5</b> CAMERA</a></li>
+<li class="chapter" data-level="7.6.6" data-path="annotation.html"><a href="annotation.html#ramclustr"><i class="fa fa-check"></i><b>7.6.6</b> RAMClustR</a></li>
+<li class="chapter" data-level="7.6.7" data-path="annotation.html"><a href="annotation.html#pmd"><i class="fa fa-check"></i><b>7.6.7</b> pmd</a></li>
+<li class="chapter" data-level="7.6.8" data-path="annotation.html"><a href="annotation.html#nontarget"><i class="fa fa-check"></i><b>7.6.8</b> nontarget</a></li>
+<li class="chapter" data-level="7.6.9" data-path="annotation.html"><a href="annotation.html#xmsannotator"><i class="fa fa-check"></i><b>7.6.9</b> xMSannotator</a></li>
+<li class="chapter" data-level="7.6.10" data-path="annotation.html"><a href="annotation.html#cfm-id"><i class="fa fa-check"></i><b>7.6.10</b> CFM-ID</a></li>
+<li class="chapter" data-level="7.6.11" data-path="annotation.html"><a href="annotation.html#mine"><i class="fa fa-check"></i><b>7.6.11</b> MINE</a></li>
+<li class="chapter" data-level="7.6.12" data-path="annotation.html"><a href="annotation.html#interpretmsspectrum"><i class="fa fa-check"></i><b>7.6.12</b> InterpretMSSpectrum</a></li>
+<li class="chapter" data-level="7.6.13" data-path="annotation.html"><a href="annotation.html#for-ident"><i class="fa fa-check"></i><b>7.6.13</b> For Ident</a></li>
+<li class="chapter" data-level="7.6.14" data-path="annotation.html"><a href="annotation.html#mzmatch"><i class="fa fa-check"></i><b>7.6.14</b> mzmatch</a></li>
+<li class="chapter" data-level="7.6.15" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>7.6.15</b> mz.unity</a></li>
+<li class="chapter" data-level="7.6.16" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>7.6.16</b> MAIT</a></li>
+<li class="chapter" data-level="7.6.17" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>7.6.17</b> ProbMetab</a></li>
+<li class="chapter" data-level="7.6.18" data-path="annotation.html"><a href="annotation.html#ramsi"><i class="fa fa-check"></i><b>7.6.18</b> RAMSI</a></li>
+<li class="chapter" data-level="7.6.19" data-path="annotation.html"><a href="annotation.html#sirius"><i class="fa fa-check"></i><b>7.6.19</b> Sirius</a></li>
+<li class="chapter" data-level="7.6.20" data-path="annotation.html"><a href="annotation.html#mi-pack"><i class="fa fa-check"></i><b>7.6.20</b> MI-Pack</a></li>
+<li class="chapter" data-level="7.6.21" data-path="annotation.html"><a href="annotation.html#plantmat"><i class="fa fa-check"></i><b>7.6.21</b> Plantmat</a></li>
+<li class="chapter" data-level="7.6.22" data-path="annotation.html"><a href="annotation.html#metfamily"><i class="fa fa-check"></i><b>7.6.22</b> MetFamily</a></li>
+<li class="chapter" data-level="7.6.23" data-path="annotation.html"><a href="annotation.html#lipidmatch"><i class="fa fa-check"></i><b>7.6.23</b> Lipidmatch</a></li>
+<li class="chapter" data-level="7.6.24" data-path="annotation.html"><a href="annotation.html#molfind"><i class="fa fa-check"></i><b>7.6.24</b> MolFind</a></li>
+<li class="chapter" data-level="7.6.25" data-path="annotation.html"><a href="annotation.html#metfusion"><i class="fa fa-check"></i><b>7.6.25</b> MetFusion</a></li>
+<li class="chapter" data-level="7.6.26" data-path="annotation.html"><a href="annotation.html#imet"><i class="fa fa-check"></i><b>7.6.26</b> iMet</a></li>
+<li class="chapter" data-level="7.6.27" data-path="annotation.html"><a href="annotation.html#metscape"><i class="fa fa-check"></i><b>7.6.27</b> Metscape</a></li>
+<li class="chapter" data-level="7.6.28" data-path="annotation.html"><a href="annotation.html#metfrag"><i class="fa fa-check"></i><b>7.6.28</b> MetFrag</a></li>
+<li class="chapter" data-level="7.6.29" data-path="annotation.html"><a href="annotation.html#lipidfrag"><i class="fa fa-check"></i><b>7.6.29</b> LipidFrag</a></li>
+<li class="chapter" data-level="7.6.30" data-path="annotation.html"><a href="annotation.html#mycompoundid"><i class="fa fa-check"></i><b>7.6.30</b> MycompoundID</a></li>
+<li class="chapter" data-level="7.6.31" data-path="annotation.html"><a href="annotation.html#magma"><i class="fa fa-check"></i><b>7.6.31</b> magma</a></li>
+<li class="chapter" data-level="7.6.32" data-path="annotation.html"><a href="annotation.html#metexpert"><i class="fa fa-check"></i><b>7.6.32</b> MetExpert</a></li>
 </ul></li>
-<li class="chapter" data-level="7.6" data-path="annotation.html"><a href="annotation.html#ms-dia"><i class="fa fa-check"></i><b>7.6</b> MS-DIA</a></li>
+<li class="chapter" data-level="7.7" data-path="annotation.html"><a href="annotation.html#ms-dia"><i class="fa fa-check"></i><b>7.7</b> MS-DIA</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>8</b> Omics analysis</a><ul>
 <li class="chapter" data-level="8.1" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-analysis"><i class="fa fa-check"></i><b>8.1</b> Pathway analysis</a><ul>
@@ -236,7 +249,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html"><i class="fa fa-check"></i><b>9</b> Common analysis methods for metabolomics</a><ul>
 <li class="chapter" data-level="9.1" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#basic-statistical-analysis"><i class="fa fa-check"></i><b>9.1</b> Basic Statistical Analysis</a></li>
-<li class="chapter" data-level="9.2" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#differences-analysis"><i class="fa fa-check"></i><b>9.2</b> Differences analysis</a></li>
+<li class="chapter" data-level="9.2" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#differences-analysis"><i class="fa fa-check"></i><b>9.2</b> Differences analysis</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#t-test-or-anova"><i class="fa fa-check"></i><b>9.2.1</b> T-test or ANOVA</a></li>
+<li class="chapter" data-level="9.2.2" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#limma"><i class="fa fa-check"></i><b>9.2.2</b> LIMMA</a></li>
+<li class="chapter" data-level="9.2.3" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#bayesian-mixture-model"><i class="fa fa-check"></i><b>9.2.3</b> Bayesian mixture model</a></li>
+</ul></li>
 <li class="chapter" data-level="9.3" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#pca"><i class="fa fa-check"></i><b>9.3</b> PCA</a></li>
 <li class="chapter" data-level="9.4" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#cluster-analysis"><i class="fa fa-check"></i><b>9.4</b> Cluster Analysis</a></li>
 <li class="chapter" data-level="9.5" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#plsda"><i class="fa fa-check"></i><b>9.5</b> PLSDA</a></li>
@@ -326,104 +343,104 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="optimization" class="section level2">
 <h2><span class="header-section-number">11.3</span> Optimization</h2>
 <p>IPO package could be used to optimaze the parameters for XCMS. Try the following code.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(IPO)
-<span class="kw">library</span>(xcms)
-peakpickingParameters &lt;-<span class="st"> </span><span class="kw">getDefaultXcmsSetStartingParams</span>(<span class="st">&#39;centWave&#39;</span>)
-path &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="st">&#39;D:/metademo/data/oq/&#39;</span>,<span class="dt">full.names =</span> T,<span class="dt">recursive =</span> T)
-<span class="co"># change to 5 for obitrap</span>
-peakpickingParameters<span class="op">$</span>ppm &lt;-<span class="st"> </span><span class="dv">15</span>
-resultPeakpicking &lt;-<span class="st"> </span>
-<span class="st">  </span><span class="kw">optimizeXcmsSet</span>(<span class="dt">files =</span> path[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)], 
-                  <span class="dt">params =</span> peakpickingParameters,
-                  <span class="dt">nSlaves =</span> <span class="dv">1</span>,
-                  <span class="dt">subdir =</span> <span class="ot">NULL</span>)
-
-optimizedXcmsSetObject &lt;-<span class="st"> </span>resultPeakpicking<span class="op">$</span>best_settings<span class="op">$</span>xset
-retcorGroupParameters &lt;-<span class="st"> </span><span class="kw">getDefaultRetGroupStartingParams</span>()
-resultRetcorGroup &lt;-
-<span class="st">  </span><span class="kw">optimizeRetGroup</span>(<span class="dt">xset =</span> optimizedXcmsSetObject, 
-                   <span class="dt">params =</span> retcorGroupParameters, 
-                   <span class="dt">subdir =</span> <span class="ot">NULL</span>)
-<span class="kw">writeRScript</span>(resultPeakpicking<span class="op">$</span>best_settings<span class="op">$</span>parameters, 
-             resultRetcorGroup<span class="op">$</span>best_settings)
-para &lt;-<span class="st"> </span><span class="kw">capture.output</span>(<span class="kw">writeRScript</span>(resultPeakpicking<span class="op">$</span>best_settings<span class="op">$</span>parameters, resultRetcorGroup<span class="op">$</span>best_settings), <span class="dt">type =</span> <span class="st">&quot;message&quot;</span>)
-<span class="kw">save</span>(para,<span class="dt">file =</span> <span class="st">&#39;para.RData&#39;</span>)
-<span class="kw">sessionInfo</span>()</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw">library</span>(IPO)</a>
+<a class="sourceLine" id="cb21-2" data-line-number="2"><span class="kw">library</span>(xcms)</a>
+<a class="sourceLine" id="cb21-3" data-line-number="3">peakpickingParameters &lt;-<span class="st"> </span><span class="kw">getDefaultXcmsSetStartingParams</span>(<span class="st">&#39;centWave&#39;</span>)</a>
+<a class="sourceLine" id="cb21-4" data-line-number="4">path &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="st">&#39;D:/metademo/data/oq/&#39;</span>,<span class="dt">full.names =</span> T,<span class="dt">recursive =</span> T)</a>
+<a class="sourceLine" id="cb21-5" data-line-number="5"><span class="co"># change to 5 for obitrap</span></a>
+<a class="sourceLine" id="cb21-6" data-line-number="6">peakpickingParameters<span class="op">$</span>ppm &lt;-<span class="st"> </span><span class="dv">15</span></a>
+<a class="sourceLine" id="cb21-7" data-line-number="7">resultPeakpicking &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb21-8" data-line-number="8"><span class="st">  </span><span class="kw">optimizeXcmsSet</span>(<span class="dt">files =</span> path[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)], </a>
+<a class="sourceLine" id="cb21-9" data-line-number="9">                  <span class="dt">params =</span> peakpickingParameters,</a>
+<a class="sourceLine" id="cb21-10" data-line-number="10">                  <span class="dt">nSlaves =</span> <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb21-11" data-line-number="11">                  <span class="dt">subdir =</span> <span class="ot">NULL</span>)</a>
+<a class="sourceLine" id="cb21-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb21-13" data-line-number="13">optimizedXcmsSetObject &lt;-<span class="st"> </span>resultPeakpicking<span class="op">$</span>best_settings<span class="op">$</span>xset</a>
+<a class="sourceLine" id="cb21-14" data-line-number="14">retcorGroupParameters &lt;-<span class="st"> </span><span class="kw">getDefaultRetGroupStartingParams</span>()</a>
+<a class="sourceLine" id="cb21-15" data-line-number="15">resultRetcorGroup &lt;-</a>
+<a class="sourceLine" id="cb21-16" data-line-number="16"><span class="st">  </span><span class="kw">optimizeRetGroup</span>(<span class="dt">xset =</span> optimizedXcmsSetObject, </a>
+<a class="sourceLine" id="cb21-17" data-line-number="17">                   <span class="dt">params =</span> retcorGroupParameters, </a>
+<a class="sourceLine" id="cb21-18" data-line-number="18">                   <span class="dt">subdir =</span> <span class="ot">NULL</span>)</a>
+<a class="sourceLine" id="cb21-19" data-line-number="19"><span class="kw">writeRScript</span>(resultPeakpicking<span class="op">$</span>best_settings<span class="op">$</span>parameters, </a>
+<a class="sourceLine" id="cb21-20" data-line-number="20">             resultRetcorGroup<span class="op">$</span>best_settings)</a>
+<a class="sourceLine" id="cb21-21" data-line-number="21">para &lt;-<span class="st"> </span><span class="kw">capture.output</span>(<span class="kw">writeRScript</span>(resultPeakpicking<span class="op">$</span>best_settings<span class="op">$</span>parameters, resultRetcorGroup<span class="op">$</span>best_settings), <span class="dt">type =</span> <span class="st">&quot;message&quot;</span>)</a>
+<a class="sourceLine" id="cb21-22" data-line-number="22"><span class="kw">save</span>(para,<span class="dt">file =</span> <span class="st">&#39;para.RData&#39;</span>)</a>
+<a class="sourceLine" id="cb21-23" data-line-number="23"><span class="kw">sessionInfo</span>()</a></code></pre></div>
 </div>
 <div id="wrap-function" class="section level2">
 <h2><span class="header-section-number">11.4</span> Wrap function</h2>
 <p>Here we would use the optimized parameters for peak picking, retention time correction and peaks filling.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(xcms)
-<span class="kw">library</span>(Rmpi)
-<span class="kw">library</span>(stringr)
-getrtmz &lt;-<span class="st"> </span><span class="cf">function</span>(path,<span class="dt">index =</span> <span class="ot">NULL</span>){
-  <span class="kw">load</span>(<span class="st">&#39;para.RData&#39;</span>)
-peakwidth &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;peakwidth&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+</span><span class="ch">\\</span><span class="st">.*</span><span class="ch">\\</span><span class="st">d*&#39;</span>)))
-ppm &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;ppm&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+&#39;</span>)))
-noise &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;noise&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+&#39;</span>)))
-snthresh &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;snthresh&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+&#39;</span>)))
-mzdiff &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;mzdiff&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+</span><span class="ch">\\</span><span class="st">.*</span><span class="ch">\\</span><span class="st">d*&#39;</span>)))
-prefilter &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;prefilter&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+</span><span class="ch">\\</span><span class="st">.*</span><span class="ch">\\</span><span class="st">d*&#39;</span>)))
-integrate &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;integrate&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+&#39;</span>)))
-profStep &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;profStep&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+</span><span class="ch">\\</span><span class="st">.*</span><span class="ch">\\</span><span class="st">d*&#39;</span>))),<span class="dv">1</span>)
-center &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;center&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+&#39;</span>)))
-response &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;response&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+&#39;</span>)))
-gapInit &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;gapInit&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+</span><span class="ch">\\</span><span class="st">.*</span><span class="ch">\\</span><span class="st">d*&#39;</span>)))
-gapExtend &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;gapExtend&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+</span><span class="ch">\\</span><span class="st">.*</span><span class="ch">\\</span><span class="st">d*&#39;</span>)))
-factorDiag &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;factorDiag&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+&#39;</span>)))
-factorGap &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;factorGap&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+&#39;</span>)))
-localAlignment &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;localAlignment&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+&#39;</span>)))
-bw &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;bw&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+</span><span class="ch">\\</span><span class="st">.*</span><span class="ch">\\</span><span class="st">d*&#39;</span>)))
-mzwid &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;mzwid&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+</span><span class="ch">\\</span><span class="st">.*</span><span class="ch">\\</span><span class="st">d*&#39;</span>)))
-minfrac &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;minfrac&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+</span><span class="ch">\\</span><span class="st">.*</span><span class="ch">\\</span><span class="st">d*&#39;</span>)))
-minsamp &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;minsamp&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+&#39;</span>)))
-max &lt;-<span class="st">  </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;max&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+&#39;</span>)))
-  files &lt;-<span class="st"> </span><span class="kw">list.files</span>(path,<span class="dt">full.names =</span> T,<span class="dt">recursive =</span> T)
-  <span class="cf">if</span>(<span class="op">!</span><span class="kw">is.null</span>(index)){
-    files &lt;-<span class="st"> </span>files[index]
-  }
-  xset &lt;-<span class="st"> </span><span class="kw">xcmsSet</span>(files,
-  <span class="dt">method =</span> <span class="st">&quot;centWave&quot;</span>,
-  <span class="dt">peakwidth       =</span> peakwidth,
-  <span class="dt">ppm             =</span> ppm,
-  <span class="dt">noise           =</span> noise,
-  <span class="dt">snthresh        =</span> snthresh,
-  <span class="dt">mzdiff          =</span> mzdiff,
-  <span class="dt">prefilter       =</span> prefilter,
-  <span class="dt">mzCenterFun     =</span> <span class="st">&quot;wMean&quot;</span>,
-  <span class="dt">integrate       =</span> integrate,
-  <span class="dt">fitgauss        =</span> <span class="ot">FALSE</span>,
-  <span class="dt">verbose.columns =</span> <span class="ot">FALSE</span>)
-xset &lt;-<span class="st"> </span><span class="kw">retcor</span>( 
-  xset,
-  <span class="dt">method         =</span> <span class="st">&quot;obiwarp&quot;</span>,
-  <span class="dt">plottype       =</span> <span class="st">&quot;none&quot;</span>,
-  <span class="dt">distFunc       =</span> <span class="st">&quot;cor_opt&quot;</span>,
-  <span class="dt">profStep       =</span> profStep,
-  <span class="dt">center         =</span> center,
-  <span class="dt">response       =</span> response,
-  <span class="dt">gapInit        =</span> gapInit,
-  <span class="dt">gapExtend      =</span> gapExtend,
-  <span class="dt">factorDiag     =</span> factorDiag,
-  <span class="dt">factorGap      =</span> factorGap,
-  <span class="dt">localAlignment =</span> localAlignment)
-xset &lt;-<span class="st"> </span><span class="kw">group</span>( 
-  xset,
-  <span class="dt">method  =</span> <span class="st">&quot;density&quot;</span>,
-  <span class="dt">bw      =</span> bw,
-  <span class="dt">mzwid   =</span> mzwid,
-  <span class="dt">minfrac =</span> minfrac,
-  <span class="dt">minsamp =</span> minsamp,
-  <span class="dt">max     =</span> max)
-
-xset &lt;-<span class="st"> </span><span class="kw">fillPeaks</span>(xset)
-<span class="kw">return</span>(xset)
-}</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw">library</span>(xcms)</a>
+<a class="sourceLine" id="cb22-2" data-line-number="2"><span class="kw">library</span>(Rmpi)</a>
+<a class="sourceLine" id="cb22-3" data-line-number="3"><span class="kw">library</span>(stringr)</a>
+<a class="sourceLine" id="cb22-4" data-line-number="4">getrtmz &lt;-<span class="st"> </span><span class="cf">function</span>(path,<span class="dt">index =</span> <span class="ot">NULL</span>){</a>
+<a class="sourceLine" id="cb22-5" data-line-number="5">  <span class="kw">load</span>(<span class="st">&#39;para.RData&#39;</span>)</a>
+<a class="sourceLine" id="cb22-6" data-line-number="6">peakwidth &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;peakwidth&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+</span><span class="ch">\\</span><span class="st">.*</span><span class="ch">\\</span><span class="st">d*&#39;</span>)))</a>
+<a class="sourceLine" id="cb22-7" data-line-number="7">ppm &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;ppm&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+&#39;</span>)))</a>
+<a class="sourceLine" id="cb22-8" data-line-number="8">noise &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;noise&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+&#39;</span>)))</a>
+<a class="sourceLine" id="cb22-9" data-line-number="9">snthresh &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;snthresh&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+&#39;</span>)))</a>
+<a class="sourceLine" id="cb22-10" data-line-number="10">mzdiff &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;mzdiff&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+</span><span class="ch">\\</span><span class="st">.*</span><span class="ch">\\</span><span class="st">d*&#39;</span>)))</a>
+<a class="sourceLine" id="cb22-11" data-line-number="11">prefilter &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;prefilter&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+</span><span class="ch">\\</span><span class="st">.*</span><span class="ch">\\</span><span class="st">d*&#39;</span>)))</a>
+<a class="sourceLine" id="cb22-12" data-line-number="12">integrate &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;integrate&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+&#39;</span>)))</a>
+<a class="sourceLine" id="cb22-13" data-line-number="13">profStep &lt;-<span class="st"> </span><span class="kw">round</span>(<span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;profStep&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+</span><span class="ch">\\</span><span class="st">.*</span><span class="ch">\\</span><span class="st">d*&#39;</span>))),<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb22-14" data-line-number="14">center &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;center&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+&#39;</span>)))</a>
+<a class="sourceLine" id="cb22-15" data-line-number="15">response &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;response&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+&#39;</span>)))</a>
+<a class="sourceLine" id="cb22-16" data-line-number="16">gapInit &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;gapInit&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+</span><span class="ch">\\</span><span class="st">.*</span><span class="ch">\\</span><span class="st">d*&#39;</span>)))</a>
+<a class="sourceLine" id="cb22-17" data-line-number="17">gapExtend &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;gapExtend&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+</span><span class="ch">\\</span><span class="st">.*</span><span class="ch">\\</span><span class="st">d*&#39;</span>)))</a>
+<a class="sourceLine" id="cb22-18" data-line-number="18">factorDiag &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;factorDiag&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+&#39;</span>)))</a>
+<a class="sourceLine" id="cb22-19" data-line-number="19">factorGap &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;factorGap&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+&#39;</span>)))</a>
+<a class="sourceLine" id="cb22-20" data-line-number="20">localAlignment &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;localAlignment&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+&#39;</span>)))</a>
+<a class="sourceLine" id="cb22-21" data-line-number="21">bw &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;bw&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+</span><span class="ch">\\</span><span class="st">.*</span><span class="ch">\\</span><span class="st">d*&#39;</span>)))</a>
+<a class="sourceLine" id="cb22-22" data-line-number="22">mzwid &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;mzwid&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+</span><span class="ch">\\</span><span class="st">.*</span><span class="ch">\\</span><span class="st">d*&#39;</span>)))</a>
+<a class="sourceLine" id="cb22-23" data-line-number="23">minfrac &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;minfrac&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+</span><span class="ch">\\</span><span class="st">.*</span><span class="ch">\\</span><span class="st">d*&#39;</span>)))</a>
+<a class="sourceLine" id="cb22-24" data-line-number="24">minsamp &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;minsamp&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+&#39;</span>)))</a>
+<a class="sourceLine" id="cb22-25" data-line-number="25">max &lt;-<span class="st">  </span><span class="kw">as.numeric</span>(<span class="kw">unlist</span>(<span class="kw">str_extract_all</span>(para[<span class="kw">grepl</span>(<span class="st">&#39;max&#39;</span>,para)],<span class="st">&#39;</span><span class="ch">\\</span><span class="st">d+&#39;</span>)))</a>
+<a class="sourceLine" id="cb22-26" data-line-number="26">  files &lt;-<span class="st"> </span><span class="kw">list.files</span>(path,<span class="dt">full.names =</span> T,<span class="dt">recursive =</span> T)</a>
+<a class="sourceLine" id="cb22-27" data-line-number="27">  <span class="cf">if</span>(<span class="op">!</span><span class="kw">is.null</span>(index)){</a>
+<a class="sourceLine" id="cb22-28" data-line-number="28">    files &lt;-<span class="st"> </span>files[index]</a>
+<a class="sourceLine" id="cb22-29" data-line-number="29">  }</a>
+<a class="sourceLine" id="cb22-30" data-line-number="30">  xset &lt;-<span class="st"> </span><span class="kw">xcmsSet</span>(files,</a>
+<a class="sourceLine" id="cb22-31" data-line-number="31">  <span class="dt">method =</span> <span class="st">&quot;centWave&quot;</span>,</a>
+<a class="sourceLine" id="cb22-32" data-line-number="32">  <span class="dt">peakwidth       =</span> peakwidth,</a>
+<a class="sourceLine" id="cb22-33" data-line-number="33">  <span class="dt">ppm             =</span> ppm,</a>
+<a class="sourceLine" id="cb22-34" data-line-number="34">  <span class="dt">noise           =</span> noise,</a>
+<a class="sourceLine" id="cb22-35" data-line-number="35">  <span class="dt">snthresh        =</span> snthresh,</a>
+<a class="sourceLine" id="cb22-36" data-line-number="36">  <span class="dt">mzdiff          =</span> mzdiff,</a>
+<a class="sourceLine" id="cb22-37" data-line-number="37">  <span class="dt">prefilter       =</span> prefilter,</a>
+<a class="sourceLine" id="cb22-38" data-line-number="38">  <span class="dt">mzCenterFun     =</span> <span class="st">&quot;wMean&quot;</span>,</a>
+<a class="sourceLine" id="cb22-39" data-line-number="39">  <span class="dt">integrate       =</span> integrate,</a>
+<a class="sourceLine" id="cb22-40" data-line-number="40">  <span class="dt">fitgauss        =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb22-41" data-line-number="41">  <span class="dt">verbose.columns =</span> <span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb22-42" data-line-number="42">xset &lt;-<span class="st"> </span><span class="kw">retcor</span>( </a>
+<a class="sourceLine" id="cb22-43" data-line-number="43">  xset,</a>
+<a class="sourceLine" id="cb22-44" data-line-number="44">  <span class="dt">method         =</span> <span class="st">&quot;obiwarp&quot;</span>,</a>
+<a class="sourceLine" id="cb22-45" data-line-number="45">  <span class="dt">plottype       =</span> <span class="st">&quot;none&quot;</span>,</a>
+<a class="sourceLine" id="cb22-46" data-line-number="46">  <span class="dt">distFunc       =</span> <span class="st">&quot;cor_opt&quot;</span>,</a>
+<a class="sourceLine" id="cb22-47" data-line-number="47">  <span class="dt">profStep       =</span> profStep,</a>
+<a class="sourceLine" id="cb22-48" data-line-number="48">  <span class="dt">center         =</span> center,</a>
+<a class="sourceLine" id="cb22-49" data-line-number="49">  <span class="dt">response       =</span> response,</a>
+<a class="sourceLine" id="cb22-50" data-line-number="50">  <span class="dt">gapInit        =</span> gapInit,</a>
+<a class="sourceLine" id="cb22-51" data-line-number="51">  <span class="dt">gapExtend      =</span> gapExtend,</a>
+<a class="sourceLine" id="cb22-52" data-line-number="52">  <span class="dt">factorDiag     =</span> factorDiag,</a>
+<a class="sourceLine" id="cb22-53" data-line-number="53">  <span class="dt">factorGap      =</span> factorGap,</a>
+<a class="sourceLine" id="cb22-54" data-line-number="54">  <span class="dt">localAlignment =</span> localAlignment)</a>
+<a class="sourceLine" id="cb22-55" data-line-number="55">xset &lt;-<span class="st"> </span><span class="kw">group</span>( </a>
+<a class="sourceLine" id="cb22-56" data-line-number="56">  xset,</a>
+<a class="sourceLine" id="cb22-57" data-line-number="57">  <span class="dt">method  =</span> <span class="st">&quot;density&quot;</span>,</a>
+<a class="sourceLine" id="cb22-58" data-line-number="58">  <span class="dt">bw      =</span> bw,</a>
+<a class="sourceLine" id="cb22-59" data-line-number="59">  <span class="dt">mzwid   =</span> mzwid,</a>
+<a class="sourceLine" id="cb22-60" data-line-number="60">  <span class="dt">minfrac =</span> minfrac,</a>
+<a class="sourceLine" id="cb22-61" data-line-number="61">  <span class="dt">minsamp =</span> minsamp,</a>
+<a class="sourceLine" id="cb22-62" data-line-number="62">  <span class="dt">max     =</span> max)</a>
+<a class="sourceLine" id="cb22-63" data-line-number="63"></a>
+<a class="sourceLine" id="cb22-64" data-line-number="64">xset &lt;-<span class="st"> </span><span class="kw">fillPeaks</span>(xset)</a>
+<a class="sourceLine" id="cb22-65" data-line-number="65"><span class="kw">return</span>(xset)</a>
+<a class="sourceLine" id="cb22-66" data-line-number="66">}</a></code></pre></div>
 <div id="peak-picking-1" class="section level3">
 <h3><span class="header-section-number">11.4.1</span> Peak picking</h3>
 <p>The first step to process the MS data is that find the peaks against the noises. In <strong>xcms</strong>, all of related staffs are handled by <em>xcmsSet</em> function.</p>
 <p>For any functions in <strong>xcms</strong> or <strong>R</strong>, you could get their documents by type <code>?</code> before certain function. Another geek way is input the name of the function in the console of Rstudio and press F1 for help.</p>
-<pre class="sourceCode r"><code class="sourceCode r">?xcmsSet</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">?xcmsSet</a></code></pre></div>
 <p>In the document of <em>xcmsset</em>, we could set the sample classes, profmethod, profparam, polarity,etc. In the online version, such configurations are shown in certain windows. In the local analysis environment, such parameters are setup by yourselves. However, I think the default configurations could satisfied most of the analysis because related information should have been recorded in your Raw data and <strong>xcms</strong> could find them. All you need to do is that show the data dictionary for <em>xcmsSet</em>.</p>
 <p>If your data have many groups such as control and treated group, just put them in separate subfolder of the data folder and <em>xcmsSet</em> would read them as separated groups.</p>
 </div>
@@ -439,126 +456,126 @@ xset &lt;-<span class="st"> </span><span class="kw">fillPeaks</span>(xset)
 <div id="peaks-list" class="section level2">
 <h2><span class="header-section-number">11.5</span> Peaks list</h2>
 <p>Then we could extract the peaks list from <code>xcmsSet</code> objects.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(enviGCMS)
-<span class="co"># get the xcmsset object</span>
-neg &lt;-<span class="st"> </span><span class="kw">getrtmz</span>(<span class="st">&#39;D:/metademo/data/&#39;</span>)
-<span class="co"># back up the xcmsset object</span>
-<span class="kw">save</span>(neg,<span class="dt">file =</span> <span class="st">&#39;neg.Rdata&#39;</span>)
-<span class="co"># get the number</span>
-npeaks &lt;-<span class="st"> </span><span class="kw">nrow</span>(neg<span class="op">@</span>groups)
-<span class="co"># get the EIC, boxplot and diffreport, eixmax should be equal to the numbers of peaks groups in the pos objects </span>
-report &lt;-<span class="st"> </span>CAMERA<span class="op">::</span><span class="kw">annotateDiffreport</span>(neg,<span class="dt">filebase =</span> <span class="st">&#39;peaklistneg&#39;</span>,<span class="dt">metlin =</span> T, <span class="dt">eicmax =</span> npeaks, <span class="dt">classeic =</span> neg<span class="op">@</span>phenoData<span class="op">$</span>class)
-<span class="co"># save the report as a csv file</span>
-<span class="kw">write.csv</span>(report,<span class="dt">file =</span> <span class="st">&#39;all.csv&#39;</span>)</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="kw">library</span>(enviGCMS)</a>
+<a class="sourceLine" id="cb24-2" data-line-number="2"><span class="co"># get the xcmsset object</span></a>
+<a class="sourceLine" id="cb24-3" data-line-number="3">neg &lt;-<span class="st"> </span><span class="kw">getrtmz</span>(<span class="st">&#39;D:/metademo/data/&#39;</span>)</a>
+<a class="sourceLine" id="cb24-4" data-line-number="4"><span class="co"># back up the xcmsset object</span></a>
+<a class="sourceLine" id="cb24-5" data-line-number="5"><span class="kw">save</span>(neg,<span class="dt">file =</span> <span class="st">&#39;neg.Rdata&#39;</span>)</a>
+<a class="sourceLine" id="cb24-6" data-line-number="6"><span class="co"># get the number</span></a>
+<a class="sourceLine" id="cb24-7" data-line-number="7">npeaks &lt;-<span class="st"> </span><span class="kw">nrow</span>(neg<span class="op">@</span>groups)</a>
+<a class="sourceLine" id="cb24-8" data-line-number="8"><span class="co"># get the EIC, boxplot and diffreport, eixmax should be equal to the numbers of peaks groups in the pos objects </span></a>
+<a class="sourceLine" id="cb24-9" data-line-number="9">report &lt;-<span class="st"> </span>CAMERA<span class="op">::</span><span class="kw">annotateDiffreport</span>(neg,<span class="dt">filebase =</span> <span class="st">&#39;peaklistneg&#39;</span>,<span class="dt">metlin =</span> T, <span class="dt">eicmax =</span> npeaks, <span class="dt">classeic =</span> neg<span class="op">@</span>phenoData<span class="op">$</span>class)</a>
+<a class="sourceLine" id="cb24-10" data-line-number="10"><span class="co"># save the report as a csv file</span></a>
+<a class="sourceLine" id="cb24-11" data-line-number="11"><span class="kw">write.csv</span>(report,<span class="dt">file =</span> <span class="st">&#39;all.csv&#39;</span>)</a></code></pre></div>
 </div>
 <div id="peaks-filtering" class="section level2">
 <h2><span class="header-section-number">11.6</span> Peaks filtering</h2>
 <p>After we get the peaks list, it’s nessary to filter the peaks list to retain the peaks with high quality for further analysis. Normally, we could use the relative standard deviation of blank and pooled QC samples to control the peaks list.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(<span class="st">&#39;neg.Rdata&#39;</span>)
-<span class="co"># get the peak intensity, m/z, retention time and group information as list</span>
-mzrt &lt;-<span class="st"> </span>enviGCMS<span class="op">::</span><span class="kw">getmzrt</span>(neg)
-<span class="co"># get the mean and rsd for each group</span>
-mzrtm &lt;-<span class="st"> </span>enviGCMS<span class="op">::</span><span class="kw">getdoe</span>(mzrt)
-gm &lt;-<span class="st"> </span>mzrtm<span class="op">$</span>groupmean
-gr &lt;-<span class="st"> </span>mzrtm<span class="op">$</span>grouprsd
-<span class="co"># find the blank group and pool QC group</span>
-blk &lt;-<span class="st"> </span><span class="kw">grepl</span>(<span class="st">&#39;k&#39;</span>,<span class="kw">colnames</span>(gm))
-pqc &lt;-<span class="st"> </span><span class="kw">grepl</span>(<span class="st">&#39;q&#39;</span>,<span class="kw">colnames</span>(gm))
-<span class="co"># filter by pool QC and blank&#39;s group mean intensity(pool QC should larger than three times of blank), return numbers and index</span>
-<span class="kw">sum</span>(indexmean &lt;-<span class="st"> </span><span class="kw">apply</span>(gm,<span class="dv">1</span>,<span class="cf">function</span>(x) <span class="kw">all</span>(x[pqc]<span class="op">&gt;=</span><span class="st"> </span><span class="dv">3</span><span class="op">*</span>x[blk])))
-<span class="co"># filt by pool qc rsd%, return numbers and index</span>
-rsdcf &lt;-<span class="st"> </span><span class="dv">30</span>
-<span class="kw">sum</span>(indexrsd &lt;-<span class="st"> </span><span class="kw">apply</span>(gr,<span class="dv">1</span>,<span class="cf">function</span>(x) <span class="kw">ifelse</span>(<span class="kw">is.na</span>(x[pqc]),T,x[pqc]<span class="op">&lt;</span>rsdcf)))
-<span class="co"># overlap with rsd% and mean filter</span>
-<span class="kw">sum</span>(index &lt;-<span class="st"> </span>indexmean<span class="op">&amp;</span>indexrsd)
-
-<span class="co"># new list, update group and remove pool qc/blk</span>
-qcindex &lt;-<span class="st"> </span><span class="kw">grepl</span>(<span class="st">&#39;k&#39;</span>,mzrt<span class="op">$</span>group<span class="op">$</span>class) <span class="op">|</span><span class="st"> </span><span class="kw">grepl</span>(<span class="st">&#39;q&#39;</span>,mzrt<span class="op">$</span>group<span class="op">$</span>class)
-mzrtfilter &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">data =</span> mzrt<span class="op">$</span>data[index,<span class="op">!</span>qcindex],
-                   <span class="dt">mz =</span> mzrt<span class="op">$</span>mz[index],
-                   <span class="dt">rt =</span> mzrt<span class="op">$</span>rt[index],
-                   <span class="dt">group =</span> <span class="kw">droplevels</span>(mzrt<span class="op">$</span>group<span class="op">$</span>class[<span class="op">!</span>qcindex,<span class="dt">drop =</span>T]))
-<span class="co"># get the filtered csv</span>
-enviGCMS<span class="op">::</span><span class="kw">getupload</span>(mzrtfilter,<span class="dt">name =</span> <span class="st">&#39;peakfilter&#39;</span>)</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="kw">load</span>(<span class="st">&#39;neg.Rdata&#39;</span>)</a>
+<a class="sourceLine" id="cb25-2" data-line-number="2"><span class="co"># get the peak intensity, m/z, retention time and group information as list</span></a>
+<a class="sourceLine" id="cb25-3" data-line-number="3">mzrt &lt;-<span class="st"> </span>enviGCMS<span class="op">::</span><span class="kw">getmzrt</span>(neg)</a>
+<a class="sourceLine" id="cb25-4" data-line-number="4"><span class="co"># get the mean and rsd for each group</span></a>
+<a class="sourceLine" id="cb25-5" data-line-number="5">mzrtm &lt;-<span class="st"> </span>enviGCMS<span class="op">::</span><span class="kw">getdoe</span>(mzrt)</a>
+<a class="sourceLine" id="cb25-6" data-line-number="6">gm &lt;-<span class="st"> </span>mzrtm<span class="op">$</span>groupmean</a>
+<a class="sourceLine" id="cb25-7" data-line-number="7">gr &lt;-<span class="st"> </span>mzrtm<span class="op">$</span>grouprsd</a>
+<a class="sourceLine" id="cb25-8" data-line-number="8"><span class="co"># find the blank group and pool QC group</span></a>
+<a class="sourceLine" id="cb25-9" data-line-number="9">blk &lt;-<span class="st"> </span><span class="kw">grepl</span>(<span class="st">&#39;k&#39;</span>,<span class="kw">colnames</span>(gm))</a>
+<a class="sourceLine" id="cb25-10" data-line-number="10">pqc &lt;-<span class="st"> </span><span class="kw">grepl</span>(<span class="st">&#39;q&#39;</span>,<span class="kw">colnames</span>(gm))</a>
+<a class="sourceLine" id="cb25-11" data-line-number="11"><span class="co"># filter by pool QC and blank&#39;s group mean intensity(pool QC should larger than three times of blank), return numbers and index</span></a>
+<a class="sourceLine" id="cb25-12" data-line-number="12"><span class="kw">sum</span>(indexmean &lt;-<span class="st"> </span><span class="kw">apply</span>(gm,<span class="dv">1</span>,<span class="cf">function</span>(x) <span class="kw">all</span>(x[pqc]<span class="op">&gt;=</span><span class="st"> </span><span class="dv">3</span><span class="op">*</span>x[blk])))</a>
+<a class="sourceLine" id="cb25-13" data-line-number="13"><span class="co"># filt by pool qc rsd%, return numbers and index</span></a>
+<a class="sourceLine" id="cb25-14" data-line-number="14">rsdcf &lt;-<span class="st"> </span><span class="dv">30</span></a>
+<a class="sourceLine" id="cb25-15" data-line-number="15"><span class="kw">sum</span>(indexrsd &lt;-<span class="st"> </span><span class="kw">apply</span>(gr,<span class="dv">1</span>,<span class="cf">function</span>(x) <span class="kw">ifelse</span>(<span class="kw">is.na</span>(x[pqc]),T,x[pqc]<span class="op">&lt;</span>rsdcf)))</a>
+<a class="sourceLine" id="cb25-16" data-line-number="16"><span class="co"># overlap with rsd% and mean filter</span></a>
+<a class="sourceLine" id="cb25-17" data-line-number="17"><span class="kw">sum</span>(index &lt;-<span class="st"> </span>indexmean<span class="op">&amp;</span>indexrsd)</a>
+<a class="sourceLine" id="cb25-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb25-19" data-line-number="19"><span class="co"># new list, update group and remove pool qc/blk</span></a>
+<a class="sourceLine" id="cb25-20" data-line-number="20">qcindex &lt;-<span class="st"> </span><span class="kw">grepl</span>(<span class="st">&#39;k&#39;</span>,mzrt<span class="op">$</span>group<span class="op">$</span>class) <span class="op">|</span><span class="st"> </span><span class="kw">grepl</span>(<span class="st">&#39;q&#39;</span>,mzrt<span class="op">$</span>group<span class="op">$</span>class)</a>
+<a class="sourceLine" id="cb25-21" data-line-number="21">mzrtfilter &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">data =</span> mzrt<span class="op">$</span>data[index,<span class="op">!</span>qcindex],</a>
+<a class="sourceLine" id="cb25-22" data-line-number="22">                   <span class="dt">mz =</span> mzrt<span class="op">$</span>mz[index],</a>
+<a class="sourceLine" id="cb25-23" data-line-number="23">                   <span class="dt">rt =</span> mzrt<span class="op">$</span>rt[index],</a>
+<a class="sourceLine" id="cb25-24" data-line-number="24">                   <span class="dt">group =</span> <span class="kw">droplevels</span>(mzrt<span class="op">$</span>group<span class="op">$</span>class[<span class="op">!</span>qcindex,<span class="dt">drop =</span>T]))</a>
+<a class="sourceLine" id="cb25-25" data-line-number="25"><span class="co"># get the filtered csv</span></a>
+<a class="sourceLine" id="cb25-26" data-line-number="26">enviGCMS<span class="op">::</span><span class="kw">getupload</span>(mzrtfilter,<span class="dt">name =</span> <span class="st">&#39;peakfilter&#39;</span>)</a></code></pre></div>
 </div>
 <div id="normalization-optional" class="section level2">
 <h2><span class="header-section-number">11.7</span> Normalization (Optional)</h2>
 <p>Normailizaiton is nesscery if you data are collected at different batch or runned in differen instrument parameters.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># visulize the batch effect</span>
-mzrtsim<span class="op">::</span><span class="kw">rlaplot</span>(mzrt<span class="op">$</span>data,<span class="dt">lv =</span> mzrt<span class="op">$</span>group<span class="op">$</span>class)
-mzrtsim<span class="op">::</span><span class="kw">ridgesplot</span>(mzrt<span class="op">$</span>data,<span class="dt">lv =</span> mzrt<span class="op">$</span>group<span class="op">$</span>class)
-<span class="co"># get the simulation data and test on NOREVA</span>
-sim &lt;-<span class="st"> </span>mzrtsim<span class="op">::</span><span class="kw">simmzrt</span>(mzrt<span class="op">$</span>data)
-mzrtsim<span class="op">::</span><span class="kw">simdata</span>(sim)
-<span class="co"># correct the batch effect by sva</span>
-mzrtcor &lt;-<span class="st"> </span>mzrtsim<span class="op">::</span><span class="kw">svacor</span>(mzrt<span class="op">$</span>data,<span class="dt">lv =</span> mzrt<span class="op">$</span>group<span class="op">$</span>class)
-<span class="co"># visulize the batch effect correction</span>
-li &lt;-<span class="st"> </span>mzrtsim<span class="op">::</span><span class="kw">limmaplot</span>(mzrtcor,<span class="dt">lv =</span> mzrt<span class="op">$</span>group<span class="op">$</span>class)
-<span class="co"># return the corrected data</span>
-mzrt<span class="op">$</span>data &lt;-<span class="st"> </span>mzrtcor<span class="op">$</span>dataCorrected</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="co"># visulize the batch effect</span></a>
+<a class="sourceLine" id="cb26-2" data-line-number="2">mzrtsim<span class="op">::</span><span class="kw">rlaplot</span>(mzrt<span class="op">$</span>data,<span class="dt">lv =</span> mzrt<span class="op">$</span>group<span class="op">$</span>class)</a>
+<a class="sourceLine" id="cb26-3" data-line-number="3">mzrtsim<span class="op">::</span><span class="kw">ridgesplot</span>(mzrt<span class="op">$</span>data,<span class="dt">lv =</span> mzrt<span class="op">$</span>group<span class="op">$</span>class)</a>
+<a class="sourceLine" id="cb26-4" data-line-number="4"><span class="co"># get the simulation data and test on NOREVA</span></a>
+<a class="sourceLine" id="cb26-5" data-line-number="5">sim &lt;-<span class="st"> </span>mzrtsim<span class="op">::</span><span class="kw">simmzrt</span>(mzrt<span class="op">$</span>data)</a>
+<a class="sourceLine" id="cb26-6" data-line-number="6">mzrtsim<span class="op">::</span><span class="kw">simdata</span>(sim)</a>
+<a class="sourceLine" id="cb26-7" data-line-number="7"><span class="co"># correct the batch effect by sva</span></a>
+<a class="sourceLine" id="cb26-8" data-line-number="8">mzrtcor &lt;-<span class="st"> </span>mzrtsim<span class="op">::</span><span class="kw">svacor</span>(mzrt<span class="op">$</span>data,<span class="dt">lv =</span> mzrt<span class="op">$</span>group<span class="op">$</span>class)</a>
+<a class="sourceLine" id="cb26-9" data-line-number="9"><span class="co"># visulize the batch effect correction</span></a>
+<a class="sourceLine" id="cb26-10" data-line-number="10">li &lt;-<span class="st"> </span>mzrtsim<span class="op">::</span><span class="kw">limmaplot</span>(mzrtcor,<span class="dt">lv =</span> mzrt<span class="op">$</span>group<span class="op">$</span>class)</a>
+<a class="sourceLine" id="cb26-11" data-line-number="11"><span class="co"># return the corrected data</span></a>
+<a class="sourceLine" id="cb26-12" data-line-number="12">mzrt<span class="op">$</span>data &lt;-<span class="st"> </span>mzrtcor<span class="op">$</span>dataCorrected</a></code></pre></div>
 </div>
 <div id="statistic-analysis" class="section level2">
 <h2><span class="header-section-number">11.8</span> Statistic analysis</h2>
 <p>Here we could use <code>caret</code> package to perform statistical analysis.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(caret)
-<span class="co">## Spliting data</span>
-trainIndex &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(mzrtfilter<span class="op">$</span>data, <span class="dt">p =</span> <span class="fl">.8</span>, 
-                                  <span class="dt">list =</span> <span class="ot">FALSE</span>, 
-                                  <span class="dt">times =</span> <span class="dv">1</span>)
-<span class="co">## Get the training and testing datasets</span>
-Train &lt;-<span class="st"> </span>data[ trainIndex,]
-Test  &lt;-<span class="st"> </span>data[<span class="op">-</span>trainIndex,]
-<span class="co">## Set the cross validation method</span>
-fitControl &lt;-<span class="st"> </span><span class="kw">trainControl</span>(<span class="co">## 10-fold CV</span>
-                           <span class="dt">method =</span> <span class="st">&quot;repeatedcv&quot;</span>,
-                           <span class="dt">number =</span> <span class="dv">10</span>,
-                           <span class="co">## repeated ten times</span>
-                           <span class="dt">repeats =</span> <span class="dv">10</span>)
-<span class="co"># extra papameters for GBM </span>
-gbmGrid &lt;-<span class="st">  </span><span class="kw">expand.grid</span>(<span class="dt">interaction.depth =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">9</span>), 
-                        <span class="dt">n.trees =</span> (<span class="dv">1</span><span class="op">:</span><span class="dv">30</span>)<span class="op">*</span><span class="dv">50</span>, 
-                        <span class="dt">shrinkage =</span> <span class="fl">0.1</span>,
-                        <span class="dt">n.minobsinnode =</span> <span class="dv">20</span>)
-
-<span class="kw">set.seed</span>(<span class="dv">825</span>)
-gbmFit &lt;-<span class="st"> </span><span class="kw">train</span>(mzrtfilter<span class="op">$</span>group <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> training, 
-                 <span class="dt">method =</span> <span class="st">&quot;gbm&quot;</span>, 
-                 <span class="dt">trControl =</span> fitControl, 
-                 <span class="dt">verbose =</span> <span class="ot">FALSE</span>, 
-                 <span class="co">## Now specify the exact models </span>
-                 <span class="co">## to evaluate:</span>
-                 <span class="dt">tuneGrid =</span> gbmGrid)
-<span class="co"># show the fitting process</span>
-<span class="kw">plot</span>(gbmFit)  
-<span class="co"># ANOVA analysis for model selection</span>
-<span class="kw">anova</span>(fit1,fit2)
-<span class="co"># find the important variables</span>
-Imp &lt;-<span class="st"> </span><span class="kw">varImp</span>(fit)
-<span class="kw">plot</span>(Imp)</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="kw">library</span>(caret)</a>
+<a class="sourceLine" id="cb27-2" data-line-number="2"><span class="co">## Spliting data</span></a>
+<a class="sourceLine" id="cb27-3" data-line-number="3">trainIndex &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(mzrtfilter<span class="op">$</span>data, <span class="dt">p =</span> <span class="fl">.8</span>, </a>
+<a class="sourceLine" id="cb27-4" data-line-number="4">                                  <span class="dt">list =</span> <span class="ot">FALSE</span>, </a>
+<a class="sourceLine" id="cb27-5" data-line-number="5">                                  <span class="dt">times =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb27-6" data-line-number="6"><span class="co">## Get the training and testing datasets</span></a>
+<a class="sourceLine" id="cb27-7" data-line-number="7">Train &lt;-<span class="st"> </span>data[ trainIndex,]</a>
+<a class="sourceLine" id="cb27-8" data-line-number="8">Test  &lt;-<span class="st"> </span>data[<span class="op">-</span>trainIndex,]</a>
+<a class="sourceLine" id="cb27-9" data-line-number="9"><span class="co">## Set the cross validation method</span></a>
+<a class="sourceLine" id="cb27-10" data-line-number="10">fitControl &lt;-<span class="st"> </span><span class="kw">trainControl</span>(<span class="co">## 10-fold CV</span></a>
+<a class="sourceLine" id="cb27-11" data-line-number="11">                           <span class="dt">method =</span> <span class="st">&quot;repeatedcv&quot;</span>,</a>
+<a class="sourceLine" id="cb27-12" data-line-number="12">                           <span class="dt">number =</span> <span class="dv">10</span>,</a>
+<a class="sourceLine" id="cb27-13" data-line-number="13">                           <span class="co">## repeated ten times</span></a>
+<a class="sourceLine" id="cb27-14" data-line-number="14">                           <span class="dt">repeats =</span> <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb27-15" data-line-number="15"><span class="co"># extra papameters for GBM </span></a>
+<a class="sourceLine" id="cb27-16" data-line-number="16">gbmGrid &lt;-<span class="st">  </span><span class="kw">expand.grid</span>(<span class="dt">interaction.depth =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">9</span>), </a>
+<a class="sourceLine" id="cb27-17" data-line-number="17">                        <span class="dt">n.trees =</span> (<span class="dv">1</span><span class="op">:</span><span class="dv">30</span>)<span class="op">*</span><span class="dv">50</span>, </a>
+<a class="sourceLine" id="cb27-18" data-line-number="18">                        <span class="dt">shrinkage =</span> <span class="fl">0.1</span>,</a>
+<a class="sourceLine" id="cb27-19" data-line-number="19">                        <span class="dt">n.minobsinnode =</span> <span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb27-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb27-21" data-line-number="21"><span class="kw">set.seed</span>(<span class="dv">825</span>)</a>
+<a class="sourceLine" id="cb27-22" data-line-number="22">gbmFit &lt;-<span class="st"> </span><span class="kw">train</span>(mzrtfilter<span class="op">$</span>group <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> training, </a>
+<a class="sourceLine" id="cb27-23" data-line-number="23">                 <span class="dt">method =</span> <span class="st">&quot;gbm&quot;</span>, </a>
+<a class="sourceLine" id="cb27-24" data-line-number="24">                 <span class="dt">trControl =</span> fitControl, </a>
+<a class="sourceLine" id="cb27-25" data-line-number="25">                 <span class="dt">verbose =</span> <span class="ot">FALSE</span>, </a>
+<a class="sourceLine" id="cb27-26" data-line-number="26">                 <span class="co">## Now specify the exact models </span></a>
+<a class="sourceLine" id="cb27-27" data-line-number="27">                 <span class="co">## to evaluate:</span></a>
+<a class="sourceLine" id="cb27-28" data-line-number="28">                 <span class="dt">tuneGrid =</span> gbmGrid)</a>
+<a class="sourceLine" id="cb27-29" data-line-number="29"><span class="co"># show the fitting process</span></a>
+<a class="sourceLine" id="cb27-30" data-line-number="30"><span class="kw">plot</span>(gbmFit)  </a>
+<a class="sourceLine" id="cb27-31" data-line-number="31"><span class="co"># ANOVA analysis for model selection</span></a>
+<a class="sourceLine" id="cb27-32" data-line-number="32"><span class="kw">anova</span>(fit1,fit2)</a>
+<a class="sourceLine" id="cb27-33" data-line-number="33"><span class="co"># find the important variables</span></a>
+<a class="sourceLine" id="cb27-34" data-line-number="34">Imp &lt;-<span class="st"> </span><span class="kw">varImp</span>(fit)</a>
+<a class="sourceLine" id="cb27-35" data-line-number="35"><span class="kw">plot</span>(Imp)</a></code></pre></div>
 </div>
 <div id="annotation-1" class="section level2">
 <h2><span class="header-section-number">11.9</span> Annotation</h2>
 <p>Here I use <code>xMSannotator</code> package to make annotation with HMDB as reference database.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(xMSannotator)
-num_nodes =<span class="st"> </span><span class="dv">10</span>
-<span class="kw">data</span>(<span class="st">&quot;adduct_weights&quot;</span>)
-negsub &lt;-<span class="st"> </span><span class="kw">getrtmz</span>(<span class="st">&#39;D:/metademo/data/oq/&#39;</span>)
-anno &lt;-<span class="st"> </span>xsetplus<span class="op">::</span><span class="kw">fanno</span>(negsub,<span class="dt">outloc =</span> <span class="st">&#39;D:/metademo/anno&#39;</span>,<span class="dt">mode =</span> <span class="st">&#39;neg&#39;</span>)</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1"><span class="kw">library</span>(xMSannotator)</a>
+<a class="sourceLine" id="cb28-2" data-line-number="2">num_nodes =<span class="st"> </span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb28-3" data-line-number="3"><span class="kw">data</span>(<span class="st">&quot;adduct_weights&quot;</span>)</a>
+<a class="sourceLine" id="cb28-4" data-line-number="4">negsub &lt;-<span class="st"> </span><span class="kw">getrtmz</span>(<span class="st">&#39;D:/metademo/data/oq/&#39;</span>)</a>
+<a class="sourceLine" id="cb28-5" data-line-number="5">anno &lt;-<span class="st"> </span>xsetplus<span class="op">::</span><span class="kw">fanno</span>(negsub,<span class="dt">outloc =</span> <span class="st">&#39;D:/metademo/anno&#39;</span>,<span class="dt">mode =</span> <span class="st">&#39;neg&#39;</span>)</a></code></pre></div>
 </div>
 <div id="pathway-analysis-1" class="section level2">
 <h2><span class="header-section-number">11.10</span> Pathway Analysis</h2>
 <p>We could output the files for online pathway analysis with mummichog algorithm.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># get the file</span>
-xsetplus<span class="op">::</span><span class="kw">mumdata</span>(neg,<span class="dt">lv =</span> mzrt<span class="op">$</span>group<span class="op">$</span>class)
-<span class="co"># http://mummichog.org/index.html</span>
-<span class="co"># mummichog1 -f &#39;test.txt&#39; -o myResult</span></code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="co"># get the file</span></a>
+<a class="sourceLine" id="cb29-2" data-line-number="2">xsetplus<span class="op">::</span><span class="kw">mumdata</span>(neg,<span class="dt">lv =</span> mzrt<span class="op">$</span>group<span class="op">$</span>class)</a>
+<a class="sourceLine" id="cb29-3" data-line-number="3"><span class="co"># http://mummichog.org/index.html</span></a>
+<a class="sourceLine" id="cb29-4" data-line-number="4"><span class="co"># mummichog1 -f &#39;test.txt&#39; -o myResult</span></a></code></pre></div>
 </div>
 <div id="metaboanalyst" class="section level2">
 <h2><span class="header-section-number">11.11</span> MetaboAnalyst</h2>
 <p>Actully, after you perform data correction, you have got the data matrix for statistic analysis. You might choose <a href="http://www.metaboanalyst.ca/MetaboAnalyst/faces/docs/Contact.xhtml"><strong>MetaboAnalyst</strong></a> online or offline to make furthor analysis, which supplied more statistical choices than xcms.</p>
 <p>The input data format for <strong>MetaboAnalyst</strong> should be rows for peaks and colomns for samples. You could also add groups infomation if possible. Use the following code to get the data for analysis.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># get the csv file for Metaboanalyst.ca</span>
-enviGCMS<span class="op">::</span><span class="kw">getupload</span>(neg,<span class="dt">name =</span> <span class="st">&#39;metabo&#39;</span>)</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1"><span class="co"># get the csv file for Metaboanalyst.ca</span></a>
+<a class="sourceLine" id="cb30-2" data-line-number="2">enviGCMS<span class="op">::</span><span class="kw">getupload</span>(neg,<span class="dt">name =</span> <span class="st">&#39;metabo&#39;</span>)</a></code></pre></div>
 </div>
 <div id="summary" class="section level2">
 <h2><span class="header-section-number">11.12</span> Summary</h2>
@@ -578,11 +595,13 @@ enviGCMS<span class="op">::</span><span class="kw">getupload</span>(neg,<span cl
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -590,12 +609,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -605,6 +623,14 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/yufree/metaworkflow/edit/master/10-workflow.Rmd",
 "text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
 },
 "download": null,
 "toc": {
@@ -621,8 +647,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

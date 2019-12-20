@@ -50,6 +50,10 @@
 
 
 
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="libs/viz-0.3/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.1/grViz.js"></script>
 
 
 <style type="text/css">
@@ -160,7 +164,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4" data-path="pretreatment.html"><a href="pretreatment.html#storage"><i class="fa fa-check"></i><b>3.4</b> Storage</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html"><i class="fa fa-check"></i><b>4</b> Instrumental analysis</a><ul>
-<li class="chapter" data-level="4.1" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#pooled-qc-samples"><i class="fa fa-check"></i><b>4.1</b> Pooled QC samples</a></li>
+<li class="chapter" data-level="4.1" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#column-and-gradient-selection"><i class="fa fa-check"></i><b>4.1</b> Column and gradient selection</a></li>
+<li class="chapter" data-level="4.2" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#pooled-qc-samples"><i class="fa fa-check"></i><b>4.2</b> Pooled QC samples</a></li>
+<li class="chapter" data-level="4.3" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#mass-resolution"><i class="fa fa-check"></i><b>4.3</b> Mass resolution</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html"><i class="fa fa-check"></i><b>5</b> Raw data pretreatment</a><ul>
 <li class="chapter" data-level="5.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#peak-extraction"><i class="fa fa-check"></i><b>5.1</b> Peak extraction</a></li>
@@ -269,28 +275,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.2" data-path="workflow-2.html"><a href="workflow-2.html#data-sharing"><i class="fa fa-check"></i><b>10.2</b> Data sharing</a></li>
 <li class="chapter" data-level="10.3" data-path="workflow-2.html"><a href="workflow-2.html#contest"><i class="fa fa-check"></i><b>10.3</b> Contest</a></li>
 <li class="chapter" data-level="10.4" data-path="workflow-2.html"><a href="workflow-2.html#demo"><i class="fa fa-check"></i><b>10.4</b> Demo</a></li>
-<li class="chapter" data-level="10.5" data-path="workflow-2.html"><a href="workflow-2.html#project-setup"><i class="fa fa-check"></i><b>10.5</b> Project Setup</a></li>
-<li class="chapter" data-level="10.6" data-path="workflow-2.html"><a href="workflow-2.html#data-input"><i class="fa fa-check"></i><b>10.6</b> Data input</a></li>
-<li class="chapter" data-level="10.7" data-path="workflow-2.html"><a href="workflow-2.html#optimization"><i class="fa fa-check"></i><b>10.7</b> Optimization</a></li>
-<li class="chapter" data-level="10.8" data-path="workflow-2.html"><a href="workflow-2.html#wrap-function"><i class="fa fa-check"></i><b>10.8</b> Wrap function</a><ul>
-<li class="chapter" data-level="10.8.1" data-path="workflow-2.html"><a href="workflow-2.html#peak-picking-1"><i class="fa fa-check"></i><b>10.8.1</b> Peak picking</a></li>
-<li class="chapter" data-level="10.8.2" data-path="workflow-2.html"><a href="workflow-2.html#data-correction"><i class="fa fa-check"></i><b>10.8.2</b> Data correction</a></li>
-<li class="chapter" data-level="10.8.3" data-path="workflow-2.html"><a href="workflow-2.html#peaks-filling"><i class="fa fa-check"></i><b>10.8.3</b> Peaks filling</a></li>
 </ul></li>
-<li class="chapter" data-level="10.9" data-path="workflow-2.html"><a href="workflow-2.html#peaks-list"><i class="fa fa-check"></i><b>10.9</b> Peaks list</a></li>
-<li class="chapter" data-level="10.10" data-path="workflow-2.html"><a href="workflow-2.html#peaks-filtering"><i class="fa fa-check"></i><b>10.10</b> Peaks filtering</a></li>
-<li class="chapter" data-level="10.11" data-path="workflow-2.html"><a href="workflow-2.html#normalization-optional"><i class="fa fa-check"></i><b>10.11</b> Normalization (Optional)</a></li>
-<li class="chapter" data-level="10.12" data-path="workflow-2.html"><a href="workflow-2.html#statistic-analysis"><i class="fa fa-check"></i><b>10.12</b> Statistic analysis</a></li>
-<li class="chapter" data-level="10.13" data-path="workflow-2.html"><a href="workflow-2.html#annotation-1"><i class="fa fa-check"></i><b>10.13</b> Annotation</a></li>
-<li class="chapter" data-level="10.14" data-path="workflow-2.html"><a href="workflow-2.html#pathway-analysis-1"><i class="fa fa-check"></i><b>10.14</b> Pathway Analysis</a></li>
-<li class="chapter" data-level="10.15" data-path="workflow-2.html"><a href="workflow-2.html#metaboanalyst"><i class="fa fa-check"></i><b>10.15</b> MetaboAnalyst</a></li>
-<li class="chapter" data-level="10.16" data-path="workflow-2.html"><a href="workflow-2.html#summary"><i class="fa fa-check"></i><b>10.16</b> Summary</a></li>
+<li class="chapter" data-level="11" data-path="demo-1.html"><a href="demo-1.html"><i class="fa fa-check"></i><b>11</b> Demo</a><ul>
+<li class="chapter" data-level="11.1" data-path="demo-1.html"><a href="demo-1.html#project-setup"><i class="fa fa-check"></i><b>11.1</b> Project Setup</a></li>
+<li class="chapter" data-level="11.2" data-path="demo-1.html"><a href="demo-1.html#data-input"><i class="fa fa-check"></i><b>11.2</b> Data input</a></li>
+<li class="chapter" data-level="11.3" data-path="demo-1.html"><a href="demo-1.html#optimization"><i class="fa fa-check"></i><b>11.3</b> Optimization</a></li>
+<li class="chapter" data-level="11.4" data-path="demo-1.html"><a href="demo-1.html#wrap-function"><i class="fa fa-check"></i><b>11.4</b> Wrap function</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="demo-1.html"><a href="demo-1.html#peak-picking-1"><i class="fa fa-check"></i><b>11.4.1</b> Peak picking</a></li>
+<li class="chapter" data-level="11.4.2" data-path="demo-1.html"><a href="demo-1.html#data-correction"><i class="fa fa-check"></i><b>11.4.2</b> Data correction</a></li>
+<li class="chapter" data-level="11.4.3" data-path="demo-1.html"><a href="demo-1.html#peaks-filling"><i class="fa fa-check"></i><b>11.4.3</b> Peaks filling</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="exposome.html"><a href="exposome.html"><i class="fa fa-check"></i><b>11</b> Exposome</a><ul>
-<li class="chapter" data-level="11.1" data-path="exposome.html"><a href="exposome.html#internal-exposure"><i class="fa fa-check"></i><b>11.1</b> Internal exposure</a></li>
-<li class="chapter" data-level="11.2" data-path="exposome.html"><a href="exposome.html#external-exposure"><i class="fa fa-check"></i><b>11.2</b> External exposure</a><ul>
-<li class="chapter" data-level="11.2.1" data-path="exposome.html"><a href="exposome.html#environmental-fate-of-compounds"><i class="fa fa-check"></i><b>11.2.1</b> Environmental fate of compounds</a></li>
-<li class="chapter" data-level="11.2.2" data-path="exposome.html"><a href="exposome.html#exposure-study-database"><i class="fa fa-check"></i><b>11.2.2</b> Exposure study database</a></li>
+<li class="chapter" data-level="11.5" data-path="demo-1.html"><a href="demo-1.html#peaks-list"><i class="fa fa-check"></i><b>11.5</b> Peaks list</a></li>
+<li class="chapter" data-level="11.6" data-path="demo-1.html"><a href="demo-1.html#peaks-filtering"><i class="fa fa-check"></i><b>11.6</b> Peaks filtering</a></li>
+<li class="chapter" data-level="11.7" data-path="demo-1.html"><a href="demo-1.html#normalization-optional"><i class="fa fa-check"></i><b>11.7</b> Normalization (Optional)</a></li>
+<li class="chapter" data-level="11.8" data-path="demo-1.html"><a href="demo-1.html#statistic-analysis"><i class="fa fa-check"></i><b>11.8</b> Statistic analysis</a></li>
+<li class="chapter" data-level="11.9" data-path="demo-1.html"><a href="demo-1.html#annotation-1"><i class="fa fa-check"></i><b>11.9</b> Annotation</a></li>
+<li class="chapter" data-level="11.10" data-path="demo-1.html"><a href="demo-1.html#pathway-analysis-1"><i class="fa fa-check"></i><b>11.10</b> Pathway Analysis</a></li>
+<li class="chapter" data-level="11.11" data-path="demo-1.html"><a href="demo-1.html#metaboanalyst"><i class="fa fa-check"></i><b>11.11</b> MetaboAnalyst</a></li>
+<li class="chapter" data-level="11.12" data-path="demo-1.html"><a href="demo-1.html#summary"><i class="fa fa-check"></i><b>11.12</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="exposome.html"><a href="exposome.html"><i class="fa fa-check"></i><b>12</b> Exposome</a><ul>
+<li class="chapter" data-level="12.1" data-path="exposome.html"><a href="exposome.html#internal-exposure"><i class="fa fa-check"></i><b>12.1</b> Internal exposure</a></li>
+<li class="chapter" data-level="12.2" data-path="exposome.html"><a href="exposome.html#external-exposure"><i class="fa fa-check"></i><b>12.2</b> External exposure</a><ul>
+<li class="chapter" data-level="12.2.1" data-path="exposome.html"><a href="exposome.html#environmental-fate-of-compounds"><i class="fa fa-check"></i><b>12.2.1</b> Environmental fate of compounds</a></li>
+<li class="chapter" data-level="12.2.2" data-path="exposome.html"><a href="exposome.html#exposure-study-database"><i class="fa fa-check"></i><b>12.2.2</b> Exposure study database</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -328,7 +336,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="sample-size" class="section level2">
 <h2><span class="header-section-number">2.3</span> Sample size</h2>
 <p>Supporsing we have control and treated groups, the numbers of samples in each group should be carefully calculated.For each metabolite, such comparision could be treated as one t-test. You need to perform a Power analysis to get the numbers. For example, we have two groups of samples with 10 samples in each group. Then we set the power at 0.9, which means one minus Type II error probability, the standard deviation at 1 and the significance level(Type 1 error probability) at 0.05. Then we get the meanful delta between the two groups should be higher than 1.53367 under this experiment design. Also we could set the delta to get the minimized numbers of the samples in each group. To get those data such as the standard deviation or delta for power analysis, you need to perform prelimitary or pilot experiments.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">power.t.test</span>(<span class="dt">n=</span><span class="dv">10</span>,<span class="dt">sd=</span><span class="dv">1</span>,<span class="dt">sig.level =</span> <span class="fl">0.05</span>,<span class="dt">power =</span> <span class="fl">0.9</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">power.t.test</span>(<span class="dt">n=</span><span class="dv">10</span>,<span class="dt">sd=</span><span class="dv">1</span>,<span class="dt">sig.level =</span> <span class="fl">0.05</span>,<span class="dt">power =</span> <span class="fl">0.9</span>)</a></code></pre></div>
 <pre><code>## 
 ##      Two-sample t test power calculation 
 ## 
@@ -340,7 +348,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     alternative = two.sided
 ## 
 ## NOTE: n is number in *each* group</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">power.t.test</span>(<span class="dt">delta =</span> <span class="dv">5</span>,<span class="dt">sd=</span><span class="dv">1</span>,<span class="dt">sig.level =</span> <span class="fl">0.05</span>,<span class="dt">power =</span> <span class="fl">0.9</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">power.t.test</span>(<span class="dt">delta =</span> <span class="dv">5</span>,<span class="dt">sd=</span><span class="dv">1</span>,<span class="dt">sig.level =</span> <span class="fl">0.05</span>,<span class="dt">power =</span> <span class="fl">0.9</span>)</a></code></pre></div>
 <pre><code>## 
 ##      Two-sample t test power calculation 
 ## 

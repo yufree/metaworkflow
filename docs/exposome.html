@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Meta-Workflow</title>
-  <meta name="description" content="This is a workflow for metabolomics studies.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 12 Exposome | Meta-Workflow</title>
+  <meta name="description" content="This is a workflow for metabolomics studies." />
+  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Meta-Workflow" />
+  <meta property="og:title" content="Chapter 12 Exposome | Meta-Workflow" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
@@ -17,22 +16,22 @@
   <meta name="github-repo" content="yufree/metaworkflow" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Meta-Workflow" />
+  <meta name="twitter:title" content="Chapter 12 Exposome | Meta-Workflow" />
   
   <meta name="twitter:description" content="This is a workflow for metabolomics studies." />
   <meta name="twitter:image" content="images/cover.png" />
 
-<meta name="author" content="Miao YU">
+<meta name="author" content="Miao YU" />
 
 
-<meta name="date" content="2018-11-27">
+<meta name="date" content="2019-12-20" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="demo-1.html">
+<link rel="prev" href="demo-1.html"/>
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -41,6 +40,7 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -48,10 +48,12 @@
 
 
 
-<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+
+
+<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/grViz-binding-1.0.0/grViz.js"></script>
+<script src="libs/grViz-binding-1.0.1/grViz.js"></script>
 
 
 <style type="text/css">
@@ -60,7 +62,6 @@ a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
 a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -150,14 +151,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#trends-in-metabolomics"><i class="fa fa-check"></i><b>1.3</b> Trends in Metabolomics</a></li>
 <li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#workflow-1"><i class="fa fa-check"></i><b>1.4</b> Workflow</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="exprimental-designdoe.html"><a href="exprimental-designdoe.html"><i class="fa fa-check"></i><b>2</b> Exprimental design(DoE)</a><ul>
-<li class="chapter" data-level="2.1" data-path="exprimental-designdoe.html"><a href="exprimental-designdoe.html#software"><i class="fa fa-check"></i><b>2.1</b> Software</a></li>
+<li class="chapter" data-level="2" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html"><i class="fa fa-check"></i><b>2</b> Experimental design(DoE)</a><ul>
+<li class="chapter" data-level="2.1" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#homogeneity-study"><i class="fa fa-check"></i><b>2.1</b> Homogeneity study</a></li>
+<li class="chapter" data-level="2.2" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#heterogeneity-study"><i class="fa fa-check"></i><b>2.2</b> Heterogeneity study</a></li>
+<li class="chapter" data-level="2.3" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#sample-size"><i class="fa fa-check"></i><b>2.3</b> Sample size</a></li>
+<li class="chapter" data-level="2.4" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#software"><i class="fa fa-check"></i><b>2.4</b> Software</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="pretreatment.html"><a href="pretreatment.html"><i class="fa fa-check"></i><b>3</b> Pretreatment</a><ul>
 <li class="chapter" data-level="3.1" data-path="pretreatment.html"><a href="pretreatment.html#quenching"><i class="fa fa-check"></i><b>3.1</b> Quenching</a></li>
 <li class="chapter" data-level="3.2" data-path="pretreatment.html"><a href="pretreatment.html#extraction"><i class="fa fa-check"></i><b>3.2</b> Extraction</a></li>
+<li class="chapter" data-level="3.3" data-path="pretreatment.html"><a href="pretreatment.html#derivatization"><i class="fa fa-check"></i><b>3.3</b> Derivatization</a></li>
+<li class="chapter" data-level="3.4" data-path="pretreatment.html"><a href="pretreatment.html#storage"><i class="fa fa-check"></i><b>3.4</b> Storage</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html"><i class="fa fa-check"></i><b>4</b> Instrumental analysis</a></li>
+<li class="chapter" data-level="4" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html"><i class="fa fa-check"></i><b>4</b> Instrumental analysis</a><ul>
+<li class="chapter" data-level="4.1" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#column-and-gradient-selection"><i class="fa fa-check"></i><b>4.1</b> Column and gradient selection</a></li>
+<li class="chapter" data-level="4.2" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#pooled-qc-samples"><i class="fa fa-check"></i><b>4.2</b> Pooled QC samples</a></li>
+<li class="chapter" data-level="4.3" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#mass-resolution"><i class="fa fa-check"></i><b>4.3</b> Mass resolution</a></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html"><i class="fa fa-check"></i><b>5</b> Raw data pretreatment</a><ul>
 <li class="chapter" data-level="5.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#peak-extraction"><i class="fa fa-check"></i><b>5.1</b> Peak extraction</a></li>
 <li class="chapter" data-level="5.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#retention-time-correction"><i class="fa fa-check"></i><b>5.2</b> Retention Time Correction</a></li>
@@ -172,6 +182,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.6.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#for-msms"><i class="fa fa-check"></i><b>5.6.2</b> For MS/MS</a></li>
 <li class="chapter" data-level="5.6.3" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#improved-peak-picking"><i class="fa fa-check"></i><b>5.6.3</b> Improved Peak picking</a></li>
 </ul></li>
+<li class="chapter" data-level="5.7" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#tips"><i class="fa fa-check"></i><b>5.7</b> Tips</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="peaks-normalization.html"><a href="peaks-normalization.html"><i class="fa fa-check"></i><b>6</b> Peaks normalization</a><ul>
 <li class="chapter" data-level="6.1" data-path="peaks-normalization.html"><a href="peaks-normalization.html#peak-misidentification"><i class="fa fa-check"></i><b>6.1</b> Peak misidentification</a></li>
@@ -186,45 +197,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="annotation.html"><a href="annotation.html"><i class="fa fa-check"></i><b>7</b> Annotation</a><ul>
 <li class="chapter" data-level="7.1" data-path="annotation.html"><a href="annotation.html#issues-in-annotation"><i class="fa fa-check"></i><b>7.1</b> Issues in annotation</a></li>
 <li class="chapter" data-level="7.2" data-path="annotation.html"><a href="annotation.html#annotation-v.s.-identification"><i class="fa fa-check"></i><b>7.2</b> Annotation v.s. identification</a></li>
-<li class="chapter" data-level="7.3" data-path="annotation.html"><a href="annotation.html#ms-database-for-annotation"><i class="fa fa-check"></i><b>7.3</b> MS Database for annotation</a><ul>
-<li class="chapter" data-level="7.3.1" data-path="annotation.html"><a href="annotation.html#msms"><i class="fa fa-check"></i><b>7.3.1</b> MS/MS</a></li>
-<li class="chapter" data-level="7.3.2" data-path="annotation.html"><a href="annotation.html#ms"><i class="fa fa-check"></i><b>7.3.2</b> MS</a></li>
+<li class="chapter" data-level="7.3" data-path="annotation.html"><a href="annotation.html#cheminformatics"><i class="fa fa-check"></i><b>7.3</b> Cheminformatics</a></li>
+<li class="chapter" data-level="7.4" data-path="annotation.html"><a href="annotation.html#ms-database-for-annotation"><i class="fa fa-check"></i><b>7.4</b> MS Database for annotation</a><ul>
+<li class="chapter" data-level="7.4.1" data-path="annotation.html"><a href="annotation.html#msms"><i class="fa fa-check"></i><b>7.4.1</b> MS/MS</a></li>
+<li class="chapter" data-level="7.4.2" data-path="annotation.html"><a href="annotation.html#ms"><i class="fa fa-check"></i><b>7.4.2</b> MS</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="annotation.html"><a href="annotation.html#compounds-database"><i class="fa fa-check"></i><b>7.4</b> Compounds Database</a></li>
-<li class="chapter" data-level="7.5" data-path="annotation.html"><a href="annotation.html#software-3"><i class="fa fa-check"></i><b>7.5</b> Software</a><ul>
-<li class="chapter" data-level="7.5.1" data-path="annotation.html"><a href="annotation.html#adducts-list"><i class="fa fa-check"></i><b>7.5.1</b> Adducts list</a></li>
-<li class="chapter" data-level="7.5.2" data-path="annotation.html"><a href="annotation.html#molgen"><i class="fa fa-check"></i><b>7.5.2</b> Molgen</a></li>
-<li class="chapter" data-level="7.5.3" data-path="annotation.html"><a href="annotation.html#isotope"><i class="fa fa-check"></i><b>7.5.3</b> Isotope</a></li>
-<li class="chapter" data-level="7.5.4" data-path="annotation.html"><a href="annotation.html#mffinder"><i class="fa fa-check"></i><b>7.5.4</b> mfFinder</a></li>
-<li class="chapter" data-level="7.5.5" data-path="annotation.html"><a href="annotation.html#camera"><i class="fa fa-check"></i><b>7.5.5</b> CAMERA</a></li>
-<li class="chapter" data-level="7.5.6" data-path="annotation.html"><a href="annotation.html#ramclustr"><i class="fa fa-check"></i><b>7.5.6</b> RAMClustR</a></li>
-<li class="chapter" data-level="7.5.7" data-path="annotation.html"><a href="annotation.html#pmd"><i class="fa fa-check"></i><b>7.5.7</b> pmd</a></li>
-<li class="chapter" data-level="7.5.8" data-path="annotation.html"><a href="annotation.html#nontarget"><i class="fa fa-check"></i><b>7.5.8</b> nontarget</a></li>
-<li class="chapter" data-level="7.5.9" data-path="annotation.html"><a href="annotation.html#xmsannotator"><i class="fa fa-check"></i><b>7.5.9</b> xMSannotator</a></li>
-<li class="chapter" data-level="7.5.10" data-path="annotation.html"><a href="annotation.html#cfm-id"><i class="fa fa-check"></i><b>7.5.10</b> CFM-ID</a></li>
-<li class="chapter" data-level="7.5.11" data-path="annotation.html"><a href="annotation.html#mine"><i class="fa fa-check"></i><b>7.5.11</b> MINE</a></li>
-<li class="chapter" data-level="7.5.12" data-path="annotation.html"><a href="annotation.html#interpretmsspectrum"><i class="fa fa-check"></i><b>7.5.12</b> InterpretMSSpectrum</a></li>
-<li class="chapter" data-level="7.5.13" data-path="annotation.html"><a href="annotation.html#for-ident"><i class="fa fa-check"></i><b>7.5.13</b> For Ident</a></li>
-<li class="chapter" data-level="7.5.14" data-path="annotation.html"><a href="annotation.html#mzmatch"><i class="fa fa-check"></i><b>7.5.14</b> mzmatch</a></li>
-<li class="chapter" data-level="7.5.15" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>7.5.15</b> mz.unity</a></li>
-<li class="chapter" data-level="7.5.16" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>7.5.16</b> MAIT</a></li>
-<li class="chapter" data-level="7.5.17" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>7.5.17</b> ProbMetab</a></li>
-<li class="chapter" data-level="7.5.18" data-path="annotation.html"><a href="annotation.html#ramsi"><i class="fa fa-check"></i><b>7.5.18</b> RAMSI</a></li>
-<li class="chapter" data-level="7.5.19" data-path="annotation.html"><a href="annotation.html#sirius"><i class="fa fa-check"></i><b>7.5.19</b> Sirius</a></li>
-<li class="chapter" data-level="7.5.20" data-path="annotation.html"><a href="annotation.html#mi-pack"><i class="fa fa-check"></i><b>7.5.20</b> MI-Pack</a></li>
-<li class="chapter" data-level="7.5.21" data-path="annotation.html"><a href="annotation.html#plantmat"><i class="fa fa-check"></i><b>7.5.21</b> Plantmat</a></li>
-<li class="chapter" data-level="7.5.22" data-path="annotation.html"><a href="annotation.html#metfamily"><i class="fa fa-check"></i><b>7.5.22</b> MetFamily</a></li>
-<li class="chapter" data-level="7.5.23" data-path="annotation.html"><a href="annotation.html#lipidmatch"><i class="fa fa-check"></i><b>7.5.23</b> Lipidmatch</a></li>
-<li class="chapter" data-level="7.5.24" data-path="annotation.html"><a href="annotation.html#molfind"><i class="fa fa-check"></i><b>7.5.24</b> MolFind</a></li>
-<li class="chapter" data-level="7.5.25" data-path="annotation.html"><a href="annotation.html#metfusion"><i class="fa fa-check"></i><b>7.5.25</b> MetFusion</a></li>
-<li class="chapter" data-level="7.5.26" data-path="annotation.html"><a href="annotation.html#imet"><i class="fa fa-check"></i><b>7.5.26</b> iMet</a></li>
-<li class="chapter" data-level="7.5.27" data-path="annotation.html"><a href="annotation.html#metscape"><i class="fa fa-check"></i><b>7.5.27</b> Metscape</a></li>
-<li class="chapter" data-level="7.5.28" data-path="annotation.html"><a href="annotation.html#metfrag"><i class="fa fa-check"></i><b>7.5.28</b> MetFrag</a></li>
-<li class="chapter" data-level="7.5.29" data-path="annotation.html"><a href="annotation.html#lipidfrag"><i class="fa fa-check"></i><b>7.5.29</b> LipidFrag</a></li>
-<li class="chapter" data-level="7.5.30" data-path="annotation.html"><a href="annotation.html#mycompoundid"><i class="fa fa-check"></i><b>7.5.30</b> MycompoundID</a></li>
-<li class="chapter" data-level="7.5.31" data-path="annotation.html"><a href="annotation.html#magma"><i class="fa fa-check"></i><b>7.5.31</b> magma</a></li>
+<li class="chapter" data-level="7.5" data-path="annotation.html"><a href="annotation.html#compounds-database"><i class="fa fa-check"></i><b>7.5</b> Compounds Database</a></li>
+<li class="chapter" data-level="7.6" data-path="annotation.html"><a href="annotation.html#software-3"><i class="fa fa-check"></i><b>7.6</b> Software</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="annotation.html"><a href="annotation.html#adducts-list"><i class="fa fa-check"></i><b>7.6.1</b> Adducts list</a></li>
+<li class="chapter" data-level="7.6.2" data-path="annotation.html"><a href="annotation.html#molgen"><i class="fa fa-check"></i><b>7.6.2</b> Molgen</a></li>
+<li class="chapter" data-level="7.6.3" data-path="annotation.html"><a href="annotation.html#isotope"><i class="fa fa-check"></i><b>7.6.3</b> Isotope</a></li>
+<li class="chapter" data-level="7.6.4" data-path="annotation.html"><a href="annotation.html#mffinder"><i class="fa fa-check"></i><b>7.6.4</b> mfFinder</a></li>
+<li class="chapter" data-level="7.6.5" data-path="annotation.html"><a href="annotation.html#camera"><i class="fa fa-check"></i><b>7.6.5</b> CAMERA</a></li>
+<li class="chapter" data-level="7.6.6" data-path="annotation.html"><a href="annotation.html#ramclustr"><i class="fa fa-check"></i><b>7.6.6</b> RAMClustR</a></li>
+<li class="chapter" data-level="7.6.7" data-path="annotation.html"><a href="annotation.html#pmd"><i class="fa fa-check"></i><b>7.6.7</b> pmd</a></li>
+<li class="chapter" data-level="7.6.8" data-path="annotation.html"><a href="annotation.html#nontarget"><i class="fa fa-check"></i><b>7.6.8</b> nontarget</a></li>
+<li class="chapter" data-level="7.6.9" data-path="annotation.html"><a href="annotation.html#xmsannotator"><i class="fa fa-check"></i><b>7.6.9</b> xMSannotator</a></li>
+<li class="chapter" data-level="7.6.10" data-path="annotation.html"><a href="annotation.html#cfm-id"><i class="fa fa-check"></i><b>7.6.10</b> CFM-ID</a></li>
+<li class="chapter" data-level="7.6.11" data-path="annotation.html"><a href="annotation.html#mine"><i class="fa fa-check"></i><b>7.6.11</b> MINE</a></li>
+<li class="chapter" data-level="7.6.12" data-path="annotation.html"><a href="annotation.html#interpretmsspectrum"><i class="fa fa-check"></i><b>7.6.12</b> InterpretMSSpectrum</a></li>
+<li class="chapter" data-level="7.6.13" data-path="annotation.html"><a href="annotation.html#for-ident"><i class="fa fa-check"></i><b>7.6.13</b> For Ident</a></li>
+<li class="chapter" data-level="7.6.14" data-path="annotation.html"><a href="annotation.html#mzmatch"><i class="fa fa-check"></i><b>7.6.14</b> mzmatch</a></li>
+<li class="chapter" data-level="7.6.15" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>7.6.15</b> mz.unity</a></li>
+<li class="chapter" data-level="7.6.16" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>7.6.16</b> MAIT</a></li>
+<li class="chapter" data-level="7.6.17" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>7.6.17</b> ProbMetab</a></li>
+<li class="chapter" data-level="7.6.18" data-path="annotation.html"><a href="annotation.html#ramsi"><i class="fa fa-check"></i><b>7.6.18</b> RAMSI</a></li>
+<li class="chapter" data-level="7.6.19" data-path="annotation.html"><a href="annotation.html#sirius"><i class="fa fa-check"></i><b>7.6.19</b> Sirius</a></li>
+<li class="chapter" data-level="7.6.20" data-path="annotation.html"><a href="annotation.html#mi-pack"><i class="fa fa-check"></i><b>7.6.20</b> MI-Pack</a></li>
+<li class="chapter" data-level="7.6.21" data-path="annotation.html"><a href="annotation.html#plantmat"><i class="fa fa-check"></i><b>7.6.21</b> Plantmat</a></li>
+<li class="chapter" data-level="7.6.22" data-path="annotation.html"><a href="annotation.html#metfamily"><i class="fa fa-check"></i><b>7.6.22</b> MetFamily</a></li>
+<li class="chapter" data-level="7.6.23" data-path="annotation.html"><a href="annotation.html#lipidmatch"><i class="fa fa-check"></i><b>7.6.23</b> Lipidmatch</a></li>
+<li class="chapter" data-level="7.6.24" data-path="annotation.html"><a href="annotation.html#molfind"><i class="fa fa-check"></i><b>7.6.24</b> MolFind</a></li>
+<li class="chapter" data-level="7.6.25" data-path="annotation.html"><a href="annotation.html#metfusion"><i class="fa fa-check"></i><b>7.6.25</b> MetFusion</a></li>
+<li class="chapter" data-level="7.6.26" data-path="annotation.html"><a href="annotation.html#imet"><i class="fa fa-check"></i><b>7.6.26</b> iMet</a></li>
+<li class="chapter" data-level="7.6.27" data-path="annotation.html"><a href="annotation.html#metscape"><i class="fa fa-check"></i><b>7.6.27</b> Metscape</a></li>
+<li class="chapter" data-level="7.6.28" data-path="annotation.html"><a href="annotation.html#metfrag"><i class="fa fa-check"></i><b>7.6.28</b> MetFrag</a></li>
+<li class="chapter" data-level="7.6.29" data-path="annotation.html"><a href="annotation.html#lipidfrag"><i class="fa fa-check"></i><b>7.6.29</b> LipidFrag</a></li>
+<li class="chapter" data-level="7.6.30" data-path="annotation.html"><a href="annotation.html#mycompoundid"><i class="fa fa-check"></i><b>7.6.30</b> MycompoundID</a></li>
+<li class="chapter" data-level="7.6.31" data-path="annotation.html"><a href="annotation.html#magma"><i class="fa fa-check"></i><b>7.6.31</b> magma</a></li>
+<li class="chapter" data-level="7.6.32" data-path="annotation.html"><a href="annotation.html#metexpert"><i class="fa fa-check"></i><b>7.6.32</b> MetExpert</a></li>
 </ul></li>
-<li class="chapter" data-level="7.6" data-path="annotation.html"><a href="annotation.html#ms-dia"><i class="fa fa-check"></i><b>7.6</b> MS-DIA</a></li>
+<li class="chapter" data-level="7.7" data-path="annotation.html"><a href="annotation.html#ms-dia"><i class="fa fa-check"></i><b>7.7</b> MS-DIA</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>8</b> Omics analysis</a><ul>
 <li class="chapter" data-level="8.1" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-analysis"><i class="fa fa-check"></i><b>8.1</b> Pathway analysis</a><ul>
@@ -236,7 +249,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html"><i class="fa fa-check"></i><b>9</b> Common analysis methods for metabolomics</a><ul>
 <li class="chapter" data-level="9.1" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#basic-statistical-analysis"><i class="fa fa-check"></i><b>9.1</b> Basic Statistical Analysis</a></li>
-<li class="chapter" data-level="9.2" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#differences-analysis"><i class="fa fa-check"></i><b>9.2</b> Differences analysis</a></li>
+<li class="chapter" data-level="9.2" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#differences-analysis"><i class="fa fa-check"></i><b>9.2</b> Differences analysis</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#t-test-or-anova"><i class="fa fa-check"></i><b>9.2.1</b> T-test or ANOVA</a></li>
+<li class="chapter" data-level="9.2.2" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#limma"><i class="fa fa-check"></i><b>9.2.2</b> LIMMA</a></li>
+<li class="chapter" data-level="9.2.3" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#bayesian-mixture-model"><i class="fa fa-check"></i><b>9.2.3</b> Bayesian mixture model</a></li>
+</ul></li>
 <li class="chapter" data-level="9.3" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#pca"><i class="fa fa-check"></i><b>9.3</b> PCA</a></li>
 <li class="chapter" data-level="9.4" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#cluster-analysis"><i class="fa fa-check"></i><b>9.4</b> Cluster Analysis</a></li>
 <li class="chapter" data-level="9.5" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#plsda"><i class="fa fa-check"></i><b>9.5</b> PLSDA</a></li>
@@ -306,6 +323,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="exposome" class="section level1">
 <h1><span class="header-section-number">Chapter 12</span> Exposome</h1>
+<p>Nature or nurture debate has a similar paradigm in environmental study: is the ecological system and human health risk dominated by heredity or environment? Twins and siblings study<span class="citation">(Lakhani et al. <a href="#ref-lakhani2019">2019</a>; Polderman et al. <a href="#ref-polderman2015">2015</a>)</span> show that both heritability and environmental factors could explain the phenotypic variance among population. The contribution of environment among different disease functional domain such as hematological and endocrine could achieve almost half of the total variances <span class="citation">(Polderman et al. <a href="#ref-polderman2015">2015</a>)</span>. However, besides those epidemiology proof, little is known about the influences of overall environmental exposure process at molecular level. Conventional exposure study always investigate one or several specific compounds and their environmental fate or toxicology endpoint. Exposome, on the other hand, tries to access multiple exposure factors from biological or environmental samples as much as possible without a predefined compounds list. Those endogenous and exogenous molecules can reveal the exposure process in details. Exposome could not only help to investigate the comprehensive molecules level changes, but also the interactions among molecules in an non-targeted design. By following annotation of captured compounds, exposome can discover exposure markers for certain type of pollution, as well as biomarkers for certain exposure process and discuss related physiological process.</p>
 <p>According to <a href="https://www.cdc.gov/niosh/topics/exposome/default.html">CDC</a>, The exposome can be defined as the measure of all the exposures of an individual in a lifetime and how those exposures relate to health. Exposomics is the study of the exposome and relies on the application of internal and external exposure assessment methods.</p>
 <ul>
 <li><p>Internal exposure relies on fields of study such as genomics, metabolomics, lipidomics, transcriptomics and proteomics.</p></li>
@@ -331,6 +349,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><a href="https://chemicalize.com/">Chemicalize</a> is a powerful online platform for chemical calculations, search, and text processing.</p></li>
 <li><p><a href="http://www.moleculardescriptors.eu/resources/resources.htm">QSPR molecular descriptor generate tools list</a></p></li>
 <li><p><a href="http://www.archemcalc.com/sparc.html">Spark</a> uses computational algorithms based on fundamental chemical structure theory to estimate a wide variety of reactivity parameters strictly from molecular structure.</p></li>
+<li><p><a href="https://jcheminf.biomedcentral.com/articles/10.1186/s13321-018-0263-1">OPERA</a> OPERA models for predicting physicochemical properties and environmental fate endpoints<span class="citation">(Mansouri et al. <a href="#ref-mansouri2018">2018</a>)</span>.</p></li>
 </ul>
 <p>LogP is important for analytical chemistry. Mannhold <span class="citation">(Mannhold et al. <a href="#ref-mannhold2009">2009</a>)</span> report a comprehensive comparison of logP algorithms. Later, <a href="http://blog.rguha.net/?p=896">Rajarshi Guha</a> make a comparison with logP algorithms with CDK based on logPstar dataset. Commercial software such as Spark, ACS Labs and ChemAxon might always claim a better performance on in-house dataset compared with public software like KowWIN within EPI Suite. However, we should be careful to evaluate the influnce of logP accuracy on the metabolites or unknown compounds.</p>
 </div>
@@ -357,6 +376,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><a href="http://phenol-explorer.eu">Phenol explorer</a> is the first comprehensive database on polyphenol content in foods.</p></li>
 <li><p><a href="https://www.drugbank.ca/releases/latest">Drugbank</a> is a unique bioinformatics and cheminformatics resource that combines detailed drug data with comprehensive drug target information.</p></li>
 <li><p><a href="http://lmdb.ca">LMDB</a> is a freely available electronic database containing detailed information about small molecule metabolites found in different livestock species.</p></li>
+<li><p><a href="https://iaspub.epa.gov/oppthpv/hpv_hc_characterization.get_report?doctype=2">HPV</a> High Production Volume Information System</p></li>
 </ul>
 
 <div id="refs" class="references">
@@ -379,6 +399,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Baran, Richard, and Trent R. Northen. 2013. “Robust Automated Mass Spectra Interpretation and Chemical Formula Calculation Using Mixed Integer Linear Programming.” <em>Anal. Chem.</em> 85 (20): 9777–84. <a href="https://doi.org/10.1021/ac402180c">https://doi.org/10.1021/ac402180c</a>.</p>
 </div>
 <div>
+<p>Barbier Saint Hilaire, Pierre, Ulli M. Hohenester, Benoit Colsch, Jean-Claude Tabet, Christophe Junot, and François Fenaille. 2018. “Evaluation of the High-Field Orbitrap Fusion for Compound Annotation in Metabolomics.” <em>Anal. Chem.</em> 90 (5): 3030–5. <a href="https://doi.org/10.1021/acs.analchem.7b05372">https://doi.org/10.1021/acs.analchem.7b05372</a>.</p>
+</div>
+<div>
 <p>Barnes, Stephen, H. Paul Benton, Krista Casazza, Sara J. Cooper, Xiangqin Cui, Xiuxia Du, Jeffrey Engler, et al. 2016a. “Training in Metabolomics Research. I. Designing the Experiment, Collecting and Extracting Samples and Generating Metabolomics Data.” <em>J. Mass Spectrom.</em> 51 (7): 461–75. <a href="https://doi.org/10.1002/jms.3782">https://doi.org/10.1002/jms.3782</a>.</p>
 </div>
 <div>
@@ -394,6 +417,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Begou, O., H. G. Gika, I. D. Wilson, and G. Theodoridis. 2017. “Hyphenated MS-Based Targeted Approaches in Metabolomics.” <em>Analyst</em> 142 (17): 3079–3100. <a href="https://doi.org/10.1039/C7AN00812K">https://doi.org/10.1039/C7AN00812K</a>.</p>
 </div>
 <div>
+<p>Benjamini, Yoav, and Yosef Hochberg. 1995. “Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing.” <em>J. R. Stat. Soc. Ser. B Methodol.</em> 57 (1): 289–300. <a href="https://www.jstor.org/stable/2346101">https://www.jstor.org/stable/2346101</a>.</p>
+</div>
+<div>
 <p>Bennett, Bryson D., Elizabeth H. Kimball, Melissa Gao, Robin Osterhout, Stephen J. Van Dien, and Joshua D. Rabinowitz. 2009. “Absolute Metabolite Concentrations and Implied Enzyme Active Site Occupancy in Escherichia Coli.” <em>Nat Chem Biol</em> 5 (8): 593–99. <a href="https://doi.org/10.1038/nchembio.186">https://doi.org/10.1038/nchembio.186</a>.</p>
 </div>
 <div>
@@ -404,6 +430,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div>
 <p>Brereton, Richard G., and Gavin R. Lloyd. 2018. “Partial Least Squares Discriminant Analysis for Chemometrics and Metabolomics: How Scores, Loadings, and Weights Differ According to Two Common Algorithms.” <em>J. Chemom.</em> 32 (4): e3028. <a href="https://doi.org/10.1002/cem.3028">https://doi.org/10.1002/cem.3028</a>.</p>
+</div>
+<div>
+<p>Broadhurst, David, Royston Goodacre, Stacey N. Reinke, Julia Kuligowski, Ian D. Wilson, Matthew R. Lewis, and Warwick B. Dunn. 2018. “Guidelines and Considerations for the Use of System Suitability and Quality Control Samples in Mass Spectrometry Assays Applied in Untargeted Clinical Metabolomic Studies.” <em>Metabolomics</em> 14 (6). <a href="https://doi.org/10.1007/s11306-018-1367-3">https://doi.org/10.1007/s11306-018-1367-3</a>.</p>
 </div>
 <div>
 <p>Broeckling, C. D., F. A. Afsar, S. Neumann, A. Ben-Hur, and J. E. Prenni. 2014. “RAMClust: A Novel Feature Clustering Method Enables Spectral-Matching-Based Annotation for Metabolomics Data.” <em>Anal. Chem.</em> 86 (14): 6812–7. <a href="https://doi.org/10.1021/ac501530d">https://doi.org/10.1021/ac501530d</a>.</p>
@@ -454,6 +483,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Dudzik, Danuta, Cecilia Barbas-Bernardos, Antonia García, and Coral Barbas. 2018. “Quality Assurance Procedures for Mass Spectrometry Untargeted Metabolomics. A Review.” <em>Journal of Pharmaceutical and Biomedical Analysis</em>, Review issue 2017, 147 (January): 149–73. <a href="https://doi.org/10.1016/j.jpba.2017.07.044">https://doi.org/10.1016/j.jpba.2017.07.044</a>.</p>
 </div>
 <div>
+<p>Dunn, Warwick B, Ian D Wilson, Andrew W Nicholls, and David Broadhurst. 2012. “The Importance of Experimental Design and QC Samples in Large-Scale and MS-Driven Untargeted Metabolomic Studies of Humans.” <em>Bioanalysis</em> 4 (18): 2249–64. <a href="https://doi.org/10.4155/bio.12.204">https://doi.org/10.4155/bio.12.204</a>.</p>
+</div>
+<div>
 <p>Dührkop, Kai, Huibin Shen, Marvin Meusel, Juho Rousu, and Sebastian Böcker. 2015. “Searching Molecular Structure Databases with Tandem Mass Spectra Using CSI:FingerID.” <em>PNAS</em> 112 (41): 12580–5. <a href="https://doi.org/10.1073/pnas.1509788112">https://doi.org/10.1073/pnas.1509788112</a>.</p>
 </div>
 <div>
@@ -478,13 +510,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Gerlich, Michael, and Steffen Neumann. 2013. “MetFusion: Integration of Compound Identification Strategies.” <em>J. Mass Spectrom.</em> 48 (3): 291–98. <a href="https://doi.org/10.1002/jms.3123">https://doi.org/10.1002/jms.3123</a>.</p>
 </div>
 <div>
-<p>Gika, Helen G., Georgios A. Theodoridis, Robert S. Plumb, and Ian D. Wilson. 2014. “Current Practice of Liquid ChromatographyMass Spectrometry in Metabolomics and Metabonomics.” <em>Journal of Pharmaceutical and Biomedical Analysis</em>, Review papers on pharmaceutical and biomedical analysis 2013, 87 (January): 12–25. <a href="https://doi.org/10.1016/j.jpba.2013.06.032">https://doi.org/10.1016/j.jpba.2013.06.032</a>.</p>
+<p>Gika, Helen G., Georgios A. Theodoridis, Robert S. Plumb, and Ian D. Wilson. 2014. “Current Practice of Liquid ChromatographyMass Spectrometry in Metabolomics and Metabonomics.” <em>Journal of Pharmaceutical and Biomedical Analysis</em>, Review Papers on Pharmaceutical and Biomedical Analysis 2013, 87 (January): 12–25. <a href="https://doi.org/10.1016/j.jpba.2013.06.032">https://doi.org/10.1016/j.jpba.2013.06.032</a>.</p>
 </div>
 <div>
 <p>Goldansaz, Seyed Ali, An Chi Guo, Tanvir Sajed, Michael A. Steele, Graham S. Plastow, and David S. Wishart. 2017. “Livestock Metabolomics and the Livestock Metabolome: A Systematic Review.” <em>PLOS ONE</em> 12 (5): e0177675. <a href="https://doi.org/10.1371/journal.pone.0177675">https://doi.org/10.1371/journal.pone.0177675</a>.</p>
 </div>
 <div>
-<p>Gonzalez-Riano, Carolina, Antonia Garcia, and Coral Barbas. 2016. “Metabolomics Studies in Brain Tissue: A Review.” <em>Journal of Pharmaceutical and Biomedical Analysis</em>, Review issue 2016, 130 (October): 141–68. <a href="https://doi.org/10.1016/j.jpba.2016.07.008">https://doi.org/10.1016/j.jpba.2016.07.008</a>.</p>
+<p>Gonzalez-Riano, Carolina, Antonia Garcia, and Coral Barbas. 2016. “Metabolomics Studies in Brain Tissue: A Review.” <em>Journal of Pharmaceutical and Biomedical Analysis</em>, Review Issue 2016, 130 (October): 141–68. <a href="https://doi.org/10.1016/j.jpba.2016.07.008">https://doi.org/10.1016/j.jpba.2016.07.008</a>.</p>
 </div>
 <div>
 <p>Griffiths, William J., Therese Koal, Yuqin Wang, Matthias Kohl, David P. Enot, and Hans-Peter Deigner. 2010. “Targeted Metabolomics for Biomarker Discovery.” <em>Angew. Chem. Int. Ed.</em> 49 (32): 5426–45. <a href="https://doi.org/10.1002/anie.200905579">https://doi.org/10.1002/anie.200905579</a>.</p>
@@ -502,13 +534,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Haug, Kenneth, Reza M Salek, and Christoph Steinbeck. 2017. “Global Open Data Management in Metabolomics.” <em>Current Opinion in Chemical Biology</em>, Omics, 36 (February): 58–63. <a href="https://doi.org/10.1016/j.cbpa.2016.12.024">https://doi.org/10.1016/j.cbpa.2016.12.024</a>.</p>
 </div>
 <div>
-<p>Hocher, Berthold, and Jerzy Adamski. 2017. “Metabolomics for Clinical Use and Research in Chronic Kidney Disease.” <em>Nat. Rev. Nephrol.</em> 13 (5): 269–84. <a href="https://doi.org/10.1038/nrneph.2017.30">https://doi.org/10.1038/nrneph.2017.30</a>.</p>
+<p>Hocher, Berthold, and Jerzy Adamski. 2017. “Metabolomics for Clinical Use and Research in Chronic Kidney Disease.” <em>Nat Rev Nephrol</em> 13 (5): 269–84. <a href="https://doi.org/10.1038/nrneph.2017.30">https://doi.org/10.1038/nrneph.2017.30</a>.</p>
 </div>
 <div>
 <p>Huang, Xiaojing, Ying-Jr Chen, Kevin Cho, Igor Nikolskiy, Peter A. Crawford, and Gary J. Patti. 2014. “X13CMS: Global Tracking of Isotopic Labels in Untargeted Metabolomics.” <em>Anal. Chem.</em> 86 (3): 1632–9. <a href="https://doi.org/10.1021/ac403384n">https://doi.org/10.1021/ac403384n</a>.</p>
 </div>
 <div>
 <p>Hufsky, Franziska, Kerstin Scheubert, and Sebastian Böcker. 2014. “Computational Mass Spectrometry for Small-Molecule Fragmentation.” <em>TrAC Trends in Analytical Chemistry</em> 53 (January): 41–48. <a href="https://doi.org/10.1016/j.trac.2013.09.008">https://doi.org/10.1016/j.trac.2013.09.008</a>.</p>
+</div>
+<div>
+<p>Jang, Cholsoon, Li Chen, and Joshua D. Rabinowitz. 2018. “Metabolomics and Isotope Tracing.” <em>Cell</em> 173 (4): 822–37. <a href="https://doi.org/10.1016/j.cell.2018.03.055">https://doi.org/10.1016/j.cell.2018.03.055</a>.</p>
 </div>
 <div>
 <p>Jones, Dean P., Youngja Park, and Thomas R. Ziegler. 2012. “Nutritional Metabolomics: Progress in Addressing Complexity in Diet and Health.” <em>Annu. Rev. Nutr.</em> 32 (1): 183–202. <a href="https://doi.org/10.1146/annurev-nutr-072610-145159">https://doi.org/10.1146/annurev-nutr-072610-145159</a>.</p>
@@ -526,6 +561,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Karpievitch, Yuliya V., Sonja B. Nikolic, Richard Wilson, James E. Sharman, and Lindsay M. Edwards. 2014. “Metabolomics Data Normalization with EigenMS.” <em>PLOS ONE</em> 9 (12): e116221. <a href="https://doi.org/10.1371/journal.pone.0116221">https://doi.org/10.1371/journal.pone.0116221</a>.</p>
 </div>
 <div>
+<p>Kennedy, Adam D., Bryan M. Wittmann, Anne M. Evans, Luke A. D. Miller, Douglas R. Toal, Shaun Lonergan, Sarah H. Elsea, and Kirk L. Pappan. 2018. “Metabolomics in the Clinic: A Review of the Shared and Unique Features of Untargeted Metabolomics for Clinical Research and Clinical Testing.” <em>J. Mass Spectrom.</em> 53 (11): 1143–54. <a href="https://doi.org/10.1002/jms.4292">https://doi.org/10.1002/jms.4292</a>.</p>
+</div>
+<div>
 <p>Kew, William, John W. T. Blackburn, David J. Clarke, and Dušan Uhrín. 2017. “Interactive van Krevelen Diagrams Visualisation of Mass Spectrometry Data of Complex Mixtures.” <em>Rapid Commun. Mass Spectrom.</em> 31 (7): 658–62. <a href="https://doi.org/10.1002/rcm.7823">https://doi.org/10.1002/rcm.7823</a>.</p>
 </div>
 <div>
@@ -539,6 +577,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div>
 <p>Kusonmano, Kanthida, Wanwipa Vongsangnak, and Pramote Chumnanpuen. 2016. “Informatics for Metabolomics.” In <em>Translational Biomedical Informatics</em>, 91–115. Advances in Experimental Medicine and Biology. Springer, Singapore. <a href="https://doi.org/10.1007/978-981-10-1503-8_5">https://doi.org/10.1007/978-981-10-1503-8_5</a>.</p>
+</div>
+<div>
+<p>Lakhani, Chirag M., Braden T. Tierney, Arjun K. Manrai, Jian Yang, Peter M. Visscher, and Chirag J. Patel. 2019. “Repurposing Large Health Insurance Claims Data to Estimate Genetic and Environmental Contributions in 560 Phenotypes.” <em>Nat. Genet.</em>, January, 1. <a href="https://doi.org/10.1038/s41588-018-0313-7">https://doi.org/10.1038/s41588-018-0313-7</a>.</p>
 </div>
 <div>
 <p>Lawson, Thomas N., Ralf J. M. Weber, Martin R. Jones, Andrew J. Chetwynd, Giovanny Rodrıg'uez-Blanco, Riccardo Di Guida, Mark R. Viant, and Warwick B. Dunn. 2017. “msPurity: Automated Evaluation of Precursor Ion Purity for Mass Spectrometry-Based Fragmentation in Metabolomics.” <em>Anal. Chem.</em> 89 (4): 2432–9. <a href="https://doi.org/10.1021/acs.analchem.6b04358">https://doi.org/10.1021/acs.analchem.6b04358</a>.</p>
@@ -571,7 +612,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Livera, Alysha M. De, Marko Sysi-Aho, Laurent Jacob, Johann A. Gagnon-Bartsch, Sandra Castillo, Julie A. Simpson, and Terence P. Speed. 2015. “Statistical Methods for Handling Unwanted Variation in Metabolomics Data.” <em>Anal. Chem.</em> 87 (7): 3606–15. <a href="https://doi.org/10.1021/ac502439y">https://doi.org/10.1021/ac502439y</a>.</p>
 </div>
 <div>
-<p>Lu, Wenyun, Bryson D. Bennett, and Joshua D. Rabinowitz. 2008. “Analytical Strategies for LCMS-Based Targeted Metabolomics.” <em>Journal of Chromatography B</em>, Hyphenated techniques for global metabolite profiling, 871 (2): 236–42. <a href="https://doi.org/10.1016/j.jchromb.2008.04.031">https://doi.org/10.1016/j.jchromb.2008.04.031</a>.</p>
+<p>Lu, Wenyun, Bryson D. Bennett, and Joshua D. Rabinowitz. 2008. “Analytical Strategies for LCMS-Based Targeted Metabolomics.” <em>Journal of Chromatography B</em>, Hyphenated Techniques for Global Metabolite Profiling, 871 (2): 236–42. <a href="https://doi.org/10.1016/j.jchromb.2008.04.031">https://doi.org/10.1016/j.jchromb.2008.04.031</a>.</p>
 </div>
 <div>
 <p>Lu, Wenyun, Xiaoyang Su, Matthias S. Klein, Ian A. Lewis, Oliver Fiehn, and Joshua D. Rabinowitz. 2017. “Metabolite Measurement: Pitfalls to Avoid and Practices to Follow.” <em>Annu. Rev. Biochem.</em> 86 (1): 277–304. <a href="https://doi.org/10.1146/annurev-biochem-061516-044952">https://doi.org/10.1146/annurev-biochem-061516-044952</a>.</p>
@@ -592,7 +633,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Mahieu, Nathaniel G., Jonathan L. Spalding, and Gary J. Patti. 2016. “Warpgroup: Increased Precision of Metabolomic Data Processing by Consensus Integration Bound Analysis.” <em>Bioinformatics</em> 32 (2): 268–75. <a href="https://doi.org/10.1093/bioinformatics/btv564">https://doi.org/10.1093/bioinformatics/btv564</a>.</p>
 </div>
 <div>
+<p>Mahmud, Iqbal, Sandi Sternberg, Michael Williams, and Timothy J. Garrett. 2017. “Comparison of Global Metabolite Extraction Strategies for Soybeans Using UHPLC-HRMS.” <em>Anal Bioanal Chem</em> 409 (26): 6173–80. <a href="https://doi.org/10.1007/s00216-017-0557-6">https://doi.org/10.1007/s00216-017-0557-6</a>.</p>
+</div>
+<div>
 <p>Mannhold, Raimund, Gennadiy I. Poda, Claude Ostermann, and Igor V. Tetko. 2009. “Calculation of Molecular Lipophilicity: State-of-the-Art and Comparison of LogP Methods on More Than 96,000 Compounds.” <em>Journal of Pharmaceutical Sciences</em> 98 (3): 861–93. <a href="https://doi.org/10.1002/jps.21494">https://doi.org/10.1002/jps.21494</a>.</p>
+</div>
+<div>
+<p>Mansouri, Kamel, Chris M. Grulke, Richard S. Judson, and Antony J. Williams. 2018. “OPERA Models for Predicting Physicochemical Properties and Environmental Fate Endpoints.” <em>Journal of Cheminformatics</em> 10 (1): 10. <a href="https://doi.org/10.1186/s13321-018-0263-1">https://doi.org/10.1186/s13321-018-0263-1</a>.</p>
 </div>
 <div>
 <p>Matsuo, Teruko, Hiroshi Tsugawa, Hiromi Miyagawa, and Eiichiro Fukusaki. 2017. “Integrated Strategy for Unknown EIMS Identification Using Quality Control Calibration Curve, Multivariate Analysis, EIMS Spectral Database, and Retention Index Prediction.” <em>Anal. Chem.</em> 89 (12): 6766–73. <a href="https://doi.org/10.1021/acs.analchem.7b01010">https://doi.org/10.1021/acs.analchem.7b01010</a>.</p>
@@ -613,6 +660,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Misra, Biswapriya B., and prefix=van der family=Hooft given=Justin J. J. 2016. “Updates in Metabolomics Tools and Resources: 20142015.” <em>ELECTROPHORESIS</em> 37 (1): 86–110. <a href="https://doi.org/10.1002/elps.201500417">https://doi.org/10.1002/elps.201500417</a>.</p>
 </div>
 <div>
+<p>Miyagawa, Hiromi, and Takeshi Bamba. 2019. “Comparison of Sequential Derivatization with Concurrent Methods for GC/MS-Based Metabolomics.” <em>Journal of Bioscience and Bioengineering</em> 127 (2): 160–68. <a href="https://doi.org/10.1016/j.jbiosc.2018.07.015">https://doi.org/10.1016/j.jbiosc.2018.07.015</a>.</p>
+</div>
+<div>
 <p>Najdekr, Lukáš, David Friedecký, Ralf Tautenhahn, Tomáš Pluskal, Junhua Wang, Yingying Huang, and Tomáš Adam. 2016. “Influence of Mass Resolving Power in Orbital Ion-Trap Mass Spectrometry-Based Metabolomics.” <em>Anal. Chem.</em> 88 (23): 11429–35. <a href="https://doi.org/10.1021/acs.analchem.6b02319">https://doi.org/10.1021/acs.analchem.6b02319</a>.</p>
 </div>
 <div>
@@ -622,19 +672,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Nikolskiy, Igor, Nathaniel G. Mahieu, Ying-Jr Chen, Ralf Tautenhahn, and Gary J. Patti. 2013. “An Untargeted Metabolomic Workflow to Improve Structural Characterization of Metabolites.” <em>Anal. Chem.</em> 85 (16): 7713–9. <a href="https://doi.org/10.1021/ac400751j">https://doi.org/10.1021/ac400751j</a>.</p>
 </div>
 <div>
+<p>Oberg, Ann L., and Olga Vitek. 2009. “Statistical Design of Quantitative Mass Spectrometry-Based Proteomic Experiments.” <em>J. Proteome Res.</em> 8 (5): 2144–56. <a href="https://doi.org/10.1021/pr8010099">https://doi.org/10.1021/pr8010099</a>.</p>
+</div>
+<div>
 <p>Ortmayr, Karin, Verena Charwat, Cornelia Kasper, Stephan Hann, and Gunda Koellensperger. 2016. “Uncertainty Budgeting in Fold Change Determination and Implications for Non-Targeted Metabolomics Studies in Model Systems” 142 (1): 80–90. <a href="https://doi.org/10.1039/C6AN01342B">https://doi.org/10.1039/C6AN01342B</a>.</p>
 </div>
 <div>
 <p>Pluskal, Tomáš, Sandra Castillo, Alejandro Villar-Briones, and Matej Orešič. 2010. “MZmine 2: Modular Framework for Processing, Visualizing, and Analyzing Mass Spectrometry-Based Molecular Profile Data.” <em>BMC Bioinformatics</em> 11: 395. <a href="https://doi.org/10.1186/1471-2105-11-395">https://doi.org/10.1186/1471-2105-11-395</a>.</p>
 </div>
 <div>
+<p>Polderman, Tinca J. C., Beben Benyamin, prefix=de family=Leeuw given=Christiaan A., Patrick F. Sullivan, prefix=van family=Bochoven given=Arjen, Peter M. Visscher, and Danielle Posthuma. 2015. “Meta-Analysis of the Heritability of Human Traits Based on Fifty Years of Twin Studies.” <em>Nat. Genet.</em> 47 (7): 702–9. <a href="https://doi.org/10.1038/ng.3285">https://doi.org/10.1038/ng.3285</a>.</p>
+</div>
+<div>
 <p>Qiu, Feng, Dennis D. Fine, Daniel J. Wherritt, Zhentian Lei, and Lloyd W. Sumner. 2016. “PlantMAT: A Metabolomics Tool for Predicting the Specialized Metabolic Potential of a System and for Large-Scale Metabolite Identifications.” <em>Anal. Chem.</em> 88 (23): 11373–83. <a href="https://doi.org/10.1021/acs.analchem.6b00906">https://doi.org/10.1021/acs.analchem.6b00906</a>.</p>
+</div>
+<div>
+<p>Qiu, Feng, Zhentian Lei, and Lloyd W. Sumner. 2018. “MetExpert: An Expert System to Enhance Gas Chromatography-Mass Spectrometry-Based Metabolite Identifications.” <em>Analytica Chimica Acta</em>, Analytical Metabolomics, 1037 (December): 316–26. <a href="https://doi.org/10.1016/j.aca.2018.03.052">https://doi.org/10.1016/j.aca.2018.03.052</a>.</p>
 </div>
 <div>
 <p>Röst, Hannes L., Timo Sachsenberg, Stephan Aiche, Chris Bielow, Hendrik Weisser, Fabian Aicheler, Sandro Andreotti, et al. 2016. “OpenMS: A Flexible Open-Source Software Platform for Mass Spectrometry Data Analysis.” <em>Nat Meth</em> 13 (9): 741–48. <a href="https://doi.org/10.1038/nmeth.3959">https://doi.org/10.1038/nmeth.3959</a>.</p>
 </div>
 <div>
 <p>Ruttkies, Christoph, Emma L. Schymanski, Sebastian Wolf, Juliane Hollender, and Steffen Neumann. 2016. “MetFrag Relaunched: Incorporating Strategies Beyond in Silico Fragmentation.” <em>Journal of Cheminformatics</em> 8 (January): 3. <a href="https://doi.org/10.1186/s13321-016-0115-9">https://doi.org/10.1186/s13321-016-0115-9</a>.</p>
+</div>
+<div>
+<p>Samanipour, Saer, Malcolm J. Reid, Kine Bæk, and Kevin V. Thomas. 2018. “Combining a Deconvolution and a Universal Library Search Algorithm for the Nontarget Analysis of Data-Independent Acquisition Mode Liquid Chromatography-High-Resolution Mass Spectrometry Results.” <em>Environ. Sci. Technol.</em> 52 (8): 4694–4701. <a href="https://doi.org/10.1021/acs.est.8b00259">https://doi.org/10.1021/acs.est.8b00259</a>.</p>
 </div>
 <div>
 <p>Silva, Ricardo R., Fabien Jourdan, Diego M. Salvanha, Fabien Letisse, Emilien L. Jamin, Simone Guidetti-Gonzalez, Carlos A. Labate, and Ricardo Z. N. Vêncio. 2014. “ProbMetab: An R Package for Bayesian Probabilistic Annotation of LCMS-Based Metabolomics.” <em>Bioinformatics</em> 30 (9): 1336–7. <a href="https://doi.org/10.1093/bioinformatics/btu019">https://doi.org/10.1093/bioinformatics/btu019</a>.</p>
@@ -661,7 +723,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Sumner, Lloyd W., Alexander Amberg, Dave Barrett, Michael H. Beale, Richard Beger, Clare A. Daykin, Teresa W.-M. Fan, et al. 2007. “Proposed Minimum Reporting Standards for Chemical Analysis Chemical Analysis Working Group (CAWG) Metabolomics Standards Initiative (MSI).” <em>Metabolomics</em> 3 (3): 211–21. <a href="https://doi.org/10.1007/s11306-007-0082-2">https://doi.org/10.1007/s11306-007-0082-2</a>.</p>
 </div>
 <div>
-<p>Sumner, Lloyd W, Pedro Mendes, and Richard A Dixon. 2003. “Plant Metabolomics: Large-Scale Phytochemistry in the Functional Genomics Era.” <em>Phytochemistry</em>, Plant metabolomics, 62 (6): 817–36. <a href="https://doi.org/10.1016/S0031-9422(02)00708-2">https://doi.org/10.1016/S0031-9422(02)00708-2</a>.</p>
+<p>Sumner, Lloyd W, Pedro Mendes, and Richard A Dixon. 2003. “Plant Metabolomics: Large-Scale Phytochemistry in the Functional Genomics Era.” <em>Phytochemistry</em>, Plant Metabolomics, 62 (6): 817–36. <a href="https://doi.org/10.1016/S0031-9422(02)00708-2">https://doi.org/10.1016/S0031-9422(02)00708-2</a>.</p>
 </div>
 <div>
 <p>Tan, S. Z., P. Begley, G. Mullard, K. A. Hollywood, and P. N. Bishop. 2016. “Introduction to Metabolomics and Its Applications in Ophthalmology.” <em>Eye</em> 30 (6): 773–83. <a href="https://doi.org/10.1038/eye.2016.37">https://doi.org/10.1038/eye.2016.37</a>.</p>
@@ -673,7 +735,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Theodoridis, Georgios A., Helen G. Gika, Elizabeth J. Want, and Ian D. Wilson. 2012. “Liquid ChromatographyMass Spectrometry Based Global Metabolite Profiling: A Review.” <em>Analytica Chimica Acta</em> 711 (January): 7–16. <a href="https://doi.org/10.1016/j.aca.2011.09.042">https://doi.org/10.1016/j.aca.2011.09.042</a>.</p>
 </div>
 <div>
-<p>Thonusin, Chanisa, Heidi B. IglayReger, Tanu Soni, Amy E. Rothberg, Charles F. Burant, and Charles R. Evans. 2017. “Evaluation of Intensity Drift Correction Strategies Using MetaboDrift, a Normalization Tool for Multi-Batch Metabolomics Data.” <em>Journal of Chromatography A</em>, Pushing the boundaries of chromatography and electrophoresis, 1523 (Supplement C): 265–74. <a href="https://doi.org/10.1016/j.chroma.2017.09.023">https://doi.org/10.1016/j.chroma.2017.09.023</a>.</p>
+<p>Thonusin, Chanisa, Heidi B. IglayReger, Tanu Soni, Amy E. Rothberg, Charles F. Burant, and Charles R. Evans. 2017. “Evaluation of Intensity Drift Correction Strategies Using MetaboDrift, a Normalization Tool for Multi-Batch Metabolomics Data.” <em>Journal of Chromatography A</em>, Pushing the Boundaries of Chromatography and Electrophoresis, 1523 (Supplement C): 265–74. <a href="https://doi.org/10.1016/j.chroma.2017.09.023">https://doi.org/10.1016/j.chroma.2017.09.023</a>.</p>
 </div>
 <div>
 <p>Tian, Tze-Feng, San-Yuan Wang, Tien-Chueh Kuo, Cheng-En Tan, Guan-Yuan Chen, Ching-Hua Kuo, Chi-Hsin Sally Chen, Chang-Chuan Chan, Olivia A. Lin, and Y. Jane Tseng. 2016. “Web Server for Peak Detection, Baseline Correction, and Alignment in Two-Dimensional Gas Chromatography Mass Spectrometry-Based Metabolomics Data.” <em>Anal. Chem.</em> 88 (21): 10395–10403. <a href="https://doi.org/10.1021/acs.analchem.6b00755">https://doi.org/10.1021/acs.analchem.6b00755</a>.</p>
@@ -733,7 +795,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Witting, Michael, Christoph Ruttkies, Steffen Neumann, and Philippe Schmitt-Kopplin. 2017. “LipidFrag: Improving Reliability of in Silico Fragmentation of Lipids and Application to the Caenorhabditis Elegans Lipidome.” <em>PLOS ONE</em> 12 (3): e0172311. <a href="https://doi.org/10.1371/journal.pone.0172311">https://doi.org/10.1371/journal.pone.0172311</a>.</p>
 </div>
 <div>
-<p>Wu, Yiman, and Liang Li. 2016. “Sample Normalization Methods in Quantitative Metabolomics.” <em>Journal of Chromatography A</em>, Editors’ choice x, 1430 (January): 80–95. <a href="https://doi.org/10.1016/j.chroma.2015.12.007">https://doi.org/10.1016/j.chroma.2015.12.007</a>.</p>
+<p>Wu, Yiman, and Liang Li. 2016. “Sample Normalization Methods in Quantitative Metabolomics.” <em>Journal of Chromatography A</em>, Editors’ Choice X, 1430 (January): 80–95. <a href="https://doi.org/10.1016/j.chroma.2015.12.007">https://doi.org/10.1016/j.chroma.2015.12.007</a>.</p>
 </div>
 <div>
 <p>Yamamoto, Hiroyuki, Tamaki Fujimori, Hajime Sato, Gen Ishikawa, Kenjiro Kami, and Yoshiaki Ohashi. 2014. “Statistical Hypothesis Testing of Factor Loading in Principal Component Analysis and Its Application to Metabolite Set Enrichment Analysis.” <em>BMC Bioinformatics</em> 15 (February): 51. <a href="https://doi.org/10.1186/1471-2105-15-51">https://doi.org/10.1186/1471-2105-15-51</a>.</p>
@@ -742,7 +804,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Yang, Qin, Shan-Shan Lin, Jiang-Tao Yang, Li-Juan Tang, and Ru-Qin Yu. 2017. “Detection of Inborn Errors of Metabolism Utilizing GC-MS Urinary Metabolomics Coupled with a Modified Orthogonal Partial Least Squares Discriminant Analysis.” <em>Talanta</em> 165 (April): 545–52. <a href="https://doi.org/10.1016/j.talanta.2017.01.018">https://doi.org/10.1016/j.talanta.2017.01.018</a>.</p>
 </div>
 <div>
-<p>Yu, Miao, Mariola Olkowicz, and Janusz Pawliszyn. 2018. “Structure/Reaction Directed Analysis for LC-MS Based Untargeted Analysis.” <em>Analytica Chimica Acta</em>, October. <a href="https://doi.org/10.1016/j.aca.2018.10.062">https://doi.org/10.1016/j.aca.2018.10.062</a>.</p>
+<p>Yang, Ruochen, Xi Chen, and Idoia Ochoa. 2019. “MassComp, a Lossless Compressor for Mass Spectrometry Data.” <em>bioRxiv</em>, February, 542894. <a href="https://doi.org/10.1101/542894">https://doi.org/10.1101/542894</a>.</p>
 </div>
 <div>
 <p>Yu, Tianwei, Youngja Park, Jennifer M. Johnson, and Dean P. Jones. 2009. “apLCMSAdaptive Processing of High-Resolution LC/MS Data.” <em>Bioinformatics</em> 25 (15): 1930–6. <a href="https://doi.org/10.1093/bioinformatics/btp291">https://doi.org/10.1093/bioinformatics/btp291</a>.</p>
@@ -771,8 +833,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <h3>References</h3>
 <div id="refs" class="references">
+<div id="ref-lakhani2019">
+<p>Lakhani, Chirag M., Braden T. Tierney, Arjun K. Manrai, Jian Yang, Peter M. Visscher, and Chirag J. Patel. 2019. “Repurposing Large Health Insurance Claims Data to Estimate Genetic and Environmental Contributions in 560 Phenotypes.” <em>Nat. Genet.</em>, January, 1. <a href="https://doi.org/10.1038/s41588-018-0313-7">https://doi.org/10.1038/s41588-018-0313-7</a>.</p>
+</div>
 <div id="ref-mannhold2009">
 <p>Mannhold, Raimund, Gennadiy I. Poda, Claude Ostermann, and Igor V. Tetko. 2009. “Calculation of Molecular Lipophilicity: State-of-the-Art and Comparison of LogP Methods on More Than 96,000 Compounds.” <em>Journal of Pharmaceutical Sciences</em> 98 (3): 861–93. <a href="https://doi.org/10.1002/jps.21494">https://doi.org/10.1002/jps.21494</a>.</p>
+</div>
+<div id="ref-mansouri2018">
+<p>Mansouri, Kamel, Chris M. Grulke, Richard S. Judson, and Antony J. Williams. 2018. “OPERA Models for Predicting Physicochemical Properties and Environmental Fate Endpoints.” <em>Journal of Cheminformatics</em> 10 (1): 10. <a href="https://doi.org/10.1186/s13321-018-0263-1">https://doi.org/10.1186/s13321-018-0263-1</a>.</p>
+</div>
+<div id="ref-polderman2015">
+<p>Polderman, Tinca J. C., Beben Benyamin, prefix=de family=Leeuw given=Christiaan A., Patrick F. Sullivan, prefix=van family=Bochoven given=Arjen, Peter M. Visscher, and Danielle Posthuma. 2015. “Meta-Analysis of the Heritability of Human Traits Based on Fifty Years of Twin Studies.” <em>Nat. Genet.</em> 47 (7): 702–9. <a href="https://doi.org/10.1038/ng.3285">https://doi.org/10.1038/ng.3285</a>.</p>
 </div>
 </div>
             </section>
@@ -786,11 +857,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -798,12 +871,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -813,6 +885,14 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/yufree/metaworkflow/edit/master/11-exposome.Rmd",
 "text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
 },
 "download": null,
 "toc": {
@@ -829,8 +909,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
