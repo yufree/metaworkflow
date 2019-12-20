@@ -1,8 +1,6 @@
 # Pretreatment
 
-Pretreatment will affect the results of metabolomics. For example, feces collected with 95% ethanol or FOBT would be more reproducible and stable.
-
-Dmitri et.al[@sitnikov2016] thought the most orthogonal methods to methanol-based precipitation were ion-exchange solid-phase extraction and liquid-liquid extraction using methyl-tertbutyl ether. 
+Pretreatment will affect the results of metabolomics and cover the sample treatment from crude samples to injection vials. Sample pretreatment try to retain more interesting compounds while remove unrelated compounds. For metabolomics studies, we might not know 'interesting' compounds in advance and the unrelated compounds are highly depended on research purpose. For example, Gel Permeation Chromatograph(GPC), Florisil, Alumina, Silica gel could be used to remove lipid while alcohols and strong acid/base could make protein denaturation to release more compounds. However, if we are interested in lipid or protein, such pretreatment methods should be changed. In general, sample quenching, extraction methods, derivatization, and storage should be optimized in pretreatment.
 
 ## Quenching
 
@@ -18,11 +16,24 @@ According to this research[@bennett2009]:
 
 > The total metabolome concentration is approximately 300 mM, whereas the protein concentration is approximately 7 mM., which implies that most cellular metabolites are in free form.
 
-- Tissue samples need to first be pulverized into fine powders
+Dmitri et.al[@sitnikov2016] thought the most orthogonal methods to methanol-based precipitation were ion-exchange solid-phase extraction and liquid-liquid extraction using methyl-tertbutyl ether. 
+
+Tissue samples need to first be pulverized into fine powders.
+
+Feces collected with 95% ethanol or FOBT would be more reproducible and stable.
 
 In this review[@lu2017], authors said:
 
 > In our experience, for both cell and tissue specimens, 40:40:20 acetonitrile:methanol:water with 0.1 M formic acid (and subsequent neutralization with ammonium bicarbonate) is generally an effective solvent system for both quenching and extraction, including for ATP and other high-energy phosphorylated compounds. We typically use approximately 1 mL of solvent mix to extract 25 mg of biological specimen. ...Thus, although drying is acceptable for most metabolites, care must be taken with redox-active species.
 
-[@luo2017a] nano LC-MS could be used to analysis small numbers of cells
+[@luo2017a] nano LC-MS could be used to analysis small numbers of cells.
 
+For plant like soybeans[@mahmud2017], ammonium acetate/methanol could be selected as extraction strategies compared with water/methanol and sodium phosphate/methanol.
+
+## Derivatization
+
+Derivatization is always used in GC-based metabolomics study. This paper[@miyagawa2019] compared sequential derivatization methods and found different compounds would show different fluctuations during oximation or silylation process.
+
+## Storage
+
+Samples should be stored after sample collection or sample pretreatment. -80°C or -20°C is always preferred to store samples. Dry ice should be used during sample pretreatment. However, comprehensive investigation of storage influnces found the metabolites profile will change after one day storage at -80°C. Rapid analysis of samples should be considered to capture more accurate information in the samples.
