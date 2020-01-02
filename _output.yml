@@ -8,6 +8,7 @@ bookdown::gitbook:
         <li><a href="https://github.com/yufree/metaworkflow" target="blank">Published with bookdown</a></li>
     edit:
       link: https://github.com/yufree/metaworkflow/edit/master/%s
+    download: ["pdf","epub"]
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex

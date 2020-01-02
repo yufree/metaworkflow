@@ -24,7 +24,7 @@
 <meta name="author" content="Miao YU" />
 
 
-<meta name="date" content="2019-12-20" />
+<meta name="date" content="2020-01-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -236,8 +236,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.6.30" data-path="annotation.html"><a href="annotation.html#mycompoundid"><i class="fa fa-check"></i><b>7.6.30</b> MycompoundID</a></li>
 <li class="chapter" data-level="7.6.31" data-path="annotation.html"><a href="annotation.html#magma"><i class="fa fa-check"></i><b>7.6.31</b> magma</a></li>
 <li class="chapter" data-level="7.6.32" data-path="annotation.html"><a href="annotation.html#metexpert"><i class="fa fa-check"></i><b>7.6.32</b> MetExpert</a></li>
+<li class="chapter" data-level="7.6.33" data-path="annotation.html"><a href="annotation.html#ms-dia"><i class="fa fa-check"></i><b>7.6.33</b> MS-DIA</a></li>
 </ul></li>
-<li class="chapter" data-level="7.7" data-path="annotation.html"><a href="annotation.html#ms-dia"><i class="fa fa-check"></i><b>7.7</b> MS-DIA</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>8</b> Omics analysis</a><ul>
 <li class="chapter" data-level="8.1" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-analysis"><i class="fa fa-check"></i><b>8.1</b> Pathway analysis</a><ul>
@@ -326,9 +326,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Raw data from the instruments such as LC-MS or GC-MS were hard to be analyzed. To make it clear, the structure of those data could be summarised as:</p>
 <ul>
 <li><p>Indexed scan with time-stamp</p></li>
-<li><p>Each scan contain a full scan mass spetrum with intensities</p></li>
+<li><p>Each scan contains a full scan mass spectra</p></li>
 </ul>
-<p>Commen formats for open source mass spectrum data are mzxml, mzml or CDF. However, masscomp might shrink the data size<span class="citation">(Yang, Chen, and Ochoa <a href="#ref-yang2019">2019</a>)</span>.</p>
+<p>Commen formats for open source mass spectrum data are mzxml, mzml or CDF. However, <strong>masscomp</strong> might shrink the data size<span class="citation">(Yang, Chen, and Ochoa <a href="#ref-yang2019b">2019</a>)</span>.</p>
 <div id="peak-extraction" class="section level2">
 <h2><span class="header-section-number">5.1</span> Peak extraction</h2>
 <p>GC/LC-MS data are usually be shown as a matrix with column standing for retention times and row standing for masses after bin them into small cell.</p>
@@ -348,7 +348,7 @@ Figure 5.1: Demo of GC/LC-MS data
 Figure 5.2: Demo of EIC with peak
 </p>
 </div>
-<p>However, in mass spectrumetry dataset, the EIC is not that simple for full scan. Due to the accuracy of instrument, the detected mass to charge ratio would have some shift and EIC would fail if different scan get the intensity from different mass to charge ratio.</p>
+<p>However, due to the accuracy of instrument, the detected mass to charge ratio would have some shift and EIC would fail if different scan get the intensity from different mass to charge ratio.</p>
 <p>In the <code>matchedfilter</code> algorithm<span class="citation">(Smith et al. <a href="#ref-smith2006">2006</a>)</span>, they solve this issue by bin the data in m/z dimension. The adjacent chromatographic slices could be combined to find a clean signal fitting fixed second-derivative Gaussian with full width at half-maximum
 (fwhm) of 30s to find peaks with about 1.5-4 times the signal peak width. The the integration is performed on the fitted area.</p>
 <div class="figure"><span id="fig:matchedfilter"></span>
@@ -362,16 +362,22 @@ Figure 5.3: Demo of matchedfilter
 <div id="retention-time-correction" class="section level2">
 <h2><span class="header-section-number">5.2</span> Retention Time Correction</h2>
 <p>For single file, we could get peaks. However, we should make the peaks align across samples for subsquece analysis and retention time corrections should be performed. The basic idea behind retention time correction is that use the high quality grouped peaks to make a new retention time. You might choose <code>obiwarp</code>(for dramatic shifts) or loess regression(fast) method to get the corrected retention time for all of the samples. Remember the original retention times might be changed and you might need cross-correct the data. After the correction, you could group the peaks again for a better cross-sample peaks list. However, if you directly use <code>obiwarp</code>, you don’t have to group peaks before correction.</p>
-<p><span class="citation">(Fu et al. <a href="#ref-fu2017">2017</a>)</span> show a matlab based shift correction methods</p>
+<p><span class="citation">(Fu et al. <a href="#ref-fu2017">2017</a>)</span> show a matlab based shift correction methods.</p>
 </div>
 <div id="filling-missing-values" class="section level2">
 <h2><span class="header-section-number">5.3</span> Filling missing values</h2>
 <p>Too many zeros or NA in peaks list are problematic for statistics. Then we usually need to integreate the area exsiting a peak. <code>xcms 3</code> could use profile matrix to fill the blank. They also have function to impute the NA data by replace missing values with a proportion of the row minimum or random numbers based on the row minimum. It depends on the user to select imputation methods as well as control the minimum fraction of featuers appeared in single group.</p>
+<div class="figure"><span id="fig:peakfilling"></span>
+<img src="images/peakfiling.png" alt="Peak filling of GC/LC-MS data" width="90%" />
+<p class="caption">
+Figure 5.4: Peak filling of GC/LC-MS data
+</p>
+</div>
 <p>With many groups of samples, you will get another data matrix with column standing for peaks at cerntain retention time and row standing for samples after the Raw data pretreatment.</p>
 <div class="figure"><span id="fig:multidata"></span>
 <img src="images/multidata.png" alt="Demo of many GC/LC-MS data" width="90%" />
 <p class="caption">
-Figure 5.4: Demo of many GC/LC-MS data
+Figure 5.5: Demo of many GC/LC-MS data
 </p>
 </div>
 </div>
@@ -403,18 +409,19 @@ Figure 5.4: Demo of many GC/LC-MS data
 ## 
 ## Coefficients:
 ##             Estimate Std. Error z value Pr(&gt;|z|)    
-## (Intercept)   1.0000     0.4574   2.186   0.0288 *  
+## (Intercept)   1.0000     0.4501   2.222   0.0263 *  
 ## x            10.0000     0.3162  31.623   &lt;2e-16 ***
-## Log(scale)    2.1844     0.0000     Inf   &lt;2e-16 ***
+## Log(scale)    2.1735     0.0000     Inf   &lt;2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Scale: 8.885 
+## Scale: 8.789 
 ## 
 ## Gaussian distribution
 ## Number of Newton-Raphson Iterations: 1 
-## Log-likelihood: -3103 on 3 Df
+## Log-likelihood: -3092 on 3 Df
 ## Wald-statistic:  1000 on 1 Df, p-value: &lt; 2.22e-16</code></pre>
+<p>According to Ronald Hites’s simulation<span class="citation">(Hites <a href="#ref-hites2019">2019</a>)</span>, measurements below the LOD (even missing measurements) with the LOD/2 or with the <span class="math inline">\(LOD/\sqrt2\)</span> causes little bias and “Any time you have a % non-detected &gt;20%, for whatever reason, it is unlikely that the data set can give useful results.”</p>
 </div>
 <div id="over-detection-limit" class="section level3">
 <h3><span class="header-section-number">5.5.2</span> Over Detection Limit</h3>
@@ -434,7 +441,7 @@ Figure 5.4: Demo of many GC/LC-MS data
 <li><p><a href="http://mzmine.github.io/">MZmine</a> is an open-source software for mass-spectrometry data processing, with the main focus on LC-MS data<span class="citation">(Pluskal et al. <a href="#ref-pluskal2010">2010</a>)</span></p></li>
 <li><p><a href="http://prime.psc.riken.jp/Metabolomics_Software/">MS-DAIL</a> is a universal program for untargeted metabolomics- and lipidomics supporting any type of chromatography/mass spectrometry methods (GC/MS, GC-MS/MS, LC/MS, and LC-MS/MS etc.) <span class="citation">(Tsugawa et al. <a href="#ref-tsugawa2015">2015</a>)</span></p></li>
 <li><p><a href="http://www.openms.de/">OpenMS</a> is an open-source software C++ library for LC/MS data management and analyses<span class="citation">(Röst et al. <a href="#ref-rost2016">2016</a>)</span></p></li>
-<li><p><a href="https://sourceforge.net/projects/mzmatch/">MZmatch</a> is a Java collection of small commandline tools specific for metabolomics MS data analysis <span class="citation">(<span class="citeproc-not-found" data-reference-id="scheltema2011a"><strong>???</strong></span>; Creek et al. <a href="#ref-creek2012">2012</a>)</span></p></li>
+<li><p><a href="https://sourceforge.net/projects/mzmatch/">MZmatch</a> is a Java collection of small commandline tools specific for metabolomics MS data analysis <span class="citation">(Scheltema et al. <a href="#ref-scheltema2011">2011</a>; Creek et al. <a href="#ref-creek2012">2012</a>)</span></p></li>
 <li><p><a href="http://ms.iis.sinica.edu.tw/comics/Software_iMet-Q.html">iMet-Q</a> is an automated tool with friendly user interfaces for quantifying metabolites in full-scan liquid chromatography-mass spectrometry (LC-MS) data.<span class="citation">(Chang et al. <a href="#ref-chang2016">2016</a>)</span></p></li>
 <li><p><a href="http://genomics-pubs.princeton.edu/mzroll/index.php">MAVEN</a> is an open source cross platform metabolomics data analyser.<span class="citation">(Melamud, Vastag, and Rabinowitz <a href="#ref-melamud2010">2010</a>)</span></p></li>
 </ul>
@@ -476,7 +483,7 @@ Figure 5.4: Demo of many GC/LC-MS data
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">xcmsSetdemoagain &lt;-<span class="st"> </span><span class="kw">Reduce</span>(<span class="st">&#39;c&#39;</span>,list2)</a>
 <a class="sourceLine" id="cb12-2" data-line-number="2"><span class="co"># for more higher order function in R, check here: http://www.johnmyleswhite.com/notebook/2010/09/23/higher-order-functions-in-r/</span></a></code></pre></div>
 <ul>
-<li>Use warpgroup to get peaks with better quality</li>
+<li>Use <strong>warpgroup</strong> to get peaks with better quality</li>
 </ul>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">library</span>(doParallel)</a>
 <a class="sourceLine" id="cb13-2" data-line-number="2">cl =<span class="st"> </span><span class="kw">makeCluster</span>(<span class="kw">detectCores</span>() <span class="op">-</span><span class="st"> </span><span class="dv">1</span>)</a>
@@ -509,6 +516,9 @@ Figure 5.4: Demo of many GC/LC-MS data
 </div>
 <div id="ref-fu2017">
 <p>Fu, Hai-Yan, Ou Hu, Yue-Ming Zhang, Li Zhang, Jing-Jing Song, Peang Lu, Qing-Xia Zheng, et al. 2017. “Mass-Spectra-Based Peak Alignment for Automatic Nontargeted Metabolic Profiling Analysis for Biomarker Screening in Plant Samples.” <em>Journal of Chromatography A</em> 1513 (Supplement C): 201–9. <a href="https://doi.org/10.1016/j.chroma.2017.07.044">https://doi.org/10.1016/j.chroma.2017.07.044</a>.</p>
+</div>
+<div id="ref-hites2019">
+<p>Hites, Ronald A. 2019. “Correcting for Censored Environmental Measurements.” <em>Environ. Sci. Technol.</em>, September. <a href="https://doi.org/10.1021/acs.est.9b05042">https://doi.org/10.1021/acs.est.9b05042</a>.</p>
 </div>
 <div id="ref-huang2014">
 <p>Huang, Xiaojing, Ying-Jr Chen, Kevin Cho, Igor Nikolskiy, Peter A. Crawford, and Gary J. Patti. 2014. “X13CMS: Global Tracking of Isotopic Labels in Untargeted Metabolomics.” <em>Anal. Chem.</em> 86 (3): 1632–9. <a href="https://doi.org/10.1021/ac403384n">https://doi.org/10.1021/ac403384n</a>.</p>
@@ -546,6 +556,9 @@ Figure 5.4: Demo of many GC/LC-MS data
 <div id="ref-samanipour2018">
 <p>Samanipour, Saer, Malcolm J. Reid, Kine Bæk, and Kevin V. Thomas. 2018. “Combining a Deconvolution and a Universal Library Search Algorithm for the Nontarget Analysis of Data-Independent Acquisition Mode Liquid Chromatography-High-Resolution Mass Spectrometry Results.” <em>Environ. Sci. Technol.</em> 52 (8): 4694–4701. <a href="https://doi.org/10.1021/acs.est.8b00259">https://doi.org/10.1021/acs.est.8b00259</a>.</p>
 </div>
+<div id="ref-scheltema2011">
+<p>Scheltema, Richard A., Andris Jankevics, Ritsert C. Jansen, Morris A. Swertz, and Rainer Breitling. 2011. “PeakML/mzMatch: A File Format, Java Library, R Library, and Tool-Chain for Mass Spectrometry Data Analysis.” <em>Anal. Chem.</em> 83 (7): 2786–93. <a href="https://doi.org/10.1021/ac2000994">https://doi.org/10.1021/ac2000994</a>.</p>
+</div>
 <div id="ref-smith2006">
 <p>Smith, Colin A., Elizabeth J. Want, Grace O’Maille, Ruben Abagyan, and Gary Siuzdak. 2006. “XCMS:  Processing Mass Spectrometry Data for Metabolite Profiling Using Nonlinear Peak Alignment, Matching, and Identification.” <em>Anal. Chem.</em> 78 (3): 779–87. <a href="https://doi.org/10.1021/ac051437y">https://doi.org/10.1021/ac051437y</a>.</p>
 </div>
@@ -558,8 +571,8 @@ Figure 5.4: Demo of many GC/LC-MS data
 <div id="ref-uppal2013">
 <p>Uppal, Karan, Quinlyn A. Soltow, Frederick H. Strobel, W. Stephen Pittard, Kim M. Gernert, Tianwei Yu, and Dean P. Jones. 2013. “xMSanalyzer: Automated Pipeline for Improved Feature Detection and Downstream Analysis of Large-Scale, Non-Targeted Metabolomics Data.” <em>BMC Bioinformatics</em> 14 (1): 15. <a href="https://doi.org/10.1186/1471-2105-14-15">https://doi.org/10.1186/1471-2105-14-15</a>.</p>
 </div>
-<div id="ref-yang2019">
-<p>Yang, Ruochen, Xi Chen, and Idoia Ochoa. 2019. “MassComp, a Lossless Compressor for Mass Spectrometry Data.” <em>bioRxiv</em>, February, 542894. <a href="https://doi.org/10.1101/542894">https://doi.org/10.1101/542894</a>.</p>
+<div id="ref-yang2019b">
+<p>Yang, Ruochen, Xi Chen, and Idoia Ochoa. 2019. “MassComp, a Lossless Compressor for Mass Spectrometry Data.” <em>BMC Bioinformatics</em> 20 (1): 368. <a href="https://doi.org/10.1186/s12859-019-2962-7">https://doi.org/10.1186/s12859-019-2962-7</a>.</p>
 </div>
 <div id="ref-yu2009">
 <p>Yu, Tianwei, Youngja Park, Jennifer M. Johnson, and Dean P. Jones. 2009. “apLCMSAdaptive Processing of High-Resolution LC/MS Data.” <em>Bioinformatics</em> 25 (15): 1930–6. <a href="https://doi.org/10.1093/bioinformatics/btp291">https://doi.org/10.1093/bioinformatics/btp291</a>.</p>
@@ -613,7 +626,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": null,
+"download": ["Metabolomics.pdf", "Metabolomics.epub"],
 "toc": {
 "collapse": "subsection"
 }
