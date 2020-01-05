@@ -134,7 +134,7 @@ res <- gtrends(c("metabolomics", "metabolomics"), geo = c("CA","US"))
 plot(res)
 ```
 
-```{r rentrez,eval=F}
+```{r rentrez}
 library(rentrez)
 papers_by_year <- function(years, search_term){
     return(sapply(years, function(y) entrez_search(db="pubmed",term=search_term, mindate=y, maxdate=y, retmax=0)$count))

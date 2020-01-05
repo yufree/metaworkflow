@@ -87,6 +87,14 @@ According to Ronald Hites's simulation[@hites2019], measurements below the LOD (
 
 **CorrectOverloadedPeaks** could be used to correct the Peaks Exceeding the Detection Limit issue[@lisec2016].
 
+## RSD/fold change Filter
+
+Some peaks need to be rule out due to high RSD% and small fold changes compared with blank samples.
+
+## Power Analysis Filter
+
+As shown in [Exprimental design(DoE)], the power analysis in metabolomics is ad-hoc since you don't know too much before you perform the experiment. However, we could perform power analysis after the experiment done. That is, we just rule out the peaks with a lower power in exsit Exprimental design.
+
 ## Software
 
 ### Peak picking

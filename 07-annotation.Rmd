@@ -20,6 +20,18 @@ The major issue in annotation is the redundancy peaks from same metabolite. Unli
 
 Another issue is about the MS/MS database. Only 10% of known metabolites in databases have experimental spectral data. Thus **in silico** prediction are required. Some works try to fill the gap between experimental data, theoretical values(from chemical database like chemspider) and prediction together. Here is a nice review about MS/MS prediction[@hufsky2014].
 
+## Peak misidentification
+
+- Isomer
+
+Use seperation methods such as chromatography, ion mobility MS, MS/MS. Reversed-phase ion-pairing chromatography and HILIC is useful.Chemical derivatization is another options.
+
+- Interfering compounds
+
+20ppm is the least resolution and accuracy for HRMS.
+
+- In-source degradation products
+
 ## Annotation v.s. identification
 
 According to the defination from the Chemical Analysis Working Group of the Metabolomics Standards Intitvative[@sumner2007;@viant2017]. Four levels of confidence could be assigned to identification:

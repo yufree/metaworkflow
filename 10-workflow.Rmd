@@ -1,5 +1,9 @@
 # Workflow
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(cache = TRUE,warning = F,message = F)
+```
+
 ## Platform for metabolomics
 
 Here is a list for related open source [projects](http://strimmerlab.org/notes/mass-spectrometry.html)
@@ -80,17 +84,13 @@ See this paper[@haug2017]:
 
 # Demo
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(cache = TRUE,warning = F,message = F)
-```
-
 ## Project Setup
 
 I suggest building your data analysis projects in RStudio(Click File - New project - New dictionary - Empty project). Then assign a name for your project. I also recommend the following tips if you are familiar with it.
 
 - Use [git](https://git-scm.com/)/[github](https://github.com/) to make version control of your code and sync your project online.
 
-- NOT use your name for your project because other peoples might cooperate with you and someone might check your data when you publish your papers. Each project should be a work for one paper or one chapter in your thesis.
+- Don't use your name for your project because other peoples might cooperate with you and someone might check your data when you publish your papers. Each project should be a work for one paper or one chapter in your thesis.
 
 - Use **workflow** document(txt or doc) in your project to record all of the steps and code you performed for this project. Treat this document as digital version of your experiment notebook
 
@@ -105,23 +105,34 @@ I suggest building your data analysis projects in RStudio(Click File - New proje
 
 ## Data input
 
-**xcms** does not support all of the Raw files from every mass spectrometry manufacturers. You need to convert your Raw data into some open-source [data format](https://en.wikipedia.org/wiki/Mass_spectrometry_data_format) such as mzData, mzXML or CDF files. The tool is **MScovert** from [**ProteoWizard**](http://proteowizard.sourceforge.net/).
+**xcms** does not support all of the raw files formate from every mass spectrometry. You need to convert your raw data into some open-source [data format](https://en.wikipedia.org/wiki/Mass_spectrometry_data_format) such as mzData, mzXML or CDF files. The tool is **MSconvert** from [**ProteoWizard**](http://proteowizard.sourceforge.net/).
 
 ## Optimization
 
-IPO package could be used to optimaze the parameters for XCMS. Try the following code.
+IPO package could be used to optimaze the parameters for XCMS. Try the following code and here we employ 5 NIST 1950 samples and 6 matrix blank samples as demodata from `rmwf` package.
 
 ```{r IPOpos,eval=F}
 library(IPO)
 library(xcms)
+library(rmwf)
+path <- system.file("extdata/data", package = "rmwf")
+files <- list.files(path,recursive = T,full.names = T)
+
+# BiocManager::install("IPO")
+library(IPO)
+library(xcms)
 peakpickingParameters <- getDefaultXcmsSetStartingParams('centWave')
-path <- list.files('D:/metademo/data/oq/',full.names = T,recursive = T)
+# Demo data
+path <- system.file("extdata/data", package = "rmwf")
+files <- list.files(path,recursive = T,full.names = T)
+# Uncomment this line to use your own data(suggested 3-5 pooled QC samples)
+# path <- 'path/to/your/files'
 # change to 5 for obitrap
-peakpickingParameters$ppm <- 15
+peakpickingParameters$ppm <- 10
 resultPeakpicking <- 
-  optimizeXcmsSet(files = path[c(1,2,3)], 
+  optimizeXcmsSet(files = files[c(7,9,11)], 
                   params = peakpickingParameters,
-                  nSlaves = 1,
+                  plot = F,
                   subdir = NULL)
 
 optimizedXcmsSetObject <- resultPeakpicking$best_settings$xset
@@ -129,10 +140,10 @@ retcorGroupParameters <- getDefaultRetGroupStartingParams()
 resultRetcorGroup <-
   optimizeRetGroup(xset = optimizedXcmsSetObject, 
                    params = retcorGroupParameters, 
+                   plot = F,
                    subdir = NULL)
-writeRScript(resultPeakpicking$best_settings$parameters, 
-             resultRetcorGroup$best_settings)
-para <- capture.output(writeRScript(resultPeakpicking$best_settings$parameters, resultRetcorGroup$best_settings), type = "message")
+para <- c(resultPeakpicking$best_settings$parameters, 
+          resultRetcorGroup$best_settings)
 save(para,file = 'para.RData')
 sessionInfo()
 ```
@@ -142,71 +153,76 @@ sessionInfo()
 Here we would use the optimized parameters for peak picking, retention time correction and peaks filling.
 
 ```{r eval=F}
+load('para.RData')
 library(xcms)
-library(Rmpi)
 library(stringr)
 getrtmz <- function(path,index = NULL){
-  load('para.RData')
-peakwidth <- as.numeric(unlist(str_extract_all(para[grepl('peakwidth',para)],'\\d+\\.*\\d*')))
-ppm <- as.numeric(unlist(str_extract_all(para[grepl('ppm',para)],'\\d+')))
-noise <- as.numeric(unlist(str_extract_all(para[grepl('noise',para)],'\\d+')))
-snthresh <- as.numeric(unlist(str_extract_all(para[grepl('snthresh',para)],'\\d+')))
-mzdiff <- as.numeric(unlist(str_extract_all(para[grepl('mzdiff',para)],'\\d+\\.*\\d*')))
-prefilter <- as.numeric(unlist(str_extract_all(para[grepl('prefilter',para)],'\\d+\\.*\\d*')))
-integrate <- as.numeric(unlist(str_extract_all(para[grepl('integrate',para)],'\\d+')))
-profStep <- round(as.numeric(unlist(str_extract_all(para[grepl('profStep',para)],'\\d+\\.*\\d*'))),1)
-center <- as.numeric(unlist(str_extract_all(para[grepl('center',para)],'\\d+')))
-response <- as.numeric(unlist(str_extract_all(para[grepl('response',para)],'\\d+')))
-gapInit <- as.numeric(unlist(str_extract_all(para[grepl('gapInit',para)],'\\d+\\.*\\d*')))
-gapExtend <- as.numeric(unlist(str_extract_all(para[grepl('gapExtend',para)],'\\d+\\.*\\d*')))
-factorDiag <- as.numeric(unlist(str_extract_all(para[grepl('factorDiag',para)],'\\d+')))
-factorGap <- as.numeric(unlist(str_extract_all(para[grepl('factorGap',para)],'\\d+')))
-localAlignment <- as.numeric(unlist(str_extract_all(para[grepl('localAlignment',para)],'\\d+')))
-bw <- as.numeric(unlist(str_extract_all(para[grepl('bw',para)],'\\d+\\.*\\d*')))
-mzwid <- as.numeric(unlist(str_extract_all(para[grepl('mzwid',para)],'\\d+\\.*\\d*')))
-minfrac <- as.numeric(unlist(str_extract_all(para[grepl('minfrac',para)],'\\d+\\.*\\d*')))
-minsamp <- as.numeric(unlist(str_extract_all(para[grepl('minsamp',para)],'\\d+')))
-max <-  as.numeric(unlist(str_extract_all(para[grepl('max',para)],'\\d+')))
+  peakwidth <- c(para$min_peakwidth,para$max_peakwidth)
+  ppm <- para$ppm
+  noise <- para$noise
+  snthresh <- para$snthresh
+  mzdiff <- para$mzdiff
+  prefilter <- c(para$prefilter,para$value_of_prefilter)
+  integrate <- para$integrate
+  profStep <- para$profStep
+  center <- para$center
+  response <- para$response
+  gapInit <- para$gapInit
+  gapExtend <- para$gapExtend
+  factorDiag <- para$factorDiag
+  factorGap <- para$factorGap
+  localAlignment <- para$localAlignment
+  bw <- para$bw
+  mzwid <- para$mzwid
+  minfrac <- para$minfrac
+  minsamp <- para$minsamp
+  max <- para$max
+  distFunc <- para$distFunc
+  plottype <- para$plottype
+  retcorMethod <- para$retcorMethod
+  mzCenterFun <- para$mzCenterFun
+  fitgauss <- para$fitgauss
+  verboseColumns <- para$verbose.columns
   files <- list.files(path,full.names = T,recursive = T)
   if(!is.null(index)){
     files <- files[index]
   }
   xset <- xcmsSet(files,
-  method = "centWave",
-  peakwidth       = peakwidth,
-  ppm             = ppm,
-  noise           = noise,
-  snthresh        = snthresh,
-  mzdiff          = mzdiff,
-  prefilter       = prefilter,
-  mzCenterFun     = "wMean",
-  integrate       = integrate,
-  fitgauss        = FALSE,
-  verbose.columns = FALSE)
-xset <- retcor( 
-  xset,
-  method         = "obiwarp",
-  plottype       = "none",
-  distFunc       = "cor_opt",
-  profStep       = profStep,
-  center         = center,
-  response       = response,
-  gapInit        = gapInit,
-  gapExtend      = gapExtend,
-  factorDiag     = factorDiag,
-  factorGap      = factorGap,
-  localAlignment = localAlignment)
-xset <- group( 
-  xset,
-  method  = "density",
-  bw      = bw,
-  mzwid   = mzwid,
-  minfrac = minfrac,
-  minsamp = minsamp,
-  max     = max)
-
-xset <- fillPeaks(xset)
-return(xset)
+                  method = "centWave",
+                  peakwidth       = peakwidth,
+                  ppm             = ppm,
+                  noise           = noise,
+                  snthresh        = snthresh,
+                  mzdiff          = mzdiff,
+                  prefilter       = prefilter,
+                  mzCenterFun     = mzCenterFun,
+                  integrate       = integrate,
+                  fitgauss        = fitgauss,
+                  verbose.columns = verboseColumns)
+  xset <- retcor( 
+    xset,
+    method         = retcorMethod,
+    plottype       = plottype,
+    distFunc       = distFunc,
+    profStep       = profStep,
+    center         = center,
+    response       = response,
+    gapInit        = gapInit,
+    gapExtend      = gapExtend,
+    factorDiag     = factorDiag,
+    factorGap      = factorGap,
+    localAlignment = localAlignment)
+  xset <- group( 
+    xset,
+    method  = "density",
+    bw      = bw,
+    mzwid   = mzwid,
+    minfrac = minfrac,
+    minsamp = minsamp,
+    max     = max)
+  
+  xset <- fillPeaks(xset)
+  return(xset)
 }
 ```
 
@@ -239,15 +255,12 @@ Then we could extract the peaks list from `xcmsSet` objects.
 ```{r eval=F}
 library(enviGCMS)
 # get the xcmsset object
-neg <- getrtmz('D:/metademo/data/')
-# back up the xcmsset object
-save(neg,file = 'neg.Rdata')
-# get the number
-npeaks <- nrow(neg@groups)
-# get the EIC, boxplot and diffreport, eixmax should be equal to the numbers of peaks groups in the pos objects 
-report <- CAMERA::annotateDiffreport(neg,filebase = 'peaklistneg',metlin = T, eicmax = npeaks, classeic = neg@phenoData$class)
-# save the report as a csv file
-write.csv(report,file = 'all.csv')
+path <- system.file("extdata/data", package = "rmwf")
+# use your own data
+# path <- 'path/to/your/file'
+srm <- getrtmz(path)
+# back up the xcmsset object, xcmsEIC object and peak list
+mzrt <- enviGCMS::getmzrt(srm, name = 'srm', eic = T, type = 'mapo')
 ```
 
 ## Peaks filtering
@@ -255,33 +268,33 @@ write.csv(report,file = 'all.csv')
 After we get the peaks list, it's nessary to filter the peaks list to retain the peaks with high quality for further analysis. Normally, we could use the relative standard deviation of blank and pooled QC samples to control the peaks list.
 
 ```{r eval=F}
-load('neg.Rdata')
+load('srmmzrt.RDS')
 # get the peak intensity, m/z, retention time and group information as list
-mzrt <- enviGCMS::getmzrt(neg)
+mzrt <- enviGCMS::getmzrt(srm)
+data(mzrt)
 # get the mean and rsd for each group
 mzrtm <- enviGCMS::getdoe(mzrt)
 gm <- mzrtm$groupmean
 gr <- mzrtm$grouprsd
-# find the blank group and pool QC group
-blk <- grepl('k',colnames(gm))
-pqc <- grepl('q',colnames(gm))
+# find the blank group and pool QC group, demo data only have matrix blank
+srm <- grepl('NIST',colnames(gm))
+blk <- grepl('Matrix',colnames(gm))
+# pqc <- grepl('pool',colnames(gm))
 # filter by pool QC and blank's group mean intensity(pool QC should larger than three times of blank), return numbers and index
-sum(indexmean <- apply(gm,1,function(x) all(x[pqc]>= 3*x[blk])))
-# filt by pool qc rsd%, return numbers and index
+# in demo data, use sample average intensity for each peak
+sum(indexmean <- apply(gm,1,function(x) all(x[srm]>= 3*x[blk])))
+# filter by pool qc rsd%, return numbers and index
+# in demo data, use sample average intensity for each peak
+# mean rsd analysis
+# filter by pool qc rsd%, return numbers and index, here we use SRM samples
 rsdcf <- 30
-sum(indexrsd <- apply(gr,1,function(x) ifelse(is.na(x[pqc]),T,x[pqc]<rsdcf)))
+sum(indexrsd <- apply(gr,1,function(x) ifelse(is.na(x[srm]),T,x[srm]<rsdcf)))
 # overlap with rsd% and mean filter
 sum(index <- indexmean&indexrsd)
-
 # new list, update group and remove pool qc/blk
-qcindex <- grepl('k',mzrt$group$class) | grepl('q',mzrt$group$class)
-mzrtfilter <- list(data = mzrt$data[index,!qcindex],
-                   mz = mzrt$mz[index],
-                   rt = mzrt$rt[index],
-                   group = droplevels(mzrt$group$class[!qcindex,drop =T]))
-# get the filtered csv
-enviGCMS::getupload(mzrtfilter,name = 'peakfilter')
-
+# qcindex <- grepl('k',mzrt$group$class) | grepl('q',mzrt$group$class)
+# mzrtfilter <- mzrtfilter <- enviGCMS::getfilter(mzrt,rowindex = index,colindex = !qcindex, name = 'lif', type = 'm')
+mzrtfilter <- mzrtfilter <- enviGCMS::getfilter(mzrt,rowindex = index, name = 'lif', type = 'm')
 ```
 
 ## Normalization (Optional)

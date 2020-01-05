@@ -119,12 +119,6 @@ Sparse PLS discriminant analysis(sPLS-DA) make a L1 penal on the variable select
 
 For o-PLS-DA, s-plot could be used to find features.[@wiklund2008]
 
-## Self-organizing map
-
-## Canonical correlation analysis 
-
-Find the correlationship between two datasets.
-
 ## Software
 
 - [MetaboAnalystR](https://github.com/xia-lab/MetaboAnalystR)
