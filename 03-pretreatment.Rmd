@@ -10,6 +10,10 @@ In this review[@lu2017], authors said:
 
 > A classical approach, which works well for many analytes, is boiling ethanol. Although the boiling solvent raises concerns about thermal degradation, it reliably denatures enzymes. In contrast, cold organic solvent may not fully denature enzymes or may do so too slowly such that some metabolic reactions continue, interconverting metabolites during the quenching process.
 
+This review[@kim2020] summarised the urease-dependent metabolome sample preparation and found:
+
+> activities of urease and endogenous urinary enzymes and metabolite contaminants from the urease preparations introduce artefacts into metabolite profiles, thus leading to misinterpretation. 
+
 ## Extraction
 
 According to this research[@bennett2009]:

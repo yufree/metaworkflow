@@ -8,6 +8,10 @@ Raw data from the instruments such as LC-MS or GC-MS were hard to be analyzed. T
 
 Commen formats for open source mass spectrum data are mzxml, mzml or CDF. However, **masscomp** might shrink the data size[@yang2019b].
 
+## Data visualization
+
+You could use [msxpertsuite](https://salsa.debian.org/debichem-team/msxpertsuite) for MS data visualization. It is biological mass spectrometry data visualization and mining with full JavaScript ability[@rusconi2019].
+
 ## Peak extraction
 
 GC/LC-MS data are usually be shown as a matrix with column standing for retention times and row standing for masses after bin them into small cell.

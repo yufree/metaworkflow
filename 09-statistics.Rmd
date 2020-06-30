@@ -121,6 +121,12 @@ For o-PLS-DA, s-plot could be used to find features.[@wiklund2008]
 
 ## Software
 
-- [MetaboAnalystR](https://github.com/xia-lab/MetaboAnalystR)
+- [MetaboAnalystR](https://github.com/xia-lab/MetaboAnalystR) [@chong2019]
 
 - [caret](http://caret.r-forge.r-project.org/) could employ more than 200 statistical models in a general framework to build/select models. You could also show the variable importance for some of the models.
+
+- [caretEnsemble](https://cran.r-project.org/web/packages/caretEnsemble/index.html) Functions for creating ensembles of caret models
+
+- [pROC](https://cran.r-project.org/web/packages/pROC/index.html) Tools for visualizing, smoothing and comparing receiver operating characteristic (ROC curves). (Partial) area under the curve (AUC) can be compared with statistical tests based on U-statistics or bootstrap. Confidence intervals can be computed for (p)AUC or ROC curves.
+
+- [gWQS](https://cran.r-project.org/web/packages/gWQS/index.html) Fits Weighted Quantile Sum (WQS) regressions for continuous, binomial, multinomial and count outcomes.

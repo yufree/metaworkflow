@@ -17,7 +17,7 @@ always_allow_html: yes
 # Preface {-}
 
 ```{r fig.align='center', echo=FALSE, include=identical(knitr:::pandoc_to(), 'html')}
-knitr::include_graphics('images/cover.jpg', dpi = NA)
+knitr::include_graphics('images/cover.png', dpi = NA)
 ```
 
 This is an online handout for mass spectrometry based metabolomics data analysis. It would cover a full reproducible metabolomics workflow for data analysis and important topics related to metabolomics. Here is a list of topics:

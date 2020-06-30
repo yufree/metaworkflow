@@ -1,12 +1,30 @@
 # Omics analysis
 
-When you get the filtered ions, the next step is making annotations for them. Such annotations would be helpful for omics studies.
-
-Since we have got the annotations, Omics analysis could be performed.Upload the data obtained from the **xcms** to other tools or databases.
+When you get the filtered ions, the next step is making annotations for them. Such annotations would be helpful for omics studies. Omics analysis try to combine the information from other 'omics' to answer one sepcific question. Since we have got the annotations, Omics analysis could be performed.Upload the data obtained from the **xcms** to other tools or databases.
 
 You will get an updated database list [here](http://metabolomicssociety.org/resources/metabolomics-databases)
 
 Right now, it is hard to connect different omics databases such as gene, protein and metabolites together for a whole scope of certain biological process. However, you might select few metabolites across those databases and find something interesting.
+
+## From Bottom-up to Top-down
+
+Bottom-up analysis mean the model for each metabolite. In this case, we could find out which metabolite will be affected by our experiment design. However, take care of multiple comparision issue.
+
+$$
+metabolite = f(control/treatment, co-variables)
+$$
+
+Top-down analysis mean the model for output. In this case, we could evaluate the contribution of each metabolites. You need variable selection to make a better model.
+
+$$
+control/treatment = f(metabolite 1,metabolite 2,...,metaboliteN,co-varuables)
+$$
+
+For omics study, you might need to intergrate dataset from different sources.
+
+$$
+control/treatment = f(metabolites, proteins, genes, miRNA,co-varuables)
+$$
 
 ## Pathway analysis
 

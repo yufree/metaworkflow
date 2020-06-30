@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 1 Introduction | Meta-Workflow</title>
   <meta name="description" content="This is a workflow for metabolomics studies." />
-  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 1 Introduction | Meta-Workflow" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Miao YU" />
 
 
-<meta name="date" content="2020-01-04" />
+<meta name="date" content="2020-06-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -51,15 +51,15 @@
 
 
 <script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
-<script src="libs/viz-0.3/viz.js"></script>
+<script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/grViz-binding-1.0.1/grViz.js"></script>
+<script src="libs/grViz-binding-1.0.6.1/grViz.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
@@ -68,14 +68,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -84,9 +86,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -169,22 +171,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#mass-resolution"><i class="fa fa-check"></i><b>4.3</b> Mass resolution</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html"><i class="fa fa-check"></i><b>5</b> Raw data pretreatment</a><ul>
-<li class="chapter" data-level="5.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#peak-extraction"><i class="fa fa-check"></i><b>5.1</b> Peak extraction</a></li>
-<li class="chapter" data-level="5.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#retention-time-correction"><i class="fa fa-check"></i><b>5.2</b> Retention Time Correction</a></li>
-<li class="chapter" data-level="5.3" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#filling-missing-values"><i class="fa fa-check"></i><b>5.3</b> Filling missing values</a></li>
-<li class="chapter" data-level="5.4" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#spectral-deconvolution"><i class="fa fa-check"></i><b>5.4</b> Spectral deconvolution</a></li>
-<li class="chapter" data-level="5.5" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#dynamic-range"><i class="fa fa-check"></i><b>5.5</b> Dynamic Range</a><ul>
-<li class="chapter" data-level="5.5.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#non-detects"><i class="fa fa-check"></i><b>5.5.1</b> Non-detects</a></li>
-<li class="chapter" data-level="5.5.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#over-detection-limit"><i class="fa fa-check"></i><b>5.5.2</b> Over Detection Limit</a></li>
+<li class="chapter" data-level="5.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#data-visualization"><i class="fa fa-check"></i><b>5.1</b> Data visualization</a></li>
+<li class="chapter" data-level="5.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#peak-extraction"><i class="fa fa-check"></i><b>5.2</b> Peak extraction</a></li>
+<li class="chapter" data-level="5.3" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#retention-time-correction"><i class="fa fa-check"></i><b>5.3</b> Retention Time Correction</a></li>
+<li class="chapter" data-level="5.4" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#filling-missing-values"><i class="fa fa-check"></i><b>5.4</b> Filling missing values</a></li>
+<li class="chapter" data-level="5.5" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#spectral-deconvolution"><i class="fa fa-check"></i><b>5.5</b> Spectral deconvolution</a></li>
+<li class="chapter" data-level="5.6" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#dynamic-range"><i class="fa fa-check"></i><b>5.6</b> Dynamic Range</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#non-detects"><i class="fa fa-check"></i><b>5.6.1</b> Non-detects</a></li>
+<li class="chapter" data-level="5.6.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#over-detection-limit"><i class="fa fa-check"></i><b>5.6.2</b> Over Detection Limit</a></li>
 </ul></li>
-<li class="chapter" data-level="5.6" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#rsdfold-change-filter"><i class="fa fa-check"></i><b>5.6</b> RSD/fold change Filter</a></li>
-<li class="chapter" data-level="5.7" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#power-analysis-filter"><i class="fa fa-check"></i><b>5.7</b> Power Analysis Filter</a></li>
-<li class="chapter" data-level="5.8" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#software-1"><i class="fa fa-check"></i><b>5.8</b> Software</a><ul>
-<li class="chapter" data-level="5.8.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#peak-picking"><i class="fa fa-check"></i><b>5.8.1</b> Peak picking</a></li>
-<li class="chapter" data-level="5.8.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#for-msms"><i class="fa fa-check"></i><b>5.8.2</b> For MS/MS</a></li>
-<li class="chapter" data-level="5.8.3" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#improved-peak-picking"><i class="fa fa-check"></i><b>5.8.3</b> Improved Peak picking</a></li>
+<li class="chapter" data-level="5.7" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#rsdfold-change-filter"><i class="fa fa-check"></i><b>5.7</b> RSD/fold change Filter</a></li>
+<li class="chapter" data-level="5.8" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#power-analysis-filter"><i class="fa fa-check"></i><b>5.8</b> Power Analysis Filter</a></li>
+<li class="chapter" data-level="5.9" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#software-1"><i class="fa fa-check"></i><b>5.9</b> Software</a><ul>
+<li class="chapter" data-level="5.9.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#peak-picking"><i class="fa fa-check"></i><b>5.9.1</b> Peak picking</a></li>
+<li class="chapter" data-level="5.9.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#for-msms"><i class="fa fa-check"></i><b>5.9.2</b> For MS/MS</a></li>
+<li class="chapter" data-level="5.9.3" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#improved-peak-picking"><i class="fa fa-check"></i><b>5.9.3</b> Improved Peak picking</a></li>
 </ul></li>
-<li class="chapter" data-level="5.9" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#tips"><i class="fa fa-check"></i><b>5.9</b> Tips</a></li>
+<li class="chapter" data-level="5.10" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#tips"><i class="fa fa-check"></i><b>5.10</b> Tips</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="peaks-normalization.html"><a href="peaks-normalization.html"><i class="fa fa-check"></i><b>6</b> Peaks normalization</a><ul>
 <li class="chapter" data-level="6.1" data-path="peaks-normalization.html"><a href="peaks-normalization.html#batch-effects-classification"><i class="fa fa-check"></i><b>6.1</b> Batch effects classification</a></li>
@@ -222,35 +225,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.7.11" data-path="annotation.html"><a href="annotation.html#mine"><i class="fa fa-check"></i><b>7.7.11</b> MINE</a></li>
 <li class="chapter" data-level="7.7.12" data-path="annotation.html"><a href="annotation.html#interpretmsspectrum"><i class="fa fa-check"></i><b>7.7.12</b> InterpretMSSpectrum</a></li>
 <li class="chapter" data-level="7.7.13" data-path="annotation.html"><a href="annotation.html#for-ident"><i class="fa fa-check"></i><b>7.7.13</b> For Ident</a></li>
-<li class="chapter" data-level="7.7.14" data-path="annotation.html"><a href="annotation.html#mzmatch"><i class="fa fa-check"></i><b>7.7.14</b> mzmatch</a></li>
-<li class="chapter" data-level="7.7.15" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>7.7.15</b> mz.unity</a></li>
-<li class="chapter" data-level="7.7.16" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>7.7.16</b> MAIT</a></li>
-<li class="chapter" data-level="7.7.17" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>7.7.17</b> ProbMetab</a></li>
-<li class="chapter" data-level="7.7.18" data-path="annotation.html"><a href="annotation.html#ramsi"><i class="fa fa-check"></i><b>7.7.18</b> RAMSI</a></li>
-<li class="chapter" data-level="7.7.19" data-path="annotation.html"><a href="annotation.html#sirius"><i class="fa fa-check"></i><b>7.7.19</b> Sirius</a></li>
-<li class="chapter" data-level="7.7.20" data-path="annotation.html"><a href="annotation.html#mi-pack"><i class="fa fa-check"></i><b>7.7.20</b> MI-Pack</a></li>
-<li class="chapter" data-level="7.7.21" data-path="annotation.html"><a href="annotation.html#plantmat"><i class="fa fa-check"></i><b>7.7.21</b> Plantmat</a></li>
-<li class="chapter" data-level="7.7.22" data-path="annotation.html"><a href="annotation.html#metfamily"><i class="fa fa-check"></i><b>7.7.22</b> MetFamily</a></li>
-<li class="chapter" data-level="7.7.23" data-path="annotation.html"><a href="annotation.html#lipidmatch"><i class="fa fa-check"></i><b>7.7.23</b> Lipidmatch</a></li>
-<li class="chapter" data-level="7.7.24" data-path="annotation.html"><a href="annotation.html#molfind"><i class="fa fa-check"></i><b>7.7.24</b> MolFind</a></li>
-<li class="chapter" data-level="7.7.25" data-path="annotation.html"><a href="annotation.html#metfusion"><i class="fa fa-check"></i><b>7.7.25</b> MetFusion</a></li>
-<li class="chapter" data-level="7.7.26" data-path="annotation.html"><a href="annotation.html#imet"><i class="fa fa-check"></i><b>7.7.26</b> iMet</a></li>
-<li class="chapter" data-level="7.7.27" data-path="annotation.html"><a href="annotation.html#metscape"><i class="fa fa-check"></i><b>7.7.27</b> Metscape</a></li>
-<li class="chapter" data-level="7.7.28" data-path="annotation.html"><a href="annotation.html#metfrag"><i class="fa fa-check"></i><b>7.7.28</b> MetFrag</a></li>
-<li class="chapter" data-level="7.7.29" data-path="annotation.html"><a href="annotation.html#lipidfrag"><i class="fa fa-check"></i><b>7.7.29</b> LipidFrag</a></li>
-<li class="chapter" data-level="7.7.30" data-path="annotation.html"><a href="annotation.html#mycompoundid"><i class="fa fa-check"></i><b>7.7.30</b> MycompoundID</a></li>
-<li class="chapter" data-level="7.7.31" data-path="annotation.html"><a href="annotation.html#magma"><i class="fa fa-check"></i><b>7.7.31</b> magma</a></li>
-<li class="chapter" data-level="7.7.32" data-path="annotation.html"><a href="annotation.html#metexpert"><i class="fa fa-check"></i><b>7.7.32</b> MetExpert</a></li>
-<li class="chapter" data-level="7.7.33" data-path="annotation.html"><a href="annotation.html#ms-dia"><i class="fa fa-check"></i><b>7.7.33</b> MS-DIA</a></li>
+<li class="chapter" data-level="7.7.14" data-path="annotation.html"><a href="annotation.html#retip"><i class="fa fa-check"></i><b>7.7.14</b> Retip</a></li>
+<li class="chapter" data-level="7.7.15" data-path="annotation.html"><a href="annotation.html#binner"><i class="fa fa-check"></i><b>7.7.15</b> Binner</a></li>
+<li class="chapter" data-level="7.7.16" data-path="annotation.html"><a href="annotation.html#mzmatch"><i class="fa fa-check"></i><b>7.7.16</b> mzmatch</a></li>
+<li class="chapter" data-level="7.7.17" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>7.7.17</b> mz.unity</a></li>
+<li class="chapter" data-level="7.7.18" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>7.7.18</b> MAIT</a></li>
+<li class="chapter" data-level="7.7.19" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>7.7.19</b> ProbMetab</a></li>
+<li class="chapter" data-level="7.7.20" data-path="annotation.html"><a href="annotation.html#ramsi"><i class="fa fa-check"></i><b>7.7.20</b> RAMSI</a></li>
+<li class="chapter" data-level="7.7.21" data-path="annotation.html"><a href="annotation.html#sirius"><i class="fa fa-check"></i><b>7.7.21</b> Sirius</a></li>
+<li class="chapter" data-level="7.7.22" data-path="annotation.html"><a href="annotation.html#mi-pack"><i class="fa fa-check"></i><b>7.7.22</b> MI-Pack</a></li>
+<li class="chapter" data-level="7.7.23" data-path="annotation.html"><a href="annotation.html#plantmat"><i class="fa fa-check"></i><b>7.7.23</b> Plantmat</a></li>
+<li class="chapter" data-level="7.7.24" data-path="annotation.html"><a href="annotation.html#metfamily"><i class="fa fa-check"></i><b>7.7.24</b> MetFamily</a></li>
+<li class="chapter" data-level="7.7.25" data-path="annotation.html"><a href="annotation.html#lipidmatch"><i class="fa fa-check"></i><b>7.7.25</b> Lipidmatch</a></li>
+<li class="chapter" data-level="7.7.26" data-path="annotation.html"><a href="annotation.html#molfind"><i class="fa fa-check"></i><b>7.7.26</b> MolFind</a></li>
+<li class="chapter" data-level="7.7.27" data-path="annotation.html"><a href="annotation.html#metfusion"><i class="fa fa-check"></i><b>7.7.27</b> MetFusion</a></li>
+<li class="chapter" data-level="7.7.28" data-path="annotation.html"><a href="annotation.html#imet"><i class="fa fa-check"></i><b>7.7.28</b> iMet</a></li>
+<li class="chapter" data-level="7.7.29" data-path="annotation.html"><a href="annotation.html#metscape"><i class="fa fa-check"></i><b>7.7.29</b> Metscape</a></li>
+<li class="chapter" data-level="7.7.30" data-path="annotation.html"><a href="annotation.html#metfrag"><i class="fa fa-check"></i><b>7.7.30</b> MetFrag</a></li>
+<li class="chapter" data-level="7.7.31" data-path="annotation.html"><a href="annotation.html#lipidfrag"><i class="fa fa-check"></i><b>7.7.31</b> LipidFrag</a></li>
+<li class="chapter" data-level="7.7.32" data-path="annotation.html"><a href="annotation.html#mycompoundid"><i class="fa fa-check"></i><b>7.7.32</b> MycompoundID</a></li>
+<li class="chapter" data-level="7.7.33" data-path="annotation.html"><a href="annotation.html#magma"><i class="fa fa-check"></i><b>7.7.33</b> magma</a></li>
+<li class="chapter" data-level="7.7.34" data-path="annotation.html"><a href="annotation.html#metexpert"><i class="fa fa-check"></i><b>7.7.34</b> MetExpert</a></li>
+<li class="chapter" data-level="7.7.35" data-path="annotation.html"><a href="annotation.html#ms-dia"><i class="fa fa-check"></i><b>7.7.35</b> MS-DIA</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>8</b> Omics analysis</a><ul>
-<li class="chapter" data-level="8.1" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-analysis"><i class="fa fa-check"></i><b>8.1</b> Pathway analysis</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-database"><i class="fa fa-check"></i><b>8.1.1</b> Pathway Database</a></li>
-<li class="chapter" data-level="8.1.2" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-software"><i class="fa fa-check"></i><b>8.1.2</b> Pathway software</a></li>
+<li class="chapter" data-level="8.1" data-path="omics-analysis.html"><a href="omics-analysis.html#from-bottom-up-to-top-down"><i class="fa fa-check"></i><b>8.1</b> From Bottom-up to Top-down</a></li>
+<li class="chapter" data-level="8.2" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-analysis"><i class="fa fa-check"></i><b>8.2</b> Pathway analysis</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-database"><i class="fa fa-check"></i><b>8.2.1</b> Pathway Database</a></li>
+<li class="chapter" data-level="8.2.2" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-software"><i class="fa fa-check"></i><b>8.2.2</b> Pathway software</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="omics-analysis.html"><a href="omics-analysis.html#network-analysis"><i class="fa fa-check"></i><b>8.2</b> Network analysis</a></li>
-<li class="chapter" data-level="8.3" data-path="omics-analysis.html"><a href="omics-analysis.html#omics-integration"><i class="fa fa-check"></i><b>8.3</b> Omics integration</a></li>
+<li class="chapter" data-level="8.3" data-path="omics-analysis.html"><a href="omics-analysis.html#network-analysis"><i class="fa fa-check"></i><b>8.3</b> Network analysis</a></li>
+<li class="chapter" data-level="8.4" data-path="omics-analysis.html"><a href="omics-analysis.html#omics-integration"><i class="fa fa-check"></i><b>8.4</b> Omics integration</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html"><i class="fa fa-check"></i><b>9</b> Common analysis methods for metabolomics</a><ul>
 <li class="chapter" data-level="9.1" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#basic-statistical-analysis"><i class="fa fa-check"></i><b>9.1</b> Basic Statistical Analysis</a></li>
@@ -326,14 +332,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="introduction" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
-<p>Information in living organism commuicates along the Central Dogma in different scales from individual, population, community to ecosystem. Metabolomics (i.e., the profiling and quantitation of metabolites) is a relatively new field of “omics” studies. Different from other omics studies, metabolomics always focused on small moleculars with much lower mass than polypeptide with single or doubled charged ions. Here is a demo of the position of metabolomics in “omics” studies<span class="citation">(B. Dunn et al. <a href="#ref-b.dunn2011">2011</a>)</span>.</p>
+<p>Information in living organism commuicates along the Central Dogma in different scales from individual, population, community to ecosystem. Metabolomics (i.e., the profiling and quantitation of metabolites) is a relatively new field of “omics” studies. Different from other omics studies, metabolomics always focused on small moleculars with much lower mass than polypeptide with single or doubled charged ions. Here is a demo of the position of metabolomics in “omics” studies<span class="citation">(B. Dunn et al. <a href="#ref-b.dunn2011" role="doc-biblioref">2011</a>)</span>.</p>
 <div class="figure"><span id="fig:metaintro"></span>
 <img src="images/metaintro.png" alt="The complex interactions of functional levels in biological systems." width="90%" />
 <p class="caption">
 Figure 1.1: The complex interactions of functional levels in biological systems.
 </p>
 </div>
-<p>Metabolomics studies always employ GC-MS<span class="citation">(Theodoridis et al. <a href="#ref-theodoridis2012">2012</a>)</span>, GC*GC-MS<span class="citation">(Tian et al. <a href="#ref-tian2016">2016</a>)</span>, LC-MS<span class="citation">(Gika et al. <a href="#ref-gika2014">2014</a>)</span>, LC-MS/MS<span class="citation">(Begou et al. <a href="#ref-begou2017">2017</a>)</span> or NMR<span class="citation">(Zhang et al. <a href="#ref-zhang2012a">2012</a>; B. Dunn et al. <a href="#ref-b.dunn2011">2011</a>)</span> to measure metabolites. However, this workflow will only cover mass spectrometry based metabolomics or XC-MS based research.</p>
+<p>Metabolomics studies always employ GC-MS<span class="citation">(Theodoridis et al. <a href="#ref-theodoridis2012" role="doc-biblioref">2012</a>)</span>, GC*GC-MS<span class="citation">(Tian et al. <a href="#ref-tian2016" role="doc-biblioref">2016</a>)</span>, LC-MS<span class="citation">(Gika et al. <a href="#ref-gika2014" role="doc-biblioref">2014</a>)</span>, LC-MS/MS<span class="citation">(Begou et al. <a href="#ref-begou2017" role="doc-biblioref">2017</a>)</span> or NMR<span class="citation">(Zhang et al. <a href="#ref-zhang2012a" role="doc-biblioref">2012</a>; B. Dunn et al. <a href="#ref-b.dunn2011" role="doc-biblioref">2011</a>)</span> to measure metabolites. However, this workflow will only cover mass spectrometry based metabolomics or XC-MS based research.</p>
 <div id="history" class="section level2">
 <h2><span class="header-section-number">1.1</span> History</h2>
 <div id="history-of-mass-spectrometry" class="section level3">
@@ -362,7 +368,7 @@ Figure 1.2: Sir Joseph John Thomson “Rays of Positive Electricity and Their Ap
 </div>
 <div id="history-of-metabolomcis" class="section level3">
 <h3><span class="header-section-number">1.1.2</span> History of Metabolomcis</h3>
-<p>According to this book section<span class="citation">(Kusonmano, Vongsangnak, and Chumnanpuen <a href="#ref-kusonmano2016">2016</a>)</span>:</p>
+<p>According to this book section<span class="citation">(Kusonmano, Vongsangnak, and Chumnanpuen <a href="#ref-kusonmano2016" role="doc-biblioref">2016</a>)</span>:</p>
 <div class="figure"><span id="fig:history2"></span>
 <img src="images/metahistory.jpg" alt="Metabolomics timeline during pre- and post-metabolomics era" width="90%" />
 <p class="caption">
@@ -383,7 +389,7 @@ Figure 1.3: Metabolomics timeline during pre- and post-metabolomics era
 </div>
 <div id="defination" class="section level3">
 <h3><span class="header-section-number">1.1.3</span> Defination</h3>
-<p>Metabolomics is actually a comprehensive analysis with identification and quantification of both known and unknown compounds in an unbiased way. Metabolic fingerprinting is working on fast classification of samples based on metabolite data without quantifying or identification of the metabolites. Metabolite profiling always need a pre-defined metabolites list to be quantification<span class="citation">(Madsen, Lundstedt, and Trygg <a href="#ref-madsen2010">2010</a>)</span>. However, targeted and untargeted metabolomics are also used in publicaitons. A similar concept called non-targeted analysis/screen is actually describe the similar studies or workflow.</p>
+<p>Metabolomics is actually a comprehensive analysis with identification and quantification of both known and unknown compounds in an unbiased way. Metabolic fingerprinting is working on fast classification of samples based on metabolite data without quantifying or identification of the metabolites. Metabolite profiling always need a pre-defined metabolites list to be quantification<span class="citation">(Madsen, Lundstedt, and Trygg <a href="#ref-madsen2010" role="doc-biblioref">2010</a>)</span>. However, targeted and untargeted metabolomics are also used in publicaitons. A similar concept called non-targeted analysis/screen is actually describe the similar studies or workflow.</p>
 </div>
 </div>
 <div id="reviews-and-tutorials" class="section level2">
@@ -391,17 +397,17 @@ Figure 1.3: Metabolomics timeline during pre- and post-metabolomics era
 <p>Some nice reviews and tutorials related to this workflow could be found in those papers or directly online:</p>
 <div id="workflow" class="section level3">
 <h3><span class="header-section-number">1.2.1</span> Workflow</h3>
-<p>Those papers are recommended<span class="citation">(Barnes et al. <a href="#ref-barnes2016a">2016</a><a href="#ref-barnes2016a">a</a>; Cajka and Fiehn <a href="#ref-cajka2016">2016</a>; X. Lu and Xu <a href="#ref-lu2008">2008</a>; Fiehn <a href="#ref-fiehn2002">2002</a>)</span> for general metabolomics related topics. For targeted metaabolomics, you could check those reviews<span class="citation">(Begou et al. <a href="#ref-begou2017">2017</a>; Zhou and Yin <a href="#ref-zhou2016">2016</a>; W. Lu, Bennett, and Rabinowitz <a href="#ref-lu2008a">2008</a>; Weljie et al. <a href="#ref-weljie2006">2006</a>; Yuan et al. <a href="#ref-yuan2012">2012</a>; Griffiths et al. <a href="#ref-griffiths2010">2010</a>)</span>.</p>
+<p>Those papers are recommended<span class="citation">(Barnes et al. <a href="#ref-barnes2016a" role="doc-biblioref">2016</a><a href="#ref-barnes2016a" role="doc-biblioref">a</a>; Cajka and Fiehn <a href="#ref-cajka2016" role="doc-biblioref">2016</a>; X. Lu and Xu <a href="#ref-lu2008" role="doc-biblioref">2008</a>; Fiehn <a href="#ref-fiehn2002" role="doc-biblioref">2002</a>)</span> for general metabolomics related topics. For targeted metaabolomics, you could check those reviews<span class="citation">(Begou et al. <a href="#ref-begou2017" role="doc-biblioref">2017</a>; Zhou and Yin <a href="#ref-zhou2016" role="doc-biblioref">2016</a>; W. Lu, Bennett, and Rabinowitz <a href="#ref-lu2008a" role="doc-biblioref">2008</a>; Weljie et al. <a href="#ref-weljie2006" role="doc-biblioref">2006</a>; Yuan et al. <a href="#ref-yuan2012" role="doc-biblioref">2012</a>; Griffiths et al. <a href="#ref-griffiths2010" role="doc-biblioref">2010</a>)</span>.</p>
 </div>
 <div id="data-analysis" class="section level3">
 <h3><span class="header-section-number">1.2.2</span> Data analysis</h3>
-<p>You could firstly read those papers<span class="citation">(Barnes et al. <a href="#ref-barnes2016">2016</a><a href="#ref-barnes2016">b</a>; Alonso, Marsal, and Julià <a href="#ref-alonso2015">2015</a>; Kusonmano, Vongsangnak, and Chumnanpuen <a href="#ref-kusonmano2016">2016</a>; Madsen, Lundstedt, and Trygg <a href="#ref-madsen2010">2010</a>; Uppal et al. <a href="#ref-uppal2016">2016</a>)</span> to get the concepts and issues for data analysis in metabolomics. Then this paper<span class="citation">(Gromski et al. <a href="#ref-gromski2015">2015</a>)</span> could be treated as a step-by-step tutorial.</p>
+<p>You could firstly read those papers<span class="citation">(Barnes et al. <a href="#ref-barnes2016" role="doc-biblioref">2016</a><a href="#ref-barnes2016" role="doc-biblioref">b</a>; Alonso, Marsal, and Julià <a href="#ref-alonso2015" role="doc-biblioref">2015</a>; Kusonmano, Vongsangnak, and Chumnanpuen <a href="#ref-kusonmano2016" role="doc-biblioref">2016</a>; Madsen, Lundstedt, and Trygg <a href="#ref-madsen2010" role="doc-biblioref">2010</a>; Uppal et al. <a href="#ref-uppal2016" role="doc-biblioref">2016</a>)</span> to get the concepts and issues for data analysis in metabolomics. Then this paper<span class="citation">(Gromski et al. <a href="#ref-gromski2015" role="doc-biblioref">2015</a>)</span> could be treated as a step-by-step tutorial.</p>
 <ul>
-<li><p>For annotation, this paper<span class="citation">(Domingo-Almenara et al. <a href="#ref-domingo-almenara2018">2018</a>)</span> is an well organized review.</p></li>
-<li>For database used in metabolomics, you could check this review<span class="citation">(Vinaixa et al. <a href="#ref-vinaixa2016">2016</a>)</span>.</li>
-<li><p>For metabolomics software, check this series of reviews for each year<span class="citation">(Misra and family=Hooft <a href="#ref-misra2016">2016</a>; Misra, Fahrmann, and Grapov <a href="#ref-misra2017">2017</a>; Misra <a href="#ref-misra2018">2018</a>)</span>.</p></li>
-<li><p>For open sourced software, this review<span class="citation">(Spicer et al. <a href="#ref-spicer2017">2017</a>)</span> could be a good start.</p></li>
-<li><p>For DIA or DDA metabolomics, check those papers<span class="citation">(Bilbao et al. <a href="#ref-bilbao2015">2015</a>; Fenaille et al. <a href="#ref-fenaille2017">2017</a>)</span>.</p></li>
+<li><p>For annotation, this paper<span class="citation">(Domingo-Almenara et al. <a href="#ref-domingo-almenara2018" role="doc-biblioref">2018</a>)</span> is an well organized review.</p></li>
+<li><p>For database used in metabolomics, you could check this review<span class="citation">(Vinaixa et al. <a href="#ref-vinaixa2016" role="doc-biblioref">2016</a>)</span>.</p></li>
+<li><p>For metabolomics software, check this series of reviews for each year<span class="citation">(Misra and van der Hooft <a href="#ref-misra2016" role="doc-biblioref">2016</a>; Misra, Fahrmann, and Grapov <a href="#ref-misra2017" role="doc-biblioref">2017</a>; Misra <a href="#ref-misra2018" role="doc-biblioref">2018</a>)</span>.</p></li>
+<li><p>For open sourced software, this review<span class="citation">(Spicer et al. <a href="#ref-spicer2017" role="doc-biblioref">2017</a>)</span> could be a good start.</p></li>
+<li><p>For DIA or DDA metabolomics, check those papers<span class="citation">(Bilbao et al. <a href="#ref-bilbao2015" role="doc-biblioref">2015</a>; Fenaille et al. <a href="#ref-fenaille2017" role="doc-biblioref">2017</a>)</span>.</p></li>
 </ul>
 <p>Here is the slides for metabolomics data analysis workshop and I have made presentations twice in UWaterloo and UC Irvine.</p>
 <ul>
@@ -415,53 +421,54 @@ Figure 1.3: Metabolomics timeline during pre- and post-metabolomics era
 <div id="application" class="section level3">
 <h3><span class="header-section-number">1.2.3</span> Application</h3>
 <ul>
-<li><p>For environmental research related metabolomics or exposome, check those papers<span class="citation">(Bundy, Davey, and Viant <a href="#ref-bundy2009">2009</a>; Warth et al. <a href="#ref-warth2017">2017</a>)</span>.</p></li>
-<li><p>For food chemistry, check this<span class="citation">(Castro-Puyana et al. <a href="#ref-castro-puyana2017">2017</a>)</span> and this paper for livestock<span class="citation">(Goldansaz et al. <a href="#ref-goldansaz2017">2017</a>)</span> and those one for nutrients<span class="citation">(Allam-Ndoul et al. <a href="#ref-allam-ndoul2016">2016</a>; Jones, Park, and Ziegler <a href="#ref-jones2012">2012</a>)</span></p></li>
-<li><p>For disease related metabolomics such as oncology<span class="citation">(Spratlin, Serkova, and Eckhardt <a href="#ref-spratlin2009">2009</a>; Tumas et al. <a href="#ref-tumas2016">2016</a>)</span>, ophthalmology<span class="citation">(Tan et al. <a href="#ref-tan2016">2016</a>)</span>, Cardiovascular<span class="citation">(Cheng et al. <a href="#ref-cheng2017">2017</a>)</span> and chronic kidney disease<span class="citation">(Hocher and Adamski <a href="#ref-hocher2017">2017</a>)</span>, check those papers. This paper<span class="citation">(Kennedy et al. <a href="#ref-kennedy2018">2018</a>)</span> cover the metabolomics realted clinic research.</p></li>
-<li><p>Check this piece<span class="citation">(Wishart <a href="#ref-wishart2016">2016</a>)</span> for drug discovery and precision medicine</p></li>
-<li><p>The object could be plant<span class="citation">(Jorge, Mata, and António <a href="#ref-jorge2016a">2016</a>; Sumner, Mendes, and Dixon <a href="#ref-sumner2003">2003</a>)</span>, microbial and mammalian<span class="citation">(Kapoore and Vaidyanathan <a href="#ref-kapoore2016b">2016</a>)</span>, brain<span class="citation">(Gonzalez-Riano, Garcia, and Barbas <a href="#ref-gonzalez-riano2016">2016</a>)</span>, human gut microbiota<span class="citation">(Smirnov et al. <a href="#ref-smirnov2016">2016</a>)</span>.</p></li>
-<li><p>For single cell metabolomics analysis, check here<span class="citation">(Fessenden <a href="#ref-fessenden2016">2016</a>; Zenobi <a href="#ref-zenobi2013">2013</a>)</span>.</p></li>
+<li><p>For environmental research related metabolomics or exposome, check those papers<span class="citation">(Bundy, Davey, and Viant <a href="#ref-bundy2009" role="doc-biblioref">2009</a>; Warth et al. <a href="#ref-warth2017" role="doc-biblioref">2017</a>)</span>.</p></li>
+<li><p>For food chemistry, check this<span class="citation">(Castro-Puyana et al. <a href="#ref-castro-puyana2017" role="doc-biblioref">2017</a>)</span> and this paper for livestock<span class="citation">(Goldansaz et al. <a href="#ref-goldansaz2017" role="doc-biblioref">2017</a>)</span> and those one for nutrients<span class="citation">(Allam-Ndoul et al. <a href="#ref-allam-ndoul2016" role="doc-biblioref">2016</a>; Jones, Park, and Ziegler <a href="#ref-jones2012" role="doc-biblioref">2012</a>)</span></p></li>
+<li><p>For disease related metabolomics such as oncology<span class="citation">(Spratlin, Serkova, and Eckhardt <a href="#ref-spratlin2009" role="doc-biblioref">2009</a>; Tumas et al. <a href="#ref-tumas2016" role="doc-biblioref">2016</a>)</span>, ophthalmology<span class="citation">(Tan et al. <a href="#ref-tan2016" role="doc-biblioref">2016</a>)</span>, Cardiovascular<span class="citation">(Cheng et al. <a href="#ref-cheng2017" role="doc-biblioref">2017</a>)</span> and chronic kidney disease<span class="citation">(Hocher and Adamski <a href="#ref-hocher2017" role="doc-biblioref">2017</a>)</span>, check those papers. This paper<span class="citation">(Kennedy et al. <a href="#ref-kennedy2018" role="doc-biblioref">2018</a>)</span> cover the metabolomics realted clinic research.</p></li>
+<li><p>Check this piece<span class="citation">(Wishart <a href="#ref-wishart2016" role="doc-biblioref">2016</a>)</span> for drug discovery and precision medicine</p></li>
+<li><p>The object could be plant<span class="citation">(Jorge, Mata, and António <a href="#ref-jorge2016a" role="doc-biblioref">2016</a>; Sumner, Mendes, and Dixon <a href="#ref-sumner2003" role="doc-biblioref">2003</a>)</span>, microbial and mammalian<span class="citation">(Kapoore and Vaidyanathan <a href="#ref-kapoore2016b" role="doc-biblioref">2016</a>)</span>, brain<span class="citation">(Gonzalez-Riano, Garcia, and Barbas <a href="#ref-gonzalez-riano2016" role="doc-biblioref">2016</a>)</span>, human gut microbiota<span class="citation">(Smirnov et al. <a href="#ref-smirnov2016" role="doc-biblioref">2016</a>)</span>.</p></li>
+<li><p>For single cell metabolomics analysis, check here<span class="citation">(Fessenden <a href="#ref-fessenden2016" role="doc-biblioref">2016</a>; Zenobi <a href="#ref-zenobi2013" role="doc-biblioref">2013</a>)</span>.</p></li>
 </ul>
 </div>
 <div id="challenge" class="section level3">
 <h3><span class="header-section-number">1.2.4</span> Challenge</h3>
 <ul>
-<li><p>High throughput Metabolomics related issues could be found here <span class="citation">(Zampieri et al. <a href="#ref-zampieri2017">2017</a>)</span>.
+<li><p>High throughput Metabolomics related issues could be found here <span class="citation">(Zampieri et al. <a href="#ref-zampieri2017" role="doc-biblioref">2017</a>)</span>.
 - Cohort size
 - Temporal resolution
 - Spatial resolution</p></li>
-<li><p>Quantitative Metabolomics related issues could be found here<span class="citation">(Kapoore and Vaidyanathan <a href="#ref-kapoore2016b">2016</a>; Jorge, Mata, and António <a href="#ref-jorge2016a">2016</a>)</span>.</p></li>
-<li><p>For quality control issues, check here<span class="citation">(Dudzik et al. <a href="#ref-dudzik2018">2018</a>; Siskos et al. <a href="#ref-siskos2017">2017</a>)</span>.</p></li>
+<li><p>Quantitative Metabolomics related issues could be found here<span class="citation">(Kapoore and Vaidyanathan <a href="#ref-kapoore2016b" role="doc-biblioref">2016</a>; Jorge, Mata, and António <a href="#ref-jorge2016a" role="doc-biblioref">2016</a>)</span>.</p></li>
+<li><p>For quality control issues, check here<span class="citation">(Dudzik et al. <a href="#ref-dudzik2018" role="doc-biblioref">2018</a>; Siskos et al. <a href="#ref-siskos2017" role="doc-biblioref">2017</a>)</span>.</p></li>
 </ul>
 </div>
 </div>
 <div id="trends-in-metabolomics" class="section level2">
 <h2><span class="header-section-number">1.3</span> Trends in Metabolomics</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(gtrendsR)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">res &lt;-<span class="st"> </span><span class="kw">gtrends</span>(<span class="kw">c</span>(<span class="st">&quot;metabolomics&quot;</span>, <span class="st">&quot;metabolomics&quot;</span>), <span class="dt">geo =</span> <span class="kw">c</span>(<span class="st">&quot;CA&quot;</span>,<span class="st">&quot;US&quot;</span>))</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">plot</span>(res)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="introduction.html#cb1-1"></a><span class="kw">library</span>(gtrendsR)</span>
+<span id="cb1-2"><a href="introduction.html#cb1-2"></a>res &lt;-<span class="st"> </span><span class="kw">gtrends</span>(<span class="kw">c</span>(<span class="st">&quot;metabolomics&quot;</span>, <span class="st">&quot;metabolomics&quot;</span>), <span class="dt">geo =</span> <span class="kw">c</span>(<span class="st">&quot;CA&quot;</span>,<span class="st">&quot;US&quot;</span>))</span>
+<span id="cb1-3"><a href="introduction.html#cb1-3"></a><span class="kw">plot</span>(res)</span></code></pre></div>
 <p><img src="Metabolomics_files/figure-html/gtrends-1.png" width="672" /></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">library</span>(rentrez)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">papers_by_year &lt;-<span class="st"> </span><span class="cf">function</span>(years, search_term){</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">    <span class="kw">return</span>(<span class="kw">sapply</span>(years, <span class="cf">function</span>(y) <span class="kw">entrez_search</span>(<span class="dt">db=</span><span class="st">&quot;pubmed&quot;</span>,<span class="dt">term=</span>search_term, <span class="dt">mindate=</span>y, <span class="dt">maxdate=</span>y, <span class="dt">retmax=</span><span class="dv">0</span>)<span class="op">$</span>count))</a>
-<a class="sourceLine" id="cb2-4" data-line-number="4">}</a>
-<a class="sourceLine" id="cb2-5" data-line-number="5">years &lt;-<span class="st"> </span><span class="dv">1987</span><span class="op">:</span><span class="dv">2018</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6">total_papers &lt;-<span class="st"> </span><span class="kw">papers_by_year</span>(years, <span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb2-7" data-line-number="7">omics &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;genomic&quot;</span>, <span class="st">&quot;epigenomic&quot;</span>,  <span class="st">&quot;metagenomic&quot;</span>, <span class="st">&quot;proteomic&quot;</span>, <span class="st">&quot;transcriptomic&quot;</span>,<span class="st">&quot;metabolomics&quot;</span>,<span class="st">&quot;exposome&quot;</span>, <span class="st">&quot;pharmacogenomic&quot;</span>, <span class="st">&quot;connectomic&quot;</span>)</a>
-<a class="sourceLine" id="cb2-8" data-line-number="8">trend_data &lt;-<span class="st"> </span><span class="kw">sapply</span>(omics, <span class="cf">function</span>(t) <span class="kw">papers_by_year</span>(years, t))</a>
-<a class="sourceLine" id="cb2-9" data-line-number="9">trend_props &lt;-<span class="st"> </span>trend_data<span class="op">/</span>total_papers</a>
-<a class="sourceLine" id="cb2-10" data-line-number="10"><span class="kw">library</span>(reshape)</a>
-<a class="sourceLine" id="cb2-11" data-line-number="11"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb2-12" data-line-number="12">trend_df &lt;-<span class="st"> </span><span class="kw">melt</span>(<span class="kw">data.frame</span>(years, trend_data), <span class="dt">id.vars=</span><span class="st">&quot;years&quot;</span>)</a>
-<a class="sourceLine" id="cb2-13" data-line-number="13">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(trend_df, <span class="kw">aes</span>(years, value, <span class="dt">colour=</span>variable))</a>
-<a class="sourceLine" id="cb2-14" data-line-number="14">p <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">size=</span><span class="dv">1</span>) <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_log10</span>(<span class="st">&quot;number of papers&quot;</span>)</a></code></pre></div>
-<pre><code>## Warning: Transformation introduced infinite values in continuous y-axis</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="introduction.html#cb2-1"></a><span class="kw">library</span>(rentrez)</span>
+<span id="cb2-2"><a href="introduction.html#cb2-2"></a>papers_by_year &lt;-<span class="st"> </span><span class="cf">function</span>(years, search_term){</span>
+<span id="cb2-3"><a href="introduction.html#cb2-3"></a>    <span class="kw">return</span>(<span class="kw">sapply</span>(years, <span class="cf">function</span>(y) <span class="kw">entrez_search</span>(<span class="dt">db=</span><span class="st">&quot;pubmed&quot;</span>,<span class="dt">term=</span>search_term, <span class="dt">mindate=</span>y, <span class="dt">maxdate=</span>y, <span class="dt">retmax=</span><span class="dv">0</span>)<span class="op">$</span>count))</span>
+<span id="cb2-4"><a href="introduction.html#cb2-4"></a>}</span>
+<span id="cb2-5"><a href="introduction.html#cb2-5"></a>years &lt;-<span class="st"> </span><span class="dv">1987</span><span class="op">:</span><span class="dv">2018</span></span>
+<span id="cb2-6"><a href="introduction.html#cb2-6"></a>total_papers &lt;-<span class="st"> </span><span class="kw">papers_by_year</span>(years, <span class="st">&quot;&quot;</span>)</span>
+<span id="cb2-7"><a href="introduction.html#cb2-7"></a>omics &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;genomic&quot;</span>, <span class="st">&quot;epigenomic&quot;</span>,  <span class="st">&quot;metagenomic&quot;</span>, <span class="st">&quot;proteomic&quot;</span>, <span class="st">&quot;transcriptomic&quot;</span>,<span class="st">&quot;metabolomics&quot;</span>,<span class="st">&quot;exposome&quot;</span>, <span class="st">&quot;pharmacogenomic&quot;</span>, <span class="st">&quot;connectomic&quot;</span>)</span>
+<span id="cb2-8"><a href="introduction.html#cb2-8"></a>trend_data &lt;-<span class="st"> </span><span class="kw">sapply</span>(omics, <span class="cf">function</span>(t) <span class="kw">papers_by_year</span>(years, t))</span>
+<span id="cb2-9"><a href="introduction.html#cb2-9"></a>trend_props &lt;-<span class="st"> </span>trend_data<span class="op">/</span>total_papers</span>
+<span id="cb2-10"><a href="introduction.html#cb2-10"></a><span class="kw">library</span>(reshape)</span>
+<span id="cb2-11"><a href="introduction.html#cb2-11"></a><span class="kw">library</span>(ggplot2)</span>
+<span id="cb2-12"><a href="introduction.html#cb2-12"></a>trend_df &lt;-<span class="st"> </span><span class="kw">melt</span>(<span class="kw">data.frame</span>(years, trend_data), <span class="dt">id.vars=</span><span class="st">&quot;years&quot;</span>)</span>
+<span id="cb2-13"><a href="introduction.html#cb2-13"></a>p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(trend_df, <span class="kw">aes</span>(years, value, <span class="dt">colour=</span>variable))</span>
+<span id="cb2-14"><a href="introduction.html#cb2-14"></a>p <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>(<span class="dt">size=</span><span class="dv">1</span>) <span class="op">+</span><span class="st"> </span><span class="kw">scale_y_log10</span>(<span class="st">&quot;number of papers&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning: Transformation introduced infinite values in
+## continuous y-axis</code></pre>
 <p><img src="Metabolomics_files/figure-html/rentrez-1.png" width="672" /></p>
 </div>
 <div id="workflow-1" class="section level2">
 <h2><span class="header-section-number">1.4</span> Workflow</h2>
-<div id="htmlwidget-4e66045f75d24699fe14" style="width:300px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4e66045f75d24699fe14">{"x":{"diagram":"digraph workflow {\nnode [shape = box]\nA [label = \"raw data\"]\nB [label = \"open source format\"]\nC [label = \"DoE folder\"]\nD [label = \"peaks list\"]\nE [label = \"retention time correction\"]\nF [label = \"peaks grouping\"]\nG [label = \"peaks filling\"]\nH [label = \"raw peaks\"]\nI [label = \"data visulization\"]\nJ [label = \"batch effects correction\"]\nK [label = \"corrected peaks\"]\nL [label = \"annotation\"]\nM [label = \"metabolomics pathway analysis\"]\nN [label = \"omics analysis\"]\nO [label = \"biomarkers discovery/diagnoise\"]\n\nA -> B -> C -> D -> E -> F -> G -> H\nH -> I\nI -> J\nH -> J -> K -> L\nL -> M -> N\nL -> O\n                  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-eff0512149e663867bba" style="width:300px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-eff0512149e663867bba">{"x":{"diagram":"digraph workflow {\nnode [shape = box]\nA [label = \"raw data\"]\nB [label = \"open source format\"]\nC [label = \"DoE folder\"]\nD [label = \"peaks list\"]\nE [label = \"retention time correction\"]\nF [label = \"peaks grouping\"]\nG [label = \"peaks filling\"]\nH [label = \"raw peaks\"]\nI [label = \"data visulization\"]\nJ [label = \"batch effects correction\"]\nK [label = \"corrected peaks\"]\nL [label = \"annotation\"]\nM [label = \"metabolomics pathway analysis\"]\nN [label = \"omics analysis\"]\nO [label = \"biomarkers discovery/diagnoise\"]\n\nA -> B -> C -> D -> E -> F -> G -> H\nH -> I\nI -> J\nH -> J -> K -> L\nL -> M -> N\nL -> O\n                  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 
 </div>
 </div>
@@ -564,7 +571,7 @@ Figure 1.3: Metabolomics timeline during pre- and post-metabolomics era
 <p>Misra, Biswapriya B., Johannes F. Fahrmann, and Dmitry Grapov. 2017. “Review of Emerging Metabolomic Tools and Resources: 20152016.” <em>ELECTROPHORESIS</em> 38 (18): 2257–74. <a href="https://doi.org/10.1002/elps.201700110">https://doi.org/10.1002/elps.201700110</a>.</p>
 </div>
 <div id="ref-misra2016">
-<p>Misra, Biswapriya B., and prefix=van der family=Hooft given=Justin J. J. 2016. “Updates in Metabolomics Tools and Resources: 20142015.” <em>ELECTROPHORESIS</em> 37 (1): 86–110. <a href="https://doi.org/10.1002/elps.201500417">https://doi.org/10.1002/elps.201500417</a>.</p>
+<p>Misra, Biswapriya B., and Justin J. J. van der Hooft. 2016. “Updates in Metabolomics Tools and Resources: 20142015.” <em>ELECTROPHORESIS</em> 37 (1): 86–110. <a href="https://doi.org/10.1002/elps.201500417">https://doi.org/10.1002/elps.201500417</a>.</p>
 </div>
 <div id="ref-siskos2017">
 <p>Siskos, Alexandros P., Pooja Jain, Werner Römisch-Margl, Mark Bennett, David Achaintre, Yasmin Asad, Luke Marney, et al. 2017. “Interlaboratory Reproducibility of a Targeted Metabolomics Platform for Analysis of Human Serum and Plasma.” <em>Anal. Chem.</em> 89 (1): 656–65. <a href="https://doi.org/10.1021/acs.analchem.6b02930">https://doi.org/10.1021/acs.analchem.6b02930</a>.</p>

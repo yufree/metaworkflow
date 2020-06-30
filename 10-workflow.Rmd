@@ -64,6 +64,8 @@ MS-DAIL is also an option for DIA.
 
 - [MetaboliteDetector](http://md.tu-bs.de/node/3) is a QT4 based software package for the analysis of GC/MS based metabolomics data.
 
+- [autoGCMSDataAnal](http://software.tobaccodb.org/software/autogcmsdataanal) is a Matlab based comprehensive data analysis strategy for GC-MS-based untargeted metabolomics[@zhang2020].
+
 ## Data sharing
 
 See this paper[@haug2017]:
