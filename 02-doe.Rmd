@@ -29,7 +29,7 @@ $$
 
 Other study [@blaise2016a] show a method based on simulation to estimate the sample size. They used BY correction to limit the influences from correlations. However, the nature of omics study make the power analysis hard to use one numbers for all metabolites and all the methods are trying to find a balance to represent more peaks with least samples(save money).
 
-If there are other co-factors, a linear model or randomizing would be applied to eliminated their influences. You need to record the values of those co-factors for further data analysis. Common co-factors in metabolomics studies are age, gender, location, etc.
+If there are other co-factors, a linear model or randomizing would be applied to eliminate their influences. You need to record the values of those co-factors for further data analysis. Common co-factors in metabolomics studies are age, gender, location, etc.
 
 If you need data correction, some background or calibration samples are required. However, control samples could also be used for data correction in certain DoE.
 
