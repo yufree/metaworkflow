@@ -6,7 +6,7 @@ Raw data from the instruments such as LC-MS or GC-MS were hard to be analyzed. T
 
 - Each scan contains a full scan mass spectra
 
-Commen formats for open source mass spectrum data are mzxml, mzml or CDF. However, **masscomp** might shrink the data size[@yang2019b].
+Common formats for open source mass spectrum data are mzxml, mzml or CDF. However, **masscomp** might shrink the data size[@yang2019b].
 
 ## Data visualization
 
