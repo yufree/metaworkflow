@@ -14,3 +14,9 @@ LaTeX: pdfLaTeX
 
 BuildType: Custom
 CustomScriptPath: _build.sh
+
+PythonType: system
+PythonVersion: 3.7.3
+PythonPath: /usr/bin/python3
+
+SpellingDictionary: en_US

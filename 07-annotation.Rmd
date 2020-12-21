@@ -2,96 +2,185 @@
 
 When you get the peaks table or features table, annotation of the peaks would help you. Check this review[@domingo-almenara2018] for a detailed notes on annotation. They proposed five levels regarding currently computational annotation strategies.
 
-- Level 1: Peak Grouping: MS Psedospectra extraction based on peak shape similarity and peak abundance correlation
+-   Level 1: Peak Grouping: MS Psedospectra extraction based on peak shape similarity and peak abundance correlation
 
-- Level 2: Peak Annotation: Adducts, Neutral losses, isotopes, and other mass relationships based on mass distances
+-   Level 2: Peak Annotation: Adducts, Neutral losses, isotopes, and other mass relationships based on mass distances
 
-- Level 3: Biochemical knowledge based on putative identification, potential biochemical reaction and related statistical analysis 
+-   Level 3: Biochemical knowledge based on putative identification, potential biochemical reaction and related statistical analysis
 
-- Level 4: Use and intergration of tandem MS data based on data dependant/independent acquistion mode or **in silico** predction
+-   Level 4: Use and integration of tandem MS data based on data dependent/independent acquisition mode or **in silico** prediction
 
-- Level 5: Retention time prediction based on library-available retention index or quantitative structure-retnetion relationships (QSRR) models.
+-   Level 5: Retention time prediction based on library-available retention index or quantitative structure-retention relationships (QSRR) models.
 
-Most of the softwares are at level 1 or 2. If we only have compounds structure, we could guess ions under different ionization method. If we have mass spectrum, we could match the mass spectral by a similarity analysis to the database. In metabolomics, we only have mass spectrum or mass-to-charge ratios. Single mass-to-charge ratio is not enough for identification. That's the one bottleneck for annotation. So prediction is always performed on MS/MS data.
+Most of the software are at level 1 or 2. If we only have compounds structure, we could guess ions under different ionization method. If we have mass spectrum, we could match the mass spectral by a similarity analysis to the database. In metabolomics, we only have mass spectrum or mass-to-charge ratios. Single mass-to-charge ratio is not enough for identification. That's the one bottleneck for annotation. So prediction is always performed on MS/MS data.
 
 ## Issues in annotation
 
-The major issue in annotation is the redundancy peaks from same metabolite. Unlike genomcis, peaks or featuers from peak selection are not independant with each other. Adducts, in-source fragments and isotopes would lead to missannotation. A commen solution is that use known adducts, neutral losses, molecular multimers or multipley charged ions to compare mass distances.
+The major issue in annotation is the redundancy peaks from same metabolite. Unlike genomes, peaks or features from peak selection are not independent with each other. Adducts, in-source fragments and isotopes would lead to wrong annotation. A common solution is that use known adducts, neutral losses, molecular multimers or multiple charged ions to compare mass distances.
 
 Another issue is about the MS/MS database. Only 10% of known metabolites in databases have experimental spectral data. Thus **in silico** prediction are required. Some works try to fill the gap between experimental data, theoretical values(from chemical database like chemspider) and prediction together. Here is a nice review about MS/MS prediction[@hufsky2014].
 
 ## Peak misidentification
 
-- Isomer
+-   Isomer
 
-Use seperation methods such as chromatography, ion mobility MS, MS/MS. Reversed-phase ion-pairing chromatography and HILIC is useful.Chemical derivatization is another options.
+Use separation methods such as chromatography, ion mobility MS, MS/MS. Reversed-phase ion-pairing chromatography and HILIC is useful. Chemical derivatization is another options.
 
-- Interfering compounds
+-   Interfering compounds
 
 20ppm is the least resolution and accuracy for HRMS.
 
-- In-source degradation products
+-   In-source degradation products
 
 ## Annotation v.s. identification
 
-According to the defination from the Chemical Analysis Working Group of the Metabolomics Standards Intitvative[@sumner2007;@viant2017]. Four levels of confidence could be assigned to identification:
+According to the definition from the Chemical Analysis Working Group of the Metabolomics Standards Intitvative[@sumner2007; @viant2017]. Four levels of confidence could be assigned to identification:
 
-- Level 1 'identified metabolites'
-- Level 2 'Putatively annotated compounds'
-- Level 3 'Putatively characterised compound classes'
-- Level 4 'Unknown'
+-   Level 1 'identified metabolites'
+-   Level 2 'Putatively annotated compounds'
+-   Level 3 'Putatively characterised compound classes'
+-   Level 4 'Unknown'
 
 In practice, data analysis based annotation could reach level 2. For level 1, we need at extra methods such as MS/MS, retention time, accurate mass, 2D NMR spectra, and so on to confirm the compounds. However, standards are always required for solid proof.
 
-## Cheminformatics
+## Molecular Formula Assignment
 
-- [RDKit](https://www.rdkit.org/) Open-Source Cheminformatics Software
-- [cdk](https://sourceforge.net/projects/cdk/) The Chemistry Development Kit (CDK) is a scientific, LGPL-ed library for bio- and cheminformatics and computational chemistry written in Java.
-- [Open Babel](http://openbabel.org/wiki/Main_Page) Open Babel is a chemical toolbox designed to speak the many languages of chemical data.
- 
+Cheminformatics will help for MS annotation. The first task is molecular formula assignment. For a given accurate mass, the formula should be constrained by predefined element type and atom number, mass error window and rules of chemical bonding, such as double bond equivalent (DBE) and the nitrogen rule. The nitrogen rule is that an odd nominal molecular mass implies also an odd number of nitrogen. This rule should only be used with nominal (integer) masses. Degree of unsaturation or DBE use rings-plus-double-bonds equivalent (RDBE) values, which should be interger. The elements oxygen and sulphur were not taken into account. Otherwise the molecular formula will not be true.
+
+$$RDBE = C+Si - 1/2(H+F+Cl+Br+I) + 1/2(N+P)+1 $$
+
+To assign molecular formula to a mass to charge ratio, Seven Golden Rules [@kind2007] for heuristic filtering of molecular formulas should be considered:
+
+-   Apply heuristic restrictions for number of elements during formula generation. This is the table for known compounds:
+
+```{r echo=FALSE}
+df <- data.frame(
+   stringsAsFactors = FALSE,
+        check.names = FALSE,
+  `Mass.Range.[Da]` = c("< 500", NA, "< 1000", NA, "< 2000", NA, "< 3000"),
+            Library = c("DNP", "Wiley", "DNP", "Wiley", "DNP", "Wiley", "DNP"),
+              C.max = c(29L, 39L, 66L, 78L, 115L, 156L, 162L),
+              H.max = c(72L, 72L, 126L, 126L, 236L, 180L, 208L),
+              N.max = c(10L, 20L, 25L, 20L, 32L, 20L, 48L),
+              O.max = c(18L, 20L, 27L, 27L, 63L, 40L, 78L),
+              P.max = c(4L, 9L, 6L, 9L, 6L, 9L, 6L),
+              S.max = c(7L, 10L, 8L, 14L, 8L, 14L, 9L),
+              F.max = c(15L, 16L, 16L, 34L, 16L, 48L, 16L),
+             Cl.max = c(8L, 10L, 11L, 12L, 11L, 12L, 11L),
+             Br.max = c(5L, 4L, 8L, 8L, 8L, 10L, 8L),
+             Si.max = c(NA, 8L, NA, 14L, NA, 15L, NA)
+)
+df
+```
+
+-   Perform LEWIS and SENIOR check. The LEWIS rule demands that molecules consisting of main group elements, especially carbon, nitrogen and oxygen, share electrons in a way that all atoms have completely filled s, p-valence shells ('[octet rule](https://en.wikipedia.org/wiki/Octet_rule)'). Senior's theorem requires three essential conditions for the existence of molecular graphs
+
+    -   The sum of valences or the total number of atoms having odd valences is even;
+
+    -   The sum of valences is greater than or equal to twice the maximum valence;
+
+    -   The sum of valences is greater than or equal to twice the number of atoms minus 1.
+
+-   Perform isotopic pattern filter. Isotope ratio abundance was included in the algorithm as an additional orthogonal constraint, assuming high quality data acquisitions, specifically sufficient ion statistics and high signal/noise ratio for the detection of the M+1 and M+2 abundances. For monoisotopic elements (F, Na, P, I) this rule has no impact. isotope pattern will be useful for brominated, chlorinated small molecules and sulphur-containing peptides.
+
+-   Perform H/C ratio check (hydrogen/carbon ratio). In most cases the hydrogen/carbon ratio does not exceed H/C \> 3 with rare exception such as in methylhydrazine (CH6N2). Conversely, the H/C ratio is usually smaller than 2, and should not be less than 0.125 like in the case of tetracyanopyrrole (C8HN5).
+
+-   Perform NOPS ratio check (N, O, P, S/C ratios).
+
+```{r echo=FALSE}
+df <- data.frame(
+                    stringsAsFactors = FALSE,
+                         check.names = FALSE,
+                      Element.ratios = c("H/C","F/C","Cl/C","Br/C",
+                                         "N/C","O/C","P/C","S/C","Si/C"),
+     `Common.range.(covering.99.7%)` = c("0.2–3.1","0–1.5","0–0.8",
+                                         "0–0.8","0–1.3","0–1.2","0–0.3","0–0.8",
+                                         "0–0.5"),
+  `Extended.range.(covering.99.99%)` = c("0.1–6","0–6","0–2","0–2",
+                                         "0–4","0–3","0–2","0–3","0–1"),
+     `Extreme.range.(beyond.99.99%)` = c("< 0.1 and 6–9","> 1.5","> 0.8",
+                                         "> 0.8","> 1.3","> 1.2","> 0.3",
+                                         "> 0.8","> 0.5")
+)
+df
+```
+
+-   Perform heuristic HNOPS probability check (H, N, O, P, S/C high probability ratios)
+
+```{r}
+df <- data.frame(
+                stringsAsFactors = FALSE,
+                  Element.counts = c("NOPS all > 1","NOP all > 3","OPS all > 1",
+                                     "PSN all > 1","NOS all > 6"),
+                  Heuristic.Rule = c("N< 10, O < 20, P < 4, S < 3",
+                                     "N < 11, O < 22, P < 6","O < 14, P < 3, S < 3",
+                                     "P < 3, S < 3, N < 4","N < 19 O < 14 S < 8"),
+  DB.examples.for.maximum.values = c("C15H34N9O8PS, C22H44N4O14P2S2, C24H38N7O19P3S","C20H28N10O21P4, C10H18N5O20P5",
+                                     "C22H44N4O14P2S2, C16H36N4O4P2S2",
+                                     "C22H44N4O14P2S2, C16H36N4O4P2S2","C59H64N18O14S7")
+)
+df
+```
+
+-   Perform TMS check (for GC-MS if a silylation step is involved). For TMS derivatized molecules detected in GC/MS analyses, the rules on element ratio checks and valence tests are hence best applied after TMS groups are subtracted, in a similar manner as adducts need to be first recognized and subtracted in LC/MS analyses.
+
+Seven Golden Rules were built for GC-MS and Hydrogen Rearrangement Rules were major designed for LC-CID-MS/MS[@tsugawa2016]. Based on extensively curated database records and enthalpy calculations, "hydrogen rearrangement (HR) rules" could be extending the even-electron rule for carbon (C) and heteroatoms, oxygen (O), nitrogen (N), phosphorus (P), and sulfur (S). They used high abundance MS/MS peaks that exceeded 10% of their base peaks to identify common features in terms of 4 HR rules for positive mode and 5 HR rules for negative mode.
+
+Seven Golden Rules and Hydrogen Rearrangement Rules might also be captured by statistical models. However, such heuristic rules could reduce the searching space of possible formula.
+
+Here is some other Cheminformatics tools, which could be used to assign meanful formula or structures for mass spectra.
+
+-   [RDKit](https://www.rdkit.org/) Open-Source Cheminformatics Software
+-   [cdk](https://sourceforge.net/projects/cdk/) The Chemistry Development Kit (CDK) is a scientific, LGPL-ed library for bio- and cheminformatics and computational chemistry written in Java.
+-   [Open Babel](http://openbabel.org/wiki/Main_Page) Open Babel is a chemical toolbox designed to speak the many languages of chemical data.
+
+## Chromatographic retention-related criteria
+
+For targeted analysis, chromatographic retention time could be the qualitative method for certain compounds with a carefully designed pre-treatment. For untargeted analysis, such information could also be used for annotation. GC-MS usually use retention index for certain column while LC-MS might not show enough reproducible results as GC. Such method could be tracked back to quantitative structure-retention relationship (QSRR) models or linear solvation energy relationship (LSER). However, such methods need molecular descriptors as much as possible. For untargeted analysis, retention time and mass to charge ratio could not generate enough molecular descriptors to build QSPR models. In this case, such criteria might be usefully for validation instead of annotation unless we could measure or extract more information such as ion mobility from unknown compounds.
+
 ## MS Database for annotation
 
 ### MS/MS
 
-- [MoNA](http://mona.fiehnlab.ucdavis.edu/) Platform to collect all other open source database
+-   [MoNA](http://mona.fiehnlab.ucdavis.edu/) Platform to collect all other open source database
 
-- [MassBank](http://www.massbank.jp/?lang=en)
+-   [MassBank](http://www.massbank.jp/?lang=en)
 
-- [GNPS](https://gnps.ucsd.edu/ProteoSAFe/static/gnps-splash.jsp)  use  inner correlationship in the data and make network analysis at peaks' level instand of annotated compounds to annotate the data[@wang2016b].
+-   [GNPS](https://gnps.ucsd.edu/ProteoSAFe/static/gnps-splash.jsp) use inner correlationship in the data and make network analysis at peaks' level instand of annotated compounds to annotate the data[@wang2016b].
 
-- [ReSpect](http://spectra.psc.riken.jp/): phytochemicals
+-   [ReSpect](http://spectra.psc.riken.jp/): phytochemicals
 
-- [Metlin](https://metlin.scripps.edu/) is another useful online application for annotation[@guijas2018].
+-   [Metlin](https://metlin.scripps.edu/) is another useful online application for annotation[@guijas2018].
 
-- [LipidBlast](http://fiehnlab.ucdavis.edu/projects/LipidBlast): in silico prediction
+-   [LipidBlast](http://fiehnlab.ucdavis.edu/projects/LipidBlast): **in silico** prediction
 
-- [MZcloud](https://www.mzcloud.org/)
+-   [MZcloud](https://www.mzcloud.org/)
 
-- [NIST](https://www.nist.gov/srd/nist-standard-reference-database-1a-v17): Not free
+-   [NIST](https://www.nist.gov/srd/nist-standard-reference-database-1a-v17): Not free
 
 ### MS
 
-- [Fiehn Lab](http://fiehnlab.ucdavis.edu/projects/binbase-setup)
+-   [Fiehn Lab](http://fiehnlab.ucdavis.edu/projects/binbase-setup)
 
-- [NIST](https://www.nist.gov/srd/nist-standard-reference-database-1a-v17): No free
+-   [NIST](https://www.nist.gov/srd/nist-standard-reference-database-1a-v17): No free
 
-- [Spectral Database for Organic Compounds, SDBS](https://sdbs.db.aist.go.jp/sdbs/cgi-bin/cre_index.cgi?lang=eng)
+-   [Spectral Database for Organic Compounds, SDBS](https://sdbs.db.aist.go.jp/sdbs/cgi-bin/cre_index.cgi?lang=eng)
 
-- [MINE](http://minedatabase.mcs.anl.gov/#/faq) is an open access database of computationally predicted enzyme promiscuity products for untargeted metabolomics
+-   [MINE](http://minedatabase.mcs.anl.gov/#/faq) is an open access database of computationally predicted enzyme promiscuity products for untargeted metabolomics
 
-- [Database](https://www.sciencedirect.com/science/article/abs/pii/S0039914019311786?via%3Dihub) of free solution mobilities for 276 metabolites for capillary zone electrophoresis / mass spectrometry. [@petrov2020]
+-   [Database](https://www.sciencedirect.com/science/article/abs/pii/S0039914019311786?via%3Dihub) of free solution mobilities for 276 metabolites for capillary zone electrophoresis / mass spectrometry. [@petrov2020]
 
 ## Compounds Database
 
-- [PubChem](https://pubchem.ncbi.nlm.nih.gov/) is an open chemistry database at the National Institutes of Health (NIH).
+-   [PubChem](https://pubchem.ncbi.nlm.nih.gov/) is an open chemistry database at the National Institutes of Health (NIH).
 
-- [Chemspider](http://www.chemspider.com/) is a free chemical structure database providing fast text and structure search access to over 67 million structures from hundreds of data sources.
+-   [Chemspider](http://www.chemspider.com/) is a free chemical structure database providing fast text and structure search access to over 67 million structures from hundreds of data sources.
 
-- [ChEBI](https://www.ebi.ac.uk/chebi/) is a freely available dictionary of molecular entities focused on ‘small’ chemical compounds. 
+-   [ChEBI](https://www.ebi.ac.uk/chebi/) is a freely available dictionary of molecular entities focused on 'small' chemical compounds.
 
-- [RefMet](http://www.metabolomicsworkbench.org/databases/refmet/index.php) A Reference list of Metabolite names.
+-   [RefMet](http://www.metabolomicsworkbench.org/databases/refmet/index.php) A Reference list of Metabolite names.
 
-- [CAS](https://www.cas.org/support/documentation/chemical-substances/cas-registry-100-millionth-fun-facts) Largest substance database
+-   [CAS](https://www.cas.org/support/documentation/chemical-substances/cas-registry-100-millionth-fun-facts) Largest substance database
 
 ## Software
 
@@ -123,14 +212,13 @@ The software could be found [here](https://github.com/cbroeckl/RAMClustR)[@broec
 vignette('RAMClustR',package = 'RAMClustR')
 ```
 
-
 ### pmd
 
-[Paired Mass Distance(PMD)](https://github.com/yufree/pmd) analysis for GC/LC-MS based nontarget analysis to find independant peaks[@yu2018]
+[Paired Mass Distance(PMD)](https://github.com/yufree/pmd) analysis for GC/LC-MS based nontarget analysis to find independent peaks[@yu2018]
 
 ### nontarget
 
-[nontarget](https://github.com/blosloos/nontarget) Isotope & adduct peak grouping, homologue series detection 
+[nontarget](https://github.com/blosloos/nontarget) Isotope & adduct peak grouping, homologue series detection
 
 ### xMSannotator
 
@@ -146,7 +234,7 @@ The software could be found [here](https://github.com/yufree/xMSannotator)[@uppa
 
 ### InterpretMSSpectrum
 
-This [package](https://github.com/cran/InterpretMSSpectrum) is for annotate and interpret deconvoluted mass spectra (mass*intensity pairs) from high resolution mass spectrometry devices. You could use this package to find molecular ions for GC-MS.
+This [package](https://github.com/cran/InterpretMSSpectrum) is for annotate and interpret deconvoluted mass spectra (mass\*intensity pairs) from high resolution mass spectrometry devices. You could use this package to find molecular ions for GC-MS.
 
 ### For Ident
 
@@ -198,7 +286,7 @@ You could find python software [here](http://www.biosciences-labs.bham.ac.uk/via
 
 ### Plantmat
 
-[excel library](https://sourceforge.net/projects/plantmat/) based pridiction for plant metabolites[@qiu2016].
+[excel library](https://sourceforge.net/projects/plantmat/) based prediction for plant metabolites[@qiu2016].
 
 ### MetFamily
 
@@ -206,7 +294,7 @@ You could find python software [here](http://www.biosciences-labs.bham.ac.uk/via
 
 ### Lipidmatch
 
-[in silico](http://secim.ufl.edu/secim-tools/lipidmatch/): in silico lipid mass spectrum search[@koelmel2017].
+[in silico](http://secim.ufl.edu/secim-tools/lipidmatch/): \*\*in silico\*\* lipid mass spectrum search[@koelmel2017].
 
 ### MolFind
 
@@ -230,7 +318,7 @@ This online [application](http://imet.seeslab.net/) is a network-based computati
 
 ### LipidFrag
 
-[LipidFrag](https://msbi.ipb-halle.de/msbi/lipidfrag)  could be used to make **in silico** prediction/match of lipid related MS/MS data[@witting2017].
+[LipidFrag](https://msbi.ipb-halle.de/msbi/lipidfrag) could be used to make **in silico** prediction/match of lipid related MS/MS data[@witting2017].
 
 ### MycompoundID
 
@@ -246,14 +334,14 @@ This online [application](http://imet.seeslab.net/) is a network-based computati
 
 ### MS-DIA
 
-- [decoMS2](https://pubs.acs.org/doi/10.1021/ac400751j) requires two different collision energies, low (usually 0V) and high, in each precursor range to solve the mathematical equations.[@nikolskiy2013]
+-   [decoMS2](https://pubs.acs.org/doi/10.1021/ac400751j) requires two different collision energies, low (usually 0V) and high, in each precursor range to solve the mathematical equations.[@nikolskiy2013]
 
-- [MS-DIAL](http://prime.psc.riken.jp/Metabolomics_Software/MS-DIAL/) data independent MS/MS deconvolution for comprehensive metabolome analysis.[@tsugawa2015]
+-   [MS-DIAL](http://prime.psc.riken.jp/Metabolomics_Software/MS-DIAL/) data independent MS/MS deconvolution for comprehensive metabolome analysis.[@tsugawa2015]
 
-- [MetDIA](https://pubs.acs.org/doi/abs/10.1021/acs.analchem.6b02122) Targeted Metabolite Extraction of Multiplexed MS/MS Spectra Generated by Data-Independent Acquisition[@li2016c]
+-   [MetDIA](https://pubs.acs.org/doi/abs/10.1021/acs.analchem.6b02122) Targeted Metabolite Extraction of Multiplexed MS/MS Spectra Generated by Data-Independent Acquisition[@li2016c]
 
-- [DIA-Umpire](https://www.nature.com/articles/nmeth.3255) comprehensive computational framework for data-independent acquisition proteomics[@tsou2015]
+-   [DIA-Umpire](https://www.nature.com/articles/nmeth.3255) comprehensive computational framework for data-independent acquisition proteomics[@tsou2015]
 
-- [MetaboDIA](https://sourceforge.net/projects/metabodia/) quantitative metabolomics analysis using DIA-MS[@chen2017a] 
+-   [MetaboDIA](https://sourceforge.net/projects/metabodia/) quantitative metabolomics analysis using DIA-MS[@chen2017a]
 
-- [SWATHtoMRM](https://pubs.acs.org/doi/10.1021/acs.analchem.7b05318) Development of High-Coverage Targeted Metabolomics Method Using SWATH Technology for Biomarker Discovery[@zha2018]
+-   [SWATHtoMRM](https://pubs.acs.org/doi/10.1021/acs.analchem.7b05318) Development of High-Coverage Targeted Metabolomics Method Using SWATH Technology for Biomarker Discovery[@zha2018]
