@@ -1,4 +1,4 @@
---- 
+---
 title: "Meta-Workflow"
 author: "Miao YU"
 date: "`r Sys.Date()`"
@@ -6,7 +6,7 @@ site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
 cover-image: "images/cover.png"
-bibliography: [book.bib,packages.bib]
+bibliography: [packages.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: yufree/metaworkflow
@@ -14,7 +14,7 @@ description: "This is a workflow for metabolomics studies."
 always_allow_html: yes
 ---
 
-# Preface {-}
+# Preface {.unnumbered}
 
 ```{r fig.align='center', echo=FALSE, include=identical(knitr:::pandoc_to(), 'html')}
 knitr::include_graphics('images/cover.png', dpi = NA)
@@ -22,19 +22,20 @@ knitr::include_graphics('images/cover.png', dpi = NA)
 
 This is an online handout for mass spectrometry based metabolomics data analysis. It would cover a full reproducible metabolomics workflow for data analysis and important topics related to metabolomics. Here is a list of topics:
 
-- Sample collection
-- Pretreatment
-- Principles of metabolomics data analysis
-- Software selection
-- Batch correction
-- Annotation
-- Omics analysis
-- Exposome
+-   Sample collection
+-   Sample pretreatment
+-   Principles of metabolomics data analysis
+-   Software selection
+-   Batch correction
+-   Annotation
+-   Omics analysis
+-   Exposome
 
-This is a book written in **Bookdown**. You could contribute it by a pull request in Github.
+This is a book written in **Bookdown**. You could contribute it by a pull request in Github. A workshop based on this book could be found [here](https://github.com/yufree/mdaw). Meanwhile, a docker image [xcmsrocker](https://hub.docker.com/r/yufree/xcmsrocker/) is available for metabolomics reproducible research.
 
-[**R**](https://www.r-project.org/) and [**Rstudio**](https://www.rstudio.com/) are the softwares needed in this workflow.
+[**R**](https://www.r-project.org/) and [**Rstudio**](https://www.rstudio.com/) are the software needed in this workflow.
 
+```{=html}
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -45,3 +46,4 @@ This is a book written in **Bookdown**. You could contribute it by a pull reques
   ga('send', 'pageview');
 
 </script>
+```

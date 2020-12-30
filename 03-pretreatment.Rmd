@@ -1,18 +1,26 @@
+---
+bibliography: references.bib
+---
+
 # Pretreatment
 
-Pretreatment will affect the results of metabolomics and cover the sample treatment from crude samples to injection vials. Sample pretreatment try to retain more interesting compounds while remove unrelated compounds. For metabolomics studies, we might not know 'interesting' compounds in advance and the unrelated compounds are highly depended on research purpose. For example, Gel Permeation Chromatograph(GPC), Florisil, Alumina, Silica gel could be used to remove lipid while alcohols and strong acid/base could make protein denaturation to release more compounds. However, if we are interested in lipid or protein, such pretreatment methods should be changed. In general, sample quenching, extraction methods, derivatization, and storage should be optimized in pretreatment.
+Pretreatment will affect the results of metabolomics and cover the sample treatment from crude samples to injection vials for instrumental analysis. The purpose of sample pretreatment is the to retain more interesting compounds while remove unrelated compounds. For metabolomics studies, we might not know 'interesting' compounds in advance and the unrelated compounds are highly depended on research purpose. For example, Gel Permeation Chromatograph(GPC), Florisil, Alumina, Silica gel could be used to remove lipid while alcohols and strong acid/base could make protein denaturation to release more compounds. However, if we are interested in small lipid or peptide, such pretreatment methods should be changed. In general, sample collection, quenching, extraction methods, derivatization, and storage should be optimized in pretreatment.
+
+## Collection
+
+Those papers investigated different fecal collection methods[@loftfield2016; @deda2017].
 
 ## Quenching
 
-Quenching solvent is always used to stop stop enzymatic activity. 
+Quenching solvent is always used to stop stop enzymatic activity.
 
 In this review[@lu2017], authors said:
 
 > A classical approach, which works well for many analytes, is boiling ethanol. Although the boiling solvent raises concerns about thermal degradation, it reliably denatures enzymes. In contrast, cold organic solvent may not fully denature enzymes or may do so too slowly such that some metabolic reactions continue, interconverting metabolites during the quenching process.
 
-This review[@kim2020] summarised the urease-dependent metabolome sample preparation and found:
+This review[@kim2020] summarized the urease-dependent metabolome sample preparation and found:
 
-> activities of urease and endogenous urinary enzymes and metabolite contaminants from the urease preparations introduce artefacts into metabolite profiles, thus leading to misinterpretation. 
+> activities of urease and endogenous urinary enzymes and metabolite contaminants from the urease preparations introduce artefacts into metabolite profiles, thus leading to misinterpretation.
 
 ## Extraction
 
@@ -20,7 +28,9 @@ According to this research[@bennett2009]:
 
 > The total metabolome concentration is approximately 300 mM, whereas the protein concentration is approximately 7 mM., which implies that most cellular metabolites are in free form.
 
-Dmitri et.al[@sitnikov2016] thought the most orthogonal methods to methanol-based precipitation were ion-exchange solid-phase extraction and liquid-liquid extraction using methyl-tertbutyl ether. 
+Dmitri et.al[@sitnikov2016] thought the most orthogonal methods to methanol-based precipitation were ion-exchange solid-phase extraction and liquid-liquid extraction using methyl-tertbutyl ether.
+
+Metabolic information was highly influenced by the extraction solvent[@ibanez2017].
 
 Tissue samples need to first be pulverized into fine powders.
 
@@ -30,14 +40,24 @@ In this review[@lu2017], authors said:
 
 > In our experience, for both cell and tissue specimens, 40:40:20 acetonitrile:methanol:water with 0.1 M formic acid (and subsequent neutralization with ammonium bicarbonate) is generally an effective solvent system for both quenching and extraction, including for ATP and other high-energy phosphorylated compounds. We typically use approximately 1 mL of solvent mix to extract 25 mg of biological specimen. ...Thus, although drying is acceptable for most metabolites, care must be taken with redox-active species.
 
-[@luo2017a] nano LC-MS could be used to analysis small numbers of cells.
+nano LC-MS could be used to analysis small numbers of cells[@luo2017a].
 
-For plant like soybeans[@mahmud2017], ammonium acetate/methanol could be selected as extraction strategies compared with water/methanol and sodium phosphate/methanol.
+For plant like soybeans[@mahmud2017], ammonium acetate/methanol could be selected as extraction strategies compared with water/methanol and sodium phosphate/methanol. For general plant samples, check this comprehensive investigation[@bijttebier2016].
 
 ## Derivatization
 
-Derivatization is always used in GC-based metabolomics study. This paper[@miyagawa2019] compared sequential derivatization methods and found different compounds would show different fluctuations during oximation or silylation process.
+Derivatization is always used in GC-based metabolomics study. This paper[@miyagawa2019] compared sequential derivatization methods and found different compounds would show different fluctuations during oximation or silylation process. This paper summarized derivatization methods for LC-MS [@zhao2020].
 
 ## Storage
 
-Samples should be stored after sample collection or sample pretreatment. -80°C or -20°C is always preferred to store samples. Dry ice should be used during sample pretreatment. However, comprehensive investigation of storage influnces found the metabolites profile will change after one day storage at -80°C. Rapid analysis of samples should be considered to capture more accurate information in the samples.
+Samples should be stored after sample collection or sample pretreatment. -80°C or -20°C is always preferred to store samples. Dry ice should be used during sample pretreatment. However, comprehensive investigation of storage influences found the metabolites profile will change after one day storage at -80°C[@yu2020] . Rapid analysis of samples should be considered to capture more accurate information in the samples.
+
+> Storage conditions such as temperature and time can affect the metabolite composition of various samples. Laparre et al.[@laparre2017] noted that the metabolite profiles of urine samples were significantly changed after 5 days of storage at 4 C, while Wandro and colleagues[@wandro2017] observed that the metabolomic profiles of cystic fibrosis sputum samples underwent notable changes after only 1 day of storage at 4 C. Likewise, Roszkowska et al. demonstrated that various signaling molecules were lost from the lipidome profile of tissue after storing the samples for one year at 80 C [@roszkowska2018]. To date, most metabolomics studies involving storage of samples prior to the analysis have used a storage temperature of 80 C, as previous investigations have shown that low temperatures or freeze-thaw cycles do not significantly change the metabolite profile of certain samples[@lin2007] .
+
+For gut microbiota, this paper could be checked for storage issue[@zubeldia-varela2020].
+
+For blood sample storage, you could check this paper[@hernandes2017].
+
+For urine sample storage, check this[@laparre2017a].
+
+This piece reviewed the stability of energy metabolites[@gil2015].

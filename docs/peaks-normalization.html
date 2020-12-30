@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 6 Peaks normalization | Meta-Workflow</title>
   <meta name="description" content="This is a workflow for metabolomics studies." />
-  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 6 Peaks normalization | Meta-Workflow" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Miao YU" />
 
 
-<meta name="date" content="2020-06-30" />
+<meta name="date" content="2020-12-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 <link rel="prev" href="raw-data-pretreatment.html"/>
 <link rel="next" href="annotation.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,25 +51,24 @@
 
 
 
-<script src="libs/htmlwidgets-1.5.1/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.6.1/grViz.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -88,7 +88,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -138,13 +138,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#history"><i class="fa fa-check"></i><b>1.1</b> History</a><ul>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#history"><i class="fa fa-check"></i><b>1.1</b> History</a>
+<ul>
 <li class="chapter" data-level="1.1.1" data-path="introduction.html"><a href="introduction.html#history-of-mass-spectrometry"><i class="fa fa-check"></i><b>1.1.1</b> History of Mass Spectrometry</a></li>
 <li class="chapter" data-level="1.1.2" data-path="introduction.html"><a href="introduction.html#history-of-metabolomcis"><i class="fa fa-check"></i><b>1.1.2</b> History of Metabolomcis</a></li>
 <li class="chapter" data-level="1.1.3" data-path="introduction.html"><a href="introduction.html#defination"><i class="fa fa-check"></i><b>1.1.3</b> Defination</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#reviews-and-tutorials"><i class="fa fa-check"></i><b>1.2</b> Reviews and tutorials</a><ul>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#reviews-and-tutorials"><i class="fa fa-check"></i><b>1.2</b> Reviews and tutorials</a>
+<ul>
 <li class="chapter" data-level="1.2.1" data-path="introduction.html"><a href="introduction.html#workflow"><i class="fa fa-check"></i><b>1.2.1</b> Workflow</a></li>
 <li class="chapter" data-level="1.2.2" data-path="introduction.html"><a href="introduction.html#data-analysis"><i class="fa fa-check"></i><b>1.2.2</b> Data analysis</a></li>
 <li class="chapter" data-level="1.2.3" data-path="introduction.html"><a href="introduction.html#application"><i class="fa fa-check"></i><b>1.2.3</b> Application</a></li>
@@ -153,114 +156,132 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#trends-in-metabolomics"><i class="fa fa-check"></i><b>1.3</b> Trends in Metabolomics</a></li>
 <li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#workflow-1"><i class="fa fa-check"></i><b>1.4</b> Workflow</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html"><i class="fa fa-check"></i><b>2</b> Experimental design(DoE)</a><ul>
+<li class="chapter" data-level="2" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html"><i class="fa fa-check"></i><b>2</b> Experimental design(DoE)</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#homogeneity-study"><i class="fa fa-check"></i><b>2.1</b> Homogeneity study</a></li>
 <li class="chapter" data-level="2.2" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#heterogeneity-study"><i class="fa fa-check"></i><b>2.2</b> Heterogeneity study</a></li>
-<li class="chapter" data-level="2.3" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#sample-size"><i class="fa fa-check"></i><b>2.3</b> Sample size</a></li>
-<li class="chapter" data-level="2.4" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#software"><i class="fa fa-check"></i><b>2.4</b> Software</a></li>
+<li class="chapter" data-level="2.3" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#power-analysis"><i class="fa fa-check"></i><b>2.3</b> Power analysis</a></li>
+<li class="chapter" data-level="2.4" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#optimization"><i class="fa fa-check"></i><b>2.4</b> Optimization</a></li>
+<li class="chapter" data-level="2.5" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#pooled-qc"><i class="fa fa-check"></i><b>2.5</b> Pooled QC</a></li>
+<li class="chapter" data-level="2.6" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#software"><i class="fa fa-check"></i><b>2.6</b> Software</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="pretreatment.html"><a href="pretreatment.html"><i class="fa fa-check"></i><b>3</b> Pretreatment</a><ul>
-<li class="chapter" data-level="3.1" data-path="pretreatment.html"><a href="pretreatment.html#quenching"><i class="fa fa-check"></i><b>3.1</b> Quenching</a></li>
-<li class="chapter" data-level="3.2" data-path="pretreatment.html"><a href="pretreatment.html#extraction"><i class="fa fa-check"></i><b>3.2</b> Extraction</a></li>
-<li class="chapter" data-level="3.3" data-path="pretreatment.html"><a href="pretreatment.html#derivatization"><i class="fa fa-check"></i><b>3.3</b> Derivatization</a></li>
-<li class="chapter" data-level="3.4" data-path="pretreatment.html"><a href="pretreatment.html#storage"><i class="fa fa-check"></i><b>3.4</b> Storage</a></li>
+<li class="chapter" data-level="3" data-path="pretreatment.html"><a href="pretreatment.html"><i class="fa fa-check"></i><b>3</b> Pretreatment</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="pretreatment.html"><a href="pretreatment.html#collection"><i class="fa fa-check"></i><b>3.1</b> Collection</a></li>
+<li class="chapter" data-level="3.2" data-path="pretreatment.html"><a href="pretreatment.html#quenching"><i class="fa fa-check"></i><b>3.2</b> Quenching</a></li>
+<li class="chapter" data-level="3.3" data-path="pretreatment.html"><a href="pretreatment.html#extraction"><i class="fa fa-check"></i><b>3.3</b> Extraction</a></li>
+<li class="chapter" data-level="3.4" data-path="pretreatment.html"><a href="pretreatment.html#derivatization"><i class="fa fa-check"></i><b>3.4</b> Derivatization</a></li>
+<li class="chapter" data-level="3.5" data-path="pretreatment.html"><a href="pretreatment.html#storage"><i class="fa fa-check"></i><b>3.5</b> Storage</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html"><i class="fa fa-check"></i><b>4</b> Instrumental analysis</a><ul>
+<li class="chapter" data-level="4" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html"><i class="fa fa-check"></i><b>4</b> Instrumental analysis</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#column-and-gradient-selection"><i class="fa fa-check"></i><b>4.1</b> Column and gradient selection</a></li>
-<li class="chapter" data-level="4.2" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#pooled-qc-samples"><i class="fa fa-check"></i><b>4.2</b> Pooled QC samples</a></li>
-<li class="chapter" data-level="4.3" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#mass-resolution"><i class="fa fa-check"></i><b>4.3</b> Mass resolution</a></li>
+<li class="chapter" data-level="4.2" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#mass-resolution"><i class="fa fa-check"></i><b>4.2</b> Mass resolution</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html"><i class="fa fa-check"></i><b>5</b> Raw data pretreatment</a><ul>
+<li class="chapter" data-level="5" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html"><i class="fa fa-check"></i><b>5</b> Raw data pretreatment</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#data-visualization"><i class="fa fa-check"></i><b>5.1</b> Data visualization</a></li>
 <li class="chapter" data-level="5.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#peak-extraction"><i class="fa fa-check"></i><b>5.2</b> Peak extraction</a></li>
 <li class="chapter" data-level="5.3" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#retention-time-correction"><i class="fa fa-check"></i><b>5.3</b> Retention Time Correction</a></li>
 <li class="chapter" data-level="5.4" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#filling-missing-values"><i class="fa fa-check"></i><b>5.4</b> Filling missing values</a></li>
 <li class="chapter" data-level="5.5" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#spectral-deconvolution"><i class="fa fa-check"></i><b>5.5</b> Spectral deconvolution</a></li>
-<li class="chapter" data-level="5.6" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#dynamic-range"><i class="fa fa-check"></i><b>5.6</b> Dynamic Range</a><ul>
+<li class="chapter" data-level="5.6" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#dynamic-range"><i class="fa fa-check"></i><b>5.6</b> Dynamic Range</a>
+<ul>
 <li class="chapter" data-level="5.6.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#non-detects"><i class="fa fa-check"></i><b>5.6.1</b> Non-detects</a></li>
 <li class="chapter" data-level="5.6.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#over-detection-limit"><i class="fa fa-check"></i><b>5.6.2</b> Over Detection Limit</a></li>
 </ul></li>
 <li class="chapter" data-level="5.7" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#rsdfold-change-filter"><i class="fa fa-check"></i><b>5.7</b> RSD/fold change Filter</a></li>
 <li class="chapter" data-level="5.8" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#power-analysis-filter"><i class="fa fa-check"></i><b>5.8</b> Power Analysis Filter</a></li>
-<li class="chapter" data-level="5.9" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#software-1"><i class="fa fa-check"></i><b>5.9</b> Software</a><ul>
+<li class="chapter" data-level="5.9" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#software-1"><i class="fa fa-check"></i><b>5.9</b> Software</a>
+<ul>
 <li class="chapter" data-level="5.9.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#peak-picking"><i class="fa fa-check"></i><b>5.9.1</b> Peak picking</a></li>
 <li class="chapter" data-level="5.9.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#for-msms"><i class="fa fa-check"></i><b>5.9.2</b> For MS/MS</a></li>
 <li class="chapter" data-level="5.9.3" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#improved-peak-picking"><i class="fa fa-check"></i><b>5.9.3</b> Improved Peak picking</a></li>
 </ul></li>
 <li class="chapter" data-level="5.10" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#tips"><i class="fa fa-check"></i><b>5.10</b> Tips</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="peaks-normalization.html"><a href="peaks-normalization.html"><i class="fa fa-check"></i><b>6</b> Peaks normalization</a><ul>
+<li class="chapter" data-level="6" data-path="peaks-normalization.html"><a href="peaks-normalization.html"><i class="fa fa-check"></i><b>6</b> Peaks normalization</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="peaks-normalization.html"><a href="peaks-normalization.html#batch-effects-classification"><i class="fa fa-check"></i><b>6.1</b> Batch effects classification</a></li>
 <li class="chapter" data-level="6.2" data-path="peaks-normalization.html"><a href="peaks-normalization.html#batch-effects-visulization"><i class="fa fa-check"></i><b>6.2</b> Batch effects visulization</a></li>
 <li class="chapter" data-level="6.3" data-path="peaks-normalization.html"><a href="peaks-normalization.html#source-of-batch-effects"><i class="fa fa-check"></i><b>6.3</b> Source of batch effects</a></li>
 <li class="chapter" data-level="6.4" data-path="peaks-normalization.html"><a href="peaks-normalization.html#avoid-batch-effects-by-doe"><i class="fa fa-check"></i><b>6.4</b> Avoid batch effects by DoE</a></li>
-<li class="chapter" data-level="6.5" data-path="peaks-normalization.html"><a href="peaks-normalization.html#post-hoc-data-normalization"><i class="fa fa-check"></i><b>6.5</b> post hoc data normalization</a><ul>
+<li class="chapter" data-level="6.5" data-path="peaks-normalization.html"><a href="peaks-normalization.html#post-hoc-data-normalization"><i class="fa fa-check"></i><b>6.5</b> post hoc data normalization</a>
+<ul>
 <li class="chapter" data-level="6.5.1" data-path="peaks-normalization.html"><a href="peaks-normalization.html#unsupervised-methods"><i class="fa fa-check"></i><b>6.5.1</b> Unsupervised methods</a></li>
 <li class="chapter" data-level="6.5.2" data-path="peaks-normalization.html"><a href="peaks-normalization.html#supervised-methods"><i class="fa fa-check"></i><b>6.5.2</b> Supervised methods</a></li>
 </ul></li>
 <li class="chapter" data-level="6.6" data-path="peaks-normalization.html"><a href="peaks-normalization.html#method-to-validate-the-normalization"><i class="fa fa-check"></i><b>6.6</b> Method to validate the normalization</a></li>
 <li class="chapter" data-level="6.7" data-path="peaks-normalization.html"><a href="peaks-normalization.html#software-2"><i class="fa fa-check"></i><b>6.7</b> Software</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="annotation.html"><a href="annotation.html"><i class="fa fa-check"></i><b>7</b> Annotation</a><ul>
+<li class="chapter" data-level="7" data-path="annotation.html"><a href="annotation.html"><i class="fa fa-check"></i><b>7</b> Annotation</a>
+<ul>
 <li class="chapter" data-level="7.1" data-path="annotation.html"><a href="annotation.html#issues-in-annotation"><i class="fa fa-check"></i><b>7.1</b> Issues in annotation</a></li>
 <li class="chapter" data-level="7.2" data-path="annotation.html"><a href="annotation.html#peak-misidentification"><i class="fa fa-check"></i><b>7.2</b> Peak misidentification</a></li>
 <li class="chapter" data-level="7.3" data-path="annotation.html"><a href="annotation.html#annotation-v.s.-identification"><i class="fa fa-check"></i><b>7.3</b> Annotation v.s. identification</a></li>
-<li class="chapter" data-level="7.4" data-path="annotation.html"><a href="annotation.html#cheminformatics"><i class="fa fa-check"></i><b>7.4</b> Cheminformatics</a></li>
-<li class="chapter" data-level="7.5" data-path="annotation.html"><a href="annotation.html#ms-database-for-annotation"><i class="fa fa-check"></i><b>7.5</b> MS Database for annotation</a><ul>
-<li class="chapter" data-level="7.5.1" data-path="annotation.html"><a href="annotation.html#msms"><i class="fa fa-check"></i><b>7.5.1</b> MS/MS</a></li>
-<li class="chapter" data-level="7.5.2" data-path="annotation.html"><a href="annotation.html#ms"><i class="fa fa-check"></i><b>7.5.2</b> MS</a></li>
+<li class="chapter" data-level="7.4" data-path="annotation.html"><a href="annotation.html#molecular-formula-assignment"><i class="fa fa-check"></i><b>7.4</b> Molecular Formula Assignment</a></li>
+<li class="chapter" data-level="7.5" data-path="annotation.html"><a href="annotation.html#chromatographic-retention-related-criteria"><i class="fa fa-check"></i><b>7.5</b> Chromatographic retention-related criteria</a></li>
+<li class="chapter" data-level="7.6" data-path="annotation.html"><a href="annotation.html#ms-database-for-annotation"><i class="fa fa-check"></i><b>7.6</b> MS Database for annotation</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="annotation.html"><a href="annotation.html#msms"><i class="fa fa-check"></i><b>7.6.1</b> MS/MS</a></li>
+<li class="chapter" data-level="7.6.2" data-path="annotation.html"><a href="annotation.html#ms"><i class="fa fa-check"></i><b>7.6.2</b> MS</a></li>
 </ul></li>
-<li class="chapter" data-level="7.6" data-path="annotation.html"><a href="annotation.html#compounds-database"><i class="fa fa-check"></i><b>7.6</b> Compounds Database</a></li>
-<li class="chapter" data-level="7.7" data-path="annotation.html"><a href="annotation.html#software-3"><i class="fa fa-check"></i><b>7.7</b> Software</a><ul>
-<li class="chapter" data-level="7.7.1" data-path="annotation.html"><a href="annotation.html#adducts-list"><i class="fa fa-check"></i><b>7.7.1</b> Adducts list</a></li>
-<li class="chapter" data-level="7.7.2" data-path="annotation.html"><a href="annotation.html#molgen"><i class="fa fa-check"></i><b>7.7.2</b> Molgen</a></li>
-<li class="chapter" data-level="7.7.3" data-path="annotation.html"><a href="annotation.html#isotope"><i class="fa fa-check"></i><b>7.7.3</b> Isotope</a></li>
-<li class="chapter" data-level="7.7.4" data-path="annotation.html"><a href="annotation.html#mffinder"><i class="fa fa-check"></i><b>7.7.4</b> mfFinder</a></li>
-<li class="chapter" data-level="7.7.5" data-path="annotation.html"><a href="annotation.html#camera"><i class="fa fa-check"></i><b>7.7.5</b> CAMERA</a></li>
-<li class="chapter" data-level="7.7.6" data-path="annotation.html"><a href="annotation.html#ramclustr"><i class="fa fa-check"></i><b>7.7.6</b> RAMClustR</a></li>
-<li class="chapter" data-level="7.7.7" data-path="annotation.html"><a href="annotation.html#pmd"><i class="fa fa-check"></i><b>7.7.7</b> pmd</a></li>
-<li class="chapter" data-level="7.7.8" data-path="annotation.html"><a href="annotation.html#nontarget"><i class="fa fa-check"></i><b>7.7.8</b> nontarget</a></li>
-<li class="chapter" data-level="7.7.9" data-path="annotation.html"><a href="annotation.html#xmsannotator"><i class="fa fa-check"></i><b>7.7.9</b> xMSannotator</a></li>
-<li class="chapter" data-level="7.7.10" data-path="annotation.html"><a href="annotation.html#cfm-id"><i class="fa fa-check"></i><b>7.7.10</b> CFM-ID</a></li>
-<li class="chapter" data-level="7.7.11" data-path="annotation.html"><a href="annotation.html#mine"><i class="fa fa-check"></i><b>7.7.11</b> MINE</a></li>
-<li class="chapter" data-level="7.7.12" data-path="annotation.html"><a href="annotation.html#interpretmsspectrum"><i class="fa fa-check"></i><b>7.7.12</b> InterpretMSSpectrum</a></li>
-<li class="chapter" data-level="7.7.13" data-path="annotation.html"><a href="annotation.html#for-ident"><i class="fa fa-check"></i><b>7.7.13</b> For Ident</a></li>
-<li class="chapter" data-level="7.7.14" data-path="annotation.html"><a href="annotation.html#retip"><i class="fa fa-check"></i><b>7.7.14</b> Retip</a></li>
-<li class="chapter" data-level="7.7.15" data-path="annotation.html"><a href="annotation.html#binner"><i class="fa fa-check"></i><b>7.7.15</b> Binner</a></li>
-<li class="chapter" data-level="7.7.16" data-path="annotation.html"><a href="annotation.html#mzmatch"><i class="fa fa-check"></i><b>7.7.16</b> mzmatch</a></li>
-<li class="chapter" data-level="7.7.17" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>7.7.17</b> mz.unity</a></li>
-<li class="chapter" data-level="7.7.18" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>7.7.18</b> MAIT</a></li>
-<li class="chapter" data-level="7.7.19" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>7.7.19</b> ProbMetab</a></li>
-<li class="chapter" data-level="7.7.20" data-path="annotation.html"><a href="annotation.html#ramsi"><i class="fa fa-check"></i><b>7.7.20</b> RAMSI</a></li>
-<li class="chapter" data-level="7.7.21" data-path="annotation.html"><a href="annotation.html#sirius"><i class="fa fa-check"></i><b>7.7.21</b> Sirius</a></li>
-<li class="chapter" data-level="7.7.22" data-path="annotation.html"><a href="annotation.html#mi-pack"><i class="fa fa-check"></i><b>7.7.22</b> MI-Pack</a></li>
-<li class="chapter" data-level="7.7.23" data-path="annotation.html"><a href="annotation.html#plantmat"><i class="fa fa-check"></i><b>7.7.23</b> Plantmat</a></li>
-<li class="chapter" data-level="7.7.24" data-path="annotation.html"><a href="annotation.html#metfamily"><i class="fa fa-check"></i><b>7.7.24</b> MetFamily</a></li>
-<li class="chapter" data-level="7.7.25" data-path="annotation.html"><a href="annotation.html#lipidmatch"><i class="fa fa-check"></i><b>7.7.25</b> Lipidmatch</a></li>
-<li class="chapter" data-level="7.7.26" data-path="annotation.html"><a href="annotation.html#molfind"><i class="fa fa-check"></i><b>7.7.26</b> MolFind</a></li>
-<li class="chapter" data-level="7.7.27" data-path="annotation.html"><a href="annotation.html#metfusion"><i class="fa fa-check"></i><b>7.7.27</b> MetFusion</a></li>
-<li class="chapter" data-level="7.7.28" data-path="annotation.html"><a href="annotation.html#imet"><i class="fa fa-check"></i><b>7.7.28</b> iMet</a></li>
-<li class="chapter" data-level="7.7.29" data-path="annotation.html"><a href="annotation.html#metscape"><i class="fa fa-check"></i><b>7.7.29</b> Metscape</a></li>
-<li class="chapter" data-level="7.7.30" data-path="annotation.html"><a href="annotation.html#metfrag"><i class="fa fa-check"></i><b>7.7.30</b> MetFrag</a></li>
-<li class="chapter" data-level="7.7.31" data-path="annotation.html"><a href="annotation.html#lipidfrag"><i class="fa fa-check"></i><b>7.7.31</b> LipidFrag</a></li>
-<li class="chapter" data-level="7.7.32" data-path="annotation.html"><a href="annotation.html#mycompoundid"><i class="fa fa-check"></i><b>7.7.32</b> MycompoundID</a></li>
-<li class="chapter" data-level="7.7.33" data-path="annotation.html"><a href="annotation.html#magma"><i class="fa fa-check"></i><b>7.7.33</b> magma</a></li>
-<li class="chapter" data-level="7.7.34" data-path="annotation.html"><a href="annotation.html#metexpert"><i class="fa fa-check"></i><b>7.7.34</b> MetExpert</a></li>
-<li class="chapter" data-level="7.7.35" data-path="annotation.html"><a href="annotation.html#ms-dia"><i class="fa fa-check"></i><b>7.7.35</b> MS-DIA</a></li>
+<li class="chapter" data-level="7.7" data-path="annotation.html"><a href="annotation.html#compounds-database"><i class="fa fa-check"></i><b>7.7</b> Compounds Database</a></li>
+<li class="chapter" data-level="7.8" data-path="annotation.html"><a href="annotation.html#software-3"><i class="fa fa-check"></i><b>7.8</b> Software</a>
+<ul>
+<li class="chapter" data-level="7.8.1" data-path="annotation.html"><a href="annotation.html#adducts-list"><i class="fa fa-check"></i><b>7.8.1</b> Adducts list</a></li>
+<li class="chapter" data-level="7.8.2" data-path="annotation.html"><a href="annotation.html#molgen"><i class="fa fa-check"></i><b>7.8.2</b> Molgen</a></li>
+<li class="chapter" data-level="7.8.3" data-path="annotation.html"><a href="annotation.html#isotope"><i class="fa fa-check"></i><b>7.8.3</b> Isotope</a></li>
+<li class="chapter" data-level="7.8.4" data-path="annotation.html"><a href="annotation.html#mffinder"><i class="fa fa-check"></i><b>7.8.4</b> mfFinder</a></li>
+<li class="chapter" data-level="7.8.5" data-path="annotation.html"><a href="annotation.html#camera"><i class="fa fa-check"></i><b>7.8.5</b> CAMERA</a></li>
+<li class="chapter" data-level="7.8.6" data-path="annotation.html"><a href="annotation.html#ramclustr"><i class="fa fa-check"></i><b>7.8.6</b> RAMClustR</a></li>
+<li class="chapter" data-level="7.8.7" data-path="annotation.html"><a href="annotation.html#pmd"><i class="fa fa-check"></i><b>7.8.7</b> pmd</a></li>
+<li class="chapter" data-level="7.8.8" data-path="annotation.html"><a href="annotation.html#nontarget"><i class="fa fa-check"></i><b>7.8.8</b> nontarget</a></li>
+<li class="chapter" data-level="7.8.9" data-path="annotation.html"><a href="annotation.html#xmsannotator"><i class="fa fa-check"></i><b>7.8.9</b> xMSannotator</a></li>
+<li class="chapter" data-level="7.8.10" data-path="annotation.html"><a href="annotation.html#cfm-id"><i class="fa fa-check"></i><b>7.8.10</b> CFM-ID</a></li>
+<li class="chapter" data-level="7.8.11" data-path="annotation.html"><a href="annotation.html#mine"><i class="fa fa-check"></i><b>7.8.11</b> MINE</a></li>
+<li class="chapter" data-level="7.8.12" data-path="annotation.html"><a href="annotation.html#interpretmsspectrum"><i class="fa fa-check"></i><b>7.8.12</b> InterpretMSSpectrum</a></li>
+<li class="chapter" data-level="7.8.13" data-path="annotation.html"><a href="annotation.html#for-ident"><i class="fa fa-check"></i><b>7.8.13</b> For Ident</a></li>
+<li class="chapter" data-level="7.8.14" data-path="annotation.html"><a href="annotation.html#retip"><i class="fa fa-check"></i><b>7.8.14</b> Retip</a></li>
+<li class="chapter" data-level="7.8.15" data-path="annotation.html"><a href="annotation.html#binner"><i class="fa fa-check"></i><b>7.8.15</b> Binner</a></li>
+<li class="chapter" data-level="7.8.16" data-path="annotation.html"><a href="annotation.html#mzmatch"><i class="fa fa-check"></i><b>7.8.16</b> mzmatch</a></li>
+<li class="chapter" data-level="7.8.17" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>7.8.17</b> mz.unity</a></li>
+<li class="chapter" data-level="7.8.18" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>7.8.18</b> MAIT</a></li>
+<li class="chapter" data-level="7.8.19" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>7.8.19</b> ProbMetab</a></li>
+<li class="chapter" data-level="7.8.20" data-path="annotation.html"><a href="annotation.html#ramsi"><i class="fa fa-check"></i><b>7.8.20</b> RAMSI</a></li>
+<li class="chapter" data-level="7.8.21" data-path="annotation.html"><a href="annotation.html#sirius"><i class="fa fa-check"></i><b>7.8.21</b> Sirius</a></li>
+<li class="chapter" data-level="7.8.22" data-path="annotation.html"><a href="annotation.html#mi-pack"><i class="fa fa-check"></i><b>7.8.22</b> MI-Pack</a></li>
+<li class="chapter" data-level="7.8.23" data-path="annotation.html"><a href="annotation.html#plantmat"><i class="fa fa-check"></i><b>7.8.23</b> Plantmat</a></li>
+<li class="chapter" data-level="7.8.24" data-path="annotation.html"><a href="annotation.html#metfamily"><i class="fa fa-check"></i><b>7.8.24</b> MetFamily</a></li>
+<li class="chapter" data-level="7.8.25" data-path="annotation.html"><a href="annotation.html#lipidmatch"><i class="fa fa-check"></i><b>7.8.25</b> Lipidmatch</a></li>
+<li class="chapter" data-level="7.8.26" data-path="annotation.html"><a href="annotation.html#molfind"><i class="fa fa-check"></i><b>7.8.26</b> MolFind</a></li>
+<li class="chapter" data-level="7.8.27" data-path="annotation.html"><a href="annotation.html#metfusion"><i class="fa fa-check"></i><b>7.8.27</b> MetFusion</a></li>
+<li class="chapter" data-level="7.8.28" data-path="annotation.html"><a href="annotation.html#imet"><i class="fa fa-check"></i><b>7.8.28</b> iMet</a></li>
+<li class="chapter" data-level="7.8.29" data-path="annotation.html"><a href="annotation.html#metscape"><i class="fa fa-check"></i><b>7.8.29</b> Metscape</a></li>
+<li class="chapter" data-level="7.8.30" data-path="annotation.html"><a href="annotation.html#metfrag"><i class="fa fa-check"></i><b>7.8.30</b> MetFrag</a></li>
+<li class="chapter" data-level="7.8.31" data-path="annotation.html"><a href="annotation.html#lipidfrag"><i class="fa fa-check"></i><b>7.8.31</b> LipidFrag</a></li>
+<li class="chapter" data-level="7.8.32" data-path="annotation.html"><a href="annotation.html#mycompoundid"><i class="fa fa-check"></i><b>7.8.32</b> MycompoundID</a></li>
+<li class="chapter" data-level="7.8.33" data-path="annotation.html"><a href="annotation.html#magma"><i class="fa fa-check"></i><b>7.8.33</b> magma</a></li>
+<li class="chapter" data-level="7.8.34" data-path="annotation.html"><a href="annotation.html#metexpert"><i class="fa fa-check"></i><b>7.8.34</b> MetExpert</a></li>
+<li class="chapter" data-level="7.8.35" data-path="annotation.html"><a href="annotation.html#ms-dia"><i class="fa fa-check"></i><b>7.8.35</b> MS-DIA</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>8</b> Omics analysis</a><ul>
+<li class="chapter" data-level="8" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>8</b> Omics analysis</a>
+<ul>
 <li class="chapter" data-level="8.1" data-path="omics-analysis.html"><a href="omics-analysis.html#from-bottom-up-to-top-down"><i class="fa fa-check"></i><b>8.1</b> From Bottom-up to Top-down</a></li>
-<li class="chapter" data-level="8.2" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-analysis"><i class="fa fa-check"></i><b>8.2</b> Pathway analysis</a><ul>
+<li class="chapter" data-level="8.2" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-analysis"><i class="fa fa-check"></i><b>8.2</b> Pathway analysis</a>
+<ul>
 <li class="chapter" data-level="8.2.1" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-database"><i class="fa fa-check"></i><b>8.2.1</b> Pathway Database</a></li>
 <li class="chapter" data-level="8.2.2" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-software"><i class="fa fa-check"></i><b>8.2.2</b> Pathway software</a></li>
 </ul></li>
 <li class="chapter" data-level="8.3" data-path="omics-analysis.html"><a href="omics-analysis.html#network-analysis"><i class="fa fa-check"></i><b>8.3</b> Network analysis</a></li>
 <li class="chapter" data-level="8.4" data-path="omics-analysis.html"><a href="omics-analysis.html#omics-integration"><i class="fa fa-check"></i><b>8.4</b> Omics integration</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html"><i class="fa fa-check"></i><b>9</b> Common analysis methods for metabolomics</a><ul>
+<li class="chapter" data-level="9" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html"><i class="fa fa-check"></i><b>9</b> Common analysis methods for metabolomics</a>
+<ul>
 <li class="chapter" data-level="9.1" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#basic-statistical-analysis"><i class="fa fa-check"></i><b>9.1</b> Basic Statistical Analysis</a></li>
-<li class="chapter" data-level="9.2" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#differences-analysis"><i class="fa fa-check"></i><b>9.2</b> Differences analysis</a><ul>
+<li class="chapter" data-level="9.2" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#differences-analysis"><i class="fa fa-check"></i><b>9.2</b> Differences analysis</a>
+<ul>
 <li class="chapter" data-level="9.2.1" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#t-test-or-anova"><i class="fa fa-check"></i><b>9.2.1</b> T-test or ANOVA</a></li>
 <li class="chapter" data-level="9.2.2" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#limma"><i class="fa fa-check"></i><b>9.2.2</b> LIMMA</a></li>
 <li class="chapter" data-level="9.2.3" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#bayesian-mixture-model"><i class="fa fa-check"></i><b>9.2.3</b> Bayesian mixture model</a></li>
@@ -270,8 +291,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.5" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#plsda"><i class="fa fa-check"></i><b>9.5</b> PLSDA</a></li>
 <li class="chapter" data-level="9.6" data-path="common-analysis-methods-for-metabolomics.html"><a href="common-analysis-methods-for-metabolomics.html#software-4"><i class="fa fa-check"></i><b>9.6</b> Software</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="workflow-2.html"><a href="workflow-2.html"><i class="fa fa-check"></i><b>10</b> Workflow</a><ul>
-<li class="chapter" data-level="10.1" data-path="workflow-2.html"><a href="workflow-2.html#platform-for-metabolomics"><i class="fa fa-check"></i><b>10.1</b> Platform for metabolomics</a><ul>
+<li class="chapter" data-level="10" data-path="workflow-2.html"><a href="workflow-2.html"><i class="fa fa-check"></i><b>10</b> Workflow</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="workflow-2.html"><a href="workflow-2.html#platform-for-metabolomics"><i class="fa fa-check"></i><b>10.1</b> Platform for metabolomics</a>
+<ul>
 <li class="chapter" data-level="10.1.1" data-path="workflow-2.html"><a href="workflow-2.html#xcms-online"><i class="fa fa-check"></i><b>10.1.1</b> XCMS online</a></li>
 <li class="chapter" data-level="10.1.2" data-path="workflow-2.html"><a href="workflow-2.html#prime"><i class="fa fa-check"></i><b>10.1.2</b> PRIMe</a></li>
 <li class="chapter" data-level="10.1.3" data-path="workflow-2.html"><a href="workflow-2.html#openms"><i class="fa fa-check"></i><b>10.1.3</b> OpenMS</a></li>
@@ -283,31 +306,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="workflow-2.html"><a href="workflow-2.html#data-sharing"><i class="fa fa-check"></i><b>10.2</b> Data sharing</a></li>
 <li class="chapter" data-level="10.3" data-path="workflow-2.html"><a href="workflow-2.html#contest"><i class="fa fa-check"></i><b>10.3</b> Contest</a></li>
-<li class="chapter" data-level="10.4" data-path="workflow-2.html"><a href="workflow-2.html#demo"><i class="fa fa-check"></i><b>10.4</b> Demo</a></li>
+<li class="chapter" data-level="10.4" data-path="workflow-2.html"><a href="workflow-2.html#project-setup"><i class="fa fa-check"></i><b>10.4</b> Project Setup</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="demo-1.html"><a href="demo-1.html"><i class="fa fa-check"></i><b>11</b> Demo</a><ul>
-<li class="chapter" data-level="11.1" data-path="demo-1.html"><a href="demo-1.html#project-setup"><i class="fa fa-check"></i><b>11.1</b> Project Setup</a></li>
-<li class="chapter" data-level="11.2" data-path="demo-1.html"><a href="demo-1.html#data-input"><i class="fa fa-check"></i><b>11.2</b> Data input</a></li>
-<li class="chapter" data-level="11.3" data-path="demo-1.html"><a href="demo-1.html#optimization"><i class="fa fa-check"></i><b>11.3</b> Optimization</a></li>
-<li class="chapter" data-level="11.4" data-path="demo-1.html"><a href="demo-1.html#wrap-function"><i class="fa fa-check"></i><b>11.4</b> Wrap function</a><ul>
-<li class="chapter" data-level="11.4.1" data-path="demo-1.html"><a href="demo-1.html#peak-picking-1"><i class="fa fa-check"></i><b>11.4.1</b> Peak picking</a></li>
-<li class="chapter" data-level="11.4.2" data-path="demo-1.html"><a href="demo-1.html#data-correction"><i class="fa fa-check"></i><b>11.4.2</b> Data correction</a></li>
-<li class="chapter" data-level="11.4.3" data-path="demo-1.html"><a href="demo-1.html#peaks-filling"><i class="fa fa-check"></i><b>11.4.3</b> Peaks filling</a></li>
-</ul></li>
-<li class="chapter" data-level="11.5" data-path="demo-1.html"><a href="demo-1.html#peaks-list"><i class="fa fa-check"></i><b>11.5</b> Peaks list</a></li>
-<li class="chapter" data-level="11.6" data-path="demo-1.html"><a href="demo-1.html#peaks-filtering"><i class="fa fa-check"></i><b>11.6</b> Peaks filtering</a></li>
-<li class="chapter" data-level="11.7" data-path="demo-1.html"><a href="demo-1.html#normalization-optional"><i class="fa fa-check"></i><b>11.7</b> Normalization (Optional)</a></li>
-<li class="chapter" data-level="11.8" data-path="demo-1.html"><a href="demo-1.html#statistic-analysis"><i class="fa fa-check"></i><b>11.8</b> Statistic analysis</a></li>
-<li class="chapter" data-level="11.9" data-path="demo-1.html"><a href="demo-1.html#annotation-1"><i class="fa fa-check"></i><b>11.9</b> Annotation</a></li>
-<li class="chapter" data-level="11.10" data-path="demo-1.html"><a href="demo-1.html#pathway-analysis-1"><i class="fa fa-check"></i><b>11.10</b> Pathway Analysis</a></li>
-<li class="chapter" data-level="11.11" data-path="demo-1.html"><a href="demo-1.html#metaboanalyst"><i class="fa fa-check"></i><b>11.11</b> MetaboAnalyst</a></li>
-<li class="chapter" data-level="11.12" data-path="demo-1.html"><a href="demo-1.html#summary"><i class="fa fa-check"></i><b>11.12</b> Summary</a></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="exposome.html"><a href="exposome.html"><i class="fa fa-check"></i><b>12</b> Exposome</a><ul>
-<li class="chapter" data-level="12.1" data-path="exposome.html"><a href="exposome.html#internal-exposure"><i class="fa fa-check"></i><b>12.1</b> Internal exposure</a></li>
-<li class="chapter" data-level="12.2" data-path="exposome.html"><a href="exposome.html#external-exposure"><i class="fa fa-check"></i><b>12.2</b> External exposure</a><ul>
-<li class="chapter" data-level="12.2.1" data-path="exposome.html"><a href="exposome.html#environmental-fate-of-compounds"><i class="fa fa-check"></i><b>12.2.1</b> Environmental fate of compounds</a></li>
-<li class="chapter" data-level="12.2.2" data-path="exposome.html"><a href="exposome.html#exposure-study-database"><i class="fa fa-check"></i><b>12.2.2</b> Exposure study database</a></li>
+<li class="chapter" data-level="11" data-path="exposome.html"><a href="exposome.html"><i class="fa fa-check"></i><b>11</b> Exposome</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="exposome.html"><a href="exposome.html#internal-exposure"><i class="fa fa-check"></i><b>11.1</b> Internal exposure</a></li>
+<li class="chapter" data-level="11.2" data-path="exposome.html"><a href="exposome.html#external-exposure"><i class="fa fa-check"></i><b>11.2</b> External exposure</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="exposome.html"><a href="exposome.html#environmental-fate-of-compounds"><i class="fa fa-check"></i><b>11.2.1</b> Environmental fate of compounds</a></li>
+<li class="chapter" data-level="11.2.2" data-path="exposome.html"><a href="exposome.html#exposure-study-database"><i class="fa fa-check"></i><b>11.2.2</b> Exposure study database</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -330,9 +337,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="peaks-normalization" class="section level1">
+<div id="peaks-normalization" class="section level1" number="6">
 <h1><span class="header-section-number">Chapter 6</span> Peaks normalization</h1>
-<div id="batch-effects-classification" class="section level2">
+<div id="batch-effects-classification" class="section level2" number="6.1">
 <h2><span class="header-section-number">6.1</span> Batch effects classification</h2>
 <p>Variances among the samples across all the extracted peaks might be affected by factors other than the experiment design. There are three types of those batch effects: Monotone, Block and Mixed.</p>
 <ul>
@@ -350,11 +357,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Meanwhile, different compounds would suffer different type of batch effects. In this case, the normalization or batch correction should be done peak by peak.</p>
 <p><img src="Metabolomics_files/figure-html/bem-1.png" width="70%" /></p>
 </div>
-<div id="batch-effects-visulization" class="section level2">
+<div id="batch-effects-visulization" class="section level2" number="6.2">
 <h2><span class="header-section-number">6.2</span> Batch effects visulization</h2>
 <p>Any correction might introduce bias. We need to make sure there are patterns which different from our experimental design. Pooled QC samples should be clustered on PCA score plot.</p>
 </div>
-<div id="source-of-batch-effects" class="section level2">
+<div id="source-of-batch-effects" class="section level2" number="6.3">
 <h2><span class="header-section-number">6.3</span> Source of batch effects</h2>
 <ul>
 <li><p>Different Operators &amp; Dates &amp; Sequences</p></li>
@@ -362,152 +369,152 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Unknown Unknowns</p></li>
 </ul>
 </div>
-<div id="avoid-batch-effects-by-doe" class="section level2">
+<div id="avoid-batch-effects-by-doe" class="section level2" number="6.4">
 <h2><span class="header-section-number">6.4</span> Avoid batch effects by DoE</h2>
 <p>You could avoid batch effects from experimental design. Cap the sequence with Pooled QC and Randomized samples sequence. Some internal standards/Instrumental QC might Help to find the source of batch effects while it’s not practical for every compounds in non-targeted analysis.</p>
 <p>Batch effects might not change the conclusion when the effect size is relatively small. Here is a simulation:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="peaks-normalization.html#cb15-1"></a><span class="kw">set.seed</span>(<span class="dv">30</span>)</span>
-<span id="cb15-2"><a href="peaks-normalization.html#cb15-2"></a><span class="co"># real peaks</span></span>
-<span id="cb15-3"><a href="peaks-normalization.html#cb15-3"></a>group &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">5</span>),<span class="kw">rep</span>(<span class="dv">2</span>,<span class="dv">5</span>)))</span>
-<span id="cb15-4"><a href="peaks-normalization.html#cb15-4"></a>con &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">5</span>,<span class="dv">5</span>),<span class="kw">rnorm</span>(<span class="dv">5</span>,<span class="dv">8</span>))</span>
-<span id="cb15-5"><a href="peaks-normalization.html#cb15-5"></a>re &lt;-<span class="st"> </span><span class="kw">t.test</span>(con<span class="op">~</span>group)</span>
-<span id="cb15-6"><a href="peaks-normalization.html#cb15-6"></a><span class="co"># real peaks</span></span>
-<span id="cb15-7"><a href="peaks-normalization.html#cb15-7"></a>group &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">5</span>),<span class="kw">rep</span>(<span class="dv">2</span>,<span class="dv">5</span>)))</span>
-<span id="cb15-8"><a href="peaks-normalization.html#cb15-8"></a>con &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">5</span>,<span class="dv">5</span>),<span class="kw">rnorm</span>(<span class="dv">5</span>,<span class="dv">8</span>))</span>
-<span id="cb15-9"><a href="peaks-normalization.html#cb15-9"></a>batch &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>,<span class="dt">length.out =</span> <span class="dv">10</span>)</span>
-<span id="cb15-10"><a href="peaks-normalization.html#cb15-10"></a>ins &lt;-<span class="st"> </span>batch<span class="op">+</span>con</span>
-<span id="cb15-11"><a href="peaks-normalization.html#cb15-11"></a>re &lt;-<span class="st"> </span><span class="kw">t.test</span>(ins<span class="op">~</span>group)</span>
-<span id="cb15-12"><a href="peaks-normalization.html#cb15-12"></a></span>
-<span id="cb15-13"><a href="peaks-normalization.html#cb15-13"></a>index &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">10</span>)</span>
-<span id="cb15-14"><a href="peaks-normalization.html#cb15-14"></a>ins &lt;-<span class="st"> </span>batch<span class="op">+</span>con[index]</span>
-<span id="cb15-15"><a href="peaks-normalization.html#cb15-15"></a>re &lt;-<span class="st"> </span><span class="kw">t.test</span>(ins<span class="op">~</span>group[index])</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="peaks-normalization.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">30</span>)</span>
+<span id="cb18-2"><a href="peaks-normalization.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># real peaks</span></span>
+<span id="cb18-3"><a href="peaks-normalization.html#cb18-3" aria-hidden="true" tabindex="-1"></a>group <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">5</span>),<span class="fu">rep</span>(<span class="dv">2</span>,<span class="dv">5</span>)))</span>
+<span id="cb18-4"><a href="peaks-normalization.html#cb18-4" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">5</span>,<span class="dv">5</span>),<span class="fu">rnorm</span>(<span class="dv">5</span>,<span class="dv">8</span>))</span>
+<span id="cb18-5"><a href="peaks-normalization.html#cb18-5" aria-hidden="true" tabindex="-1"></a>re <span class="ot">&lt;-</span> <span class="fu">t.test</span>(con<span class="sc">~</span>group)</span>
+<span id="cb18-6"><a href="peaks-normalization.html#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co"># real peaks</span></span>
+<span id="cb18-7"><a href="peaks-normalization.html#cb18-7" aria-hidden="true" tabindex="-1"></a>group <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">5</span>),<span class="fu">rep</span>(<span class="dv">2</span>,<span class="dv">5</span>)))</span>
+<span id="cb18-8"><a href="peaks-normalization.html#cb18-8" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">5</span>,<span class="dv">5</span>),<span class="fu">rnorm</span>(<span class="dv">5</span>,<span class="dv">8</span>))</span>
+<span id="cb18-9"><a href="peaks-normalization.html#cb18-9" aria-hidden="true" tabindex="-1"></a>batch <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>,<span class="at">length.out =</span> <span class="dv">10</span>)</span>
+<span id="cb18-10"><a href="peaks-normalization.html#cb18-10" aria-hidden="true" tabindex="-1"></a>ins <span class="ot">&lt;-</span> batch<span class="sc">+</span>con</span>
+<span id="cb18-11"><a href="peaks-normalization.html#cb18-11" aria-hidden="true" tabindex="-1"></a>re <span class="ot">&lt;-</span> <span class="fu">t.test</span>(ins<span class="sc">~</span>group)</span>
+<span id="cb18-12"><a href="peaks-normalization.html#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-13"><a href="peaks-normalization.html#cb18-13" aria-hidden="true" tabindex="-1"></a>index <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">10</span>)</span>
+<span id="cb18-14"><a href="peaks-normalization.html#cb18-14" aria-hidden="true" tabindex="-1"></a>ins <span class="ot">&lt;-</span> batch<span class="sc">+</span>con[index]</span>
+<span id="cb18-15"><a href="peaks-normalization.html#cb18-15" aria-hidden="true" tabindex="-1"></a>re <span class="ot">&lt;-</span> <span class="fu">t.test</span>(ins<span class="sc">~</span>group[index])</span></code></pre></div>
 <p>Randomization could not guarantee the results. Here is a simulation.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="peaks-normalization.html#cb16-1"></a><span class="co"># real peaks</span></span>
-<span id="cb16-2"><a href="peaks-normalization.html#cb16-2"></a>group &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">5</span>),<span class="kw">rep</span>(<span class="dv">2</span>,<span class="dv">5</span>)))</span>
-<span id="cb16-3"><a href="peaks-normalization.html#cb16-3"></a>con &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">5</span>,<span class="dv">5</span>),<span class="kw">rnorm</span>(<span class="dv">5</span>,<span class="dv">8</span>))</span>
-<span id="cb16-4"><a href="peaks-normalization.html#cb16-4"></a>batch &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">5</span>,<span class="dv">0</span>,<span class="dt">length.out =</span> <span class="dv">10</span>)</span>
-<span id="cb16-5"><a href="peaks-normalization.html#cb16-5"></a>ins &lt;-<span class="st"> </span>batch<span class="op">+</span>con</span>
-<span id="cb16-6"><a href="peaks-normalization.html#cb16-6"></a>re &lt;-<span class="st"> </span><span class="kw">t.test</span>(ins<span class="op">~</span>group)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="peaks-normalization.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># real peaks</span></span>
+<span id="cb19-2"><a href="peaks-normalization.html#cb19-2" aria-hidden="true" tabindex="-1"></a>group <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">5</span>),<span class="fu">rep</span>(<span class="dv">2</span>,<span class="dv">5</span>)))</span>
+<span id="cb19-3"><a href="peaks-normalization.html#cb19-3" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">5</span>,<span class="dv">5</span>),<span class="fu">rnorm</span>(<span class="dv">5</span>,<span class="dv">8</span>))</span>
+<span id="cb19-4"><a href="peaks-normalization.html#cb19-4" aria-hidden="true" tabindex="-1"></a>batch <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">5</span>,<span class="dv">0</span>,<span class="at">length.out =</span> <span class="dv">10</span>)</span>
+<span id="cb19-5"><a href="peaks-normalization.html#cb19-5" aria-hidden="true" tabindex="-1"></a>ins <span class="ot">&lt;-</span> batch<span class="sc">+</span>con</span>
+<span id="cb19-6"><a href="peaks-normalization.html#cb19-6" aria-hidden="true" tabindex="-1"></a>re <span class="ot">&lt;-</span> <span class="fu">t.test</span>(ins<span class="sc">~</span>group)</span></code></pre></div>
 </div>
-<div id="post-hoc-data-normalization" class="section level2">
+<div id="post-hoc-data-normalization" class="section level2" number="6.5">
 <h2><span class="header-section-number">6.5</span> post hoc data normalization</h2>
 <p>To make the samples comparable, normailization across the samples are always needed when the experiment part is done. Batch effect should have patterns, otherwise just noise. Correction is possible by data analysis/randomized experimental design. There are more than 20 methods to make normalization. We could devided those methods into two category: unsupervised and supervised.</p>
 <p>Unsupervised methods only consider the normalization peaks intensity distribution across the samples. For example, quantile calibration try to make the intensity distribution among the samples similar. Such methods are preferred to explore the inner structures of the samples. Internal standards or pool QC samples also belong to this category. However, it’s hard to take a few peaks standing for all peaks extracted.</p>
 <p>Supervised methods will use the group information or batch information in experimental design to normalize the data. A linear model is always used to model the unwanted variances and remove them for further analysis.</p>
-<p>Since the real batch effects are always unknown, it’s hard to make validation for different normalization methods. Wu et.al preferred to make comparision between new methods and conventional methods<span class="citation">(Wu and Li <a href="#ref-wu2016" role="doc-biblioref">2016</a>)</span>. Li et.al developed NOREVA to make comparision among 25 correction method<span class="citation">(Li et al. <a href="#ref-li2017a" role="doc-biblioref">2017</a>)</span>. Another idea is use spiked-in samples to validate the methods<span class="citation">(Franceschi et al. <a href="#ref-franceschi2012" role="doc-biblioref">2012</a>)</span>, which might be good for targeted analysis instead of non-targeted analysis.</p>
-<p>Relative log abundance (RLA) plots<span class="citation">(De Livera et al. <a href="#ref-delivera2012" role="doc-biblioref">2012</a>)</span> and heatmap often used to show the variances among the samples.</p>
-<p><span class="citation">(Thonusin et al. <a href="#ref-thonusin2017" role="doc-biblioref">2017</a>)</span> some methods for batch correction in excel</p>
-<div id="unsupervised-methods" class="section level3">
+<p>Since the real batch effects are always unknown, it’s hard to make validation for different normalization methods. Wu et.al preferred to make comparision between new methods and conventional methods<span class="citation">(<a href="#ref-wu2016" role="doc-biblioref"><strong>wu2016?</strong></a>)</span>. Li et.al developed NOREVA to make comparision among 25 correction method<span class="citation">(<a href="#ref-li2017a" role="doc-biblioref"><strong>li2017a?</strong></a>)</span>. Another idea is use spiked-in samples to validate the methods<span class="citation">(<a href="#ref-franceschi2012" role="doc-biblioref"><strong>franceschi2012?</strong></a>)</span>, which might be good for targeted analysis instead of non-targeted analysis.</p>
+<p>Relative log abundance (RLA) plots<span class="citation">(<a href="#ref-delivera2012" role="doc-biblioref"><strong>delivera2012?</strong></a>)</span> and heatmap often used to show the variances among the samples.</p>
+<p><span class="citation">(<a href="#ref-thonusin2017" role="doc-biblioref"><strong>thonusin2017?</strong></a>)</span> some methods for batch correction in excel</p>
+<div id="unsupervised-methods" class="section level3" number="6.5.1">
 <h3><span class="header-section-number">6.5.1</span> Unsupervised methods</h3>
-<div id="distribution-of-intensity" class="section level4">
+<div id="distribution-of-intensity" class="section level4" number="6.5.1.1">
 <h4><span class="header-section-number">6.5.1.1</span> Distribution of intensity</h4>
 <p>Intensity collects from LC/GC-MS always showed a right-skewed distribution. Log transformation is often necessary for further statistical analysis.</p>
 </div>
-<div id="centering" class="section level4">
+<div id="centering" class="section level4" number="6.5.1.2">
 <h4><span class="header-section-number">6.5.1.2</span> Centering</h4>
 <p>For peak p of sample s in batch b, the corrected abundance I is:</p>
 <p><span class="math display">\[\hat I_{p,s,b} = I_{p,s,b} - mean(I_{p,b}) + median(I_{p,qc})\]</span></p>
 <p>If no quality control samples used, the corrected abundance I would be:</p>
 <p><span class="math display">\[\hat I_{p,s,b} = I_{p,s,b} - mean(I_{p,b})\]</span></p>
 </div>
-<div id="scaling" class="section level4">
+<div id="scaling" class="section level4" number="6.5.1.3">
 <h4><span class="header-section-number">6.5.1.3</span> Scaling</h4>
 <p>For peak p of sample s in certain batch b, the corrected abundance I is:</p>
 <p><span class="math display">\[\hat I_{p,s,b} = \frac{I_{p,s,b} - mean(I_{p,b})}{std_{p,b}} * std_{p,qc,b} + mean(I_{p,qc,b})\]</span>
 If no quality control samples used, the corrected abundance I would be:</p>
 <p><span class="math display">\[\hat I_{p,s,b} = \frac{I_{p,s,b} - mean(I_{p,b})}{std_{p,b}}\]</span></p>
 </div>
-<div id="pareto-scaling" class="section level4">
+<div id="pareto-scaling" class="section level4" number="6.5.1.4">
 <h4><span class="header-section-number">6.5.1.4</span> Pareto Scaling</h4>
 <p>For peak p of sample s in certain batch b, the corrected abundance I is:</p>
 <p><span class="math display">\[\hat I_{p,s,b} = \frac{I_{p,s,b} - mean(I_{p,b})}{Sqrt(std_{p,b})} * Sqrt(std_{p,qc,b}) + mean(I_{p,qc,b})\]</span></p>
 <p>If no quality control samples used, the corrected abundance I would be:</p>
 <p><span class="math display">\[\hat I_{p,s,b} = \frac{I_{p,s,b} - mean(I_{p,b})}{Sqrt(std_{p,b})}\]</span></p>
 </div>
-<div id="range-scaling" class="section level4">
+<div id="range-scaling" class="section level4" number="6.5.1.5">
 <h4><span class="header-section-number">6.5.1.5</span> Range Scaling</h4>
 <p>For peak p of sample s in certain batch b, the corrected abundance I is:</p>
 <p><span class="math display">\[\hat I_{p,s,b} = \frac{I_{p,s,b} - mean(I_{p,b})}{max(I_{p,b}) - min(I_{p,b})} * (max(I_{p,qc,b}) - min(I_{p,qc,b})) + mean(I_{p,qc,b})\]</span></p>
 <p>If no quality control samples used, the corrected abundance I would be:</p>
 <p><span class="math display">\[\hat I_{p,s,b} = \frac{I_{p,s,b} - mean(I_{p,b})}{max(I_{p,b}) - min(I_{p,b})} \]</span></p>
 </div>
-<div id="level-scaling" class="section level4">
+<div id="level-scaling" class="section level4" number="6.5.1.6">
 <h4><span class="header-section-number">6.5.1.6</span> Level scaling</h4>
 <p>For peak p of sample s in certain batch b, the corrected abundance I is:</p>
 <p><span class="math display">\[\hat I_{p,s,b} = \frac{I_{p,s,b} - mean(I_{p,b})}{mean(I_{p,b})} * mean(I_{p,qc,b}) + mean(I_{p,qc,b})\]</span></p>
 <p>If no quality control samples used, the corrected abundance I would be:</p>
 <p><span class="math display">\[\hat I_{p,s,b} = \frac{I_{p,s,b} - mean(I_{p,b})}{mean(I_{p,b})} \]</span></p>
 </div>
-<div id="quantile" class="section level4">
+<div id="quantile" class="section level4" number="6.5.1.7">
 <h4><span class="header-section-number">6.5.1.7</span> Quantile</h4>
 <p>The idea of quantile calibration is that alignment of the intensities in certain samples according to quantiles in each sample.</p>
 <p>Here is the demo:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="peaks-normalization.html#cb17-1"></a><span class="kw">set.seed</span>(<span class="dv">42</span>)</span>
-<span id="cb17-2"><a href="peaks-normalization.html#cb17-2"></a>a &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1000</span>)</span>
-<span id="cb17-3"><a href="peaks-normalization.html#cb17-3"></a><span class="co"># b sufferred batch effect with a bias of 10</span></span>
-<span id="cb17-4"><a href="peaks-normalization.html#cb17-4"></a>b &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">1000</span>,<span class="dv">10</span>)</span>
-<span id="cb17-5"><a href="peaks-normalization.html#cb17-5"></a><span class="kw">hist</span>(a,<span class="dt">xlim=</span><span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>,<span class="dv">15</span>),<span class="dt">breaks =</span> <span class="dv">50</span>)</span>
-<span id="cb17-6"><a href="peaks-normalization.html#cb17-6"></a><span class="kw">hist</span>(b,<span class="dt">col =</span> <span class="st">&#39;black&#39;</span>, <span class="dt">breaks =</span> <span class="dv">50</span>, <span class="dt">add=</span>T)</span>
-<span id="cb17-7"><a href="peaks-normalization.html#cb17-7"></a><span class="co"># quantile normalized</span></span>
-<span id="cb17-8"><a href="peaks-normalization.html#cb17-8"></a>cor &lt;-<span class="st"> </span>(a[<span class="kw">order</span>(a)]<span class="op">+</span>b[<span class="kw">order</span>(b)])<span class="op">/</span><span class="dv">2</span></span>
-<span id="cb17-9"><a href="peaks-normalization.html#cb17-9"></a><span class="co"># reorder</span></span>
-<span id="cb17-10"><a href="peaks-normalization.html#cb17-10"></a>cor &lt;-<span class="st"> </span>cor[<span class="kw">order</span>(<span class="kw">order</span>(a))]</span>
-<span id="cb17-11"><a href="peaks-normalization.html#cb17-11"></a><span class="kw">hist</span>(cor,<span class="dt">col =</span> <span class="st">&#39;red&#39;</span>, <span class="dt">breaks =</span> <span class="dv">50</span>, <span class="dt">add=</span>T)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="peaks-normalization.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb20-2"><a href="peaks-normalization.html#cb20-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)</span>
+<span id="cb20-3"><a href="peaks-normalization.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># b sufferred batch effect with a bias of 10</span></span>
+<span id="cb20-4"><a href="peaks-normalization.html#cb20-4" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>,<span class="dv">10</span>)</span>
+<span id="cb20-5"><a href="peaks-normalization.html#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(a,<span class="at">xlim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">15</span>),<span class="at">breaks =</span> <span class="dv">50</span>)</span>
+<span id="cb20-6"><a href="peaks-normalization.html#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(b,<span class="at">col =</span> <span class="st">&#39;black&#39;</span>, <span class="at">breaks =</span> <span class="dv">50</span>, <span class="at">add=</span>T)</span>
+<span id="cb20-7"><a href="peaks-normalization.html#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># quantile normalized</span></span>
+<span id="cb20-8"><a href="peaks-normalization.html#cb20-8" aria-hidden="true" tabindex="-1"></a>cor <span class="ot">&lt;-</span> (a[<span class="fu">order</span>(a)]<span class="sc">+</span>b[<span class="fu">order</span>(b)])<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb20-9"><a href="peaks-normalization.html#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="co"># reorder</span></span>
+<span id="cb20-10"><a href="peaks-normalization.html#cb20-10" aria-hidden="true" tabindex="-1"></a>cor <span class="ot">&lt;-</span> cor[<span class="fu">order</span>(<span class="fu">order</span>(a))]</span>
+<span id="cb20-11"><a href="peaks-normalization.html#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(cor,<span class="at">col =</span> <span class="st">&#39;red&#39;</span>, <span class="at">breaks =</span> <span class="dv">50</span>, <span class="at">add=</span>T)</span></code></pre></div>
 <p><img src="Metabolomics_files/figure-html/quantile-1.png" width="672" /></p>
 </div>
-<div id="ratio-based-calibraton" class="section level4">
+<div id="ratio-based-calibraton" class="section level4" number="6.5.1.8">
 <h4><span class="header-section-number">6.5.1.8</span> Ratio based calibraton</h4>
 <p>This method calibrates samples by the ratio between qc samples in all samples and in certain batch.For peak p of sample s in certain batch b, the corrected abundance I is:</p>
 <p><span class="math display">\[\hat I_{p,s,b} = \frac{I_{p,s,b} * median(I_{p,qc})}{mean_{p,qc,b}}\]</span></p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="peaks-normalization.html#cb18-1"></a><span class="kw">set.seed</span>(<span class="dv">42</span>)</span>
-<span id="cb18-2"><a href="peaks-normalization.html#cb18-2"></a><span class="co"># raw data</span></span>
-<span id="cb18-3"><a href="peaks-normalization.html#cb18-3"></a>I =<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="fl">0.3</span>),<span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dt">mean =</span> <span class="dv">1</span>, <span class="dt">sd =</span> <span class="fl">0.5</span>))</span>
-<span id="cb18-4"><a href="peaks-normalization.html#cb18-4"></a><span class="co"># batch</span></span>
-<span id="cb18-5"><a href="peaks-normalization.html#cb18-5"></a>B =<span class="st"> </span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="dv">0</span>,<span class="dv">10</span>),<span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">10</span>))</span>
-<span id="cb18-6"><a href="peaks-normalization.html#cb18-6"></a><span class="co"># qc</span></span>
-<span id="cb18-7"><a href="peaks-normalization.html#cb18-7"></a>Iqc =<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">1</span>,<span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="fl">0.3</span>),<span class="kw">rnorm</span>(<span class="dv">1</span>,<span class="dt">mean =</span> <span class="dv">1</span>, <span class="dt">sd =</span> <span class="fl">0.5</span>))</span>
-<span id="cb18-8"><a href="peaks-normalization.html#cb18-8"></a><span class="co"># corrected data</span></span>
-<span id="cb18-9"><a href="peaks-normalization.html#cb18-9"></a>Icor =<span class="st"> </span>I <span class="op">*</span><span class="st"> </span><span class="kw">median</span>(<span class="kw">c</span>(<span class="kw">rep</span>(Iqc[<span class="dv">1</span>],<span class="dv">10</span>),<span class="kw">rep</span>(Iqc[<span class="dv">2</span>],<span class="dv">10</span>)))<span class="op">/</span><span class="kw">mean</span>(<span class="kw">c</span>(<span class="kw">rep</span>(Iqc[<span class="dv">1</span>],<span class="dv">10</span>),<span class="kw">rep</span>(Iqc[<span class="dv">2</span>],<span class="dv">10</span>)))</span>
-<span id="cb18-10"><a href="peaks-normalization.html#cb18-10"></a><span class="co"># plot the result</span></span>
-<span id="cb18-11"><a href="peaks-normalization.html#cb18-11"></a><span class="kw">plot</span>(I)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="peaks-normalization.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb21-2"><a href="peaks-normalization.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># raw data</span></span>
+<span id="cb21-3"><a href="peaks-normalization.html#cb21-3" aria-hidden="true" tabindex="-1"></a>I <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="fl">0.3</span>),<span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="at">mean =</span> <span class="dv">1</span>, <span class="at">sd =</span> <span class="fl">0.5</span>))</span>
+<span id="cb21-4"><a href="peaks-normalization.html#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># batch</span></span>
+<span id="cb21-5"><a href="peaks-normalization.html#cb21-5" aria-hidden="true" tabindex="-1"></a>B <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">10</span>),<span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">10</span>))</span>
+<span id="cb21-6"><a href="peaks-normalization.html#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co"># qc</span></span>
+<span id="cb21-7"><a href="peaks-normalization.html#cb21-7" aria-hidden="true" tabindex="-1"></a>Iqc <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">1</span>,<span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="fl">0.3</span>),<span class="fu">rnorm</span>(<span class="dv">1</span>,<span class="at">mean =</span> <span class="dv">1</span>, <span class="at">sd =</span> <span class="fl">0.5</span>))</span>
+<span id="cb21-8"><a href="peaks-normalization.html#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co"># corrected data</span></span>
+<span id="cb21-9"><a href="peaks-normalization.html#cb21-9" aria-hidden="true" tabindex="-1"></a>Icor <span class="ot">=</span> I <span class="sc">*</span> <span class="fu">median</span>(<span class="fu">c</span>(<span class="fu">rep</span>(Iqc[<span class="dv">1</span>],<span class="dv">10</span>),<span class="fu">rep</span>(Iqc[<span class="dv">2</span>],<span class="dv">10</span>)))<span class="sc">/</span><span class="fu">mean</span>(<span class="fu">c</span>(<span class="fu">rep</span>(Iqc[<span class="dv">1</span>],<span class="dv">10</span>),<span class="fu">rep</span>(Iqc[<span class="dv">2</span>],<span class="dv">10</span>)))</span>
+<span id="cb21-10"><a href="peaks-normalization.html#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the result</span></span>
+<span id="cb21-11"><a href="peaks-normalization.html#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(I)</span></code></pre></div>
 <p><img src="Metabolomics_files/figure-html/ratio-1.png" width="672" /></p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="peaks-normalization.html#cb19-1"></a><span class="kw">plot</span>(Icor)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="peaks-normalization.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Icor)</span></code></pre></div>
 <p><img src="Metabolomics_files/figure-html/ratio-2.png" width="672" /></p>
 </div>
-<div id="linear-normalizer" class="section level4">
+<div id="linear-normalizer" class="section level4" number="6.5.1.9">
 <h4><span class="header-section-number">6.5.1.9</span> Linear Normalizer</h4>
 <p>This method initially scales each sample so that the sum of all
 peak abundances equals one. In this study, by multiplying the median sum of all peak abundances across all samples,we got the corrected data.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="peaks-normalization.html#cb20-1"></a><span class="kw">set.seed</span>(<span class="dv">42</span>)</span>
-<span id="cb20-2"><a href="peaks-normalization.html#cb20-2"></a><span class="co"># raw data</span></span>
-<span id="cb20-3"><a href="peaks-normalization.html#cb20-3"></a>peaksa &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="fl">0.3</span>),<span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dt">mean =</span> <span class="dv">20</span>, <span class="dt">sd =</span> <span class="fl">0.5</span>))</span>
-<span id="cb20-4"><a href="peaks-normalization.html#cb20-4"></a>peaksb &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dt">mean =</span> <span class="dv">10</span>, <span class="dt">sd =</span> <span class="fl">0.3</span>),<span class="kw">rnorm</span>(<span class="dv">10</span>,<span class="dt">mean =</span> <span class="dv">20</span>, <span class="dt">sd =</span> <span class="fl">0.5</span>))</span>
-<span id="cb20-5"><a href="peaks-normalization.html#cb20-5"></a></span>
-<span id="cb20-6"><a href="peaks-normalization.html#cb20-6"></a>df &lt;-<span class="st"> </span><span class="kw">rbind</span>(peaksa,peaksb)</span>
-<span id="cb20-7"><a href="peaks-normalization.html#cb20-7"></a>dfcor &lt;-<span class="st"> </span>df<span class="op">/</span><span class="kw">apply</span>(df,<span class="dv">2</span>,sum)<span class="op">*</span><span class="st"> </span><span class="kw">sum</span>(<span class="kw">apply</span>(df,<span class="dv">2</span>,median))</span>
-<span id="cb20-8"><a href="peaks-normalization.html#cb20-8"></a></span>
-<span id="cb20-9"><a href="peaks-normalization.html#cb20-9"></a><span class="kw">image</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="peaks-normalization.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb23-2"><a href="peaks-normalization.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># raw data</span></span>
+<span id="cb23-3"><a href="peaks-normalization.html#cb23-3" aria-hidden="true" tabindex="-1"></a>peaksa <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="fl">0.3</span>),<span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="at">mean =</span> <span class="dv">20</span>, <span class="at">sd =</span> <span class="fl">0.5</span>))</span>
+<span id="cb23-4"><a href="peaks-normalization.html#cb23-4" aria-hidden="true" tabindex="-1"></a>peaksb <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="fl">0.3</span>),<span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="at">mean =</span> <span class="dv">20</span>, <span class="at">sd =</span> <span class="fl">0.5</span>))</span>
+<span id="cb23-5"><a href="peaks-normalization.html#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="peaks-normalization.html#cb23-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">rbind</span>(peaksa,peaksb)</span>
+<span id="cb23-7"><a href="peaks-normalization.html#cb23-7" aria-hidden="true" tabindex="-1"></a>dfcor <span class="ot">&lt;-</span> df<span class="sc">/</span><span class="fu">apply</span>(df,<span class="dv">2</span>,sum)<span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">apply</span>(df,<span class="dv">2</span>,median))</span>
+<span id="cb23-8"><a href="peaks-normalization.html#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="peaks-normalization.html#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(df)</span></code></pre></div>
 <p><img src="Metabolomics_files/figure-html/Linear-1.png" width="672" /></p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="peaks-normalization.html#cb21-1"></a><span class="kw">image</span>(dfcor)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="peaks-normalization.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(dfcor)</span></code></pre></div>
 <p><img src="Metabolomics_files/figure-html/Linear-2.png" width="672" /></p>
 </div>
-<div id="internal-standards" class="section level4">
+<div id="internal-standards" class="section level4" number="6.5.1.10">
 <h4><span class="header-section-number">6.5.1.10</span> Internal standards</h4>
 <p><span class="math display">\[\hat I_{p,s} = \frac{I_{p,s} * median(I_{IS})}{I_{IS,s}}\]</span></p>
-<p>Some methods also use pooled calibration samples and multiple internal standard strategy to correct the data<span class="citation">(<span class="citeproc-not-found" data-reference-id="van_der_kloet2009"><strong>???</strong></span>)</span>. Also some methods only use QC samples to handle the data<span class="citation">(Kuligowski et al. <a href="#ref-kuligowski2015" role="doc-biblioref">2015</a>)</span>.</p>
+<p>Some methods also use pooled calibration samples and multiple internal standard strategy to correct the data<span class="citation">(<a href="#ref-van_der_kloet2009" role="doc-biblioref"><strong>van_der_kloet2009?</strong></a>)</span>. Also some methods only use QC samples to handle the data<span class="citation">(<a href="#ref-kuligowski2015" role="doc-biblioref"><strong>kuligowski2015?</strong></a>)</span>.</p>
 </div>
 </div>
-<div id="supervised-methods" class="section level3">
+<div id="supervised-methods" class="section level3" number="6.5.2">
 <h3><span class="header-section-number">6.5.2</span> Supervised methods</h3>
-<div id="regression-calibration" class="section level4">
+<div id="regression-calibration" class="section level4" number="6.5.2.1">
 <h4><span class="header-section-number">6.5.2.1</span> Regression calibration</h4>
 <p>Considering the batch effect of injection order, regress the data by a linear model to get the calibration.</p>
 </div>
-<div id="batch-normalizer" class="section level4">
+<div id="batch-normalizer" class="section level4" number="6.5.2.2">
 <h4><span class="header-section-number">6.5.2.2</span> Batch Normalizer</h4>
-<p>Use the total abundance scale and then fit with the regression line<span class="citation">(Wang, Kuo, and Tseng <a href="#ref-wang2013" role="doc-biblioref">2013</a>)</span>.</p>
+<p>Use the total abundance scale and then fit with the regression line<span class="citation">(<a href="#ref-wang2013" role="doc-biblioref"><strong>wang2013?</strong></a>)</span>.</p>
 </div>
-<div id="surrogate-variable-analysissva" class="section level4">
+<div id="surrogate-variable-analysissva" class="section level4" number="6.5.2.3">
 <h4><span class="header-section-number">6.5.2.3</span> Surrogate Variable Analysis(SVA)</h4>
 <p>We have a data matrix(M*N) with M stands for indentity peaks from one sample and N stand for individual samples. For one sample, <span class="math inline">\(X = (x_{i1},...,x_{in})^T\)</span> stands for the normalized intensities of peaks. We use <span class="math inline">\(Y = (y_i,...,y_m)^T\)</span> stands for the group infomation of our data. Then we could build such modles:</p>
 <p><span class="math display">\[x_{ij} = \mu_i + f_i(y_i) + e_{ij}\]</span></p>
@@ -526,7 +533,7 @@ x_{ij} = \mu_i + f_i(y_i) + \sum_{l = 1}^L \gamma_{li}p_{lj} + e_{ij}^*\\
 <blockquote>
 <p>The algorithm is decomposed into two parts: detection of unmodeled factors and construction of surrogate variables</p>
 </blockquote>
-<div id="detection-of-unmodeled-factors" class="section level5">
+<div id="detection-of-unmodeled-factors" class="section level5" number="6.5.2.3.1">
 <h5><span class="header-section-number">6.5.2.3.1</span> Detection of unmodeled factors</h5>
 <ul>
 <li><p>Estimate <span class="math inline">\(\hat\mu_i\)</span> and <span class="math inline">\(f_i\)</span> by fitting the model <span class="math inline">\(x_{ij} = \mu_i + f_i(y_i) + e_{ij}\)</span> and get the residual <span class="math inline">\(r_{ij} = x_{ij}-\hat\mu_i - \hat f_i(y_i)\)</span>. Then we have the residual matrix R.</p></li>
@@ -553,7 +560,7 @@ T_k^0 = \frac{d_{0k}^2}{\sum_{l=1}^{n-df}d_{0l}^2}
 <li>For a significance level <span class="math inline">\(\alpha\)</span>, treat k as a significant signature of residual R if <span class="math inline">\(p_k\leq\alpha\)</span></li>
 </ul>
 </div>
-<div id="construction-of-surrogate-variables" class="section level5">
+<div id="construction-of-surrogate-variables" class="section level5" number="6.5.2.3.2">
 <h5><span class="header-section-number">6.5.2.3.2</span> Construction of surrogate variables</h5>
 <ul>
 <li><p>Estimate <span class="math inline">\(\hat\mu_i\)</span> and <span class="math inline">\(f_i\)</span> by fitting the model <span class="math inline">\(x_{ij} = \mu_i + f_i(y_i) + e_{ij}\)</span> and get the residual <span class="math inline">\(r_{ij} = x_{ij}-\hat\mu_i - \hat f_i(y_i)\)</span>. Then we have the residual matrix R.</p></li>
@@ -565,23 +572,23 @@ T_k^0 = \frac{d_{0k}^2}{\sum_{l=1}^{n-df}d_{0l}^2}
 <li><p>Let <span class="math inline">\(j^* = argmax_{1\leq j \leq n}cor(e_k,e_j^r)\)</span> and set <span class="math inline">\(\hat h_k=e_j^r\)</span>. Set the estimate of the surrogate variable to be the eigenvalue of the reduced matrix most correlated with the corresponding residual eigenvalue. Since the reduced matrix is enriched for peaks associated with this residual eigenvalue, this is a principled choice for the estimated surrogate variable that allows for correlation with the primary variable.</p></li>
 <li><p>Employ the <span class="math inline">\(\mu_i + f_i(y_i) + \sum_{k = 1}^K \gamma_{ki}\hat h_{kj} + e_{ij}\)</span> as te estimate of the ideal model <span class="math inline">\(\mu_i + f_i(y_i) + \sum_{k = 1}^K \gamma_{ki}h_{kj} + e_{ij}\)</span></p></li>
 </ul>
-<p>This method could found the potentical unwanted variables for the data. SVA were introduced by Jeff Leek<span class="citation">(Leek et al. <a href="#ref-leek2012" role="doc-biblioref">2012</a>; Leek and Storey <a href="#ref-leek2007" role="doc-biblioref">2007</a>, <a href="#ref-leek2008" role="doc-biblioref">2008</a>)</span> and EigenMS package implement SVA with modifications including analysis of data with missing values that are typical in LC-MS experiments<span class="citation">(Karpievitch et al. <a href="#ref-karpievitch2014a" role="doc-biblioref">2014</a>)</span>.</p>
+<p>This method could found the potentical unwanted variables for the data. SVA were introduced by Jeff Leek<span class="citation">(<a href="#ref-leek2012" role="doc-biblioref"><strong>leek2012?</strong></a>; <a href="#ref-leek2007" role="doc-biblioref"><strong>leek2007?</strong></a>; <a href="#ref-leek2008" role="doc-biblioref"><strong>leek2008?</strong></a>)</span> and EigenMS package implement SVA with modifications including analysis of data with missing values that are typical in LC-MS experiments<span class="citation">(<a href="#ref-karpievitch2014a" role="doc-biblioref"><strong>karpievitch2014a?</strong></a>)</span>.</p>
 </div>
 </div>
-<div id="ruv-remove-unwanted-variation" class="section level4">
+<div id="ruv-remove-unwanted-variation" class="section level4" number="6.5.2.4">
 <h4><span class="header-section-number">6.5.2.4</span> RUV (Remove Unwanted Variation)</h4>
-<p>This method’s performance is similar to SVA. Instead find surrogate variable from the whole dataset. RUA use control or pool QC to find the unwanted variances and remove them to find the peaks related to experimental design. However, we could also empirically estimate the control peaks by linear mixed model. RUA-random<span class="citation">(Livera et al. <a href="#ref-livera2015" role="doc-biblioref">2015</a>)</span> furthor use linear mixed model to estimate the variances of random error. This method could be used with suitable control, which is commen in metabolomics DoE.</p>
+<p>This method’s performance is similar to SVA. Instead find surrogate variable from the whole dataset. RUA use control or pool QC to find the unwanted variances and remove them to find the peaks related to experimental design. However, we could also empirically estimate the control peaks by linear mixed model. RUA-random<span class="citation">(<a href="#ref-livera2015" role="doc-biblioref"><strong>livera2015?</strong></a>)</span> furthor use linear mixed model to estimate the variances of random error. This method could be used with suitable control, which is commen in metabolomics DoE.</p>
 </div>
-<div id="rrmix" class="section level4">
+<div id="rrmix" class="section level4" number="6.5.2.5">
 <h4><span class="header-section-number">6.5.2.5</span> RRmix</h4>
-<p>RRmix also use a latent factor models correct the data<span class="citation">(Jr et al. <a href="#ref-jr2017" role="doc-biblioref">2017</a>)</span>. This method could be treated as linear mixed model version SVA. No control samples are required and the unwanted variances could be removed by factor analysis. This method might be the best choise to remove the unwanted variables with commen experiment design.</p>
+<p>RRmix also use a latent factor models correct the data<span class="citation">(<a href="#ref-jr2017" role="doc-biblioref"><strong>jr2017?</strong></a>)</span>. This method could be treated as linear mixed model version SVA. No control samples are required and the unwanted variances could be removed by factor analysis. This method might be the best choise to remove the unwanted variables with commen experiment design.</p>
 </div>
 </div>
 </div>
-<div id="method-to-validate-the-normalization" class="section level2">
+<div id="method-to-validate-the-normalization" class="section level2" number="6.6">
 <h2><span class="header-section-number">6.6</span> Method to validate the normalization</h2>
 </div>
-<div id="software-2" class="section level2">
+<div id="software-2" class="section level2" number="6.7">
 <h2><span class="header-section-number">6.7</span> Software</h2>
 <ul>
 <li><p><a href="https://github.com/rwehrens/BatchCorrMetabolomics">BatchCorrMetabolomics</a> is for improved batch correction in untargeted MS-based metabolomics</p></li>
@@ -590,48 +597,6 @@ T_k^0 = \frac{d_{0k}^2}{\sum_{l=1}^{n-df}d_{0l}^2}
 <li><p><a href="http://idrb.zju.edu.cn/noreva/">Noreva</a> could make online batch correction.</p></li>
 </ul>
 
-</div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-delivera2012">
-<p>De Livera, Alysha M., Daniel A. Dias, David De Souza, Thusitha Rupasinghe, James Pyke, Dedreia Tull, Ute Roessner, Malcolm McConville, and Terence P. Speed. 2012. “Normalizing and Integrating Metabolomics Data.” <em>Anal. Chem.</em> 84 (24): 10768–76. <a href="https://doi.org/10.1021/ac302748b">https://doi.org/10.1021/ac302748b</a>.</p>
-</div>
-<div id="ref-franceschi2012">
-<p>Franceschi, Pietro, Domenico Masuero, Urska Vrhovsek, Fulvio Mattivi, and Ron Wehrens. 2012. “A Benchmark Spike-in Data Set for Biomarker Identification in Metabolomics.” <em>J. Chemometrics</em> 26 (1-2): 16–24. <a href="https://doi.org/10.1002/cem.1420">https://doi.org/10.1002/cem.1420</a>.</p>
-</div>
-<div id="ref-jr2017">
-<p>Jr, Stephen Salerno, Mahya Mehrmohamadi, Maria V. Liberti, Muting Wan, Martin T. Wells, James G. Booth, and Jason W. Locasale. 2017. “RRmix: A Method for Simultaneous Batch Effect Correction and Analysis of Metabolomics Data in the Absence of Internal Standards.” <em>PLOS ONE</em> 12 (6): e0179530. <a href="https://doi.org/10.1371/journal.pone.0179530">https://doi.org/10.1371/journal.pone.0179530</a>.</p>
-</div>
-<div id="ref-karpievitch2014a">
-<p>Karpievitch, Yuliya V., Sonja B. Nikolic, Richard Wilson, James E. Sharman, and Lindsay M. Edwards. 2014. “Metabolomics Data Normalization with EigenMS.” <em>PLOS ONE</em> 9 (12): e116221. <a href="https://doi.org/10.1371/journal.pone.0116221">https://doi.org/10.1371/journal.pone.0116221</a>.</p>
-</div>
-<div id="ref-kuligowski2015">
-<p>Kuligowski, Julia, Ángel Sánchez-Illana, Daniel Sanjuán-Herráez, Máximo Vento, and Guillermo Quintás. 2015. “Intra-Batch Effect Correction in Liquid Chromatography-Mass Spectrometry Using Quality Control Samples and Support Vector Regression (QC-SVRC).” <em>Analyst</em> 140 (22): 7810–7. <a href="https://doi.org/10.1039/C5AN01638J">https://doi.org/10.1039/C5AN01638J</a>.</p>
-</div>
-<div id="ref-leek2012">
-<p>Leek, Jeffrey T., W. Evan Johnson, Hilary S. Parker, Andrew E. Jaffe, and John D. Storey. 2012. “The Sva Package for Removing Batch Effects and Other Unwanted Variation in High-Throughput Experiments.” <em>Bioinformatics</em> 28 (6): 882–83. <a href="https://doi.org/10.1093/bioinformatics/bts034">https://doi.org/10.1093/bioinformatics/bts034</a>.</p>
-</div>
-<div id="ref-leek2007">
-<p>Leek, Jeffrey T., and John D. Storey. 2007. “Capturing Heterogeneity in Gene Expression Studies by Surrogate Variable Analysis.” <em>PLOS Genet</em> 3 (9): e161. <a href="https://doi.org/10.1371/journal.pgen.0030161">https://doi.org/10.1371/journal.pgen.0030161</a>.</p>
-</div>
-<div id="ref-leek2008">
-<p>Leek, Jeffrey T., and John D. Storey. 2007. “Capturing Heterogeneity in Gene Expression Studies by Surrogate Variable Analysis.” <em>PLOS Genet</em> 3 (9): e161. <a href="https://doi.org/10.1371/journal.pgen.0030161">https://doi.org/10.1371/journal.pgen.0030161</a>.</p> 2008. “A General Framework for Multiple Testing Dependence.” <em>PNAS</em> 105 (48): 18718–23. <a href="https://doi.org/10.1073/pnas.0808709105">https://doi.org/10.1073/pnas.0808709105</a>.</p>
-</div>
-<div id="ref-li2017a">
-<p>Li, Bo, Jing Tang, Qingxia Yang, Shuang Li, Xuejiao Cui, Yinghong Li, Yuzong Chen, Weiwei Xue, Xiaofeng Li, and Feng Zhu. 2017. “NOREVA: Normalization and Evaluation of MS-Based Metabolomics Data.” <em>Nucleic Acids Res</em> 45 (W1): W162–W170. <a href="https://doi.org/10.1093/nar/gkx449">https://doi.org/10.1093/nar/gkx449</a>.</p>
-</div>
-<div id="ref-livera2015">
-<p>Livera, Alysha M. De, Marko Sysi-Aho, Laurent Jacob, Johann A. Gagnon-Bartsch, Sandra Castillo, Julie A. Simpson, and Terence P. Speed. 2015. “Statistical Methods for Handling Unwanted Variation in Metabolomics Data.” <em>Anal. Chem.</em> 87 (7): 3606–15. <a href="https://doi.org/10.1021/ac502439y">https://doi.org/10.1021/ac502439y</a>.</p>
-</div>
-<div id="ref-thonusin2017">
-<p>Thonusin, Chanisa, Heidi B. IglayReger, Tanu Soni, Amy E. Rothberg, Charles F. Burant, and Charles R. Evans. 2017. “Evaluation of Intensity Drift Correction Strategies Using MetaboDrift, a Normalization Tool for Multi-Batch Metabolomics Data.” <em>Journal of Chromatography A</em>, Pushing the Boundaries of Chromatography and Electrophoresis, 1523 (Supplement C): 265–74. <a href="https://doi.org/10.1016/j.chroma.2017.09.023">https://doi.org/10.1016/j.chroma.2017.09.023</a>.</p>
-</div>
-<div id="ref-wang2013">
-<p>Wang, San-Yuan, Ching-Hua Kuo, and Yufeng J. Tseng. 2013. “Batch Normalizer: A Fast Total Abundance Regression Calibration Method to Simultaneously Adjust Batch and Injection Order Effects in Liquid Chromatography/Time-of-Flight Mass Spectrometry-Based Metabolomics Data and Comparison with Current Calibration Methods.” <em>Anal. Chem.</em> 85 (2): 1037–46. <a href="https://doi.org/10.1021/ac302877x">https://doi.org/10.1021/ac302877x</a>.</p>
-</div>
-<div id="ref-wu2016">
-<p>Wu, Yiman, and Liang Li. 2016. “Sample Normalization Methods in Quantitative Metabolomics.” <em>Journal of Chromatography A</em>, Editors’ Choice X, 1430 (January): 80–95. <a href="https://doi.org/10.1016/j.chroma.2015.12.007">https://doi.org/10.1016/j.chroma.2015.12.007</a>.</p>
 </div>
 </div>
             </section>
