@@ -582,12 +582,6 @@
       "Repository": "CRAN",
       "Hash": "fd2844b3a43ae2d27e70ece2df1b4e2a"
     },
-    "enviGCMS": {
-      "Package": "enviGCMS",
-      "Version": "0.6.7",
-      "Source": "Bioconductor",
-      "Hash": "aa7b6c2a2f90761d778fabbeede9f45f"
-    },
     "evaluate": {
       "Package": "evaluate",
       "Version": "0.14",
