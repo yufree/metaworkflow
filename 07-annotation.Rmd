@@ -1,3 +1,7 @@
+---
+bibliography: references.bib
+---
+
 # Annotation
 
 When you get the peaks table or features table, annotation of the peaks would help you. Check this review[@domingo-almenara2018] for a detailed notes on annotation. They proposed five levels regarding currently computational annotation strategies.
@@ -248,17 +252,9 @@ This [package](https://github.com/cran/InterpretMSSpectrum) is for annotate and 
 
 [Binner](https://binner.med.umich.edu/) Deep annotation of untargeted LC-MS metabolomics data [@kachman2020]
 
-### mzmatch
+### mzMatch
 
-Use the following code to install this package:
-
-```{r mzmatch,eval=FALSE}
-source("http://bioconductor.org/biocLite.R")
-biocLite(c("xcms", "multtest", "mzR"))
-install.packages(c("rJava", "XML", "snow", "caTools",
-   "bitops", "ptw", "gplots", "tcltk2"))
-source ("http://puma.ibls.gla.ac.uk/mzmatch.R/install_mzmatch.R")
-```
+[mzMatch](https://github.com/andzajan/mzmatch.R) is a modular, open source and platform independent data processing pipeline for metabolomics LC/MS data written in the Java language. [@chokkathukalam2013; @scheltema2011]
 
 ### mz.unity
 

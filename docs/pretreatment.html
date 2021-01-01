@@ -24,7 +24,7 @@
 <meta name="author" content="Miao YU" />
 
 
-<meta name="date" content="2020-12-28" />
+<meta name="date" content="2021-01-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -177,6 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.1" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#column-and-gradient-selection"><i class="fa fa-check"></i><b>4.1</b> Column and gradient selection</a></li>
 <li class="chapter" data-level="4.2" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#mass-resolution"><i class="fa fa-check"></i><b>4.2</b> Mass resolution</a></li>
+<li class="chapter" data-level="4.3" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#matrix-effects"><i class="fa fa-check"></i><b>4.3</b> Matrix effects</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html"><i class="fa fa-check"></i><b>5</b> Raw data pretreatment</a>
 <ul>
@@ -198,7 +199,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.9.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#for-msms"><i class="fa fa-check"></i><b>5.9.2</b> For MS/MS</a></li>
 <li class="chapter" data-level="5.9.3" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#improved-peak-picking"><i class="fa fa-check"></i><b>5.9.3</b> Improved Peak picking</a></li>
 </ul></li>
-<li class="chapter" data-level="5.10" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#tips"><i class="fa fa-check"></i><b>5.10</b> Tips</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="peaks-normalization.html"><a href="peaks-normalization.html"><i class="fa fa-check"></i><b>6</b> Peaks normalization</a>
 <ul>
@@ -244,7 +244,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.8.13" data-path="annotation.html"><a href="annotation.html#for-ident"><i class="fa fa-check"></i><b>7.8.13</b> For Ident</a></li>
 <li class="chapter" data-level="7.8.14" data-path="annotation.html"><a href="annotation.html#retip"><i class="fa fa-check"></i><b>7.8.14</b> Retip</a></li>
 <li class="chapter" data-level="7.8.15" data-path="annotation.html"><a href="annotation.html#binner"><i class="fa fa-check"></i><b>7.8.15</b> Binner</a></li>
-<li class="chapter" data-level="7.8.16" data-path="annotation.html"><a href="annotation.html#mzmatch"><i class="fa fa-check"></i><b>7.8.16</b> mzmatch</a></li>
+<li class="chapter" data-level="7.8.16" data-path="annotation.html"><a href="annotation.html#mzmatch"><i class="fa fa-check"></i><b>7.8.16</b> mzMatch</a></li>
 <li class="chapter" data-level="7.8.17" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>7.8.17</b> mz.unity</a></li>
 <li class="chapter" data-level="7.8.18" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>7.8.18</b> MAIT</a></li>
 <li class="chapter" data-level="7.8.19" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>7.8.19</b> ProbMetab</a></li>
@@ -342,52 +342,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Pretreatment will affect the results of metabolomics and cover the sample treatment from crude samples to injection vials for instrumental analysis. The purpose of sample pretreatment is the to retain more interesting compounds while remove unrelated compounds. For metabolomics studies, we might not know ‘interesting’ compounds in advance and the unrelated compounds are highly depended on research purpose. For example, Gel Permeation Chromatograph(GPC), Florisil, Alumina, Silica gel could be used to remove lipid while alcohols and strong acid/base could make protein denaturation to release more compounds. However, if we are interested in small lipid or peptide, such pretreatment methods should be changed. In general, sample collection, quenching, extraction methods, derivatization, and storage should be optimized in pretreatment.</p>
 <div id="collection" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> Collection</h2>
-<p>Those papers investigated different fecal collection methods<span class="citation">(<a href="exposome.html#ref-loftfield2016" role="doc-biblioref">Loftfield et al. 2016</a>; <a href="exposome.html#ref-deda2017" role="doc-biblioref">Deda et al. 2017</a>)</span>.</p>
+<p>Those papers investigated different fecal collection methods<span class="citation">[@loftfield2016; @deda2017]</span>.</p>
 </div>
 <div id="quenching" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> Quenching</h2>
 <p>Quenching solvent is always used to stop stop enzymatic activity.</p>
-<p>In this review<span class="citation">(<a href="exposome.html#ref-lu2017" role="doc-biblioref">W. Lu et al. 2017</a>)</span>, authors said:</p>
+<p>In this review<span class="citation">[@lu2017]</span>, authors said:</p>
 <blockquote>
 <p>A classical approach, which works well for many analytes, is boiling ethanol. Although the boiling solvent raises concerns about thermal degradation, it reliably denatures enzymes. In contrast, cold organic solvent may not fully denature enzymes or may do so too slowly such that some metabolic reactions continue, interconverting metabolites during the quenching process.</p>
 </blockquote>
-<p>This review<span class="citation">(<a href="exposome.html#ref-kim2020" role="doc-biblioref">Kim et al. 2020</a>)</span> summarized the urease-dependent metabolome sample preparation and found:</p>
+<p>This review<span class="citation">[@kim2020]</span> summarized the urease-dependent metabolome sample preparation and found:</p>
 <blockquote>
 <p>activities of urease and endogenous urinary enzymes and metabolite contaminants from the urease preparations introduce artefacts into metabolite profiles, thus leading to misinterpretation.</p>
 </blockquote>
 </div>
 <div id="extraction" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Extraction</h2>
-<p>According to this research<span class="citation">(<a href="exposome.html#ref-bennett2009" role="doc-biblioref">Bennett et al. 2009</a>)</span>:</p>
+<p>According to this research<span class="citation">[@bennett2009]</span>:</p>
 <blockquote>
 <p>The total metabolome concentration is approximately 300 mM, whereas the protein concentration is approximately 7 mM., which implies that most cellular metabolites are in free form.</p>
 </blockquote>
-<p>Dmitri et.al<span class="citation">(<a href="exposome.html#ref-sitnikov2016" role="doc-biblioref">Sitnikov, Monnin, and Vuckovic 2016</a>)</span> thought the most orthogonal methods to methanol-based precipitation were ion-exchange solid-phase extraction and liquid-liquid extraction using methyl-tertbutyl ether.</p>
-<p>Metabolic information was highly influenced by the extraction solvent<span class="citation">(<a href="exposome.html#ref-ibanez2017" role="doc-biblioref">Ibáñez et al. 2017</a>)</span>.</p>
+<p>Dmitri et.al<span class="citation">[@sitnikov2016]</span> thought the most orthogonal methods to methanol-based precipitation were ion-exchange solid-phase extraction and liquid-liquid extraction using methyl-tertbutyl ether.</p>
+<p>Metabolic information was highly influenced by the extraction solvent<span class="citation">[@ibanez2017]</span>.</p>
 <p>Tissue samples need to first be pulverized into fine powders.</p>
 <p>Feces collected with 95% ethanol or FOBT would be more reproducible and stable.</p>
-<p>In this review<span class="citation">(<a href="exposome.html#ref-lu2017" role="doc-biblioref">W. Lu et al. 2017</a>)</span>, authors said:</p>
+<p>In this review<span class="citation">[@lu2017]</span>, authors said:</p>
 <blockquote>
 <p>In our experience, for both cell and tissue specimens, 40:40:20 acetonitrile:methanol:water with 0.1 M formic acid (and subsequent neutralization with ammonium bicarbonate) is generally an effective solvent system for both quenching and extraction, including for ATP and other high-energy phosphorylated compounds. We typically use approximately 1 mL of solvent mix to extract 25 mg of biological specimen. …Thus, although drying is acceptable for most metabolites, care must be taken with redox-active species.</p>
 </blockquote>
-<p>nano LC-MS could be used to analysis small numbers of cells<span class="citation">(<a href="exposome.html#ref-luo2017a" role="doc-biblioref">Luo and Li 2017</a>)</span>.</p>
-<p>For plant like soybeans<span class="citation">(<a href="exposome.html#ref-mahmud2017" role="doc-biblioref">Mahmud et al. 2017</a>)</span>, ammonium acetate/methanol could be selected as extraction strategies compared with water/methanol and sodium phosphate/methanol. For general plant samples, check this comprehensive investigation<span class="citation">(<a href="exposome.html#ref-bijttebier2016" role="doc-biblioref">Bijttebier et al. 2016</a>)</span>.</p>
+<p>nano LC-MS could be used to analysis small numbers of cells<span class="citation">[@luo2017a]</span>.</p>
+<p>For plant like soybeans<span class="citation">[@mahmud2017]</span>, ammonium acetate/methanol could be selected as extraction strategies compared with water/methanol and sodium phosphate/methanol. For general plant samples, check this comprehensive investigation<span class="citation">[@bijttebier2016]</span>.</p>
 </div>
 <div id="derivatization" class="section level2" number="3.4">
 <h2><span class="header-section-number">3.4</span> Derivatization</h2>
-<p>Derivatization is always used in GC-based metabolomics study. This paper<span class="citation">(<a href="exposome.html#ref-miyagawa2019" role="doc-biblioref">Miyagawa and Bamba 2019</a>)</span> compared sequential derivatization methods and found different compounds would show different fluctuations during oximation or silylation process.</p>
+<p>Derivatization is always used in GC-based metabolomics study. This paper<span class="citation">[@miyagawa2019]</span> compared sequential derivatization methods and found different compounds would show different fluctuations during oximation or silylation process. This paper summarized derivatization methods for LC-MS <span class="citation">[@zhao2020]</span>.</p>
 </div>
 <div id="storage" class="section level2" number="3.5">
 <h2><span class="header-section-number">3.5</span> Storage</h2>
-<p>Samples should be stored after sample collection or sample pretreatment. -80°C or -20°C is always preferred to store samples. Dry ice should be used during sample pretreatment. However, comprehensive investigation of storage influences found the metabolites profile will change after one day storage at -80°C<span class="citation">(<a href="exposome.html#ref-yu2020" role="doc-biblioref">Yu et al. 2020</a>)</span> . Rapid analysis of samples should be considered to capture more accurate information in the samples.</p>
+<p>Samples should be stored after sample collection or sample pretreatment. -80°C or -20°C is always preferred to store samples. Dry ice should be used during sample pretreatment. However, comprehensive investigation of storage influences found the metabolites profile will change after one day storage at -80°C<span class="citation">[@yu2020]</span> . Rapid analysis of samples should be considered to capture more accurate information in the samples.</p>
 <blockquote>
-<p>Storage conditions such as temperature and time can affect the
-metabolite composition of various samples. Laparre et al.<span class="citation">(<a href="exposome.html#ref-laparre2017" role="doc-biblioref">Laparre et al. 2017a</a>)</span> noted that the metabolite profiles of urine samples were significantly changed after 5 days of storage at 4 C, while Wandro and colleagues<span class="citation">(<a href="exposome.html#ref-wandro2017" role="doc-biblioref">Wandro et al. 2017</a>)</span> observed that the metabolomic profiles of cystic fibrosis sputum samples underwent notable changes after only 1 day of storage at 4 C. Likewise, Roszkowska et al. demonstrated that various signaling molecules were lost from the lipidome profile of tissue after storing the samples for one year at 80 C <span class="citation">(<a href="exposome.html#ref-roszkowska2018" role="doc-biblioref">Roszkowska et al. 2018</a>)</span>. To date, most metabolomics studies involving storage of samples prior to the analysis have used a storage temperature of 80 C, as previous investigations have shown that low temperatures or freeze-thaw cycles do not significantly change the metabolite profile of certain samples<span class="citation">(<a href="exposome.html#ref-lin2007" role="doc-biblioref">Lin et al. 2007</a>)</span> .</p>
+<p>Storage conditions such as temperature and time can affect the metabolite composition of various samples. Laparre et al.<span class="citation">[@laparre2017]</span> noted that the metabolite profiles of urine samples were significantly changed after 5 days of storage at 4 C, while Wandro and colleagues<span class="citation">[@wandro2017]</span> observed that the metabolomic profiles of cystic fibrosis sputum samples underwent notable changes after only 1 day of storage at 4 C. Likewise, Roszkowska et al. demonstrated that various signaling molecules were lost from the lipidome profile of tissue after storing the samples for one year at 80 C <span class="citation">[@roszkowska2018]</span>. To date, most metabolomics studies involving storage of samples prior to the analysis have used a storage temperature of 80 C, as previous investigations have shown that low temperatures or freeze-thaw cycles do not significantly change the metabolite profile of certain samples<span class="citation">[@lin2007]</span> .</p>
 </blockquote>
-<p>For gut microbiota, this paper could be checked for storage issue<span class="citation">(<a href="exposome.html#ref-zubeldia-varela2020" role="doc-biblioref">Zubeldia-Varela et al. 2020</a>)</span>.</p>
-<p>For blood sample storage, you could check this paper<span class="citation">(<a href="exposome.html#ref-hernandes2017" role="doc-biblioref">Hernandes, Barbas, and Dudzik 2017</a>)</span>.</p>
-<p>For urine sample storage, check this<span class="citation">(<a href="exposome.html#ref-laparre2017a" role="doc-biblioref">Laparre et al. 2017b</a>)</span>.</p>
-<p>This piece reviewed the stability of energy metabolites<span class="citation">(<a href="exposome.html#ref-gil2015" role="doc-biblioref">Gil et al. 2015</a>)</span>.</p>
+<p>For gut microbiota, this paper could be checked for storage issue<span class="citation">[@zubeldia-varela2020]</span>.</p>
+<p>For blood sample storage, you could check this paper<span class="citation">[@hernandes2017]</span>.</p>
+<p>For urine sample storage, check this<span class="citation">[@laparre2017a]</span>.</p>
+<p>This piece reviewed the stability of energy metabolites<span class="citation">[@gil2015]</span>.</p>
 
 </div>
 </div>

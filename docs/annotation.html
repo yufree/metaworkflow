@@ -24,7 +24,7 @@
 <meta name="author" content="Miao YU" />
 
 
-<meta name="date" content="2020-12-28" />
+<meta name="date" content="2021-01-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -177,6 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.1" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#column-and-gradient-selection"><i class="fa fa-check"></i><b>4.1</b> Column and gradient selection</a></li>
 <li class="chapter" data-level="4.2" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#mass-resolution"><i class="fa fa-check"></i><b>4.2</b> Mass resolution</a></li>
+<li class="chapter" data-level="4.3" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#matrix-effects"><i class="fa fa-check"></i><b>4.3</b> Matrix effects</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html"><i class="fa fa-check"></i><b>5</b> Raw data pretreatment</a>
 <ul>
@@ -198,7 +199,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.9.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#for-msms"><i class="fa fa-check"></i><b>5.9.2</b> For MS/MS</a></li>
 <li class="chapter" data-level="5.9.3" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#improved-peak-picking"><i class="fa fa-check"></i><b>5.9.3</b> Improved Peak picking</a></li>
 </ul></li>
-<li class="chapter" data-level="5.10" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#tips"><i class="fa fa-check"></i><b>5.10</b> Tips</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="peaks-normalization.html"><a href="peaks-normalization.html"><i class="fa fa-check"></i><b>6</b> Peaks normalization</a>
 <ul>
@@ -244,7 +244,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.8.13" data-path="annotation.html"><a href="annotation.html#for-ident"><i class="fa fa-check"></i><b>7.8.13</b> For Ident</a></li>
 <li class="chapter" data-level="7.8.14" data-path="annotation.html"><a href="annotation.html#retip"><i class="fa fa-check"></i><b>7.8.14</b> Retip</a></li>
 <li class="chapter" data-level="7.8.15" data-path="annotation.html"><a href="annotation.html#binner"><i class="fa fa-check"></i><b>7.8.15</b> Binner</a></li>
-<li class="chapter" data-level="7.8.16" data-path="annotation.html"><a href="annotation.html#mzmatch"><i class="fa fa-check"></i><b>7.8.16</b> mzmatch</a></li>
+<li class="chapter" data-level="7.8.16" data-path="annotation.html"><a href="annotation.html#mzmatch"><i class="fa fa-check"></i><b>7.8.16</b> mzMatch</a></li>
 <li class="chapter" data-level="7.8.17" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>7.8.17</b> mz.unity</a></li>
 <li class="chapter" data-level="7.8.18" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>7.8.18</b> MAIT</a></li>
 <li class="chapter" data-level="7.8.19" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>7.8.19</b> ProbMetab</a></li>
@@ -339,7 +339,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="annotation" class="section level1" number="7">
 <h1><span class="header-section-number">Chapter 7</span> Annotation</h1>
-<p>When you get the peaks table or features table, annotation of the peaks would help you. Check this review<span class="citation">(<a href="exposome.html#ref-domingo-almenara2018" role="doc-biblioref">Domingo-Almenara et al. 2018</a>)</span> for a detailed notes on annotation. They proposed five levels regarding currently computational annotation strategies.</p>
+<p>When you get the peaks table or features table, annotation of the peaks would help you. Check this review<span class="citation">[@domingo-almenara2018]</span> for a detailed notes on annotation. They proposed five levels regarding currently computational annotation strategies.</p>
 <ul>
 <li><p>Level 1: Peak Grouping: MS Psedospectra extraction based on peak shape similarity and peak abundance correlation</p></li>
 <li><p>Level 2: Peak Annotation: Adducts, Neutral losses, isotopes, and other mass relationships based on mass distances</p></li>
@@ -351,7 +351,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="issues-in-annotation" class="section level2" number="7.1">
 <h2><span class="header-section-number">7.1</span> Issues in annotation</h2>
 <p>The major issue in annotation is the redundancy peaks from same metabolite. Unlike genomes, peaks or features from peak selection are not independent with each other. Adducts, in-source fragments and isotopes would lead to wrong annotation. A common solution is that use known adducts, neutral losses, molecular multimers or multiple charged ions to compare mass distances.</p>
-<p>Another issue is about the MS/MS database. Only 10% of known metabolites in databases have experimental spectral data. Thus <strong>in silico</strong> prediction are required. Some works try to fill the gap between experimental data, theoretical values(from chemical database like chemspider) and prediction together. Here is a nice review about MS/MS prediction<span class="citation">(<a href="#ref-hufsky2014" role="doc-biblioref"><strong>hufsky2014?</strong></a>)</span>.</p>
+<p>Another issue is about the MS/MS database. Only 10% of known metabolites in databases have experimental spectral data. Thus <strong>in silico</strong> prediction are required. Some works try to fill the gap between experimental data, theoretical values(from chemical database like chemspider) and prediction together. Here is a nice review about MS/MS prediction<span class="citation">[@hufsky2014]</span>.</p>
 </div>
 <div id="peak-misidentification" class="section level2" number="7.2">
 <h2><span class="header-section-number">7.2</span> Peak misidentification</h2>
@@ -369,7 +369,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="annotation-v.s.-identification" class="section level2" number="7.3">
 <h2><span class="header-section-number">7.3</span> Annotation v.s. identification</h2>
-<p>According to the definition from the Chemical Analysis Working Group of the Metabolomics Standards Intitvative<span class="citation">(<a href="#ref-sumner2007" role="doc-biblioref"><strong>sumner2007?</strong></a>; <a href="#ref-viant2017" role="doc-biblioref"><strong>viant2017?</strong></a>)</span>. Four levels of confidence could be assigned to identification:</p>
+<p>According to the definition from the Chemical Analysis Working Group of the Metabolomics Standards Intitvative<span class="citation">[@sumner2007; @viant2017]</span>. Four levels of confidence could be assigned to identification:</p>
 <ul>
 <li>Level 1 ‘identified metabolites’</li>
 <li>Level 2 ‘Putatively annotated compounds’</li>
@@ -382,26 +382,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">7.4</span> Molecular Formula Assignment</h2>
 <p>Cheminformatics will help for MS annotation. The first task is molecular formula assignment. For a given accurate mass, the formula should be constrained by predefined element type and atom number, mass error window and rules of chemical bonding, such as double bond equivalent (DBE) and the nitrogen rule. The nitrogen rule is that an odd nominal molecular mass implies also an odd number of nitrogen. This rule should only be used with nominal (integer) masses. Degree of unsaturation or DBE use rings-plus-double-bonds equivalent (RDBE) values, which should be interger. The elements oxygen and sulphur were not taken into account. Otherwise the molecular formula will not be true.</p>
 <p><span class="math display">\[RDBE = C+Si - 1/2(H+F+Cl+Br+I) + 1/2(N+P)+1 \]</span></p>
-<p>To assign molecular formula to a mass to charge ratio, Seven Golden Rules <span class="citation">(<a href="#ref-kind2007" role="doc-biblioref"><strong>kind2007?</strong></a>)</span> for heuristic filtering of molecular formulas should be considered:</p>
+<p>To assign molecular formula to a mass to charge ratio, Seven Golden Rules <span class="citation">[@kind2007]</span> for heuristic filtering of molecular formulas should be considered:</p>
 <ul>
 <li>Apply heuristic restrictions for number of elements during formula generation. This is the table for known compounds:</li>
 </ul>
-<pre><code>##   Mass.Range.[Da] Library C.max H.max N.max O.max P.max
-## 1           &lt; 500     DNP    29    72    10    18     4
-## 2            &lt;NA&gt;   Wiley    39    72    20    20     9
-## 3          &lt; 1000     DNP    66   126    25    27     6
-## 4            &lt;NA&gt;   Wiley    78   126    20    27     9
-## 5          &lt; 2000     DNP   115   236    32    63     6
-## 6            &lt;NA&gt;   Wiley   156   180    20    40     9
-## 7          &lt; 3000     DNP   162   208    48    78     6
-##   S.max F.max Cl.max Br.max Si.max
-## 1     7    15      8      5     NA
-## 2    10    16     10      4      8
-## 3     8    16     11      8     NA
-## 4    14    34     12      8     14
-## 5     8    16     11      8     NA
-## 6    14    48     12     10     15
-## 7     9    16     11      8     NA</code></pre>
+<pre><code>##   Mass.Range.[Da] Library C.max H.max N.max O.max P.max S.max F.max Cl.max
+## 1           &lt; 500     DNP    29    72    10    18     4     7    15      8
+## 2            &lt;NA&gt;   Wiley    39    72    20    20     9    10    16     10
+## 3          &lt; 1000     DNP    66   126    25    27     6     8    16     11
+## 4            &lt;NA&gt;   Wiley    78   126    20    27     9    14    34     12
+## 5          &lt; 2000     DNP   115   236    32    63     6     8    16     11
+## 6            &lt;NA&gt;   Wiley   156   180    20    40     9    14    48     12
+## 7          &lt; 3000     DNP   162   208    48    78     6     9    16     11
+##   Br.max Si.max
+## 1      5     NA
+## 2      4      8
+## 3      8     NA
+## 4      8     14
+## 5      8     NA
+## 6     10     15
+## 7      8     NA</code></pre>
 <ul>
 <li><p>Perform LEWIS and SENIOR check. The LEWIS rule demands that molecules consisting of main group elements, especially carbon, nitrogen and oxygen, share electrons in a way that all atoms have completely filled s, p-valence shells (‘<a href="https://en.wikipedia.org/wiki/Octet_rule">octet rule</a>’). Senior’s theorem requires three essential conditions for the existence of molecular graphs</p>
 <ul>
@@ -413,26 +413,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Perform H/C ratio check (hydrogen/carbon ratio). In most cases the hydrogen/carbon ratio does not exceed H/C &gt; 3 with rare exception such as in methylhydrazine (CH6N2). Conversely, the H/C ratio is usually smaller than 2, and should not be less than 0.125 like in the case of tetracyanopyrrole (C8HN5).</p></li>
 <li><p>Perform NOPS ratio check (N, O, P, S/C ratios).</p></li>
 </ul>
-<pre><code>##   Element.ratios Common.range.(covering.99.7%)
-## 1            H/C                       0.2–3.1
-## 2            F/C                         0–1.5
-## 3           Cl/C                         0–0.8
-## 4           Br/C                         0–0.8
-## 5            N/C                         0–1.3
-## 6            O/C                         0–1.2
-## 7            P/C                         0–0.3
-## 8            S/C                         0–0.8
-## 9           Si/C                         0–0.5
-##   Extended.range.(covering.99.99%)
-## 1                            0.1–6
-## 2                              0–6
-## 3                              0–2
-## 4                              0–2
-## 5                              0–4
-## 6                              0–3
-## 7                              0–2
-## 8                              0–3
-## 9                              0–1
+<pre><code>##   Element.ratios Common.range.(covering.99.7%) Extended.range.(covering.99.99%)
+## 1            H/C                       0.2–3.1                            0.1–6
+## 2            F/C                         0–1.5                              0–6
+## 3           Cl/C                         0–0.8                              0–2
+## 4           Br/C                         0–0.8                              0–2
+## 5            N/C                         0–1.3                              0–4
+## 6            O/C                         0–1.2                              0–3
+## 7            P/C                         0–0.3                              0–2
+## 8            S/C                         0–0.8                              0–3
+## 9           Si/C                         0–0.5                              0–1
 ##   Extreme.range.(beyond.99.99%)
 ## 1                 &lt; 0.1 and 6–9
 ## 2                         &gt; 1.5
@@ -446,18 +436,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Perform heuristic HNOPS probability check (H, N, O, P, S/C high probability ratios)</li>
 </ul>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="annotation.html#cb27-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb27-2"><a href="annotation.html#cb27-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb27-3"><a href="annotation.html#cb27-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Element.counts =</span> <span class="fu">c</span>(<span class="st">&quot;NOPS all &gt; 1&quot;</span>,<span class="st">&quot;NOP all &gt; 3&quot;</span>,<span class="st">&quot;OPS all &gt; 1&quot;</span>,</span>
-<span id="cb27-4"><a href="annotation.html#cb27-4" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;PSN all &gt; 1&quot;</span>,<span class="st">&quot;NOS all &gt; 6&quot;</span>),</span>
-<span id="cb27-5"><a href="annotation.html#cb27-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Heuristic.Rule =</span> <span class="fu">c</span>(<span class="st">&quot;N&lt; 10, O &lt; 20, P &lt; 4, S &lt; 3&quot;</span>,</span>
-<span id="cb27-6"><a href="annotation.html#cb27-6" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;N &lt; 11, O &lt; 22, P &lt; 6&quot;</span>,<span class="st">&quot;O &lt; 14, P &lt; 3, S &lt; 3&quot;</span>,</span>
-<span id="cb27-7"><a href="annotation.html#cb27-7" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;P &lt; 3, S &lt; 3, N &lt; 4&quot;</span>,<span class="st">&quot;N &lt; 19 O &lt; 14 S &lt; 8&quot;</span>),</span>
-<span id="cb27-8"><a href="annotation.html#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">DB.examples.for.maximum.values =</span> <span class="fu">c</span>(<span class="st">&quot;C15H34N9O8PS, C22H44N4O14P2S2, C24H38N7O19P3S&quot;</span>,<span class="st">&quot;C20H28N10O21P4, C10H18N5O20P5&quot;</span>,</span>
-<span id="cb27-9"><a href="annotation.html#cb27-9" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;C22H44N4O14P2S2, C16H36N4O4P2S2&quot;</span>,</span>
-<span id="cb27-10"><a href="annotation.html#cb27-10" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;C22H44N4O14P2S2, C16H36N4O4P2S2&quot;</span>,<span class="st">&quot;C59H64N18O14S7&quot;</span>)</span>
-<span id="cb27-11"><a href="annotation.html#cb27-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb27-12"><a href="annotation.html#cb27-12" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="annotation.html#cb20-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb20-2"><a href="annotation.html#cb20-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb20-3"><a href="annotation.html#cb20-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Element.counts =</span> <span class="fu">c</span>(<span class="st">&quot;NOPS all &gt; 1&quot;</span>,<span class="st">&quot;NOP all &gt; 3&quot;</span>,<span class="st">&quot;OPS all &gt; 1&quot;</span>,</span>
+<span id="cb20-4"><a href="annotation.html#cb20-4" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;PSN all &gt; 1&quot;</span>,<span class="st">&quot;NOS all &gt; 6&quot;</span>),</span>
+<span id="cb20-5"><a href="annotation.html#cb20-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Heuristic.Rule =</span> <span class="fu">c</span>(<span class="st">&quot;N&lt; 10, O &lt; 20, P &lt; 4, S &lt; 3&quot;</span>,</span>
+<span id="cb20-6"><a href="annotation.html#cb20-6" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;N &lt; 11, O &lt; 22, P &lt; 6&quot;</span>,<span class="st">&quot;O &lt; 14, P &lt; 3, S &lt; 3&quot;</span>,</span>
+<span id="cb20-7"><a href="annotation.html#cb20-7" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;P &lt; 3, S &lt; 3, N &lt; 4&quot;</span>,<span class="st">&quot;N &lt; 19 O &lt; 14 S &lt; 8&quot;</span>),</span>
+<span id="cb20-8"><a href="annotation.html#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">DB.examples.for.maximum.values =</span> <span class="fu">c</span>(<span class="st">&quot;C15H34N9O8PS, C22H44N4O14P2S2, C24H38N7O19P3S&quot;</span>,<span class="st">&quot;C20H28N10O21P4, C10H18N5O20P5&quot;</span>,</span>
+<span id="cb20-9"><a href="annotation.html#cb20-9" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;C22H44N4O14P2S2, C16H36N4O4P2S2&quot;</span>,</span>
+<span id="cb20-10"><a href="annotation.html#cb20-10" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;C22H44N4O14P2S2, C16H36N4O4P2S2&quot;</span>,<span class="st">&quot;C59H64N18O14S7&quot;</span>)</span>
+<span id="cb20-11"><a href="annotation.html#cb20-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb20-12"><a href="annotation.html#cb20-12" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
 <pre><code>##   Element.counts              Heuristic.Rule
 ## 1   NOPS all &gt; 1 N&lt; 10, O &lt; 20, P &lt; 4, S &lt; 3
 ## 2    NOP all &gt; 3       N &lt; 11, O &lt; 22, P &lt; 6
@@ -473,7 +463,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Perform TMS check (for GC-MS if a silylation step is involved). For TMS derivatized molecules detected in GC/MS analyses, the rules on element ratio checks and valence tests are hence best applied after TMS groups are subtracted, in a similar manner as adducts need to be first recognized and subtracted in LC/MS analyses.</li>
 </ul>
-<p>Seven Golden Rules were built for GC-MS and Hydrogen Rearrangement Rules were major designed for LC-CID-MS/MS<span class="citation">(<a href="#ref-tsugawa2016" role="doc-biblioref"><strong>tsugawa2016?</strong></a>)</span>. Based on extensively curated database records and enthalpy calculations, “hydrogen rearrangement (HR) rules” could be extending the even-electron rule for carbon (C) and heteroatoms, oxygen (O), nitrogen (N), phosphorus (P), and sulfur (S). They used high abundance MS/MS peaks that exceeded 10% of their base peaks to identify common features in terms of 4 HR rules for positive mode and 5 HR rules for negative mode.</p>
+<p>Seven Golden Rules were built for GC-MS and Hydrogen Rearrangement Rules were major designed for LC-CID-MS/MS<span class="citation">[@tsugawa2016]</span>. Based on extensively curated database records and enthalpy calculations, “hydrogen rearrangement (HR) rules” could be extending the even-electron rule for carbon (C) and heteroatoms, oxygen (O), nitrogen (N), phosphorus (P), and sulfur (S). They used high abundance MS/MS peaks that exceeded 10% of their base peaks to identify common features in terms of 4 HR rules for positive mode and 5 HR rules for negative mode.</p>
 <p>Seven Golden Rules and Hydrogen Rearrangement Rules might also be captured by statistical models. However, such heuristic rules could reduce the searching space of possible formula.</p>
 <p>Here is some other Cheminformatics tools, which could be used to assign meanful formula or structures for mass spectra.</p>
 <ul>
@@ -493,9 +483,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><p><a href="http://mona.fiehnlab.ucdavis.edu/">MoNA</a> Platform to collect all other open source database</p></li>
 <li><p><a href="http://www.massbank.jp/?lang=en">MassBank</a></p></li>
-<li><p><a href="https://gnps.ucsd.edu/ProteoSAFe/static/gnps-splash.jsp">GNPS</a> use inner correlationship in the data and make network analysis at peaks’ level instand of annotated compounds to annotate the data<span class="citation">(<a href="#ref-wang2016b" role="doc-biblioref"><strong>wang2016b?</strong></a>)</span>.</p></li>
+<li><p><a href="https://gnps.ucsd.edu/ProteoSAFe/static/gnps-splash.jsp">GNPS</a> use inner correlationship in the data and make network analysis at peaks’ level instand of annotated compounds to annotate the data<span class="citation">[@wang2016b]</span>.</p></li>
 <li><p><a href="http://spectra.psc.riken.jp/">ReSpect</a>: phytochemicals</p></li>
-<li><p><a href="https://metlin.scripps.edu/">Metlin</a> is another useful online application for annotation<span class="citation">(<a href="#ref-guijas2018" role="doc-biblioref"><strong>guijas2018?</strong></a>)</span>.</p></li>
+<li><p><a href="https://metlin.scripps.edu/">Metlin</a> is another useful online application for annotation<span class="citation">[@guijas2018]</span>.</p></li>
 <li><p><a href="http://fiehnlab.ucdavis.edu/projects/LipidBlast">LipidBlast</a>: <strong>in silico</strong> prediction</p></li>
 <li><p><a href="https://www.mzcloud.org/">MZcloud</a></p></li>
 <li><p><a href="https://www.nist.gov/srd/nist-standard-reference-database-1a-v17">NIST</a>: Not free</p></li>
@@ -508,7 +498,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><a href="https://www.nist.gov/srd/nist-standard-reference-database-1a-v17">NIST</a>: No free</p></li>
 <li><p><a href="https://sdbs.db.aist.go.jp/sdbs/cgi-bin/cre_index.cgi?lang=eng">Spectral Database for Organic Compounds, SDBS</a></p></li>
 <li><p><a href="http://minedatabase.mcs.anl.gov/#/faq">MINE</a> is an open access database of computationally predicted enzyme promiscuity products for untargeted metabolomics</p></li>
-<li><p><a href="https://www.sciencedirect.com/science/article/abs/pii/S0039914019311786?via%3Dihub">Database</a> of free solution mobilities for 276 metabolites for capillary zone electrophoresis / mass spectrometry. <span class="citation">(<a href="#ref-petrov2020" role="doc-biblioref"><strong>petrov2020?</strong></a>)</span></p></li>
+<li><p><a href="https://www.sciencedirect.com/science/article/abs/pii/S0039914019311786?via%3Dihub">Database</a> of free solution mobilities for 276 metabolites for capillary zone electrophoresis / mass spectrometry. <span class="citation">[@petrov2020]</span></p></li>
 </ul>
 </div>
 </div>
@@ -542,16 +532,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="camera" class="section level3" number="7.8.5">
 <h3><span class="header-section-number">7.8.5</span> CAMERA</h3>
-<p>Common <a href="https://bioconductor.org/packages/release/bioc/html/CAMERA.html">annotation</a> for xcms workflow<span class="citation">(<a href="#ref-kuhl2012" role="doc-biblioref"><strong>kuhl2012?</strong></a>)</span>.</p>
+<p>Common <a href="https://bioconductor.org/packages/release/bioc/html/CAMERA.html">annotation</a> for xcms workflow<span class="citation">[@kuhl2012]</span>.</p>
 </div>
 <div id="ramclustr" class="section level3" number="7.8.6">
 <h3><span class="header-section-number">7.8.6</span> RAMClustR</h3>
-<p>The software could be found <a href="https://github.com/cbroeckl/RAMClustR">here</a><span class="citation">(<a href="#ref-broeckling2014" role="doc-biblioref"><strong>broeckling2014?</strong></a>)</span>. The package included a vignette as usages. Use the following code to read:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="annotation.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vignette</span>(<span class="st">&#39;RAMClustR&#39;</span>,<span class="at">package =</span> <span class="st">&#39;RAMClustR&#39;</span>)</span></code></pre></div>
+<p>The software could be found <a href="https://github.com/cbroeckl/RAMClustR">here</a><span class="citation">[@broeckling2014]</span>. The package included a vignette as usages. Use the following code to read:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="annotation.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vignette</span>(<span class="st">&#39;RAMClustR&#39;</span>,<span class="at">package =</span> <span class="st">&#39;RAMClustR&#39;</span>)</span></code></pre></div>
 </div>
 <div id="pmd" class="section level3" number="7.8.7">
 <h3><span class="header-section-number">7.8.7</span> pmd</h3>
-<p><a href="https://github.com/yufree/pmd">Paired Mass Distance(PMD)</a> analysis for GC/LC-MS based nontarget analysis to find independent peaks<span class="citation">(<a href="#ref-yu2018" role="doc-biblioref"><strong>yu2018?</strong></a>)</span></p>
+<p><a href="https://github.com/yufree/pmd">Paired Mass Distance(PMD)</a> analysis for GC/LC-MS based nontarget analysis to find independent peaks<span class="citation">[@yu2018]</span></p>
 </div>
 <div id="nontarget" class="section level3" number="7.8.8">
 <h3><span class="header-section-number">7.8.8</span> nontarget</h3>
@@ -559,11 +549,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="xmsannotator" class="section level3" number="7.8.9">
 <h3><span class="header-section-number">7.8.9</span> xMSannotator</h3>
-<p>The software could be found <a href="https://github.com/yufree/xMSannotator">here</a><span class="citation">(<a href="#ref-uppal2017" role="doc-biblioref"><strong>uppal2017?</strong></a>)</span>.</p>
+<p>The software could be found <a href="https://github.com/yufree/xMSannotator">here</a><span class="citation">[@uppal2017]</span>.</p>
 </div>
 <div id="cfm-id" class="section level3" number="7.8.10">
 <h3><span class="header-section-number">7.8.10</span> CFM-ID</h3>
-<p><a href="https://sourceforge.net/projects/cfm-id/">CFM-ID</a> use Metlin’s data to make prediction<span class="citation">(<a href="#ref-allen2014" role="doc-biblioref"><strong>allen2014?</strong></a>)</span>.</p>
+<p><a href="https://sourceforge.net/projects/cfm-id/">CFM-ID</a> use Metlin’s data to make prediction<span class="citation">[@allen2014]</span>.</p>
 </div>
 <div id="mine" class="section level3" number="7.8.11">
 <h3><span class="header-section-number">7.8.11</span> MINE</h3>
@@ -579,84 +569,79 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="retip" class="section level3" number="7.8.14">
 <h3><span class="header-section-number">7.8.14</span> Retip</h3>
-<p><a href="https://www.retip.app/">Retip</a> Retention Time Prediction for Compound Annotation in Untargeted Metabolomics <span class="citation">(<a href="#ref-bonini2020" role="doc-biblioref"><strong>bonini2020?</strong></a>)</span></p>
+<p><a href="https://www.retip.app/">Retip</a> Retention Time Prediction for Compound Annotation in Untargeted Metabolomics <span class="citation">[@bonini2020]</span></p>
 </div>
 <div id="binner" class="section level3" number="7.8.15">
 <h3><span class="header-section-number">7.8.15</span> Binner</h3>
-<p><a href="https://binner.med.umich.edu/">Binner</a> Deep annotation of untargeted LC-MS metabolomics data <span class="citation">(<a href="#ref-kachman2020" role="doc-biblioref"><strong>kachman2020?</strong></a>)</span></p>
+<p><a href="https://binner.med.umich.edu/">Binner</a> Deep annotation of untargeted LC-MS metabolomics data <span class="citation">[@kachman2020]</span></p>
 </div>
 <div id="mzmatch" class="section level3" number="7.8.16">
-<h3><span class="header-section-number">7.8.16</span> mzmatch</h3>
-<p>Use the following code to install this package:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="annotation.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">&quot;http://bioconductor.org/biocLite.R&quot;</span>)</span>
-<span id="cb30-2"><a href="annotation.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">biocLite</span>(<span class="fu">c</span>(<span class="st">&quot;xcms&quot;</span>, <span class="st">&quot;multtest&quot;</span>, <span class="st">&quot;mzR&quot;</span>))</span>
-<span id="cb30-3"><a href="annotation.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;rJava&quot;</span>, <span class="st">&quot;XML&quot;</span>, <span class="st">&quot;snow&quot;</span>, <span class="st">&quot;caTools&quot;</span>,</span>
-<span id="cb30-4"><a href="annotation.html#cb30-4" aria-hidden="true" tabindex="-1"></a>   <span class="st">&quot;bitops&quot;</span>, <span class="st">&quot;ptw&quot;</span>, <span class="st">&quot;gplots&quot;</span>, <span class="st">&quot;tcltk2&quot;</span>))</span>
-<span id="cb30-5"><a href="annotation.html#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span> (<span class="st">&quot;http://puma.ibls.gla.ac.uk/mzmatch.R/install_mzmatch.R&quot;</span>)</span></code></pre></div>
+<h3><span class="header-section-number">7.8.16</span> mzMatch</h3>
+<p><a href="https://github.com/andzajan/mzmatch.R">mzMatch</a> is a modular, open source and platform independent data processing pipeline for metabolomics LC/MS data written in the Java language. <span class="citation">[@chokkathukalam2013; @scheltema2011]</span></p>
 </div>
 <div id="mz.unity" class="section level3" number="7.8.17">
 <h3><span class="header-section-number">7.8.17</span> mz.unity</h3>
-<p>You could find source code <a href="https://github.com/nathaniel-mahieu/mz.unity">here</a><span class="citation">(<a href="#ref-mahieu2016a" role="doc-biblioref"><strong>mahieu2016a?</strong></a>)</span> and it’s for detecting and exploring complex relationships in accurate-mass mass spectrometry data.</p>
+<p>You could find source code <a href="https://github.com/nathaniel-mahieu/mz.unity">here</a><span class="citation">[@mahieu2016a]</span> and it’s for detecting and exploring complex relationships in accurate-mass mass spectrometry data.</p>
 </div>
 <div id="mait" class="section level3" number="7.8.18">
 <h3><span class="header-section-number">7.8.18</span> MAIT</h3>
-<p>You could find source code <a href="https://github.com/jpgroup/MAIT">here</a><span class="citation">(<a href="#ref-fernandez-albert2014a" role="doc-biblioref"><strong>fernandez-albert2014a?</strong></a>)</span>.</p>
+<p>You could find source code <a href="https://github.com/jpgroup/MAIT">here</a><span class="citation">[@fernandez-albert2014a]</span>.</p>
 </div>
 <div id="probmetab" class="section level3" number="7.8.19">
 <h3><span class="header-section-number">7.8.19</span> ProbMetab</h3>
-<p>Provides probability ranking to candidate compounds assigned to masses, with the prior assumption of connected sample and additional previous and spectral information modeled by the user. You could find source code <a href="https://github.com/rsilvabioinfo/ProbMetab">here</a><span class="citation">(<a href="#ref-silva2014" role="doc-biblioref"><strong>silva2014?</strong></a>)</span>.</p>
+<p>Provides probability ranking to candidate compounds assigned to masses, with the prior assumption of connected sample and additional previous and spectral information modeled by the user. You could find source code <a href="https://github.com/rsilvabioinfo/ProbMetab">here</a><span class="citation">[@silva2014]</span>.</p>
 </div>
 <div id="ramsi" class="section level3" number="7.8.20">
 <h3><span class="header-section-number">7.8.20</span> RAMSI</h3>
-<p>You could find paper here<span class="citation">(<a href="#ref-baran2013" role="doc-biblioref"><strong>baran2013?</strong></a>)</span>.</p>
+<p>You could find paper here<span class="citation">[@baran2013]</span>.</p>
 </div>
 <div id="sirius" class="section level3" number="7.8.21">
 <h3><span class="header-section-number">7.8.21</span> Sirius</h3>
-<p><a href="https://bio.informatik.uni-jena.de/software/sirius/">Sirius</a> is a new java-based software framework<span class="citation">(<a href="#ref-duhrkop2015" role="doc-biblioref"><strong>duhrkop2015?</strong></a>)</span> for discovering a landscape of de-novo identification of metabolites using single and tandem mass spectrometry. It could be used with <a href="https://www.csi-fingerid.uni-jena.de/">CSI:FingerID</a>.</p>
+<p><a href="https://bio.informatik.uni-jena.de/software/sirius/">Sirius</a> is a new java-based software framework<span class="citation">[@duhrkop2015]</span> for discovering a landscape of de-novo identification of metabolites using single and tandem mass spectrometry. It could be used with <a href="https://www.csi-fingerid.uni-jena.de/">CSI:FingerID</a>.</p>
 </div>
 <div id="mi-pack" class="section level3" number="7.8.22">
 <h3><span class="header-section-number">7.8.22</span> MI-Pack</h3>
-<p>You could find python software <a href="http://www.biosciences-labs.bham.ac.uk/viant/mipack/">here</a><span class="citation">(<a href="#ref-weber2010" role="doc-biblioref"><strong>weber2010?</strong></a>)</span></p>
+<p>You could find python software <a href="http://www.biosciences-labs.bham.ac.uk/viant/mipack/">here</a><span class="citation">[@weber2010]</span></p>
 </div>
 <div id="plantmat" class="section level3" number="7.8.23">
 <h3><span class="header-section-number">7.8.23</span> Plantmat</h3>
-<p><a href="https://sourceforge.net/projects/plantmat/">excel library</a> based prediction for plant metabolites<span class="citation">(<a href="#ref-qiu2016" role="doc-biblioref"><strong>qiu2016?</strong></a>)</span>.</p>
+<p><a href="https://sourceforge.net/projects/plantmat/">excel library</a> based prediction for plant metabolites<span class="citation">[@qiu2016]</span>.</p>
 </div>
 <div id="metfamily" class="section level3" number="7.8.24">
 <h3><span class="header-section-number">7.8.24</span> MetFamily</h3>
-<p><a href="https://msbi.ipb-halle.de/MetFamily/">Shiny app</a> for MS and MS/MS data annotation<span class="citation">(<a href="#ref-treutler2016" role="doc-biblioref"><strong>treutler2016?</strong></a>)</span>.</p>
+<p><a href="https://msbi.ipb-halle.de/MetFamily/">Shiny app</a> for MS and MS/MS data annotation<span class="citation">[@treutler2016]</span>.</p>
 </div>
 <div id="lipidmatch" class="section level3" number="7.8.25">
 <h3><span class="header-section-number">7.8.25</span> Lipidmatch</h3>
-<p><a href="http://secim.ufl.edu/secim-tools/lipidmatch/">in silico</a>: **in silico** lipid mass spectrum search<span class="citation">(<a href="#ref-koelmel2017" role="doc-biblioref"><strong>koelmel2017?</strong></a>)</span>.</p>
+<p><a href="http://secim.ufl.edu/secim-tools/lipidmatch/">in silico</a>: **in silico** lipid mass spectrum search<span class="citation">[@koelmel2017]</span>.</p>
 </div>
 <div id="molfind" class="section level3" number="7.8.26">
 <h3><span class="header-section-number">7.8.26</span> MolFind</h3>
-<p>JAVA based <a href="http://metabolomics.pharm.uconn.edu/?q=Software.html">MolFind</a> could make annotation for unknown chemical structure by prediction based on RI, ECOM50, drift time and CID spectra<span class="citation">(<a href="#ref-menikarachchi2012" role="doc-biblioref"><strong>menikarachchi2012?</strong></a>)</span>.</p>
+<p>JAVA based <a href="http://metabolomics.pharm.uconn.edu/?q=Software.html">MolFind</a> could make annotation for unknown chemical structure by prediction based on RI, ECOM50, drift time and CID spectra<span class="citation">[@menikarachchi2012]</span>.</p>
 </div>
 <div id="metfusion" class="section level3" number="7.8.27">
 <h3><span class="header-section-number">7.8.27</span> MetFusion</h3>
-<p>Java based <a href="https://github.com/mgerlich/MetFusion">integration</a> of compound identiﬁcation strategies. You could access the application <a href="https://msbi.ipb-halle.de/MetFusion/">here</a><span class="citation">(<a href="#ref-gerlich2013" role="doc-biblioref"><strong>gerlich2013?</strong></a>)</span>.</p>
+<p>Java based <a href="https://github.com/mgerlich/MetFusion">integration</a> of compound identiﬁcation strategies. You could access the application <a href="https://msbi.ipb-halle.de/MetFusion/">here</a><span class="citation">[@gerlich2013]</span>.</p>
 </div>
 <div id="imet" class="section level3" number="7.8.28">
 <h3><span class="header-section-number">7.8.28</span> iMet</h3>
-<p>This online <a href="http://imet.seeslab.net/">application</a> is a network-based computation method for annotation<span class="citation">(<a href="#ref-aguilar-mogas2017" role="doc-biblioref"><strong>aguilar-mogas2017?</strong></a>)</span>.</p>
+<p>This online <a href="http://imet.seeslab.net/">application</a> is a network-based computation method for annotation<span class="citation">[@aguilar-mogas2017]</span>.</p>
 </div>
 <div id="metscape" class="section level3" number="7.8.29">
 <h3><span class="header-section-number">7.8.29</span> Metscape</h3>
-<p><a href="http://metscape.med.umich.edu/">Metscape</a> based on Debiased Sparse Partial Correlation (DSPC) algorithm<span class="citation">(<a href="#ref-basu2017" role="doc-biblioref"><strong>basu2017?</strong></a>)</span> to make annotation.</p>
+<p><a href="http://metscape.med.umich.edu/">Metscape</a> based on Debiased Sparse Partial Correlation (DSPC) algorithm<span class="citation">[@basu2017]</span> to make annotation.</p>
 </div>
 <div id="metfrag" class="section level3" number="7.8.30">
 <h3><span class="header-section-number">7.8.30</span> MetFrag</h3>
-<p><a href="http://c-ruttkies.github.io/MetFrag/">MetFrag</a> could be used to make <strong>in silico</strong> prediction/match of MS/MS data<span class="citation">(<a href="#ref-ruttkies2016" role="doc-biblioref"><strong>ruttkies2016?</strong></a>)</span>.</p>
+<p><a href="http://c-ruttkies.github.io/MetFrag/">MetFrag</a> could be used to make <strong>in silico</strong> prediction/match of MS/MS data<span class="citation">[@ruttkies2016]</span>.</p>
 </div>
 <div id="lipidfrag" class="section level3" number="7.8.31">
 <h3><span class="header-section-number">7.8.31</span> LipidFrag</h3>
-<p><a href="https://msbi.ipb-halle.de/msbi/lipidfrag">LipidFrag</a> could be used to make <strong>in silico</strong> prediction/match of lipid related MS/MS data<span class="citation">(<a href="#ref-witting2017" role="doc-biblioref"><strong>witting2017?</strong></a>)</span>.</p>
+<p><a href="https://msbi.ipb-halle.de/msbi/lipidfrag">LipidFrag</a> could be used to make <strong>in silico</strong> prediction/match of lipid related MS/MS data<span class="citation">[@witting2017]</span>.</p>
 </div>
 <div id="mycompoundid" class="section level3" number="7.8.32">
 <h3><span class="header-section-number">7.8.32</span> MycompoundID</h3>
-<p><a href="http://www.mycompoundid.org/mycompoundid_IsoMS/single.jsp">MycompoundID</a> could be used to search known and unknown metabolites<span class="citation">(<a href="#ref-li2013a" role="doc-biblioref"><strong>li2013a?</strong></a>)</span> online.</p>
+<p><a href="http://www.mycompoundid.org/mycompoundid_IsoMS/single.jsp">MycompoundID</a> could be used to search known and unknown metabolites<span class="citation">[@li2013a]</span> online.</p>
 </div>
 <div id="magma" class="section level3" number="7.8.33">
 <h3><span class="header-section-number">7.8.33</span> magma</h3>
@@ -664,17 +649,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="metexpert" class="section level3" number="7.8.34">
 <h3><span class="header-section-number">7.8.34</span> MetExpert</h3>
-<p><a href="https://sourceforge.net/projects/metexpert/">MetExpert</a> is an expert system to assist users with limited expertise in informatics to interpret GCMS data for metabolite identification without querying spectral databases<span class="citation">(<a href="#ref-qiu2018" role="doc-biblioref"><strong>qiu2018?</strong></a>)</span></p>
+<p><a href="https://sourceforge.net/projects/metexpert/">MetExpert</a> is an expert system to assist users with limited expertise in informatics to interpret GCMS data for metabolite identification without querying spectral databases<span class="citation">[@qiu2018]</span></p>
 </div>
 <div id="ms-dia" class="section level3" number="7.8.35">
 <h3><span class="header-section-number">7.8.35</span> MS-DIA</h3>
 <ul>
-<li><p><a href="https://pubs.acs.org/doi/10.1021/ac400751j">decoMS2</a> requires two different collision energies, low (usually 0V) and high, in each precursor range to solve the mathematical equations.<span class="citation">(<a href="#ref-nikolskiy2013" role="doc-biblioref"><strong>nikolskiy2013?</strong></a>)</span></p></li>
-<li><p><a href="http://prime.psc.riken.jp/Metabolomics_Software/MS-DIAL/">MS-DIAL</a> data independent MS/MS deconvolution for comprehensive metabolome analysis.<span class="citation">(<a href="#ref-tsugawa2015" role="doc-biblioref"><strong>tsugawa2015?</strong></a>)</span></p></li>
-<li><p><a href="https://pubs.acs.org/doi/abs/10.1021/acs.analchem.6b02122">MetDIA</a> Targeted Metabolite Extraction of Multiplexed MS/MS Spectra Generated by Data-Independent Acquisition<span class="citation">(<a href="#ref-li2016c" role="doc-biblioref"><strong>li2016c?</strong></a>)</span></p></li>
-<li><p><a href="https://www.nature.com/articles/nmeth.3255">DIA-Umpire</a> comprehensive computational framework for data-independent acquisition proteomics<span class="citation">(<a href="#ref-tsou2015" role="doc-biblioref"><strong>tsou2015?</strong></a>)</span></p></li>
-<li><p><a href="https://sourceforge.net/projects/metabodia/">MetaboDIA</a> quantitative metabolomics analysis using DIA-MS<span class="citation">(<a href="#ref-chen2017a" role="doc-biblioref"><strong>chen2017a?</strong></a>)</span></p></li>
-<li><p><a href="https://pubs.acs.org/doi/10.1021/acs.analchem.7b05318">SWATHtoMRM</a> Development of High-Coverage Targeted Metabolomics Method Using SWATH Technology for Biomarker Discovery<span class="citation">(<a href="#ref-zha2018" role="doc-biblioref"><strong>zha2018?</strong></a>)</span></p></li>
+<li><p><a href="https://pubs.acs.org/doi/10.1021/ac400751j">decoMS2</a> requires two different collision energies, low (usually 0V) and high, in each precursor range to solve the mathematical equations.<span class="citation">[@nikolskiy2013]</span></p></li>
+<li><p><a href="http://prime.psc.riken.jp/Metabolomics_Software/MS-DIAL/">MS-DIAL</a> data independent MS/MS deconvolution for comprehensive metabolome analysis.<span class="citation">[@tsugawa2015]</span></p></li>
+<li><p><a href="https://pubs.acs.org/doi/abs/10.1021/acs.analchem.6b02122">MetDIA</a> Targeted Metabolite Extraction of Multiplexed MS/MS Spectra Generated by Data-Independent Acquisition<span class="citation">[@li2016c]</span></p></li>
+<li><p><a href="https://www.nature.com/articles/nmeth.3255">DIA-Umpire</a> comprehensive computational framework for data-independent acquisition proteomics<span class="citation">[@tsou2015]</span></p></li>
+<li><p><a href="https://sourceforge.net/projects/metabodia/">MetaboDIA</a> quantitative metabolomics analysis using DIA-MS<span class="citation">[@chen2017a]</span></p></li>
+<li><p><a href="https://pubs.acs.org/doi/10.1021/acs.analchem.7b05318">SWATHtoMRM</a> Development of High-Coverage Targeted Metabolomics Method Using SWATH Technology for Biomarker Discovery<span class="citation">[@zha2018]</span></p></li>
 </ul>
 
 </div>

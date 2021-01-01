@@ -24,7 +24,7 @@
 <meta name="author" content="Miao YU" />
 
 
-<meta name="date" content="2020-12-28" />
+<meta name="date" content="2021-01-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -177,6 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.1" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#column-and-gradient-selection"><i class="fa fa-check"></i><b>4.1</b> Column and gradient selection</a></li>
 <li class="chapter" data-level="4.2" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#mass-resolution"><i class="fa fa-check"></i><b>4.2</b> Mass resolution</a></li>
+<li class="chapter" data-level="4.3" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#matrix-effects"><i class="fa fa-check"></i><b>4.3</b> Matrix effects</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html"><i class="fa fa-check"></i><b>5</b> Raw data pretreatment</a>
 <ul>
@@ -198,7 +199,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.9.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#for-msms"><i class="fa fa-check"></i><b>5.9.2</b> For MS/MS</a></li>
 <li class="chapter" data-level="5.9.3" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#improved-peak-picking"><i class="fa fa-check"></i><b>5.9.3</b> Improved Peak picking</a></li>
 </ul></li>
-<li class="chapter" data-level="5.10" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#tips"><i class="fa fa-check"></i><b>5.10</b> Tips</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="peaks-normalization.html"><a href="peaks-normalization.html"><i class="fa fa-check"></i><b>6</b> Peaks normalization</a>
 <ul>
@@ -244,7 +244,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.8.13" data-path="annotation.html"><a href="annotation.html#for-ident"><i class="fa fa-check"></i><b>7.8.13</b> For Ident</a></li>
 <li class="chapter" data-level="7.8.14" data-path="annotation.html"><a href="annotation.html#retip"><i class="fa fa-check"></i><b>7.8.14</b> Retip</a></li>
 <li class="chapter" data-level="7.8.15" data-path="annotation.html"><a href="annotation.html#binner"><i class="fa fa-check"></i><b>7.8.15</b> Binner</a></li>
-<li class="chapter" data-level="7.8.16" data-path="annotation.html"><a href="annotation.html#mzmatch"><i class="fa fa-check"></i><b>7.8.16</b> mzmatch</a></li>
+<li class="chapter" data-level="7.8.16" data-path="annotation.html"><a href="annotation.html#mzmatch"><i class="fa fa-check"></i><b>7.8.16</b> mzMatch</a></li>
 <li class="chapter" data-level="7.8.17" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>7.8.17</b> mz.unity</a></li>
 <li class="chapter" data-level="7.8.18" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>7.8.18</b> MAIT</a></li>
 <li class="chapter" data-level="7.8.19" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>7.8.19</b> ProbMetab</a></li>
@@ -339,14 +339,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="introduction" class="section level1" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
-<p>Information in living organism communicates along the Central Dogma in different scales from individual, population, community to ecosystem. Metabolomics (i.e., the profiling and quantitation of metabolites) is a relatively new field of “omics” studies. Different from other omics studies, metabolomics always focused on small molecular (molecular weight below 1500 Da) with much lower mass than polypeptide with single or doubled charged ions. Here is a demo of the position of metabolomics in “omics” studies<span class="citation">(<a href="exposome.html#ref-b.dunn2011" role="doc-biblioref">B. Dunn et al. 2011</a>)</span>.</p>
+<p>Information in living organism communicates along the Central Dogma in different scales from individual, population, community to ecosystem. Metabolomics (i.e., the profiling and quantitation of metabolites) is a relatively new field of “omics” studies. Different from other omics studies, metabolomics always focused on small molecular (molecular weight below 1500 Da) with much lower mass than polypeptide with single or doubled charged ions. Here is a demo of the position of metabolomics in “omics” studies<span class="citation">[@b.dunn2011]</span>.</p>
 <div class="figure"><span id="fig:metaintro"></span>
 <img src="images/metaintro.png" alt="The complex interactions of functional levels in biological systems." width="90%" />
 <p class="caption">
 Figure 1.1: The complex interactions of functional levels in biological systems.
 </p>
 </div>
-<p>Metabolomics studies always employ GC-MS<span class="citation">(<a href="exposome.html#ref-theodoridis2012" role="doc-biblioref">Theodoridis et al. 2012</a>; <a href="exposome.html#ref-beale2018" role="doc-biblioref">Beale et al. 2018</a>)</span>, GC*GC-MS<span class="citation">(<a href="exposome.html#ref-tian2016" role="doc-biblioref">Tian et al. 2016</a>)</span>, LC-MS<span class="citation">(<a href="exposome.html#ref-gika2014" role="doc-biblioref">Gika et al. 2014</a>)</span>, LC-MS/MS<span class="citation">(<a href="exposome.html#ref-begou2017a" role="doc-biblioref">Begou et al. 2017a</a>)</span>, IM-MS<span class="citation">(<a href="exposome.html#ref-levy2019" role="doc-biblioref">Levy et al. 2019</a>)</span> or NMR<span class="citation">(<a href="exposome.html#ref-b.dunn2011" role="doc-biblioref">B. Dunn et al. 2011</a>)</span> to measure metabolites. However, this workflow will only cover mass spectrometry based metabolomics or XC-MS based research.</p>
+<p>Metabolomics studies always employ GC-MS<span class="citation">[@theodoridis2012; @beale2018]</span>, GC*GC-MS<span class="citation">[@tian2016]</span>, LC-MS<span class="citation">[@gika2014]</span>, LC-MS/MS<span class="citation">[@begou2017a]</span>, IM-MS<span class="citation">[@levy2019]</span> or NMR<span class="citation">[@b.dunn2011]</span> to measure metabolites. For analytical methods, this review could be checked<span class="citation">[@zhang2012]</span>. The overall technique progress of metabolomics (2012-2018) could be found here<span class="citation">[@miggiels2019]</span>. However, this workflow will only cover mass spectrometry based metabolomics or XC-MS based research.</p>
 <div id="history" class="section level2" number="1.1">
 <h2><span class="header-section-number">1.1</span> History</h2>
 <div id="history-of-mass-spectrometry" class="section level3" number="1.1.1">
@@ -375,7 +375,7 @@ Figure 1.2: Sir Joseph John Thomson “Rays of Positive Electricity and Their Ap
 </div>
 <div id="history-of-metabolomcis" class="section level3" number="1.1.2">
 <h3><span class="header-section-number">1.1.2</span> History of Metabolomcis</h3>
-<p>According to this book section<span class="citation">(<a href="exposome.html#ref-kusonmano2016" role="doc-biblioref">Kusonmano, Vongsangnak, and Chumnanpuen 2016a</a>)</span>:</p>
+<p>According to this book section<span class="citation">[@kusonmano2016]</span>:</p>
 <div class="figure"><span id="fig:history2"></span>
 <img src="images/metahistory.jpg" alt="Metabolomics timeline during pre- and post-metabolomics era" width="90%" />
 <p class="caption">
@@ -396,7 +396,7 @@ Figure 1.3: Metabolomics timeline during pre- and post-metabolomics era
 </div>
 <div id="defination" class="section level3" number="1.1.3">
 <h3><span class="header-section-number">1.1.3</span> Defination</h3>
-<p>Metabolomics is actually a comprehensive analysis with identification and quantification of both known and unknown compounds in an unbiased way. Metabolic fingerprinting is working on fast classification of samples based on metabolite data without quantifying or identification of the metabolites. Metabolite profiling always need a pre-defined metabolites list to be quantification<span class="citation">(<a href="exposome.html#ref-madsen2010" role="doc-biblioref">Madsen, Lundstedt, and Trygg 2010a</a>)</span>.</p>
+<p>Metabolomics is actually a comprehensive analysis with identification and quantification of both known and unknown compounds in an unbiased way. Metabolic fingerprinting is working on fast classification of samples based on metabolite data without quantifying or identification of the metabolites. Metabolite profiling always need a pre-defined metabolites list to be quantification<span class="citation">[@madsen2010]</span>.</p>
 <p>Meanwhile, targeted and untargeted metabolomics are also used in publicaitons. For targeted metabolomics, the majority of the molecules within a biosynthetic pathway or a defined group of related metabolites are determined. Sometimes broad collection of known metabolites could also be referred as targeted analysis. Untargeted analysis detect all of possible metabolites unbiased in the samples of interest. A similar concept called non-targeted analysis/screen is actually describe the similar studies or workflow.</p>
 </div>
 </div>
@@ -405,20 +405,20 @@ Figure 1.3: Metabolomics timeline during pre- and post-metabolomics era
 <p>Some nice reviews and tutorials related to this workflow could be found in those papers or directly online:</p>
 <div id="workflow" class="section level3" number="1.2.1">
 <h3><span class="header-section-number">1.2.1</span> Workflow</h3>
-<p>Those papers are recommended<span class="citation">(<a href="exposome.html#ref-gonzález-riano2020" role="doc-biblioref">González-Riano et al. 2020</a>; <a href="exposome.html#ref-pezzatti2020" role="doc-biblioref">Pezzatti et al. 2020</a>; <a href="exposome.html#ref-liu2019" role="doc-biblioref">Liu et al. 2019</a>; <a href="exposome.html#ref-barnes2016a" role="doc-biblioref">Barnes et al. 2016a</a>; <a href="exposome.html#ref-cajka2016" role="doc-biblioref">Cajka and Fiehn 2016</a>; <a href="exposome.html#ref-gika2014" role="doc-biblioref">Gika et al. 2014</a>; <a href="exposome.html#ref-theodoridis2012" role="doc-biblioref">Theodoridis et al. 2012</a>; <a href="exposome.html#ref-lu2008" role="doc-biblioref">X. Lu and Xu 2008</a>; <a href="exposome.html#ref-fiehn2002" role="doc-biblioref">Fiehn 2002</a>)</span> for general metabolomics related topics.</p>
+<p>Those papers are recommended<span class="citation">[@gonzález-riano2020; @pezzatti2020; @liu2019; @barnes2016a; @cajka2016; @gika2014; @theodoridis2012; @lu2008; @fiehn2002]</span> for general metabolomics related topics.</p>
 <ul>
-<li>For targeted metabolomics, you could check those reviews<span class="citation">(<a href="exposome.html#ref-griffiths2010a" role="doc-biblioref">Griffiths et al. 2010</a>; <a href="exposome.html#ref-lu2008a" role="doc-biblioref">W. Lu, Bennett, and Rabinowitz 2008</a>; <a href="exposome.html#ref-weljie2006" role="doc-biblioref">Weljie et al. 2006</a>; <a href="exposome.html#ref-yuan2012" role="doc-biblioref">Yuan et al. 2012</a>; <a href="exposome.html#ref-zhou2016b" role="doc-biblioref">Zhou and Yin 2016</a>; <a href="exposome.html#ref-begou2017b" role="doc-biblioref">Begou et al. 2017b</a>)</span>.</li>
+<li>For targeted metabolomics, you could check those reviews<span class="citation">[@griffiths2010a; @lu2008a; @weljie2006; @yuan2012; @zhou2016b; @begou2017b]</span>.</li>
 </ul>
 </div>
 <div id="data-analysis" class="section level3" number="1.2.2">
 <h3><span class="header-section-number">1.2.2</span> Data analysis</h3>
-<p>You could firstly read those papers<span class="citation">(<a href="exposome.html#ref-barnes2016" role="doc-biblioref">Barnes et al. 2016b</a>; <a href="exposome.html#ref-kusonmano2016a" role="doc-biblioref">Kusonmano, Vongsangnak, and Chumnanpuen 2016b</a>; <a href="exposome.html#ref-madsen2010a" role="doc-biblioref">Madsen, Lundstedt, and Trygg 2010b</a>; <a href="exposome.html#ref-uppal2016a" role="doc-biblioref">Uppal et al. 2016a</a>; <a href="exposome.html#ref-alonso2015" role="doc-biblioref">Alonso, Marsal, and Julià 2015</a>)</span> to get the concepts and issues for data analysis in metabolomics. Then this paper<span class="citation">(<a href="exposome.html#ref-gromski2015a" role="doc-biblioref">Gromski et al. 2015</a>)</span> could be treated as a step-by-step tutorial.</p>
+<p>You could firstly read those papers<span class="citation">[@barnes2016; @kusonmano2016a; @madsen2010a; @uppal2016a; @alonso2015]</span> to get the concepts and issues for data analysis in metabolomics. Then this paper<span class="citation">[@gromski2015a]</span> could be treated as a step-by-step tutorial.</p>
 <ul>
-<li><p>For annotation, this paper<span class="citation">(<a href="exposome.html#ref-domingo-almenara2018" role="doc-biblioref">Domingo-Almenara et al. 2018</a>)</span> is a well organized review.</p></li>
-<li><p>For database used in metabolomics, you could check this review<span class="citation">(<a href="exposome.html#ref-vinaixa2016" role="doc-biblioref">Vinaixa et al. 2016</a>)</span>.</p></li>
-<li><p>For metabolomics software, check this series of reviews for each year<span class="citation">(<a href="exposome.html#ref-misra2016" role="doc-biblioref">Misra and van der Hooft 2016</a>; <a href="exposome.html#ref-misra2017" role="doc-biblioref">Misra, Fahrmann, and Grapov 2017</a>; <a href="exposome.html#ref-misra2018" role="doc-biblioref">Misra 2018</a>)</span>.</p></li>
-<li><p>For open sourced software, this review<span class="citation">(<a href="exposome.html#ref-spicer2017" role="doc-biblioref">Spicer et al. 2017</a>)</span> could be a good start.</p></li>
-<li><p>For DIA or DDA metabolomics, check those papers<span class="citation">(<a href="exposome.html#ref-fenaille2017" role="doc-biblioref">Fenaille et al. 2017</a>; <a href="exposome.html#ref-bilbao2015" role="doc-biblioref">Bilbao et al. 2015</a>)</span>.</p></li>
+<li><p>For annotation, this paper<span class="citation">[@domingo-almenara2018]</span> is a well organized review.</p></li>
+<li><p>For database used in metabolomics, you could check this review<span class="citation">[@vinaixa2016]</span>.</p></li>
+<li><p>For metabolomics software, check this series of reviews for each year<span class="citation">[@misra2016; @misra2017; @misra2018]</span>.</p></li>
+<li><p>For open sourced software, this review<span class="citation">[@spicer2017]</span> could be a good start.</p></li>
+<li><p>For DIA or DDA metabolomics, check those papers<span class="citation">[@fenaille2017; @bilbao2015]</span>.</p></li>
 </ul>
 <p>Here is the slides for metabolomics data analysis workshop and I have made presentations twice in UWaterloo and UC Irvine.</p>
 <ul>
@@ -432,23 +432,23 @@ Figure 1.3: Metabolomics timeline during pre- and post-metabolomics era
 <div id="application" class="section level3" number="1.2.3">
 <h3><span class="header-section-number">1.2.3</span> Application</h3>
 <ul>
-<li><p>For environmental research related metabolomics or exposome, check those papers<span class="citation">(<a href="exposome.html#ref-matich2019a" role="doc-biblioref">Matich et al. 2019</a>; <a href="exposome.html#ref-tang2020" role="doc-biblioref">Tang et al. 2020</a>; <a href="exposome.html#ref-warth2017" role="doc-biblioref">Warth et al. 2017</a>; <a href="exposome.html#ref-bundy2009" role="doc-biblioref">Bundy, Davey, and Viant 2009</a>)</span>.</p></li>
-<li><p>For toxicology, check this paper<span class="citation">(<a href="exposome.html#ref-viant2019" role="doc-biblioref">Viant et al. 2019</a>)</span>.</p></li>
-<li><p>Check this piece<span class="citation">(<a href="exposome.html#ref-wishart2016" role="doc-biblioref">Wishart 2016</a>)</span> for drug discovery and precision medicine.</p></li>
-<li><p>For food chemistry, check this paper<span class="citation">(<a href="exposome.html#ref-castro-puyana2017" role="doc-biblioref">Castro-Puyana et al. 2017</a>)</span>, this paper for livestock<span class="citation">(<a href="exposome.html#ref-goldansaz2017" role="doc-biblioref">Goldansaz et al. 2017</a>)</span> and those papers for nutrition<span class="citation">(<a href="exposome.html#ref-allam-ndoul2016" role="doc-biblioref">Allam-Ndoul et al. 2016</a>; <a href="exposome.html#ref-jones2012" role="doc-biblioref">Jones, Park, and Ziegler 2012</a>; <a href="exposome.html#ref-müller2020a" role="doc-biblioref">Müller and Bosy-Westphal 2020</a>)</span>.</p></li>
-<li><p>For disease related metabolomics such as oncology<span class="citation">(<a href="exposome.html#ref-spratlin2009" role="doc-biblioref">Spratlin, Serkova, and Eckhardt 2009</a>)</span>, Cardiovascular<span class="citation">(<a href="exposome.html#ref-cheng2017" role="doc-biblioref">Cheng et al. 2017</a>)</span> . This paper<span class="citation">(<a href="exposome.html#ref-kennedy2018" role="doc-biblioref">Kennedy et al. 2018</a>)</span> cover the metabolomics realted clinic research.</p></li>
-<li><p>For plant science, check those paper<span class="citation">(<a href="exposome.html#ref-sumner2003" role="doc-biblioref">Sumner, Mendes, and Dixon 2003</a>; <a href="exposome.html#ref-jorge2016a" role="doc-biblioref">Jorge, Mata, and António 2016a</a>)</span>.</p></li>
-<li><p>For single cell metabolomics analysis, check here<span class="citation">(<a href="exposome.html#ref-fessenden2016" role="doc-biblioref">Fessenden 2016</a>; <a href="exposome.html#ref-zenobi2013" role="doc-biblioref">Zenobi 2013</a>; <a href="exposome.html#ref-ali2019a" role="doc-biblioref">Ali et al. 2019</a>)</span>.</p></li>
-<li><p>For gut microbiota, check here<span class="citation">(<a href="exposome.html#ref-smirnov2016" role="doc-biblioref">Smirnov et al. 2016</a>)</span>.</p></li>
+<li><p>For environmental research related metabolomics or exposome, check those papers<span class="citation">[@matich2019a; @tang2020; @warth2017; @bundy2009]</span>.</p></li>
+<li><p>For toxicology, check this paper<span class="citation">[@viant2019]</span>.</p></li>
+<li><p>Check this piece<span class="citation">[@wishart2016]</span> for drug discovery and precision medicine.</p></li>
+<li><p>For food chemistry, check this paper<span class="citation">[@castro-puyana2017]</span>, this paper for livestock<span class="citation">[@goldansaz2017]</span> and those papers for nutrition<span class="citation">[@allam-ndoul2016; @jones2012; @müller2020a]</span>.</p></li>
+<li><p>For disease related metabolomics such as oncology<span class="citation">[@spratlin2009]</span>, Cardiovascular<span class="citation">[@cheng2017]</span> . This paper<span class="citation">[@kennedy2018]</span> cover the metabolomics realted clinic research.</p></li>
+<li><p>For plant science, check those paper<span class="citation">[@sumner2003; @jorge2016a; @hansen2018a]</span>.</p></li>
+<li><p>For single cell metabolomics analysis, check here<span class="citation">[@fessenden2016; @zenobi2013; @ali2019a; @hansen2018]</span>.</p></li>
+<li><p>For gut microbiota, check here<span class="citation">[@smirnov2016]</span>.</p></li>
 </ul>
 </div>
 <div id="challenge" class="section level3" number="1.2.4">
 <h3><span class="header-section-number">1.2.4</span> Challenge</h3>
-<p>General challenge for metabolomics studies could be found here <span class="citation">(<a href="exposome.html#ref-schymanski2017" role="doc-biblioref">Schymanski and Williams 2017</a>; <a href="exposome.html#ref-uppal2016" role="doc-biblioref">Uppal et al. 2016b</a>; <a href="exposome.html#ref-schrimpe-rutledge2016" role="doc-biblioref">Schrimpe-Rutledge et al. 2016</a>; <a href="exposome.html#ref-wolfender2015" role="doc-biblioref">Wolfender et al. 2015</a>)</span>.</p>
+<p>General challenge for metabolomics studies could be found here <span class="citation">[@schymanski2017; @uppal2016; @schrimpe-rutledge2016; @wolfender2015]</span>.</p>
 <ul>
-<li><p>For reproducible research, check those papers <span class="citation">(<a href="exposome.html#ref-verhoeven2020" role="doc-biblioref">Verhoeven, Giera, and Mayboroda 2020</a>; <a href="exposome.html#ref-mangul2019" role="doc-biblioref">Mangul et al. 2019</a>; <a href="exposome.html#ref-wallach2018" role="doc-biblioref">Wallach, Boyack, and Ioannidis 2018</a>; <a href="exposome.html#ref-hites2018" role="doc-biblioref">Hites and Jobst 2018</a>; <a href="exposome.html#ref-considine2017" role="doc-biblioref">Considine et al. 2017</a>)</span>.</p></li>
-<li><p>Quantitative Metabolomics related issues could be found here<span class="citation">(<a href="exposome.html#ref-kapoore2016b" role="doc-biblioref">Kapoore and Vaidyanathan 2016</a>; <a href="exposome.html#ref-jorge2016aa" role="doc-biblioref">Jorge, Mata, and António 2016b</a>)</span>.</p></li>
-<li><p>For quality control issues, check here<span class="citation">(<a href="exposome.html#ref-dudzik2018" role="doc-biblioref">Dudzik et al. 2018</a>; <a href="exposome.html#ref-siskos2017" role="doc-biblioref">Siskos et al. 2017</a>)</span>.</p></li>
+<li><p>For reproducible research, check those papers <span class="citation">[@verhoeven2020; @mangul2019; @wallach2018; @hites2018; @considine2017]</span>.</p></li>
+<li><p>Quantitative Metabolomics related issues could be found here<span class="citation">[@kapoore2016b; @jorge2016aa]</span>.</p></li>
+<li><p>For quality control issues, check here<span class="citation">[@dudzik2018; @siskos2017]</span>.</p></li>
 </ul>
 </div>
 </div>
@@ -467,24 +467,18 @@ Figure 1.3: Metabolomics timeline during pre- and post-metabolomics era
 <span id="cb2-7"><a href="introduction.html#cb2-7" aria-hidden="true" tabindex="-1"></a>omics <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;genomic&quot;</span>, <span class="st">&quot;epigenomic&quot;</span>,  <span class="st">&quot;metagenomic&quot;</span>, <span class="st">&quot;proteomic&quot;</span>, <span class="st">&quot;transcriptomic&quot;</span>,<span class="st">&quot;metabolomics&quot;</span>,<span class="st">&quot;exposome&quot;</span>, <span class="st">&quot;pharmacogenomic&quot;</span>, <span class="st">&quot;connectomic&quot;</span>)</span>
 <span id="cb2-8"><a href="introduction.html#cb2-8" aria-hidden="true" tabindex="-1"></a>trend_data <span class="ot">&lt;-</span> <span class="fu">sapply</span>(omics, <span class="cf">function</span>(t) <span class="fu">papers_by_year</span>(years, t))</span>
 <span id="cb2-9"><a href="introduction.html#cb2-9" aria-hidden="true" tabindex="-1"></a>trend_props <span class="ot">&lt;-</span> trend_data<span class="sc">/</span>total_papers</span>
-<span id="cb2-10"><a href="introduction.html#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape)</span></code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;reshape&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
-## 
-##     rename</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="introduction.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb5-2"><a href="introduction.html#cb5-2" aria-hidden="true" tabindex="-1"></a>trend_df <span class="ot">&lt;-</span> <span class="fu">melt</span>(<span class="fu">data.frame</span>(years, trend_data), <span class="at">id.vars=</span><span class="st">&quot;years&quot;</span>)</span>
-<span id="cb5-3"><a href="introduction.html#cb5-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(trend_df, <span class="fu">aes</span>(years, value, <span class="at">colour=</span>variable))</span>
-<span id="cb5-4"><a href="introduction.html#cb5-4" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span> <span class="fu">scale_y_log10</span>(<span class="st">&quot;number of papers&quot;</span>)</span></code></pre></div>
-<pre><code>## Warning: Transformation introduced infinite values in
-## continuous y-axis</code></pre>
+<span id="cb2-10"><a href="introduction.html#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape)</span>
+<span id="cb2-11"><a href="introduction.html#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-12"><a href="introduction.html#cb2-12" aria-hidden="true" tabindex="-1"></a>trend_df <span class="ot">&lt;-</span> <span class="fu">melt</span>(<span class="fu">data.frame</span>(years, trend_data), <span class="at">id.vars=</span><span class="st">&quot;years&quot;</span>)</span>
+<span id="cb2-13"><a href="introduction.html#cb2-13" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(trend_df, <span class="fu">aes</span>(years, value, <span class="at">colour=</span>variable))</span>
+<span id="cb2-14"><a href="introduction.html#cb2-14" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span> <span class="fu">scale_y_log10</span>(<span class="st">&quot;number of papers&quot;</span>)</span></code></pre></div>
+<pre><code>## Warning: Transformation introduced infinite values in continuous y-axis</code></pre>
 <p><img src="Metabolomics_files/figure-html/rentrez-1.png" width="672" /></p>
 </div>
 <div id="workflow-1" class="section level2" number="1.4">
 <h2><span class="header-section-number">1.4</span> Workflow</h2>
-<div id="htmlwidget-0ef3b8ec36b7549f61b3" style="width:300px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0ef3b8ec36b7549f61b3">{"x":{"diagram":"digraph workflow {\nnode [shape = box]\nA [label = \"raw data\"]\nB [label = \"open source format\"]\nC [label = \"DoE folder\"]\nD [label = \"peaks list\"]\nE [label = \"retention time correction\"]\nF [label = \"peaks grouping\"]\nG [label = \"peaks filling\"]\nH [label = \"raw peaks\"]\nI [label = \"data visulization\"]\nJ [label = \"batch effects correction\"]\nK [label = \"corrected peaks\"]\nL [label = \"annotation\"]\nM [label = \"metabolomics pathway analysis\"]\nN [label = \"omics analysis\"]\nO [label = \"biomarkers discovery/diagnoise\"]\n\nA -> B -> C -> D -> E -> F -> G -> H\nH -> I\nI -> J\nH -> J -> K -> L\nL -> M -> N\nL -> O\n                  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-c8a72081fc8b69464695" style="width:300px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c8a72081fc8b69464695">{"x":{"diagram":"digraph workflow {\nnode [shape = box]\nA [label = \"raw data\"]\nB [label = \"open source format\"]\nC [label = \"DoE folder\"]\nD [label = \"peaks list\"]\nE [label = \"retention time correction\"]\nF [label = \"peaks grouping\"]\nG [label = \"peaks filling\"]\nH [label = \"raw peaks\"]\nI [label = \"data visulization\"]\nJ [label = \"batch effects correction\"]\nK [label = \"corrected peaks\"]\nL [label = \"annotation\"]\nM [label = \"metabolomics pathway analysis\"]\nN [label = \"omics analysis\"]\nO [label = \"biomarkers discovery/diagnoise\"]\n\nA -> B -> C -> D -> E -> F -> G -> H\nH -> I\nI -> J\nH -> J -> K -> L\nL -> M -> N\nL -> O\n                  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 
 </div>
 </div>

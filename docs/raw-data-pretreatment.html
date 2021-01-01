@@ -24,7 +24,7 @@
 <meta name="author" content="Miao YU" />
 
 
-<meta name="date" content="2020-12-28" />
+<meta name="date" content="2021-01-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -177,6 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.1" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#column-and-gradient-selection"><i class="fa fa-check"></i><b>4.1</b> Column and gradient selection</a></li>
 <li class="chapter" data-level="4.2" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#mass-resolution"><i class="fa fa-check"></i><b>4.2</b> Mass resolution</a></li>
+<li class="chapter" data-level="4.3" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#matrix-effects"><i class="fa fa-check"></i><b>4.3</b> Matrix effects</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html"><i class="fa fa-check"></i><b>5</b> Raw data pretreatment</a>
 <ul>
@@ -198,7 +199,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.9.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#for-msms"><i class="fa fa-check"></i><b>5.9.2</b> For MS/MS</a></li>
 <li class="chapter" data-level="5.9.3" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#improved-peak-picking"><i class="fa fa-check"></i><b>5.9.3</b> Improved Peak picking</a></li>
 </ul></li>
-<li class="chapter" data-level="5.10" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#tips"><i class="fa fa-check"></i><b>5.10</b> Tips</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="peaks-normalization.html"><a href="peaks-normalization.html"><i class="fa fa-check"></i><b>6</b> Peaks normalization</a>
 <ul>
@@ -244,7 +244,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.8.13" data-path="annotation.html"><a href="annotation.html#for-ident"><i class="fa fa-check"></i><b>7.8.13</b> For Ident</a></li>
 <li class="chapter" data-level="7.8.14" data-path="annotation.html"><a href="annotation.html#retip"><i class="fa fa-check"></i><b>7.8.14</b> Retip</a></li>
 <li class="chapter" data-level="7.8.15" data-path="annotation.html"><a href="annotation.html#binner"><i class="fa fa-check"></i><b>7.8.15</b> Binner</a></li>
-<li class="chapter" data-level="7.8.16" data-path="annotation.html"><a href="annotation.html#mzmatch"><i class="fa fa-check"></i><b>7.8.16</b> mzmatch</a></li>
+<li class="chapter" data-level="7.8.16" data-path="annotation.html"><a href="annotation.html#mzmatch"><i class="fa fa-check"></i><b>7.8.16</b> mzMatch</a></li>
 <li class="chapter" data-level="7.8.17" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>7.8.17</b> mz.unity</a></li>
 <li class="chapter" data-level="7.8.18" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>7.8.18</b> MAIT</a></li>
 <li class="chapter" data-level="7.8.19" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>7.8.19</b> ProbMetab</a></li>
@@ -339,15 +339,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="raw-data-pretreatment" class="section level1" number="5">
 <h1><span class="header-section-number">Chapter 5</span> Raw data pretreatment</h1>
-<p>Raw data from the instruments such as LC-MS or GC-MS were hard to be analyzed. To make it clear, the structure of those data could be summarised as:</p>
+<p>Raw data from the instruments such as LC-MS or GC-MS were hard to be analyzed. To make it clear, the structure of those data could be summarized as:</p>
 <ul>
 <li><p>Indexed scan with time-stamp</p></li>
 <li><p>Each scan contains a full scan mass spectra</p></li>
 </ul>
-<p>Common formats for open source mass spectrum data are mzxml, mzml or CDF. However, <strong>masscomp</strong> might shrink the data size<span class="citation">(<a href="#ref-yang2019b" role="doc-biblioref"><strong>yang2019b?</strong></a>)</span>.</p>
+<p>Common formats for open source mass spectrum data are mzxml, mzml or CDF. However, <strong>masscomp</strong> might shrink the data size<span class="citation">[@yang2019b]</span>.</p>
 <div id="data-visualization" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> Data visualization</h2>
-<p>You could use <a href="https://salsa.debian.org/debichem-team/msxpertsuite">msxpertsuite</a> for MS data visualization. It is biological mass spectrometry data visualization and mining with full JavaScript ability<span class="citation">(<a href="#ref-rusconi2019" role="doc-biblioref"><strong>rusconi2019?</strong></a>)</span>.</p>
+<p>You could use <a href="https://salsa.debian.org/debichem-team/msxpertsuite">msxpertsuite</a> for MS data visualization. It is biological mass spectrometry data visualization and mining with full JavaScript ability <span class="citation">[@rusconi2019]</span>.</p>
 </div>
 <div id="peak-extraction" class="section level2" number="5.2">
 <h2><span class="header-section-number">5.2</span> Peak extraction</h2>
@@ -359,9 +359,9 @@ Figure 5.1: Demo of GC/LC-MS data
 </p>
 </div>
 <p>Conversation from the mass-retention time matrix into a vector with selected MS peaks at certain retention time is the basic idea of Peak extraction. You could EIC for each mass to charge ratio and use the change of trace slope to determine whether there is a peak or not. Then we could make integration for this peak and get peak area and retention time.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="raw-data-pretreatment.html#cb11-1" aria-hidden="true" tabindex="-1"></a>intensity <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">14</span>,<span class="dv">19</span>,<span class="dv">25</span>,<span class="dv">30</span>,<span class="dv">33</span>,<span class="dv">26</span>,<span class="dv">21</span>,<span class="dv">16</span>,<span class="dv">12</span>,<span class="dv">11</span>,<span class="dv">10</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">10</span>)</span>
-<span id="cb11-2"><a href="raw-data-pretreatment.html#cb11-2" aria-hidden="true" tabindex="-1"></a>time <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>)</span>
-<span id="cb11-3"><a href="raw-data-pretreatment.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(intensity<span class="sc">~</span>time, <span class="at">type =</span> <span class="st">&#39;o&#39;</span>, <span class="at">main =</span> <span class="st">&#39;EIC&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="raw-data-pretreatment.html#cb8-1" aria-hidden="true" tabindex="-1"></a>intensity <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">14</span>,<span class="dv">19</span>,<span class="dv">25</span>,<span class="dv">30</span>,<span class="dv">33</span>,<span class="dv">26</span>,<span class="dv">21</span>,<span class="dv">16</span>,<span class="dv">12</span>,<span class="dv">11</span>,<span class="dv">10</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">10</span>)</span>
+<span id="cb8-2"><a href="raw-data-pretreatment.html#cb8-2" aria-hidden="true" tabindex="-1"></a>time <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>)</span>
+<span id="cb8-3"><a href="raw-data-pretreatment.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(intensity<span class="sc">~</span>time, <span class="at">type =</span> <span class="st">&#39;o&#39;</span>, <span class="at">main =</span> <span class="st">&#39;EIC&#39;</span>)</span></code></pre></div>
 <div class="figure"><span id="fig:demoeic"></span>
 <img src="Metabolomics_files/figure-html/demoeic-1.png" alt="Demo of EIC with peak" width="672" />
 <p class="caption">
@@ -369,20 +369,19 @@ Figure 5.2: Demo of EIC with peak
 </p>
 </div>
 <p>However, due to the accuracy of instrument, the detected mass to charge ratio would have some shift and EIC would fail if different scan get the intensity from different mass to charge ratio.</p>
-<p>In the <code>matchedfilter</code> algorithm<span class="citation">(<a href="#ref-smith2006" role="doc-biblioref"><strong>smith2006?</strong></a>)</span>, they solve this issue by bin the data in m/z dimension. The adjacent chromatographic slices could be combined to find a clean signal fitting fixed second-derivative Gaussian with full width at half-maximum
-(fwhm) of 30s to find peaks with about 1.5-4 times the signal peak width. The the integration is performed on the fitted area.</p>
+<p>In the <code>matchedfilter</code> algorithm <span class="citation">[@smith2006]</span>, they solve this issue by bin the data in m/z dimension. The adjacent chromatographic slices could be combined to find a clean signal fitting fixed second-derivative Gaussian with full width at half-maximum (fwhm) of 30s to find peaks with about 1.5-4 times the signal peak width. The the integration is performed on the fitted area.</p>
 <div class="figure"><span id="fig:matchedfilter"></span>
 <img src="images/matchedfilter.jpg" alt="Demo of matchedfilter" width="90%" />
 <p class="caption">
 Figure 5.3: Demo of matchedfilter
 </p>
 </div>
-<p>The <code>Centwave</code> algorithm<span class="citation">(<a href="#ref-tautenhahn2008" role="doc-biblioref"><strong>tautenhahn2008?</strong></a>)</span> based on detection of regions of interest(ROI) and the following Continuous Wavelet Transform (CWT) is preferred for high-resolution mass spectrum. ROI means a regine with stable mass for a certain time. When we find the ROIs, the peak shape is evaluated and ROI could be extended if needed. This algotithm use <code>prefilter</code> to accelerate the processing speed. <code>prefilter</code> with 3 and 100 means the ROI should contain 3 scan with intensity above 100. Centwave use a peak width range which should be checked on pool QC. Another important parameter is <code>ppm</code>. It is the maximum allowed deviation between scans when locating regions of interest (ROIs), which is different from vendor number and you need to extend them larger than the company claimed. For <code>profparam</code>, it’s used for fill peaks or align peaks instead of peak picking. <code>snthr</code> is the cutoff of signal to noise ratio.</p>
+<p>The <code>Centwave</code> algorithm <span class="citation">[@tautenhahn2008]</span> based on detection of regions of interest(ROI) and the following Continuous Wavelet Transform (CWT) is preferred for high-resolution mass spectrum. ROI means a region with stable mass for a certain time. When we find the ROIs, the peak shape is evaluated and ROI could be extended if needed. This algorithm use <code>prefilter</code> to accelerate the processing speed. <code>prefilter</code> with 3 and 100 means the ROI should contain 3 scan with intensity above 100. Centwave use a peak width range which should be checked on pool QC. Another important parameter is <code>ppm</code>. It is the maximum allowed deviation between scans when locating regions of interest (ROIs), which is different from vendor number and you need to extend them larger than the company claimed. For <code>profparam</code>, it’s used for fill peaks or align peaks instead of peak picking. <code>snthr</code> is the cutoff of signal to noise ratio.</p>
 </div>
 <div id="retention-time-correction" class="section level2" number="5.3">
 <h2><span class="header-section-number">5.3</span> Retention Time Correction</h2>
-<p>For single file, we could get peaks. However, we should make the peaks align across samples for subsquece analysis and retention time corrections should be performed. The basic idea behind retention time correction is that use the high quality grouped peaks to make a new retention time. You might choose <code>obiwarp</code>(for dramatic shifts) or loess regression(fast) method to get the corrected retention time for all of the samples. Remember the original retention times might be changed and you might need cross-correct the data. After the correction, you could group the peaks again for a better cross-sample peaks list. However, if you directly use <code>obiwarp</code>, you don’t have to group peaks before correction.</p>
-<p><span class="citation">(<a href="#ref-fu2017" role="doc-biblioref"><strong>fu2017?</strong></a>)</span> show a matlab based shift correction methods.</p>
+<p>For single file, we could get peaks. However, we should make the peaks align across samples for as features and retention time corrections should be performed. The basic idea behind retention time correction is that use the high quality grouped peaks to make a new retention time. You might choose <code>obiwarp</code>(for dramatic shifts) or loess regression(fast) method to get the corrected retention time for all of the samples. Remember the original retention times might be changed and you might need cross-correct the data. After the correction, you could group the peaks again for a better cross-sample peaks list. However, if you directly use <code>obiwarp</code>, you don’t have to group peaks before correction.</p>
+<p>This paper show a matlab based shift correction methods<span class="citation">[@fu2017]</span>.</p>
 </div>
 <div id="filling-missing-values" class="section level2" number="5.4">
 <h2><span class="header-section-number">5.4</span> Filling missing values</h2>
@@ -403,7 +402,7 @@ Figure 5.5: Demo of many GC/LC-MS data
 </div>
 <div id="spectral-deconvolution" class="section level2" number="5.5">
 <h2><span class="header-section-number">5.5</span> Spectral deconvolution</h2>
-<p>Without fracmental infomation about certain compound, the peak extraction would suffer influnces from other compounds. At the same retention time, co-elute compounds might share similar mass. Hard electron ionization methods such as electron impact ionization (EI), APPI suffer this issue. So it would be hard to distighuish the co-elute peaks’ origin and deconvolution method<span class="citation">(<a href="#ref-du2013" role="doc-biblioref"><strong>du2013?</strong></a>)</span> could be used to seperate different groups according to the similar chromatogragh beheviors. Another computational tool <strong>eRah</strong> could be a better solution for the whole process<span class="citation">(<a href="#ref-domingo-almenara2016" role="doc-biblioref"><strong>domingo-almenara2016?</strong></a>)</span>. Also the <strong>ADAD-GC3.0</strong> could also be helpful for such issue<span class="citation">(<a href="#ref-ni2016" role="doc-biblioref"><strong>ni2016?</strong></a>)</span>.</p>
+<p>Without fracmental infomation about certain compound, the peak extraction would suffer influnces from other compounds. At the same retention time, co-elute compounds might share similar mass. Hard electron ionization methods such as electron impact ionization (EI), APPI suffer this issue. So it would be hard to distighuish the co-elute peaks’ origin and deconvolution method<span class="citation">[@du2013]</span> could be used to seperate different groups according to the similar chromatogragh beheviors. Another computational tool <strong>eRah</strong> could be a better solution for the whole process<span class="citation">[@domingo-almenara2016]</span>. Also the <strong>ADAD-GC3.0</strong> could also be helpful for such issue<span class="citation">[@ni2016]</span>.</p>
 </div>
 <div id="dynamic-range" class="section level2" number="5.6">
 <h2><span class="header-section-number">5.6</span> Dynamic Range</h2>
@@ -413,12 +412,12 @@ Figure 5.5: Demo of many GC/LC-MS data
 <p>Some of the data were limited by the detect of limitation. Thus we need some methods to impute the data if we don’t want to lose information by deleting the NA or 0.</p>
 <p>Two major imputation way could be used. The first way is use model-free method such as half the minimum of the values across the data, 0, 1, mean/median across the data( <code>enviGCMS</code> package could do this via <code>getimputation</code> function). The second way is use model-based method such as linear model, random forest, KNN, PCA. Try <code>simputation</code> package for various imputation methods. As mentioned before, you could also use <code>imputeRowMin</code> or <code>imputeRowMinRand</code> within <code>xcms</code> package to perform imputation.</p>
 <p>Tobit regression is preferred for censored data. Also you might choose maximum likelihood estimation(Estimation of mean and standard deviation by MLE. Creating 10 complete samples. Pool the results from 10 individual analyses).</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="raw-data-pretreatment.html#cb12-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>,<span class="dv">1</span>)</span>
-<span id="cb12-2"><a href="raw-data-pretreatment.html#cb12-2" aria-hidden="true" tabindex="-1"></a>x[x<span class="sc">&lt;</span><span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb12-3"><a href="raw-data-pretreatment.html#cb12-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> x<span class="sc">*</span><span class="dv">10</span><span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb12-4"><a href="raw-data-pretreatment.html#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(AER)</span>
-<span id="cb12-5"><a href="raw-data-pretreatment.html#cb12-5" aria-hidden="true" tabindex="-1"></a>tfit <span class="ot">&lt;-</span> <span class="fu">tobit</span>(y <span class="sc">~</span> x, <span class="at">left =</span> <span class="dv">0</span>)</span>
-<span id="cb12-6"><a href="raw-data-pretreatment.html#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(tfit)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="raw-data-pretreatment.html#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>,<span class="dv">1</span>)</span>
+<span id="cb9-2"><a href="raw-data-pretreatment.html#cb9-2" aria-hidden="true" tabindex="-1"></a>x[x<span class="sc">&lt;</span><span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb9-3"><a href="raw-data-pretreatment.html#cb9-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> x<span class="sc">*</span><span class="dv">10</span><span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb9-4"><a href="raw-data-pretreatment.html#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(AER)</span>
+<span id="cb9-5"><a href="raw-data-pretreatment.html#cb9-5" aria-hidden="true" tabindex="-1"></a>tfit <span class="ot">&lt;-</span> <span class="fu">tobit</span>(y <span class="sc">~</span> x, <span class="at">left =</span> <span class="dv">0</span>)</span>
+<span id="cb9-6"><a href="raw-data-pretreatment.html#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(tfit)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## tobit(formula = y ~ x, left = 0)
@@ -442,11 +441,11 @@ Figure 5.5: Demo of many GC/LC-MS data
 ## Number of Newton-Raphson Iterations: 1 
 ## Log-likelihood: -3096 on 3 Df
 ## Wald-statistic:  1000 on 1 Df, p-value: &lt; 2.22e-16</code></pre>
-<p>According to Ronald Hites’s simulation<span class="citation">(<a href="#ref-hites2019" role="doc-biblioref"><strong>hites2019?</strong></a>)</span>, measurements below the LOD (even missing measurements) with the LOD/2 or with the <span class="math inline">\(LOD/\sqrt2\)</span> causes little bias and “Any time you have a % non-detected &gt;20%, for whatever reason, it is unlikely that the data set can give useful results.”</p>
+<p>According to Ronald Hites’s simulation<span class="citation">[@hites2019]</span>, measurements below the LOD (even missing measurements) with the LOD/2 or with the <span class="math inline">\(LOD/\sqrt2\)</span> causes little bias and “Any time you have a % non-detected &gt;20%, for whatever reason, it is unlikely that the data set can give useful results.”</p>
 </div>
 <div id="over-detection-limit" class="section level3" number="5.6.2">
 <h3><span class="header-section-number">5.6.2</span> Over Detection Limit</h3>
-<p><strong>CorrectOverloadedPeaks</strong> could be used to correct the Peaks Exceeding the Detection Limit issue<span class="citation">(<a href="#ref-lisec2016" role="doc-biblioref"><strong>lisec2016?</strong></a>)</span>.</p>
+<p><strong>CorrectOverloadedPeaks</strong> could be used to correct the Peaks Exceeding the Detection Limit issue<span class="citation">[@lisec2016]</span>.</p>
 </div>
 </div>
 <div id="rsdfold-change-filter" class="section level2" number="5.7">
@@ -462,65 +461,38 @@ Figure 5.5: Demo of many GC/LC-MS data
 <div id="peak-picking" class="section level3" number="5.9.1">
 <h3><span class="header-section-number">5.9.1</span> Peak picking</h3>
 <ul>
-<li><p><a href="http://proteowizard.sourceforge.net/">ProteoWizard Toolkit</a> provides a set of open-source, cross-platform software libraries and tools <span class="citation">(<a href="#ref-chambers2012" role="doc-biblioref"><strong>chambers2012?</strong></a>)</span>. Msconvert is one tool in this toolkit.</p></li>
-<li><p><a href="https://github.com/sneumann/xcms">xcms</a> LC/MS and GC/MS Data Analysis<span class="citation">(<a href="#ref-smith2006" role="doc-biblioref"><strong>smith2006?</strong></a>)</span></p></li>
-<li><p><a href="https://sourceforge.net/projects/aplcms/">apLCMS</a> Generate peaks list <span class="citation">(<a href="#ref-yu2009" role="doc-biblioref"><strong>yu2009?</strong></a>)</span></p></li>
-<li><p><a href="http://pubs.acs.org/doi/10.1021/ac403384n">x13cms</a> global tracking of isotopic labels in untargeted metabolomics <span class="citation">(<a href="#ref-huang2014" role="doc-biblioref"><strong>huang2014?</strong></a>)</span></p></li>
-<li><p><a href="https://github.com/wkew/FTMSVisualization">FTMSVisualization</a> is a suite of tools for visualizing complex mixture FT-MS data<span class="citation">(<a href="#ref-kew2017" role="doc-biblioref"><strong>kew2017?</strong></a>)</span></p></li>
-<li><p><a href="http://mzmine.github.io/">MZmine</a> is an open-source software for mass-spectrometry data processing, with the main focus on LC-MS data<span class="citation">(<a href="#ref-pluskal2010" role="doc-biblioref"><strong>pluskal2010?</strong></a>)</span></p></li>
-<li><p><a href="http://prime.psc.riken.jp/Metabolomics_Software/">MS-DAIL</a> is a universal program for untargeted metabolomics- and lipidomics supporting any type of chromatography/mass spectrometry methods (GC/MS, GC-MS/MS, LC/MS, and LC-MS/MS etc.) <span class="citation">(<a href="#ref-tsugawa2015" role="doc-biblioref"><strong>tsugawa2015?</strong></a>)</span></p></li>
-<li><p><a href="http://www.openms.de/">OpenMS</a> is an open-source software C++ library for LC/MS data management and analyses<span class="citation">(<a href="#ref-rost2016" role="doc-biblioref"><strong>rost2016?</strong></a>)</span></p></li>
-<li><p><a href="https://sourceforge.net/projects/mzmatch/">MZmatch</a> is a Java collection of small commandline tools specific for metabolomics MS data analysis <span class="citation">(<a href="#ref-scheltema2011" role="doc-biblioref"><strong>scheltema2011?</strong></a>; <a href="#ref-creek2012" role="doc-biblioref"><strong>creek2012?</strong></a>)</span></p></li>
-<li><p><a href="http://ms.iis.sinica.edu.tw/comics/Software_iMet-Q.html">iMet-Q</a> is an automated tool with friendly user interfaces for quantifying metabolites in full-scan liquid chromatography-mass spectrometry (LC-MS) data.<span class="citation">(<a href="#ref-chang2016" role="doc-biblioref"><strong>chang2016?</strong></a>)</span></p></li>
-<li><p><a href="http://genomics-pubs.princeton.edu/mzroll/index.php">MAVEN</a> is an open source cross platform metabolomics data analyser.<span class="citation">(<a href="#ref-melamud2010" role="doc-biblioref"><strong>melamud2010?</strong></a>)</span></p></li>
+<li><p><a href="http://proteowizard.sourceforge.net/">ProteoWizard Toolkit</a> provides a set of open-source, cross-platform software libraries and tools <span class="citation">[@chambers2012]</span>. Msconvert is one tool in this toolkit.</p></li>
+<li><p><a href="https://github.com/sneumann/xcms">xcms</a> LC/MS and GC/MS Data Analysis<span class="citation">[@smith2006]</span></p></li>
+<li><p><a href="https://sourceforge.net/projects/aplcms/">apLCMS</a> Generate peaks list <span class="citation">[@yu2009]</span></p></li>
+<li><p><a href="http://pubs.acs.org/doi/10.1021/ac403384n">x13cms</a> global tracking of isotopic labels in untargeted metabolomics <span class="citation">[@huang2014]</span></p></li>
+<li><p><a href="https://github.com/wkew/FTMSVisualization">FTMSVisualization</a> is a suite of tools for visualizing complex mixture FT-MS data<span class="citation">[@kew2017]</span></p></li>
+<li><p><a href="http://mzmine.github.io/">MZmine</a> is an open-source software for mass-spectrometry data processing, with the main focus on LC-MS data<span class="citation">[@pluskal2010]</span></p></li>
+<li><p><a href="http://prime.psc.riken.jp/Metabolomics_Software/">MS-DAIL</a> is a universal program for untargeted metabolomics- and lipidomics supporting any type of chromatography/mass spectrometry methods (GC/MS, GC-MS/MS, LC/MS, and LC-MS/MS etc.) <span class="citation">[@tsugawa2015]</span></p></li>
+<li><p><a href="http://www.openms.de/">OpenMS</a> is an open-source software C++ library for LC/MS data management and analyses<span class="citation">[@rost2016]</span></p></li>
+<li><p><a href="https://sourceforge.net/projects/mzmatch/">MZmatch</a> is a Java collection of small commandline tools specific for metabolomics MS data analysis <span class="citation">[@scheltema2011; @creek2012]</span></p></li>
+<li><p><a href="http://ms.iis.sinica.edu.tw/comics/Software_iMet-Q.html">iMet-Q</a> is an automated tool with friendly user interfaces for quantifying metabolites in full-scan liquid chromatography-mass spectrometry (LC-MS) data.<span class="citation">[@chang2016]</span></p></li>
+<li><p><a href="http://genomics-pubs.princeton.edu/mzroll/index.php">MAVEN</a> is an open source cross platform metabolomics data analyser.<span class="citation">[@melamud2010]</span></p></li>
 </ul>
 </div>
 <div id="for-msms" class="section level3" number="5.9.2">
 <h3><span class="header-section-number">5.9.2</span> For MS/MS</h3>
 <ul>
-<li><p><a href="http://prime.psc.riken.jp/Metabolomics_Software/">MS-DAIL</a> for data independent MS/MS deconvolution of comprehensive metabolome analysis.<span class="citation">(<a href="#ref-tsugawa2015" role="doc-biblioref"><strong>tsugawa2015?</strong></a>)</span></p></li>
-<li><p><a href="https://pubs.acs.org/doi/10.1021/ac400751j">decoMS2</a> An Untargeted Metabolomic Workflow to Improve Structural Characterization of Metabolites<span class="citation">(<a href="#ref-nikolskiy2013" role="doc-biblioref"><strong>nikolskiy2013?</strong></a>)</span></p></li>
-<li><p><a href="https://pubs.acs.org/doi/10.1021/acs.analchem.6b04358">msPurity</a> Automated Evaluation of Precursor Ion Purity for Mass Spectrometry-Based Fragmentation in Metabolomics<span class="citation">(<a href="#ref-lawson2017" role="doc-biblioref"><strong>lawson2017?</strong></a>)</span></p></li>
-<li><p><a href="https://pubs.acs.org/doi/suppl/10.1021/acs.est.8b00259/suppl_file/es8b00259_si_001.pdf">ULSA</a> Deconvolution algorithm and a universal library search algorithm (ULSA) for the analysis of complex spectra generated via data-independent acquisition based on Matlab <span class="citation">(<a href="#ref-samanipour2018" role="doc-biblioref"><strong>samanipour2018?</strong></a>)</span></p></li>
+<li><p><a href="http://prime.psc.riken.jp/Metabolomics_Software/">MS-DAIL</a> for data independent MS/MS deconvolution of comprehensive metabolome analysis.<span class="citation">[@tsugawa2015]</span></p></li>
+<li><p><a href="https://pubs.acs.org/doi/10.1021/ac400751j">decoMS2</a> An Untargeted Metabolomic Workflow to Improve Structural Characterization of Metabolites<span class="citation">[@nikolskiy2013]</span></p></li>
+<li><p><a href="https://pubs.acs.org/doi/10.1021/acs.analchem.6b04358">msPurity</a> Automated Evaluation of Precursor Ion Purity for Mass Spectrometry-Based Fragmentation in Metabolomics<span class="citation">[@lawson2017]</span></p></li>
+<li><p><a href="https://pubs.acs.org/doi/suppl/10.1021/acs.est.8b00259/suppl_file/es8b00259_si_001.pdf">ULSA</a> Deconvolution algorithm and a universal library search algorithm (ULSA) for the analysis of complex spectra generated via data-independent acquisition based on Matlab <span class="citation">[@samanipour2018]</span></p></li>
 </ul>
 </div>
 <div id="improved-peak-picking" class="section level3" number="5.9.3">
 <h3><span class="header-section-number">5.9.3</span> Improved Peak picking</h3>
 <ul>
-<li><p><a href="https://github.com/rietho/IPO">IPO</a> A Tool for automated Optimization of XCMS Parameters<span class="citation">(<a href="#ref-libiseller2015" role="doc-biblioref"><strong>libiseller2015?</strong></a>)</span>.</p></li>
-<li><p><a href="https://github.com/nathaniel-mahieu/warpgroup">Warpgroup</a> is used for chromatogram subregion detection, consensus integration bound determination and accurate missing value integration<span class="citation">(<a href="#ref-mahieu2016" role="doc-biblioref"><strong>mahieu2016?</strong></a>)</span></p></li>
-<li><p><a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-14-15">xMSanalyzer</a> improved Peak picking for xcms and apLCMS<span class="citation">(<a href="#ref-uppal2013" role="doc-biblioref"><strong>uppal2013?</strong></a>)</span></p></li>
-<li><p><a href="https://bitbucket.org/fiehnlab/ms-flo/src/657d85ec7bdd?at=master">ms-flo</a> A Tool To Minimize False Positive Peak Reports in Untargeted Liquid Chromatography–Mass Spectroscopy (LC-MS) Data Processing<span class="citation">(<a href="#ref-defelice2017" role="doc-biblioref"><strong>defelice2017?</strong></a>)</span></p></li>
+<li><p><a href="https://github.com/rietho/IPO">IPO</a> A Tool for automated Optimization of XCMS Parameters<span class="citation">[@libiseller2015]</span>.</p></li>
+<li><p><a href="https://github.com/nathaniel-mahieu/warpgroup">Warpgroup</a> is used for chromatogram subregion detection, consensus integration bound determination and accurate missing value integration<span class="citation">[@mahieu2016]</span></p></li>
+<li><p><a href="https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-14-15">xMSanalyzer</a> improved Peak picking for xcms and apLCMS<span class="citation">[@uppal2013]</span></p></li>
+<li><p><a href="https://bitbucket.org/fiehnlab/ms-flo/src/657d85ec7bdd?at=master">ms-flo</a> A Tool To Minimize False Positive Peak Reports in Untargeted Liquid Chromatography–Mass Spectroscopy (LC-MS) Data Processing<span class="citation">[@defelice2017]</span></p></li>
 </ul>
-</div>
-</div>
-<div id="tips" class="section level2" number="5.10">
-<h2><span class="header-section-number">5.10</span> Tips</h2>
-<ul>
-<li>Convert XCMSnExp object into xcmsSet object</li>
-</ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="raw-data-pretreatment.html#cb14-1" aria-hidden="true" tabindex="-1"></a>xcmsSetdemo <span class="ot">&lt;-</span> <span class="fu">as</span>(XCMSnExpdemo,<span class="st">&#39;xcmsSet&#39;</span>)</span></code></pre></div>
-<ul>
-<li>Split xcmsSet with multiple groups object into a list with single group object</li>
-</ul>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="raw-data-pretreatment.html#cb15-1" aria-hidden="true" tabindex="-1"></a>list <span class="ot">&lt;-</span> <span class="fu">split</span>(xcmsSetdemo,xcmsSetdemo<span class="sc">@</span>phenoData<span class="sc">$</span>sample_group)</span>
-<span id="cb15-2"><a href="raw-data-pretreatment.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># re-group the peaks with parallel computation</span></span>
-<span id="cb15-3"><a href="raw-data-pretreatment.html#cb15-3" aria-hidden="true" tabindex="-1"></a>list2 <span class="ot">&lt;-</span> BiocParallel<span class="sc">::</span><span class="fu">bplapply</span>(list,group)</span></code></pre></div>
-<ul>
-<li>Combine single group xcmsSet objects into one xcmsSet</li>
-</ul>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="raw-data-pretreatment.html#cb16-1" aria-hidden="true" tabindex="-1"></a>xcmsSetdemoagain <span class="ot">&lt;-</span> <span class="fu">Reduce</span>(<span class="st">&#39;c&#39;</span>,list2)</span>
-<span id="cb16-2"><a href="raw-data-pretreatment.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># for more higher order function in R, check here: http://www.johnmyleswhite.com/notebook/2010/09/23/higher-order-functions-in-r/</span></span></code></pre></div>
-<ul>
-<li>Use <strong>warpgroup</strong> to get peaks with better quality</li>
-</ul>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="raw-data-pretreatment.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(doParallel)</span>
-<span id="cb17-2"><a href="raw-data-pretreatment.html#cb17-2" aria-hidden="true" tabindex="-1"></a>cl <span class="ot">=</span> <span class="fu">makeCluster</span>(<span class="fu">detectCores</span>() <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb17-3"><a href="raw-data-pretreatment.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">registerDoParallel</span>(cl)</span>
-<span id="cb17-4"><a href="raw-data-pretreatment.html#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-5"><a href="raw-data-pretreatment.html#cb17-5" aria-hidden="true" tabindex="-1"></a>xseteiclist <span class="ot">=</span> <span class="fu">lapply</span>(xcmsSetdemo<span class="sc">@</span>filepaths, xcmsRaw, <span class="at">profstep=</span><span class="dv">0</span>)</span>
-<span id="cb17-6"><a href="raw-data-pretreatment.html#cb17-6" aria-hidden="true" tabindex="-1"></a>xwarpgroup <span class="ot">=</span> <span class="fu">group.warpgroup</span>(xcmsSetdemo, xseteiclist, <span class="at">rt.max.drift =</span> <span class="dv">20</span>, <span class="at">ppm.max.drift =</span> <span class="dv">3</span>, <span class="at">rt.aligned.lim =</span> <span class="dv">5</span>)</span></code></pre></div>
 
+</div>
 </div>
 </div>
             </section>

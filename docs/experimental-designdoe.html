@@ -24,7 +24,7 @@
 <meta name="author" content="Miao YU" />
 
 
-<meta name="date" content="2020-12-28" />
+<meta name="date" content="2021-01-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -177,6 +177,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="4.1" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#column-and-gradient-selection"><i class="fa fa-check"></i><b>4.1</b> Column and gradient selection</a></li>
 <li class="chapter" data-level="4.2" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#mass-resolution"><i class="fa fa-check"></i><b>4.2</b> Mass resolution</a></li>
+<li class="chapter" data-level="4.3" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#matrix-effects"><i class="fa fa-check"></i><b>4.3</b> Matrix effects</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html"><i class="fa fa-check"></i><b>5</b> Raw data pretreatment</a>
 <ul>
@@ -198,7 +199,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.9.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#for-msms"><i class="fa fa-check"></i><b>5.9.2</b> For MS/MS</a></li>
 <li class="chapter" data-level="5.9.3" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#improved-peak-picking"><i class="fa fa-check"></i><b>5.9.3</b> Improved Peak picking</a></li>
 </ul></li>
-<li class="chapter" data-level="5.10" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#tips"><i class="fa fa-check"></i><b>5.10</b> Tips</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="peaks-normalization.html"><a href="peaks-normalization.html"><i class="fa fa-check"></i><b>6</b> Peaks normalization</a>
 <ul>
@@ -244,7 +244,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.8.13" data-path="annotation.html"><a href="annotation.html#for-ident"><i class="fa fa-check"></i><b>7.8.13</b> For Ident</a></li>
 <li class="chapter" data-level="7.8.14" data-path="annotation.html"><a href="annotation.html#retip"><i class="fa fa-check"></i><b>7.8.14</b> Retip</a></li>
 <li class="chapter" data-level="7.8.15" data-path="annotation.html"><a href="annotation.html#binner"><i class="fa fa-check"></i><b>7.8.15</b> Binner</a></li>
-<li class="chapter" data-level="7.8.16" data-path="annotation.html"><a href="annotation.html#mzmatch"><i class="fa fa-check"></i><b>7.8.16</b> mzmatch</a></li>
+<li class="chapter" data-level="7.8.16" data-path="annotation.html"><a href="annotation.html#mzmatch"><i class="fa fa-check"></i><b>7.8.16</b> mzMatch</a></li>
 <li class="chapter" data-level="7.8.17" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>7.8.17</b> mz.unity</a></li>
 <li class="chapter" data-level="7.8.18" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>7.8.18</b> MAIT</a></li>
 <li class="chapter" data-level="7.8.19" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>7.8.19</b> ProbMetab</a></li>
@@ -339,7 +339,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="experimental-designdoe" class="section level1" number="2">
 <h1><span class="header-section-number">Chapter 2</span> Experimental design(DoE)</h1>
-<p>Before you perform any metabolomics experiment, a clean and meaningful experimental design is the best start. Depending on different research purposes, experimental design can be classified into homogeneity and heterogeneity study. Technique such as isotope labeled media will not be discussed in this chapter while this paper<span class="citation">(<a href="exposome.html#ref-jang2018" role="doc-biblioref">Jang, Chen, and Rabinowitz 2018</a>)</span> could be a good start.</p>
+<p>Before you perform any metabolomics experiment, a clean and meaningful experimental design is the best start. Depending on different research purposes, experimental design can be classified into homogeneity and heterogeneity study. Technique such as isotope labeled media will not be discussed in this chapter while this paper<span class="citation">[@jang2018]</span> could be a good start.</p>
 <div id="homogeneity-study" class="section level2" number="2.1">
 <h2><span class="header-section-number">2.1</span> Homogeneity study</h2>
 <p>In homogeneity study, the research purpose is about method validation in most cases. Pooled sample made from multiple samples or technical replicates from same population will be used. Variances within the samples should be attributed to factors other than the samples themselves. For example, we want to know if sample injection order will affect the intensities of the unknown peaks, one pooled sample or technical replicates samples should be used.</p>
@@ -352,7 +352,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="power-analysis" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> Power analysis</h2>
 <p>Supposing we have control and treated groups, the numbers of samples in each group should be carefully calculated.For each metabolite, such comparison could be treated as one t-test. You need to perform a Power analysis to get the numbers. For example, we have two groups of samples with 10 samples in each group. Then we set the power at 0.9, which means one minus Type II error probability, the standard deviation at 1 and the significance level (Type 1 error probability) at 0.05. Then we will get the meaningful delta between the two groups should be higher than 1.53367 under this experiment design. Also we could set the delta to get the minimized numbers of the samples in each group. To get those data such as the standard deviation or delta for power analysis, you need to perform preliminary or pilot experiments.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="experimental-designdoe.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">power.t.test</span>(<span class="at">n=</span><span class="dv">10</span>,<span class="at">sd=</span><span class="dv">1</span>,<span class="at">sig.level =</span> <span class="fl">0.05</span>,<span class="at">power =</span> <span class="fl">0.9</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="experimental-designdoe.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">power.t.test</span>(<span class="at">n=</span><span class="dv">10</span>,<span class="at">sd=</span><span class="dv">1</span>,<span class="at">sig.level =</span> <span class="fl">0.05</span>,<span class="at">power =</span> <span class="fl">0.9</span>)</span></code></pre></div>
 <pre><code>## 
 ##      Two-sample t test power calculation 
 ## 
@@ -364,7 +364,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     alternative = two.sided
 ## 
 ## NOTE: n is number in *each* group</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="experimental-designdoe.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">power.t.test</span>(<span class="at">delta =</span> <span class="dv">5</span>,<span class="at">sd=</span><span class="dv">1</span>,<span class="at">sig.level =</span> <span class="fl">0.05</span>,<span class="at">power =</span> <span class="fl">0.9</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="experimental-designdoe.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">power.t.test</span>(<span class="at">delta =</span> <span class="dv">5</span>,<span class="at">sd=</span><span class="dv">1</span>,<span class="at">sig.level =</span> <span class="fl">0.05</span>,<span class="at">power =</span> <span class="fl">0.9</span>)</span></code></pre></div>
 <pre><code>## 
 ##      Two-sample t test power calculation 
 ## 
@@ -377,22 +377,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## NOTE: n is number in *each* group</code></pre>
 <p>However, since sometimes we could not perform preliminary experiment, we could directly compute the power based on false discovery rate control. If the power is lower than certain value, say 0.8, we just exclude this peak as significant features.</p>
-<p>In this review <span class="citation">(<a href="exposome.html#ref-oberg2009" role="doc-biblioref">Oberg and Vitek 2009</a>)</span>, author suggest to estimate an average <span class="math inline">\(\alpha\)</span> according to this equation <span class="citation">(<a href="exposome.html#ref-benjamini1995" role="doc-biblioref">Benjamini and Hochberg 1995</a>)</span> and then use normal way to calculate the sample numbers:</p>
+<p>In this review <span class="citation">[@oberg2009]</span>, author suggest to estimate an average <span class="math inline">\(\alpha\)</span> according to this equation <span class="citation">[@benjamini1995]</span> and then use normal way to calculate the sample numbers:</p>
 <p><span class="math display">\[
 \alpha_{ave} \leq (1-\beta_{ave})\cdot q\frac{1}{1+(1-q)\cdot m_0/m_1}
 \]</span></p>
-<p>Other study <span class="citation">(<a href="exposome.html#ref-blaise2016a" role="doc-biblioref">Blaise et al. 2016</a>)</span> show a method based on simulation to estimate the sample size. They used BY correction to limit the influences from correlations. Other investigation could be found here<span class="citation">(<a href="exposome.html#ref-saccenti2016" role="doc-biblioref">Saccenti and Timmerman 2016</a>; <a href="exposome.html#ref-blaise2013" role="doc-biblioref">Blaise 2013</a>)</span>. However, the nature of omics study make the power analysis hard to use one number for all metabolites and all the methods are trying to find a balance to represent more peaks with least samples.</p>
+<p>Other study <span class="citation">[@blaise2016a]</span> show a method based on simulation to estimate the sample size. They used BY correction to limit the influences from correlations. Other investigation could be found here<span class="citation">[@saccenti2016; @blaise2013]</span>. However, the nature of omics study make the power analysis hard to use one number for all metabolites and all the methods are trying to find a balance to represent more peaks with least samples.</p>
 </div>
 <div id="optimization" class="section level2" number="2.4">
 <h2><span class="header-section-number">2.4</span> Optimization</h2>
-<p>One experiment can contain lots of factors with different levels and only one set of parameters for different factors will show the best sensitivity or reproducibility for certain study. To find this set of parameters, Plackett-Burman Design (PBD), Response Surface Methodology (RSM), Central Composite Design (CCD), and Taguchi methods could be used to optimize the parameters for metabolomics study. The target could be the quality of peaks, the numbers of peaks, the stability of peaks intensity, and/or the statistics of the combination of those targets. You could check those paper for details<span class="citation">(<a href="exposome.html#ref-jacyna2019" role="doc-biblioref">Jacyna, Kordalewska, and Markuszewski 2019</a>; <a href="exposome.html#ref-box2005" role="doc-biblioref">Box, Hunter, and Hunter 2005</a>)</span>.</p>
+<p>One experiment can contain lots of factors with different levels and only one set of parameters for different factors will show the best sensitivity or reproducibility for certain study. To find this set of parameters, Plackett-Burman Design (PBD), Response Surface Methodology (RSM), Central Composite Design (CCD), and Taguchi methods could be used to optimize the parameters for metabolomics study. The target could be the quality of peaks, the numbers of peaks, the stability of peaks intensity, and/or the statistics of the combination of those targets. You could check those paper for details<span class="citation">[@jacyna2019; @box2005]</span>.</p>
 </div>
 <div id="pooled-qc" class="section level2" number="2.5">
 <h2><span class="header-section-number">2.5</span> Pooled QC</h2>
-<p>Pooled QC samples are unique and very important for metabolomics study. Every 10 or 20 samples, a pooled sample from all samples and blank sample in one study should be injected as quality control samples. Pooled QC samples contain the changes during the instrumental analysis and blank samples could tell where the variances come from. Meanwhile the cap of sequence should old the column with pooled QC samples. The injection sequence should be randomized. Those papers<span class="citation">(<a href="exposome.html#ref-phapale2020" role="doc-biblioref">Phapale et al. 2020</a>; <a href="exposome.html#ref-dudzik2018" role="doc-biblioref">Dudzik et al. 2018</a>; <a href="exposome.html#ref-dunn2012" role="doc-biblioref">Dunn et al. 2012</a>)</span> should be read for details.</p>
+<p>Pooled QC samples are unique and very important for metabolomics study. Every 10 or 20 samples, a pooled sample from all samples and blank sample in one study should be injected as quality control samples. Pooled QC samples contain the changes during the instrumental analysis and blank samples could tell where the variances come from. Meanwhile the cap of sequence should old the column with pooled QC samples. The injection sequence should be randomized. Those papers<span class="citation">[@phapale2020; @dudzik2018; @dunn2012; @broadhurst2018]</span> should be read for details.</p>
 <p>If there are other co-factors, a linear model or randomizing would be applied to eliminate their influences. You need to record the values of those co-factors for further data analysis. Common co-factors in metabolomics studies are age, gender, location, etc.</p>
 <p>If you need data correction, some background or calibration samples are required. However, control samples could also be used for data correction in certain DoE.</p>
-<p>Another important factors are instrumentals. High-resolution mass spectrum is always preferred. As shown in Lukas’s study <span class="citation">(<a href="exposome.html#ref-najdekr2016" role="doc-biblioref">Najdekr et al. 2016</a>)</span>:</p>
+<p>Another important factors are instrumentals. High-resolution mass spectrum is always preferred. As shown in Lukas’s study <span class="citation">[@najdekr2016]</span>:</p>
 <blockquote>
 <p>the most effective mass resolving powers for profiling analyses of metabolite rich biofluids on the Orbitrap Elite were around 60000–120000 fwhm to retrieve the highest amount of information. The region between 400–800 m/z was influenced the most by resolution.</p>
 </blockquote>
@@ -401,9 +401,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="software" class="section level2" number="2.6">
 <h2><span class="header-section-number">2.6</span> Software</h2>
 <ul>
-<li><a href="https://github.com/cran/MetSizeR">MetSizeR</a> GUI Tool for Estimating Sample Sizes for metabolomics Experiments<span class="citation">(<a href="exposome.html#ref-nyamundanda2013" role="doc-biblioref">Nyamundanda et al. 2013</a>)</span>.</li>
-<li><a href="https://www.bioconductor.org/packages/release/bioc/vignettes/MSstats/inst/doc/MSstats.html">MSstats</a> Protein/Peptide significance analysis <span class="citation">(<a href="exposome.html#ref-choi2014" role="doc-biblioref">Choi et al. 2014</a>)</span>.</li>
-<li><a href="https://cran.rstudio.com/web/packages/enviGCMS/index.html">enviGCMS</a> GC/LC-MS Data Analysis for Environmental Science<span class="citation">(<a href="exposome.html#ref-yu2017" role="doc-biblioref">Yu et al. 2017</a>)</span>.</li>
+<li><a href="https://github.com/cran/MetSizeR">MetSizeR</a> GUI Tool for Estimating Sample Sizes for metabolomics Experiments<span class="citation">[@nyamundanda2013]</span>.</li>
+<li><a href="https://www.bioconductor.org/packages/release/bioc/vignettes/MSstats/inst/doc/MSstats.html">MSstats</a> Protein/Peptide significance analysis <span class="citation">[@choi2014]</span>.</li>
+<li><a href="https://cran.rstudio.com/web/packages/enviGCMS/index.html">enviGCMS</a> GC/LC-MS Data Analysis for Environmental Science<span class="citation">[@yu2017]</span>.</li>
 </ul>
 
 </div>
