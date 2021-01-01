@@ -1,10 +1,14 @@
+---
+bibliography: references.bib
+---
+
 # Peaks normalization
 
 ## Batch effects classification
 
 Variances among the samples across all the extracted peaks might be affected by factors other than the experiment design. There are three types of those batch effects: Monotone, Block and Mixed.
 
-- Monotone would increase/decrease with the injection order or batchs.
+-   Monotone would increase/decrease with the injection order or batchs.
 
 ```{r echo=FALSE,out.width='61.8%'}
 library(ggplot2)
@@ -16,7 +20,7 @@ data <- cbind.data.frame(group,batch,ind)
 ggplot(data,aes(ind,batch,fill = group)) + geom_col()
 ```
 
-- Block would be system shift among different batchs.
+-   Block would be system shift among different batchs.
 
 ```{r echo=FALSE,out.width='61.8%'}
 # Block batch
@@ -27,7 +31,7 @@ data <- cbind.data.frame(group,batch,ind)
 ggplot(data,aes(ind,batch,fill = group)) + geom_col()
 ```
 
-- Mixed would be the combination of monotone and block batch effects.
+-   Mixed would be the combination of monotone and block batch effects.
 
 ```{r echo=FALSE,out.width='61.8%'}
 # Mixed batch
@@ -68,15 +72,15 @@ Any correction might introduce bias. We need to make sure there are patterns whi
 
 ## Source of batch effects
 
-- Different Operators & Dates & Sequences
+-   Different Operators & Dates & Sequences
 
-- Different Instrumental Condition such as different instrumental parameters, poor quality control, sample contamination during the analysis, Column (Pooled QC) and sample matrix effects (ions suppression or/and enhancement)
+-   Different Instrumental Condition such as different instrumental parameters, poor quality control, sample contamination during the analysis, Column (Pooled QC) and sample matrix effects (ions suppression or/and enhancement)
 
-- Unknown Unknowns
+-   Unknown Unknowns
 
 ## Avoid batch effects by DoE
 
-You could avoid batch effects from experimental design. Cap the sequence with Pooled QC and Randomized samples sequence. Some internal standards/Instrumental QC might Help to find the source of batch effects while it's not practical for every compounds in non-targeted analysis. 
+You could avoid batch effects from experimental design. Cap the sequence with Pooled QC and Randomized samples sequence. Some internal standards/Instrumental QC might Help to find the source of batch effects while it's not practical for every compounds in non-targeted analysis.
 
 Batch effects might not change the conclusion when the effect size is relatively small. Here is a simulation:
 
@@ -127,7 +131,7 @@ Relative log abundance (RLA) plots[@delivera2012] and heatmap often used to show
 
 #### Distribution of intensity
 
-Intensity collects from LC/GC-MS always showed a right-skewed distribution. Log transformation is often necessary for further statistical analysis. 
+Intensity collects from LC/GC-MS always showed a right-skewed distribution. Log transformation is often necessary for further statistical analysis.
 
 #### Centering
 
@@ -143,8 +147,7 @@ $$\hat I_{p,s,b} = I_{p,s,b} - mean(I_{p,b})$$
 
 For peak p of sample s in certain batch b, the corrected abundance I is:
 
-$$\hat I_{p,s,b} = \frac{I_{p,s,b} - mean(I_{p,b})}{std_{p,b}} * std_{p,qc,b} + mean(I_{p,qc,b})$$
-If no quality control samples used, the corrected abundance I would be:
+$$\hat I_{p,s,b} = \frac{I_{p,s,b} - mean(I_{p,b})}{std_{p,b}} * std_{p,qc,b} + mean(I_{p,qc,b})$$ If no quality control samples used, the corrected abundance I would be:
 
 $$\hat I_{p,s,b} = \frac{I_{p,s,b} - mean(I_{p,b})}{std_{p,b}}$$
 
@@ -221,8 +224,7 @@ plot(Icor)
 
 #### Linear Normalizer
 
-This method initially scales each sample so that the sum of all
-peak abundances equals one. In this study, by multiplying the median sum of all peak abundances across all samples,we got the corrected data.
+This method initially scales each sample so that the sum of all peak abundances equals one. In this study, by multiplying the median sum of all peak abundances across all samples,we got the corrected data.
 
 ```{r Linear}
 set.seed(42)
@@ -241,8 +243,7 @@ image(dfcor)
 
 $$\hat I_{p,s} = \frac{I_{p,s} * median(I_{IS})}{I_{IS,s}}$$
 
-Some methods also use pooled calibration samples and multiple internal standard strategy to correct the data[@van_der_kloet2009]. Also some methods only use QC samples to handle the data[@kuligowski2015].
-
+Some methods also use pooled calibration samples and multiple internal standard strategy to correct the data[@vanderkloet2009]. Also some methods only use QC samples to handle the data[@kuligowski2015].
 
 ### Supervised methods
 
@@ -256,7 +257,7 @@ Use the total abundance scale and then fit with the regression line[@wang2013].
 
 #### Surrogate Variable Analysis(SVA)
 
-We have a data matrix(M*N) with M stands for indentity peaks from one sample and N stand for individual samples. For one sample, $X = (x_{i1},...,x_{in})^T$ stands for the normalized intensities of peaks. We use $Y = (y_i,...,y_m)^T$ stands for the group infomation of our data. Then we could build such modles:
+We have a data matrix(M\*N) with M stands for indentity peaks from one sample and N stand for individual samples. For one sample, $X = (x_{i1},...,x_{in})^T$ stands for the normalized intensities of peaks. We use $Y = (y_i,...,y_m)^T$ stands for the group infomation of our data. Then we could build such modles:
 
 $$x_{ij} = \mu_i + f_i(y_i) + e_{ij}$$
 
@@ -268,9 +269,8 @@ stands for the biological variations caused by the our group, for example, wheth
 
 However, considering the batch effects, the real model could be:
 
-$$x_{ij} = \mu_i + f_i(y_i) + \sum_{l = 1}^L \gamma_{li}p_{lj} + e_{ij}^*$$
- $\gamma_{li}$ stands for the peak-specific coefficient for potentical factor $l$. $p_{lj}$ stands for the potential factors across the samples. Actually, the error item $e_{ij}$ in real sample could always be decomposed as $e_{ij} = \sum_{l = 1}^L \gamma_{li}p_{lj} + e_{ij}^*$ with $e_{ij}^*$ standing for the real random error in certain sample for certain peak.
- 
+$$x_{ij} = \mu_i + f_i(y_i) + \sum_{l = 1}^L \gamma_{li}p_{lj} + e_{ij}^*$$ $\gamma_{li}$ stands for the peak-specific coefficient for potentical factor $l$. $p_{lj}$ stands for the potential factors across the samples. Actually, the error item $e_{ij}$ in real sample could always be decomposed as $e_{ij} = \sum_{l = 1}^L \gamma_{li}p_{lj} + e_{ij}^*$ with $e_{ij}^*$ standing for the real random error in certain sample for certain peak.
+
 We could not get the potential factors directly. Since we don't care the details of the unknown factors, we could estimate orthogonal vectors $h_k$ standing for such potential factors. Thus we have:
 
 $$
@@ -284,59 +284,59 @@ Here is the details of the algorithm:
 
 ##### Detection of unmodeled factors
 
-- Estimate $\hat\mu_i$ and $f_i$ by fitting the model $x_{ij} = \mu_i + f_i(y_i) + e_{ij}$ and get the residual $r_{ij} = x_{ij}-\hat\mu_i - \hat f_i(y_i)$. Then we have the residual matrix R.
+-   Estimate $\hat\mu_i$ and $f_i$ by fitting the model $x_{ij} = \mu_i + f_i(y_i) + e_{ij}$ and get the residual $r_{ij} = x_{ij}-\hat\mu_i - \hat f_i(y_i)$. Then we have the residual matrix R.
 
-- Perform the singular value decompositon(SVD) of the residual matrix $R = UDV^T$
+-   Perform the singular value decompositon(SVD) of the residual matrix $R = UDV^T$
 
-- Let $d_l$ be the $l$th eigenvalue of the diagonal matrix D for $l = 1,...,n$. Set $df$ as the freedom of the model $\hat\mu_i + \hat f_i(y_i)$. We could build a statistic $T_k$ as:
+-   Let $d_l$ be the $l$th eigenvalue of the diagonal matrix D for $l = 1,...,n$. Set $df$ as the freedom of the model $\hat\mu_i + \hat f_i(y_i)$. We could build a statistic $T_k$ as:
 
 $$T_k = \frac{d_k^2}{\sum_{l=1}^{n-df}d_l^2}$$
 
 to show the variance explained by the $k$th eigenvalue.
 
-- Permute each row of R to remove the structure in the matrix and get $R^*$.
+-   Permute each row of R to remove the structure in the matrix and get $R^*$.
 
-- Fit the model $r_{ij}^* = \mu_i^* + f_i^*(y_i) + e^*_{ij}$ and get $r_{ij}^0 = r^*_{ij}-\hat\mu^*_i - \hat f^*_i(y_i)$ as a null matrix $R_0$
+-   Fit the model $r_{ij}^* = \mu_i^* + f_i^*(y_i) + e^*_{ij}$ and get $r_{ij}^0 = r^*_{ij}-\hat\mu^*_i - \hat f^*_i(y_i)$ as a null matrix $R_0$
 
-- Perform the singular value decompositon(SVD) of the residual matrix $R_0 = U_0D_0V_0^T$
+-   Perform the singular value decompositon(SVD) of the residual matrix $R_0 = U_0D_0V_0^T$
 
-- Compute the null statistic:
+-   Compute the null statistic:
 
 $$
 T_k^0 = \frac{d_{0k}^2}{\sum_{l=1}^{n-df}d_{0l}^2}
 $$
 
-- Repeat permuting the row B times to get the null statistics $T_k^{0b}$
+-   Repeat permuting the row B times to get the null statistics $T_k^{0b}$
 
-- Get the p-value for eigengene:
+-   Get the p-value for eigengene:
 
 $$p_k = \frac{\#{T_k^{0b}\geq T_k;b=1,...,B }}{B}$$
 
-- For a significance level $\alpha$, treat k as a significant signature of residual R if $p_k\leq\alpha$
+-   For a significance level $\alpha$, treat k as a significant signature of residual R if $p_k\leq\alpha$
 
 ##### Construction of surrogate variables
 
-- Estimate $\hat\mu_i$ and $f_i$ by fitting the model $x_{ij} = \mu_i + f_i(y_i) + e_{ij}$ and get the residual $r_{ij} = x_{ij}-\hat\mu_i - \hat f_i(y_i)$. Then we have the residual matrix R.
+-   Estimate $\hat\mu_i$ and $f_i$ by fitting the model $x_{ij} = \mu_i + f_i(y_i) + e_{ij}$ and get the residual $r_{ij} = x_{ij}-\hat\mu_i - \hat f_i(y_i)$. Then we have the residual matrix R.
 
-- Perform the singular value decompositon(SVD) of the residual matrix $R = UDV^T$. Let $e_k = (e_{k1},...,e_{kn})^T$ be the $k$th column of V
+-   Perform the singular value decompositon(SVD) of the residual matrix $R = UDV^T$. Let $e_k = (e_{k1},...,e_{kn})^T$ be the $k$th column of V
 
-- Set $\hat K$ as the significant eigenvalues found by the first step.
+-   Set $\hat K$ as the significant eigenvalues found by the first step.
 
-- Regress each $e_k$ on $x_i$, get the p-value for the association.
+-   Regress each $e_k$ on $x_i$, get the p-value for the association.
 
-- Set $\pi_0$ as the proportion of the peak intensitity $x_i$ not associate with $e_k$ and find the numbers $\hat m =[1-\hat \pi_0 \times m]$ and the indices of the peaks associated with the eigenvalues
+-   Set $\pi_0$ as the proportion of the peak intensitity $x_i$ not associate with $e_k$ and find the numbers $\hat m =[1-\hat \pi_0 \times m]$ and the indices of the peaks associated with the eigenvalues
 
-- Form the matrix $\hat m_1 \times N$, this matrix$X_r$ stand for the potiential variables. As was done for R, get the eigengents of $X_r$ and denote these by $e_j^r$
+-   Form the matrix $\hat m_1 \times N$, this matrix$X_r$ stand for the potiential variables. As was done for R, get the eigengents of $X_r$ and denote these by $e_j^r$
 
-- Let $j^* = argmax_{1\leq j \leq n}cor(e_k,e_j^r)$ and set $\hat h_k=e_j^r$. Set the estimate of the surrogate variable to be the eigenvalue of the reduced matrix most correlated with the corresponding residual eigenvalue. Since the reduced matrix is enriched for peaks associated with this residual eigenvalue, this is a principled choice for the estimated surrogate variable that allows for correlation with the primary variable.
+-   Let $j^* = argmax_{1\leq j \leq n}cor(e_k,e_j^r)$ and set $\hat h_k=e_j^r$. Set the estimate of the surrogate variable to be the eigenvalue of the reduced matrix most correlated with the corresponding residual eigenvalue. Since the reduced matrix is enriched for peaks associated with this residual eigenvalue, this is a principled choice for the estimated surrogate variable that allows for correlation with the primary variable.
 
-- Employ the $\mu_i + f_i(y_i) + \sum_{k = 1}^K \gamma_{ki}\hat h_{kj} + e_{ij}$ as te estimate of the ideal model $\mu_i + f_i(y_i) + \sum_{k = 1}^K \gamma_{ki}h_{kj} + e_{ij}$
+-   Employ the $\mu_i + f_i(y_i) + \sum_{k = 1}^K \gamma_{ki}\hat h_{kj} + e_{ij}$ as te estimate of the ideal model $\mu_i + f_i(y_i) + \sum_{k = 1}^K \gamma_{ki}h_{kj} + e_{ij}$
 
 This method could found the potentical unwanted variables for the data. SVA were introduced by Jeff Leek[@leek2012; @leek2007; @leek2008] and EigenMS package implement SVA with modifications including analysis of data with missing values that are typical in LC-MS experiments[@karpievitch2014a].
 
 #### RUV (Remove Unwanted Variation)
 
-This method's performance is similar to SVA. Instead find surrogate variable from the whole dataset. RUA use control or pool QC to find the unwanted variances and remove them to find the peaks related to experimental design. However, we could also empirically estimate the control peaks by linear mixed model. RUA-random[@livera2015] furthor use linear mixed model to estimate the variances of random error. This method could be used with suitable control, which is commen in metabolomics DoE. 
+This method's performance is similar to SVA. Instead find surrogate variable from the whole dataset. RUA use control or pool QC to find the unwanted variances and remove them to find the peaks related to experimental design. However, we could also empirically estimate the control peaks by linear mixed model. RUA-random[@livera2015] furthor use linear mixed model to estimate the variances of random error. This method could be used with suitable control, which is commen in metabolomics DoE.
 
 #### RRmix
 
@@ -346,13 +346,10 @@ RRmix also use a latent factor models correct the data[@jr2017]. This method cou
 
 ## Software
 
-- [BatchCorrMetabolomics](https://github.com/rwehrens/BatchCorrMetabolomics) is for improved batch correction in untargeted MS-based metabolomics
+-   [BatchCorrMetabolomics](https://github.com/rwehrens/BatchCorrMetabolomics) is for improved batch correction in untargeted MS-based metabolomics
 
-- [MetNorm](https://github.com/cran/MetNorm) show Statistical Methods for Normalizing Metabolomics Data.
+-   [MetNorm](https://github.com/cran/MetNorm) show Statistical Methods for Normalizing Metabolomics Data.
 
-- [BatchQC](https://github.com/mani2012/BatchQC) could be used to make batch effect simulation.
+-   [BatchQC](https://github.com/mani2012/BatchQC) could be used to make batch effect simulation.
 
-- [Noreva](http://idrb.zju.edu.cn/noreva/) could make online batch correction.
-
-
-
+-   [Noreva](http://idrb.zju.edu.cn/noreva/) could make online batch correction.

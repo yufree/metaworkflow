@@ -13,6 +13,10 @@ description: "This is a workflow for metabolomics studies."
 always_allow_html: yes
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(cache = TRUE,warning = F,message = F)
+```
+
 # Preface {.unnumbered}
 
 ```{r fig.align='center', echo=FALSE, include=identical(knitr:::pandoc_to(), 'html')}

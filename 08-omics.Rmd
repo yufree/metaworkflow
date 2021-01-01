@@ -1,3 +1,7 @@
+---
+bibliography: references.bib
+---
+
 # Omics analysis
 
 When you get the filtered ions, the next step is making annotations for them. Such annotations would be helpful for omics studies. Omics analysis try to combine the information from other 'omics' to answer one sepcific question. Since we have got the annotations, Omics analysis could be performed.Upload the data obtained from the **xcms** to other tools or databases.
@@ -32,36 +36,36 @@ Pathwat analysis maps annotated data into known pathway and make statistical ana
 
 ### Pathway Database
 
-- [SMPDB](http://smpdb.ca/view) (The Small Molecule Pathway Database) is an interactive, visual database containing more than 618 small molecule pathways found in humans. More than 70% of these pathways (>433) are not found in any other pathway database. The pathways include metabolic, drug, and disease pathways.
+-   [SMPDB](http://smpdb.ca/view) (The Small Molecule Pathway Database) is an interactive, visual database containing more than 618 small molecule pathways found in humans. More than 70% of these pathways (\>433) are not found in any other pathway database. The pathways include metabolic, drug, and disease pathways.
 
-- [KEGG](https://www.genome.jp/kegg/) (Kyoto Encyclopedia of Genes and Genomes) is one of the most complete and widely used databases containing metabolic pathways (495 reference pathways) from a wide variety of organisms (>4,700). These pathways are hyperlinked to metabolite and protein/enzyme information. Currently KEGG has >17,000 compounds (from animals, plants and bacteria), 10,000 drugs (including different salt forms and drug carriers) and nearly 11,000 glycan structures.
+-   [KEGG](https://www.genome.jp/kegg/) (Kyoto Encyclopedia of Genes and Genomes) is one of the most complete and widely used databases containing metabolic pathways (495 reference pathways) from a wide variety of organisms (\>4,700). These pathways are hyperlinked to metabolite and protein/enzyme information. Currently KEGG has \>17,000 compounds (from animals, plants and bacteria), 10,000 drugs (including different salt forms and drug carriers) and nearly 11,000 glycan structures.
 
-- [BioCyc](https://biocyc.org/) is a collection of 14558 Pathway/Genome Databases (PGDBs), plus software tools for exploring them.
+-   [BioCyc](https://biocyc.org/) is a collection of 14558 Pathway/Genome Databases (PGDBs), plus software tools for exploring them.
 
-- [Reactome](https://reactome.org/what-is-reactome) is an open-source, open access, manually curated and peer-reviewed pathway database. Our goal is to provide intuitive bioinformatics tools for the visualization, interpretation and analysis of pathway knowledge to support basic and clinical research, genome analysis, modeling, systems biology and education. 
+-   [Reactome](https://reactome.org/what-is-reactome) is an open-source, open access, manually curated and peer-reviewed pathway database. Our goal is to provide intuitive bioinformatics tools for the visualization, interpretation and analysis of pathway knowledge to support basic and clinical research, genome analysis, modeling, systems biology and education.
 
-- [WikiPathway](https://www.wikipathways.org/index.php/WikiPathways) is a database of biological pathways maintained by and for the scientific community.
+-   [WikiPathway](https://www.wikipathways.org/index.php/WikiPathways) is a database of biological pathways maintained by and for the scientific community.
 
 ### Pathway software
 
-- [Pathway Commons](http://www.pathwaycommons.org/) online tools for pathway analysis
+-   [Pathway Commons](http://www.pathwaycommons.org/) online tools for pathway analysis
 
-- [RaMP](https://github.com/Mathelab/RaMP-DB) could make pathway analysis for batch search
+-   [RaMP](https://github.com/Mathelab/RaMP-DB) could make pathway analysis for batch search
 
-- [metabox](https://github.com/kwanjeeraw/metabox) could make pathway analysis
+-   [metabox](https://github.com/kwanjeeraw/metabox) could make pathway analysis
 
-- [impala](http://impala.molgen.mpg.de/) is used for pathway enrichment analysis
+-   [impala](http://impala.molgen.mpg.de/) is used for pathway enrichment analysis
 
 ## Network analysis
 
-[Mummichog](https://code.google.com/archive/p/atcg/wikis/mummichog_for_metabolomics.wiki) could make pathway and network analysis without annotation. 
+[Mummichog](https://code.google.com/archive/p/atcg/wikis/mummichog_for_metabolomics.wiki) could make pathway and network analysis without annotation.
 
-[MSS](http://web1.sph.emory.edu/users/tyu8/MSS): sequential feature screening procedure to select important sub-network and identify the optimal matching for metabolimics data [@cai2017]
+[MSS](http://web1.sph.emory.edu/users/tyu8/MSS): sequential feature screening procedure to select important sub-network and identify the optimal matching for metabolimics data[@cai2017]
 
 ## Omics integration
 
-- [Blast](https://blast.ncbi.nlm.nih.gov/Blast.cgi) finds regions of similarity between biological sequences. The program compares nucleotide or protein	sequences to sequence databases and calculates the statistical significance.
+-   [Blast](https://blast.ncbi.nlm.nih.gov/Blast.cgi) finds regions of similarity between biological sequences. The program compares nucleotide or protein sequences to sequence databases and calculates the statistical significance.
 
-- [The Omics Discovery Index (OmicsDI)](https://www.omicsdi.org/)  provides a knowledge discovery framework across heterogeneous omics data (genomics, proteomics, transcriptomics and metabolomics).
+-   [The Omics Discovery Index (OmicsDI)](https://www.omicsdi.org/) provides a knowledge discovery framework across heterogeneous omics data (genomics, proteomics, transcriptomics and metabolomics).
 
-- [Omics Data Integration Project](https://github.com/cran/mixOmics)
+-   [Omics Data Integration Project](https://github.com/cran/mixOmics)
