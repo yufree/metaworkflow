@@ -54,11 +54,11 @@ jobs:
           name: docs
           path: docs
       - name: Deploy to GitHub Pages
-        uses: Cecilapp/GitHub-Pages-deploy@master
+        uses: Cecilapp/GitHub-Pages-deploy@v3
         with:
           build_dir: docs
         env:
           EMAIL: ${{ secrets.EMAIL }}
-          GH_TOKEN: ${{ secrets.GH_PAT }} 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
           BUILD_DIR: docs                    
       
