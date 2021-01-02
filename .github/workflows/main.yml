@@ -42,6 +42,10 @@ jobs:
           
       - name: Build site
         run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
+      - uses: actions/upload-artifact@v1
+        with:
+          name: docs
+          path: docs
       - name: Checkout
         uses: actions/checkout@master
       - name: Download artifact
