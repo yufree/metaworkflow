@@ -7,6 +7,7 @@ name: bookdown
 
 jobs:
   build:
+    name: Render-Book
     runs-on: macOS-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -45,7 +46,7 @@ jobs:
         with:
           name: docs
           path: docs
-  checkout-and-deploy::  
+  checkout-and-deploy:  
     runs-on: ubuntu-latest
     needs: build
     steps:
