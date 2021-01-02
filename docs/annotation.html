@@ -24,7 +24,7 @@
 <meta name="author" content="Miao YU" />
 
 
-<meta name="date" content="2021-01-01" />
+<meta name="date" content="2021-01-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -436,18 +436,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>Perform heuristic HNOPS probability check (H, N, O, P, S/C high probability ratios)</li>
 </ul>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="annotation.html#cb20-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb20-2"><a href="annotation.html#cb20-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb20-3"><a href="annotation.html#cb20-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Element.counts =</span> <span class="fu">c</span>(<span class="st">&quot;NOPS all &gt; 1&quot;</span>,<span class="st">&quot;NOP all &gt; 3&quot;</span>,<span class="st">&quot;OPS all &gt; 1&quot;</span>,</span>
-<span id="cb20-4"><a href="annotation.html#cb20-4" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;PSN all &gt; 1&quot;</span>,<span class="st">&quot;NOS all &gt; 6&quot;</span>),</span>
-<span id="cb20-5"><a href="annotation.html#cb20-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Heuristic.Rule =</span> <span class="fu">c</span>(<span class="st">&quot;N&lt; 10, O &lt; 20, P &lt; 4, S &lt; 3&quot;</span>,</span>
-<span id="cb20-6"><a href="annotation.html#cb20-6" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;N &lt; 11, O &lt; 22, P &lt; 6&quot;</span>,<span class="st">&quot;O &lt; 14, P &lt; 3, S &lt; 3&quot;</span>,</span>
-<span id="cb20-7"><a href="annotation.html#cb20-7" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;P &lt; 3, S &lt; 3, N &lt; 4&quot;</span>,<span class="st">&quot;N &lt; 19 O &lt; 14 S &lt; 8&quot;</span>),</span>
-<span id="cb20-8"><a href="annotation.html#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">DB.examples.for.maximum.values =</span> <span class="fu">c</span>(<span class="st">&quot;C15H34N9O8PS, C22H44N4O14P2S2, C24H38N7O19P3S&quot;</span>,<span class="st">&quot;C20H28N10O21P4, C10H18N5O20P5&quot;</span>,</span>
-<span id="cb20-9"><a href="annotation.html#cb20-9" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;C22H44N4O14P2S2, C16H36N4O4P2S2&quot;</span>,</span>
-<span id="cb20-10"><a href="annotation.html#cb20-10" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;C22H44N4O14P2S2, C16H36N4O4P2S2&quot;</span>,<span class="st">&quot;C59H64N18O14S7&quot;</span>)</span>
-<span id="cb20-11"><a href="annotation.html#cb20-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb20-12"><a href="annotation.html#cb20-12" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="annotation.html#cb19-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb19-2"><a href="annotation.html#cb19-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb19-3"><a href="annotation.html#cb19-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Element.counts =</span> <span class="fu">c</span>(<span class="st">&quot;NOPS all &gt; 1&quot;</span>,<span class="st">&quot;NOP all &gt; 3&quot;</span>,<span class="st">&quot;OPS all &gt; 1&quot;</span>,</span>
+<span id="cb19-4"><a href="annotation.html#cb19-4" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;PSN all &gt; 1&quot;</span>,<span class="st">&quot;NOS all &gt; 6&quot;</span>),</span>
+<span id="cb19-5"><a href="annotation.html#cb19-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Heuristic.Rule =</span> <span class="fu">c</span>(<span class="st">&quot;N&lt; 10, O &lt; 20, P &lt; 4, S &lt; 3&quot;</span>,</span>
+<span id="cb19-6"><a href="annotation.html#cb19-6" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;N &lt; 11, O &lt; 22, P &lt; 6&quot;</span>,<span class="st">&quot;O &lt; 14, P &lt; 3, S &lt; 3&quot;</span>,</span>
+<span id="cb19-7"><a href="annotation.html#cb19-7" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;P &lt; 3, S &lt; 3, N &lt; 4&quot;</span>,<span class="st">&quot;N &lt; 19 O &lt; 14 S &lt; 8&quot;</span>),</span>
+<span id="cb19-8"><a href="annotation.html#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">DB.examples.for.maximum.values =</span> <span class="fu">c</span>(<span class="st">&quot;C15H34N9O8PS, C22H44N4O14P2S2, C24H38N7O19P3S&quot;</span>,<span class="st">&quot;C20H28N10O21P4, C10H18N5O20P5&quot;</span>,</span>
+<span id="cb19-9"><a href="annotation.html#cb19-9" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;C22H44N4O14P2S2, C16H36N4O4P2S2&quot;</span>,</span>
+<span id="cb19-10"><a href="annotation.html#cb19-10" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;C22H44N4O14P2S2, C16H36N4O4P2S2&quot;</span>,<span class="st">&quot;C59H64N18O14S7&quot;</span>)</span>
+<span id="cb19-11"><a href="annotation.html#cb19-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-12"><a href="annotation.html#cb19-12" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
 <pre><code>##   Element.counts              Heuristic.Rule
 ## 1   NOPS all &gt; 1 N&lt; 10, O &lt; 20, P &lt; 4, S &lt; 3
 ## 2    NOP all &gt; 3       N &lt; 11, O &lt; 22, P &lt; 6
@@ -537,7 +537,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="ramclustr" class="section level3" number="7.8.6">
 <h3><span class="header-section-number">7.8.6</span> RAMClustR</h3>
 <p>The software could be found <a href="https://github.com/cbroeckl/RAMClustR">here</a><span class="citation">[@broeckling2014]</span>. The package included a vignette as usages. Use the following code to read:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="annotation.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vignette</span>(<span class="st">&#39;RAMClustR&#39;</span>,<span class="at">package =</span> <span class="st">&#39;RAMClustR&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="annotation.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vignette</span>(<span class="st">&#39;RAMClustR&#39;</span>,<span class="at">package =</span> <span class="st">&#39;RAMClustR&#39;</span>)</span></code></pre></div>
 </div>
 <div id="pmd" class="section level3" number="7.8.7">
 <h3><span class="header-section-number">7.8.7</span> pmd</h3>

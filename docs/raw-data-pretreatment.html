@@ -24,7 +24,7 @@
 <meta name="author" content="Miao YU" />
 
 
-<meta name="date" content="2021-01-01" />
+<meta name="date" content="2021-01-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -359,9 +359,9 @@ Figure 5.1: Demo of GC/LC-MS data
 </p>
 </div>
 <p>Conversation from the mass-retention time matrix into a vector with selected MS peaks at certain retention time is the basic idea of Peak extraction. You could EIC for each mass to charge ratio and use the change of trace slope to determine whether there is a peak or not. Then we could make integration for this peak and get peak area and retention time.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="raw-data-pretreatment.html#cb8-1" aria-hidden="true" tabindex="-1"></a>intensity <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">14</span>,<span class="dv">19</span>,<span class="dv">25</span>,<span class="dv">30</span>,<span class="dv">33</span>,<span class="dv">26</span>,<span class="dv">21</span>,<span class="dv">16</span>,<span class="dv">12</span>,<span class="dv">11</span>,<span class="dv">10</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">10</span>)</span>
-<span id="cb8-2"><a href="raw-data-pretreatment.html#cb8-2" aria-hidden="true" tabindex="-1"></a>time <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>)</span>
-<span id="cb8-3"><a href="raw-data-pretreatment.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(intensity<span class="sc">~</span>time, <span class="at">type =</span> <span class="st">&#39;o&#39;</span>, <span class="at">main =</span> <span class="st">&#39;EIC&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="raw-data-pretreatment.html#cb7-1" aria-hidden="true" tabindex="-1"></a>intensity <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">10</span>,<span class="dv">14</span>,<span class="dv">19</span>,<span class="dv">25</span>,<span class="dv">30</span>,<span class="dv">33</span>,<span class="dv">26</span>,<span class="dv">21</span>,<span class="dv">16</span>,<span class="dv">12</span>,<span class="dv">11</span>,<span class="dv">10</span>,<span class="dv">9</span>,<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">10</span>)</span>
+<span id="cb7-2"><a href="raw-data-pretreatment.html#cb7-2" aria-hidden="true" tabindex="-1"></a>time <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>)</span>
+<span id="cb7-3"><a href="raw-data-pretreatment.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(intensity<span class="sc">~</span>time, <span class="at">type =</span> <span class="st">&#39;o&#39;</span>, <span class="at">main =</span> <span class="st">&#39;EIC&#39;</span>)</span></code></pre></div>
 <div class="figure"><span id="fig:demoeic"></span>
 <img src="Metabolomics_files/figure-html/demoeic-1.png" alt="Demo of EIC with peak" width="672" />
 <p class="caption">
@@ -412,12 +412,12 @@ Figure 5.5: Demo of many GC/LC-MS data
 <p>Some of the data were limited by the detect of limitation. Thus we need some methods to impute the data if we don’t want to lose information by deleting the NA or 0.</p>
 <p>Two major imputation way could be used. The first way is use model-free method such as half the minimum of the values across the data, 0, 1, mean/median across the data( <code>enviGCMS</code> package could do this via <code>getimputation</code> function). The second way is use model-based method such as linear model, random forest, KNN, PCA. Try <code>simputation</code> package for various imputation methods. As mentioned before, you could also use <code>imputeRowMin</code> or <code>imputeRowMinRand</code> within <code>xcms</code> package to perform imputation.</p>
 <p>Tobit regression is preferred for censored data. Also you might choose maximum likelihood estimation(Estimation of mean and standard deviation by MLE. Creating 10 complete samples. Pool the results from 10 individual analyses).</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="raw-data-pretreatment.html#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>,<span class="dv">1</span>)</span>
-<span id="cb9-2"><a href="raw-data-pretreatment.html#cb9-2" aria-hidden="true" tabindex="-1"></a>x[x<span class="sc">&lt;</span><span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb9-3"><a href="raw-data-pretreatment.html#cb9-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> x<span class="sc">*</span><span class="dv">10</span><span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb9-4"><a href="raw-data-pretreatment.html#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(AER)</span>
-<span id="cb9-5"><a href="raw-data-pretreatment.html#cb9-5" aria-hidden="true" tabindex="-1"></a>tfit <span class="ot">&lt;-</span> <span class="fu">tobit</span>(y <span class="sc">~</span> x, <span class="at">left =</span> <span class="dv">0</span>)</span>
-<span id="cb9-6"><a href="raw-data-pretreatment.html#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(tfit)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="raw-data-pretreatment.html#cb8-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>,<span class="dv">1</span>)</span>
+<span id="cb8-2"><a href="raw-data-pretreatment.html#cb8-2" aria-hidden="true" tabindex="-1"></a>x[x<span class="sc">&lt;</span><span class="dv">0</span>] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb8-3"><a href="raw-data-pretreatment.html#cb8-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> x<span class="sc">*</span><span class="dv">10</span><span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb8-4"><a href="raw-data-pretreatment.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(AER)</span>
+<span id="cb8-5"><a href="raw-data-pretreatment.html#cb8-5" aria-hidden="true" tabindex="-1"></a>tfit <span class="ot">&lt;-</span> <span class="fu">tobit</span>(y <span class="sc">~</span> x, <span class="at">left =</span> <span class="dv">0</span>)</span>
+<span id="cb8-6"><a href="raw-data-pretreatment.html#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(tfit)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## tobit(formula = y ~ x, left = 0)
@@ -428,18 +428,17 @@ Figure 5.5: Demo of many GC/LC-MS data
 ## 
 ## Coefficients:
 ##             Estimate Std. Error z value Pr(&gt;|z|)    
-## (Intercept)   1.0000     0.4343   2.303   0.0213 *  
+## (Intercept)   1.0000     0.4385   2.281   0.0226 *  
 ## x            10.0000     0.3162  31.623   &lt;2e-16 ***
-## Log(scale)    2.1768     0.0000     Inf   &lt;2e-16 ***
+## Log(scale)    2.1447     0.0000     Inf   &lt;2e-16 ***
 ## ---
-## Signif. codes:  
-## 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Scale: 8.818 
+## Scale: 8.54 
 ## 
 ## Gaussian distribution
 ## Number of Newton-Raphson Iterations: 1 
-## Log-likelihood: -3096 on 3 Df
+## Log-likelihood: -3064 on 3 Df
 ## Wald-statistic:  1000 on 1 Df, p-value: &lt; 2.22e-16</code></pre>
 <p>According to Ronald Hites’s simulation<span class="citation">[@hites2019]</span>, measurements below the LOD (even missing measurements) with the LOD/2 or with the <span class="math inline">\(LOD/\sqrt2\)</span> causes little bias and “Any time you have a % non-detected &gt;20%, for whatever reason, it is unlikely that the data set can give useful results.”</p>
 </div>

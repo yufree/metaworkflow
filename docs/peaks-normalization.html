@@ -24,7 +24,7 @@
 <meta name="author" content="Miao YU" />
 
 
-<meta name="date" content="2021-01-01" />
+<meta name="date" content="2021-01-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -373,28 +373,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.4</span> Avoid batch effects by DoE</h2>
 <p>You could avoid batch effects from experimental design. Cap the sequence with Pooled QC and Randomized samples sequence. Some internal standards/Instrumental QC might Help to find the source of batch effects while it’s not practical for every compounds in non-targeted analysis.</p>
 <p>Batch effects might not change the conclusion when the effect size is relatively small. Here is a simulation:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="peaks-normalization.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">30</span>)</span>
-<span id="cb11-2"><a href="peaks-normalization.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># real peaks</span></span>
-<span id="cb11-3"><a href="peaks-normalization.html#cb11-3" aria-hidden="true" tabindex="-1"></a>group <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">5</span>),<span class="fu">rep</span>(<span class="dv">2</span>,<span class="dv">5</span>)))</span>
-<span id="cb11-4"><a href="peaks-normalization.html#cb11-4" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">5</span>,<span class="dv">5</span>),<span class="fu">rnorm</span>(<span class="dv">5</span>,<span class="dv">8</span>))</span>
-<span id="cb11-5"><a href="peaks-normalization.html#cb11-5" aria-hidden="true" tabindex="-1"></a>re <span class="ot">&lt;-</span> <span class="fu">t.test</span>(con<span class="sc">~</span>group)</span>
-<span id="cb11-6"><a href="peaks-normalization.html#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># real peaks</span></span>
-<span id="cb11-7"><a href="peaks-normalization.html#cb11-7" aria-hidden="true" tabindex="-1"></a>group <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">5</span>),<span class="fu">rep</span>(<span class="dv">2</span>,<span class="dv">5</span>)))</span>
-<span id="cb11-8"><a href="peaks-normalization.html#cb11-8" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">5</span>,<span class="dv">5</span>),<span class="fu">rnorm</span>(<span class="dv">5</span>,<span class="dv">8</span>))</span>
-<span id="cb11-9"><a href="peaks-normalization.html#cb11-9" aria-hidden="true" tabindex="-1"></a>batch <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>,<span class="at">length.out =</span> <span class="dv">10</span>)</span>
-<span id="cb11-10"><a href="peaks-normalization.html#cb11-10" aria-hidden="true" tabindex="-1"></a>ins <span class="ot">&lt;-</span> batch<span class="sc">+</span>con</span>
-<span id="cb11-11"><a href="peaks-normalization.html#cb11-11" aria-hidden="true" tabindex="-1"></a>re <span class="ot">&lt;-</span> <span class="fu">t.test</span>(ins<span class="sc">~</span>group)</span>
-<span id="cb11-12"><a href="peaks-normalization.html#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-13"><a href="peaks-normalization.html#cb11-13" aria-hidden="true" tabindex="-1"></a>index <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">10</span>)</span>
-<span id="cb11-14"><a href="peaks-normalization.html#cb11-14" aria-hidden="true" tabindex="-1"></a>ins <span class="ot">&lt;-</span> batch<span class="sc">+</span>con[index]</span>
-<span id="cb11-15"><a href="peaks-normalization.html#cb11-15" aria-hidden="true" tabindex="-1"></a>re <span class="ot">&lt;-</span> <span class="fu">t.test</span>(ins<span class="sc">~</span>group[index])</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="peaks-normalization.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">30</span>)</span>
+<span id="cb10-2"><a href="peaks-normalization.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># real peaks</span></span>
+<span id="cb10-3"><a href="peaks-normalization.html#cb10-3" aria-hidden="true" tabindex="-1"></a>group <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">5</span>),<span class="fu">rep</span>(<span class="dv">2</span>,<span class="dv">5</span>)))</span>
+<span id="cb10-4"><a href="peaks-normalization.html#cb10-4" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">5</span>,<span class="dv">5</span>),<span class="fu">rnorm</span>(<span class="dv">5</span>,<span class="dv">8</span>))</span>
+<span id="cb10-5"><a href="peaks-normalization.html#cb10-5" aria-hidden="true" tabindex="-1"></a>re <span class="ot">&lt;-</span> <span class="fu">t.test</span>(con<span class="sc">~</span>group)</span>
+<span id="cb10-6"><a href="peaks-normalization.html#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># real peaks</span></span>
+<span id="cb10-7"><a href="peaks-normalization.html#cb10-7" aria-hidden="true" tabindex="-1"></a>group <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">5</span>),<span class="fu">rep</span>(<span class="dv">2</span>,<span class="dv">5</span>)))</span>
+<span id="cb10-8"><a href="peaks-normalization.html#cb10-8" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">5</span>,<span class="dv">5</span>),<span class="fu">rnorm</span>(<span class="dv">5</span>,<span class="dv">8</span>))</span>
+<span id="cb10-9"><a href="peaks-normalization.html#cb10-9" aria-hidden="true" tabindex="-1"></a>batch <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">5</span>,<span class="at">length.out =</span> <span class="dv">10</span>)</span>
+<span id="cb10-10"><a href="peaks-normalization.html#cb10-10" aria-hidden="true" tabindex="-1"></a>ins <span class="ot">&lt;-</span> batch<span class="sc">+</span>con</span>
+<span id="cb10-11"><a href="peaks-normalization.html#cb10-11" aria-hidden="true" tabindex="-1"></a>re <span class="ot">&lt;-</span> <span class="fu">t.test</span>(ins<span class="sc">~</span>group)</span>
+<span id="cb10-12"><a href="peaks-normalization.html#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="peaks-normalization.html#cb10-13" aria-hidden="true" tabindex="-1"></a>index <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">10</span>)</span>
+<span id="cb10-14"><a href="peaks-normalization.html#cb10-14" aria-hidden="true" tabindex="-1"></a>ins <span class="ot">&lt;-</span> batch<span class="sc">+</span>con[index]</span>
+<span id="cb10-15"><a href="peaks-normalization.html#cb10-15" aria-hidden="true" tabindex="-1"></a>re <span class="ot">&lt;-</span> <span class="fu">t.test</span>(ins<span class="sc">~</span>group[index])</span></code></pre></div>
 <p>Randomization could not guarantee the results. Here is a simulation.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="peaks-normalization.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># real peaks</span></span>
-<span id="cb12-2"><a href="peaks-normalization.html#cb12-2" aria-hidden="true" tabindex="-1"></a>group <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">5</span>),<span class="fu">rep</span>(<span class="dv">2</span>,<span class="dv">5</span>)))</span>
-<span id="cb12-3"><a href="peaks-normalization.html#cb12-3" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">5</span>,<span class="dv">5</span>),<span class="fu">rnorm</span>(<span class="dv">5</span>,<span class="dv">8</span>))</span>
-<span id="cb12-4"><a href="peaks-normalization.html#cb12-4" aria-hidden="true" tabindex="-1"></a>batch <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">5</span>,<span class="dv">0</span>,<span class="at">length.out =</span> <span class="dv">10</span>)</span>
-<span id="cb12-5"><a href="peaks-normalization.html#cb12-5" aria-hidden="true" tabindex="-1"></a>ins <span class="ot">&lt;-</span> batch<span class="sc">+</span>con</span>
-<span id="cb12-6"><a href="peaks-normalization.html#cb12-6" aria-hidden="true" tabindex="-1"></a>re <span class="ot">&lt;-</span> <span class="fu">t.test</span>(ins<span class="sc">~</span>group)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="peaks-normalization.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># real peaks</span></span>
+<span id="cb11-2"><a href="peaks-normalization.html#cb11-2" aria-hidden="true" tabindex="-1"></a>group <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">5</span>),<span class="fu">rep</span>(<span class="dv">2</span>,<span class="dv">5</span>)))</span>
+<span id="cb11-3"><a href="peaks-normalization.html#cb11-3" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">5</span>,<span class="dv">5</span>),<span class="fu">rnorm</span>(<span class="dv">5</span>,<span class="dv">8</span>))</span>
+<span id="cb11-4"><a href="peaks-normalization.html#cb11-4" aria-hidden="true" tabindex="-1"></a>batch <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">5</span>,<span class="dv">0</span>,<span class="at">length.out =</span> <span class="dv">10</span>)</span>
+<span id="cb11-5"><a href="peaks-normalization.html#cb11-5" aria-hidden="true" tabindex="-1"></a>ins <span class="ot">&lt;-</span> batch<span class="sc">+</span>con</span>
+<span id="cb11-6"><a href="peaks-normalization.html#cb11-6" aria-hidden="true" tabindex="-1"></a>re <span class="ot">&lt;-</span> <span class="fu">t.test</span>(ins<span class="sc">~</span>group)</span></code></pre></div>
 </div>
 <div id="post-hoc-data-normalization" class="section level2" number="6.5">
 <h2><span class="header-section-number">6.5</span> post hoc data normalization</h2>
@@ -420,8 +420,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="scaling" class="section level4" number="6.5.1.3">
 <h4><span class="header-section-number">6.5.1.3</span> Scaling</h4>
 <p>For peak p of sample s in certain batch b, the corrected abundance I is:</p>
-<p><span class="math display">\[\hat I_{p,s,b} = \frac{I_{p,s,b} - mean(I_{p,b})}{std_{p,b}} * std_{p,qc,b} + mean(I_{p,qc,b})\]</span>
-If no quality control samples used, the corrected abundance I would be:</p>
+<p><span class="math display">\[\hat I_{p,s,b} = \frac{I_{p,s,b} - mean(I_{p,b})}{std_{p,b}} * std_{p,qc,b} + mean(I_{p,qc,b})\]</span> If no quality control samples used, the corrected abundance I would be:</p>
 <p><span class="math display">\[\hat I_{p,s,b} = \frac{I_{p,s,b} - mean(I_{p,b})}{std_{p,b}}\]</span></p>
 </div>
 <div id="pareto-scaling" class="section level4" number="6.5.1.4">
@@ -449,59 +448,58 @@ If no quality control samples used, the corrected abundance I would be:</p>
 <h4><span class="header-section-number">6.5.1.7</span> Quantile</h4>
 <p>The idea of quantile calibration is that alignment of the intensities in certain samples according to quantiles in each sample.</p>
 <p>Here is the demo:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="peaks-normalization.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
-<span id="cb13-2"><a href="peaks-normalization.html#cb13-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)</span>
-<span id="cb13-3"><a href="peaks-normalization.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># b sufferred batch effect with a bias of 10</span></span>
-<span id="cb13-4"><a href="peaks-normalization.html#cb13-4" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>,<span class="dv">10</span>)</span>
-<span id="cb13-5"><a href="peaks-normalization.html#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(a,<span class="at">xlim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">15</span>),<span class="at">breaks =</span> <span class="dv">50</span>)</span>
-<span id="cb13-6"><a href="peaks-normalization.html#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(b,<span class="at">col =</span> <span class="st">&#39;black&#39;</span>, <span class="at">breaks =</span> <span class="dv">50</span>, <span class="at">add=</span>T)</span>
-<span id="cb13-7"><a href="peaks-normalization.html#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># quantile normalized</span></span>
-<span id="cb13-8"><a href="peaks-normalization.html#cb13-8" aria-hidden="true" tabindex="-1"></a>cor <span class="ot">&lt;-</span> (a[<span class="fu">order</span>(a)]<span class="sc">+</span>b[<span class="fu">order</span>(b)])<span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb13-9"><a href="peaks-normalization.html#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># reorder</span></span>
-<span id="cb13-10"><a href="peaks-normalization.html#cb13-10" aria-hidden="true" tabindex="-1"></a>cor <span class="ot">&lt;-</span> cor[<span class="fu">order</span>(<span class="fu">order</span>(a))]</span>
-<span id="cb13-11"><a href="peaks-normalization.html#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(cor,<span class="at">col =</span> <span class="st">&#39;red&#39;</span>, <span class="at">breaks =</span> <span class="dv">50</span>, <span class="at">add=</span>T)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="peaks-normalization.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb12-2"><a href="peaks-normalization.html#cb12-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>)</span>
+<span id="cb12-3"><a href="peaks-normalization.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># b sufferred batch effect with a bias of 10</span></span>
+<span id="cb12-4"><a href="peaks-normalization.html#cb12-4" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>,<span class="dv">10</span>)</span>
+<span id="cb12-5"><a href="peaks-normalization.html#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(a,<span class="at">xlim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span>,<span class="dv">15</span>),<span class="at">breaks =</span> <span class="dv">50</span>)</span>
+<span id="cb12-6"><a href="peaks-normalization.html#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(b,<span class="at">col =</span> <span class="st">&#39;black&#39;</span>, <span class="at">breaks =</span> <span class="dv">50</span>, <span class="at">add=</span>T)</span>
+<span id="cb12-7"><a href="peaks-normalization.html#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># quantile normalized</span></span>
+<span id="cb12-8"><a href="peaks-normalization.html#cb12-8" aria-hidden="true" tabindex="-1"></a>cor <span class="ot">&lt;-</span> (a[<span class="fu">order</span>(a)]<span class="sc">+</span>b[<span class="fu">order</span>(b)])<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb12-9"><a href="peaks-normalization.html#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># reorder</span></span>
+<span id="cb12-10"><a href="peaks-normalization.html#cb12-10" aria-hidden="true" tabindex="-1"></a>cor <span class="ot">&lt;-</span> cor[<span class="fu">order</span>(<span class="fu">order</span>(a))]</span>
+<span id="cb12-11"><a href="peaks-normalization.html#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(cor,<span class="at">col =</span> <span class="st">&#39;red&#39;</span>, <span class="at">breaks =</span> <span class="dv">50</span>, <span class="at">add=</span>T)</span></code></pre></div>
 <p><img src="Metabolomics_files/figure-html/quantile-1.png" width="672" /></p>
 </div>
 <div id="ratio-based-calibraton" class="section level4" number="6.5.1.8">
 <h4><span class="header-section-number">6.5.1.8</span> Ratio based calibraton</h4>
 <p>This method calibrates samples by the ratio between qc samples in all samples and in certain batch.For peak p of sample s in certain batch b, the corrected abundance I is:</p>
 <p><span class="math display">\[\hat I_{p,s,b} = \frac{I_{p,s,b} * median(I_{p,qc})}{mean_{p,qc,b}}\]</span></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="peaks-normalization.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
-<span id="cb14-2"><a href="peaks-normalization.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># raw data</span></span>
-<span id="cb14-3"><a href="peaks-normalization.html#cb14-3" aria-hidden="true" tabindex="-1"></a>I <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="fl">0.3</span>),<span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="at">mean =</span> <span class="dv">1</span>, <span class="at">sd =</span> <span class="fl">0.5</span>))</span>
-<span id="cb14-4"><a href="peaks-normalization.html#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># batch</span></span>
-<span id="cb14-5"><a href="peaks-normalization.html#cb14-5" aria-hidden="true" tabindex="-1"></a>B <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">10</span>),<span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">10</span>))</span>
-<span id="cb14-6"><a href="peaks-normalization.html#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># qc</span></span>
-<span id="cb14-7"><a href="peaks-normalization.html#cb14-7" aria-hidden="true" tabindex="-1"></a>Iqc <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">1</span>,<span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="fl">0.3</span>),<span class="fu">rnorm</span>(<span class="dv">1</span>,<span class="at">mean =</span> <span class="dv">1</span>, <span class="at">sd =</span> <span class="fl">0.5</span>))</span>
-<span id="cb14-8"><a href="peaks-normalization.html#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># corrected data</span></span>
-<span id="cb14-9"><a href="peaks-normalization.html#cb14-9" aria-hidden="true" tabindex="-1"></a>Icor <span class="ot">=</span> I <span class="sc">*</span> <span class="fu">median</span>(<span class="fu">c</span>(<span class="fu">rep</span>(Iqc[<span class="dv">1</span>],<span class="dv">10</span>),<span class="fu">rep</span>(Iqc[<span class="dv">2</span>],<span class="dv">10</span>)))<span class="sc">/</span><span class="fu">mean</span>(<span class="fu">c</span>(<span class="fu">rep</span>(Iqc[<span class="dv">1</span>],<span class="dv">10</span>),<span class="fu">rep</span>(Iqc[<span class="dv">2</span>],<span class="dv">10</span>)))</span>
-<span id="cb14-10"><a href="peaks-normalization.html#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the result</span></span>
-<span id="cb14-11"><a href="peaks-normalization.html#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(I)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="peaks-normalization.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb13-2"><a href="peaks-normalization.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># raw data</span></span>
+<span id="cb13-3"><a href="peaks-normalization.html#cb13-3" aria-hidden="true" tabindex="-1"></a>I <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="fl">0.3</span>),<span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="at">mean =</span> <span class="dv">1</span>, <span class="at">sd =</span> <span class="fl">0.5</span>))</span>
+<span id="cb13-4"><a href="peaks-normalization.html#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># batch</span></span>
+<span id="cb13-5"><a href="peaks-normalization.html#cb13-5" aria-hidden="true" tabindex="-1"></a>B <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">10</span>),<span class="fu">rep</span>(<span class="dv">1</span>,<span class="dv">10</span>))</span>
+<span id="cb13-6"><a href="peaks-normalization.html#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># qc</span></span>
+<span id="cb13-7"><a href="peaks-normalization.html#cb13-7" aria-hidden="true" tabindex="-1"></a>Iqc <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">1</span>,<span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="fl">0.3</span>),<span class="fu">rnorm</span>(<span class="dv">1</span>,<span class="at">mean =</span> <span class="dv">1</span>, <span class="at">sd =</span> <span class="fl">0.5</span>))</span>
+<span id="cb13-8"><a href="peaks-normalization.html#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co"># corrected data</span></span>
+<span id="cb13-9"><a href="peaks-normalization.html#cb13-9" aria-hidden="true" tabindex="-1"></a>Icor <span class="ot">=</span> I <span class="sc">*</span> <span class="fu">median</span>(<span class="fu">c</span>(<span class="fu">rep</span>(Iqc[<span class="dv">1</span>],<span class="dv">10</span>),<span class="fu">rep</span>(Iqc[<span class="dv">2</span>],<span class="dv">10</span>)))<span class="sc">/</span><span class="fu">mean</span>(<span class="fu">c</span>(<span class="fu">rep</span>(Iqc[<span class="dv">1</span>],<span class="dv">10</span>),<span class="fu">rep</span>(Iqc[<span class="dv">2</span>],<span class="dv">10</span>)))</span>
+<span id="cb13-10"><a href="peaks-normalization.html#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the result</span></span>
+<span id="cb13-11"><a href="peaks-normalization.html#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(I)</span></code></pre></div>
 <p><img src="Metabolomics_files/figure-html/ratio-1.png" width="672" /></p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="peaks-normalization.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Icor)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="peaks-normalization.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Icor)</span></code></pre></div>
 <p><img src="Metabolomics_files/figure-html/ratio-2.png" width="672" /></p>
 </div>
 <div id="linear-normalizer" class="section level4" number="6.5.1.9">
 <h4><span class="header-section-number">6.5.1.9</span> Linear Normalizer</h4>
-<p>This method initially scales each sample so that the sum of all
-peak abundances equals one. In this study, by multiplying the median sum of all peak abundances across all samples,we got the corrected data.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="peaks-normalization.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
-<span id="cb16-2"><a href="peaks-normalization.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># raw data</span></span>
-<span id="cb16-3"><a href="peaks-normalization.html#cb16-3" aria-hidden="true" tabindex="-1"></a>peaksa <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="fl">0.3</span>),<span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="at">mean =</span> <span class="dv">20</span>, <span class="at">sd =</span> <span class="fl">0.5</span>))</span>
-<span id="cb16-4"><a href="peaks-normalization.html#cb16-4" aria-hidden="true" tabindex="-1"></a>peaksb <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="fl">0.3</span>),<span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="at">mean =</span> <span class="dv">20</span>, <span class="at">sd =</span> <span class="fl">0.5</span>))</span>
-<span id="cb16-5"><a href="peaks-normalization.html#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-6"><a href="peaks-normalization.html#cb16-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">rbind</span>(peaksa,peaksb)</span>
-<span id="cb16-7"><a href="peaks-normalization.html#cb16-7" aria-hidden="true" tabindex="-1"></a>dfcor <span class="ot">&lt;-</span> df<span class="sc">/</span><span class="fu">apply</span>(df,<span class="dv">2</span>,sum)<span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">apply</span>(df,<span class="dv">2</span>,median))</span>
-<span id="cb16-8"><a href="peaks-normalization.html#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-9"><a href="peaks-normalization.html#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(df)</span></code></pre></div>
+<p>This method initially scales each sample so that the sum of all peak abundances equals one. In this study, by multiplying the median sum of all peak abundances across all samples,we got the corrected data.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="peaks-normalization.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb15-2"><a href="peaks-normalization.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># raw data</span></span>
+<span id="cb15-3"><a href="peaks-normalization.html#cb15-3" aria-hidden="true" tabindex="-1"></a>peaksa <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="fl">0.3</span>),<span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="at">mean =</span> <span class="dv">20</span>, <span class="at">sd =</span> <span class="fl">0.5</span>))</span>
+<span id="cb15-4"><a href="peaks-normalization.html#cb15-4" aria-hidden="true" tabindex="-1"></a>peaksb <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="fl">0.3</span>),<span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="at">mean =</span> <span class="dv">20</span>, <span class="at">sd =</span> <span class="fl">0.5</span>))</span>
+<span id="cb15-5"><a href="peaks-normalization.html#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="peaks-normalization.html#cb15-6" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">rbind</span>(peaksa,peaksb)</span>
+<span id="cb15-7"><a href="peaks-normalization.html#cb15-7" aria-hidden="true" tabindex="-1"></a>dfcor <span class="ot">&lt;-</span> df<span class="sc">/</span><span class="fu">apply</span>(df,<span class="dv">2</span>,sum)<span class="sc">*</span> <span class="fu">sum</span>(<span class="fu">apply</span>(df,<span class="dv">2</span>,median))</span>
+<span id="cb15-8"><a href="peaks-normalization.html#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="peaks-normalization.html#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(df)</span></code></pre></div>
 <p><img src="Metabolomics_files/figure-html/Linear-1.png" width="672" /></p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="peaks-normalization.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(dfcor)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="peaks-normalization.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(dfcor)</span></code></pre></div>
 <p><img src="Metabolomics_files/figure-html/Linear-2.png" width="672" /></p>
 </div>
 <div id="internal-standards" class="section level4" number="6.5.1.10">
 <h4><span class="header-section-number">6.5.1.10</span> Internal standards</h4>
 <p><span class="math display">\[\hat I_{p,s} = \frac{I_{p,s} * median(I_{IS})}{I_{IS,s}}\]</span></p>
-<p>Some methods also use pooled calibration samples and multiple internal standard strategy to correct the data<span class="citation">[@van_der_kloet2009]</span>. Also some methods only use QC samples to handle the data<span class="citation">[@kuligowski2015]</span>.</p>
+<p>Some methods also use pooled calibration samples and multiple internal standard strategy to correct the data<span class="citation">[@vanderkloet2009]</span>. Also some methods only use QC samples to handle the data<span class="citation">[@kuligowski2015]</span>.</p>
 </div>
 </div>
 <div id="supervised-methods" class="section level3" number="6.5.2">
@@ -522,8 +520,7 @@ peak abundances equals one. In this study, by multiplying the median sum of all 
 <p><span class="math display">\[f_i(y_i) = E(x_{ij}|y_j) - \mu_i\]</span></p>
 <p>stands for the biological variations caused by the our group, for example, whether treated by pollutions or not.</p>
 <p>However, considering the batch effects, the real model could be:</p>
-<p><span class="math display">\[x_{ij} = \mu_i + f_i(y_i) + \sum_{l = 1}^L \gamma_{li}p_{lj} + e_{ij}^*\]</span>
-<span class="math inline">\(\gamma_{li}\)</span> stands for the peak-specific coefficient for potentical factor <span class="math inline">\(l\)</span>. <span class="math inline">\(p_{lj}\)</span> stands for the potential factors across the samples. Actually, the error item <span class="math inline">\(e_{ij}\)</span> in real sample could always be decomposed as <span class="math inline">\(e_{ij} = \sum_{l = 1}^L \gamma_{li}p_{lj} + e_{ij}^*\)</span> with <span class="math inline">\(e_{ij}^*\)</span> standing for the real random error in certain sample for certain peak.</p>
+<p><span class="math display">\[x_{ij} = \mu_i + f_i(y_i) + \sum_{l = 1}^L \gamma_{li}p_{lj} + e_{ij}^*\]</span> <span class="math inline">\(\gamma_{li}\)</span> stands for the peak-specific coefficient for potentical factor <span class="math inline">\(l\)</span>. <span class="math inline">\(p_{lj}\)</span> stands for the potential factors across the samples. Actually, the error item <span class="math inline">\(e_{ij}\)</span> in real sample could always be decomposed as <span class="math inline">\(e_{ij} = \sum_{l = 1}^L \gamma_{li}p_{lj} + e_{ij}^*\)</span> with <span class="math inline">\(e_{ij}^*\)</span> standing for the real random error in certain sample for certain peak.</p>
 <p>We could not get the potential factors directly. Since we don’t care the details of the unknown factors, we could estimate orthogonal vectors <span class="math inline">\(h_k\)</span> standing for such potential factors. Thus we have:</p>
 <p><span class="math display">\[
 x_{ij} = \mu_i + f_i(y_i) + \sum_{l = 1}^L \gamma_{li}p_{lj} + e_{ij}^*\\ 

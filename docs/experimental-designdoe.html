@@ -24,7 +24,7 @@
 <meta name="author" content="Miao YU" />
 
 
-<meta name="date" content="2021-01-01" />
+<meta name="date" content="2021-01-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -352,7 +352,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="power-analysis" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> Power analysis</h2>
 <p>Supposing we have control and treated groups, the numbers of samples in each group should be carefully calculated.For each metabolite, such comparison could be treated as one t-test. You need to perform a Power analysis to get the numbers. For example, we have two groups of samples with 10 samples in each group. Then we set the power at 0.9, which means one minus Type II error probability, the standard deviation at 1 and the significance level (Type 1 error probability) at 0.05. Then we will get the meaningful delta between the two groups should be higher than 1.53367 under this experiment design. Also we could set the delta to get the minimized numbers of the samples in each group. To get those data such as the standard deviation or delta for power analysis, you need to perform preliminary or pilot experiments.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="experimental-designdoe.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">power.t.test</span>(<span class="at">n=</span><span class="dv">10</span>,<span class="at">sd=</span><span class="dv">1</span>,<span class="at">sig.level =</span> <span class="fl">0.05</span>,<span class="at">power =</span> <span class="fl">0.9</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="experimental-designdoe.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">power.t.test</span>(<span class="at">n=</span><span class="dv">10</span>,<span class="at">sd=</span><span class="dv">1</span>,<span class="at">sig.level =</span> <span class="fl">0.05</span>,<span class="at">power =</span> <span class="fl">0.9</span>)</span></code></pre></div>
 <pre><code>## 
 ##      Two-sample t test power calculation 
 ## 
@@ -364,7 +364,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##     alternative = two.sided
 ## 
 ## NOTE: n is number in *each* group</code></pre>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="experimental-designdoe.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">power.t.test</span>(<span class="at">delta =</span> <span class="dv">5</span>,<span class="at">sd=</span><span class="dv">1</span>,<span class="at">sig.level =</span> <span class="fl">0.05</span>,<span class="at">power =</span> <span class="fl">0.9</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="experimental-designdoe.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">power.t.test</span>(<span class="at">delta =</span> <span class="dv">5</span>,<span class="at">sd=</span><span class="dv">1</span>,<span class="at">sig.level =</span> <span class="fl">0.05</span>,<span class="at">power =</span> <span class="fl">0.9</span>)</span></code></pre></div>
 <pre><code>## 
 ##      Two-sample t test power calculation 
 ## 
