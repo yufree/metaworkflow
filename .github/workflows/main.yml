@@ -1,7 +1,6 @@
 on:
   push:
     branches:
-      - main
       - master
 
 name: bookdown
@@ -58,7 +57,7 @@ jobs:
         with:
           build_dir: docs
         env:
-          EMAIL: ${{ secrets.EMAIL }}
+          EMAIL: yufree@live.cn
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
           BUILD_DIR: docs                    
       
