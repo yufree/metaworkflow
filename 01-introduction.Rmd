@@ -16,6 +16,8 @@ Metabolomics studies always employ GC-MS[@theodoridis2012; @beale2018], GC\*GC-M
 
 ### History of Mass Spectrometry
 
+Here is a historical commentary for mass spectrometry[@yatesiii2011]. In details, here is a summary:
+
 -   1913, Sir Joseph John Thomson "Rays of Positive Electricity and Their Application to Chemical Analyses."
 
 ```{r history, fig.show='hold', fig.cap='Sir Joseph John Thomson "Rays of Positive Electricity and Their Application to Chemical Analyses."',echo=FALSE,out.width='90%'}
@@ -44,7 +46,7 @@ knitr::include_graphics('images/mshistory.jpg')
 
 ### History of Metabolomcis
 
-According to this book section[@kusonmano2016]:
+You could check this report[@baker2011]. According to this book section[@kusonmano2016]:
 
 ```{r history2, fig.show='hold', fig.cap='Metabolomics timeline during pre- and post-metabolomics era',echo=FALSE,out.width = '90%'}
 knitr::include_graphics('images/metahistory.jpg')
@@ -94,7 +96,7 @@ You could firstly read those papers[@barnes2016; @kusonmano2016a; @madsen2010a; 
 
 -   For metabolomics software, check this series of reviews for each year[@misra2016; @misra2017; @misra2018].
 
--   For open sourced software, this review[@spicer2017] could be a good start.
+-   For open sourced software, those reviews[@spicer2017; @dryden2017] could be a good start.
 
 -   For DIA or DDA metabolomics, check those papers[@fenaille2017; @bilbao2015].
 
@@ -132,7 +134,7 @@ Here is the slides for metabolomics data analysis workshop and I have made prese
 
 General challenge for metabolomics studies could be found here [@schymanski2017; @uppal2016; @schrimpe-rutledge2016; @wolfender2015].
 
--   For reproducible research, check those papers [@verhoeven2020; @mangul2019; @wallach2018; @hites2018; @considine2017].
+-   For reproducible research, check those papers [@verhoeven2020; @mangul2019; @wallach2018; @hites2018; @considine2017; @sarpe2017].
 
 -   Quantitative Metabolomics related issues could be found here[@kapoore2016b; @jorge2016aa].
 

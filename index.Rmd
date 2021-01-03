@@ -11,6 +11,7 @@ link-citations: yes
 github-repo: yufree/metaworkflow
 description: "This is a workflow for metabolomics studies."
 always_allow_html: yes
+bibliography: references.bib
 ---
 
 ```{r setup, include=FALSE}

@@ -8,10 +8,10 @@ bookdown::gitbook:
         <li><a href="https://github.com/yufree/metaworkflow" target="blank">Published with bookdown</a></li>
     edit:
       link: https://github.com/yufree/metaworkflow/edit/master/%s
-    download: ["pdf","epub"]
-bookdown::pdf_book:
-  includes:
-    in_header: preamble.tex
-  latex_engine: xelatex
-  citation_package: natbib
+    download: ["pub"]
+# bookdown::pdf_book:
+#   includes:
+#     in_header: preamble.tex
+#   latex_engine: xelatex
+#   citation_package: natbib
 bookdown::epub_book: default

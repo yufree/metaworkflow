@@ -12,9 +12,13 @@ Raw data from the instruments such as LC-MS or GC-MS were hard to be analyzed. T
 
 Common formats for open source mass spectrum data are mzxml, mzml or CDF. However, **masscomp** might shrink the data size[@yang2019b].
 
+[ProteoWizard Toolkit](http://proteowizard.sourceforge.net/) provides a set of open-source, cross-platform software libraries and tools [@chambers2012]. Msconvert is one tool in this toolkit.
+
 ## Data visualization
 
 You could use [msxpertsuite](https://salsa.debian.org/debichem-team/msxpertsuite) for MS data visualization. It is biological mass spectrometry data visualization and mining with full JavaScript ability [@rusconi2019].
+
+[FTMSVisualization](https://github.com/wkew/FTMSVisualization) is a suite of tools for visualizing complex mixture FT-MS data [@kew2017].
 
 ## Peak extraction
 
@@ -64,7 +68,7 @@ knitr::include_graphics('images/multidata.png')
 
 ## Spectral deconvolution
 
-Without fracmental infomation about certain compound, the peak extraction would suffer influnces from other compounds. At the same retention time, co-elute compounds might share similar mass. Hard electron ionization methods such as electron impact ionization (EI), APPI suffer this issue. So it would be hard to distighuish the co-elute peaks' origin and deconvolution method[@du2013] could be used to seperate different groups according to the similar chromatogragh beheviors. Another computational tool **eRah** could be a better solution for the whole process[@domingo-almenara2016]. Also the **ADAD-GC3.0** could also be helpful for such issue[@ni2016].
+Without fracmental infomation about certain compound, the peak extraction would suffer influnces from other compounds. At the same retention time, co-elute compounds might share similar mass. Hard electron ionization methods such as electron impact ionization (EI), APPI suffer this issue. So it would be hard to distighuish the co-elute peaks' origin and deconvolution method[] could be used to seperate different groups according to the similar chromatogragh beheviors. Another computational tool **eRah** could be a better solution for the whole process[@domingo-almenara2016]. Also the **ADAD-GC3.0** could also be helpful for such issue[@ni2016].
 
 ## Dynamic Range
 
@@ -91,7 +95,7 @@ According to Ronald Hites's simulation[@hites2019], measurements below the LOD (
 
 ### Over Detection Limit
 
-**CorrectOverloadedPeaks** could be used to correct the Peaks Exceeding the Detection Limit issue[@lisec2016].
+**CorrectOverloadedPeaks** could be used to correct the Peaks Exceeding the Detection Limit issue [@lisec2016].
 
 ## RSD/fold change Filter
 
@@ -99,50 +103,22 @@ Some peaks need to be rule out due to high RSD% and small fold changes compared 
 
 ## Power Analysis Filter
 
-As shown in [Exprimental design(DoE)], the power analysis in metabolomics is ad-hoc since you don't know too much before you perform the experiment. However, we could perform power analysis after the experiment done. That is, we just rule out the peaks with a lower power in exsit Exprimental design.
+As shown in [Exprimental design(DoE)], the power analysis in metabolomics is ad-hoc since you don't know too much before you perform the experiment. However, we could perform power analysis after the experiment done. That is, we just rule out the peaks with a lower power for current experimental design.
 
-## Software
-
-### Peak picking
-
--   [ProteoWizard Toolkit](http://proteowizard.sourceforge.net/) provides a set of open-source, cross-platform software libraries and tools [@chambers2012]. Msconvert is one tool in this toolkit.
-
--   [xcms](https://github.com/sneumann/xcms) LC/MS and GC/MS Data Analysis[@smith2006]
-
--   [apLCMS](https://sourceforge.net/projects/aplcms/) Generate peaks list [@yu2009]
+### Isotopic labeled peak picking
 
 -   [x13cms](http://pubs.acs.org/doi/10.1021/ac403384n) global tracking of isotopic labels in untargeted metabolomics [@huang2014]
 
--   [FTMSVisualization](https://github.com/wkew/FTMSVisualization) is a suite of tools for visualizing complex mixture FT-MS data[@kew2017]
-
--   [MZmine](http://mzmine.github.io/) is an open-source software for mass-spectrometry data processing, with the main focus on LC-MS data[@pluskal2010]
-
--   [MS-DAIL](http://prime.psc.riken.jp/Metabolomics_Software/) is a universal program for untargeted metabolomics- and lipidomics supporting any type of chromatography/mass spectrometry methods (GC/MS, GC-MS/MS, LC/MS, and LC-MS/MS etc.) [@tsugawa2015]
-
--   [OpenMS](http://www.openms.de/) is an open-source software C++ library for LC/MS data management and analyses[@rost2016]
-
--   [MZmatch](https://sourceforge.net/projects/mzmatch/) is a Java collection of small commandline tools specific for metabolomics MS data analysis [@scheltema2011; @creek2012]
-
--   [iMet-Q](http://ms.iis.sinica.edu.tw/comics/Software_iMet-Q.html) is an automated tool with friendly user interfaces for quantifying metabolites in full-scan liquid chromatography-mass spectrometry (LC-MS) data.[@chang2016]
-
--   [MAVEN](http://genomics-pubs.princeton.edu/mzroll/index.php) is an open source cross platform metabolomics data analyser.[@melamud2010]
+### Peak picking
 
 ### For MS/MS
 
--   [MS-DAIL](http://prime.psc.riken.jp/Metabolomics_Software/) for data independent MS/MS deconvolution of comprehensive metabolome analysis.[@tsugawa2015]
-
 -   [decoMS2](https://pubs.acs.org/doi/10.1021/ac400751j) An Untargeted Metabolomic Workflow to Improve Structural Characterization of Metabolites[@nikolskiy2013]
 
--   [msPurity](https://pubs.acs.org/doi/10.1021/acs.analchem.6b04358) Automated Evaluation of Precursor Ion Purity for Mass Spectrometry-Based Fragmentation in Metabolomics[@lawson2017]
+-   [msPurity](https://pubs.acs.org/doi/10.1021/acs.analchem.6b04358) Automated Evaluation of Precursor Ion Purity for Mass Spectrometry-Based Fragmentation in Metabolomics [@lawson2017]
 
 -   [ULSA](https://pubs.acs.org/doi/suppl/10.1021/acs.est.8b00259/suppl_file/es8b00259_si_001.pdf) Deconvolution algorithm and a universal library search algorithm (ULSA) for the analysis of complex spectra generated via data-independent acquisition based on Matlab [@samanipour2018]
 
 ### Improved Peak picking
 
--   [IPO](https://github.com/rietho/IPO) A Tool for automated Optimization of XCMS Parameters[@libiseller2015].
-
--   [Warpgroup](https://github.com/nathaniel-mahieu/warpgroup) is used for chromatogram subregion detection, consensus integration bound determination and accurate missing value integration[@mahieu2016]
-
--   [xMSanalyzer](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-14-15) improved Peak picking for xcms and apLCMS[@uppal2013]
-
--   [ms-flo](https://bitbucket.org/fiehnlab/ms-flo/src/657d85ec7bdd?at=master) A Tool To Minimize False Positive Peak Reports in Untargeted Liquid Chromatography--Mass Spectroscopy (LC-MS) Data Processing[@defelice2017]
+-   [ms-flo](https://bitbucket.org/fiehnlab/ms-flo/src/657d85ec7bdd?at=master) A Tool To Minimize False Positive Peak Reports in Untargeted Liquid Chromatography--Mass Spectroscopy (LC-MS) Data Processing [@defelice2017]

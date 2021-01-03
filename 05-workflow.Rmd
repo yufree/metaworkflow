@@ -1,0 +1,129 @@
+---
+bibliography: references.bib
+---
+
+# Workflow
+
+You could check this book for metabolomics data analysis [@li2020].
+
+## Platform for metabolomics data analysis
+
+Here is a list for related open source [projects](http://strimmerlab.org/notes/mass-spectrometry.html)
+
+### XCMS & XCMS online
+
+[XCMS online](https://xcmsonline.scripps.edu/landing_page.php?pgcontent=mainPage) is hosted by Scripps Institute. If your datasets are not large, XCMS online would be the best option for you. Recently they updated the online version to support more functions for systems biology. They use metlin and iso metlin to annotate the MS/MS data. Pathway analysis is also supported. Besides, to accelerate the process, xcms online employed stream (windows only). You could use stream to connect your instrument workstation to their server and process the data along with the data acquisition automate. They also developed apps for xcms online, but I think apps for slack would be even cooler to control the data processing.
+
+[xcms](https://bioconductor.org/packages/release/bioc/html/xcms.html) is different from xcms online while they might share the same code. I used it almost every data to run local metabolomics data analysis. Recently, they will change their version to xcms 3 with major update for object class. Their data format would integrate into the MSnbase package and the parameters would be easy to set up for each step. Normally, I will use msconvert-IPO-xcms-xMSannotator-metaboanalyst as workflow to process the offline data. It could accelerate the process by parallel processing. However, if you are not familiar with R, you would better to choose some software below.
+
+[IPO](https://github.com/rietho/IPO) A Tool for automated Optimization of XCMS Parameters [@libiseller2015] and [Warpgroup](https://github.com/nathaniel-mahieu/warpgroup) is used for chromatogram subregion detection, consensus integration bound determination and accurate missing value integration[@mahieu2016]. Another
+
+Check those papers for the XCMS based workflow[@forsberg2018; @huan2017; @mahieu2016a; @montenegro-burke2017; @domingo-almenara2020]. For metlin related annotation, check those papers[@guijas2018; @tautenhahn2012; @xue2020; @domingo-almenara2018a].
+
+[MAIT](https://www.bioconductor.org/packages/release/bioc/html/MAIT.html) based on xcms and you could find source code [here](https://github.com/jpgroup/MAIT)[@fernandez-albert2014a].
+
+[iMet-Q](http://ms.iis.sinica.edu.tw/comics/Software_iMet-Q.html) is an automated tool with friendly user interfaces for quantifying metabolites in full-scan liquid chromatography-mass spectrometry (LC-MS) data [@chang2016]
+
+compMS2Miner is an Automatable Metabolite Identification, Visualization, and Data-Sharing R Package for High-Resolution LC--MS Data Sets. Here is related papers [@edmands2017; @edmands2018; @edmands2015].
+
+mzMatch is a modular, open source and platform independent data processing pipeline for metabolomics LC/MS data written in the Java language, which could be coupled with xcms [@scheltema2011a; @creek2012b].
+
+### PRIMe
+
+[PRIMe](http://prime.psc.riken.jp/Metabolomics_Software/) is from RIKEN and UC Davis. They update their database frequently[@tsugawa2016]. It supports mzML and major MS vendor formats. They defined own file format ABF and eco-system for omics studies. The software are updated almost everyday. You could use MS-DIAL for untargeted analysis and MRMOROBS for targeted analysis. For annotation, they developed MS-FINDER and statistic tools with excel. This platform could replaced the dear software from company and well prepared for MS/MS data analysis and lipidomics. They are open source, work on Windows and also could run within mathmamtics. However, they don't cover pathway analysis. Another feature is they always show the most recently spectral records from public repositories. You could always get the updated MSP spectra files for your own data analysis.
+
+For PRIMe based workflow, check those papers[@lai2018; @matsuo2017; @treutler2016; @tsugawa2015a; @tsugawa2016; @kind2018].
+
+### GNPS
+
+[GNPS](http://gnps.%20ucsd.edu) is an open-access knowledge base for community-wide organization and sharing of raw, processed or identified tandem mass (MS/MS) spectrometry data. It's a straight forward annotation methods for MS/MS data. Feature-based molecular networking (FBMN) within GNPS could be coupled with xcms, openMS, MS-DIAL, MZmine2, and other popular software.
+
+Check those papers for GNPS and related projects[@aron2020a; @nothias2020; @scheubert2017; @silva2018; @wang2016].
+
+### OpenMS & SIRIUS
+
+[OpenMS](https://www.openms.de/) is another good platform for mass spectrum data analysis developed with C++. You could use them as plugin of [KNIME](https://www.knime.org/). I suggest anyone who want to be a data scientist to get familiar with platform like KNIME because they supplied various API for different programme language, which is easy to use and show every steps for others. Also TOPPView in OpenMS could be the best software to visualize the MS data. You could always use the metabolomics workflow to train starter about details in data processing. pyOpenMS and OpenSWATH are also used in this platform. If you want to turn into industry, this platform fit you best because you might get a clear idea about solution and workflow.
+
+Check those paper for OpenMS based workflow[@bertsch2011; @pfeuffer2017; @röst2014; @rost2016a; @rurik2020; @alka2020].
+
+OpenMS could be coupled to SIRIUS 4 for annotation. SIRIUS 4 project integrates a collection of our tools, including CSI:FingerID, [ZODIAC](https://bio.informatik.uni-jena.de/software/zodiac/) and [CANOPUS](https://bio.informatik.uni-jena.de/software/canopus/). Check those papers for SIRIUS based workflow[@dührkop2019; @dührkop2020; @alka2020a; @ludwig2020].
+
+### MZmine 2
+
+[MZmine 2](http://mzmine.github.io/) has three version developed on Java platform and the lastest version is included into [MSDK](https://msdk.github.io/). Similar function could be found from MZmine 2 as shown in XCMS online. However, MZmine 2 do not have pathway analysis. You could use metaboanalyst for that purpose. Actually, you could go into MSDK to find similar function supplied by [ProteoSuite](http://www.proteosuite.org) and [Openchrom](https://www.openchrom.net/). If you are a experienced coder for Java, you should start here.
+
+Check those papers for MZmine based workflow[@pluskal2010a; @pluskal2020].
+
+### Emory MaHPIC
+
+This platform is composed by several R packages from Emory University including [apLCMS](https://sourceforge.net/projects/aplcms/) to collect the data, [xMSanalyzer](https://sourceforge.net/projects/xmsanalyzer/) to handle automated pipeline for large-scale, non-targeted metabolomics data, [xMSannotator](https://sourceforge.net/projects/xmsannotator/) for annotation of LC-MS data and [Mummichog](https://code.google.com/archive/p/atcg/wikis/mummichog_for_metabolomics.wiki) for pathway and network analysis for high-throughput metabolomics. This platform would be preferred by someone from environmental science to study exposome.
+
+You could check those papers for Emory workflow[@uppal2013a; @uppal2017; @yu2009a; @li2013; @liu2020].
+
+### DIA data analysis
+
+[Skyline](https://skyline.ms/project/home/software/Skyline/begin.view) is a freely-available and open source Windows client application for building Selected Reaction Monitoring (SRM) / Multiple Reaction Monitoring (MRM), Parallel Reaction Monitoring (PRM - Targeted MS/MS), Data Independent Acquisition (DIA/SWATH) and targeted DDA with MS1 quantitative methods and analyzing the resulting mass spectrometer data.
+
+[MSstats](https://github.com/MeenaChoi/MSstats) is an R-based/Bioconductor package for statistical relative quantification of peptides and proteins in mass spectrometry-based proteomic experiments. It is applicable to multiple types of sample preparation, including label-free workflows, workflows that use stable isotope labeled reference proteins and peptides, and work-flows that use fractionation. It is applicable to targeted Selected Reactin Monitoring(SRM), Data-Dependent Acquisiton(DDA or shotgun), and Data-Independent Acquisition(DIA or SWATH-MS). This github page is for sharing source and testing.
+
+MS-DAIL is also an option for DIA.
+
+### Others
+
+-   [MAVEN](http://genomics-pubs.princeton.edu/mzroll/index.php?show=index) from Princeton University [@melamud2010a; @clasquin2012].
+
+-   [metabolomics](https://github.com/cran/metabolomics) is a CRAN package for analysis of metabolomics data.
+
+-   [autoGCMSDataAnal](http://software.tobaccodb.org/software/autogcmsdataanal) is a Matlab based comprehensive data analysis strategy for GC-MS-based untargeted metabolomics and [AntDAS2](http://software.tobaccodb.org/software/antdas2) provided An automatic data analysis strategy for UPLC-HRMS-based metabolomics[@yu2019; @zhang2020].
+
+-   [enviGCMS](https://github.com/yufree/enviGCMS) from environmental non-targeted analysis and [rmwf](https://github.com/yufree/rmwf) for reproducible metabolomics workflow [@yu2020a; @yu2019a].
+
+-   Pseudotargeted metabolomics method [@zheng2020; @wang2016a].
+
+-   [pySM](https://github.com/alexandrovteam/pySM) provides a reference implementation of our pipeline for False Discovery Rate-controlled metabolite annotation of high-resolution imaging mass spectrometry data [@palmer2017].
+
+-   [TinyMS](https://github.com/griquelme/tidyms) is a Python-Based Pipeline for Preprocessing LC--MS Data for Untargeted Metabolomics Workflows [@riquelme2020]
+
+-   [MetaboliteDetector](https://md.tu-bs.de/) is a QT4 based software package for the analysis of GC/MS based metabolomics data [@hiller2009].
+
+-   [W4M](http://workflow4metabolomics.org/) and [metaX](http://metax.genomics.cn/) could analysis data online [@giacomoni2015; @wen2017a; @jalili2020a].
+
+-   [FTMSVisualization](https://github.com/wkew/FTMSVisualization) is a suite of tools for visualizing complex mixture FT-MS data [@kew2017]
+
+### Workflow Comparison
+
+Here are some comparisons for different workflow and you could make selection based on their works[@myers2017; @weber2017; @li2018].
+
+## Project Setup
+
+I suggest building your data analysis projects in RStudio (Click File - New project - New dictionary - Empty project). Then assign a name for your project. I also recommend the following tips if you are familiar with it.
+
+-   Use [git](https://git-scm.com/)/[github](https://github.com/) to make version control of your code and sync your project online.
+
+-   Don't use your name for your project because other peoples might cooperate with you and someone might check your data when you publish your papers. Each project should be a work for one paper or one chapter in your thesis.
+
+-   Use **workflow** document(txt or doc) in your project to record all of the steps and code you performed for this project. Treat this document as digital version of your experiment notebook
+
+-   Use **data** folder in your project folder for the raw data and the results you get in data analysis
+
+-   Use **figure** folder in your project folder for the figure
+
+-   Use **munuscript** folder in your project folder for the manuscript (you could write paper in rstudio with the help of template in [Rmarkdown](https://github.com/rstudio/rticles))
+
+-   Just double click **[yourprojectname].Rproj** to start your project
+
+## Data sharing
+
+See this paper[@haug2017]:
+
+-   [MetaboLights](http://www.ebi.ac.uk/metabolights/) EU based
+
+-   [The Metabolomics Workbench](http://www.metabolomicsworkbench.org/) US based
+
+-   [MetabolomeXchange](http://www.metabolomexchange.org/site/) search engine
+
+-   [MetabolomeExpress](https://www.metabolome-express.org/) a public place to process, interpret and share GC/MS metabolomics datasets[@carroll2010].
+
+## Contest
+
+-   [CASMI](http://www.casmi-contest.org/) predict small molecular contest
