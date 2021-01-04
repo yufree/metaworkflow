@@ -30,6 +30,8 @@ According to this research[@bennett2009]:
 
 Dmitri et.al[@sitnikov2016] thought the most orthogonal methods to methanol-based precipitation were ion-exchange solid-phase extraction and liquid-liquid extraction using methyl-tertbutyl ether.
 
+Another study used stable isotope labeled sample and found the use of a water-methanol-acetonitrile mixture for global metabolite extraction instead of aqueous methanol or aqueous acetonitrile alone [@doppler2016].
+
 Metabolic information was highly influenced by the extraction solvent[@ibanez2017].
 
 Tissue samples need to first be pulverized into fine powders.

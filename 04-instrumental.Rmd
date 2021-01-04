@@ -14,7 +14,7 @@ For GC, higher temperature could release compounds with higher boiling point. Fo
 
 ## Mass resolution
 
-For metabolomics, high resolution mass spectrum should be used to make identification of compounds easier. The Mass Resolving Power is very important for annotation and high resolution mass spectrum should be calibrated in real time. The region between 400--800 m/z was influenced the most by resolution[@najdekr2016]. Orbitrap Fusion's performance was evaluated here[@barbiersainthilaire2018], as well as the comparison with Fourier transform ion cyclotron resonance (FT-ICR)[@ghaste2016].
+For metabolomics, high resolution mass spectrum should be used to make identification of compounds easier. The Mass Resolving Power is very important for annotation and high resolution mass spectrum should be calibrated in real time. The region between 400--800 m/z was influenced the most by resolution[@najdekr2016]. Orbitrap Fusion's performance was evaluated here[@barbiersainthilaire2018], as well as the comparison with Fourier transform ion cyclotron resonance (FT-ICR)[@ghaste2016]. Mass Difference Maps could recalibrate HRMS data [@smirnov2019].
 
 ## Matrix effects
 

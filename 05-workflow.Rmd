@@ -16,7 +16,7 @@ Here is a list for related open source [projects](http://strimmerlab.org/notes/m
 
 [xcms](https://bioconductor.org/packages/release/bioc/html/xcms.html) is different from xcms online while they might share the same code. I used it almost every data to run local metabolomics data analysis. Recently, they will change their version to xcms 3 with major update for object class. Their data format would integrate into the MSnbase package and the parameters would be easy to set up for each step. Normally, I will use msconvert-IPO-xcms-xMSannotator-metaboanalyst as workflow to process the offline data. It could accelerate the process by parallel processing. However, if you are not familiar with R, you would better to choose some software below.
 
-[IPO](https://github.com/rietho/IPO) A Tool for automated Optimization of XCMS Parameters [@libiseller2015] and [Warpgroup](https://github.com/nathaniel-mahieu/warpgroup) is used for chromatogram subregion detection, consensus integration bound determination and accurate missing value integration[@mahieu2016]. Another
+[IPO](https://github.com/rietho/IPO) A Tool for automated Optimization of XCMS Parameters [@libiseller2015] and [Warpgroup](https://github.com/nathaniel-mahieu/warpgroup) is used for chromatogram subregion detection, consensus integration bound determination and accurate missing value integration[@mahieu2016]. Another option is AutoTuner, which are much faster than IPO[@mclean2020]. Recently, MetaboAnalystR 3.0 could also optimize the parameters for xcms while you need to perform the following analysis within this software[@pang2020].
 
 Check those papers for the XCMS based workflow[@forsberg2018; @huan2017; @mahieu2016a; @montenegro-burke2017; @domingo-almenara2020]. For metlin related annotation, check those papers[@guijas2018; @tautenhahn2012; @xue2020; @domingo-almenara2018a].
 
@@ -26,7 +26,7 @@ Check those papers for the XCMS based workflow[@forsberg2018; @huan2017; @mahieu
 
 compMS2Miner is an Automatable Metabolite Identification, Visualization, and Data-Sharing R Package for High-Resolution LC--MS Data Sets. Here is related papers [@edmands2017; @edmands2018; @edmands2015].
 
-mzMatch is a modular, open source and platform independent data processing pipeline for metabolomics LC/MS data written in the Java language, which could be coupled with xcms [@scheltema2011a; @creek2012b].
+mzMatch is a modular, open source and platform independent data processing pipeline for metabolomics LC/MS data written in the Java language, which could be coupled with xcms [@scheltema2011a; @creek2012b]. It also could be used for annotation with MetAssign[@daly2014].
 
 ### PRIMe
 
@@ -46,7 +46,7 @@ Check those papers for GNPS and related projects[@aron2020a; @nothias2020; @sche
 
 Check those paper for OpenMS based workflow[@bertsch2011; @pfeuffer2017; @röst2014; @rost2016a; @rurik2020; @alka2020].
 
-OpenMS could be coupled to SIRIUS 4 for annotation. SIRIUS 4 project integrates a collection of our tools, including CSI:FingerID, [ZODIAC](https://bio.informatik.uni-jena.de/software/zodiac/) and [CANOPUS](https://bio.informatik.uni-jena.de/software/canopus/). Check those papers for SIRIUS based workflow[@dührkop2019; @dührkop2020; @alka2020a; @ludwig2020].
+OpenMS could be coupled to SIRIUS 4 for annotation. [Sirius](https://bio.informatik.uni-jena.de/software/sirius/) is a new java-based software framework for discovering a landscape of de-novo identification of metabolites using single and tandem mass spectrometry. SIRIUS 4 project integrates a collection of our tools, including [CSI:FingerID](https://www.csi-fingerid.uni-jena.de/), [ZODIAC](https://bio.informatik.uni-jena.de/software/zodiac/) and [CANOPUS](https://bio.informatik.uni-jena.de/software/canopus/). Check those papers for SIRIUS based workflow[@dührkop2019; @dührkop2020; @alka2020a; @ludwig2020].
 
 ### MZmine 2
 
@@ -59,14 +59,6 @@ Check those papers for MZmine based workflow[@pluskal2010a; @pluskal2020].
 This platform is composed by several R packages from Emory University including [apLCMS](https://sourceforge.net/projects/aplcms/) to collect the data, [xMSanalyzer](https://sourceforge.net/projects/xmsanalyzer/) to handle automated pipeline for large-scale, non-targeted metabolomics data, [xMSannotator](https://sourceforge.net/projects/xmsannotator/) for annotation of LC-MS data and [Mummichog](https://code.google.com/archive/p/atcg/wikis/mummichog_for_metabolomics.wiki) for pathway and network analysis for high-throughput metabolomics. This platform would be preferred by someone from environmental science to study exposome.
 
 You could check those papers for Emory workflow[@uppal2013a; @uppal2017; @yu2009a; @li2013; @liu2020].
-
-### DIA data analysis
-
-[Skyline](https://skyline.ms/project/home/software/Skyline/begin.view) is a freely-available and open source Windows client application for building Selected Reaction Monitoring (SRM) / Multiple Reaction Monitoring (MRM), Parallel Reaction Monitoring (PRM - Targeted MS/MS), Data Independent Acquisition (DIA/SWATH) and targeted DDA with MS1 quantitative methods and analyzing the resulting mass spectrometer data.
-
-[MSstats](https://github.com/MeenaChoi/MSstats) is an R-based/Bioconductor package for statistical relative quantification of peptides and proteins in mass spectrometry-based proteomic experiments. It is applicable to multiple types of sample preparation, including label-free workflows, workflows that use stable isotope labeled reference proteins and peptides, and work-flows that use fractionation. It is applicable to targeted Selected Reactin Monitoring(SRM), Data-Dependent Acquisiton(DDA or shotgun), and Data-Independent Acquisition(DIA or SWATH-MS). This github page is for sharing source and testing.
-
-MS-DAIL is also an option for DIA.
 
 ### Others
 
@@ -89,6 +81,8 @@ MS-DAIL is also an option for DIA.
 -   [W4M](http://workflow4metabolomics.org/) and [metaX](http://metax.genomics.cn/) could analysis data online [@giacomoni2015; @wen2017a; @jalili2020a].
 
 -   [FTMSVisualization](https://github.com/wkew/FTMSVisualization) is a suite of tools for visualizing complex mixture FT-MS data [@kew2017]
+
+-   [magma](http://www.emetabolomics.org/magma) could predict and match MS/MS files.
 
 ### Workflow Comparison
 
@@ -126,4 +120,4 @@ See this paper[@haug2017]:
 
 ## Contest
 
--   [CASMI](http://www.casmi-contest.org/) predict small molecular contest
+-   [CASMI](http://www.casmi-contest.org/) predict small molecular contest[@blaenovi2017]

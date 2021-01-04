@@ -4,7 +4,7 @@ bibliography: references.bib
 
 # Omics analysis
 
-When you get the filtered ions, the next step is making annotations for them. Such annotations would be helpful for omics studies. Omics analysis try to combine the information from other 'omics' to answer one sepcific question. Since we have got the annotations, Omics analysis could be performed.Upload the data obtained from the **xcms** to other tools or databases.
+When you get the filtered ions, the next step is making annotations for them. Such annotations would be helpful for omics studies. Omics analysis try to combine the information from other 'omics' to answer one specific question. Since we have got the annotations, Omics analysis could be performed.Upload the data obtained from the **xcms** to other tools or databases.
 
 You will get an updated database list [here](http://metabolomicssociety.org/resources/metabolomics-databases)
 
@@ -12,7 +12,7 @@ Right now, it is hard to connect different omics databases such as gene, protein
 
 ## From Bottom-up to Top-down
 
-Bottom-up analysis mean the model for each metabolite. In this case, we could find out which metabolite will be affected by our experiment design. However, take care of multiple comparision issue.
+Bottom-up analysis mean the model for each metabolite. In this case, we could find out which metabolite will be affected by our experiment design. However, take care of multiple comparison issue.
 
 $$
 metabolite = f(control/treatment, co-variables)
@@ -24,7 +24,7 @@ $$
 control/treatment = f(metabolite 1,metabolite 2,...,metaboliteN,co-varuables)
 $$
 
-For omics study, you might need to intergrate dataset from different sources.
+For omics study, you might need to integrate dataset from different sources.
 
 $$
 control/treatment = f(metabolites, proteins, genes, miRNA,co-varuables)
@@ -55,6 +55,8 @@ Pathwat analysis maps annotated data into known pathway and make statistical ana
 -   [metabox](https://github.com/kwanjeeraw/metabox) could make pathway analysis
 
 -   [impala](http://impala.molgen.mpg.de/) is used for pathway enrichment analysis
+
+-   [Metscape](http://metscape.med.umich.edu/) based on Debiased Sparse Partial Correlation (DSPC) algorithm [@basu2017] to make annotation.
 
 ## Network analysis
 

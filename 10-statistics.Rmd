@@ -119,7 +119,7 @@ The classification performance of PLSDA is identical to linear discriminant anal
 
 Different algorithms[@andersson2009] for PLSDA would show different score, while PCA always show the same score with fixed algorithm. For PCA, both new variables and classes are orthognal. However, for PLS(Wold), only new classes are orthognal. For PLS(Martens), only new variables are orthognal. This paper show the details of using such methods[@brereton2018].
 
-Sparse PLS discriminant analysis(sPLS-DA) make a L1 penal on the variable selection to remove the influnces from unrelated variables, which make sense for high-throughput omics data[@lecao2011].
+Sparse PLS discriminant analysis(sPLS-DA) make a L1 penal on the variable selection to remove the influences from unrelated variables, which make sense for high-throughput omics data[@lecao2011].
 
 For o-PLS-DA, s-plot could be used to find features.[@wiklund2008]
 

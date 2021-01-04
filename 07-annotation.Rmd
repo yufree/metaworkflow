@@ -4,7 +4,7 @@ bibliography: references.bib
 
 # Annotation
 
-When you get the peaks table or features table, annotation of the peaks would help you. Check this review[@domingo-almenara2018] for a detailed notes on annotation. They proposed five levels regarding currently computational annotation strategies.
+When you get the peaks table or features table, annotation of the peaks would help you. Check this review[@domingo-almenara2018] or other reviews[@chaleckis2019; @lai2018a; @nash2019; @viant2017; @allard2017; @domingo-almenara2018b] for a detailed notes on annotation. The first paper proposed five levels regarding currently computational annotation strategies.
 
 -   Level 1: Peak Grouping: MS Psedospectra extraction based on peak shape similarity and peak abundance correlation
 
@@ -22,17 +22,17 @@ Most of the software are at level 1 or 2. If we only have compounds structure, w
 
 The major issue in annotation is the redundancy peaks from same metabolite. Unlike genomes, peaks or features from peak selection are not independent with each other. Adducts, in-source fragments and isotopes would lead to wrong annotation. A common solution is that use known adducts, neutral losses, molecular multimers or multiple charged ions to compare mass distances.
 
-Another issue is about the MS/MS database. Only 10% of known metabolites in databases have experimental spectral data. Thus **in silico** prediction are required. Some works try to fill the gap between experimental data, theoretical values(from chemical database like chemspider) and prediction together. Here is a nice review about MS/MS prediction[@hufsky2014].
+Another issue is about the MS/MS database. Only 10% of known metabolites in databases have experimental spectral data. Thus *in silico* prediction is required. Some works try to fill the gap between experimental data, theoretical values(from chemical database like chemspider) and prediction together. Here is a nice review about MS/MS prediction[@hufsky2014].
 
 ## Peak misidentification
 
 -   Isomer
 
-Use separation methods such as chromatography, ion mobility MS, MS/MS. Reversed-phase ion-pairing chromatography and HILIC is useful. Chemical derivatization is another options.
+Use separation methods such as chromatography, ion mobility MS, MS/MS. Reversed-phase ion-pairing chromatography and HILIC is useful. Chemical derivatization is another option.
 
 -   Interfering compounds
 
-20ppm is the least resolution and accuracy for HRMS.
+20ppm is the least exact mass accuracy for HRMS.
 
 -   In-source degradation products
 
@@ -132,35 +132,159 @@ Seven Golden Rules were built for GC-MS and Hydrogen Rearrangement Rules were ma
 
 Seven Golden Rules and Hydrogen Rearrangement Rules might also be captured by statistical models. However, such heuristic rules could reduce the searching space of possible formula.
 
-Here is some other Cheminformatics tools, which could be used to assign meanful formula or structures for mass spectra.
+[molgen](http://molgen.de) generating all structures (connectivity isomers, constitutions) that correspond to a given molecular formula, with optional further restrictions, e.g. presence or absence of particular substructures [@gugisch2015].
+
+[mfFinder](http://www.chemcalc.org/mf_finder/mfFinder_em_new) can predict formula based on accurate mass [@patiny2013].
+
+RAMSI is the robust automated mass spectra interpretation and chemical formula calculation method using mixed integer linear programming optimization [@baran2013].
+
+Here is some other Cheminformatics tools, which could be used to assign meaningful formula or structures for mass spectra.
 
 -   [RDKit](https://www.rdkit.org/) Open-Source Cheminformatics Software
 -   [cdk](https://sourceforge.net/projects/cdk/) The Chemistry Development Kit (CDK) is a scientific, LGPL-ed library for bio- and cheminformatics and computational chemistry written in Java.
 -   [Open Babel](http://openbabel.org/wiki/Main_Page) Open Babel is a chemical toolbox designed to speak the many languages of chemical data.
 
-## Chromatographic retention-related criteria
+## Redundant peaks
+
+Full scan mass spectra always contain lots of redundant peaks such as adducts, isotope, fragments, multiple charged ions and other oligomers. Such peaks dominated the features table[@xu2015; @sindelar2020; @mahieu2017]. Annotation tools could label those peaks either by known list or frequency analysis of the paired mass distances[@ju2020; @kouil].
+
+### Adducts list
+
+You could find adducts list [here](https://github.com/stanstrup/commonMZ) from commonMZ project.
+
+### Isotope
+
+Here is [Isotope](https://www.envipat.eawag.ch/index.php) pattern prediction.
+
+### CAMERA
+
+Common [annotation](https://bioconductor.org/packages/release/bioc/html/CAMERA.html) for xcms workflow[@kuhl2012].
+
+### RAMClustR
+
+The software could be found [here](https://github.com/cbroeckl/RAMClustR) [@broeckling2014; @broeckling2016]. The package included a vignette to follow.
+
+### BioCAn
+
+BioCAn combines the results from database searches and in silico fragmentation analyses and places these results into a relevant biological context for the sample as captured by a metabolic model [@alden2017].
+
+### mzMatch
+
+[mzMatch](https://github.com/andzajan/mzmatch.R) is a modular, open source and platform independent data processing pipeline for metabolomics LC/MS data written in the Java language. [@chokkathukalam2013; @scheltema2011] and MetAssign is a probabilistic annotation method using a Bayesian clustering approach, which is part of mzMatch[@daly2014a].
+
+### xMSannotator
+
+The software could be found [here](https://github.com/yufree/xMSannotator)[@uppal2017].
+
+### MAIT
+
+You could find source code [here](https://github.com/jpgroup/MAIT)[@fernandez-albert2014a].
+
+### pmd
+
+[Paired Mass Distance(PMD)](https://github.com/yufree/pmd) analysis for GC/LC-MS based nontarget analysis to remove redundant peaks[@yu2019b].
+
+### nontarget
+
+[nontarget](https://github.com/blosloos/nontarget) could find Isotope & adduct peak grouping, and perform homologue series detection [@loos2017].
+
+### Binner
+
+[Binner](https://binner.med.umich.edu/) Deep annotation of untargeted LC-MS metabolomics data [@kachman2020]
+
+### mz.unity
+
+You could find source code [here](https://github.com/nathaniel-mahieu/mz.unity) [@mahieu2016aa] and it's for detecting and exploring complex relationships in accurate-mass mass spectrometry data.
+
+### MS-FLO
+
+[ms-flo](https://bitbucket.org/fiehnlab/ms-flo/src/657d85ec7bdd?at=master) A Tool To Minimize False Positive Peak Reports in Untargeted Liquid Chromatography--Mass Spectroscopy (LC-MS) Data Processing [@defelice2017].
+
+### CliqueMS
+
+CliqueMS is a computational tool for annotating in-source metabolite ions from LC-MS untargeted metabolomics data based on a coelution similarity network [@senan2019].
+
+### InterpretMSSpectrum
+
+This [package](https://github.com/cran/InterpretMSSpectrum) is for annotate and interpret deconvoluted mass spectra (mass\*intensity pairs) from high resolution mass spectrometry devices. You could use this package to find molecular ions for GC-MS [@jaeger2016].
+
+## MS/MS annotation
+
+You could check [Workflow] section for popular platform. Here are some stand-alone annotation software:
+
+### MetDNA
+
+MetDNA is the Metabolic reaction network-based recursive metabolite annotation for untargeted metabolomics [@shen2019].
+
+### MetFusion
+
+Java based [integration](https://github.com/mgerlich/MetFusion) of compound identiﬁcation strategies. You could access the application [here](https://msbi.ipb-halle.de/MetFusion/) [@gerlich2013].
+
+### MS2Analyzer
+
+MS2Analyzer could annotate small molecule substructure from accurate tandem mass spectra. [@ma2014]
+
+### MetFrag
+
+[MetFrag](http://c-ruttkies.github.io/MetFrag/) could be used to make *in silico* prediction/match of MS/MS data[@ruttkies2016; @wolf2010].
+
+### CFM-ID
+
+[CFM-ID](https://sourceforge.net/projects/cfm-id/) use Metlin's data to make prediction [@allen2014].
+
+### LipidFrag
+
+[LipidFrag](https://msbi.ipb-halle.de/msbi/lipidfrag) could be used to make *in silico* prediction/match of lipid related MS/MS data [@witting2017].
+
+### Lipidmatch
+
+[in silico](http://secim.ufl.edu/secim-tools/lipidmatch/): *in silico* lipid mass spectrum search [@koelmel2017].
+
+### BarCoding
+
+Bar coding select mass-to-charge regions containing the most informative metabolite fragments and designate them as bins. Then translate each metabolite fragmentation pattern into a binary code by assigning 1's to bins containing fragments and 0's to bins without fragments. Such coding annotation could be used for MRM data [@spalding2016].
+
+### iMet
+
+This online [application](http://imet.seeslab.net/) is a network-based computation method for annotation [@aguilar-mogas2017].
+
+## Knowledge based annotation
+
+### Chromatographic retention-related criteria
 
 For targeted analysis, chromatographic retention time could be the qualitative method for certain compounds with a carefully designed pre-treatment. For untargeted analysis, such information could also be used for annotation. GC-MS usually use retention index for certain column while LC-MS might not show enough reproducible results as GC. Such method could be tracked back to quantitative structure-retention relationship (QSRR) models or linear solvation energy relationship (LSER). However, such methods need molecular descriptors as much as possible. For untargeted analysis, retention time and mass to charge ratio could not generate enough molecular descriptors to build QSPR models. In this case, such criteria might be usefully for validation instead of annotation unless we could measure or extract more information such as ion mobility from unknown compounds.
 
+-   [Retip](https://www.retip.app/) Retention Time Prediction for Compound Annotation in Untargeted Metabolomics [@bonini2020].
+
+-   JAVA based [MolFind](http://metabolomics.pharm.uconn.edu/?q=Software.html) could make annotation for unknown chemical structure by prediction based on RI, ECOM50, drift time and CID spectra [@menikarachchi2012].
+
+-   [For-ident](https://water.for-ident.org/#!search) could give a score for identification with the help of logD(relative retention time) and/or MS/MS.
+
+### ProbMetab
+
+Provides probability ranking to candidate compounds assigned to masses, with the prior assumption of connected sample and additional previous and spectral information modeled by the user. You could find source code [here](https://github.com/rsilvabioinfo/ProbMetab) [@silva2014].
+
+### MI-Pack
+
+You could find python software [here](http://www.biosciences-labs.bham.ac.uk/viant/mipack/) [@weber2010].
+
+### MetExpert
+
+[MetExpert](https://sourceforge.net/projects/metexpert/) is an expert system to assist users with limited expertise in informatics to interpret GCMS data for metabolite identification without querying spectral databases [@qiu2018].
+
+### MycompoundID
+
+[MycompoundID](http://www.mycompoundid.org/mycompoundid_IsoMS/single.jsp) could be used to search known and unknown metabolites online [@li2013a].
+
+### MetFamily
+
+[Shiny app](https://msbi.ipb-halle.de/MetFamily/) for MS and MS/MS data annotation [@treutler2016].
+
+### Plantmat
+
+[excel library](https://sourceforge.net/projects/plantmat/) based prediction for plant metabolites[@qiu2016].
+
 ## MS Database for annotation
-
-### MS/MS
-
--   [MoNA](http://mona.fiehnlab.ucdavis.edu/) Platform to collect all other open source database
-
--   [MassBank](http://www.massbank.jp/?lang=en)
-
--   [GNPS](https://gnps.ucsd.edu/ProteoSAFe/static/gnps-splash.jsp) use inner correlationship in the data and make network analysis at peaks' level instand of annotated compounds to annotate the data[@wang2016b].
-
--   [ReSpect](http://spectra.psc.riken.jp/): phytochemicals
-
--   [Metlin](https://metlin.scripps.edu/) is another useful online application for annotation[@guijas2018].
-
--   [LipidBlast](http://fiehnlab.ucdavis.edu/projects/LipidBlast): **in silico** prediction
-
--   [MZcloud](https://www.mzcloud.org/)
-
--   [NIST](https://www.nist.gov/srd/nist-standard-reference-database-1a-v17): Not free
 
 ### MS
 
@@ -172,7 +296,27 @@ For targeted analysis, chromatographic retention time could be the qualitative m
 
 -   [MINE](http://minedatabase.mcs.anl.gov/#/faq) is an open access database of computationally predicted enzyme promiscuity products for untargeted metabolomics
 
--   [Database](https://www.sciencedirect.com/science/article/abs/pii/S0039914019311786?via%3Dihub) of free solution mobilities for 276 metabolites for capillary zone electrophoresis / mass spectrometry. [@petrov2020]
+-   [Database](https://www.sciencedirect.com/science/article/abs/pii/S0039914019311786?via%3Dihub) of free solution mobilities for 276 metabolites for capillary zone electrophoresis / mass spectrometry [@petrov2020].
+
+-   [MINE](http://minedatabase.mcs.anl.gov/) is an open access database of computationally predicted enzyme promiscuity products for untargeted metabolomics. The annotation would be accurate for general compounds database.
+
+### MS/MS
+
+-   [MoNA](http://mona.fiehnlab.ucdavis.edu/) Platform to collect all other open source database
+
+-   [MassBank](http://www.massbank.jp/?lang=en)
+
+-   [GNPS](https://gnps.ucsd.edu/ProteoSAFe/static/gnps-splash.jsp) use inner correlationship in the data and make network analysis at peaks' level instand of annotated compounds to annotate the data.
+
+-   [ReSpect](http://spectra.psc.riken.jp/): phytochemicals
+
+-   [Metlin](https://metlin.scripps.edu/) is another useful online application for annotation[@guijas2018].
+
+-   [LipidBlast](http://fiehnlab.ucdavis.edu/projects/LipidBlast): *in silico* prediction
+
+-   [MZcloud](https://www.mzcloud.org/)
+
+-   [NIST](https://www.nist.gov/srd/nist-standard-reference-database-1a-v17): Not free
 
 ## Compounds Database
 
@@ -185,159 +329,3 @@ For targeted analysis, chromatographic retention time could be the qualitative m
 -   [RefMet](http://www.metabolomicsworkbench.org/databases/refmet/index.php) A Reference list of Metabolite names.
 
 -   [CAS](https://www.cas.org/support/documentation/chemical-substances/cas-registry-100-millionth-fun-facts) Largest substance database
-
-## Software
-
-### Adducts list
-
-You could find adducts list [here](https://github.com/stanstrup/commonMZ) from commonMZ project.
-
-### Molgen
-
-[molgen](http://molgen.de) generating all structures (connectivity isomers, constitutions) that correspond to a given molecular formula, with optional further restrictions, e.g. presence or absence of particular substructures.
-
-### Isotope
-
-[Isotope](https://www.envipat.eawag.ch/index.php) pattern prediction
-
-### mfFinder
-
-[mfFinder](http://www.chemcalc.org/mf_finder/mfFinder_em_new) predict formula based on accurate mass
-
-### CAMERA
-
-Common [annotation](https://bioconductor.org/packages/release/bioc/html/CAMERA.html) for xcms workflow[@kuhl2012].
-
-### RAMClustR
-
-The software could be found [here](https://github.com/cbroeckl/RAMClustR)[@broeckling2014]. The package included a vignette as usages. Use the following code to read:
-
-```{r RAMClustR,eval=FALSE}
-vignette('RAMClustR',package = 'RAMClustR')
-```
-
-### pmd
-
-[Paired Mass Distance(PMD)](https://github.com/yufree/pmd) analysis for GC/LC-MS based nontarget analysis to find independent peaks[@yu2018]
-
-### nontarget
-
-[nontarget](https://github.com/blosloos/nontarget) Isotope & adduct peak grouping, homologue series detection
-
-### xMSannotator
-
-The software could be found [here](https://github.com/yufree/xMSannotator)[@uppal2017].
-
-### CFM-ID
-
-[CFM-ID](https://sourceforge.net/projects/cfm-id/) use Metlin's data to make prediction[@allen2014].
-
-### MINE
-
-[MINE](http://minedatabase.mcs.anl.gov/) is an open access database of computationally predicted enzyme promiscuity products for untargeted metabolomics. The annotation would be accurate for general compounds database.
-
-### InterpretMSSpectrum
-
-This [package](https://github.com/cran/InterpretMSSpectrum) is for annotate and interpret deconvoluted mass spectra (mass\*intensity pairs) from high resolution mass spectrometry devices. You could use this package to find molecular ions for GC-MS.
-
-### For Ident
-
-[For-ident](https://water.for-ident.org/#!search) could give a score for identification with the help of logD(relative retention time) and/or MS/MS.
-
-### Retip
-
-[Retip](https://www.retip.app/) Retention Time Prediction for Compound Annotation in Untargeted Metabolomics [@bonini2020]
-
-### Binner
-
-[Binner](https://binner.med.umich.edu/) Deep annotation of untargeted LC-MS metabolomics data [@kachman2020]
-
-### mzMatch
-
-[mzMatch](https://github.com/andzajan/mzmatch.R) is a modular, open source and platform independent data processing pipeline for metabolomics LC/MS data written in the Java language. [@chokkathukalam2013; @scheltema2011]
-
-### mz.unity
-
-You could find source code [here](https://github.com/nathaniel-mahieu/mz.unity)[@mahieu2016a] and it's for detecting and exploring complex relationships in accurate-mass mass spectrometry data.
-
-### MAIT
-
-You could find source code [here](https://github.com/jpgroup/MAIT)[@fernandez-albert2014a].
-
-### ProbMetab
-
-Provides probability ranking to candidate compounds assigned to masses, with the prior assumption of connected sample and additional previous and spectral information modeled by the user. You could find source code [here](https://github.com/rsilvabioinfo/ProbMetab)[@silva2014].
-
-### RAMSI
-
-You could find paper here[@baran2013].
-
-### Sirius
-
-[Sirius](https://bio.informatik.uni-jena.de/software/sirius/) is a new java-based software framework[@duhrkop2015] for discovering a landscape of de-novo identification of metabolites using single and tandem mass spectrometry. It could be used with [CSI:FingerID](https://www.csi-fingerid.uni-jena.de/).
-
-### MI-Pack
-
-You could find python software [here](http://www.biosciences-labs.bham.ac.uk/viant/mipack/)[@weber2010]
-
-### Plantmat
-
-[excel library](https://sourceforge.net/projects/plantmat/) based prediction for plant metabolites[@qiu2016].
-
-### MetFamily
-
-[Shiny app](https://msbi.ipb-halle.de/MetFamily/) for MS and MS/MS data annotation[@treutler2016].
-
-### Lipidmatch
-
-[in silico](http://secim.ufl.edu/secim-tools/lipidmatch/): \*\*in silico\*\* lipid mass spectrum search[@koelmel2017].
-
-### MolFind
-
-JAVA based [MolFind](http://metabolomics.pharm.uconn.edu/?q=Software.html) could make annotation for unknown chemical structure by prediction based on RI, ECOM50, drift time and CID spectra[@menikarachchi2012].
-
-### MetFusion
-
-Java based [integration](https://github.com/mgerlich/MetFusion) of compound identiﬁcation strategies. You could access the application [here](https://msbi.ipb-halle.de/MetFusion/)[@gerlich2013].
-
-### iMet
-
-This online [application](http://imet.seeslab.net/) is a network-based computation method for annotation[@aguilar-mogas2017].
-
-### Metscape
-
-[Metscape](http://metscape.med.umich.edu/) based on Debiased Sparse Partial Correlation (DSPC) algorithm[@basu2017] to make annotation.
-
-### MetFrag
-
-[MetFrag](http://c-ruttkies.github.io/MetFrag/) could be used to make **in silico** prediction/match of MS/MS data[@ruttkies2016].
-
-### LipidFrag
-
-[LipidFrag](https://msbi.ipb-halle.de/msbi/lipidfrag) could be used to make **in silico** prediction/match of lipid related MS/MS data[@witting2017].
-
-### MycompoundID
-
-[MycompoundID](http://www.mycompoundid.org/mycompoundid_IsoMS/single.jsp) could be used to search known and unknown metabolites[@li2013a] online.
-
-### magma
-
-[magma](http://www.emetabolomics.org/magma) could predict and match MS/MS files.
-
-### MetExpert
-
-[MetExpert](https://sourceforge.net/projects/metexpert/) is an expert system to assist users with limited expertise in informatics to interpret GCMS data for metabolite identification without querying spectral databases[@qiu2018]
-
-### MS-DIA
-
--   [decoMS2](https://pubs.acs.org/doi/10.1021/ac400751j) requires two different collision energies, low (usually 0V) and high, in each precursor range to solve the mathematical equations.[@nikolskiy2013]
-
--   [MS-DIAL](http://prime.psc.riken.jp/Metabolomics_Software/MS-DIAL/) data independent MS/MS deconvolution for comprehensive metabolome analysis.[@tsugawa2015]
-
--   [MetDIA](https://pubs.acs.org/doi/abs/10.1021/acs.analchem.6b02122) Targeted Metabolite Extraction of Multiplexed MS/MS Spectra Generated by Data-Independent Acquisition[@li2016c]
-
--   [DIA-Umpire](https://www.nature.com/articles/nmeth.3255) comprehensive computational framework for data-independent acquisition proteomics[@tsou2015]
-
--   [MetaboDIA](https://sourceforge.net/projects/metabodia/) quantitative metabolomics analysis using DIA-MS[@chen2017a]
-
--   [SWATHtoMRM](https://pubs.acs.org/doi/10.1021/acs.analchem.7b05318) Development of High-Coverage Targeted Metabolomics Method Using SWATH Technology for Biomarker Discovery[@zha2018]
