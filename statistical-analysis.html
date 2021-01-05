@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 1 Introduction | Meta-Workflow</title>
+  <title>Chapter 10 Statistical analysis | Meta-Workflow</title>
   <meta name="description" content="This is a workflow for metabolomics studies." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 1 Introduction | Meta-Workflow" />
+  <meta property="og:title" content="Chapter 10 Statistical analysis | Meta-Workflow" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="yufree/metaworkflow" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 1 Introduction | Meta-Workflow" />
+  <meta name="twitter:title" content="Chapter 10 Statistical analysis | Meta-Workflow" />
   
   <meta name="twitter:description" content="This is a workflow for metabolomics studies." />
   <meta name="twitter:image" content="images/cover.png" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="experimental-designdoe.html"/>
+<link rel="prev" href="peaks-normalization.html"/>
+<link rel="next" href="exposome.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -339,148 +339,117 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="introduction" class="section level1" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
-<p>Information in living organism communicates along the Central Dogma in different scales from individual, population, community to ecosystem. Metabolomics (i.e., the profiling and quantitation of metabolites) is a relatively new field of “omics” studies. Different from other omics studies, metabolomics always focused on small molecular (molecular weight below 1500 Da) with much lower mass than polypeptide with single or doubled charged ions. Here is a demo of the position of metabolomics in “omics” studies<span class="citation">(<a href="references.html#ref-b.dunn2011" role="doc-biblioref">B. Dunn et al. 2011</a>)</span>.</p>
-<div class="figure"><span id="fig:metaintro"></span>
-<img src="images/metaintro.png" alt="The complex interactions of functional levels in biological systems." width="90%" />
-<p class="caption">
-Figure 1.1: The complex interactions of functional levels in biological systems.
-</p>
-</div>
-<p>Metabolomics studies always employ GC-MS<span class="citation">(<a href="references.html#ref-theodoridis2012" role="doc-biblioref">Theodoridis et al. 2012</a>; <a href="references.html#ref-beale2018" role="doc-biblioref">Beale et al. 2018</a>)</span>, GC*GC-MS<span class="citation">(<a href="references.html#ref-tian2016" role="doc-biblioref">Tian et al. 2016a</a>)</span>, LC-MS<span class="citation">(<a href="references.html#ref-gika2014" role="doc-biblioref">Gika et al. 2014</a>)</span>, LC-MS/MS<span class="citation">(<a href="references.html#ref-begou2017a" role="doc-biblioref">Begou et al. 2017a</a>)</span>, IM-MS<span class="citation">(<a href="references.html#ref-levy2019" role="doc-biblioref">Levy et al. 2019</a>)</span>, infrared ion spectroscopy<span class="citation">(<a href="references.html#ref-martens2017" role="doc-biblioref">Martens et al. 2017</a>)</span> or NMR<span class="citation">(<a href="references.html#ref-b.dunn2011" role="doc-biblioref">B. Dunn et al. 2011</a>)</span> to measure metabolites. For analytical methods, this review could be checked<span class="citation">(<a href="references.html#ref-zhang2012" role="doc-biblioref">A. Zhang et al. 2012</a>)</span>. The overall technique progress of metabolomics (2012-2018) could be found here<span class="citation">(<a href="references.html#ref-miggiels2019" role="doc-biblioref">Miggiels et al. 2019</a>)</span>. However, this workflow will only cover mass spectrometry based metabolomics or XC-MS based research.</p>
-<div id="history" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> History</h2>
-<div id="history-of-mass-spectrometry" class="section level3" number="1.1.1">
-<h3><span class="header-section-number">1.1.1</span> History of Mass Spectrometry</h3>
-<p>Here is a historical commentary for mass spectrometry<span class="citation">(<a href="references.html#ref-yatesiii2011" role="doc-biblioref">Yates Iii 2011</a>)</span>. In details, here is a summary:</p>
+<div id="statistical-analysis" class="section level1" number="10">
+<h1><span class="header-section-number">Chapter 10</span> Statistical analysis</h1>
+<p>The general purposes for metabolomics study are strongly associated with research goal. However, since metabolomics are usually performed in a non-targeted mode, statistical analysis methods are always started with the exploratory analysis. The basic target for an exploratory analysis is:</p>
 <ul>
-<li>1913, Sir Joseph John Thomson “Rays of Positive Electricity and Their Application to Chemical Analyses.”</li>
+<li><p>Find the relationship among variables</p></li>
+<li><p>Find the relationship among samples/group of samples.</p></li>
 </ul>
-<div class="figure"><span id="fig:history"></span>
-<img src="images/mshistory.jpg" alt="Sir Joseph John Thomson &quot;Rays of Positive Electricity and Their Application to Chemical Analyses.&quot;" width="90%" />
-<p class="caption">
-Figure 1.2: Sir Joseph John Thomson “Rays of Positive Electricity and Their Application to Chemical Analyses.”
-</p>
+<p>This is basically unsupervised analysis.</p>
+<p>However, sometimes we have group information which could be used to find biomarkers or correlationship between variables and groups or continuous variables. This type of data need supervised methods to process. Before we talk the details of algorithms, let’s cover some basic statistical concepts.</p>
+<div id="basic-statistical-analysis" class="section level2" number="10.1">
+<h2><span class="header-section-number">10.1</span> Basic Statistical Analysis</h2>
+<p><strong>Statistic</strong> is used to describe certain property or variables among the samples. It could be designed for certain purpose to extract signal and remove noise. Statistical models and inference are both based on statistic instead of the data.</p>
+<p><span class="math display">\[Statistic = f(sample_1,sample_2,...,sample_n)\]</span></p>
+<p><strong>Null Hypothesis Significance Testing (NHST)</strong> is often used to make statistical inference. P value is the probability of certain statistics happens under H0 (pre-defined distribution).</p>
+<p>For omics studies, you should realize <strong>Multiple Comparison</strong> issue when you perform a lot of(more than 20) comparisons or tests at the same time. <strong>False Discovery Rate(FDR) control</strong> is required for multiple tests to make sure the results are not false positive. You could use Benjamini-Hochberg method to adjust raw p values or directly use Storey Q value to make FDR control.</p>
+<p>NHST is famous for the failure of p-value interpretation as well as multiple comparison issues. <strong>Bayesian Hypothesis Testing</strong> could be an options to cover some drawbacks of NHST. Bayesian Hypothesis Testing use Bayes factor to show the differences between null hypothesis and any other hypothesis.</p>
+<p><span class="math display">\[Bayes\ factor = \frac{p(D|Ha)}{p(D|H0)} = \frac{posterior\ odds}{prior\ odds}\]</span></p>
+<p><strong>Statistical model</strong> use statistics to make prediction/explanation. Most of the statistical model need to be tuned for parameters to show a better performance. Statistical model is build on real data and could be diagnosed by other general statistics such as <span class="math inline">\(R^2\)</span>, <span class="math inline">\(ROC curve\)</span>. When the models are built or compared, model selection could be preformed.</p>
+<p><span class="math display">\[Target = g(Statistic) = g(f(sample_1,sample_2,...,sample_n))\]</span></p>
+<p><strong>Bias-Variance Tradeoff</strong> is an important concept regarding statistical models. Certain models could be overfitted(small Bias, large variance) or underfitted(large Bias, small variance) when the parameters of models are not well selected.</p>
+<p><span class="math display">\[E[(y - \hat f)^2] = \sigma^2 + Var[\hat f] + Bias[\hat f]\]</span></p>
+<p><strong>Cross validation</strong> could be used to find the best model based on training-testing strategy such as Jacknife, bootstraping resampling and n-fold cross validation.</p>
+<p><strong>Regularization</strong> for models could also be used to find the model with best prediction performance. Rigid regression, LASSO or other general regularization could be employed to build a robust models.</p>
+<p>For supervised models, linear model and tree based model are two basic categories. <strong>Linear model</strong> could be useful to tell the independent or correlated relationship of variables and the influences on the predicted variables. <strong>Tree based model</strong>, on the other hand, try to build a hierarchical structure for the variables such as bagging, random forest or boosting. Linear model could be treated as special case of tree based model with single layer. Other models like Support Vector Machine (SVM), Artificial Neural Network (ANN) or Deep Learning are also make various assumptions on the data. However, if you final target is prediction, you could try any of those models or even weighted combine their prediction to make meta-prediction.</p>
 </div>
+<div id="differences-analysis" class="section level2" number="10.2">
+<h2><span class="header-section-number">10.2</span> Differences analysis</h2>
+<p>After we get corrected peaks across samples, the next step is to find the differences between two groups. Actually, you could perform ANOVA or Kruskal-Wallis Test for comparison among more than two groups. The basic idea behind statistic analysis is to find the meaningful differences between groups and extract such ions or peak groups.</p>
+<p>So how to find the differences? In most metabolomics software, such task is completed by a t-test and report p-value and fold changes. If you only compare two groups on one peaks, that’s OK. However, if you compare two groups on thousands of peaks, statistic textbook would tell you to notice the false positive. For one comparison, the confidence level is 0.05, which means 5% chances to get false positive result. For two comparisons, such chances would be <span class="math inline">\(1-0.95^2\)</span>. For 10 comparisons, such chances would be <span class="math inline">\(1-0.95^{10} = 0.4012631\)</span>. For 100 comparisons, such chances would be <span class="math inline">\(1-0.95^{100} = 0.9940795\)</span>. You would almost certainly to make mistakes for your results.</p>
+<p>In statistics, the false discovery rate(FDR) control is always mentioned in omics studies for multiple tests. I suggested using q-values to control FDR. If q-value is less than 0.05, we should expect a lower than 5% chances we make the wrong selections for all of the comparisons showed lower q-values in the whole dataset. Also we could use local false discovery rate, which showed the FDR for certain peaks. However, such values are hard to be estimated accurately.</p>
+<p>Karin Ortmayr thought fold change might be better than p-values to find the differences <span class="citation">(<a href="references.html#ref-ortmayr2016a" role="doc-biblioref">Ortmayr et al. 2016</a>)</span>.</p>
+<div id="t-test-or-anova" class="section level3" number="10.2.1">
+<h3><span class="header-section-number">10.2.1</span> T-test or ANOVA</h3>
+<p>If one peak show significant differences among two groups or multiple groups, T-test or ANOVA could be used to find such peaks. However, when multiple hypothesis testings are performed, the probability of false positive would increase. In this case, false discovery rate(FDR) control is required. Q value or adjusted p value could be used in this situation. At certain confidence interval, we could find peaks with significant differences after FDR control.</p>
+</div>
+<div id="limma" class="section level3" number="10.2.2">
+<h3><span class="header-section-number">10.2.2</span> LIMMA</h3>
+<p>Linear Models for MicroArray Data(LIMMA) model could also be used for high-dimensional data like metabolomics. They use a moderated t-statistic to make estimation of the effects called Empirical Bayes Statistics for Differential Expression. It is a hierarchical model to shrink the t-statistic for each peak to all the peaks. Such estimation is more robust. In LIMMA, we could add the known batch effect variable as a covariance in the model. LIMMA is different from t-test or ANOVA while we could still use p value and FDR control on LIMMA results.</p>
+</div>
+<div id="bayesian-mixture-model" class="section level3" number="10.2.3">
+<h3><span class="header-section-number">10.2.3</span> Bayesian mixture model</h3>
+<p>Another way to make difference analysis is based on Bayesian mixture model without p value. Such model would not use hypothesis testing and directly generate the posterior estimation of parameters. A posterior probability could be used to check whether certain peaks could be related to different condition. If we want to make comparison between classical model like LIMMA and Bayesian mixture model. We need to use simulation to find the cutoff.</p>
+</div>
+</div>
+<div id="pca" class="section level2" number="10.3">
+<h2><span class="header-section-number">10.3</span> PCA</h2>
+<p>In most cases, PCA is used as an exploratory data analysis(EDA) method. In most of those most cases, PCA is just served as visualization method. I mean, when I need to visualize some high-dimension data, I would use PCA.</p>
+<p>So, the basic idea behind PCA is compression. When you have 100 samples with concentrations of certain compound, you could plot the concentrations with samples’ ID. However, if you have 100 compounds to be analyzed, it would by hard to show the relationship between the samples. Actually, you need to show a matrix with sample and compounds (100 * 100 with the concentrations filled into the matrix) in an informal way.</p>
+<p>The PCA would say: OK, guys, I could convert your data into only 100 * 2 matrix with the loss of information minimized. Yeah, that is what the mathematical guys or computer programmer do. You just run the command of PCA. The new two “compounds” might have the cor-relationship between the original 100 compounds and retain the variances between them. After such projection, you would see the compressed relationship between the 100 samples. If some samples’ data are similar, they would be projected together in new two “compounds” plot. That is why PCA could be used for cluster and the new “compounds” could be referred as principal components(PCs).</p>
+<p>However, you might ask why only two new compounds could finished such task. I have to say, two PCs are just good for visualization. In most cases, we need to collect PCs standing for more than 80% variances in our data if you want to recovery the data with PCs. If each compound have no relationship between each other, the PCs are still those 100 compounds. So you have found a property of the PCs: PCs are orthogonal between each other.</p>
+<p>Another issue is how to find the relationship between the compounds. We could use PCA to find the relationship between samples. However, we could also extract the influences of the compounds on certain PCs. You might find many compounds showed the same loading on the first PC. That means the concentrations pattern between the compounds are looked similar. So PCA could also be used to explore the relationship between the compounds.</p>
+<p>OK, next time you might recall PCA when you need it instead of other paper showed them.</p>
+<p>Besides, there are some other usage of PCA. Loadings are actually correlation coefficients between peaks and their PC scores. Yamamoto et.al. <span class="citation">(<a href="references.html#ref-yamamoto2014" role="doc-biblioref">Yamamoto et al. 2014</a>)</span> used t-test on this correlation coefficient and thought the peaks with statistically significant correlation to the PC score have biological meanings for further study such as annotation. However, such analysis works better when few PCs could explain most of the variances in the dataset.</p>
+</div>
+<div id="cluster-analysis" class="section level2" number="10.4">
+<h2><span class="header-section-number">10.4</span> Cluster Analysis</h2>
+<p>After we got a lot of samples and analyzed the concentrations of many compounds in them, we may ask about the relationship between the samples. You might have the sampling information such as the date and the position and you could use boxplot or violin plot to explore the relationships among those categorical variables. However, you could also use the data to find some potential relationship.</p>
+<p>But how? if two samples’ data were almost the same, we might think those samples were from the same potential group. On the other hand, how do we define the “same” in the data?</p>
+<p>Cluster analysis told us that just define a “distances” to measure the similarity between samples. Mathematically, such distances would be shown in many different manners such as the sum of the absolute values of the differences between samples.</p>
+<p>For example, we analyzed the amounts of compound A, B and C in two samples and get the results:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Compounds(ng)</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sample 1</td>
+<td>10</td>
+<td>13</td>
+<td>21</td>
+</tr>
+<tr class="even">
+<td>Sample 2</td>
+<td>54</td>
+<td>23</td>
+<td>16</td>
+</tr>
+</tbody>
+</table>
+<p>The distance could be:</p>
+<p><span class="math display">\[
+distance = |10-54|+|13-23|+|21-16| = 59
+\]</span></p>
+<p>Also you could use the sum of squares or other way to stand for the similarity. After you defined a “distance,” you could get the distances between all of pairs for your samples. If two samples’ distance was the smallest, put them together as one group. Then calculate the distances again to combine the small group into big group until all of the samples were include in one group. Then draw a dendrogram for those process.</p>
+<p>The following issue is that how to cluster samples? You might set a cut-off and directly get the group from the dendrogram. However, sometimes you were ordered to cluster the samples into certain numbers of groups such as three. In such situation, you need K means cluster analysis.</p>
+<p>The basic idea behind the K means is that generate three virtual samples and calculate the distances between those three virtual samples and all of the other samples. There would be three values for each samples. Choose the smallest values and class that sample into this group. Then your samples were classified into three groups. You need to calculate the center of those three groups and get three new virtual samples. Repeat such process until the group members unchanged and you get your samples classified.</p>
+<p>OK, the basic idea behind the cluster analysis could be summarized as define the distances, set your cut-off and find the group. By this way, you might show potential relationships among samples.</p>
+</div>
+<div id="plsda" class="section level2" number="10.5">
+<h2><span class="header-section-number">10.5</span> PLSDA</h2>
+<p>PLS-DA, OPLS-DA and HPSO-OPLS-DA <span class="citation">(<a href="references.html#ref-yang2017a" role="doc-biblioref">Qin Yang et al. 2017</a>)</span> could be used.</p>
+<p>Partial least squares discriminant analysis(PLSDA) was first used in the 1990s. However, Partial least squares(PLS) was proposed in the 1960s by Hermann Wold. Principal components analysis produces the weight matrix reflecting the covariance structure between the variables, while partial least squares produces the weight matrix reflecting the covariance structure between the variables and classes. After rotation by weight matrix, the new variables would contain relationship with classes.</p>
+<p>The classification performance of PLSDA is identical to linear discriminant analysis(LDA) if class sizes are balanced, or the columns are adjusted according to the mean of the class mean. If the number of variables exceeds the number of samples, LDA can be performed on the principal components. Quadratic discriminant analysis(QDA) could model nonlinearity relationship between variables while PLSDA is better for collinear variables. However, as a classifier, there is little advantage for PLSDA. The advantages of PLSDA is that this modle could show relationship between variables, which is not the goal of regular classifier.</p>
+<p>Different algorithms <span class="citation">(<a href="references.html#ref-andersson2009" role="doc-biblioref">Andersson 2009</a>)</span> for PLSDA would show different score, while PCA always show the same score with fixed algorithm. For PCA, both new variables and classes are orthognal. However, for PLS(Wold), only new classes are orthognal. For PLS(Martens), only new variables are orthognal. This paper show the details of using such methods <span class="citation">(<a href="references.html#ref-brereton2018" role="doc-biblioref">Brereton and Lloyd 2018</a>)</span>.</p>
+<p>Sparse PLS discriminant analysis(sPLS-DA) make a L1 penal on the variable selection to remove the influences from unrelated variables, which make sense for high-throughput omics data <span class="citation">(<a href="references.html#ref-lêcao2011" role="doc-biblioref">Lê Cao, Boitard, and Besse 2011</a>)</span>.</p>
+<p>For o-PLS-DA, s-plot could be used to find features<span class="citation">(<a href="references.html#ref-wiklund2008" role="doc-biblioref">Wiklund et al. 2008</a>)</span>.</p>
+</div>
+<div id="software-2" class="section level2" number="10.6">
+<h2><span class="header-section-number">10.6</span> Software</h2>
 <ul>
-<li><p>Petroleum industry bring mass spectrometry from physics to chemistry</p></li>
-<li><p>The first commercial mass spectrometer is from Consolidated Engineering Corp to analysis simple gas mixtures from petroleum</p></li>
-<li><p>In World War II, U.S. use mass spectrometer to separate and enrich isotopes of uranium in Manhattan Project</p></li>
-<li><p>U.S. also use mass spectrometer for organic compounds during wartime and extend the application of mass spectrometer</p></li>
-<li><p>1946, TOF, William E. Stephens</p></li>
-<li><p>1970s, quadrupole mass analyzer</p></li>
-<li><p>1970s, R. Graham Cooks developed mass-analyzed ion kinetic energy spectrometry, or MIKES to make MRM analysis for multi-stage mass sepctrometry</p></li>
-<li><p>1980s, MALDI rescue TOF and mass spectrometry move into biological application</p></li>
-<li><p>1990s, Orbitrap mass spectrometry</p></li>
-<li><p>2010s, Aperture Coding mass spectrometry</p></li>
+<li><p><a href="https://github.com/xia-lab/MetaboAnalystR">MetaboAnalystR</a> <span class="citation">(<a href="references.html#ref-chong2019" role="doc-biblioref">Chong, Wishart, and Xia 2019</a>)</span></p></li>
+<li><p><a href="http://caret.r-forge.r-project.org/">caret</a> could employ more than 200 statistical models in a general framework to build/select models. You could also show the variable importance for some of the models.</p></li>
+<li><p><a href="https://cran.r-project.org/web/packages/caretEnsemble/index.html">caretEnsemble</a> Functions for creating ensembles of caret models</p></li>
+<li><p><a href="https://cran.r-project.org/web/packages/pROC/index.html">pROC</a> Tools for visualizing, smoothing and comparing receiver operating characteristic (ROC curves). (Partial) area under the curve (AUC) can be compared with statistical tests based on U-statistics or bootstrap. Confidence intervals can be computed for (p)AUC or ROC curves.</p></li>
+<li><p><a href="https://cran.r-project.org/web/packages/gWQS/index.html">gWQS</a> Fits Weighted Quantile Sum (WQS) regressions for continuous, binomial, multinomial and count outcomes.</p></li>
 </ul>
-</div>
-<div id="history-of-metabolomcis" class="section level3" number="1.1.2">
-<h3><span class="header-section-number">1.1.2</span> History of Metabolomcis</h3>
-<p>You could check this report<span class="citation">(<a href="references.html#ref-baker2011" role="doc-biblioref">Baker 2011</a>)</span>. According to this book section<span class="citation">(<a href="references.html#ref-kusonmano2016" role="doc-biblioref">Kusonmano, Vongsangnak, and Chumnanpuen 2016a</a>)</span>:</p>
-<div class="figure"><span id="fig:history2"></span>
-<img src="images/metahistory.jpg" alt="Metabolomics timeline during pre- and post-metabolomics era" width="90%" />
-<p class="caption">
-Figure 1.3: Metabolomics timeline during pre- and post-metabolomics era
-</p>
-</div>
-<ul>
-<li><p>2000-1500 BC some traditional Chinese doctors who began to evaluate the glucose level in urine of diabetic patients using ants</p></li>
-<li><p>300 BC ancient Egypt and Greece that traditionally determine the urine taste to diagnose human diseases</p></li>
-<li><p>1913 Joseph John Thomson and Francis William Aston mass spectrometry</p></li>
-<li><p>1946 Felix Bloch and Edward Purcell Nuclear magnetic resonance</p></li>
-<li><p>late 1960s chromatographic separation technique</p></li>
-<li><p>1971 Pauling’s research team “Quantitative Analysis of Urine Vapor and Breath by Gas–Liquid Partition Chromatography”</p></li>
-<li><p>Willmitzer and his research team pioneer group in metabolomics which suggested the promotion of the metabolomics field and its potential applications from agriculture to medicine and other related areas in the biological sciences</p></li>
-<li><p>2007 Human Metabolome Project consists of databases of approximately 2500 metabolites, 1200 drugs, and 3500 food components</p></li>
-<li><p>post-metabolomics era high-throughput analytical techniques</p></li>
-</ul>
-</div>
-<div id="defination" class="section level3" number="1.1.3">
-<h3><span class="header-section-number">1.1.3</span> Defination</h3>
-<p>Metabolomics is actually a comprehensive analysis with identification and quantification of both known and unknown compounds in an unbiased way. Metabolic fingerprinting is working on fast classification of samples based on metabolite data without quantifying or identification of the metabolites. Metabolite profiling always need a pre-defined metabolites list to be quantification<span class="citation">(<a href="references.html#ref-madsen2010" role="doc-biblioref">Madsen, Lundstedt, and Trygg 2010a</a>)</span>.</p>
-<p>Meanwhile, targeted and untargeted metabolomics are also used in publicaitons. For targeted metabolomics, the majority of the molecules within a biosynthetic pathway or a defined group of related metabolites are determined. Sometimes broad collection of known metabolites could also be referred as targeted analysis. Untargeted analysis detect all of possible metabolites unbiased in the samples of interest. A similar concept called non-targeted analysis/screen is actually describe the similar studies or workflow.</p>
-</div>
-</div>
-<div id="reviews-and-tutorials" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> Reviews and tutorials</h2>
-<p>Some nice reviews and tutorials related to this workflow could be found in those papers or directly online:</p>
-<div id="workflow" class="section level3" number="1.2.1">
-<h3><span class="header-section-number">1.2.1</span> Workflow</h3>
-<p>Those papers are recommended<span class="citation">(<a href="references.html#ref-gonzález-riano2020" role="doc-biblioref">González-Riano et al. 2020</a>; <a href="references.html#ref-pezzatti2020" role="doc-biblioref">Pezzatti et al. 2020</a>; <a href="references.html#ref-liu2019" role="doc-biblioref">X. Liu et al. 2019</a>; <a href="references.html#ref-barnes2016a" role="doc-biblioref">Barnes et al. 2016a</a>; <a href="references.html#ref-cajka2016" role="doc-biblioref">Cajka and Fiehn 2016</a>; <a href="references.html#ref-gika2014" role="doc-biblioref">Gika et al. 2014</a>; <a href="references.html#ref-theodoridis2012" role="doc-biblioref">Theodoridis et al. 2012</a>; <a href="references.html#ref-lu2008" role="doc-biblioref">X. Lu and Xu 2008</a>; <a href="references.html#ref-fiehn2002" role="doc-biblioref">Fiehn 2002</a>)</span> for general metabolomics related topics.</p>
-<ul>
-<li>For targeted metabolomics, you could check those reviews<span class="citation">(<a href="references.html#ref-griffiths2010a" role="doc-biblioref">Griffiths et al. 2010</a>; <a href="references.html#ref-lu2008a" role="doc-biblioref">W. Lu, Bennett, and Rabinowitz 2008</a>; <a href="references.html#ref-weljie2006" role="doc-biblioref">Weljie et al. 2006</a>; <a href="references.html#ref-yuan2012" role="doc-biblioref">Yuan et al. 2012</a>; <a href="references.html#ref-zhou2016b" role="doc-biblioref">Zhou and Yin 2016</a>; <a href="references.html#ref-begou2017b" role="doc-biblioref">Begou et al. 2017b</a>)</span>.</li>
-</ul>
-</div>
-<div id="data-analysis" class="section level3" number="1.2.2">
-<h3><span class="header-section-number">1.2.2</span> Data analysis</h3>
-<p>You could firstly read those papers<span class="citation">(<a href="references.html#ref-barnes2016" role="doc-biblioref">Barnes et al. 2016b</a>; <a href="references.html#ref-kusonmano2016a" role="doc-biblioref">Kusonmano, Vongsangnak, and Chumnanpuen 2016b</a>; <a href="references.html#ref-madsen2010a" role="doc-biblioref">Madsen, Lundstedt, and Trygg 2010b</a>; <a href="references.html#ref-uppal2016a" role="doc-biblioref">Uppal et al. 2016a</a>; <a href="references.html#ref-alonso2015" role="doc-biblioref">Alonso, Marsal, and Julià 2015</a>)</span> to get the concepts and issues for data analysis in metabolomics. Then this paper<span class="citation">(<a href="references.html#ref-gromski2015a" role="doc-biblioref">Gromski et al. 2015</a>)</span> could be treated as a step-by-step tutorial.</p>
-<ul>
-<li><p>For annotation, this paper<span class="citation">(<a href="references.html#ref-domingo-almenara2018" role="doc-biblioref">Domingo-Almenara, Montenegro-Burke, Benton, et al. 2018a</a>)</span> is a well organized review.</p></li>
-<li><p>For database used in metabolomics, you could check this review<span class="citation">(<a href="references.html#ref-vinaixa2016" role="doc-biblioref">Vinaixa et al. 2016</a>)</span>.</p></li>
-<li><p>For metabolomics software, check this series of reviews for each year<span class="citation">(<a href="references.html#ref-misra2016" role="doc-biblioref">Misra and van der Hooft 2016</a>; <a href="references.html#ref-misra2017" role="doc-biblioref">Misra, Fahrmann, and Grapov 2017</a>; <a href="references.html#ref-misra2018" role="doc-biblioref">Misra 2018</a>)</span>.</p></li>
-<li><p>For open sourced software, those reviews<span class="citation">(<a href="references.html#ref-spicer2017" role="doc-biblioref">Spicer et al. 2017</a>; <a href="references.html#ref-dryden2017" role="doc-biblioref">Dryden et al. 2017</a>)</span> could be a good start.</p></li>
-<li><p>For DIA or DDA metabolomics, check those papers<span class="citation">(<a href="references.html#ref-fenaille2017" role="doc-biblioref">Fenaille et al. 2017a</a>; <a href="references.html#ref-bilbao2015" role="doc-biblioref">Bilbao et al. 2015a</a>)</span>.</p></li>
-</ul>
-<p>Here is the slides for metabolomics data analysis workshop and I have made presentations twice in UWaterloo and UC Irvine.</p>
-<ul>
-<li><p><a href="http://yufree.github.io/presentation/metabolomics/introduction#1">Introduction</a></p></li>
-<li><p><a href="http://yufree.github.io/presentation/metabolomics/StatisticalAnalysis#1">Statistical Analysis</a></p></li>
-<li><p><a href="http://yufree.github.io/presentation/metabolomics/BatchCorrection#1">Batch Correction</a></p></li>
-<li><p><a href="http://yufree.github.io/presentation/metabolomics/Annotation#1">Annotation</a></p></li>
-<li><p><a href="http://yufree.github.io/presentation/metabolomics/demo#1">Demo</a></p></li>
-</ul>
-</div>
-<div id="application" class="section level3" number="1.2.3">
-<h3><span class="header-section-number">1.2.3</span> Application</h3>
-<ul>
-<li><p>For environmental research related metabolomics or exposome, check those papers<span class="citation">(<a href="references.html#ref-matich2019a" role="doc-biblioref">Matich et al. 2019</a>; <a href="references.html#ref-tang2020" role="doc-biblioref">Tang et al. 2020</a>; <a href="references.html#ref-warth2017" role="doc-biblioref">Warth et al. 2017</a>; <a href="references.html#ref-bundy2009" role="doc-biblioref">Bundy, Davey, and Viant 2009</a>)</span>.</p></li>
-<li><p>For toxicology, check this paper<span class="citation">(<a href="references.html#ref-viant2019" role="doc-biblioref">Mark R. Viant et al. 2019</a>)</span>.</p></li>
-<li><p>Check this piece<span class="citation">(<a href="references.html#ref-wishart2016" role="doc-biblioref">Wishart 2016</a>)</span> for drug discovery and precision medicine.</p></li>
-<li><p>For food chemistry, check this paper<span class="citation">(<a href="references.html#ref-castro-puyana2017" role="doc-biblioref">Castro-Puyana et al. 2017</a>)</span>, this paper for livestock<span class="citation">(<a href="references.html#ref-goldansaz2017" role="doc-biblioref">Goldansaz et al. 2017</a>)</span> and those papers for nutrition<span class="citation">(<a href="references.html#ref-allam-ndoul2016" role="doc-biblioref">Allam-Ndoul et al. 2016</a>; <a href="references.html#ref-jones2012" role="doc-biblioref">Jones, Park, and Ziegler 2012</a>; <a href="references.html#ref-müller2020a" role="doc-biblioref">Müller and Bosy-Westphal 2020</a>)</span>.</p></li>
-<li><p>For disease related metabolomics such as oncology<span class="citation">(<a href="references.html#ref-spratlin2009" role="doc-biblioref">Spratlin, Serkova, and Eckhardt 2009</a>)</span>, Cardiovascular<span class="citation">(<a href="references.html#ref-cheng2017" role="doc-biblioref">Cheng et al. 2017</a>)</span> . This paper<span class="citation">(<a href="references.html#ref-kennedy2018" role="doc-biblioref">Kennedy et al. 2018</a>)</span> cover the metabolomics realted clinic research.</p></li>
-<li><p>For plant science, check those paper<span class="citation">(<a href="references.html#ref-sumner2003" role="doc-biblioref">Lloyd W. Sumner, Mendes, and Dixon 2003</a>; <a href="references.html#ref-jorge2016a" role="doc-biblioref">Jorge, Mata, and António 2016a</a>; <a href="references.html#ref-hansen2018a" role="doc-biblioref">Hansen and Lee 2018a</a>)</span>.</p></li>
-<li><p>For single cell metabolomics analysis, check here<span class="citation">(<a href="references.html#ref-fessenden2016" role="doc-biblioref">Fessenden 2016</a>; <a href="references.html#ref-zenobi2013" role="doc-biblioref">Zenobi 2013</a>; <a href="references.html#ref-ali2019a" role="doc-biblioref">Ali et al. 2019</a>; <a href="references.html#ref-hansen2018" role="doc-biblioref">Hansen and Lee 2018b</a>)</span>.</p></li>
-<li><p>For gut microbiota, check here<span class="citation">(<a href="references.html#ref-smirnov2016" role="doc-biblioref">Smirnov et al. 2016</a>)</span>.</p></li>
-</ul>
-</div>
-<div id="challenge" class="section level3" number="1.2.4">
-<h3><span class="header-section-number">1.2.4</span> Challenge</h3>
-<p>General challenge for metabolomics studies could be found here <span class="citation">(<a href="references.html#ref-schymanski2017" role="doc-biblioref">Schymanski and Williams 2017</a>; <a href="references.html#ref-uppal2016" role="doc-biblioref">Uppal et al. 2016b</a>; <a href="references.html#ref-schrimpe-rutledge2016" role="doc-biblioref">Schrimpe-Rutledge et al. 2016</a>; <a href="references.html#ref-wolfender2015" role="doc-biblioref">Wolfender et al. 2015</a>)</span>.</p>
-<ul>
-<li><p>For reproducible research, check those papers <span class="citation">(<a href="references.html#ref-verhoeven2020" role="doc-biblioref">Verhoeven, Giera, and Mayboroda 2020</a>; <a href="references.html#ref-mangul2019" role="doc-biblioref">Mangul et al. 2019</a>; <a href="references.html#ref-wallach2018" role="doc-biblioref">Wallach, Boyack, and Ioannidis 2018</a>; <a href="references.html#ref-hites2018" role="doc-biblioref">Hites and Jobst 2018</a>; <a href="references.html#ref-considine2017" role="doc-biblioref">Considine et al. 2017</a>; <a href="references.html#ref-sarpe2017" role="doc-biblioref">Sarpe and Schriemer 2017</a>)</span>.</p></li>
-<li><p>Quantitative Metabolomics related issues could be found here<span class="citation">(<a href="references.html#ref-kapoore2016b" role="doc-biblioref">Kapoore and Vaidyanathan 2016</a>; <a href="references.html#ref-jorge2016aa" role="doc-biblioref">Jorge, Mata, and António 2016b</a>)</span>.</p></li>
-<li><p>For quality control issues, check here<span class="citation">(<a href="references.html#ref-dudzik2018" role="doc-biblioref">Dudzik et al. 2018</a>; <a href="references.html#ref-siskos2017" role="doc-biblioref">Siskos et al. 2017</a>; <a href="references.html#ref-sumner2007" role="doc-biblioref">Lloyd W. Sumner et al. 2007</a>)</span>.</p></li>
-</ul>
-</div>
-</div>
-<div id="trends-in-metabolomics" class="section level2" number="1.3">
-<h2><span class="header-section-number">1.3</span> Trends in Metabolomics</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="introduction.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtrendsR)</span>
-<span id="cb1-2"><a href="introduction.html#cb1-2" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">gtrends</span>(<span class="fu">c</span>(<span class="st">&quot;metabolomics&quot;</span>, <span class="st">&quot;metabolomics&quot;</span>), <span class="at">geo =</span> <span class="fu">c</span>(<span class="st">&quot;CA&quot;</span>,<span class="st">&quot;US&quot;</span>))</span>
-<span id="cb1-3"><a href="introduction.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(res)</span></code></pre></div>
-<p><img src="Metabolomics_files/figure-html/gtrends-1.png" width="672" /></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="introduction.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rentrez)</span>
-<span id="cb2-2"><a href="introduction.html#cb2-2" aria-hidden="true" tabindex="-1"></a>papers_by_year <span class="ot">&lt;-</span> <span class="cf">function</span>(years, search_term){</span>
-<span id="cb2-3"><a href="introduction.html#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">sapply</span>(years, <span class="cf">function</span>(y) <span class="fu">entrez_search</span>(<span class="at">db=</span><span class="st">&quot;pubmed&quot;</span>,<span class="at">term=</span>search_term, <span class="at">mindate=</span>y, <span class="at">maxdate=</span>y, <span class="at">retmax=</span><span class="dv">0</span>)<span class="sc">$</span>count))</span>
-<span id="cb2-4"><a href="introduction.html#cb2-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-5"><a href="introduction.html#cb2-5" aria-hidden="true" tabindex="-1"></a>years <span class="ot">&lt;-</span> <span class="dv">1987</span><span class="sc">:</span><span class="dv">2018</span></span>
-<span id="cb2-6"><a href="introduction.html#cb2-6" aria-hidden="true" tabindex="-1"></a>total_papers <span class="ot">&lt;-</span> <span class="fu">papers_by_year</span>(years, <span class="st">&quot;&quot;</span>)</span>
-<span id="cb2-7"><a href="introduction.html#cb2-7" aria-hidden="true" tabindex="-1"></a>omics <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;genomic&quot;</span>, <span class="st">&quot;epigenomic&quot;</span>,  <span class="st">&quot;metagenomic&quot;</span>, <span class="st">&quot;proteomic&quot;</span>, <span class="st">&quot;transcriptomic&quot;</span>,<span class="st">&quot;metabolomics&quot;</span>,<span class="st">&quot;exposome&quot;</span>, <span class="st">&quot;pharmacogenomic&quot;</span>, <span class="st">&quot;connectomic&quot;</span>)</span>
-<span id="cb2-8"><a href="introduction.html#cb2-8" aria-hidden="true" tabindex="-1"></a>trend_data <span class="ot">&lt;-</span> <span class="fu">sapply</span>(omics, <span class="cf">function</span>(t) <span class="fu">papers_by_year</span>(years, t))</span>
-<span id="cb2-9"><a href="introduction.html#cb2-9" aria-hidden="true" tabindex="-1"></a>trend_props <span class="ot">&lt;-</span> trend_data<span class="sc">/</span>total_papers</span>
-<span id="cb2-10"><a href="introduction.html#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape)</span>
-<span id="cb2-11"><a href="introduction.html#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb2-12"><a href="introduction.html#cb2-12" aria-hidden="true" tabindex="-1"></a>trend_df <span class="ot">&lt;-</span> <span class="fu">melt</span>(<span class="fu">data.frame</span>(years, trend_data), <span class="at">id.vars=</span><span class="st">&quot;years&quot;</span>)</span>
-<span id="cb2-13"><a href="introduction.html#cb2-13" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(trend_df, <span class="fu">aes</span>(years, value, <span class="at">colour=</span>variable))</span>
-<span id="cb2-14"><a href="introduction.html#cb2-14" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span> <span class="fu">scale_y_log10</span>(<span class="st">&quot;number of papers&quot;</span>)</span></code></pre></div>
-<p><img src="Metabolomics_files/figure-html/rentrez-1.png" width="672" /></p>
-</div>
-<div id="workflow-1" class="section level2" number="1.4">
-<h2><span class="header-section-number">1.4</span> Workflow</h2>
-<div id="htmlwidget-ac726e5c551f27a339ce" style="width:300px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ac726e5c551f27a339ce">{"x":{"diagram":"digraph workflow {\nnode [shape = box]\nA [label = \"raw data\"]\nB [label = \"open source format\"]\nC [label = \"DoE folder\"]\nD [label = \"peaks list\"]\nE [label = \"retention time correction\"]\nF [label = \"peaks grouping\"]\nG [label = \"peaks filling\"]\nH [label = \"raw peaks\"]\nI [label = \"data visulization\"]\nJ [label = \"batch effects correction\"]\nK [label = \"corrected peaks\"]\nL [label = \"annotation\"]\nM [label = \"metabolomics pathway analysis\"]\nN [label = \"omics analysis\"]\nO [label = \"biomarkers discovery/diagnoise\"]\n\nA -> B -> C -> D -> E -> F -> G -> H\nH -> I\nI -> J\nH -> J -> K -> L\nL -> M -> N\nL -> O\n                  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 
 </div>
 </div>
@@ -489,8 +458,8 @@ Figure 1.3: Metabolomics timeline during pre- and post-metabolomics era
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="experimental-designdoe.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="peaks-normalization.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="exposome.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -521,7 +490,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/yufree/metaworkflow/edit/master/01-introduction.Rmd",
+"link": "https://github.com/yufree/metaworkflow/edit/master/10-statistics.Rmd",
 "text": "Edit"
 },
 "history": {
