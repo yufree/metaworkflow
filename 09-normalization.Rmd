@@ -8,27 +8,25 @@ bibliography: references.bib
 
 Variances among the samples across all the extracted peaks might be affected by factors other than the experiment design. There are three types of those batch effects: Monotone, Block and Mixed.
 
--   Monotone would increase/decrease with the injection order or batchs.
+-   Monotone would increase/decrease with the injection order or batches.
 
 ```{r echo=FALSE,out.width='61.8%'}
-library(ggplot2)
-# increasing batch
 batch <- seq(0,9,length.out = 10)
 group <- factor(c(rep(1,5),rep(2,5)))
-ind <- factor(c(1:10))
-data <- cbind.data.frame(group,batch,ind)
-ggplot(data,aes(ind,batch,fill = group)) + geom_col()
+names(batch) <- as.character(c(1:10))
+barplot(batch,col=group)
+legend('topleft',legend = c('Batch1','Batch2'),col=c(1,2),pch=19,bty = 'n')
 ```
 
--   Block would be system shift among different batchs.
+-   Block would be system shift among different batches.
 
 ```{r echo=FALSE,out.width='61.8%'}
 # Block batch
 batch <- c(2,2,7,7,7,7,7,3,3,3)
 group <- factor(c(rep(1,5),rep(2,5)))
-ind <- factor(c(1:10))
-data <- cbind.data.frame(group,batch,ind)
-ggplot(data,aes(ind,batch,fill = group)) + geom_col()
+names(batch) <- as.character(c(1:10))
+barplot(batch,col=group)
+legend('topleft',legend = c('Batch1','Batch2'),col=c(1,2),pch=19,bty = 'n')
 ```
 
 -   Mixed would be the combination of monotone and block batch effects.
@@ -37,9 +35,9 @@ ggplot(data,aes(ind,batch,fill = group)) + geom_col()
 # Mixed batch
 batch <- c(2,2,7,7,7,7,7,3,3,3) + seq(0,9,length.out = 10)
 group <- factor(c(rep(1,5),rep(2,5)))
-ind <- factor(c(1:10))
-data <- cbind.data.frame(group,batch,ind)
-ggplot(data,aes(ind,batch,fill = group)) + geom_col() 
+names(batch) <- as.character(c(1:10))
+barplot(batch,col=group)
+legend('topleft',legend = c('Batch1','Batch2'),col=c(1,2),pch=19,bty = 'n')
 ```
 
 Meanwhile, different compounds would suffer different type of batch effects. In this case, the normalization or batch correction should be done peak by peak.
@@ -60,13 +58,11 @@ getsample <- function(n){
 }
 
 d <- getsample(30)
-df <- expand.grid(Compound = as.character(c(1:30)),index = as.character(c(1:10)))
-df$intensity <- c(d)
-ggplot(data = df, aes(x = index, y = Compound)) +
-  geom_tile(aes(fill = intensity)) 
+rownames(d) <- paste('Compound',c(1:30))
+heatmap(d, Colv = NA, Rowv = NA, scale="column")
 ```
 
-## Batch effects visulization
+## Batch effects visualization
 
 Any correction might introduce bias. We need to make sure there are patterns which different from our experimental design. Pooled QC samples should be clustered on PCA score plot.
 
@@ -113,19 +109,17 @@ ins <- batch+con
 re <- t.test(ins~group)
 ```
 
-## post hoc data normalization
+## *post hoc* data normalization
 
-To make the samples comparable, normailization across the samples are always needed when the experiment part is done. Batch effect should have patterns, otherwise just noise. Correction is possible by data analysis/randomized experimental design. There are more than 20 methods to make normalization. We could devided those methods into two category: unsupervised and supervised.
+To make the samples comparable, normalization across the samples are always needed when the experiment part is done. Batch effect should have patterns other than experimental design, otherwise just noise. Correction is possible by data analysis/randomized experimental design. There are numerous methods to make normalization with their combination. We could divided those methods into two categories: unsupervised and supervised.
 
 Unsupervised methods only consider the normalization peaks intensity distribution across the samples. For example, quantile calibration try to make the intensity distribution among the samples similar. Such methods are preferred to explore the inner structures of the samples. Internal standards or pool QC samples also belong to this category. However, it's hard to take a few peaks standing for all peaks extracted.
 
 Supervised methods will use the group information or batch information in experimental design to normalize the data. A linear model is always used to model the unwanted variances and remove them for further analysis.
 
-Since the real batch effects are always unknown, it's hard to make validation for different normalization methods. Wu et.al preferred to make comparision between new methods and conventional methods[@wu2016]. Li et.al developed NOREVA to make comparision among 25 correction method[@li2017a]. Another idea is use spiked-in samples to validate the methods[@franceschi2012], which might be good for targeted analysis instead of non-targeted analysis.
+Since the real batch effects are always unknown, it's hard to make validation for different normalization methods. Li et.al developed NOREVA to make comparision among 25 correction method [@li2017a] and a recently updates make this numbers to 168 [@yang2020]. MetaboDrift also contain some methods for batch correction in excel [@thonusin2017]. Another idea is use spiked-in samples to validate the methods [@franceschi2012] , which might be good for targeted analysis instead of non-targeted analysis.
 
 Relative log abundance (RLA) plots[@delivera2012] and heatmap often used to show the variances among the samples.
-
-[@thonusin2017] some methods for batch correction in excel
 
 ### Unsupervised methods
 
@@ -183,7 +177,7 @@ $$\hat I_{p,s,b} = \frac{I_{p,s,b} - mean(I_{p,b})}{mean(I_{p,b})} $$
 
 #### Quantile
 
-The idea of quantile calibration is that alignment of the intensities in certain samples according to quantiles in each sample.
+The idea of quantile calibration is that alignment of the intensities in certain samples according to quantile in each sample.
 
 Here is the demo:
 
@@ -201,7 +195,7 @@ cor <- cor[order(order(a))]
 hist(cor,col = 'red', breaks = 50, add=T)
 ```
 
-#### Ratio based calibraton
+#### Ratio based calibration
 
 This method calibrates samples by the ratio between qc samples in all samples and in certain batch.For peak p of sample s in certain batch b, the corrected abundance I is:
 
@@ -243,7 +237,7 @@ image(dfcor)
 
 $$\hat I_{p,s} = \frac{I_{p,s} * median(I_{IS})}{I_{IS,s}}$$
 
-Some methods also use pooled calibration samples and multiple internal standard strategy to correct the data[@vanderkloet2009]. Also some methods only use QC samples to handle the data[@kuligowski2015].
+Some methods also use pooled calibration samples and multiple internal standard strategy to correct the data [@vanderkloet2009a; @sysi-aho2007]. Also some methods only use QC samples to handle the data [@kuligowski2015a].
 
 ### Supervised methods
 
@@ -253,11 +247,11 @@ Considering the batch effect of injection order, regress the data by a linear mo
 
 #### Batch Normalizer
 
-Use the total abundance scale and then fit with the regression line[@wang2013].
+Use the total abundance scale and then fit with the regression line [@wang2013].
 
 #### Surrogate Variable Analysis(SVA)
 
-We have a data matrix(M\*N) with M stands for indentity peaks from one sample and N stand for individual samples. For one sample, $X = (x_{i1},...,x_{in})^T$ stands for the normalized intensities of peaks. We use $Y = (y_i,...,y_m)^T$ stands for the group infomation of our data. Then we could build such modles:
+We have a data matrix(M\*N) with M stands for identity peaks from one sample and N stand for individual samples. For one sample, $X = (x_{i1},...,x_{in})^T$ stands for the normalized intensities of peaks. We use $Y = (y_i,...,y_m)^T$ stands for the group information of our data. Then we could build such models:
 
 $$x_{ij} = \mu_i + f_i(y_i) + e_{ij}$$
 
@@ -265,11 +259,11 @@ $\mu_i$ stands for the baseline of the peak intensities in a normal state. Then 
 
 $$f_i(y_i) = E(x_{ij}|y_j) - \mu_i$$
 
-stands for the biological variations caused by the our group, for example, whether treated by pollutions or not.
+stands for the biological variations caused by the our group, for example, whether treated by exposure or not.
 
 However, considering the batch effects, the real model could be:
 
-$$x_{ij} = \mu_i + f_i(y_i) + \sum_{l = 1}^L \gamma_{li}p_{lj} + e_{ij}^*$$ $\gamma_{li}$ stands for the peak-specific coefficient for potentical factor $l$. $p_{lj}$ stands for the potential factors across the samples. Actually, the error item $e_{ij}$ in real sample could always be decomposed as $e_{ij} = \sum_{l = 1}^L \gamma_{li}p_{lj} + e_{ij}^*$ with $e_{ij}^*$ standing for the real random error in certain sample for certain peak.
+$$x_{ij} = \mu_i + f_i(y_i) + \sum_{l = 1}^L \gamma_{li}p_{lj} + e_{ij}^*$$ $\gamma_{li}$ stands for the peak-specific coefficient for potential factor $l$. $p_{lj}$ stands for the potential factors across the samples. Actually, the error item $e_{ij}$ in real sample could always be decomposed as $e_{ij} = \sum_{l = 1}^L \gamma_{li}p_{lj} + e_{ij}^*$ with $e_{ij}^*$ standing for the real random error in certain sample for certain peak.
 
 We could not get the potential factors directly. Since we don't care the details of the unknown factors, we could estimate orthogonal vectors $h_k$ standing for such potential factors. Thus we have:
 
@@ -324,23 +318,23 @@ $$p_k = \frac{\#{T_k^{0b}\geq T_k;b=1,...,B }}{B}$$
 
 -   Regress each $e_k$ on $x_i$, get the p-value for the association.
 
--   Set $\pi_0$ as the proportion of the peak intensitity $x_i$ not associate with $e_k$ and find the numbers $\hat m =[1-\hat \pi_0 \times m]$ and the indices of the peaks associated with the eigenvalues
+-   Set $\pi_0$ as the proportion of the peak intensity $x_i$ not associate with $e_k$ and find the numbers $\hat m =[1-\hat \pi_0 \times m]$ and the index of the peaks associated with the eigenvalues
 
--   Form the matrix $\hat m_1 \times N$, this matrix$X_r$ stand for the potiential variables. As was done for R, get the eigengents of $X_r$ and denote these by $e_j^r$
+-   Form the matrix $\hat m_1 \times N$, this matrix$X_r$ stand for the potential variables. As was done for R, get the eigengents of $X_r$ and denote these by $e_j^r$
 
 -   Let $j^* = argmax_{1\leq j \leq n}cor(e_k,e_j^r)$ and set $\hat h_k=e_j^r$. Set the estimate of the surrogate variable to be the eigenvalue of the reduced matrix most correlated with the corresponding residual eigenvalue. Since the reduced matrix is enriched for peaks associated with this residual eigenvalue, this is a principled choice for the estimated surrogate variable that allows for correlation with the primary variable.
 
--   Employ the $\mu_i + f_i(y_i) + \sum_{k = 1}^K \gamma_{ki}\hat h_{kj} + e_{ij}$ as te estimate of the ideal model $\mu_i + f_i(y_i) + \sum_{k = 1}^K \gamma_{ki}h_{kj} + e_{ij}$
+-   Employ the $\mu_i + f_i(y_i) + \sum_{k = 1}^K \gamma_{ki}\hat h_{kj} + e_{ij}$ as the estimate of the ideal model $\mu_i + f_i(y_i) + \sum_{k = 1}^K \gamma_{ki}h_{kj} + e_{ij}$
 
-This method could found the potentical unwanted variables for the data. SVA were introduced by Jeff Leek[@leek2012; @leek2007; @leek2008] and EigenMS package implement SVA with modifications including analysis of data with missing values that are typical in LC-MS experiments[@karpievitch2014a].
+This method could found the potential unwanted variables for the data. SVA were introduced by Jeff Leek [@leek2008; @leek2007; @leek2012] and EigenMS package implement SVA with modifications including analysis of data with missing values that are typical in LC-MS experiments [@karpievitch2014a].
 
 #### RUV (Remove Unwanted Variation)
 
-This method's performance is similar to SVA. Instead find surrogate variable from the whole dataset. RUA use control or pool QC to find the unwanted variances and remove them to find the peaks related to experimental design. However, we could also empirically estimate the control peaks by linear mixed model. RUA-random[@livera2015] furthor use linear mixed model to estimate the variances of random error. This method could be used with suitable control, which is commen in metabolomics DoE.
+This method's performance is similar to SVA. Instead find surrogate variable from the whole dataset. RUA use control or pool QC to find the unwanted variances and remove them to find the peaks related to experimental design. However, we could also empirically estimate the control peaks by linear mixed model. RUA-random [@livera2015; @delivera2012a] further use linear mixed model to estimate the variances of random error. This method could be used with suitable control, which is common in metabolomics DoE.
 
 #### RRmix
 
-RRmix also use a latent factor models correct the data[@jr2017]. This method could be treated as linear mixed model version SVA. No control samples are required and the unwanted variances could be removed by factor analysis. This method might be the best choise to remove the unwanted variables with commen experiment design.
+RRmix also use a latent factor models correct the data [@jr2017]. This method could be treated as linear mixed model version SVA. No control samples are required and the unwanted variances could be removed by factor analysis. This method might be the best choice to remove the unwanted variables with common experiment design.
 
 ## Method to validate the normalization
 

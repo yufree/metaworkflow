@@ -2,7 +2,7 @@
 bibliography: references.bib
 ---
 
-# Common analysis methods for metabolomics
+# Statistical analysis
 
 The general purposes for metabolomics study are strongly associated with research goal. However, since metabolomics are usually performed in a non-targeted mode, statistical analysis methods are always started with the exploratory analysis. The basic target for an exploratory analysis is:
 
@@ -10,9 +10,9 @@ The general purposes for metabolomics study are strongly associated with researc
 
 -   Find the relationship among samples/group of samples.
 
-This is basically unsurpvised analysis.
+This is basically unsupervised analysis.
 
-However, sometimes we have group information which could be used to find biomarkers or correlationship between variables and groups or continous variables. This type of data need supervised methods to process. Before we talk the details of algorithms, let's cover some basic statistical concepts.
+However, sometimes we have group information which could be used to find biomarkers or correlationship between variables and groups or continuous variables. This type of data need supervised methods to process. Before we talk the details of algorithms, let's cover some basic statistical concepts.
 
 ## Basic Statistical Analysis
 
@@ -22,13 +22,13 @@ $$Statistic = f(sample_1,sample_2,...,sample_n)$$
 
 **Null Hypothesis Significance Testing (NHST)** is often used to make statistical inference. P value is the probability of certain statistics happens under H0 (pre-defined distribution).
 
-For omics studies, you should realise **Multiple Comparision** issue when you perform a lot of(more than 20) comparisions or tests at the same time. **False Discovery Rate(FDR) control** is required for multiple tests to make sure the results are not false positive. You could use Benjamini-Hochberg method to adjust raw p values or directly use Storey Q value to make FDR control.
+For omics studies, you should realize **Multiple Comparison** issue when you perform a lot of(more than 20) comparisons or tests at the same time. **False Discovery Rate(FDR) control** is required for multiple tests to make sure the results are not false positive. You could use Benjamini-Hochberg method to adjust raw p values or directly use Storey Q value to make FDR control.
 
-NHST is famous for the failure of p-value interpretation as well as multiple comparision issues. **Bayesian Hypothesis Testing** could be an options to cover some drawbacks of NHST. Bayesian Hypothesis Testing use Bayes factor to show the differences between null hypothesis and any other hypothesis.
+NHST is famous for the failure of p-value interpretation as well as multiple comparison issues. **Bayesian Hypothesis Testing** could be an options to cover some drawbacks of NHST. Bayesian Hypothesis Testing use Bayes factor to show the differences between null hypothesis and any other hypothesis.
 
 $$Bayes\ factor = \frac{p(D|Ha)}{p(D|H0)} = \frac{posterior\ odds}{prior\ odds}$$
 
-**Statistical model** use statistics to make prediction/explanation. Most of the statistical model need to be tuned for parpameters to show a better performance. Statistical model is build on real data and could be diagnosed by other general statistics such as $R^2$, $ROC curve$. When the models are built or compared, model selection could be preformed.
+**Statistical model** use statistics to make prediction/explanation. Most of the statistical model need to be tuned for parameters to show a better performance. Statistical model is build on real data and could be diagnosed by other general statistics such as $R^2$, $ROC curve$. When the models are built or compared, model selection could be preformed.
 
 $$Target = g(Statistic) = g(f(sample_1,sample_2,...,sample_n))$$
 
@@ -40,17 +40,17 @@ $$E[(y - \hat f)^2] = \sigma^2 + Var[\hat f] + Bias[\hat f]$$
 
 **Regularization** for models could also be used to find the model with best prediction performance. Rigid regression, LASSO or other general regularization could be employed to build a robust models.
 
-For supervised models, linear model and tree based model are two basic categories. **Linear model** could be useful to tell the independant or correlated relationship of variables and the influnces on the predicted variables. **Tree based model**, on the other hand, try to build a hierarchical structure for the variables such as bagging, random forest or boosting. Linear model could be treated as special case of tree based model with single layer. Other models like Support Vector Machine (SVM), Artificial Neural Network (ANN) or Deep Learning are also make various assumptions on the data. However, if you final target is prediction, you could try any of those models or even weighted combine their prediciton to make meta-prediction.
+For supervised models, linear model and tree based model are two basic categories. **Linear model** could be useful to tell the independent or correlated relationship of variables and the influences on the predicted variables. **Tree based model**, on the other hand, try to build a hierarchical structure for the variables such as bagging, random forest or boosting. Linear model could be treated as special case of tree based model with single layer. Other models like Support Vector Machine (SVM), Artificial Neural Network (ANN) or Deep Learning are also make various assumptions on the data. However, if you final target is prediction, you could try any of those models or even weighted combine their prediction to make meta-prediction.
 
 ## Differences analysis
 
 After we get corrected peaks across samples, the next step is to find the differences between two groups. Actually, you could perform ANOVA or Kruskal-Wallis Test for comparison among more than two groups. The basic idea behind statistic analysis is to find the meaningful differences between groups and extract such ions or peak groups.
 
-So how to find the differences? In most metabolomics software, such task is completed by a t-test and report p-value and fold changes. If you only compare two groups on one peaks, that's OK. However, if you compare two groups on thousands of peaks, statistic textbook would tell you to notice the false positive. For one comparasion, the confidence level is 0.05, which means 5% chances to get false positive result. For two comparasions, such chances would be $1-0.95^2$. For 10 comparasions, such chances would be $1-0.95^{10} = 0.4012631$. For 100 comparasions, such chances would be $1-0.95^{100} = 0.9940795$. You would almost certainly to make mistakes for your results.
+So how to find the differences? In most metabolomics software, such task is completed by a t-test and report p-value and fold changes. If you only compare two groups on one peaks, that's OK. However, if you compare two groups on thousands of peaks, statistic textbook would tell you to notice the false positive. For one comparison, the confidence level is 0.05, which means 5% chances to get false positive result. For two comparisons, such chances would be $1-0.95^2$. For 10 comparisons, such chances would be $1-0.95^{10} = 0.4012631$. For 100 comparisons, such chances would be $1-0.95^{100} = 0.9940795$. You would almost certainly to make mistakes for your results.
 
-In statistics, the false discovery rate(FDR) control is always mentioned in omics studies for mutiple tests. I suggested using q-values to control FDR. If q-value is less than 0.05, we should expect a lower than 5% chances we make the wrong selections for all of the comparisions showed lower q-values in the whole dataset. Also we could use local false discovery rate, which showed the FDR for certain peaks. However, such values are hard to be estimated accurately.
+In statistics, the false discovery rate(FDR) control is always mentioned in omics studies for multiple tests. I suggested using q-values to control FDR. If q-value is less than 0.05, we should expect a lower than 5% chances we make the wrong selections for all of the comparisons showed lower q-values in the whole dataset. Also we could use local false discovery rate, which showed the FDR for certain peaks. However, such values are hard to be estimated accurately.
 
-Karin Ortmayr thought fold change might be better than p-values to find the differences[@ortmayr2016a].
+Karin Ortmayr thought fold change might be better than p-values to find the differences [@ortmayr2016a].
 
 ### T-test or ANOVA
 
@@ -78,7 +78,7 @@ Another issue is how to find the relationship between the compounds. We could us
 
 OK, next time you might recall PCA when you need it instead of other paper showed them.
 
-Besides, there are some other usage of PCA. Loadings are actually correlation coefficients between peaks and their PC scores. Yamamoto et.al.[@yamamoto2014] used t-test on this correlation coefficient and thought the peaks with statistically significant correlation to the PC score have biological meanings for further study such as annotation. However, such analysis works better when few PCs could explain most of the variances in the datasets.
+Besides, there are some other usage of PCA. Loadings are actually correlation coefficients between peaks and their PC scores. Yamamoto et.al. [@yamamoto2014] used t-test on this correlation coefficient and thought the peaks with statistically significant correlation to the PC score have biological meanings for further study such as annotation. However, such analysis works better when few PCs could explain most of the variances in the dataset.
 
 ## Cluster Analysis
 
@@ -111,17 +111,17 @@ OK, the basic idea behind the cluster analysis could be summarized as define the
 
 ## PLSDA
 
-PLS-DA, OPLS-DA and HPSO-OPLS-DA[@yang2017a] could be used.
+PLS-DA, OPLS-DA and HPSO-OPLS-DA [@yang2017a] could be used.
 
 Partial least squares discriminant analysis(PLSDA) was first used in the 1990s. However, Partial least squares(PLS) was proposed in the 1960s by Hermann Wold. Principal components analysis produces the weight matrix reflecting the covariance structure between the variables, while partial least squares produces the weight matrix reflecting the covariance structure between the variables and classes. After rotation by weight matrix, the new variables would contain relationship with classes.
 
 The classification performance of PLSDA is identical to linear discriminant analysis(LDA) if class sizes are balanced, or the columns are adjusted according to the mean of the class mean. If the number of variables exceeds the number of samples, LDA can be performed on the principal components. Quadratic discriminant analysis(QDA) could model nonlinearity relationship between variables while PLSDA is better for collinear variables. However, as a classifier, there is little advantage for PLSDA. The advantages of PLSDA is that this modle could show relationship between variables, which is not the goal of regular classifier.
 
-Different algorithms[@andersson2009] for PLSDA would show different score, while PCA always show the same score with fixed algorithm. For PCA, both new variables and classes are orthognal. However, for PLS(Wold), only new classes are orthognal. For PLS(Martens), only new variables are orthognal. This paper show the details of using such methods[@brereton2018].
+Different algorithms [@andersson2009] for PLSDA would show different score, while PCA always show the same score with fixed algorithm. For PCA, both new variables and classes are orthognal. However, for PLS(Wold), only new classes are orthognal. For PLS(Martens), only new variables are orthognal. This paper show the details of using such methods [@brereton2018].
 
-Sparse PLS discriminant analysis(sPLS-DA) make a L1 penal on the variable selection to remove the influences from unrelated variables, which make sense for high-throughput omics data[@lecao2011].
+Sparse PLS discriminant analysis(sPLS-DA) make a L1 penal on the variable selection to remove the influences from unrelated variables, which make sense for high-throughput omics data [@lêcao2011].
 
-For o-PLS-DA, s-plot could be used to find features.[@wiklund2008]
+For o-PLS-DA, s-plot could be used to find features[@wiklund2008].
 
 ## Software
 

@@ -10,6 +10,8 @@ Pretreatment will affect the results of metabolomics and cover the sample treatm
 
 Those papers investigated different fecal collection methods[@loftfield2016; @deda2017].
 
+This paper discuss the influence of sample normalization[@wu2016].
+
 ## Quenching
 
 Quenching solvent is always used to stop stop enzymatic activity.

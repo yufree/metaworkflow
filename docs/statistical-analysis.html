@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Meta-Workflow</title>
+  <title>Chapter 10 Statistical analysis | Meta-Workflow</title>
   <meta name="description" content="This is a workflow for metabolomics studies." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Meta-Workflow" />
+  <meta property="og:title" content="Chapter 10 Statistical analysis | Meta-Workflow" />
   <meta property="og:type" content="book" />
   
   <meta property="og:image" content="images/cover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="yufree/metaworkflow" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Meta-Workflow" />
+  <meta name="twitter:title" content="Chapter 10 Statistical analysis | Meta-Workflow" />
   
   <meta name="twitter:description" content="This is a workflow for metabolomics studies." />
   <meta name="twitter:image" content="images/cover.png" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="introduction.html"/>
+<link rel="prev" href="peaks-normalization.html"/>
+<link rel="next" href="exposome.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -339,46 +339,127 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Meta-Workflow</h1>
-<p class="author"><em>Miao YU</em></p>
-<p class="date"><em>2021-01-05</em></p>
-</div>
-<div id="preface" class="section level1 unnumbered">
-<h1>Preface</h1>
-<p><img src="images/cover.png" style="display: block; margin: auto;" /></p>
-<p>This is an online handout for mass spectrometry based metabolomics data analysis. It would cover a full reproducible metabolomics workflow for data analysis and important topics related to metabolomics. Here is a list of topics:</p>
+<div id="statistical-analysis" class="section level1" number="10">
+<h1><span class="header-section-number">Chapter 10</span> Statistical analysis</h1>
+<p>The general purposes for metabolomics study are strongly associated with research goal. However, since metabolomics are usually performed in a non-targeted mode, statistical analysis methods are always started with the exploratory analysis. The basic target for an exploratory analysis is:</p>
 <ul>
-<li>Sample collection</li>
-<li>Sample pretreatment</li>
-<li>Principles of metabolomics data analysis</li>
-<li>Software selection</li>
-<li>Batch correction</li>
-<li>Annotation</li>
-<li>Omics analysis</li>
-<li>Exposome</li>
+<li><p>Find the relationship among variables</p></li>
+<li><p>Find the relationship among samples/group of samples.</p></li>
 </ul>
-<p>This is a book written in <strong>Bookdown</strong>. You could contribute it by a pull request in Github. A workshop based on this book could be found <a href="https://github.com/yufree/mdaw">here</a>. Meanwhile, a docker image <a href="https://hub.docker.com/r/yufree/xcmsrocker/">xcmsrocker</a> is available for metabolomics reproducible research.</p>
-<p><a href="https://www.r-project.org/"><strong>R</strong></a> and <a href="https://www.rstudio.com/"><strong>Rstudio</strong></a> are the software needed in this workflow.</p>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+<p>This is basically unsupervised analysis.</p>
+<p>However, sometimes we have group information which could be used to find biomarkers or correlationship between variables and groups or continuous variables. This type of data need supervised methods to process. Before we talk the details of algorithms, let’s cover some basic statistical concepts.</p>
+<div id="basic-statistical-analysis" class="section level2" number="10.1">
+<h2><span class="header-section-number">10.1</span> Basic Statistical Analysis</h2>
+<p><strong>Statistic</strong> is used to describe certain property or variables among the samples. It could be designed for certain purpose to extract signal and remove noise. Statistical models and inference are both based on statistic instead of the data.</p>
+<p><span class="math display">\[Statistic = f(sample_1,sample_2,...,sample_n)\]</span></p>
+<p><strong>Null Hypothesis Significance Testing (NHST)</strong> is often used to make statistical inference. P value is the probability of certain statistics happens under H0 (pre-defined distribution).</p>
+<p>For omics studies, you should realize <strong>Multiple Comparison</strong> issue when you perform a lot of(more than 20) comparisons or tests at the same time. <strong>False Discovery Rate(FDR) control</strong> is required for multiple tests to make sure the results are not false positive. You could use Benjamini-Hochberg method to adjust raw p values or directly use Storey Q value to make FDR control.</p>
+<p>NHST is famous for the failure of p-value interpretation as well as multiple comparison issues. <strong>Bayesian Hypothesis Testing</strong> could be an options to cover some drawbacks of NHST. Bayesian Hypothesis Testing use Bayes factor to show the differences between null hypothesis and any other hypothesis.</p>
+<p><span class="math display">\[Bayes\ factor = \frac{p(D|Ha)}{p(D|H0)} = \frac{posterior\ odds}{prior\ odds}\]</span></p>
+<p><strong>Statistical model</strong> use statistics to make prediction/explanation. Most of the statistical model need to be tuned for parameters to show a better performance. Statistical model is build on real data and could be diagnosed by other general statistics such as <span class="math inline">\(R^2\)</span>, <span class="math inline">\(ROC curve\)</span>. When the models are built or compared, model selection could be preformed.</p>
+<p><span class="math display">\[Target = g(Statistic) = g(f(sample_1,sample_2,...,sample_n))\]</span></p>
+<p><strong>Bias-Variance Tradeoff</strong> is an important concept regarding statistical models. Certain models could be overfitted(small Bias, large variance) or underfitted(large Bias, small variance) when the parameters of models are not well selected.</p>
+<p><span class="math display">\[E[(y - \hat f)^2] = \sigma^2 + Var[\hat f] + Bias[\hat f]\]</span></p>
+<p><strong>Cross validation</strong> could be used to find the best model based on training-testing strategy such as Jacknife, bootstraping resampling and n-fold cross validation.</p>
+<p><strong>Regularization</strong> for models could also be used to find the model with best prediction performance. Rigid regression, LASSO or other general regularization could be employed to build a robust models.</p>
+<p>For supervised models, linear model and tree based model are two basic categories. <strong>Linear model</strong> could be useful to tell the independent or correlated relationship of variables and the influences on the predicted variables. <strong>Tree based model</strong>, on the other hand, try to build a hierarchical structure for the variables such as bagging, random forest or boosting. Linear model could be treated as special case of tree based model with single layer. Other models like Support Vector Machine (SVM), Artificial Neural Network (ANN) or Deep Learning are also make various assumptions on the data. However, if you final target is prediction, you could try any of those models or even weighted combine their prediction to make meta-prediction.</p>
+</div>
+<div id="differences-analysis" class="section level2" number="10.2">
+<h2><span class="header-section-number">10.2</span> Differences analysis</h2>
+<p>After we get corrected peaks across samples, the next step is to find the differences between two groups. Actually, you could perform ANOVA or Kruskal-Wallis Test for comparison among more than two groups. The basic idea behind statistic analysis is to find the meaningful differences between groups and extract such ions or peak groups.</p>
+<p>So how to find the differences? In most metabolomics software, such task is completed by a t-test and report p-value and fold changes. If you only compare two groups on one peaks, that’s OK. However, if you compare two groups on thousands of peaks, statistic textbook would tell you to notice the false positive. For one comparison, the confidence level is 0.05, which means 5% chances to get false positive result. For two comparisons, such chances would be <span class="math inline">\(1-0.95^2\)</span>. For 10 comparisons, such chances would be <span class="math inline">\(1-0.95^{10} = 0.4012631\)</span>. For 100 comparisons, such chances would be <span class="math inline">\(1-0.95^{100} = 0.9940795\)</span>. You would almost certainly to make mistakes for your results.</p>
+<p>In statistics, the false discovery rate(FDR) control is always mentioned in omics studies for multiple tests. I suggested using q-values to control FDR. If q-value is less than 0.05, we should expect a lower than 5% chances we make the wrong selections for all of the comparisons showed lower q-values in the whole dataset. Also we could use local false discovery rate, which showed the FDR for certain peaks. However, such values are hard to be estimated accurately.</p>
+<p>Karin Ortmayr thought fold change might be better than p-values to find the differences <span class="citation">(<a href="references.html#ref-ortmayr2016a" role="doc-biblioref">Ortmayr et al. 2016</a>)</span>.</p>
+<div id="t-test-or-anova" class="section level3" number="10.2.1">
+<h3><span class="header-section-number">10.2.1</span> T-test or ANOVA</h3>
+<p>If one peak show significant differences among two groups or multiple groups, T-test or ANOVA could be used to find such peaks. However, when multiple hypothesis testings are performed, the probability of false positive would increase. In this case, false discovery rate(FDR) control is required. Q value or adjusted p value could be used in this situation. At certain confidence interval, we could find peaks with significant differences after FDR control.</p>
+</div>
+<div id="limma" class="section level3" number="10.2.2">
+<h3><span class="header-section-number">10.2.2</span> LIMMA</h3>
+<p>Linear Models for MicroArray Data(LIMMA) model could also be used for high-dimensional data like metabolomics. They use a moderated t-statistic to make estimation of the effects called Empirical Bayes Statistics for Differential Expression. It is a hierarchical model to shrink the t-statistic for each peak to all the peaks. Such estimation is more robust. In LIMMA, we could add the known batch effect variable as a covariance in the model. LIMMA is different from t-test or ANOVA while we could still use p value and FDR control on LIMMA results.</p>
+</div>
+<div id="bayesian-mixture-model" class="section level3" number="10.2.3">
+<h3><span class="header-section-number">10.2.3</span> Bayesian mixture model</h3>
+<p>Another way to make difference analysis is based on Bayesian mixture model without p value. Such model would not use hypothesis testing and directly generate the posterior estimation of parameters. A posterior probability could be used to check whether certain peaks could be related to different condition. If we want to make comparison between classical model like LIMMA and Bayesian mixture model. We need to use simulation to find the cutoff.</p>
+</div>
+</div>
+<div id="pca" class="section level2" number="10.3">
+<h2><span class="header-section-number">10.3</span> PCA</h2>
+<p>In most cases, PCA is used as an exploratory data analysis(EDA) method. In most of those most cases, PCA is just served as visualization method. I mean, when I need to visualize some high-dimension data, I would use PCA.</p>
+<p>So, the basic idea behind PCA is compression. When you have 100 samples with concentrations of certain compound, you could plot the concentrations with samples’ ID. However, if you have 100 compounds to be analyzed, it would by hard to show the relationship between the samples. Actually, you need to show a matrix with sample and compounds (100 * 100 with the concentrations filled into the matrix) in an informal way.</p>
+<p>The PCA would say: OK, guys, I could convert your data into only 100 * 2 matrix with the loss of information minimized. Yeah, that is what the mathematical guys or computer programmer do. You just run the command of PCA. The new two “compounds” might have the cor-relationship between the original 100 compounds and retain the variances between them. After such projection, you would see the compressed relationship between the 100 samples. If some samples’ data are similar, they would be projected together in new two “compounds” plot. That is why PCA could be used for cluster and the new “compounds” could be referred as principal components(PCs).</p>
+<p>However, you might ask why only two new compounds could finished such task. I have to say, two PCs are just good for visualization. In most cases, we need to collect PCs standing for more than 80% variances in our data if you want to recovery the data with PCs. If each compound have no relationship between each other, the PCs are still those 100 compounds. So you have found a property of the PCs: PCs are orthogonal between each other.</p>
+<p>Another issue is how to find the relationship between the compounds. We could use PCA to find the relationship between samples. However, we could also extract the influences of the compounds on certain PCs. You might find many compounds showed the same loading on the first PC. That means the concentrations pattern between the compounds are looked similar. So PCA could also be used to explore the relationship between the compounds.</p>
+<p>OK, next time you might recall PCA when you need it instead of other paper showed them.</p>
+<p>Besides, there are some other usage of PCA. Loadings are actually correlation coefficients between peaks and their PC scores. Yamamoto et.al. <span class="citation">(<a href="references.html#ref-yamamoto2014" role="doc-biblioref">Yamamoto et al. 2014</a>)</span> used t-test on this correlation coefficient and thought the peaks with statistically significant correlation to the PC score have biological meanings for further study such as annotation. However, such analysis works better when few PCs could explain most of the variances in the dataset.</p>
+</div>
+<div id="cluster-analysis" class="section level2" number="10.4">
+<h2><span class="header-section-number">10.4</span> Cluster Analysis</h2>
+<p>After we got a lot of samples and analyzed the concentrations of many compounds in them, we may ask about the relationship between the samples. You might have the sampling information such as the date and the position and you could use boxplot or violin plot to explore the relationships among those categorical variables. However, you could also use the data to find some potential relationship.</p>
+<p>But how? if two samples’ data were almost the same, we might think those samples were from the same potential group. On the other hand, how do we define the “same” in the data?</p>
+<p>Cluster analysis told us that just define a “distances” to measure the similarity between samples. Mathematically, such distances would be shown in many different manners such as the sum of the absolute values of the differences between samples.</p>
+<p>For example, we analyzed the amounts of compound A, B and C in two samples and get the results:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Compounds(ng)</th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sample 1</td>
+<td>10</td>
+<td>13</td>
+<td>21</td>
+</tr>
+<tr class="even">
+<td>Sample 2</td>
+<td>54</td>
+<td>23</td>
+<td>16</td>
+</tr>
+</tbody>
+</table>
+<p>The distance could be:</p>
+<p><span class="math display">\[
+distance = |10-54|+|13-23|+|21-16| = 59
+\]</span></p>
+<p>Also you could use the sum of squares or other way to stand for the similarity. After you defined a “distance,” you could get the distances between all of pairs for your samples. If two samples’ distance was the smallest, put them together as one group. Then calculate the distances again to combine the small group into big group until all of the samples were include in one group. Then draw a dendrogram for those process.</p>
+<p>The following issue is that how to cluster samples? You might set a cut-off and directly get the group from the dendrogram. However, sometimes you were ordered to cluster the samples into certain numbers of groups such as three. In such situation, you need K means cluster analysis.</p>
+<p>The basic idea behind the K means is that generate three virtual samples and calculate the distances between those three virtual samples and all of the other samples. There would be three values for each samples. Choose the smallest values and class that sample into this group. Then your samples were classified into three groups. You need to calculate the center of those three groups and get three new virtual samples. Repeat such process until the group members unchanged and you get your samples classified.</p>
+<p>OK, the basic idea behind the cluster analysis could be summarized as define the distances, set your cut-off and find the group. By this way, you might show potential relationships among samples.</p>
+</div>
+<div id="plsda" class="section level2" number="10.5">
+<h2><span class="header-section-number">10.5</span> PLSDA</h2>
+<p>PLS-DA, OPLS-DA and HPSO-OPLS-DA <span class="citation">(<a href="references.html#ref-yang2017a" role="doc-biblioref">Qin Yang et al. 2017</a>)</span> could be used.</p>
+<p>Partial least squares discriminant analysis(PLSDA) was first used in the 1990s. However, Partial least squares(PLS) was proposed in the 1960s by Hermann Wold. Principal components analysis produces the weight matrix reflecting the covariance structure between the variables, while partial least squares produces the weight matrix reflecting the covariance structure between the variables and classes. After rotation by weight matrix, the new variables would contain relationship with classes.</p>
+<p>The classification performance of PLSDA is identical to linear discriminant analysis(LDA) if class sizes are balanced, or the columns are adjusted according to the mean of the class mean. If the number of variables exceeds the number of samples, LDA can be performed on the principal components. Quadratic discriminant analysis(QDA) could model nonlinearity relationship between variables while PLSDA is better for collinear variables. However, as a classifier, there is little advantage for PLSDA. The advantages of PLSDA is that this modle could show relationship between variables, which is not the goal of regular classifier.</p>
+<p>Different algorithms <span class="citation">(<a href="references.html#ref-andersson2009" role="doc-biblioref">Andersson 2009</a>)</span> for PLSDA would show different score, while PCA always show the same score with fixed algorithm. For PCA, both new variables and classes are orthognal. However, for PLS(Wold), only new classes are orthognal. For PLS(Martens), only new variables are orthognal. This paper show the details of using such methods <span class="citation">(<a href="references.html#ref-brereton2018" role="doc-biblioref">Brereton and Lloyd 2018</a>)</span>.</p>
+<p>Sparse PLS discriminant analysis(sPLS-DA) make a L1 penal on the variable selection to remove the influences from unrelated variables, which make sense for high-throughput omics data <span class="citation">(<a href="references.html#ref-lêcao2011" role="doc-biblioref">Lê Cao, Boitard, and Besse 2011</a>)</span>.</p>
+<p>For o-PLS-DA, s-plot could be used to find features<span class="citation">(<a href="references.html#ref-wiklund2008" role="doc-biblioref">Wiklund et al. 2008</a>)</span>.</p>
+</div>
+<div id="software-2" class="section level2" number="10.6">
+<h2><span class="header-section-number">10.6</span> Software</h2>
+<ul>
+<li><p><a href="https://github.com/xia-lab/MetaboAnalystR">MetaboAnalystR</a> <span class="citation">(<a href="references.html#ref-chong2019" role="doc-biblioref">Chong, Wishart, and Xia 2019</a>)</span></p></li>
+<li><p><a href="http://caret.r-forge.r-project.org/">caret</a> could employ more than 200 statistical models in a general framework to build/select models. You could also show the variable importance for some of the models.</p></li>
+<li><p><a href="https://cran.r-project.org/web/packages/caretEnsemble/index.html">caretEnsemble</a> Functions for creating ensembles of caret models</p></li>
+<li><p><a href="https://cran.r-project.org/web/packages/pROC/index.html">pROC</a> Tools for visualizing, smoothing and comparing receiver operating characteristic (ROC curves). (Partial) area under the curve (AUC) can be compared with statistical tests based on U-statistics or bootstrap. Confidence intervals can be computed for (p)AUC or ROC curves.</p></li>
+<li><p><a href="https://cran.r-project.org/web/packages/gWQS/index.html">gWQS</a> Fits Weighted Quantile Sum (WQS) regressions for continuous, binomial, multinomial and count outcomes.</p></li>
+</ul>
 
-  ga('create', 'UA-43118729-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="peaks-normalization.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="exposome.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -409,7 +490,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/yufree/metaworkflow/edit/master/index.Rmd",
+"link": "https://github.com/yufree/metaworkflow/edit/master/10-statistics.Rmd",
 "text": "Edit"
 },
 "history": {

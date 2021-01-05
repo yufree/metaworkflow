@@ -135,6 +135,8 @@ summary(tfit)
 
 According to Ronald Hites's simulation[@hites2019], measurements below the LOD (even missing measurements) with the LOD/2 or with the $LOD/\sqrt2$ causes little bias and "Any time you have a % non-detected \>20%, for whatever reason, it is unlikely that the data set can give useful results."
 
+Another study find random forest could be the best imputation method for missing at random (MAR), and missing completely at random (MCAR) data. Quantile regression imputation of left-censored data is the best imputation methods for left-censored missing not at random data [@wei2018].
+
 ### Over Detection Limit
 
 **CorrectOverloadedPeaks** could be used to correct the Peaks Exceeding the Detection Limit issue [@lisec2016].
