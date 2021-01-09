@@ -24,7 +24,7 @@
 <meta name="author" content="Miao YU" />
 
 
-<meta name="date" content="2021-01-05" />
+<meta name="date" content="2021-01-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -163,7 +163,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#power-analysis"><i class="fa fa-check"></i><b>2.3</b> Power analysis</a></li>
 <li class="chapter" data-level="2.4" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#optimization"><i class="fa fa-check"></i><b>2.4</b> Optimization</a></li>
 <li class="chapter" data-level="2.5" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#pooled-qc"><i class="fa fa-check"></i><b>2.5</b> Pooled QC</a></li>
-<li class="chapter" data-level="2.6" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#software"><i class="fa fa-check"></i><b>2.6</b> Software</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="pretreatment.html"><a href="pretreatment.html"><i class="fa fa-check"></i><b>3</b> Pretreatment</a>
 <ul>
@@ -293,7 +292,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.5.2" data-path="peaks-normalization.html"><a href="peaks-normalization.html#supervised-methods"><i class="fa fa-check"></i><b>9.5.2</b> Supervised methods</a></li>
 </ul></li>
 <li class="chapter" data-level="9.6" data-path="peaks-normalization.html"><a href="peaks-normalization.html#method-to-validate-the-normalization"><i class="fa fa-check"></i><b>9.6</b> Method to validate the normalization</a></li>
-<li class="chapter" data-level="9.7" data-path="peaks-normalization.html"><a href="peaks-normalization.html#software-1"><i class="fa fa-check"></i><b>9.7</b> Software</a></li>
+<li class="chapter" data-level="9.7" data-path="peaks-normalization.html"><a href="peaks-normalization.html#software"><i class="fa fa-check"></i><b>9.7</b> Software</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="statistical-analysis.html"><a href="statistical-analysis.html"><i class="fa fa-check"></i><b>10</b> Statistical analysis</a>
 <ul>
@@ -307,7 +306,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#pca"><i class="fa fa-check"></i><b>10.3</b> PCA</a></li>
 <li class="chapter" data-level="10.4" data-path="statistical-analysis.html"><a href="statistical-analysis.html#cluster-analysis"><i class="fa fa-check"></i><b>10.4</b> Cluster Analysis</a></li>
 <li class="chapter" data-level="10.5" data-path="statistical-analysis.html"><a href="statistical-analysis.html#plsda"><i class="fa fa-check"></i><b>10.5</b> PLSDA</a></li>
-<li class="chapter" data-level="10.6" data-path="statistical-analysis.html"><a href="statistical-analysis.html#software-2"><i class="fa fa-check"></i><b>10.6</b> Software</a></li>
+<li class="chapter" data-level="10.6" data-path="statistical-analysis.html"><a href="statistical-analysis.html#software-1"><i class="fa fa-check"></i><b>10.6</b> Software</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="exposome.html"><a href="exposome.html"><i class="fa fa-check"></i><b>11</b> Exposome</a>
 <ul>
@@ -379,6 +378,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Level 4 ‘Unknown’</li>
 </ul>
 <p>In practice, data analysis based annotation could reach level 2. For level 1, we need at extra methods such as MS/MS, retention time, accurate mass, 2D NMR spectra, and so on to confirm the compounds. However, standards are always required for solid proof.</p>
+<p>Through MS/MS seemed a required step for identification, recent study found ESI might also generate fragments ions for structure identification <span class="citation">(<a href="references.html#ref-xue2020a" role="doc-biblioref">Xue, Domingo-Almenara, et al. 2020</a>)</span>.</p>
 </div>
 <div id="molecular-formula-assignment" class="section level2" number="7.4">
 <h2><span class="header-section-number">7.4</span> Molecular Formula Assignment</h2>
@@ -483,8 +483,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Here is some other Cheminformatics tools, which could be used to assign meaningful formula or structures for mass spectra.</p>
 <ul>
 <li><a href="https://www.rdkit.org/">RDKit</a> Open-Source Cheminformatics Software</li>
-<li><a href="https://sourceforge.net/projects/cdk/">cdk</a> The Chemistry Development Kit (CDK) is a scientific, LGPL-ed library for bio- and cheminformatics and computational chemistry written in Java.</li>
-<li><a href="http://openbabel.org/wiki/Main_Page">Open Babel</a> Open Babel is a chemical toolbox designed to speak the many languages of chemical data.</li>
+<li><a href="https://sourceforge.net/projects/cdk/">cdk</a> The Chemistry Development Kit (CDK) is a scientific, LGPL-ed library for bio- and cheminformatics and computational chemistry written in Java <span class="citation">(<a href="references.html#ref-guha2007" role="doc-biblioref">Guha 2007</a>)</span>.</li>
+<li><a href="http://openbabel.org/wiki/Main_Page">Open Babel</a> Open Babel is a chemical toolbox designed to speak the many languages of chemical data <span class="citation">(<a href="references.html#ref-oboyle2011" role="doc-biblioref">O’Boyle et al. 2011</a>)</span>.</li>
+<li><a href="http://classyfire.wishartlab.com/">ClassyFire</a> is a tool for automated chemical classification with a comprehensive, computable taxonomy <span class="citation">(<a href="references.html#ref-djoumboufeunang2016" role="doc-biblioref">Djoumbou Feunang et al. 2016</a>)</span>.</li>
 </ul>
 </div>
 <div id="redundant-peaks" class="section level2" number="7.5">
@@ -649,8 +650,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><a href="http://spectra.psc.riken.jp/">ReSpect</a>: phytochemicals</p></li>
 <li><p><a href="https://metlin.scripps.edu/">Metlin</a> is another useful online application for annotation<span class="citation">(<a href="references.html#ref-guijas2018" role="doc-biblioref">Guijas et al. 2018</a>)</span>.</p></li>
 <li><p><a href="http://fiehnlab.ucdavis.edu/projects/LipidBlast">LipidBlast</a>: <em>in silico</em> prediction</p></li>
+<li><p><a href="http://www.lipidmaps.org/">Lipid Maps</a></p></li>
 <li><p><a href="https://www.mzcloud.org/">MZcloud</a></p></li>
 <li><p><a href="https://www.nist.gov/srd/nist-standard-reference-database-1a-v17">NIST</a>: Not free</p></li>
+<li><p><a href="https://jcggdb.jp/rcmg/glycodb/Ms_ResultSearch">GMDB</a> a multistage tandem mass spectral database using a variety of structurally defined glycans.</p></li>
+<li><p><a href="http://www.hmdb.ca/">HMDB</a> is a freely available electronic database containing detailed information about small molecule metabolites found in the human body.</p></li>
+<li><p><a href="https://www.genome.jp/kegg/compound/">KEGG</a> is a collection of small molecules, biopolymers, and other chemical substances that are relevant to biological systems.</p></li>
 </ul>
 </div>
 </div>
@@ -662,6 +667,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p><a href="https://www.ebi.ac.uk/chebi/">ChEBI</a> is a freely available dictionary of molecular entities focused on ‘small’ chemical compounds.</p></li>
 <li><p><a href="http://www.metabolomicsworkbench.org/databases/refmet/index.php">RefMet</a> A Reference list of Metabolite names.</p></li>
 <li><p><a href="https://www.cas.org/support/documentation/chemical-substances/cas-registry-100-millionth-fun-facts">CAS</a> Largest substance database</p></li>
+<li><p><a href="https://comptox.epa.gov/dashboard">CompTox</a> compounds, exposure and toxicity database. <a href="https://www.epa.gov/chemical-research/downloadable-computational-toxicology-data">Here</a> is related data.</p></li>
+<li><p><a href="http://www.t3db.ca/">T3DB</a> is a unique bioinformatics resource that combines detailed toxin data with comprehensive toxin target information.</p></li>
+<li><p><a href="http://foodb.ca/">FooDB</a> is the world’s largest and most comprehensive resource on food constituents, chemistry and biology.</p></li>
+<li><p><a href="http://phenol-explorer.eu">Phenol explorer</a> is the first comprehensive database on polyphenol content in foods.</p></li>
+<li><p><a href="https://www.drugbank.ca/releases/latest">Drugbank</a> is a unique bioinformatics and cheminformatics resource that combines detailed drug data with comprehensive drug target information.</p></li>
+<li><p><a href="http://lmdb.ca">LMDB</a> is a freely available electronic database containing detailed information about small molecule metabolites found in different livestock species.</p></li>
+<li><p><a href="https://iaspub.epa.gov/oppthpv/hpv_hc_characterization.get_report?doctype=2">HPV</a> High Production Volume Information System</p></li>
 </ul>
 
 </div>

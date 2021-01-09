@@ -24,7 +24,6 @@ heterogeneity-study
 power-analysis
 optimization
 pooled-qc
-software
 pretreatment
 collection
 quenching
@@ -139,7 +138,7 @@ construction-of-surrogate-variables
 ruv-remove-unwanted-variation
 rrmix
 method-to-validate-the-normalization
-software-1
+software
 statistical-analysis
 basic-statistical-analysis
 differences-analysis
@@ -149,7 +148,7 @@ bayesian-mixture-model
 pca
 cluster-analysis
 plsda
-software-2
+software-1
 exposome
 internal-exposure
 external-exposure

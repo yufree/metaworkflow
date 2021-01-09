@@ -35,6 +35,12 @@ $$
 
 Other study [@blaise2016a] show a method based on simulation to estimate the sample size. They used BY correction to limit the influences from correlations. Other investigation could be found here[@saccenti2016; @blaise2013]. However, the nature of omics study make the power analysis hard to use one number for all metabolites and all the methods are trying to find a balance to represent more peaks with least samples.
 
+-   [MetSizeR](https://github.com/cran/MetSizeR) GUI Tool for Estimating Sample Sizes for metabolomics Experiments[@nyamundanda2013].
+
+-   [MSstats](https://www.bioconductor.org/packages/release/bioc/vignettes/MSstats/inst/doc/MSstats.html) Protein/Peptide significance analysis [@choi2014].
+
+-   [enviGCMS](https://cran.rstudio.com/web/packages/enviGCMS/index.html) GC/LC-MS Data Analysis for Environmental Science[@yu2017].
+
 ## Optimization
 
 One experiment can contain lots of factors with different levels and only one set of parameters for different factors will show the best sensitivity or reproducibility for certain study. To find this set of parameters, Plackett-Burman Design (PBD), Response Surface Methodology (RSM), Central Composite Design (CCD), and Taguchi methods could be used to optimize the parameters for metabolomics study. The target could be the quality of peaks, the numbers of peaks, the stability of peaks intensity, and/or the statistics of the combination of those targets. You could check those paper for details[@jacyna2019; @box2005].
@@ -52,9 +58,3 @@ Another important factors are instrumentals. High-resolution mass spectrum is al
 > the most effective mass resolving powers for profiling analyses of metabolite rich biofluids on the Orbitrap Elite were around 60000--120000 fwhm to retrieve the highest amount of information. The region between 400--800 m/z was influenced the most by resolution.
 
 However, elimination of peaks with high RSD% within group were always omitted by most study. Based on pre-experiment, you could get a description of RSD% distribution and set cut-off to use stable peaks for further data analysis. To my knowledge, 30% is suitable considering the batch effects.
-
-## Software
-
--   [MetSizeR](https://github.com/cran/MetSizeR) GUI Tool for Estimating Sample Sizes for metabolomics Experiments[@nyamundanda2013].
--   [MSstats](https://www.bioconductor.org/packages/release/bioc/vignettes/MSstats/inst/doc/MSstats.html) Protein/Peptide significance analysis [@choi2014].
--   [enviGCMS](https://cran.rstudio.com/web/packages/enviGCMS/index.html) GC/LC-MS Data Analysis for Environmental Science[@yu2017].

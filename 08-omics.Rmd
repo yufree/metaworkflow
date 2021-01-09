@@ -6,7 +6,7 @@ bibliography: references.bib
 
 When you get the filtered ions, the next step is making annotations for them. Such annotations would be helpful for omics studies. Omics analysis try to combine the information from other 'omics' to answer one specific question. Since we have got the annotations, Omics analysis could be performed.Upload the data obtained from the **xcms** to other tools or databases.
 
-You will get an updated database list [here](http://metabolomicssociety.org/resources/metabolomics-databases)
+You will get an updated database list [here](http://metabolomicssociety.org/resources/metabolomics-databases).
 
 Right now, it is hard to connect different omics databases such as gene, protein and metabolites together for a whole scope of certain biological process. However, you might select few metabolites across those databases and find something interesting.
 
@@ -32,7 +32,7 @@ $$
 
 ## Pathway analysis
 
-Pathwat analysis maps annotated data into known pathway and make statistical analysis to find the influenced pathway or the compounds with high inflences on certain pathway.
+Pathway analysis maps annotated data into known pathway and make statistical analysis to find the influenced pathway or the compounds with high influences on certain pathway.
 
 ### Pathway Database
 

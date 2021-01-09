@@ -24,7 +24,7 @@
 <meta name="author" content="Miao YU" />
 
 
-<meta name="date" content="2021-01-05" />
+<meta name="date" content="2021-01-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -163,7 +163,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#power-analysis"><i class="fa fa-check"></i><b>2.3</b> Power analysis</a></li>
 <li class="chapter" data-level="2.4" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#optimization"><i class="fa fa-check"></i><b>2.4</b> Optimization</a></li>
 <li class="chapter" data-level="2.5" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#pooled-qc"><i class="fa fa-check"></i><b>2.5</b> Pooled QC</a></li>
-<li class="chapter" data-level="2.6" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#software"><i class="fa fa-check"></i><b>2.6</b> Software</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="pretreatment.html"><a href="pretreatment.html"><i class="fa fa-check"></i><b>3</b> Pretreatment</a>
 <ul>
@@ -293,7 +292,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.5.2" data-path="peaks-normalization.html"><a href="peaks-normalization.html#supervised-methods"><i class="fa fa-check"></i><b>9.5.2</b> Supervised methods</a></li>
 </ul></li>
 <li class="chapter" data-level="9.6" data-path="peaks-normalization.html"><a href="peaks-normalization.html#method-to-validate-the-normalization"><i class="fa fa-check"></i><b>9.6</b> Method to validate the normalization</a></li>
-<li class="chapter" data-level="9.7" data-path="peaks-normalization.html"><a href="peaks-normalization.html#software-1"><i class="fa fa-check"></i><b>9.7</b> Software</a></li>
+<li class="chapter" data-level="9.7" data-path="peaks-normalization.html"><a href="peaks-normalization.html#software"><i class="fa fa-check"></i><b>9.7</b> Software</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="statistical-analysis.html"><a href="statistical-analysis.html"><i class="fa fa-check"></i><b>10</b> Statistical analysis</a>
 <ul>
@@ -307,7 +306,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#pca"><i class="fa fa-check"></i><b>10.3</b> PCA</a></li>
 <li class="chapter" data-level="10.4" data-path="statistical-analysis.html"><a href="statistical-analysis.html#cluster-analysis"><i class="fa fa-check"></i><b>10.4</b> Cluster Analysis</a></li>
 <li class="chapter" data-level="10.5" data-path="statistical-analysis.html"><a href="statistical-analysis.html#plsda"><i class="fa fa-check"></i><b>10.5</b> PLSDA</a></li>
-<li class="chapter" data-level="10.6" data-path="statistical-analysis.html"><a href="statistical-analysis.html#software-2"><i class="fa fa-check"></i><b>10.6</b> Software</a></li>
+<li class="chapter" data-level="10.6" data-path="statistical-analysis.html"><a href="statistical-analysis.html#software-1"><i class="fa fa-check"></i><b>10.6</b> Software</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="exposome.html"><a href="exposome.html"><i class="fa fa-check"></i><b>11</b> Exposome</a>
 <ul>
@@ -384,6 +383,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \alpha_{ave} \leq (1-\beta_{ave})\cdot q\frac{1}{1+(1-q)\cdot m_0/m_1}
 \]</span></p>
 <p>Other study <span class="citation">(<a href="references.html#ref-blaise2016a" role="doc-biblioref">Blaise et al. 2016</a>)</span> show a method based on simulation to estimate the sample size. They used BY correction to limit the influences from correlations. Other investigation could be found here<span class="citation">(<a href="references.html#ref-saccenti2016" role="doc-biblioref">Saccenti and Timmerman 2016</a>; <a href="references.html#ref-blaise2013" role="doc-biblioref">Blaise 2013</a>)</span>. However, the nature of omics study make the power analysis hard to use one number for all metabolites and all the methods are trying to find a balance to represent more peaks with least samples.</p>
+<ul>
+<li><p><a href="https://github.com/cran/MetSizeR">MetSizeR</a> GUI Tool for Estimating Sample Sizes for metabolomics Experiments<span class="citation">(<a href="references.html#ref-nyamundanda2013" role="doc-biblioref">Nyamundanda et al. 2013</a>)</span>.</p></li>
+<li><p><a href="https://www.bioconductor.org/packages/release/bioc/vignettes/MSstats/inst/doc/MSstats.html">MSstats</a> Protein/Peptide significance analysis <span class="citation">(<a href="references.html#ref-choi2014" role="doc-biblioref">Choi et al. 2014a</a>)</span>.</p></li>
+<li><p><a href="https://cran.rstudio.com/web/packages/enviGCMS/index.html">enviGCMS</a> GC/LC-MS Data Analysis for Environmental Science<span class="citation">(<a href="references.html#ref-yu2017" role="doc-biblioref">M. Yu et al. 2017a</a>)</span>.</p></li>
+</ul>
 </div>
 <div id="optimization" class="section level2" number="2.4">
 <h2><span class="header-section-number">2.4</span> Optimization</h2>
@@ -399,14 +403,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>the most effective mass resolving powers for profiling analyses of metabolite rich biofluids on the Orbitrap Elite were around 60000–120000 fwhm to retrieve the highest amount of information. The region between 400–800 m/z was influenced the most by resolution.</p>
 </blockquote>
 <p>However, elimination of peaks with high RSD% within group were always omitted by most study. Based on pre-experiment, you could get a description of RSD% distribution and set cut-off to use stable peaks for further data analysis. To my knowledge, 30% is suitable considering the batch effects.</p>
-</div>
-<div id="software" class="section level2" number="2.6">
-<h2><span class="header-section-number">2.6</span> Software</h2>
-<ul>
-<li><a href="https://github.com/cran/MetSizeR">MetSizeR</a> GUI Tool for Estimating Sample Sizes for metabolomics Experiments<span class="citation">(<a href="references.html#ref-nyamundanda2013" role="doc-biblioref">Nyamundanda et al. 2013</a>)</span>.</li>
-<li><a href="https://www.bioconductor.org/packages/release/bioc/vignettes/MSstats/inst/doc/MSstats.html">MSstats</a> Protein/Peptide significance analysis <span class="citation">(<a href="references.html#ref-choi2014" role="doc-biblioref">Choi et al. 2014a</a>)</span>.</li>
-<li><a href="https://cran.rstudio.com/web/packages/enviGCMS/index.html">enviGCMS</a> GC/LC-MS Data Analysis for Environmental Science<span class="citation">(<a href="references.html#ref-yu2017" role="doc-biblioref">M. Yu et al. 2017a</a>)</span>.</li>
-</ul>
 
 </div>
 </div>

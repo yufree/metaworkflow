@@ -14,14 +14,6 @@ According to [CDC](https://www.cdc.gov/niosh/topics/exposome/default.html), The 
 
 ## Internal exposure
 
--   [HMDB](http://www.hmdb.ca/) is a freely available electronic database containing detailed information about small molecule metabolites found in the human body.
-
--   [Lipid Maps](http://www.lipidmaps.org/)
-
--   [GMDB](https://jcggdb.jp/rcmg/glycodb/Ms_ResultSearch) a multistage tandem mass spectral database using a variety of structurally defined glycans.
-
--   [KEGG](https://www.genome.jp/kegg/compound/) is a collection of small molecules, biopolymers, and other chemical substances that are relevant to biological systems.
-
 -   [Virtual Metabolic Human Database](https://www.vmh.life/) integrating human and gut microbiome metabolism with nutrition and disease.
 
 ## External exposure
@@ -59,17 +51,3 @@ LogP is important for analytical chemistry. Mannhold [@mannhold2009] report a co
 -   [ODMOA](https://www.mass.gov/orgs/office-of-data-management-and-outcomes-assessment) facilitates and coordinates the collection, access to, and use of public health data in order to monitor and improve population health. This data is better for general public health research for Massachusetts.
 
 -   [The Surveillance, Epidemiology, and End Results (SEER)](https://seer.cancer.gov/) Program provides information on cancer statistics in an effort to reduce the cancer burden among the U.S. population.
-
--   [CompTox](https://comptox.epa.gov/dashboard) compounds, exposure and toxicity database. [Here](https://www.epa.gov/chemical-research/downloadable-computational-toxicology-data) is related data.
-
--   [T3DB](http://www.t3db.ca/) is a unique bioinformatics resource that combines detailed toxin data with comprehensive toxin target information.
-
--   [FooDB](http://foodb.ca/) is the world's largest and most comprehensive resource on food constituents, chemistry and biology.
-
--   [Phenol explorer](http://phenol-explorer.eu) is the first comprehensive database on polyphenol content in foods.
-
--   [Drugbank](https://www.drugbank.ca/releases/latest) is a unique bioinformatics and cheminformatics resource that combines detailed drug data with comprehensive drug target information.
-
--   [LMDB](http://lmdb.ca) is a freely available electronic database containing detailed information about small molecule metabolites found in different livestock species.
-
--   [HPV](https://iaspub.epa.gov/oppthpv/hpv_hc_characterization.get_report?doctype=2) High Production Volume Information System
