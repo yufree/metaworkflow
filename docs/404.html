@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 8 Omics analysis | Meta-Workflow</title>
+  <title>Page not found | Meta-Workflow</title>
   <meta name="description" content="This is a workflow for metabolomics studies." />
   <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 8 Omics analysis | Meta-Workflow" />
+  <meta property="og:title" content="Page not found | Meta-Workflow" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="/images/cover.png" />
   <meta property="og:description" content="This is a workflow for metabolomics studies." />
   <meta name="github-repo" content="yufree/metaworkflow" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 8 Omics analysis | Meta-Workflow" />
+  <meta name="twitter:title" content="Page not found | Meta-Workflow" />
   
   <meta name="twitter:description" content="This is a workflow for metabolomics studies." />
   <meta name="twitter:image" content="/images/cover.png" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="annotation.html"/>
-<link rel="next" href="peaks-normalization.html"/>
+
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -383,81 +383,19 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="omics-analysis" class="section level1 hasAnchor" number="8">
-<h1><span class="header-section-number">Chapter 8</span> Omics analysis<a href="omics-analysis.html#omics-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>When you get the filtered ions, the next step is making annotations for them. Such annotations would be helpful for omics studies. Omics analysis try to combine the information from other ‘omics’ to answer one specific question. Since we have got the annotations, Omics analysis could be performed.Upload the data obtained from the <strong>xcms</strong> to other tools or databases.</p>
-<p>You will get an updated database list <a href="http://metabolomicssociety.org/resources/metabolomics-databases">here</a>.</p>
-<p>Right now, it is hard to connect different omics databases such as gene, protein and metabolites together for a whole scope of certain biological process. However, you might select few metabolites across those databases and find something interesting.</p>
-<div id="from-bottom-up-to-top-down" class="section level2 hasAnchor" number="8.1">
-<h2><span class="header-section-number">8.1</span> From Bottom-up to Top-down<a href="omics-analysis.html#from-bottom-up-to-top-down" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Bottom-up analysis mean the model for each metabolite. In this case, we could find out which metabolite will be affected by our experiment design. However, take care of multiple comparison issue.</p>
-<p><span class="math display">\[
-metabolite = f(control/treatment, co-variables)
-\]</span></p>
-<p>Top-down analysis mean the model for output. In this case, we could evaluate the contribution of each metabolites. You need variable selection to make a better model.</p>
-<p><span class="math display">\[
-control/treatment = f(metabolite 1,metabolite 2,...,metaboliteN,co-varuables)
-\]</span></p>
-<p>For omics study, you might need to integrate dataset from different sources.</p>
-<p><span class="math display">\[
-control/treatment = f(metabolites, proteins, genes, miRNA,co-varuables)
-\]</span></p>
-</div>
-<div id="pathway-analysis" class="section level2 hasAnchor" number="8.2">
-<h2><span class="header-section-number">8.2</span> Pathway analysis<a href="omics-analysis.html#pathway-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Pathway analysis maps annotated data into known pathway and make statistical analysis to find the influenced pathway or the compounds with high influences on certain pathway.</p>
-<div id="pathway-database" class="section level3 hasAnchor" number="8.2.1">
-<h3><span class="header-section-number">8.2.1</span> Pathway Database<a href="omics-analysis.html#pathway-database" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li><p><a href="http://smpdb.ca/view">SMPDB</a> (The Small Molecule Pathway Database) is an interactive, visual database containing more than 618 small molecule pathways found in humans. More than 70% of these pathways (&gt;433) are not found in any other pathway database. The pathways include metabolic, drug, and disease pathways.</p></li>
-<li><p><a href="https://www.genome.jp/kegg/">KEGG</a> (Kyoto Encyclopedia of Genes and Genomes) is one of the most complete and widely used databases containing metabolic pathways (495 reference pathways) from a wide variety of organisms (&gt;4,700). These pathways are hyperlinked to metabolite and protein/enzyme information. Currently KEGG has &gt;17,000 compounds (from animals, plants and bacteria), 10,000 drugs (including different salt forms and drug carriers) and nearly 11,000 glycan structures.</p></li>
-<li><p><a href="https://biocyc.org/">BioCyc</a> is a collection of 14558 Pathway/Genome Databases (PGDBs), plus software tools for exploring them.</p></li>
-<li><p><a href="https://reactome.org/what-is-reactome">Reactome</a> is an open-source, open access, manually curated and peer-reviewed pathway database. Our goal is to provide intuitive bioinformatics tools for the visualization, interpretation and analysis of pathway knowledge to support basic and clinical research, genome analysis, modeling, systems biology and education.</p></li>
-<li><p><a href="https://www.wikipathways.org/index.php/WikiPathways">WikiPathway</a> is a database of biological pathways maintained by and for the scientific community.</p></li>
-</ul>
-</div>
-<div id="pathway-software" class="section level3 hasAnchor" number="8.2.2">
-<h3><span class="header-section-number">8.2.2</span> Pathway software<a href="omics-analysis.html#pathway-software" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li><p><a href="http://www.pathwaycommons.org/">Pathway Commons</a> online tools for pathway analysis</p></li>
-<li><p><a href="https://github.com/Mathelab/RaMP-DB">RaMP</a> could make pathway analysis for batch search</p></li>
-<li><p><a href="https://github.com/kwanjeeraw/metabox">metabox</a> could make pathway analysis</p></li>
-<li><p><a href="http://impala.molgen.mpg.de/">impala</a> is used for pathway enrichment analysis</p></li>
-<li><p><a href="http://metscape.med.umich.edu/">Metscape</a> based on Debiased Sparse Partial Correlation (DSPC) algorithm <span class="citation">(<a href="#ref-basu2017" role="doc-biblioref">Basu et al. 2017</a>)</span> to make annotation.</p></li>
-</ul>
-</div>
-</div>
-<div id="network-analysis" class="section level2 hasAnchor" number="8.3">
-<h2><span class="header-section-number">8.3</span> Network analysis<a href="omics-analysis.html#network-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><a href="https://code.google.com/archive/p/atcg/wikis/mummichog_for_metabolomics.wiki">Mummichog</a> could make pathway and network analysis without annotation.</p>
-<p><a href="http://web1.sph.emory.edu/users/tyu8/MSS">MSS</a>: sequential feature screening procedure to select important sub-network and identify the optimal matching for metabolimics data <span class="citation">(<a href="#ref-cai2017" role="doc-biblioref">Q. Cai et al. 2017</a>)</span>.</p>
-</div>
-<div id="omics-integration" class="section level2 hasAnchor" number="8.4">
-<h2><span class="header-section-number">8.4</span> Omics integration<a href="omics-analysis.html#omics-integration" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li><p><a href="https://blast.ncbi.nlm.nih.gov/Blast.cgi">Blast</a> finds regions of similarity between biological sequences. The program compares nucleotide or protein sequences to sequence databases and calculates the statistical significance.</p></li>
-<li><p><a href="https://www.omicsdi.org/">The Omics Discovery Index (OmicsDI)</a> provides a knowledge discovery framework across heterogeneous omics data (genomics, proteomics, transcriptomics and metabolomics).</p></li>
-<li><p><a href="https://github.com/cran/mixOmics">Omics Data Integration Project</a></p></li>
-</ul>
-
-</div>
-</div>
-<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-basu2017" class="csl-entry">
-Basu, Sumanta, William Duren, Charles R. Evans, Charles F. Burant, George Michailidis, and Alla Karnovsky. 2017. <span>“Sparse Network Modeling and Metscape-Based Visualization Methods for the Analysis of Large-Scale Metabolomics Data.”</span> <em>Bioinformatics</em> 33 (10): 1545–53. <a href="https://doi.org/10.1093/bioinformatics/btx012">https://doi.org/10.1093/bioinformatics/btx012</a>.
-</div>
-<div id="ref-cai2017" class="csl-entry">
-Cai, Qingpo, Jessica A. Alvarez, Jian Kang, and Tianwei Yu. 2017. <span>“Network Marker Selection for Untargeted LC<span></span>MS Metabolomics Data.”</span> <em>Journal of Proteome Research</em> 16 (3): 1261–69. <a href="https://doi.org/10.1021/acs.jproteome.6b00861">https://doi.org/10.1021/acs.jproteome.6b00861</a>.
-</div>
+<div id="page-not-found" class="section level1">
+<h1>Page not found</h1>
+<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
+<p>You may want to try searching to find the page's new location, or use
+the table of contents to find the page you are looking for.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="annotation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="peaks-normalization.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -488,7 +426,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/yufree/metaworkflow/edit/master/08-omics.Rmd",
+"link": "https://github.com/yufree/metaworkflow/edit/master/%s",
 "text": "Edit"
 },
 "history": {

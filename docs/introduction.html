@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 1 Introduction | Meta-Workflow</title>
   <meta name="description" content="This is a workflow for metabolomics studies." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 1 Introduction | Meta-Workflow" />
   <meta property="og:type" content="book" />
-  
-  <meta property="og:image" content="images/cover.png" />
+  <meta property="og:image" content="/images/cover.png" />
   <meta property="og:description" content="This is a workflow for metabolomics studies." />
   <meta name="github-repo" content="yufree/metaworkflow" />
 
@@ -19,12 +18,12 @@
   <meta name="twitter:title" content="Chapter 1 Introduction | Meta-Workflow" />
   
   <meta name="twitter:description" content="This is a workflow for metabolomics studies." />
-  <meta name="twitter:image" content="images/cover.png" />
+  <meta name="twitter:image" content="/images/cover.png" />
 
 <meta name="author" content="Miao YU" />
 
 
-<meta name="date" content="2021-01-08" />
+<meta name="date" content="2022-07-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="experimental-designdoe.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,17 +49,26 @@
 
 
 
-
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/grViz-binding-1.0.6.1/grViz.js"></script>
+<script src="libs/grViz-binding-1.0.9/grViz.js"></script>
+<script src="libs/d3-3.3.8/d3.min.js"></script>
+<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
+<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+<script src="libs/chromatography-0.1/chromatography.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.9/DiagrammeR.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -119,6 +127,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -231,43 +262,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.5.5" data-path="annotation.html"><a href="annotation.html#biocan"><i class="fa fa-check"></i><b>7.5.5</b> BioCAn</a></li>
 <li class="chapter" data-level="7.5.6" data-path="annotation.html"><a href="annotation.html#mzmatch"><i class="fa fa-check"></i><b>7.5.6</b> mzMatch</a></li>
 <li class="chapter" data-level="7.5.7" data-path="annotation.html"><a href="annotation.html#xmsannotator"><i class="fa fa-check"></i><b>7.5.7</b> xMSannotator</a></li>
-<li class="chapter" data-level="7.5.8" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>7.5.8</b> MAIT</a></li>
-<li class="chapter" data-level="7.5.9" data-path="annotation.html"><a href="annotation.html#pmd"><i class="fa fa-check"></i><b>7.5.9</b> pmd</a></li>
-<li class="chapter" data-level="7.5.10" data-path="annotation.html"><a href="annotation.html#nontarget"><i class="fa fa-check"></i><b>7.5.10</b> nontarget</a></li>
-<li class="chapter" data-level="7.5.11" data-path="annotation.html"><a href="annotation.html#binner"><i class="fa fa-check"></i><b>7.5.11</b> Binner</a></li>
-<li class="chapter" data-level="7.5.12" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>7.5.12</b> mz.unity</a></li>
-<li class="chapter" data-level="7.5.13" data-path="annotation.html"><a href="annotation.html#ms-flo"><i class="fa fa-check"></i><b>7.5.13</b> MS-FLO</a></li>
-<li class="chapter" data-level="7.5.14" data-path="annotation.html"><a href="annotation.html#cliquems"><i class="fa fa-check"></i><b>7.5.14</b> CliqueMS</a></li>
-<li class="chapter" data-level="7.5.15" data-path="annotation.html"><a href="annotation.html#interpretmsspectrum"><i class="fa fa-check"></i><b>7.5.15</b> InterpretMSSpectrum</a></li>
+<li class="chapter" data-level="7.5.8" data-path="annotation.html"><a href="annotation.html#mwise"><i class="fa fa-check"></i><b>7.5.8</b> mWise</a></li>
+<li class="chapter" data-level="7.5.9" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>7.5.9</b> MAIT</a></li>
+<li class="chapter" data-level="7.5.10" data-path="annotation.html"><a href="annotation.html#pmd"><i class="fa fa-check"></i><b>7.5.10</b> pmd</a></li>
+<li class="chapter" data-level="7.5.11" data-path="annotation.html"><a href="annotation.html#nontarget"><i class="fa fa-check"></i><b>7.5.11</b> nontarget</a></li>
+<li class="chapter" data-level="7.5.12" data-path="annotation.html"><a href="annotation.html#binner"><i class="fa fa-check"></i><b>7.5.12</b> Binner</a></li>
+<li class="chapter" data-level="7.5.13" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>7.5.13</b> mz.unity</a></li>
+<li class="chapter" data-level="7.5.14" data-path="annotation.html"><a href="annotation.html#ms-flo"><i class="fa fa-check"></i><b>7.5.14</b> MS-FLO</a></li>
+<li class="chapter" data-level="7.5.15" data-path="annotation.html"><a href="annotation.html#cliquems"><i class="fa fa-check"></i><b>7.5.15</b> CliqueMS</a></li>
+<li class="chapter" data-level="7.5.16" data-path="annotation.html"><a href="annotation.html#interpretmsspectrum"><i class="fa fa-check"></i><b>7.5.16</b> InterpretMSSpectrum</a></li>
+<li class="chapter" data-level="7.5.17" data-path="annotation.html"><a href="annotation.html#netid"><i class="fa fa-check"></i><b>7.5.17</b> NetID</a></li>
+<li class="chapter" data-level="7.5.18" data-path="annotation.html"><a href="annotation.html#isfrag"><i class="fa fa-check"></i><b>7.5.18</b> ISfrag</a></li>
 </ul></li>
-<li class="chapter" data-level="7.6" data-path="annotation.html"><a href="annotation.html#msms-annotation"><i class="fa fa-check"></i><b>7.6</b> MS/MS annotation</a>
+<li class="chapter" data-level="7.6" data-path="annotation.html"><a href="annotation.html#ms1-ms2-connection"><i class="fa fa-check"></i><b>7.6</b> MS1 MS2 connection</a>
 <ul>
-<li class="chapter" data-level="7.6.1" data-path="annotation.html"><a href="annotation.html#metdna"><i class="fa fa-check"></i><b>7.6.1</b> MetDNA</a></li>
-<li class="chapter" data-level="7.6.2" data-path="annotation.html"><a href="annotation.html#metfusion"><i class="fa fa-check"></i><b>7.6.2</b> MetFusion</a></li>
-<li class="chapter" data-level="7.6.3" data-path="annotation.html"><a href="annotation.html#ms2analyzer"><i class="fa fa-check"></i><b>7.6.3</b> MS2Analyzer</a></li>
-<li class="chapter" data-level="7.6.4" data-path="annotation.html"><a href="annotation.html#metfrag"><i class="fa fa-check"></i><b>7.6.4</b> MetFrag</a></li>
-<li class="chapter" data-level="7.6.5" data-path="annotation.html"><a href="annotation.html#cfm-id"><i class="fa fa-check"></i><b>7.6.5</b> CFM-ID</a></li>
-<li class="chapter" data-level="7.6.6" data-path="annotation.html"><a href="annotation.html#lipidfrag"><i class="fa fa-check"></i><b>7.6.6</b> LipidFrag</a></li>
-<li class="chapter" data-level="7.6.7" data-path="annotation.html"><a href="annotation.html#lipidmatch"><i class="fa fa-check"></i><b>7.6.7</b> Lipidmatch</a></li>
-<li class="chapter" data-level="7.6.8" data-path="annotation.html"><a href="annotation.html#barcoding"><i class="fa fa-check"></i><b>7.6.8</b> BarCoding</a></li>
-<li class="chapter" data-level="7.6.9" data-path="annotation.html"><a href="annotation.html#imet"><i class="fa fa-check"></i><b>7.6.9</b> iMet</a></li>
+<li class="chapter" data-level="7.6.1" data-path="annotation.html"><a href="annotation.html#pmdda"><i class="fa fa-check"></i><b>7.6.1</b> PMDDA</a></li>
+<li class="chapter" data-level="7.6.2" data-path="annotation.html"><a href="annotation.html#hermes"><i class="fa fa-check"></i><b>7.6.2</b> HERMES</a></li>
 </ul></li>
-<li class="chapter" data-level="7.7" data-path="annotation.html"><a href="annotation.html#knowledge-based-annotation"><i class="fa fa-check"></i><b>7.7</b> Knowledge based annotation</a>
+<li class="chapter" data-level="7.7" data-path="annotation.html"><a href="annotation.html#msms-annotation"><i class="fa fa-check"></i><b>7.7</b> MS/MS annotation</a>
 <ul>
-<li class="chapter" data-level="7.7.1" data-path="annotation.html"><a href="annotation.html#chromatographic-retention-related-criteria"><i class="fa fa-check"></i><b>7.7.1</b> Chromatographic retention-related criteria</a></li>
-<li class="chapter" data-level="7.7.2" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>7.7.2</b> ProbMetab</a></li>
-<li class="chapter" data-level="7.7.3" data-path="annotation.html"><a href="annotation.html#mi-pack"><i class="fa fa-check"></i><b>7.7.3</b> MI-Pack</a></li>
-<li class="chapter" data-level="7.7.4" data-path="annotation.html"><a href="annotation.html#metexpert"><i class="fa fa-check"></i><b>7.7.4</b> MetExpert</a></li>
-<li class="chapter" data-level="7.7.5" data-path="annotation.html"><a href="annotation.html#mycompoundid"><i class="fa fa-check"></i><b>7.7.5</b> MycompoundID</a></li>
-<li class="chapter" data-level="7.7.6" data-path="annotation.html"><a href="annotation.html#metfamily"><i class="fa fa-check"></i><b>7.7.6</b> MetFamily</a></li>
-<li class="chapter" data-level="7.7.7" data-path="annotation.html"><a href="annotation.html#plantmat"><i class="fa fa-check"></i><b>7.7.7</b> Plantmat</a></li>
+<li class="chapter" data-level="7.7.1" data-path="annotation.html"><a href="annotation.html#metdna"><i class="fa fa-check"></i><b>7.7.1</b> MetDNA</a></li>
+<li class="chapter" data-level="7.7.2" data-path="annotation.html"><a href="annotation.html#metfusion"><i class="fa fa-check"></i><b>7.7.2</b> MetFusion</a></li>
+<li class="chapter" data-level="7.7.3" data-path="annotation.html"><a href="annotation.html#ms2analyzer"><i class="fa fa-check"></i><b>7.7.3</b> MS2Analyzer</a></li>
+<li class="chapter" data-level="7.7.4" data-path="annotation.html"><a href="annotation.html#metfrag"><i class="fa fa-check"></i><b>7.7.4</b> MetFrag</a></li>
+<li class="chapter" data-level="7.7.5" data-path="annotation.html"><a href="annotation.html#cfm-id"><i class="fa fa-check"></i><b>7.7.5</b> CFM-ID</a></li>
+<li class="chapter" data-level="7.7.6" data-path="annotation.html"><a href="annotation.html#lipidfrag"><i class="fa fa-check"></i><b>7.7.6</b> LipidFrag</a></li>
+<li class="chapter" data-level="7.7.7" data-path="annotation.html"><a href="annotation.html#lipidmatch"><i class="fa fa-check"></i><b>7.7.7</b> Lipidmatch</a></li>
+<li class="chapter" data-level="7.7.8" data-path="annotation.html"><a href="annotation.html#barcoding"><i class="fa fa-check"></i><b>7.7.8</b> BarCoding</a></li>
+<li class="chapter" data-level="7.7.9" data-path="annotation.html"><a href="annotation.html#imet"><i class="fa fa-check"></i><b>7.7.9</b> iMet</a></li>
 </ul></li>
-<li class="chapter" data-level="7.8" data-path="annotation.html"><a href="annotation.html#ms-database-for-annotation"><i class="fa fa-check"></i><b>7.8</b> MS Database for annotation</a>
+<li class="chapter" data-level="7.8" data-path="annotation.html"><a href="annotation.html#knowledge-based-annotation"><i class="fa fa-check"></i><b>7.8</b> Knowledge based annotation</a>
 <ul>
-<li class="chapter" data-level="7.8.1" data-path="annotation.html"><a href="annotation.html#ms"><i class="fa fa-check"></i><b>7.8.1</b> MS</a></li>
-<li class="chapter" data-level="7.8.2" data-path="annotation.html"><a href="annotation.html#msms-1"><i class="fa fa-check"></i><b>7.8.2</b> MS/MS</a></li>
+<li class="chapter" data-level="7.8.1" data-path="annotation.html"><a href="annotation.html#chromatographic-retention-related-criteria"><i class="fa fa-check"></i><b>7.8.1</b> Chromatographic retention-related criteria</a></li>
+<li class="chapter" data-level="7.8.2" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>7.8.2</b> ProbMetab</a></li>
+<li class="chapter" data-level="7.8.3" data-path="annotation.html"><a href="annotation.html#mi-pack"><i class="fa fa-check"></i><b>7.8.3</b> MI-Pack</a></li>
+<li class="chapter" data-level="7.8.4" data-path="annotation.html"><a href="annotation.html#metexpert"><i class="fa fa-check"></i><b>7.8.4</b> MetExpert</a></li>
+<li class="chapter" data-level="7.8.5" data-path="annotation.html"><a href="annotation.html#mycompoundid"><i class="fa fa-check"></i><b>7.8.5</b> MycompoundID</a></li>
+<li class="chapter" data-level="7.8.6" data-path="annotation.html"><a href="annotation.html#metfamily"><i class="fa fa-check"></i><b>7.8.6</b> MetFamily</a></li>
+<li class="chapter" data-level="7.8.7" data-path="annotation.html"><a href="annotation.html#plantmat"><i class="fa fa-check"></i><b>7.8.7</b> Plantmat</a></li>
 </ul></li>
-<li class="chapter" data-level="7.9" data-path="annotation.html"><a href="annotation.html#compounds-database"><i class="fa fa-check"></i><b>7.9</b> Compounds Database</a></li>
+<li class="chapter" data-level="7.9" data-path="annotation.html"><a href="annotation.html#ms-database-for-annotation"><i class="fa fa-check"></i><b>7.9</b> MS Database for annotation</a>
+<ul>
+<li class="chapter" data-level="7.9.1" data-path="annotation.html"><a href="annotation.html#ms"><i class="fa fa-check"></i><b>7.9.1</b> MS</a></li>
+<li class="chapter" data-level="7.9.2" data-path="annotation.html"><a href="annotation.html#msms-1"><i class="fa fa-check"></i><b>7.9.2</b> MS/MS</a></li>
+</ul></li>
+<li class="chapter" data-level="7.10" data-path="annotation.html"><a href="annotation.html#compounds-database"><i class="fa fa-check"></i><b>7.10</b> Compounds Database</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>8</b> Omics analysis</a>
 <ul>
@@ -306,7 +345,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#pca"><i class="fa fa-check"></i><b>10.3</b> PCA</a></li>
 <li class="chapter" data-level="10.4" data-path="statistical-analysis.html"><a href="statistical-analysis.html#cluster-analysis"><i class="fa fa-check"></i><b>10.4</b> Cluster Analysis</a></li>
 <li class="chapter" data-level="10.5" data-path="statistical-analysis.html"><a href="statistical-analysis.html#plsda"><i class="fa fa-check"></i><b>10.5</b> PLSDA</a></li>
-<li class="chapter" data-level="10.6" data-path="statistical-analysis.html"><a href="statistical-analysis.html#software-1"><i class="fa fa-check"></i><b>10.6</b> Software</a></li>
+<li class="chapter" data-level="10.6" data-path="statistical-analysis.html"><a href="statistical-analysis.html#network-analysis-1"><i class="fa fa-check"></i><b>10.6</b> Network analysis</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="statistical-analysis.html"><a href="statistical-analysis.html#vertex-and-edge"><i class="fa fa-check"></i><b>10.6.1</b> Vertex and edge</a></li>
+<li class="chapter" data-level="10.6.2" data-path="statistical-analysis.html"><a href="statistical-analysis.html#build-the-network"><i class="fa fa-check"></i><b>10.6.2</b> Build the network</a></li>
+<li class="chapter" data-level="10.6.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#network-attributes"><i class="fa fa-check"></i><b>10.6.3</b> Network attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="statistical-analysis.html"><a href="statistical-analysis.html#software-1"><i class="fa fa-check"></i><b>10.7</b> Software</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="exposome.html"><a href="exposome.html"><i class="fa fa-check"></i><b>11</b> Exposome</a>
 <ul>
@@ -338,25 +383,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="introduction" class="section level1" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
-<p>Information in living organism communicates along the Central Dogma in different scales from individual, population, community to ecosystem. Metabolomics (i.e., the profiling and quantitation of metabolites) is a relatively new field of “omics” studies. Different from other omics studies, metabolomics always focused on small molecular (molecular weight below 1500 Da) with much lower mass than polypeptide with single or doubled charged ions. Here is a demo of the position of metabolomics in “omics” studies<span class="citation">(<a href="references.html#ref-b.dunn2011" role="doc-biblioref">B. Dunn et al. 2011</a>)</span>.</p>
-<div class="figure"><span id="fig:metaintro"></span>
+<div id="introduction" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Chapter 1</span> Introduction<a href="introduction.html#introduction" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Information in living organism communicates along the Central Dogma in different scales from individual, population, community to ecosystem. Metabolomics (i.e., the profiling and quantification of metabolites) is a relatively new field of “omics” studies. Different from other omics studies, metabolomics always focused on small molecular (molecular weight below 1500 Da) with much lower mass than polypeptide with single or doubled charged ions. Here is a demo of the position of metabolomics in “omics” studies[@b.dunn2011].</p>
+<div class="figure"><span style="display:block;" id="fig:metaintro"></span>
 <img src="images/metaintro.png" alt="The complex interactions of functional levels in biological systems." width="90%" />
 <p class="caption">
 Figure 1.1: The complex interactions of functional levels in biological systems.
 </p>
 </div>
-<p>Metabolomics studies always employ GC-MS<span class="citation">(<a href="references.html#ref-theodoridis2012" role="doc-biblioref">Theodoridis et al. 2012</a>; <a href="references.html#ref-beale2018" role="doc-biblioref">Beale et al. 2018</a>)</span>, GC*GC-MS<span class="citation">(<a href="references.html#ref-tian2016" role="doc-biblioref">Tian et al. 2016a</a>)</span>, LC-MS<span class="citation">(<a href="references.html#ref-gika2014" role="doc-biblioref">Gika et al. 2014</a>)</span>, LC-MS/MS<span class="citation">(<a href="references.html#ref-begou2017a" role="doc-biblioref">Begou et al. 2017a</a>)</span>, IM-MS<span class="citation">(<a href="references.html#ref-levy2019" role="doc-biblioref">Levy et al. 2019</a>)</span>, infrared ion spectroscopy<span class="citation">(<a href="references.html#ref-martens2017" role="doc-biblioref">Martens et al. 2017</a>)</span> or NMR<span class="citation">(<a href="references.html#ref-b.dunn2011" role="doc-biblioref">B. Dunn et al. 2011</a>)</span> to measure metabolites. For analytical methods, this review could be checked<span class="citation">(<a href="references.html#ref-zhang2012" role="doc-biblioref">A. Zhang et al. 2012</a>)</span>. The overall technique progress of metabolomics (2012-2018) could be found here<span class="citation">(<a href="references.html#ref-miggiels2019" role="doc-biblioref">Miggiels et al. 2019</a>)</span>. However, this workflow will only cover mass spectrometry based metabolomics or XC-MS based research.</p>
-<div id="history" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> History</h2>
-<div id="history-of-mass-spectrometry" class="section level3" number="1.1.1">
-<h3><span class="header-section-number">1.1.1</span> History of Mass Spectrometry</h3>
-<p>Here is a historical commentary for mass spectrometry<span class="citation">(<a href="references.html#ref-yatesiii2011" role="doc-biblioref">Yates Iii 2011</a>)</span>. In details, here is a summary:</p>
+<p>Metabolomics studies always employ GC-MS<span class="citation">(<a href="#ref-theodoridis2012" role="doc-biblioref">Theodoridis et al. 2012</a>; <a href="#ref-beale2018" role="doc-biblioref">Beale et al. 2018</a>)</span>, GC*GC-MS<span class="citation">(<a href="#ref-tian2016" role="doc-biblioref">Tian et al. 2016a</a>)</span>, LC-MS<span class="citation">(<a href="#ref-gika2014" role="doc-biblioref">Gika et al. 2014</a>)</span>, LC-MS/MS<span class="citation">(<a href="#ref-begou2017a" role="doc-biblioref">Begou et al. 2017a</a>)</span>, IM-MS<span class="citation">(<a href="#ref-levy2019" role="doc-biblioref">Levy et al. 2019</a>)</span>, infrared ion spectroscopy<span class="citation">(<a href="#ref-martens2017" role="doc-biblioref">Martens et al. 2017</a>)</span> or NMR[@b.dunn2011] to measure metabolites. For analytical methods, this review could be checked<span class="citation">(<a href="#ref-zhang2012" role="doc-biblioref">A. Zhang et al. 2012</a>)</span>. The overall technique progress of metabolomics (2012-2018) could be found here<span class="citation">(<a href="#ref-miggiels2019" role="doc-biblioref">Miggiels et al. 2019</a>)</span>. However, this workflow will only cover mass spectrometry based metabolomics or XC-MS based research.</p>
+<div id="history" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> History<a href="introduction.html#history" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="history-of-mass-spectrometry" class="section level3 hasAnchor" number="1.1.1">
+<h3><span class="header-section-number">1.1.1</span> History of Mass Spectrometry<a href="introduction.html#history-of-mass-spectrometry" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Here is a historical commentary for mass spectrometry<span class="citation">(<a href="#ref-yatesiii2011" role="doc-biblioref">Yates Iii 2011</a>)</span>. In details, here is a summary:</p>
 <ul>
 <li>1913, Sir Joseph John Thomson “Rays of Positive Electricity and Their Application to Chemical Analyses.”</li>
 </ul>
-<div class="figure"><span id="fig:history"></span>
+<div class="figure"><span style="display:block;" id="fig:history"></span>
 <img src="images/mshistory.jpg" alt="Sir Joseph John Thomson &quot;Rays of Positive Electricity and Their Application to Chemical Analyses.&quot;" width="90%" />
 <p class="caption">
 Figure 1.2: Sir Joseph John Thomson “Rays of Positive Electricity and Their Application to Chemical Analyses.”
@@ -375,10 +420,10 @@ Figure 1.2: Sir Joseph John Thomson “Rays of Positive Electricity and Their Ap
 <li><p>2010s, Aperture Coding mass spectrometry</p></li>
 </ul>
 </div>
-<div id="history-of-metabolomcis" class="section level3" number="1.1.2">
-<h3><span class="header-section-number">1.1.2</span> History of Metabolomcis</h3>
-<p>You could check this report<span class="citation">(<a href="references.html#ref-baker2011" role="doc-biblioref">Baker 2011</a>)</span>. According to this book section<span class="citation">(<a href="references.html#ref-kusonmano2016" role="doc-biblioref">Kusonmano, Vongsangnak, and Chumnanpuen 2016a</a>)</span>:</p>
-<div class="figure"><span id="fig:history2"></span>
+<div id="history-of-metabolomcis" class="section level3 hasAnchor" number="1.1.2">
+<h3><span class="header-section-number">1.1.2</span> History of Metabolomcis<a href="introduction.html#history-of-metabolomcis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You could check this report<span class="citation">(<a href="#ref-baker2011" role="doc-biblioref">Baker 2011</a>)</span>. According to this book section<span class="citation">(<a href="#ref-kusonmano2016" role="doc-biblioref">Kusonmano, Vongsangnak, and Chumnanpuen 2016a</a>)</span>:</p>
+<div class="figure"><span style="display:block;" id="fig:history2"></span>
 <img src="images/metahistory.jpg" alt="Metabolomics timeline during pre- and post-metabolomics era" width="90%" />
 <p class="caption">
 Figure 1.3: Metabolomics timeline during pre- and post-metabolomics era
@@ -396,31 +441,31 @@ Figure 1.3: Metabolomics timeline during pre- and post-metabolomics era
 <li><p>post-metabolomics era high-throughput analytical techniques</p></li>
 </ul>
 </div>
-<div id="defination" class="section level3" number="1.1.3">
-<h3><span class="header-section-number">1.1.3</span> Defination</h3>
-<p>Metabolomics is actually a comprehensive analysis with identification and quantification of both known and unknown compounds in an unbiased way. Metabolic fingerprinting is working on fast classification of samples based on metabolite data without quantifying or identification of the metabolites. Metabolite profiling always need a pre-defined metabolites list to be quantification<span class="citation">(<a href="references.html#ref-madsen2010" role="doc-biblioref">Madsen, Lundstedt, and Trygg 2010a</a>)</span>.</p>
-<p>Meanwhile, targeted and untargeted metabolomics are also used in publicaitons. For targeted metabolomics, the majority of the molecules within a biosynthetic pathway or a defined group of related metabolites are determined. Sometimes broad collection of known metabolites could also be referred as targeted analysis. Untargeted analysis detect all of possible metabolites unbiased in the samples of interest. A similar concept called non-targeted analysis/screen is actually describe the similar studies or workflow.</p>
+<div id="defination" class="section level3 hasAnchor" number="1.1.3">
+<h3><span class="header-section-number">1.1.3</span> Defination<a href="introduction.html#defination" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Metabolomics is actually a comprehensive analysis with identification and quantification of both known and unknown compounds in an unbiased way. Metabolic fingerprinting is working on fast classification of samples based on metabolite data without quantifying or identification of the metabolites. Metabolite profiling always need a pre-defined metabolites list to be quantification<span class="citation">(<a href="#ref-madsen2010" role="doc-biblioref">Madsen, Lundstedt, and Trygg 2010a</a>)</span>.</p>
+<p>Meanwhile, targeted and untargeted metabolomics are also used in publications. For targeted metabolomics, the majority of the molecules within a biological pathway or a defined group of related metabolites are determined. Sometimes broad collection of known metabolites could also be referred as targeted analysis. Untargeted analysis detect all of possible metabolites unbiased in the samples of interest. A similar concept called non-targeted analysis/screen is actually describe the similar studies or workflow.</p>
 </div>
 </div>
-<div id="reviews-and-tutorials" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> Reviews and tutorials</h2>
+<div id="reviews-and-tutorials" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Reviews and tutorials<a href="introduction.html#reviews-and-tutorials" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Some nice reviews and tutorials related to this workflow could be found in those papers or directly online:</p>
-<div id="workflow" class="section level3" number="1.2.1">
-<h3><span class="header-section-number">1.2.1</span> Workflow</h3>
-<p>Those papers are recommended<span class="citation">(<a href="references.html#ref-gonzález-riano2020" role="doc-biblioref">González-Riano et al. 2020</a>; <a href="references.html#ref-pezzatti2020" role="doc-biblioref">Pezzatti et al. 2020</a>; <a href="references.html#ref-liu2019" role="doc-biblioref">X. Liu et al. 2019</a>; <a href="references.html#ref-barnes2016a" role="doc-biblioref">Barnes et al. 2016a</a>; <a href="references.html#ref-cajka2016" role="doc-biblioref">Cajka and Fiehn 2016</a>; <a href="references.html#ref-gika2014" role="doc-biblioref">Gika et al. 2014</a>; <a href="references.html#ref-theodoridis2012" role="doc-biblioref">Theodoridis et al. 2012</a>; <a href="references.html#ref-lu2008" role="doc-biblioref">X. Lu and Xu 2008</a>; <a href="references.html#ref-fiehn2002" role="doc-biblioref">Fiehn 2002</a>)</span> for general metabolomics related topics.</p>
+<div id="workflow" class="section level3 hasAnchor" number="1.2.1">
+<h3><span class="header-section-number">1.2.1</span> Workflow<a href="introduction.html#workflow" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Those papers are recommended<span class="citation">(<a href="#ref-gonzález-riano2020" role="doc-biblioref">González-Riano et al. 2020</a>; <a href="#ref-pezzatti2020" role="doc-biblioref">Pezzatti et al. 2020</a>; <a href="#ref-liu2019" role="doc-biblioref">X. Liu et al. 2019</a>; <a href="#ref-barnes2016a" role="doc-biblioref">Barnes et al. 2016a</a>; <a href="#ref-cajka2016" role="doc-biblioref">Cajka and Fiehn 2016</a>; <a href="#ref-gika2014" role="doc-biblioref">Gika et al. 2014</a>; <a href="#ref-theodoridis2012" role="doc-biblioref">Theodoridis et al. 2012</a>; <a href="#ref-lu2008" role="doc-biblioref">X. Lu and Xu 2008</a>; <a href="#ref-fiehn2002" role="doc-biblioref">Fiehn 2002</a>)</span> for general metabolomics related topics.</p>
 <ul>
-<li>For targeted metabolomics, you could check those reviews<span class="citation">(<a href="references.html#ref-griffiths2010a" role="doc-biblioref">Griffiths et al. 2010</a>; <a href="references.html#ref-lu2008a" role="doc-biblioref">W. Lu, Bennett, and Rabinowitz 2008</a>; <a href="references.html#ref-weljie2006" role="doc-biblioref">Weljie et al. 2006</a>; <a href="references.html#ref-yuan2012" role="doc-biblioref">Yuan et al. 2012</a>; <a href="references.html#ref-zhou2016b" role="doc-biblioref">Zhou and Yin 2016</a>; <a href="references.html#ref-begou2017b" role="doc-biblioref">Begou et al. 2017b</a>)</span>.</li>
+<li>For targeted metabolomics, you could check those reviews<span class="citation">(<a href="#ref-griffiths2010a" role="doc-biblioref">Griffiths et al. 2010</a>; <a href="#ref-lu2008a" role="doc-biblioref">W. Lu, Bennett, and Rabinowitz 2008</a>; <a href="#ref-weljie2006" role="doc-biblioref">Weljie et al. 2006</a>; <a href="#ref-yuan2012" role="doc-biblioref">Yuan et al. 2012</a>; <a href="#ref-zhou2016b" role="doc-biblioref">Zhou and Yin 2016</a>; <a href="#ref-begou2017b" role="doc-biblioref">Begou et al. 2017b</a>)</span>.</li>
 </ul>
 </div>
-<div id="data-analysis" class="section level3" number="1.2.2">
-<h3><span class="header-section-number">1.2.2</span> Data analysis</h3>
-<p>You could firstly read those papers<span class="citation">(<a href="references.html#ref-barnes2016" role="doc-biblioref">Barnes et al. 2016b</a>; <a href="references.html#ref-kusonmano2016a" role="doc-biblioref">Kusonmano, Vongsangnak, and Chumnanpuen 2016b</a>; <a href="references.html#ref-madsen2010a" role="doc-biblioref">Madsen, Lundstedt, and Trygg 2010b</a>; <a href="references.html#ref-uppal2016a" role="doc-biblioref">Uppal et al. 2016a</a>; <a href="references.html#ref-alonso2015" role="doc-biblioref">Alonso, Marsal, and Julià 2015</a>)</span> to get the concepts and issues for data analysis in metabolomics. Then this paper<span class="citation">(<a href="references.html#ref-gromski2015a" role="doc-biblioref">Gromski et al. 2015</a>)</span> could be treated as a step-by-step tutorial.</p>
+<div id="data-analysis" class="section level3 hasAnchor" number="1.2.2">
+<h3><span class="header-section-number">1.2.2</span> Data analysis<a href="introduction.html#data-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You could firstly read those papers<span class="citation">(<a href="#ref-barnes2016" role="doc-biblioref">Barnes et al. 2016b</a>; <a href="#ref-kusonmano2016a" role="doc-biblioref">Kusonmano, Vongsangnak, and Chumnanpuen 2016b</a>; <a href="#ref-madsen2010a" role="doc-biblioref">Madsen, Lundstedt, and Trygg 2010b</a>; <a href="#ref-uppal2016a" role="doc-biblioref">Uppal et al. 2016a</a>; <a href="#ref-alonso2015" role="doc-biblioref">Alonso, Marsal, and Julià 2015</a>)</span> to get the concepts and issues for data analysis in metabolomics. Then this paper<span class="citation">(<a href="#ref-gromski2015a" role="doc-biblioref">Gromski et al. 2015</a>)</span> could be treated as a step-by-step tutorial.</p>
 <ul>
-<li><p>For annotation, this paper<span class="citation">(<a href="references.html#ref-domingo-almenara2018" role="doc-biblioref">Domingo-Almenara, Montenegro-Burke, Benton, et al. 2018a</a>)</span> is a well organized review.</p></li>
-<li><p>For database used in metabolomics, you could check this review<span class="citation">(<a href="references.html#ref-vinaixa2016" role="doc-biblioref">Vinaixa et al. 2016</a>)</span>.</p></li>
-<li><p>For metabolomics software, check this series of reviews for each year<span class="citation">(<a href="references.html#ref-misra2016" role="doc-biblioref">Misra and van der Hooft 2016</a>; <a href="references.html#ref-misra2017" role="doc-biblioref">Misra, Fahrmann, and Grapov 2017</a>; <a href="references.html#ref-misra2018" role="doc-biblioref">Misra 2018</a>)</span>.</p></li>
-<li><p>For open sourced software, those reviews<span class="citation">(<a href="references.html#ref-spicer2017" role="doc-biblioref">Spicer et al. 2017</a>; <a href="references.html#ref-dryden2017" role="doc-biblioref">Dryden et al. 2017</a>)</span> could be a good start.</p></li>
-<li><p>For DIA or DDA metabolomics, check those papers<span class="citation">(<a href="references.html#ref-fenaille2017" role="doc-biblioref">Fenaille et al. 2017a</a>; <a href="references.html#ref-bilbao2015" role="doc-biblioref">Bilbao et al. 2015a</a>)</span>.</p></li>
+<li><p>For annotation, this paper<span class="citation">(<a href="#ref-domingo-almenara2018" role="doc-biblioref">Domingo-Almenara, Montenegro-Burke, Benton, et al. 2018a</a>)</span> is a well organized review.</p></li>
+<li><p>For database used in metabolomics, you could check this review<span class="citation">(<a href="#ref-vinaixa2016" role="doc-biblioref">Vinaixa et al. 2016</a>)</span>.</p></li>
+<li><p>For metabolomics software, check this series of reviews for each year<span class="citation">(<a href="#ref-misra2016" role="doc-biblioref">Misra and van der Hooft 2016</a>; <a href="#ref-misra2017" role="doc-biblioref">Misra, Fahrmann, and Grapov 2017</a>; <a href="#ref-misra2018" role="doc-biblioref">Misra 2018</a>)</span>.</p></li>
+<li><p>For open sourced software, those reviews<span class="citation">(<a href="#ref-chang2021" role="doc-biblioref">Chang et al. 2021</a>; <a href="#ref-spicer2017" role="doc-biblioref">Spicer et al. 2017</a>; <a href="#ref-dryden2017" role="doc-biblioref">Dryden et al. 2017</a>)</span> could be a good start.</p></li>
+<li><p>For DIA or DDA metabolomics, check those papers<span class="citation">(<a href="#ref-fenaille2017" role="doc-biblioref">Fenaille et al. 2017a</a>; <a href="#ref-bilbao2015" role="doc-biblioref">Bilbao et al. 2015a</a>)</span>.</p></li>
 </ul>
 <p>Here is the slides for metabolomics data analysis workshop and I have made presentations twice in UWaterloo and UC Irvine.</p>
 <ul>
@@ -431,31 +476,31 @@ Figure 1.3: Metabolomics timeline during pre- and post-metabolomics era
 <li><p><a href="http://yufree.github.io/presentation/metabolomics/demo#1">Demo</a></p></li>
 </ul>
 </div>
-<div id="application" class="section level3" number="1.2.3">
-<h3><span class="header-section-number">1.2.3</span> Application</h3>
+<div id="application" class="section level3 hasAnchor" number="1.2.3">
+<h3><span class="header-section-number">1.2.3</span> Application<a href="introduction.html#application" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li><p>For environmental research related metabolomics or exposome, check those papers<span class="citation">(<a href="references.html#ref-matich2019a" role="doc-biblioref">Matich et al. 2019</a>; <a href="references.html#ref-tang2020" role="doc-biblioref">Tang et al. 2020</a>; <a href="references.html#ref-warth2017" role="doc-biblioref">Warth et al. 2017</a>; <a href="references.html#ref-bundy2009" role="doc-biblioref">Bundy, Davey, and Viant 2009</a>)</span>.</p></li>
-<li><p>For toxicology, check this paper<span class="citation">(<a href="references.html#ref-viant2019" role="doc-biblioref">Mark R. Viant et al. 2019</a>)</span>.</p></li>
-<li><p>Check this piece<span class="citation">(<a href="references.html#ref-wishart2016" role="doc-biblioref">Wishart 2016</a>)</span> for drug discovery and precision medicine.</p></li>
-<li><p>For food chemistry, check this paper<span class="citation">(<a href="references.html#ref-castro-puyana2017" role="doc-biblioref">Castro-Puyana et al. 2017</a>)</span>, this paper for livestock<span class="citation">(<a href="references.html#ref-goldansaz2017" role="doc-biblioref">Goldansaz et al. 2017</a>)</span> and those papers for nutrition<span class="citation">(<a href="references.html#ref-allam-ndoul2016" role="doc-biblioref">Allam-Ndoul et al. 2016</a>; <a href="references.html#ref-jones2012" role="doc-biblioref">Jones, Park, and Ziegler 2012</a>; <a href="references.html#ref-müller2020a" role="doc-biblioref">Müller and Bosy-Westphal 2020</a>)</span>.</p></li>
-<li><p>For disease related metabolomics such as oncology<span class="citation">(<a href="references.html#ref-spratlin2009" role="doc-biblioref">Spratlin, Serkova, and Eckhardt 2009</a>)</span>, Cardiovascular<span class="citation">(<a href="references.html#ref-cheng2017" role="doc-biblioref">Cheng et al. 2017</a>)</span> . This paper<span class="citation">(<a href="references.html#ref-kennedy2018" role="doc-biblioref">Kennedy et al. 2018</a>)</span> cover the metabolomics realted clinic research.</p></li>
-<li><p>For plant science, check those paper<span class="citation">(<a href="references.html#ref-sumner2003" role="doc-biblioref">Lloyd W. Sumner, Mendes, and Dixon 2003</a>; <a href="references.html#ref-jorge2016a" role="doc-biblioref">Jorge, Mata, and António 2016a</a>; <a href="references.html#ref-hansen2018a" role="doc-biblioref">Hansen and Lee 2018a</a>)</span>.</p></li>
-<li><p>For single cell metabolomics analysis, check here<span class="citation">(<a href="references.html#ref-fessenden2016" role="doc-biblioref">Fessenden 2016</a>; <a href="references.html#ref-zenobi2013" role="doc-biblioref">Zenobi 2013</a>; <a href="references.html#ref-ali2019a" role="doc-biblioref">Ali et al. 2019</a>; <a href="references.html#ref-hansen2018" role="doc-biblioref">Hansen and Lee 2018b</a>)</span>.</p></li>
-<li><p>For gut microbiota, check here<span class="citation">(<a href="references.html#ref-smirnov2016" role="doc-biblioref">Smirnov et al. 2016</a>)</span>.</p></li>
+<li><p>For environmental research related metabolomics or exposome, check those papers<span class="citation">(<a href="#ref-matich2019a" role="doc-biblioref">Matich et al. 2019</a>; <a href="#ref-tang2020" role="doc-biblioref">Tang et al. 2020</a>; <a href="#ref-warth2017" role="doc-biblioref">Warth et al. 2017</a>; <a href="#ref-bundy2009" role="doc-biblioref">Bundy, Davey, and Viant 2009</a>)</span>.</p></li>
+<li><p>For toxicology, check this paper<span class="citation">(<a href="#ref-viant2019" role="doc-biblioref">Mark R. Viant et al. 2019</a>)</span>.</p></li>
+<li><p>Check this piece<span class="citation">(<a href="#ref-wishart2016" role="doc-biblioref">Wishart 2016</a>)</span> for drug discovery and precision medicine.</p></li>
+<li><p>For food chemistry, check this paper<span class="citation">(<a href="#ref-castro-puyana2017" role="doc-biblioref">Castro-Puyana et al. 2017</a>)</span>, this paper for livestock<span class="citation">(<a href="#ref-goldansaz2017" role="doc-biblioref">Goldansaz et al. 2017</a>)</span> and those papers for nutrition<span class="citation">(<a href="#ref-allam-ndoul2016" role="doc-biblioref">Allam-Ndoul et al. 2016</a>; <a href="#ref-jones2012" role="doc-biblioref">Jones, Park, and Ziegler 2012</a>; <a href="#ref-müller2020a" role="doc-biblioref">Müller and Bosy-Westphal 2020</a>)</span>.</p></li>
+<li><p>For disease related metabolomics such as oncology<span class="citation">(<a href="#ref-spratlin2009" role="doc-biblioref">Spratlin, Serkova, and Eckhardt 2009</a>)</span>, Cardiovascular<span class="citation">(<a href="#ref-cheng2017" role="doc-biblioref">Cheng et al. 2017</a>)</span> . This paper<span class="citation">(<a href="#ref-kennedy2018" role="doc-biblioref">Kennedy et al. 2018</a>)</span> cover the metabolomics realted clinic research.</p></li>
+<li><p>For plant science, check those paper<span class="citation">(<a href="#ref-sumner2003" role="doc-biblioref">Lloyd W. Sumner, Mendes, and Dixon 2003</a>; <a href="#ref-jorge2016a" role="doc-biblioref">Jorge, Mata, and António 2016a</a>; <a href="#ref-hansen2018a" role="doc-biblioref">Hansen and Lee 2018a</a>)</span>.</p></li>
+<li><p>For single cell metabolomics analysis, check here<span class="citation">(<a href="#ref-fessenden2016" role="doc-biblioref">Fessenden 2016</a>; <a href="#ref-zenobi2013" role="doc-biblioref">Zenobi 2013</a>; <a href="#ref-ali2019a" role="doc-biblioref">Ali et al. 2019</a>; <a href="#ref-hansen2018" role="doc-biblioref">Hansen and Lee 2018b</a>)</span>.</p></li>
+<li><p>For gut microbiota, check here<span class="citation">(<a href="#ref-smirnov2016" role="doc-biblioref">Smirnov et al. 2016</a>)</span>.</p></li>
 </ul>
 </div>
-<div id="challenge" class="section level3" number="1.2.4">
-<h3><span class="header-section-number">1.2.4</span> Challenge</h3>
-<p>General challenge for metabolomics studies could be found here <span class="citation">(<a href="references.html#ref-schymanski2017" role="doc-biblioref">Schymanski and Williams 2017</a>; <a href="references.html#ref-uppal2016" role="doc-biblioref">Uppal et al. 2016b</a>; <a href="references.html#ref-schrimpe-rutledge2016" role="doc-biblioref">Schrimpe-Rutledge et al. 2016</a>; <a href="references.html#ref-wolfender2015" role="doc-biblioref">Wolfender et al. 2015</a>)</span>.</p>
+<div id="challenge" class="section level3 hasAnchor" number="1.2.4">
+<h3><span class="header-section-number">1.2.4</span> Challenge<a href="introduction.html#challenge" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>General challenge for metabolomics studies could be found here <span class="citation">(<a href="#ref-schymanski2017" role="doc-biblioref">Schymanski and Williams 2017</a>; <a href="#ref-uppal2016" role="doc-biblioref">Uppal et al. 2016b</a>; <a href="#ref-schrimpe-rutledge2016" role="doc-biblioref">Schrimpe-Rutledge et al. 2016</a>; <a href="#ref-wolfender2015" role="doc-biblioref">Wolfender et al. 2015</a>)</span>.</p>
 <ul>
-<li><p>For reproducible research, check those papers <span class="citation">(<a href="references.html#ref-verhoeven2020" role="doc-biblioref">Verhoeven, Giera, and Mayboroda 2020</a>; <a href="references.html#ref-mangul2019" role="doc-biblioref">Mangul et al. 2019</a>; <a href="references.html#ref-wallach2018" role="doc-biblioref">Wallach, Boyack, and Ioannidis 2018</a>; <a href="references.html#ref-hites2018" role="doc-biblioref">Hites and Jobst 2018</a>; <a href="references.html#ref-considine2017" role="doc-biblioref">Considine et al. 2017</a>; <a href="references.html#ref-sarpe2017" role="doc-biblioref">Sarpe and Schriemer 2017</a>)</span>.</p></li>
-<li><p>Quantitative Metabolomics related issues could be found here<span class="citation">(<a href="references.html#ref-kapoore2016b" role="doc-biblioref">Kapoore and Vaidyanathan 2016</a>; <a href="references.html#ref-jorge2016aa" role="doc-biblioref">Jorge, Mata, and António 2016b</a>)</span>.</p></li>
-<li><p>For quality control issues, check here<span class="citation">(<a href="references.html#ref-dudzik2018" role="doc-biblioref">Dudzik et al. 2018</a>; <a href="references.html#ref-siskos2017" role="doc-biblioref">Siskos et al. 2017</a>; <a href="references.html#ref-sumner2007" role="doc-biblioref">Lloyd W. Sumner et al. 2007</a>)</span>.</p></li>
+<li><p>For reproducible research, check those papers <span class="citation">(<a href="#ref-place2021" role="doc-biblioref">Place et al. 2021</a>; <a href="#ref-verhoeven2020" role="doc-biblioref">Verhoeven, Giera, and Mayboroda 2020</a>; <a href="#ref-mangul2019" role="doc-biblioref">Mangul et al. 2019</a>; <a href="#ref-wallach2018" role="doc-biblioref">Wallach, Boyack, and Ioannidis 2018</a>; <a href="#ref-hites2018" role="doc-biblioref">Hites and Jobst 2018</a>; <a href="#ref-considine2017" role="doc-biblioref">Considine et al. 2017</a>; <a href="#ref-sarpe2017" role="doc-biblioref">Sarpe and Schriemer 2017</a>)</span>.</p></li>
+<li><p>Quantitative Metabolomics related issues could be found here<span class="citation">(<a href="#ref-kapoore2016b" role="doc-biblioref">Kapoore and Vaidyanathan 2016</a>; <a href="#ref-jorge2016aa" role="doc-biblioref">Jorge, Mata, and António 2016b</a>)</span>.</p></li>
+<li><p>For quality control issues, check here<span class="citation">(<a href="#ref-dudzik2018" role="doc-biblioref">Dudzik et al. 2018</a>; <a href="#ref-siskos2017" role="doc-biblioref">Siskos et al. 2017</a>; <a href="#ref-sumner2007" role="doc-biblioref">Lloyd W. Sumner et al. 2007</a>; <a href="#ref-place2021" role="doc-biblioref">Place et al. 2021</a>)</span>.</p></li>
 </ul>
 </div>
 </div>
-<div id="trends-in-metabolomics" class="section level2" number="1.3">
-<h2><span class="header-section-number">1.3</span> Trends in Metabolomics</h2>
+<div id="trends-in-metabolomics" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Trends in Metabolomics<a href="introduction.html#trends-in-metabolomics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="introduction.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtrendsR)</span>
 <span id="cb1-2"><a href="introduction.html#cb1-2" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">gtrends</span>(<span class="fu">c</span>(<span class="st">&quot;metabolomics&quot;</span>, <span class="st">&quot;metabolomics&quot;</span>), <span class="at">geo =</span> <span class="fu">c</span>(<span class="st">&quot;CA&quot;</span>,<span class="st">&quot;US&quot;</span>))</span>
 <span id="cb1-3"><a href="introduction.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(res)</span></code></pre></div>
@@ -464,7 +509,7 @@ Figure 1.3: Metabolomics timeline during pre- and post-metabolomics era
 <span id="cb2-2"><a href="introduction.html#cb2-2" aria-hidden="true" tabindex="-1"></a>papers_by_year <span class="ot">&lt;-</span> <span class="cf">function</span>(years, search_term){</span>
 <span id="cb2-3"><a href="introduction.html#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">sapply</span>(years, <span class="cf">function</span>(y) <span class="fu">entrez_search</span>(<span class="at">db=</span><span class="st">&quot;pubmed&quot;</span>,<span class="at">term=</span>search_term, <span class="at">mindate=</span>y, <span class="at">maxdate=</span>y, <span class="at">retmax=</span><span class="dv">0</span>)<span class="sc">$</span>count))</span>
 <span id="cb2-4"><a href="introduction.html#cb2-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-5"><a href="introduction.html#cb2-5" aria-hidden="true" tabindex="-1"></a>years <span class="ot">&lt;-</span> <span class="dv">1987</span><span class="sc">:</span><span class="dv">2018</span></span>
+<span id="cb2-5"><a href="introduction.html#cb2-5" aria-hidden="true" tabindex="-1"></a>years <span class="ot">&lt;-</span> <span class="dv">1987</span><span class="sc">:</span><span class="dv">2020</span></span>
 <span id="cb2-6"><a href="introduction.html#cb2-6" aria-hidden="true" tabindex="-1"></a>total_papers <span class="ot">&lt;-</span> <span class="fu">papers_by_year</span>(years, <span class="st">&quot;&quot;</span>)</span>
 <span id="cb2-7"><a href="introduction.html#cb2-7" aria-hidden="true" tabindex="-1"></a>omics <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;genomic&quot;</span>, <span class="st">&quot;epigenomic&quot;</span>,  <span class="st">&quot;metagenomic&quot;</span>, <span class="st">&quot;proteomic&quot;</span>, <span class="st">&quot;transcriptomic&quot;</span>,<span class="st">&quot;metabolomics&quot;</span>,<span class="st">&quot;exposome&quot;</span>, <span class="st">&quot;pharmacogenomic&quot;</span>, <span class="st">&quot;connectomic&quot;</span>)</span>
 <span id="cb2-8"><a href="introduction.html#cb2-8" aria-hidden="true" tabindex="-1"></a>trend_data <span class="ot">&lt;-</span> <span class="fu">sapply</span>(omics, <span class="cf">function</span>(t) <span class="fu">papers_by_year</span>(years, t))</span>
@@ -476,11 +521,254 @@ Figure 1.3: Metabolomics timeline during pre- and post-metabolomics era
 <span id="cb2-14"><a href="introduction.html#cb2-14" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span> <span class="fu">scale_y_log10</span>(<span class="st">&quot;number of papers&quot;</span>)</span></code></pre></div>
 <p><img src="Metabolomics_files/figure-html/rentrez-1.png" width="672" /></p>
 </div>
-<div id="workflow-1" class="section level2" number="1.4">
-<h2><span class="header-section-number">1.4</span> Workflow</h2>
-<div id="htmlwidget-073b505e632197be9089" style="width:300px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-073b505e632197be9089">{"x":{"diagram":"digraph workflow {\nnode [shape = box]\nA [label = \"raw data\"]\nB [label = \"open source format\"]\nC [label = \"DoE folder\"]\nD [label = \"peaks list\"]\nE [label = \"retention time correction\"]\nF [label = \"peaks grouping\"]\nG [label = \"peaks filling\"]\nH [label = \"raw peaks\"]\nI [label = \"data visulization\"]\nJ [label = \"batch effects correction\"]\nK [label = \"corrected peaks\"]\nL [label = \"annotation\"]\nM [label = \"metabolomics pathway analysis\"]\nN [label = \"omics analysis\"]\nO [label = \"biomarkers discovery/diagnoise\"]\n\nA -> B -> C -> D -> E -> F -> G -> H\nH -> I\nI -> J\nH -> J -> K -> L\nL -> M -> N\nL -> O\n                  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="workflow-1" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Workflow<a href="introduction.html#workflow-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="htmlwidget-035c26727a06244cad61" style="width:300px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-035c26727a06244cad61">{"x":{"diagram":"digraph workflow {\nnode [shape = box]\nA [label = \"raw data\"]\nB [label = \"open source format\"]\nC [label = \"DoE folder\"]\nD [label = \"peaks list\"]\nE [label = \"retention time correction\"]\nF [label = \"peaks grouping\"]\nG [label = \"peaks filling\"]\nH [label = \"raw peaks\"]\nI [label = \"data visulization\"]\nJ [label = \"batch effects correction\"]\nK [label = \"corrected peaks\"]\nL [label = \"annotation\"]\nM [label = \"metabolomics pathway analysis\"]\nN [label = \"omics analysis\"]\nO [label = \"biomarkers discovery/diagnoise\"]\n\nA -> B -> C -> D -> E -> F -> G -> H\nH -> I\nI -> J\nH -> J -> K -> L\nL -> M -> N\nL -> O\n                  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-ali2019a" class="csl-entry">
+Ali, Ahmed, Yasmine Abouleila, Yoshihiro Shimizu, Eiso Hiyama, Samy Emara, Alireza Mashaghi, and Thomas Hankemeier. 2019. <span>“Single-Cell Metabolomics by Mass Spectrometry: Advances, Challenges, and Future Applications.”</span> <em>TrAC Trends in Analytical Chemistry</em> 120 (November): 115436. <a href="https://doi.org/10.1016/j.trac.2019.02.033">https://doi.org/10.1016/j.trac.2019.02.033</a>.
+</div>
+<div id="ref-allam-ndoul2016" class="csl-entry">
+Allam-Ndoul, Bénédicte, Frédéric Guénard, Véronique Garneau, Hubert Cormier, Olivier Barbier, Louis Pérusse, and Marie-Claude Vohl. 2016. <span>“Association Between Metabolite Profiles, Metabolic Syndrome and Obesity Status.”</span> <em>Nutrients</em> 8 (6): 324. <a href="https://doi.org/10.3390/nu8060324">https://doi.org/10.3390/nu8060324</a>.
+</div>
+<div id="ref-alonso2015" class="csl-entry">
+Alonso, Arnald, Sara Marsal, and Antonio Julià. 2015. <span>“Analytical Methods in Untargeted Metabolomics: State of the Art in 2015.”</span> <em>Frontiers in Bioengineering and Biotechnology</em> 3 (March). <a href="https://doi.org/10.3389/fbioe.2015.00023">https://doi.org/10.3389/fbioe.2015.00023</a>.
+</div>
+<div id="ref-baker2011" class="csl-entry">
+Baker, Monya. 2011. <span>“Metabolomics: From Small Molecules to Big Ideas.”</span> <em>Nature Methods</em> 8 (2): 117–21. <a href="https://doi.org/10.1038/nmeth0211-117">https://doi.org/10.1038/nmeth0211-117</a>.
+</div>
+<div id="ref-barnes2016a" class="csl-entry">
+Barnes, Stephen, H. Paul Benton, Krista Casazza, Sara J. Cooper, Xiangqin Cui, Xiuxia Du, Jeffrey Engler, et al. 2016a. <span>“Training in Metabolomics Research. I. Designing the Experiment, Collecting and Extracting Samples and Generating Metabolomics Data.”</span> <em>Journal of Mass Spectrometry</em> 51 (7): 461–75. <a href="https://doi.org/10.1002/jms.3782">https://doi.org/10.1002/jms.3782</a>.
+</div>
+<div id="ref-barnes2016" class="csl-entry">
+———, et al. 2016b. <span>“Training in Metabolomics Research. II. Processing and Statistical Analysis of Metabolomics Data, Metabolite Identification, Pathway Analysis, Applications of Metabolomics and Its Future.”</span> <em>Journal of Mass Spectrometry</em> 51 (8): 535–48. <a href="https://doi.org/10.1002/jms.3780">https://doi.org/10.1002/jms.3780</a>.
+</div>
+<div id="ref-beale2018" class="csl-entry">
+Beale, David J., Farhana R. Pinu, Konstantinos A. Kouremenos, Mahesha M. Poojary, Vinod K. Narayana, Berin A. Boughton, Komal Kanojia, Saravanan Dayalan, Oliver A. H. Jones, and Daniel A. Dias. 2018. <span>“Review of Recent Developments in GC<span></span>MS Approaches to Metabolomics-Based Research.”</span> <em>Metabolomics</em> 14 (11): 152. <a href="https://doi.org/10.1007/s11306-018-1449-2">https://doi.org/10.1007/s11306-018-1449-2</a>.
+</div>
+<div id="ref-begou2017a" class="csl-entry">
+Begou, O., H. G. Gika, I. D. Wilson, and G. Theodoridis. 2017a. <span>“Hyphenated MS-Based Targeted Approaches in Metabolomics.”</span> <em>Analyst</em> 142 (17): 3079–3100. <a href="https://doi.org/10.1039/C7AN00812K">https://doi.org/10.1039/C7AN00812K</a>.
+</div>
+<div id="ref-begou2017b" class="csl-entry">
+———. 2017b. <span>“Hyphenated MS-Based Targeted Approaches in Metabolomics.”</span> <em>Analyst</em> 142 (17): 3079–3100. <a href="https://doi.org/10.1039/C7AN00812K">https://doi.org/10.1039/C7AN00812K</a>.
+</div>
+<div id="ref-bilbao2015" class="csl-entry">
+Bilbao, Aivett, Emmanuel Varesio, Jeremy Luban, Caterina Strambio-De-Castillia, Gérard Hopfgartner, Markus Müller, and Frédérique Lisacek. 2015a. <span>“Processing Strategies and Software Solutions for Data-Independent Acquisition in Mass Spectrometry.”</span> <em>PROTEOMICS</em> 15 (5-6): 964–80. <a href="https://doi.org/10.1002/pmic.201400323">https://doi.org/10.1002/pmic.201400323</a>.
+</div>
+<div id="ref-bundy2009" class="csl-entry">
+Bundy, Jacob G., Matthew P. Davey, and Mark R. Viant. 2009. <span>“Environmental Metabolomics: A Critical Review and Future Perspectives.”</span> <em>Metabolomics</em> 5 (1): 3. <a href="https://doi.org/10.1007/s11306-008-0152-0">https://doi.org/10.1007/s11306-008-0152-0</a>.
+</div>
+<div id="ref-cajka2016" class="csl-entry">
+Cajka, Tomas, and Oliver Fiehn. 2016. <span>“Toward Merging Untargeted and Targeted Methods in Mass Spectrometry-Based Metabolomics and Lipidomics.”</span> <em>Analytical Chemistry</em> 88 (1): 524–45. <a href="https://doi.org/10.1021/acs.analchem.5b04491">https://doi.org/10.1021/acs.analchem.5b04491</a>.
+</div>
+<div id="ref-castro-puyana2017" class="csl-entry">
+Castro-Puyana, María, Raquel Pérez-Míguez, Lidia Montero, and Miguel Herrero. 2017. <span>“Application of Mass Spectrometry-Based Metabolomics Approaches for Food Safety, Quality and Traceability.”</span> <em>TrAC Trends in Analytical Chemistry</em> 93 (August): 102–18. <a href="https://doi.org/10.1016/j.trac.2017.05.004">https://doi.org/10.1016/j.trac.2017.05.004</a>.
+</div>
+<div id="ref-chang2021" class="csl-entry">
+Chang, Hui-Yin, Sean M. Colby, Xiuxia Du, Javier D. Gomez, Maximilian J. Helf, Katerina Kechris, Christine R. Kirkpatrick, et al. 2021. <span>“A Practical Guide to Metabolomics Software Development.”</span> <em>Analytical Chemistry</em> 93 (4): 1912–23. <a href="https://doi.org/10.1021/acs.analchem.0c03581">https://doi.org/10.1021/acs.analchem.0c03581</a>.
+</div>
+<div id="ref-cheng2017" class="csl-entry">
+Cheng, Susan, Svati H. Shah, Elizabeth J. Corwin, Oliver Fiehn, Robert L. Fitzgerald, Robert E. Gerszten, Thomas Illig, et al. 2017. <span>“Potential Impact and Study Considerations of Metabolomics in Cardiovascular Health and Disease: A Scientific Statement From the American Heart Association.”</span> <em>Circulation: Cardiovascular Genetics</em> 10 (2): e000032. <a href="https://doi.org/10.1161/HCG.0000000000000032">https://doi.org/10.1161/HCG.0000000000000032</a>.
+</div>
+<div id="ref-considine2017" class="csl-entry">
+Considine, E. C., G. Thomas, A. L. Boulesteix, A. S. Khashan, and L. C. Kenny. 2017. <span>“Critical Review of Reporting of the Data Analysis Step in Metabolomics.”</span> <em>Metabolomics</em> 14 (1): 7. <a href="https://doi.org/10.1007/s11306-017-1299-3">https://doi.org/10.1007/s11306-017-1299-3</a>.
+</div>
+<div id="ref-domingo-almenara2018" class="csl-entry">
+Domingo-Almenara, Xavier, J. Rafael Montenegro-Burke, H. Paul Benton, and Gary Siuzdak. 2018a. <span>“Annotation: A Computational Solution for Streamlining Metabolomics Analysis.”</span> <em>Analytical Chemistry</em> 90 (1): 480–89. <a href="https://doi.org/10.1021/acs.analchem.7b03929">https://doi.org/10.1021/acs.analchem.7b03929</a>.
+</div>
+<div id="ref-dryden2017" class="csl-entry">
+Dryden, Michael D. M., Ryan Fobel, Christian Fobel, and Aaron R. Wheeler. 2017. <span>“Upon the Shoulders of Giants: Open-Source Hardware and Software in Analytical Chemistry.”</span> <em>Analytical Chemistry</em> 89 (8): 4330–38. <a href="https://doi.org/10.1021/acs.analchem.7b00485">https://doi.org/10.1021/acs.analchem.7b00485</a>.
+</div>
+<div id="ref-dudzik2018" class="csl-entry">
+Dudzik, Danuta, Cecilia Barbas-Bernardos, Antonia García, and Coral Barbas. 2018. <span>“Quality Assurance Procedures for Mass Spectrometry Untargeted Metabolomics. A Review.”</span> <em>Journal of Pharmaceutical and Biomedical Analysis</em>, Review issue 2017, 147 (January): 149–73. <a href="https://doi.org/10.1016/j.jpba.2017.07.044">https://doi.org/10.1016/j.jpba.2017.07.044</a>.
+</div>
+<div id="ref-fenaille2017" class="csl-entry">
+Fenaille, François, Pierre Barbier Saint-Hilaire, Kathleen Rousseau, and Christophe Junot. 2017a. <span>“Data Acquisition Workflows in Liquid Chromatography Coupled to High Resolution Mass Spectrometry-Based Metabolomics: Where Do We Stand?”</span> <em>Journal of Chromatography A</em> 1526 (Supplement C): 1–12. <a href="https://doi.org/10.1016/j.chroma.2017.10.043">https://doi.org/10.1016/j.chroma.2017.10.043</a>.
+</div>
+<div id="ref-fessenden2016" class="csl-entry">
+Fessenden, Marissa. 2016. <span>“Metabolomics: Small Molecules, Single Cells.”</span> <em>Nature</em> 540 (7631): 153–55. <a href="https://doi.org/10.1038/540153a">https://doi.org/10.1038/540153a</a>.
+</div>
+<div id="ref-fiehn2002" class="csl-entry">
+Fiehn, Oliver. 2002. <span>“Metabolomics <span></span> the Link Between Genotypes and Phenotypes.”</span> <em>Plant Molecular Biology</em> 48 (1): 155–71. <a href="https://doi.org/10.1023/A:1013713905833">https://doi.org/10.1023/A:1013713905833</a>.
+</div>
+<div id="ref-gika2014" class="csl-entry">
+Gika, Helen G., Georgios A. Theodoridis, Robert S. Plumb, and Ian D. Wilson. 2014. <span>“Current Practice of Liquid Chromatography<span></span>mass Spectrometry in Metabolomics and Metabonomics.”</span> <em>Journal of Pharmaceutical and Biomedical Analysis</em>, Review papers on pharmaceutical and biomedical analysis 2013, 87 (January): 12–25. <a href="https://doi.org/10.1016/j.jpba.2013.06.032">https://doi.org/10.1016/j.jpba.2013.06.032</a>.
+</div>
+<div id="ref-goldansaz2017" class="csl-entry">
+Goldansaz, Seyed Ali, An Chi Guo, Tanvir Sajed, Michael A. Steele, Graham S. Plastow, and David S. Wishart. 2017. <span>“Livestock Metabolomics and the Livestock Metabolome: A Systematic Review.”</span> <em>PLOS ONE</em> 12 (5): e0177675. <a href="https://doi.org/10.1371/journal.pone.0177675">https://doi.org/10.1371/journal.pone.0177675</a>.
+</div>
+<div id="ref-gonzález-riano2020" class="csl-entry">
+González-Riano, Carolina, Danuta Dudzik, Antonia Garcia, Alberto Gil-de-la-Fuente, Ana Gradillas, Joanna Godzien, Ángeles López-Gonzálvez, et al. 2020. <span>“Recent Developments Along the Analytical Process for Metabolomics Workflows.”</span> <em>Analytical Chemistry</em> 92 (1): 203–26. <a href="https://doi.org/10.1021/acs.analchem.9b04553">https://doi.org/10.1021/acs.analchem.9b04553</a>.
+</div>
+<div id="ref-griffiths2010a" class="csl-entry">
+Griffiths, William J., Therese Koal, Yuqin Wang, Matthias Kohl, David P. Enot, and Hans-Peter Deigner. 2010. <span>“Targeted Metabolomics for Biomarker Discovery.”</span> <em>Angewandte Chemie International Edition</em> 49 (32): 5426–45. <a href="https://doi.org/10.1002/anie.200905579">https://doi.org/10.1002/anie.200905579</a>.
+</div>
+<div id="ref-gromski2015a" class="csl-entry">
+Gromski, Piotr S., Howbeer Muhamadali, David I. Ellis, Yun Xu, Elon Correa, Michael L. Turner, and Royston Goodacre. 2015. <span>“A Tutorial Review: Metabolomics and Partial Least Squares-Discriminant Analysis <span></span> a Marriage of Convenience or a Shotgun Wedding.”</span> <em>Analytica Chimica Acta</em> 879 (June): 10–23. <a href="https://doi.org/10.1016/j.aca.2015.02.012">https://doi.org/10.1016/j.aca.2015.02.012</a>.
+</div>
+<div id="ref-hansen2018" class="csl-entry">
+Hansen, Rebecca L., and Young Jin Lee. 2018b. <span>“High-Spatial Resolution Mass Spectrometry Imaging: Toward Single Cell Metabolomics in Plant Tissues.”</span> <em>The Chemical Record</em> 18 (1): 65–77. <a href="https://doi.org/10.1002/tcr.201700027">https://doi.org/10.1002/tcr.201700027</a>.
+</div>
+<div id="ref-hansen2018a" class="csl-entry">
+———. 2018a. <span>“High-Spatial Resolution Mass Spectrometry Imaging: Toward Single Cell Metabolomics in Plant Tissues.”</span> <em>The Chemical Record</em> 18 (1): 65–77. <a href="https://doi.org/10.1002/tcr.201700027">https://doi.org/10.1002/tcr.201700027</a>.
+</div>
+<div id="ref-hites2018" class="csl-entry">
+Hites, Ronald A., and Karl J. Jobst. 2018. <span>“Is Nontargeted Screening Reproducible?”</span> <em>Environmental Science &amp; Technology</em> 52 (21): 11975–76. <a href="https://doi.org/10.1021/acs.est.8b05671">https://doi.org/10.1021/acs.est.8b05671</a>.
+</div>
+<div id="ref-jones2012" class="csl-entry">
+Jones, Dean P., Youngja Park, and Thomas R. Ziegler. 2012. <span>“Nutritional Metabolomics: Progress in Addressing Complexity in Diet and Health.”</span> <em>Annual Review of Nutrition</em> 32 (1): 183–202. <a href="https://doi.org/10.1146/annurev-nutr-072610-145159">https://doi.org/10.1146/annurev-nutr-072610-145159</a>.
+</div>
+<div id="ref-jorge2016a" class="csl-entry">
+Jorge, Tiago F., Ana T. Mata, and Carla António. 2016a. <span>“Mass Spectrometry as a Quantitative Tool in Plant Metabolomics.”</span> <em>Phil. Trans. R. Soc. A</em> 374 (2079): 20150370. <a href="https://doi.org/10.1098/rsta.2015.0370">https://doi.org/10.1098/rsta.2015.0370</a>.
+</div>
+<div id="ref-jorge2016aa" class="csl-entry">
+———. 2016b. <span>“Mass Spectrometry as a Quantitative Tool in Plant Metabolomics.”</span> <em>Phil. Trans. R. Soc. A</em> 374 (2079): 20150370. <a href="https://doi.org/10.1098/rsta.2015.0370">https://doi.org/10.1098/rsta.2015.0370</a>.
+</div>
+<div id="ref-kapoore2016b" class="csl-entry">
+Kapoore, Rahul Vijay, and Seetharaman Vaidyanathan. 2016. <span>“Towards Quantitative Mass Spectrometry-Based Metabolomics in Microbial and Mammalian Systems.”</span> <em>Phil. Trans. R. Soc. A</em> 374 (2079): 20150363. <a href="https://doi.org/10.1098/rsta.2015.0363">https://doi.org/10.1098/rsta.2015.0363</a>.
+</div>
+<div id="ref-kennedy2018" class="csl-entry">
+Kennedy, Adam D., Bryan M. Wittmann, Anne M. Evans, Luke A. D. Miller, Douglas R. Toal, Shaun Lonergan, Sarah H. Elsea, and Kirk L. Pappan. 2018. <span>“Metabolomics in the Clinic: A Review of the Shared and Unique Features of Untargeted Metabolomics for Clinical Research and Clinical Testing.”</span> <em>Journal of Mass Spectrometry</em> 53 (11): 1143–54. <a href="https://doi.org/10.1002/jms.4292">https://doi.org/10.1002/jms.4292</a>.
+</div>
+<div id="ref-kusonmano2016" class="csl-entry">
+Kusonmano, Kanthida, Wanwipa Vongsangnak, and Pramote Chumnanpuen. 2016a. <span>“Informatics for Metabolomics.”</span> In, 91–115. Advances in Experimental Medicine and Biology. Springer, Singapore. <a href="https://link.springer.com/chapter/10.1007/978-981-10-1503-8_5">https://link.springer.com/chapter/10.1007/978-981-10-1503-8_5</a>.
+</div>
+<div id="ref-kusonmano2016a" class="csl-entry">
+———. 2016b. <span>“Informatics for Metabolomics.”</span> In, 91–115. Advances in Experimental Medicine and Biology. Springer, Singapore. <a href="https://link.springer.com/chapter/10.1007/978-981-10-1503-8_5">https://link.springer.com/chapter/10.1007/978-981-10-1503-8_5</a>.
+</div>
+<div id="ref-levy2019" class="csl-entry">
+Levy, Allison J., Nicholas R. Oranzi, Atiye Ahmadireskety, Robin H. J. Kemperman, Michael S. Wei, and Richard A. Yost. 2019. <span>“Recent Progress in Metabolomics Using Ion Mobility-Mass Spectrometry.”</span> <em>TrAC Trends in Analytical Chemistry</em> 116 (July): 274–81. <a href="https://doi.org/10.1016/j.trac.2019.05.001">https://doi.org/10.1016/j.trac.2019.05.001</a>.
+</div>
+<div id="ref-liu2019" class="csl-entry">
+Liu, Xinyu, Lina Zhou, Xianzhe Shi, and Guowang Xu. 2019. <span>“New Advances in Analytical Methods for Mass Spectrometry-Based Large-Scale Metabolomics Study.”</span> <em>TrAC Trends in Analytical Chemistry</em> 121 (December): 115665. <a href="https://doi.org/10.1016/j.trac.2019.115665">https://doi.org/10.1016/j.trac.2019.115665</a>.
+</div>
+<div id="ref-lu2008a" class="csl-entry">
+Lu, Wenyun, Bryson D. Bennett, and Joshua D. Rabinowitz. 2008. <span>“Analytical Strategies for LC<span></span>MS-Based Targeted Metabolomics.”</span> <em>Journal of Chromatography B</em>, Hyphenated techniques for global metabolite profiling, 871 (2): 236–42. <a href="https://doi.org/10.1016/j.jchromb.2008.04.031">https://doi.org/10.1016/j.jchromb.2008.04.031</a>.
+</div>
+<div id="ref-lu2008" class="csl-entry">
+Lu, Xin, and Guowang Xu. 2008. <span>“LC-MS Metabonomics Methodology in Biomarker Discovery.”</span> In, edited by Feng Wang, 291–315. Methods in Pharmacology and Toxicology<span></span>. Humana Press. <a href="http://dx.doi.org/10.1007/978-1-59745-463-6_14">http://dx.doi.org/10.1007/978-1-59745-463-6_14</a>.
+</div>
+<div id="ref-madsen2010" class="csl-entry">
+Madsen, Rasmus, Torbjörn Lundstedt, and Johan Trygg. 2010a. <span>“Chemometrics in Metabolomics<span></span>a Review in Human Disease Diagnosis.”</span> <em>Analytica Chimica Acta</em> 659 (1): 23–33. <a href="https://doi.org/10.1016/j.aca.2009.11.042">https://doi.org/10.1016/j.aca.2009.11.042</a>.
+</div>
+<div id="ref-madsen2010a" class="csl-entry">
+———. 2010b. <span>“Chemometrics in Metabolomics<span></span>a Review in Human Disease Diagnosis.”</span> <em>Analytica Chimica Acta</em> 659 (1): 23–33. <a href="https://doi.org/10.1016/j.aca.2009.11.042">https://doi.org/10.1016/j.aca.2009.11.042</a>.
+</div>
+<div id="ref-mangul2019" class="csl-entry">
+Mangul, Serghei, Thiago Mosqueiro, Richard J. Abdill, Dat Duong, Keith Mitchell, Varuni Sarwal, Brian Hill, et al. 2019. <span>“Challenges and Recommendations to Improve the Installability and Archival Stability of Omics Computational Tools.”</span> <em>PLOS Biology</em> 17 (6): e3000333. <a href="https://doi.org/10.1371/journal.pbio.3000333">https://doi.org/10.1371/journal.pbio.3000333</a>.
+</div>
+<div id="ref-martens2017" class="csl-entry">
+Martens, Jonathan, Giel Berden, Rianne E. van Outersterp, Leo A. J. Kluijtmans, Udo F. Engelke, Clara D. M. van Karnebeek, Ron A. Wevers, and Jos Oomens. 2017. <span>“Molecular Identification in Metabolomics Using Infrared Ion Spectroscopy.”</span> <em>Scientific Reports</em> 7 (June). <a href="https://doi.org/10.1038/s41598-017-03387-4">https://doi.org/10.1038/s41598-017-03387-4</a>.
+</div>
+<div id="ref-matich2019a" class="csl-entry">
+Matich, Eryn K., Nita G. Chavez Soria, Diana S. Aga, and G. Ekin Atilla-Gokcumen. 2019. <span>“Applications of Metabolomics in Assessing Ecological Effects of Emerging Contaminants and Pollutants on Plants.”</span> <em>Journal of Hazardous Materials</em> 373 (July): 527–35. <a href="https://doi.org/10.1016/j.jhazmat.2019.02.084">https://doi.org/10.1016/j.jhazmat.2019.02.084</a>.
+</div>
+<div id="ref-miggiels2019" class="csl-entry">
+Miggiels, Paul, Bert Wouters, Gerard J. P. van Westen, Anne-Charlotte Dubbelman, and Thomas Hankemeier. 2019. <span>“Novel Technologies for Metabolomics: More for Less.”</span> <em>TrAC Trends in Analytical Chemistry</em> 120 (November): 115323. <a href="https://doi.org/10.1016/j.trac.2018.11.021">https://doi.org/10.1016/j.trac.2018.11.021</a>.
+</div>
+<div id="ref-misra2018" class="csl-entry">
+Misra, Biswapriya B. 2018. <span>“New Tools and Resources in Metabolomics: 2016<span></span>2017.”</span> <em>ELECTROPHORESIS</em> 39 (7): 909–23. <a href="https://doi.org/10.1002/elps.201700441">https://doi.org/10.1002/elps.201700441</a>.
+</div>
+<div id="ref-misra2017" class="csl-entry">
+Misra, Biswapriya B., Johannes F. Fahrmann, and Dmitry Grapov. 2017. <span>“Review of Emerging Metabolomic Tools and Resources: 2015<span></span>2016.”</span> <em>ELECTROPHORESIS</em> 38 (18): 2257–74. <a href="https://doi.org/10.1002/elps.201700110">https://doi.org/10.1002/elps.201700110</a>.
+</div>
+<div id="ref-misra2016" class="csl-entry">
+Misra, Biswapriya B., and Justin J. J. van der Hooft. 2016. <span>“Updates in Metabolomics Tools and Resources: 2014<span></span>2015.”</span> <em>ELECTROPHORESIS</em> 37 (1): 86–110. <a href="https://doi.org/10.1002/elps.201500417">https://doi.org/10.1002/elps.201500417</a>.
+</div>
+<div id="ref-müller2020a" class="csl-entry">
+Müller, Manfred J., and Anja Bosy-Westphal. 2020. <span>“From a <span>“</span>Metabolomics Fashion<span>”</span> to a Sound Application of Metabolomics in Research on Human Nutrition.”</span> <em>European Journal of Clinical Nutrition</em> 74 (12): 1619–29. <a href="https://doi.org/10.1038/s41430-020-00781-6">https://doi.org/10.1038/s41430-020-00781-6</a>.
+</div>
+<div id="ref-pezzatti2020" class="csl-entry">
+Pezzatti, Julian, Julien Boccard, Santiago Codesido, Yoric Gagnebin, Abhinav Joshi, Didier Picard, Víctor González-Ruiz, and Serge Rudaz. 2020. <span>“Implementation of Liquid Chromatography<span></span>high Resolution Mass Spectrometry Methods for Untargeted Metabolomic Analyses of Biological Samples: A Tutorial.”</span> <em>Analytica Chimica Acta</em> 1105 (April): 28–44. <a href="https://doi.org/10.1016/j.aca.2019.12.062">https://doi.org/10.1016/j.aca.2019.12.062</a>.
+</div>
+<div id="ref-place2021" class="csl-entry">
+Place, Benjamin J., Elin M. Ulrich, Jonathan K. Challis, Alex Chao, Bowen Du, Kristin Favela, Yong-Lai Feng, et al. 2021. <span>“An Introduction to the Benchmarking and Publications for Non-Targeted Analysis Working Group.”</span> <em>Analytical Chemistry</em> 93 (49): 16289–96. <a href="https://doi.org/10.1021/acs.analchem.1c02660">https://doi.org/10.1021/acs.analchem.1c02660</a>.
+</div>
+<div id="ref-sarpe2017" class="csl-entry">
+Sarpe, Vladimir, and David C Schriemer. 2017. <span>“Supporting Metabolomics with Adaptable Software: Design Architectures for the End-User.”</span> <em>Current Opinion in Biotechnology</em>, Analytical biotechnology, 43 (February): 110–17. <a href="https://doi.org/10.1016/j.copbio.2016.11.001">https://doi.org/10.1016/j.copbio.2016.11.001</a>.
+</div>
+<div id="ref-schrimpe-rutledge2016" class="csl-entry">
+Schrimpe-Rutledge, Alexandra C., Simona G. Codreanu, Stacy D. Sherrod, and John A. McLean. 2016. <span>“Untargeted Metabolomics Strategies<span></span>Challenges and Emerging Directions.”</span> <em>Journal of The American Society for Mass Spectrometry</em> 27 (12): 1897–1905. <a href="https://doi.org/10.1007/s13361-016-1469-y">https://doi.org/10.1007/s13361-016-1469-y</a>.
+</div>
+<div id="ref-schymanski2017" class="csl-entry">
+Schymanski, Emma L., and Antony J. Williams. 2017. <span>“Open Science for Identifying <span>“</span>Known Unknown<span>”</span> Chemicals.”</span> <em>Environmental Science &amp; Technology</em> 51 (10): 5357–59. <a href="https://doi.org/10.1021/acs.est.7b01908">https://doi.org/10.1021/acs.est.7b01908</a>.
+</div>
+<div id="ref-siskos2017" class="csl-entry">
+Siskos, Alexandros P., Pooja Jain, Werner Römisch-Margl, Mark Bennett, David Achaintre, Yasmin Asad, Luke Marney, et al. 2017. <span>“Interlaboratory Reproducibility of a Targeted Metabolomics Platform for Analysis of Human Serum and Plasma.”</span> <em>Analytical Chemistry</em> 89 (1): 656–65. <a href="https://doi.org/10.1021/acs.analchem.6b02930">https://doi.org/10.1021/acs.analchem.6b02930</a>.
+</div>
+<div id="ref-smirnov2016" class="csl-entry">
+Smirnov, Kirill S., Tanja V. Maier, Alesia Walker, Silke S. Heinzmann, Sara Forcisi, Inés Martinez, Jens Walter, and Philippe Schmitt-Kopplin. 2016. <span>“Challenges of Metabolomics in Human Gut Microbiota Research.”</span> <em>International Journal of Medical Microbiology</em>, Intestinal microbiota - a microbial ecosystem at the edge between immune homeostasis and inflammation, 306 (5): 266–79. <a href="https://doi.org/10.1016/j.ijmm.2016.03.006">https://doi.org/10.1016/j.ijmm.2016.03.006</a>.
+</div>
+<div id="ref-spicer2017" class="csl-entry">
+Spicer, Rachel, Reza M. Salek, Pablo Moreno, Daniel Cañueto, and Christoph Steinbeck. 2017. <span>“Navigating Freely-Available Software Tools for Metabolomics Analysis.”</span> <em>Metabolomics</em> 13 (9). <a href="https://doi.org/10.1007/s11306-017-1242-7">https://doi.org/10.1007/s11306-017-1242-7</a>.
+</div>
+<div id="ref-spratlin2009" class="csl-entry">
+Spratlin, Jennifer L., Natalie J. Serkova, and S. Gail Eckhardt. 2009. <span>“Clinical Applications of Metabolomics in Oncology: A Review.”</span> <em>Clinical Cancer Research</em> 15 (2): 431–40. <a href="https://doi.org/10.1158/1078-0432.CCR-08-1059">https://doi.org/10.1158/1078-0432.CCR-08-1059</a>.
+</div>
+<div id="ref-sumner2007" class="csl-entry">
+Sumner, Lloyd W., Alexander Amberg, Dave Barrett, Michael H. Beale, Richard Beger, Clare A. Daykin, Teresa W.-M. Fan, et al. 2007. <span>“Proposed Minimum Reporting Standards for Chemical Analysis Chemical Analysis Working Group (CAWG) Metabolomics Standards Initiative (MSI).”</span> <em>Metabolomics : Official Journal of the Metabolomic Society</em> 3 (3): 211–21. <a href="https://doi.org/10.1007/s11306-007-0082-2">https://doi.org/10.1007/s11306-007-0082-2</a>.
+</div>
+<div id="ref-sumner2003" class="csl-entry">
+Sumner, Lloyd W, Pedro Mendes, and Richard A Dixon. 2003. <span>“Plant Metabolomics: Large-Scale Phytochemistry in the Functional Genomics Era.”</span> <em>Phytochemistry</em>, Plant metabolomics, 62 (6): 817–36. <a href="https://doi.org/10.1016/S0031-9422(02)00708-2">https://doi.org/10.1016/S0031-9422(02)00708-2</a>.
+</div>
+<div id="ref-tang2020" class="csl-entry">
+Tang, Yanan, Caley B. Craven, Nicholas J. P. Wawryk, Junlang Qiu, Feng Li, and Xing-Fang Li. 2020. <span>“Advances in Mass Spectrometry-Based Omics Analysis of Trace Organics in Water.”</span> <em>TrAC Trends in Analytical Chemistry</em> 128 (July): 115918. <a href="https://doi.org/10.1016/j.trac.2020.115918">https://doi.org/10.1016/j.trac.2020.115918</a>.
+</div>
+<div id="ref-theodoridis2012" class="csl-entry">
+Theodoridis, Georgios A., Helen G. Gika, Elizabeth J. Want, and Ian D. Wilson. 2012. <span>“Liquid Chromatography<span></span>mass Spectrometry Based Global Metabolite Profiling: A Review.”</span> <em>Analytica Chimica Acta</em> 711 (January): 7–16. <a href="https://doi.org/10.1016/j.aca.2011.09.042">https://doi.org/10.1016/j.aca.2011.09.042</a>.
+</div>
+<div id="ref-tian2016" class="csl-entry">
+Tian, Tze-Feng, San-Yuan Wang, Tien-Chueh Kuo, Cheng-En Tan, Guan-Yuan Chen, Ching-Hua Kuo, Chi-Hsin Sally Chen, Chang-Chuan Chan, Olivia A. Lin, and Y. Jane Tseng. 2016a. <span>“Web Server for Peak Detection, Baseline Correction, and Alignment in Two-Dimensional Gas Chromatography Mass Spectrometry-Based Metabolomics Data.”</span> <em>Analytical Chemistry</em> 88 (21): 10395–403. <a href="https://doi.org/10.1021/acs.analchem.6b00755">https://doi.org/10.1021/acs.analchem.6b00755</a>.
+</div>
+<div id="ref-uppal2016" class="csl-entry">
+Uppal, Karan, Douglas I. Walker, Ken Liu, Shuzhao Li, Young-Mi Go, and Dean P. Jones. 2016b. <span>“Computational Metabolomics: A Framework for the Million Metabolome.”</span> <em>Chemical Research in Toxicology</em> 29 (12): 1956–75. <a href="https://doi.org/10.1021/acs.chemrestox.6b00179">https://doi.org/10.1021/acs.chemrestox.6b00179</a>.
+</div>
+<div id="ref-uppal2016a" class="csl-entry">
+———. 2016a. <span>“Computational Metabolomics: A Framework for the Million Metabolome.”</span> <em>Chemical Research in Toxicology</em> 29 (12): 1956–75. <a href="https://doi.org/10.1021/acs.chemrestox.6b00179">https://doi.org/10.1021/acs.chemrestox.6b00179</a>.
+</div>
+<div id="ref-verhoeven2020" class="csl-entry">
+Verhoeven, Aswin, Martin Giera, and Oleg A. Mayboroda. 2020. <span>“Scientific Workflow Managers in Metabolomics: An Overview.”</span> <em>Analyst</em> 145 (11): 3801–8. <a href="https://doi.org/10.1039/D0AN00272K">https://doi.org/10.1039/D0AN00272K</a>.
+</div>
+<div id="ref-viant2019" class="csl-entry">
+Viant, Mark R., Timothy M. D. Ebbels, Richard D. Beger, Drew R. Ekman, David J. T. Epps, Hennicke Kamp, Pim E. G. Leonards, et al. 2019. <span>“Use Cases, Best Practice and Reporting Standards for Metabolomics in Regulatory Toxicology.”</span> <em>Nature Communications</em> 10 (1): 3041. <a href="https://doi.org/10.1038/s41467-019-10900-y">https://doi.org/10.1038/s41467-019-10900-y</a>.
+</div>
+<div id="ref-vinaixa2016" class="csl-entry">
+Vinaixa, Maria, Emma L. Schymanski, Steffen Neumann, Miriam Navarro, Reza M. Salek, and Oscar Yanes. 2016. <span>“Mass Spectral Databases for LC/MS- and GC/MS-Based Metabolomics: State of the Field and Future Prospects.”</span> <em>TrAC Trends in Analytical Chemistry</em> 78 (April): 23–35. <a href="https://doi.org/10.1016/j.trac.2015.09.005">https://doi.org/10.1016/j.trac.2015.09.005</a>.
+</div>
+<div id="ref-wallach2018" class="csl-entry">
+Wallach, Joshua D., Kevin W. Boyack, and John P. A. Ioannidis. 2018. <span>“Reproducible Research Practices, Transparency, and Open Access Data in the Biomedical Literature, 2015<span></span>2017.”</span> <em>PLOS Biology</em> 16 (11): e2006930. <a href="https://doi.org/10.1371/journal.pbio.2006930">https://doi.org/10.1371/journal.pbio.2006930</a>.
+</div>
+<div id="ref-warth2017" class="csl-entry">
+Warth, Benedikt, Scott Spangler, Mingliang Fang, Caroline H. Johnson, Erica M. Forsberg, Ana Granados, Richard L. Martin, et al. 2017. <span>“Exposome-Scale Investigations Guided by Global Metabolomics, Pathway Analysis, and Cognitive Computing.”</span> <em>Analytical Chemistry</em> 89 (21): 11505–13. <a href="https://doi.org/10.1021/acs.analchem.7b02759">https://doi.org/10.1021/acs.analchem.7b02759</a>.
+</div>
+<div id="ref-weljie2006" class="csl-entry">
+Weljie, Aalim M., Jack Newton, Pascal Mercier, Erin Carlson, and Carolyn M. Slupsky. 2006. <span>“Targeted Profiling:<span></span> Quantitative Analysis of 1h NMR Metabolomics Data.”</span> <em>Analytical Chemistry</em> 78 (13): 4430–42. <a href="https://doi.org/10.1021/ac060209g">https://doi.org/10.1021/ac060209g</a>.
+</div>
+<div id="ref-wishart2016" class="csl-entry">
+Wishart, David S. 2016. <span>“Emerging Applications of Metabolomics in Drug Discovery and Precision Medicine.”</span> <em>Nature Reviews Drug Discovery</em> 15 (7): 473–84. <a href="https://doi.org/10.1038/nrd.2016.32">https://doi.org/10.1038/nrd.2016.32</a>.
+</div>
+<div id="ref-wolfender2015" class="csl-entry">
+Wolfender, Jean-Luc, Guillaume Marti, Aurélien Thomas, and Samuel Bertrand. 2015. <span>“Current Approaches and Challenges for the Metabolite Profiling of Complex Natural Extracts.”</span> <em>Journal of Chromatography A</em>, Editors’ choice IX, 1382 (February): 136–64. <a href="https://doi.org/10.1016/j.chroma.2014.10.091">https://doi.org/10.1016/j.chroma.2014.10.091</a>.
+</div>
+<div id="ref-yatesiii2011" class="csl-entry">
+Yates Iii, John R. 2011. <span>“A Century of Mass Spectrometry: From Atoms to Proteomes.”</span> <em>Nature Methods</em> 8 (8): 633–37. <a href="https://doi.org/10.1038/nmeth.1659">https://doi.org/10.1038/nmeth.1659</a>.
+</div>
+<div id="ref-yuan2012" class="csl-entry">
+Yuan, Min, Susanne B. Breitkopf, Xuemei Yang, and John M. Asara. 2012. <span>“A Positive/Negative Ion<span></span>switching, Targeted Mass Spectrometry<span></span>based Metabolomics Platform for Bodily Fluids, Cells, and Fresh and Fixed Tissue.”</span> <em>Nature Protocols</em> 7 (5): 872–81. <a href="https://doi.org/10.1038/nprot.2012.024">https://doi.org/10.1038/nprot.2012.024</a>.
+</div>
+<div id="ref-zenobi2013" class="csl-entry">
+Zenobi, R. 2013. <span>“Single-Cell Metabolomics: Analytical and Biological Perspectives.”</span> <em>Science</em> 342 (6163): 1243259. <a href="https://doi.org/10.1126/science.1243259">https://doi.org/10.1126/science.1243259</a>.
+</div>
+<div id="ref-zhang2012" class="csl-entry">
+Zhang, Aihua, Hui Sun, Ping Wang, Ying Han, and Xijun Wang. 2012. <span>“Modern Analytical Techniques in Metabolomics Analysis.”</span> <em>The Analyst</em> 137 (2): 293–300. <a href="https://doi.org/10.1039/C1AN15605E">https://doi.org/10.1039/C1AN15605E</a>.
+</div>
+<div id="ref-zhou2016b" class="csl-entry">
+Zhou, Juntuo, and Yuxin Yin. 2016. <span>“Strategies for Large-Scale Targeted Metabolomics Quantification by Liquid Chromatography-Mass Spectrometry.”</span> <em>Analyst</em> 141 (23): 6362–73. <a href="https://doi.org/10.1039/C6AN01753C">https://doi.org/10.1039/C6AN01753C</a>.
 </div>
 </div>
             </section>
@@ -493,7 +781,6 @@ Figure 1.3: Metabolomics timeline during pre- and post-metabolomics era
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -512,6 +799,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -532,6 +820,10 @@ gitbook.start({
 "text": null
 },
 "download": ["Metabolomics.pub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

@@ -75,6 +75,7 @@ ramclustr
 biocan
 mzmatch
 xmsannotator
+mwise
 mait
 pmd
 nontarget
@@ -83,6 +84,11 @@ mz.unity
 ms-flo
 cliquems
 interpretmsspectrum
+netid
+isfrag
+ms1-ms2-connection
+pmdda
+hermes
 msms-annotation
 metdna
 metfusion
@@ -148,6 +154,10 @@ bayesian-mixture-model
 pca
 cluster-analysis
 plsda
+network-analysis-1
+vertex-and-edge
+build-the-network
+network-attributes
 software-1
 exposome
 internal-exposure

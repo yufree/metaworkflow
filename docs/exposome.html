@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 11 Exposome | Meta-Workflow</title>
   <meta name="description" content="This is a workflow for metabolomics studies." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 11 Exposome | Meta-Workflow" />
   <meta property="og:type" content="book" />
-  
-  <meta property="og:image" content="images/cover.png" />
+  <meta property="og:image" content="/images/cover.png" />
   <meta property="og:description" content="This is a workflow for metabolomics studies." />
   <meta name="github-repo" content="yufree/metaworkflow" />
 
@@ -19,12 +18,12 @@
   <meta name="twitter:title" content="Chapter 11 Exposome | Meta-Workflow" />
   
   <meta name="twitter:description" content="This is a workflow for metabolomics studies." />
-  <meta name="twitter:image" content="images/cover.png" />
+  <meta name="twitter:image" content="/images/cover.png" />
 
 <meta name="author" content="Miao YU" />
 
 
-<meta name="date" content="2021-01-08" />
+<meta name="date" content="2022-07-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 <link rel="prev" href="statistical-analysis.html"/>
 <link rel="next" href="references.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,17 +49,26 @@
 
 
 
-
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/grViz-binding-1.0.6.1/grViz.js"></script>
+<script src="libs/grViz-binding-1.0.9/grViz.js"></script>
+<script src="libs/d3-3.3.8/d3.min.js"></script>
+<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
+<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+<script src="libs/chromatography-0.1/chromatography.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.9/DiagrammeR.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -119,6 +127,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -231,43 +262,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.5.5" data-path="annotation.html"><a href="annotation.html#biocan"><i class="fa fa-check"></i><b>7.5.5</b> BioCAn</a></li>
 <li class="chapter" data-level="7.5.6" data-path="annotation.html"><a href="annotation.html#mzmatch"><i class="fa fa-check"></i><b>7.5.6</b> mzMatch</a></li>
 <li class="chapter" data-level="7.5.7" data-path="annotation.html"><a href="annotation.html#xmsannotator"><i class="fa fa-check"></i><b>7.5.7</b> xMSannotator</a></li>
-<li class="chapter" data-level="7.5.8" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>7.5.8</b> MAIT</a></li>
-<li class="chapter" data-level="7.5.9" data-path="annotation.html"><a href="annotation.html#pmd"><i class="fa fa-check"></i><b>7.5.9</b> pmd</a></li>
-<li class="chapter" data-level="7.5.10" data-path="annotation.html"><a href="annotation.html#nontarget"><i class="fa fa-check"></i><b>7.5.10</b> nontarget</a></li>
-<li class="chapter" data-level="7.5.11" data-path="annotation.html"><a href="annotation.html#binner"><i class="fa fa-check"></i><b>7.5.11</b> Binner</a></li>
-<li class="chapter" data-level="7.5.12" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>7.5.12</b> mz.unity</a></li>
-<li class="chapter" data-level="7.5.13" data-path="annotation.html"><a href="annotation.html#ms-flo"><i class="fa fa-check"></i><b>7.5.13</b> MS-FLO</a></li>
-<li class="chapter" data-level="7.5.14" data-path="annotation.html"><a href="annotation.html#cliquems"><i class="fa fa-check"></i><b>7.5.14</b> CliqueMS</a></li>
-<li class="chapter" data-level="7.5.15" data-path="annotation.html"><a href="annotation.html#interpretmsspectrum"><i class="fa fa-check"></i><b>7.5.15</b> InterpretMSSpectrum</a></li>
+<li class="chapter" data-level="7.5.8" data-path="annotation.html"><a href="annotation.html#mwise"><i class="fa fa-check"></i><b>7.5.8</b> mWise</a></li>
+<li class="chapter" data-level="7.5.9" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>7.5.9</b> MAIT</a></li>
+<li class="chapter" data-level="7.5.10" data-path="annotation.html"><a href="annotation.html#pmd"><i class="fa fa-check"></i><b>7.5.10</b> pmd</a></li>
+<li class="chapter" data-level="7.5.11" data-path="annotation.html"><a href="annotation.html#nontarget"><i class="fa fa-check"></i><b>7.5.11</b> nontarget</a></li>
+<li class="chapter" data-level="7.5.12" data-path="annotation.html"><a href="annotation.html#binner"><i class="fa fa-check"></i><b>7.5.12</b> Binner</a></li>
+<li class="chapter" data-level="7.5.13" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>7.5.13</b> mz.unity</a></li>
+<li class="chapter" data-level="7.5.14" data-path="annotation.html"><a href="annotation.html#ms-flo"><i class="fa fa-check"></i><b>7.5.14</b> MS-FLO</a></li>
+<li class="chapter" data-level="7.5.15" data-path="annotation.html"><a href="annotation.html#cliquems"><i class="fa fa-check"></i><b>7.5.15</b> CliqueMS</a></li>
+<li class="chapter" data-level="7.5.16" data-path="annotation.html"><a href="annotation.html#interpretmsspectrum"><i class="fa fa-check"></i><b>7.5.16</b> InterpretMSSpectrum</a></li>
+<li class="chapter" data-level="7.5.17" data-path="annotation.html"><a href="annotation.html#netid"><i class="fa fa-check"></i><b>7.5.17</b> NetID</a></li>
+<li class="chapter" data-level="7.5.18" data-path="annotation.html"><a href="annotation.html#isfrag"><i class="fa fa-check"></i><b>7.5.18</b> ISfrag</a></li>
 </ul></li>
-<li class="chapter" data-level="7.6" data-path="annotation.html"><a href="annotation.html#msms-annotation"><i class="fa fa-check"></i><b>7.6</b> MS/MS annotation</a>
+<li class="chapter" data-level="7.6" data-path="annotation.html"><a href="annotation.html#ms1-ms2-connection"><i class="fa fa-check"></i><b>7.6</b> MS1 MS2 connection</a>
 <ul>
-<li class="chapter" data-level="7.6.1" data-path="annotation.html"><a href="annotation.html#metdna"><i class="fa fa-check"></i><b>7.6.1</b> MetDNA</a></li>
-<li class="chapter" data-level="7.6.2" data-path="annotation.html"><a href="annotation.html#metfusion"><i class="fa fa-check"></i><b>7.6.2</b> MetFusion</a></li>
-<li class="chapter" data-level="7.6.3" data-path="annotation.html"><a href="annotation.html#ms2analyzer"><i class="fa fa-check"></i><b>7.6.3</b> MS2Analyzer</a></li>
-<li class="chapter" data-level="7.6.4" data-path="annotation.html"><a href="annotation.html#metfrag"><i class="fa fa-check"></i><b>7.6.4</b> MetFrag</a></li>
-<li class="chapter" data-level="7.6.5" data-path="annotation.html"><a href="annotation.html#cfm-id"><i class="fa fa-check"></i><b>7.6.5</b> CFM-ID</a></li>
-<li class="chapter" data-level="7.6.6" data-path="annotation.html"><a href="annotation.html#lipidfrag"><i class="fa fa-check"></i><b>7.6.6</b> LipidFrag</a></li>
-<li class="chapter" data-level="7.6.7" data-path="annotation.html"><a href="annotation.html#lipidmatch"><i class="fa fa-check"></i><b>7.6.7</b> Lipidmatch</a></li>
-<li class="chapter" data-level="7.6.8" data-path="annotation.html"><a href="annotation.html#barcoding"><i class="fa fa-check"></i><b>7.6.8</b> BarCoding</a></li>
-<li class="chapter" data-level="7.6.9" data-path="annotation.html"><a href="annotation.html#imet"><i class="fa fa-check"></i><b>7.6.9</b> iMet</a></li>
+<li class="chapter" data-level="7.6.1" data-path="annotation.html"><a href="annotation.html#pmdda"><i class="fa fa-check"></i><b>7.6.1</b> PMDDA</a></li>
+<li class="chapter" data-level="7.6.2" data-path="annotation.html"><a href="annotation.html#hermes"><i class="fa fa-check"></i><b>7.6.2</b> HERMES</a></li>
 </ul></li>
-<li class="chapter" data-level="7.7" data-path="annotation.html"><a href="annotation.html#knowledge-based-annotation"><i class="fa fa-check"></i><b>7.7</b> Knowledge based annotation</a>
+<li class="chapter" data-level="7.7" data-path="annotation.html"><a href="annotation.html#msms-annotation"><i class="fa fa-check"></i><b>7.7</b> MS/MS annotation</a>
 <ul>
-<li class="chapter" data-level="7.7.1" data-path="annotation.html"><a href="annotation.html#chromatographic-retention-related-criteria"><i class="fa fa-check"></i><b>7.7.1</b> Chromatographic retention-related criteria</a></li>
-<li class="chapter" data-level="7.7.2" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>7.7.2</b> ProbMetab</a></li>
-<li class="chapter" data-level="7.7.3" data-path="annotation.html"><a href="annotation.html#mi-pack"><i class="fa fa-check"></i><b>7.7.3</b> MI-Pack</a></li>
-<li class="chapter" data-level="7.7.4" data-path="annotation.html"><a href="annotation.html#metexpert"><i class="fa fa-check"></i><b>7.7.4</b> MetExpert</a></li>
-<li class="chapter" data-level="7.7.5" data-path="annotation.html"><a href="annotation.html#mycompoundid"><i class="fa fa-check"></i><b>7.7.5</b> MycompoundID</a></li>
-<li class="chapter" data-level="7.7.6" data-path="annotation.html"><a href="annotation.html#metfamily"><i class="fa fa-check"></i><b>7.7.6</b> MetFamily</a></li>
-<li class="chapter" data-level="7.7.7" data-path="annotation.html"><a href="annotation.html#plantmat"><i class="fa fa-check"></i><b>7.7.7</b> Plantmat</a></li>
+<li class="chapter" data-level="7.7.1" data-path="annotation.html"><a href="annotation.html#metdna"><i class="fa fa-check"></i><b>7.7.1</b> MetDNA</a></li>
+<li class="chapter" data-level="7.7.2" data-path="annotation.html"><a href="annotation.html#metfusion"><i class="fa fa-check"></i><b>7.7.2</b> MetFusion</a></li>
+<li class="chapter" data-level="7.7.3" data-path="annotation.html"><a href="annotation.html#ms2analyzer"><i class="fa fa-check"></i><b>7.7.3</b> MS2Analyzer</a></li>
+<li class="chapter" data-level="7.7.4" data-path="annotation.html"><a href="annotation.html#metfrag"><i class="fa fa-check"></i><b>7.7.4</b> MetFrag</a></li>
+<li class="chapter" data-level="7.7.5" data-path="annotation.html"><a href="annotation.html#cfm-id"><i class="fa fa-check"></i><b>7.7.5</b> CFM-ID</a></li>
+<li class="chapter" data-level="7.7.6" data-path="annotation.html"><a href="annotation.html#lipidfrag"><i class="fa fa-check"></i><b>7.7.6</b> LipidFrag</a></li>
+<li class="chapter" data-level="7.7.7" data-path="annotation.html"><a href="annotation.html#lipidmatch"><i class="fa fa-check"></i><b>7.7.7</b> Lipidmatch</a></li>
+<li class="chapter" data-level="7.7.8" data-path="annotation.html"><a href="annotation.html#barcoding"><i class="fa fa-check"></i><b>7.7.8</b> BarCoding</a></li>
+<li class="chapter" data-level="7.7.9" data-path="annotation.html"><a href="annotation.html#imet"><i class="fa fa-check"></i><b>7.7.9</b> iMet</a></li>
 </ul></li>
-<li class="chapter" data-level="7.8" data-path="annotation.html"><a href="annotation.html#ms-database-for-annotation"><i class="fa fa-check"></i><b>7.8</b> MS Database for annotation</a>
+<li class="chapter" data-level="7.8" data-path="annotation.html"><a href="annotation.html#knowledge-based-annotation"><i class="fa fa-check"></i><b>7.8</b> Knowledge based annotation</a>
 <ul>
-<li class="chapter" data-level="7.8.1" data-path="annotation.html"><a href="annotation.html#ms"><i class="fa fa-check"></i><b>7.8.1</b> MS</a></li>
-<li class="chapter" data-level="7.8.2" data-path="annotation.html"><a href="annotation.html#msms-1"><i class="fa fa-check"></i><b>7.8.2</b> MS/MS</a></li>
+<li class="chapter" data-level="7.8.1" data-path="annotation.html"><a href="annotation.html#chromatographic-retention-related-criteria"><i class="fa fa-check"></i><b>7.8.1</b> Chromatographic retention-related criteria</a></li>
+<li class="chapter" data-level="7.8.2" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>7.8.2</b> ProbMetab</a></li>
+<li class="chapter" data-level="7.8.3" data-path="annotation.html"><a href="annotation.html#mi-pack"><i class="fa fa-check"></i><b>7.8.3</b> MI-Pack</a></li>
+<li class="chapter" data-level="7.8.4" data-path="annotation.html"><a href="annotation.html#metexpert"><i class="fa fa-check"></i><b>7.8.4</b> MetExpert</a></li>
+<li class="chapter" data-level="7.8.5" data-path="annotation.html"><a href="annotation.html#mycompoundid"><i class="fa fa-check"></i><b>7.8.5</b> MycompoundID</a></li>
+<li class="chapter" data-level="7.8.6" data-path="annotation.html"><a href="annotation.html#metfamily"><i class="fa fa-check"></i><b>7.8.6</b> MetFamily</a></li>
+<li class="chapter" data-level="7.8.7" data-path="annotation.html"><a href="annotation.html#plantmat"><i class="fa fa-check"></i><b>7.8.7</b> Plantmat</a></li>
 </ul></li>
-<li class="chapter" data-level="7.9" data-path="annotation.html"><a href="annotation.html#compounds-database"><i class="fa fa-check"></i><b>7.9</b> Compounds Database</a></li>
+<li class="chapter" data-level="7.9" data-path="annotation.html"><a href="annotation.html#ms-database-for-annotation"><i class="fa fa-check"></i><b>7.9</b> MS Database for annotation</a>
+<ul>
+<li class="chapter" data-level="7.9.1" data-path="annotation.html"><a href="annotation.html#ms"><i class="fa fa-check"></i><b>7.9.1</b> MS</a></li>
+<li class="chapter" data-level="7.9.2" data-path="annotation.html"><a href="annotation.html#msms-1"><i class="fa fa-check"></i><b>7.9.2</b> MS/MS</a></li>
+</ul></li>
+<li class="chapter" data-level="7.10" data-path="annotation.html"><a href="annotation.html#compounds-database"><i class="fa fa-check"></i><b>7.10</b> Compounds Database</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>8</b> Omics analysis</a>
 <ul>
@@ -306,7 +345,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#pca"><i class="fa fa-check"></i><b>10.3</b> PCA</a></li>
 <li class="chapter" data-level="10.4" data-path="statistical-analysis.html"><a href="statistical-analysis.html#cluster-analysis"><i class="fa fa-check"></i><b>10.4</b> Cluster Analysis</a></li>
 <li class="chapter" data-level="10.5" data-path="statistical-analysis.html"><a href="statistical-analysis.html#plsda"><i class="fa fa-check"></i><b>10.5</b> PLSDA</a></li>
-<li class="chapter" data-level="10.6" data-path="statistical-analysis.html"><a href="statistical-analysis.html#software-1"><i class="fa fa-check"></i><b>10.6</b> Software</a></li>
+<li class="chapter" data-level="10.6" data-path="statistical-analysis.html"><a href="statistical-analysis.html#network-analysis-1"><i class="fa fa-check"></i><b>10.6</b> Network analysis</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="statistical-analysis.html"><a href="statistical-analysis.html#vertex-and-edge"><i class="fa fa-check"></i><b>10.6.1</b> Vertex and edge</a></li>
+<li class="chapter" data-level="10.6.2" data-path="statistical-analysis.html"><a href="statistical-analysis.html#build-the-network"><i class="fa fa-check"></i><b>10.6.2</b> Build the network</a></li>
+<li class="chapter" data-level="10.6.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#network-attributes"><i class="fa fa-check"></i><b>10.6.3</b> Network attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="statistical-analysis.html"><a href="statistical-analysis.html#software-1"><i class="fa fa-check"></i><b>10.7</b> Software</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="exposome.html"><a href="exposome.html"><i class="fa fa-check"></i><b>11</b> Exposome</a>
 <ul>
@@ -338,36 +383,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="exposome" class="section level1" number="11">
-<h1><span class="header-section-number">Chapter 11</span> Exposome</h1>
-<p>Nature or nurture debate has a similar paradigm in environmental study: is the ecological system and human health risk dominated by heredity or environment? Twins and siblings study<span class="citation">(<a href="references.html#ref-lakhani2019" role="doc-biblioref">Lakhani et al. 2019</a>; <a href="references.html#ref-polderman2015" role="doc-biblioref">Polderman et al. 2015</a>)</span> show that both heritability and environmental factors could explain the phenotypic variance among population. The contribution of environment among different disease functional domain such as hematological and endocrine could achieve almost half of the total variances <span class="citation">(<a href="references.html#ref-polderman2015" role="doc-biblioref">Polderman et al. 2015</a>)</span>. However, besides those epidemiology proof, little is known about the influences of overall environmental exposure process at molecular level. Conventional exposure study always investigate one or several specific compounds and their environmental fate or toxicology endpoint. Exposome, on the other hand, tries to access multiple exposure factors from biological or environmental samples as much as possible without a predefined compounds list. Those endogenous and exogenous molecules can reveal the exposure process in details. Exposome could not only help to investigate the comprehensive molecules level changes, but also the interactions among molecules in an non-targeted design. By following annotation of captured compounds, exposome can discover exposure markers for certain type of pollution, as well as biomarkers for certain exposure process and discuss related physiological process.</p>
+<div id="exposome" class="section level1 hasAnchor" number="11">
+<h1><span class="header-section-number">Chapter 11</span> Exposome<a href="exposome.html#exposome" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Nature or nurture debate has a similar paradigm in environmental study: is the ecological system and human health risk dominated by heredity or environment? Twins and siblings study<span class="citation">(<a href="#ref-lakhani2019" role="doc-biblioref">Lakhani et al. 2019</a>; <a href="#ref-polderman2015" role="doc-biblioref">Polderman et al. 2015</a>)</span> show that both heritability and environmental factors could explain the phenotypic variance among population. The contribution of environment among different disease functional domain such as hematological and endocrine could achieve almost half of the total variances <span class="citation">(<a href="#ref-polderman2015" role="doc-biblioref">Polderman et al. 2015</a>)</span>. However, besides those epidemiology proof, little is known about the influences of overall environmental exposure process at molecular level. Conventional exposure study always investigate one or several specific compounds and their environmental fate or toxicology endpoint. Exposome, on the other hand, tries to access multiple exposure factors from biological or environmental samples as much as possible without a predefined compounds list. Those endogenous and exogenous molecules can reveal the exposure process in details. Exposome could not only help to investigate the comprehensive molecules level changes, but also the interactions among molecules in an non-targeted design. By following annotation of captured compounds, exposome can discover exposure markers for certain type of pollution, as well as biomarkers for certain exposure process and discuss related physiological process. The workflow for exposome is quite similar to metabolomics<span class="citation">(<a href="#ref-hu2021" role="doc-biblioref">Hu et al. 2021</a>)</span>.</p>
 <p>According to <a href="https://www.cdc.gov/niosh/topics/exposome/default.html">CDC</a>, The exposome can be defined as the measure of all the exposures of an individual in a lifetime and how those exposures relate to health. Exposomics is the study of the exposome and relies on the application of internal and external exposure assessment methods.</p>
 <ul>
 <li><p>Internal exposure relies on fields of study such as genomics, metabolomics, lipidomics, transcriptomics and proteomics.</p></li>
 <li><p>External exposure assessment relies on measuring environmental stresses.</p></li>
 </ul>
-<div id="internal-exposure" class="section level2" number="11.1">
-<h2><span class="header-section-number">11.1</span> Internal exposure</h2>
+<div id="internal-exposure" class="section level2 hasAnchor" number="11.1">
+<h2><span class="header-section-number">11.1</span> Internal exposure<a href="exposome.html#internal-exposure" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><a href="https://www.vmh.life/">Virtual Metabolic Human Database</a> integrating human and gut microbiome metabolism with nutrition and disease.</li>
 </ul>
 </div>
-<div id="external-exposure" class="section level2" number="11.2">
-<h2><span class="header-section-number">11.2</span> External exposure</h2>
-<div id="environmental-fate-of-compounds" class="section level3" number="11.2.1">
-<h3><span class="header-section-number">11.2.1</span> Environmental fate of compounds</h3>
-<div id="qspr" class="section level4" number="11.2.1.1">
-<h4><span class="header-section-number">11.2.1.1</span> QSPR</h4>
+<div id="external-exposure" class="section level2 hasAnchor" number="11.2">
+<h2><span class="header-section-number">11.2</span> External exposure<a href="exposome.html#external-exposure" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="environmental-fate-of-compounds" class="section level3 hasAnchor" number="11.2.1">
+<h3><span class="header-section-number">11.2.1</span> Environmental fate of compounds<a href="exposome.html#environmental-fate-of-compounds" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="qspr" class="section level4 hasAnchor" number="11.2.1.1">
+<h4><span class="header-section-number">11.2.1.1</span> QSPR<a href="exposome.html#qspr" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li><p><a href="https://chemicalize.com/">Chemicalize</a> is a powerful online platform for chemical calculations, search, and text processing.</p></li>
 <li><p><a href="http://www.moleculardescriptors.eu/resources/resources.htm">QSPR molecular descriptor generate tools list</a></p></li>
 <li><p><a href="http://www.archemcalc.com/sparc.html">Spark</a> uses computational algorithms based on fundamental chemical structure theory to estimate a wide variety of reactivity parameters strictly from molecular structure.</p></li>
-<li><p><a href="https://jcheminf.biomedcentral.com/articles/10.1186/s13321-018-0263-1">OPERA</a> OPERA models for predicting physicochemical properties and environmental fate endpoints<span class="citation">(<a href="references.html#ref-mansouri2018" role="doc-biblioref">Mansouri et al. 2018</a>)</span>.</p></li>
+<li><p><a href="https://jcheminf.biomedcentral.com/articles/10.1186/s13321-018-0263-1">OPERA</a> OPERA models for predicting physicochemical properties and environmental fate endpoints<span class="citation">(<a href="#ref-mansouri2018" role="doc-biblioref">Mansouri et al. 2018</a>)</span>.</p></li>
 </ul>
-<p>LogP is important for analytical chemistry. Mannhold <span class="citation">(<a href="references.html#ref-mannhold2009" role="doc-biblioref">Mannhold et al. 2009</a>)</span> report a comprehensive comparison of logP algorithms. Later, <a href="http://blog.rguha.net/?p=896">Rajarshi Guha</a> make a comparison with logP algorithms with CDK based on logPstar dataset. Commercial software such as Spark, ACS Labs and ChemAxon might always claim a better performance on in-house dataset compared with public software like KowWIN within EPI Suite. However, we should be careful to evaluate the influence of logP accuracy on the metabolites or unknown compounds.</p>
+<p>LogP is important for analytical chemistry. Mannhold <span class="citation">(<a href="#ref-mannhold2009" role="doc-biblioref">Mannhold et al. 2009</a>)</span> report a comprehensive comparison of logP algorithms. Later, <a href="http://blog.rguha.net/?p=896">Rajarshi Guha</a> make a comparison with logP algorithms with CDK based on logPstar dataset. Commercial software such as Spark, ACS Labs and ChemAxon might always claim a better performance on in-house dataset compared with public software like KowWIN within EPI Suite. However, we should be careful to evaluate the influence of logP accuracy on the metabolites or unknown compounds.</p>
 </div>
-<div id="fate" class="section level4" number="11.2.1.2">
-<h4><span class="header-section-number">11.2.1.2</span> Fate</h4>
+<div id="fate" class="section level4 hasAnchor" number="11.2.1.2">
+<h4><span class="header-section-number">11.2.1.2</span> Fate<a href="exposome.html#fate" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <ul>
 <li><p><a href="https://www.utsc.utoronto.ca/labs/wania/downloads/">Wania Group</a> developed software tools to address various aspects of organic contaminant fate and behaviour.</p></li>
 <li><p><a href="http://www.trentu.ca/academic/aminss/envmodel/models/models.html">Trent University</a> release models to predict environmental fate for pollutions such as Level 3.</p></li>
@@ -375,8 +420,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 </div>
-<div id="exposure-study-database" class="section level3" number="11.2.2">
-<h3><span class="header-section-number">11.2.2</span> Exposure study database</h3>
+<div id="exposure-study-database" class="section level3 hasAnchor" number="11.2.2">
+<h3><span class="header-section-number">11.2.2</span> Exposure study database<a href="exposome.html#exposure-study-database" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><p>The information system <a href="https://www.pangaea.de">PANGAEA</a> is operated as an Open Access library aimed at archiving, publishing and distributing georeferenced data from earth system research.</p></li>
 <li><p><a href="http://www.inchem.org/pages/ehc.html">Environmental Health Criteria (EHC) Monographs</a></p></li>
@@ -386,6 +431,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 
 </div>
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-hu2021" class="csl-entry">
+Hu, Xin, Douglas I. Walker, Yongliang Liang, Matthew Ryan Smith, Michael L. Orr, Brian D. Juran, Chunyu Ma, et al. 2021. <span>“A Scalable Workflow to Characterize the Human Exposome.”</span> <em>Nature Communications</em> 12 (1). <a href="https://doi.org/10.1038/s41467-021-25840-9">https://doi.org/10.1038/s41467-021-25840-9</a>.
+</div>
+<div id="ref-lakhani2019" class="csl-entry">
+Lakhani, Chirag M., Braden T. Tierney, Arjun K. Manrai, Jian Yang, Peter M. Visscher, and Chirag J. Patel. 2019. <span>“Repurposing Large Health Insurance Claims Data to Estimate Genetic and Environmental Contributions in 560 Phenotypes.”</span> <em>Nature Genetics</em>, January, 1. <a href="https://doi.org/10.1038/s41588-018-0313-7">https://doi.org/10.1038/s41588-018-0313-7</a>.
+</div>
+<div id="ref-mannhold2009" class="csl-entry">
+Mannhold, Raimund, Gennadiy I. Poda, Claude Ostermann, and Igor V. Tetko. 2009. <span>“Calculation of Molecular Lipophilicity: State-of-the-Art and Comparison of LogP Methods on More Than 96,000 Compounds.”</span> <em>Journal of Pharmaceutical Sciences</em> 98 (3): 861–93. <a href="https://doi.org/10.1002/jps.21494">https://doi.org/10.1002/jps.21494</a>.
+</div>
+<div id="ref-mansouri2018" class="csl-entry">
+Mansouri, Kamel, Chris M. Grulke, Richard S. Judson, and Antony J. Williams. 2018. <span>“OPERA Models for Predicting Physicochemical Properties and Environmental Fate Endpoints.”</span> <em>Journal of Cheminformatics</em> 10 (1): 10. <a href="https://doi.org/10.1186/s13321-018-0263-1">https://doi.org/10.1186/s13321-018-0263-1</a>.
+</div>
+<div id="ref-polderman2015" class="csl-entry">
+Polderman, Tinca J. C., Beben Benyamin, Christiaan A. de Leeuw, Patrick F. Sullivan, Arjen van Bochoven, Peter M. Visscher, and Danielle Posthuma. 2015. <span>“Meta-Analysis of the Heritability of Human Traits Based on Fifty Years of Twin Studies.”</span> <em>Nature Genetics</em> 47 (7): 702–9. <a href="https://doi.org/10.1038/ng.3285">https://doi.org/10.1038/ng.3285</a>.
 </div>
 </div>
             </section>
@@ -398,7 +461,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -417,6 +479,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -437,6 +500,10 @@ gitbook.start({
 "text": null
 },
 "download": ["Metabolomics.pub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
