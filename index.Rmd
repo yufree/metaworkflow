@@ -15,7 +15,7 @@ bibliography: references.bib
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(cache = TRUE,warning = F,message = F)
+knitr::opts_chunk$set(cache = F,warning = F,message = F)
 ```
 
 # Preface {.unnumbered}

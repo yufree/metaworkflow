@@ -4,13 +4,13 @@ bibliography: references.bib
 
 # Introduction
 
-Information in living organism communicates along the Central Dogma in different scales from individual, population, community to ecosystem. Metabolomics (i.e., the profiling and quantitation of metabolites) is a relatively new field of "omics" studies. Different from other omics studies, metabolomics always focused on small molecular (molecular weight below 1500 Da) with much lower mass than polypeptide with single or doubled charged ions. Here is a demo of the position of metabolomics in "omics" studies[@b.dunn2011].
+Information in living organism communicates along the Central Dogma in different scales from individual, population, community to ecosystem. Metabolomics (i.e., the profiling and quantification of metabolites) is a relatively new field of "omics" studies. Different from other omics studies, metabolomics always focused on small molecular (molecular weight below 1500 Da) with much lower mass than polypeptide with single or doubled charged ions. Here is a demo of the position of metabolomics in "omics" studies[\@b.dunn2011].
 
 ```{r metaintro, fig.show='hold', fig.cap='The complex interactions of functional levels in biological systems.',echo=FALSE,out.width='90%'}
 knitr::include_graphics('images/metaintro.png')
 ```
 
-Metabolomics studies always employ GC-MS[@theodoridis2012; @beale2018], GC\*GC-MS[@tian2016], LC-MS[@gika2014], LC-MS/MS[@begou2017a], IM-MS[@levy2019], infrared ion spectroscopy[@martens2017] or NMR[@b.dunn2011] to measure metabolites. For analytical methods, this review could be checked[@zhang2012]. The overall technique progress of metabolomics (2012-2018) could be found here[@miggiels2019]. However, this workflow will only cover mass spectrometry based metabolomics or XC-MS based research.
+Metabolomics studies always employ GC-MS[@theodoridis2012; @beale2018], GC\*GC-MS[@tian2016], LC-MS[@gika2014], LC-MS/MS[@begou2017a], IM-MS[@levy2019], infrared ion spectroscopy[@martens2017] or NMR[\@b.dunn2011] to measure metabolites. For analytical methods, this review could be checked[@zhang2012]. The overall technique progress of metabolomics (2012-2018) could be found here[@miggiels2019]. However, this workflow will only cover mass spectrometry based metabolomics or XC-MS based research.
 
 ## History
 
@@ -74,7 +74,7 @@ knitr::include_graphics('images/metahistory.jpg')
 
 Metabolomics is actually a comprehensive analysis with identification and quantification of both known and unknown compounds in an unbiased way. Metabolic fingerprinting is working on fast classification of samples based on metabolite data without quantifying or identification of the metabolites. Metabolite profiling always need a pre-defined metabolites list to be quantification[@madsen2010].
 
-Meanwhile, targeted and untargeted metabolomics are also used in publicaitons. For targeted metabolomics, the majority of the molecules within a biosynthetic pathway or a defined group of related metabolites are determined. Sometimes broad collection of known metabolites could also be referred as targeted analysis. Untargeted analysis detect all of possible metabolites unbiased in the samples of interest. A similar concept called non-targeted analysis/screen is actually describe the similar studies or workflow.
+Meanwhile, targeted and untargeted metabolomics are also used in publications. For targeted metabolomics, the majority of the molecules within a biological pathway or a defined group of related metabolites are determined. Sometimes broad collection of known metabolites could also be referred as targeted analysis. Untargeted analysis detect all of possible metabolites unbiased in the samples of interest. A similar concept called non-targeted analysis/screen is actually describe the similar studies or workflow.
 
 ## Reviews and tutorials
 
@@ -96,7 +96,7 @@ You could firstly read those papers[@barnes2016; @kusonmano2016a; @madsen2010a; 
 
 -   For metabolomics software, check this series of reviews for each year[@misra2016; @misra2017; @misra2018].
 
--   For open sourced software, those reviews[@spicer2017; @dryden2017] could be a good start.
+-   For open sourced software, those reviews[@chang2021; @spicer2017; @dryden2017] could be a good start.
 
 -   For DIA or DDA metabolomics, check those papers[@fenaille2017; @bilbao2015].
 
@@ -134,11 +134,11 @@ Here is the slides for metabolomics data analysis workshop and I have made prese
 
 General challenge for metabolomics studies could be found here [@schymanski2017; @uppal2016; @schrimpe-rutledge2016; @wolfender2015].
 
--   For reproducible research, check those papers [@verhoeven2020; @mangul2019; @wallach2018; @hites2018; @considine2017; @sarpe2017].
+-   For reproducible research, check those papers [@place2021; @verhoeven2020; @mangul2019; @wallach2018; @hites2018; @considine2017; @sarpe2017].
 
 -   Quantitative Metabolomics related issues could be found here[@kapoore2016b; @jorge2016aa].
 
--   For quality control issues, check here[@dudzik2018; @siskos2017; @sumner2007].
+-   For quality control issues, check here[@dudzik2018; @siskos2017; @sumner2007; @place2021].
 
 ## Trends in Metabolomics
 
@@ -153,7 +153,7 @@ library(rentrez)
 papers_by_year <- function(years, search_term){
     return(sapply(years, function(y) entrez_search(db="pubmed",term=search_term, mindate=y, maxdate=y, retmax=0)$count))
 }
-years <- 1987:2018
+years <- 1987:2020
 total_papers <- papers_by_year(years, "")
 omics <- c("genomic", "epigenomic",  "metagenomic", "proteomic", "transcriptomic","metabolomics","exposome", "pharmacogenomic", "connectomic")
 trend_data <- sapply(omics, function(t) papers_by_year(years, t))

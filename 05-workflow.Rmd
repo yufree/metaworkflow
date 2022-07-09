@@ -2,9 +2,38 @@
 bibliography: references.bib
 ---
 
+```{r}
+dist_loc <- list.files(
+  find.package("DiagrammeR"),
+  recursive = TRUE,
+  pattern = "mermaid.*js",
+  full.names = TRUE
+)
+js_cdn_url <- "https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.0.1/mermaid.min.js"
+download.file(js_cdn_url, dist_loc)
+```
+
 # Workflow
 
 You could check this book for metabolomics data analysis [@li2020].
+
+```{r}
+DiagrammeR::mermaid("
+flowchart TB
+I(peak-picking) --> C
+C(visulization) --> D(normalization/batch correction)
+D --> A(annotation/identification)
+A --> H(statistical analysis)
+C --> A --> B(omics analysis)
+D --> H
+B --> H
+H --> E(experimental validation)
+A --> E
+H --> A
+B --> E
+C --> H
+")
+```
 
 ## Platform for metabolomics data analysis
 
@@ -14,9 +43,9 @@ Here is a list for related open source [projects](http://strimmerlab.org/notes/m
 
 [XCMS online](https://xcmsonline.scripps.edu/landing_page.php?pgcontent=mainPage) is hosted by Scripps Institute. If your datasets are not large, XCMS online would be the best option for you. Recently they updated the online version to support more functions for systems biology. They use metlin and iso metlin to annotate the MS/MS data. Pathway analysis is also supported. Besides, to accelerate the process, xcms online employed stream (windows only). You could use stream to connect your instrument workstation to their server and process the data along with the data acquisition automate. They also developed apps for xcms online, but I think apps for slack would be even cooler to control the data processing.
 
-[xcms](https://bioconductor.org/packages/release/bioc/html/xcms.html) is different from xcms online while they might share the same code. I used it almost every data to run local metabolomics data analysis. Recently, they will change their version to xcms 3 with major update for object class. Their data format would integrate into the MSnbase package and the parameters would be easy to set up for each step. Normally, I will use msconvert-IPO-xcms-xMSannotator-metaboanalyst as workflow to process the offline data. It could accelerate the process by parallel processing. However, if you are not familiar with R, you would better to choose some software below.
+[xcms](https://bioconductor.org/packages/release/bioc/html/xcms.html) is different from xcms online while they might share the same code. I used it almost every data to run local metabolomics data analysis. Recently, they will change their version to xcms 3 with major update for object class. Their data format would integrate into the MSnbase package and the parameters would be easy to set up for each step. Normally, I will use msconvert-IPO-xcms-xMSannotator-metaboanalyst as workflow to process the offline data. It could accelerate the process by parallel processing. However, if you are not familiar with R, you would better to choose some software below. For xcms, 1000 files will need around 5 hours to generate the peaks list on a regular workstation.
 
-[IPO](https://github.com/rietho/IPO) A Tool for automated Optimization of XCMS Parameters [@libiseller2015] and [Warpgroup](https://github.com/nathaniel-mahieu/warpgroup) is used for chromatogram subregion detection, consensus integration bound determination and accurate missing value integration[@mahieu2016]. Another option is AutoTuner, which are much faster than IPO[@mclean2020]. Recently, MetaboAnalystR 3.0 could also optimize the parameters for xcms while you need to perform the following analysis within this software[@pang2020].
+[IPO](https://github.com/rietho/IPO) A Tool for automated Optimization of XCMS Parameters [@libiseller2015] and [Warpgroup](https://github.com/nathaniel-mahieu/warpgroup) is used for chromatogram subregion detection, consensus integration bound determination and accurate missing value integration[@mahieu2016]. Another option is AutoTuner, which are much faster than IPO[@mclean2020]. Recently, MetaboAnalystR 3.0 could also optimize the parameters for xcms while you need to perform the following analysis within this software[@pang2020]. For IPO, ten files will need \~12 hours to generate the optimized results on a regular workstation. Another research use machine learning method to compare different optimization methods and they are all better than the default setting of xcms[@lassen2021].
 
 Check those papers for the XCMS based workflow[@forsberg2018; @huan2017; @mahieu2016a; @montenegro-burke2017; @domingo-almenara2020]. For metlin related annotation, check those papers[@guijas2018; @tautenhahn2012; @xue2020; @domingo-almenara2018a].
 
@@ -36,7 +65,7 @@ For PRIMe based workflow, check those papers[@lai2018; @matsuo2017; @treutler201
 
 ### GNPS
 
-[GNPS](http://gnps.%20ucsd.edu) is an open-access knowledge base for community-wide organization and sharing of raw, processed or identified tandem mass (MS/MS) spectrometry data. It's a straight forward annotation methods for MS/MS data. Feature-based molecular networking (FBMN) within GNPS could be coupled with xcms, openMS, MS-DIAL, MZmine2, and other popular software.
+[GNPS](http://gnps.%20ucsd.edu) is an open-access knowledge base for community-wide organization and sharing of raw, processed or identified tandem mass (MS/MS) spectrometry data. It's a straight forward annotation methods for MS/MS data. Feature-based molecular networking (FBMN) within GNPS could be coupled with xcms, openMS, MS-DIAL, MZmine2, and other popular software. GNPS also have a dashboard for online mass spectrometery data [analysis\$\$\@petras2021a](mailto:analysis$$@petras2021a){.email}\$\$.
 
 Check those papers for GNPS and related projects[@aron2020a; @nothias2020; @scheubert2017; @silva2018; @wang2016].
 
@@ -84,6 +113,12 @@ You could check those papers for Emory workflow[@uppal2013a; @uppal2017; @yu2009
 
 -   [magma](http://www.emetabolomics.org/magma) could predict and match MS/MS files.
 
+-   [metabCombiner](https://github.com/hhabra/metabCombiner) Paired Untargeted LC-HRMS Metabolomics Feature Matching and Concatenation of Disparately Acquired Data Sets[@habra2021]
+
+-   [SLAW](https://github.com/zamboni-lab/SLAW) is a scalable and self-Optimizing processing workflow for Untargeted LC-MS with a docker image [@delabriere2021].
+
+-   [patRoon](https://github.com/rickhelmus/patRoon): open source software platform for environmental mass spectrometry based non-target screening [@helmus2021].
+
 ### Workflow Comparison
 
 Here are some comparisons for different workflow and you could make selection based on their works[@myers2017; @weber2017; @li2018].
@@ -104,7 +139,7 @@ I suggest building your data analysis projects in RStudio (Click File - New proj
 
 -   Use **munuscript** folder in your project folder for the manuscript (you could write paper in rstudio with the help of template in [Rmarkdown](https://github.com/rstudio/rticles))
 
--   Just double click **[yourprojectname].Rproj** to start your project
+-   Just double click $$yourprojectname$$.Rproj to start your project
 
 ## Data sharing
 
@@ -113,6 +148,8 @@ See this paper[@haug2017]:
 -   [MetaboLights](http://www.ebi.ac.uk/metabolights/) EU based
 
 -   [The Metabolomics Workbench](http://www.metabolomicsworkbench.org/) US based
+
+-   [MetaboBank](https://mb2.ddbj.nig.ac.jp/) Japan based
 
 -   [MetabolomeXchange](http://www.metabolomexchange.org/site/) search engine
 

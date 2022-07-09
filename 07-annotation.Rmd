@@ -47,7 +47,7 @@ According to the definition from the Chemical Analysis Working Group of the Meta
 
 In practice, data analysis based annotation could reach level 2. For level 1, we need at extra methods such as MS/MS, retention time, accurate mass, 2D NMR spectra, and so on to confirm the compounds. However, standards are always required for solid proof.
 
-Through MS/MS seemed a required step for identification, recent study found ESI might also generate fragments ions for structure identification [@xue2020a].
+Through MS/MS seemed a required step for identification, recent study found ESI might also generate fragments ions for structure identification [@xue2020a; @xue2021].
 
 ## Molecular Formula Assignment
 
@@ -179,6 +179,10 @@ BioCAn combines the results from database searches and in silico fragmentation a
 
 The software could be found [here](https://github.com/yufree/xMSannotator)[@uppal2017].
 
+### mWise
+
+[mWise](https://github.com/b2slab/mWISE) is an Algorithm for Context-Based Annotation of Liquid Chromatography--Mass Spectrometry Features through Diffusion in Graphs[@barranco-altirriba2021].
+
 ### MAIT
 
 You could find source code [here](https://github.com/jpgroup/MAIT)[@fernandez-albert2014a].
@@ -211,9 +215,27 @@ CliqueMS is a computational tool for annotating in-source metabolite ions from L
 
 This [package](https://github.com/cran/InterpretMSSpectrum) is for annotate and interpret deconvoluted mass spectra (mass\*intensity pairs) from high resolution mass spectrometry devices. You could use this package to find molecular ions for GC-MS [@jaeger2016].
 
+### NetID
+
+NetID is a global network optimization approach to annotate untargeted LC-MS metabolomics data[@chen2021].
+
+### ISfrag
+
+De Novo Recognition of In-Source Fragments for Liquid Chromatography--Mass Spectrometry Data[@guo2021]
+
+## MS1 MS2 connection
+
+### PMDDA
+
+### HERMES
+
+a molecular-formula-oriented method to target the metabolome[@giné2021].
+
 ## MS/MS annotation
 
-You could check [Workflow] section for popular platform. Here are some stand-alone annotation software:
+MS/MS annotation is performed to generate a matching score with library spectra. The most popular matching algorithm is dot product similarity. A recent study found spectral entropy algorithm outperformed dot product similarity [@li2021].
+
+You could check $$Workflow$$ section for popular platform. Here are some stand-alone annotation software:
 
 ### MetDNA
 
@@ -233,7 +255,7 @@ MS2Analyzer could annotate small molecule substructure from accurate tandem mass
 
 ### CFM-ID
 
-[CFM-ID](https://sourceforge.net/projects/cfm-id/) use Metlin's data to make prediction [@allen2014].
+[CFM-ID](https://sourceforge.net/projects/cfm-id/) use Metlin's data to make prediction $$@allen2014$$ and 4.0 [@allen2014].
 
 ### LipidFrag
 

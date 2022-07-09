@@ -1,4 +1,4 @@
-Package: placeholder
+Package: metabobook
 Title: Metabolomics Workflow
 Version: 0.0.1
 Imports: survival (>= 2.40-1),bookdown,multtest,xcms,faahKO,qvalue,CAMERA,sva,limma,RColorBrewer,AER,DiagrammeR,rentrez,reshape,ggplot2

@@ -12,7 +12,7 @@ The general purposes for metabolomics study are strongly associated with researc
 
 This is basically unsupervised analysis.
 
-However, sometimes we have group information which could be used to find biomarkers or correlationship between variables and groups or continuous variables. This type of data need supervised methods to process. Before we talk the details of algorithms, let's cover some basic statistical concepts.
+However, sometimes we have group information which could be used to find biomarkers or correlation between variables and groups or continuous variables. This type of data need supervised methods to process. A general discussion about statistical analysis in metabolic phenotyping can be found here[@blaise2021]. Before we talk the details of algorithms, let's cover some basic statistical concepts.
 
 ## Basic Statistical Analysis
 
@@ -122,6 +122,30 @@ Different algorithms [@andersson2009] for PLSDA would show different score, whil
 Sparse PLS discriminant analysis(sPLS-DA) make a L1 penal on the variable selection to remove the influences from unrelated variables, which make sense for high-throughput omics data [@lêcao2011].
 
 For o-PLS-DA, s-plot could be used to find features[@wiklund2008].
+
+## Network analysis
+
+### Vertex and edge
+
+Each node is a vertex and the connection between nodes is a edge in the network. The connection can be directed or undirected depending on the relationship.
+
+### Build the network
+
+Adjacency matrices were always used to build the network. It's a square matrix with n dimensions. Row i and column j is equal to 1 if and only if vertices i and j are connected. In directed network, such values could be 1 for i to j and -1 for j to i.
+
+### Network attributes
+
+Vertex/edge attributes could be the group information or metadata about the nodes/connections. The edges could be weighted as attribute.
+
+Path is the way from one node to another node in the network and you could find the shortest path in the path. The largest distance of a graph is called its diameter.
+
+An undirected network is connected if there is a way from any vertex to any other. Connected networks can further classified according to the strength of their connectedness. An undirected network with at least two paths between each pairs of nodes is said to be biconnected.
+
+The transitivity of network is a crude summary of the structure. A high value means that nodes are connected well locally with dense subgraphs. Network data sets typically show high transitivity.
+
+Maximum flows and minimum cuts could be used to check the largest volumns and smallest path flow between two nodes. For example, two hubs is connected by one node and the largest volumn and smallest path flow between two nodes from each hub could be counted at the select node.
+
+Sparse network has similar number of edges and the number of nodes. Dense network has the number of edges as a quadratic function of the nodes.
 
 ## Software
 

@@ -60,9 +60,11 @@ Various data acquisition workflow could be checked here[@fenaille2017a].
 
 -   Data-Independent Targeted Metabolomics Method could connect MS1 and MRM [@chen2017]
 
+-   [DecoID](https://github.com/pattilab/DecoID) python-based database-assisted deconvolution of MS/MS spectra.
+
 ### DDA
 
-The coverage of DDA could be enhanced by a feature classification strategy [@hu2019].
+The coverage of DDA could be enhanced by a feature classification strategy $$@hu2019$$ or iterative process$$@anderson2021$$.
 
 ### DIA
 
@@ -143,8 +145,8 @@ Another study find random forest could be the best imputation method for missing
 
 ## RSD/fold change Filter
 
-Some peaks need to be rule out due to high RSD% and small fold changes compared with blank samples.
+Some peaks need to be rule out due to high RSD% and small fold changes compared with blank samples. A more general feature filtering for biomarker discovery can be found here[@gadara2021].
 
 ## Power Analysis Filter
 
-As shown in [Exprimental design(DoE)], the power analysis in metabolomics is ad-hoc since you don't know too much before you perform the experiment. However, we could perform power analysis after the experiment done. That is, we just rule out the peaks with a lower power for current experimental design.
+As shown in $$Exprimental design(DoE)$$, the power analysis in metabolomics is ad-hoc since you don't know too much before you perform the experiment. However, we could perform power analysis after the experiment done. That is, we just rule out the peaks with a lower power for current experimental design.

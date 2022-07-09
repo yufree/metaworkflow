@@ -330,7 +330,7 @@ This method could found the potential unwanted variables for the data. SVA were 
 
 #### RUV (Remove Unwanted Variation)
 
-This method's performance is similar to SVA. Instead find surrogate variable from the whole dataset. RUA use control or pool QC to find the unwanted variances and remove them to find the peaks related to experimental design. However, we could also empirically estimate the control peaks by linear mixed model. RUA-random [@livera2015; @delivera2012a] further use linear mixed model to estimate the variances of random error. This method could be used with suitable control, which is common in metabolomics DoE.
+This method's performance is similar to SVA. Instead find surrogate variable from the whole dataset. RUA use control or pool QC to find the unwanted variances and remove them to find the peaks related to experimental design. However, we could also empirically estimate the control peaks by linear mixed model. RUA-random [@livera2015; @delivera2012a] further use linear mixed model to estimate the variances of random error. A hierarchical approach RUV was recently proposed for metabolomics data[@kim2021]. This method could be used with suitable control, which is common in metabolomics DoE.
 
 #### RRmix
 
@@ -346,4 +346,4 @@ RRmix also use a latent factor models correct the data [@jr2017]. This method co
 
 -   [BatchQC](https://github.com/mani2012/BatchQC) could be used to make batch effect simulation.
 
--   [Noreva](http://idrb.zju.edu.cn/noreva/) could make online batch correction.
+-   [Noreva](http://idrb.zju.edu.cn/noreva/) could make online batch correction and comparison[@fu2021].
