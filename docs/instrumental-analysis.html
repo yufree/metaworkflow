@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 4 Instrumental analysis | Meta-Workflow</title>
   <meta name="description" content="This is a workflow for metabolomics studies." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 4 Instrumental analysis | Meta-Workflow" />
   <meta property="og:type" content="book" />
-  
-  <meta property="og:image" content="images/cover.png" />
+  <meta property="og:image" content="/images/cover.png" />
   <meta property="og:description" content="This is a workflow for metabolomics studies." />
   <meta name="github-repo" content="yufree/metaworkflow" />
 
@@ -19,12 +18,12 @@
   <meta name="twitter:title" content="Chapter 4 Instrumental analysis | Meta-Workflow" />
   
   <meta name="twitter:description" content="This is a workflow for metabolomics studies." />
-  <meta name="twitter:image" content="images/cover.png" />
+  <meta name="twitter:image" content="/images/cover.png" />
 
 <meta name="author" content="Miao YU" />
 
 
-<meta name="date" content="2021-01-08" />
+<meta name="date" content="2022-07-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 <link rel="prev" href="pretreatment.html"/>
 <link rel="next" href="workflow-2.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,17 +49,26 @@
 
 
 
-
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/grViz-binding-1.0.6.1/grViz.js"></script>
+<script src="libs/grViz-binding-1.0.9/grViz.js"></script>
+<script src="libs/d3-3.3.8/d3.min.js"></script>
+<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
+<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+<script src="libs/chromatography-0.1/chromatography.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.9/DiagrammeR.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -119,6 +127,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -231,43 +262,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.5.5" data-path="annotation.html"><a href="annotation.html#biocan"><i class="fa fa-check"></i><b>7.5.5</b> BioCAn</a></li>
 <li class="chapter" data-level="7.5.6" data-path="annotation.html"><a href="annotation.html#mzmatch"><i class="fa fa-check"></i><b>7.5.6</b> mzMatch</a></li>
 <li class="chapter" data-level="7.5.7" data-path="annotation.html"><a href="annotation.html#xmsannotator"><i class="fa fa-check"></i><b>7.5.7</b> xMSannotator</a></li>
-<li class="chapter" data-level="7.5.8" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>7.5.8</b> MAIT</a></li>
-<li class="chapter" data-level="7.5.9" data-path="annotation.html"><a href="annotation.html#pmd"><i class="fa fa-check"></i><b>7.5.9</b> pmd</a></li>
-<li class="chapter" data-level="7.5.10" data-path="annotation.html"><a href="annotation.html#nontarget"><i class="fa fa-check"></i><b>7.5.10</b> nontarget</a></li>
-<li class="chapter" data-level="7.5.11" data-path="annotation.html"><a href="annotation.html#binner"><i class="fa fa-check"></i><b>7.5.11</b> Binner</a></li>
-<li class="chapter" data-level="7.5.12" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>7.5.12</b> mz.unity</a></li>
-<li class="chapter" data-level="7.5.13" data-path="annotation.html"><a href="annotation.html#ms-flo"><i class="fa fa-check"></i><b>7.5.13</b> MS-FLO</a></li>
-<li class="chapter" data-level="7.5.14" data-path="annotation.html"><a href="annotation.html#cliquems"><i class="fa fa-check"></i><b>7.5.14</b> CliqueMS</a></li>
-<li class="chapter" data-level="7.5.15" data-path="annotation.html"><a href="annotation.html#interpretmsspectrum"><i class="fa fa-check"></i><b>7.5.15</b> InterpretMSSpectrum</a></li>
+<li class="chapter" data-level="7.5.8" data-path="annotation.html"><a href="annotation.html#mwise"><i class="fa fa-check"></i><b>7.5.8</b> mWise</a></li>
+<li class="chapter" data-level="7.5.9" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>7.5.9</b> MAIT</a></li>
+<li class="chapter" data-level="7.5.10" data-path="annotation.html"><a href="annotation.html#pmd"><i class="fa fa-check"></i><b>7.5.10</b> pmd</a></li>
+<li class="chapter" data-level="7.5.11" data-path="annotation.html"><a href="annotation.html#nontarget"><i class="fa fa-check"></i><b>7.5.11</b> nontarget</a></li>
+<li class="chapter" data-level="7.5.12" data-path="annotation.html"><a href="annotation.html#binner"><i class="fa fa-check"></i><b>7.5.12</b> Binner</a></li>
+<li class="chapter" data-level="7.5.13" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>7.5.13</b> mz.unity</a></li>
+<li class="chapter" data-level="7.5.14" data-path="annotation.html"><a href="annotation.html#ms-flo"><i class="fa fa-check"></i><b>7.5.14</b> MS-FLO</a></li>
+<li class="chapter" data-level="7.5.15" data-path="annotation.html"><a href="annotation.html#cliquems"><i class="fa fa-check"></i><b>7.5.15</b> CliqueMS</a></li>
+<li class="chapter" data-level="7.5.16" data-path="annotation.html"><a href="annotation.html#interpretmsspectrum"><i class="fa fa-check"></i><b>7.5.16</b> InterpretMSSpectrum</a></li>
+<li class="chapter" data-level="7.5.17" data-path="annotation.html"><a href="annotation.html#netid"><i class="fa fa-check"></i><b>7.5.17</b> NetID</a></li>
+<li class="chapter" data-level="7.5.18" data-path="annotation.html"><a href="annotation.html#isfrag"><i class="fa fa-check"></i><b>7.5.18</b> ISfrag</a></li>
 </ul></li>
-<li class="chapter" data-level="7.6" data-path="annotation.html"><a href="annotation.html#msms-annotation"><i class="fa fa-check"></i><b>7.6</b> MS/MS annotation</a>
+<li class="chapter" data-level="7.6" data-path="annotation.html"><a href="annotation.html#ms1-ms2-connection"><i class="fa fa-check"></i><b>7.6</b> MS1 MS2 connection</a>
 <ul>
-<li class="chapter" data-level="7.6.1" data-path="annotation.html"><a href="annotation.html#metdna"><i class="fa fa-check"></i><b>7.6.1</b> MetDNA</a></li>
-<li class="chapter" data-level="7.6.2" data-path="annotation.html"><a href="annotation.html#metfusion"><i class="fa fa-check"></i><b>7.6.2</b> MetFusion</a></li>
-<li class="chapter" data-level="7.6.3" data-path="annotation.html"><a href="annotation.html#ms2analyzer"><i class="fa fa-check"></i><b>7.6.3</b> MS2Analyzer</a></li>
-<li class="chapter" data-level="7.6.4" data-path="annotation.html"><a href="annotation.html#metfrag"><i class="fa fa-check"></i><b>7.6.4</b> MetFrag</a></li>
-<li class="chapter" data-level="7.6.5" data-path="annotation.html"><a href="annotation.html#cfm-id"><i class="fa fa-check"></i><b>7.6.5</b> CFM-ID</a></li>
-<li class="chapter" data-level="7.6.6" data-path="annotation.html"><a href="annotation.html#lipidfrag"><i class="fa fa-check"></i><b>7.6.6</b> LipidFrag</a></li>
-<li class="chapter" data-level="7.6.7" data-path="annotation.html"><a href="annotation.html#lipidmatch"><i class="fa fa-check"></i><b>7.6.7</b> Lipidmatch</a></li>
-<li class="chapter" data-level="7.6.8" data-path="annotation.html"><a href="annotation.html#barcoding"><i class="fa fa-check"></i><b>7.6.8</b> BarCoding</a></li>
-<li class="chapter" data-level="7.6.9" data-path="annotation.html"><a href="annotation.html#imet"><i class="fa fa-check"></i><b>7.6.9</b> iMet</a></li>
+<li class="chapter" data-level="7.6.1" data-path="annotation.html"><a href="annotation.html#pmdda"><i class="fa fa-check"></i><b>7.6.1</b> PMDDA</a></li>
+<li class="chapter" data-level="7.6.2" data-path="annotation.html"><a href="annotation.html#hermes"><i class="fa fa-check"></i><b>7.6.2</b> HERMES</a></li>
 </ul></li>
-<li class="chapter" data-level="7.7" data-path="annotation.html"><a href="annotation.html#knowledge-based-annotation"><i class="fa fa-check"></i><b>7.7</b> Knowledge based annotation</a>
+<li class="chapter" data-level="7.7" data-path="annotation.html"><a href="annotation.html#msms-annotation"><i class="fa fa-check"></i><b>7.7</b> MS/MS annotation</a>
 <ul>
-<li class="chapter" data-level="7.7.1" data-path="annotation.html"><a href="annotation.html#chromatographic-retention-related-criteria"><i class="fa fa-check"></i><b>7.7.1</b> Chromatographic retention-related criteria</a></li>
-<li class="chapter" data-level="7.7.2" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>7.7.2</b> ProbMetab</a></li>
-<li class="chapter" data-level="7.7.3" data-path="annotation.html"><a href="annotation.html#mi-pack"><i class="fa fa-check"></i><b>7.7.3</b> MI-Pack</a></li>
-<li class="chapter" data-level="7.7.4" data-path="annotation.html"><a href="annotation.html#metexpert"><i class="fa fa-check"></i><b>7.7.4</b> MetExpert</a></li>
-<li class="chapter" data-level="7.7.5" data-path="annotation.html"><a href="annotation.html#mycompoundid"><i class="fa fa-check"></i><b>7.7.5</b> MycompoundID</a></li>
-<li class="chapter" data-level="7.7.6" data-path="annotation.html"><a href="annotation.html#metfamily"><i class="fa fa-check"></i><b>7.7.6</b> MetFamily</a></li>
-<li class="chapter" data-level="7.7.7" data-path="annotation.html"><a href="annotation.html#plantmat"><i class="fa fa-check"></i><b>7.7.7</b> Plantmat</a></li>
+<li class="chapter" data-level="7.7.1" data-path="annotation.html"><a href="annotation.html#metdna"><i class="fa fa-check"></i><b>7.7.1</b> MetDNA</a></li>
+<li class="chapter" data-level="7.7.2" data-path="annotation.html"><a href="annotation.html#metfusion"><i class="fa fa-check"></i><b>7.7.2</b> MetFusion</a></li>
+<li class="chapter" data-level="7.7.3" data-path="annotation.html"><a href="annotation.html#ms2analyzer"><i class="fa fa-check"></i><b>7.7.3</b> MS2Analyzer</a></li>
+<li class="chapter" data-level="7.7.4" data-path="annotation.html"><a href="annotation.html#metfrag"><i class="fa fa-check"></i><b>7.7.4</b> MetFrag</a></li>
+<li class="chapter" data-level="7.7.5" data-path="annotation.html"><a href="annotation.html#cfm-id"><i class="fa fa-check"></i><b>7.7.5</b> CFM-ID</a></li>
+<li class="chapter" data-level="7.7.6" data-path="annotation.html"><a href="annotation.html#lipidfrag"><i class="fa fa-check"></i><b>7.7.6</b> LipidFrag</a></li>
+<li class="chapter" data-level="7.7.7" data-path="annotation.html"><a href="annotation.html#lipidmatch"><i class="fa fa-check"></i><b>7.7.7</b> Lipidmatch</a></li>
+<li class="chapter" data-level="7.7.8" data-path="annotation.html"><a href="annotation.html#barcoding"><i class="fa fa-check"></i><b>7.7.8</b> BarCoding</a></li>
+<li class="chapter" data-level="7.7.9" data-path="annotation.html"><a href="annotation.html#imet"><i class="fa fa-check"></i><b>7.7.9</b> iMet</a></li>
 </ul></li>
-<li class="chapter" data-level="7.8" data-path="annotation.html"><a href="annotation.html#ms-database-for-annotation"><i class="fa fa-check"></i><b>7.8</b> MS Database for annotation</a>
+<li class="chapter" data-level="7.8" data-path="annotation.html"><a href="annotation.html#knowledge-based-annotation"><i class="fa fa-check"></i><b>7.8</b> Knowledge based annotation</a>
 <ul>
-<li class="chapter" data-level="7.8.1" data-path="annotation.html"><a href="annotation.html#ms"><i class="fa fa-check"></i><b>7.8.1</b> MS</a></li>
-<li class="chapter" data-level="7.8.2" data-path="annotation.html"><a href="annotation.html#msms-1"><i class="fa fa-check"></i><b>7.8.2</b> MS/MS</a></li>
+<li class="chapter" data-level="7.8.1" data-path="annotation.html"><a href="annotation.html#chromatographic-retention-related-criteria"><i class="fa fa-check"></i><b>7.8.1</b> Chromatographic retention-related criteria</a></li>
+<li class="chapter" data-level="7.8.2" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>7.8.2</b> ProbMetab</a></li>
+<li class="chapter" data-level="7.8.3" data-path="annotation.html"><a href="annotation.html#mi-pack"><i class="fa fa-check"></i><b>7.8.3</b> MI-Pack</a></li>
+<li class="chapter" data-level="7.8.4" data-path="annotation.html"><a href="annotation.html#metexpert"><i class="fa fa-check"></i><b>7.8.4</b> MetExpert</a></li>
+<li class="chapter" data-level="7.8.5" data-path="annotation.html"><a href="annotation.html#mycompoundid"><i class="fa fa-check"></i><b>7.8.5</b> MycompoundID</a></li>
+<li class="chapter" data-level="7.8.6" data-path="annotation.html"><a href="annotation.html#metfamily"><i class="fa fa-check"></i><b>7.8.6</b> MetFamily</a></li>
+<li class="chapter" data-level="7.8.7" data-path="annotation.html"><a href="annotation.html#plantmat"><i class="fa fa-check"></i><b>7.8.7</b> Plantmat</a></li>
 </ul></li>
-<li class="chapter" data-level="7.9" data-path="annotation.html"><a href="annotation.html#compounds-database"><i class="fa fa-check"></i><b>7.9</b> Compounds Database</a></li>
+<li class="chapter" data-level="7.9" data-path="annotation.html"><a href="annotation.html#ms-database-for-annotation"><i class="fa fa-check"></i><b>7.9</b> MS Database for annotation</a>
+<ul>
+<li class="chapter" data-level="7.9.1" data-path="annotation.html"><a href="annotation.html#ms"><i class="fa fa-check"></i><b>7.9.1</b> MS</a></li>
+<li class="chapter" data-level="7.9.2" data-path="annotation.html"><a href="annotation.html#msms-1"><i class="fa fa-check"></i><b>7.9.2</b> MS/MS</a></li>
+</ul></li>
+<li class="chapter" data-level="7.10" data-path="annotation.html"><a href="annotation.html#compounds-database"><i class="fa fa-check"></i><b>7.10</b> Compounds Database</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>8</b> Omics analysis</a>
 <ul>
@@ -306,7 +345,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#pca"><i class="fa fa-check"></i><b>10.3</b> PCA</a></li>
 <li class="chapter" data-level="10.4" data-path="statistical-analysis.html"><a href="statistical-analysis.html#cluster-analysis"><i class="fa fa-check"></i><b>10.4</b> Cluster Analysis</a></li>
 <li class="chapter" data-level="10.5" data-path="statistical-analysis.html"><a href="statistical-analysis.html#plsda"><i class="fa fa-check"></i><b>10.5</b> PLSDA</a></li>
-<li class="chapter" data-level="10.6" data-path="statistical-analysis.html"><a href="statistical-analysis.html#software-1"><i class="fa fa-check"></i><b>10.6</b> Software</a></li>
+<li class="chapter" data-level="10.6" data-path="statistical-analysis.html"><a href="statistical-analysis.html#network-analysis-1"><i class="fa fa-check"></i><b>10.6</b> Network analysis</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="statistical-analysis.html"><a href="statistical-analysis.html#vertex-and-edge"><i class="fa fa-check"></i><b>10.6.1</b> Vertex and edge</a></li>
+<li class="chapter" data-level="10.6.2" data-path="statistical-analysis.html"><a href="statistical-analysis.html#build-the-network"><i class="fa fa-check"></i><b>10.6.2</b> Build the network</a></li>
+<li class="chapter" data-level="10.6.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#network-attributes"><i class="fa fa-check"></i><b>10.6.3</b> Network attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="statistical-analysis.html"><a href="statistical-analysis.html#software-1"><i class="fa fa-check"></i><b>10.7</b> Software</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="exposome.html"><a href="exposome.html"><i class="fa fa-check"></i><b>11</b> Exposome</a>
 <ul>
@@ -338,22 +383,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="instrumental-analysis" class="section level1" number="4">
-<h1><span class="header-section-number">Chapter 4</span> Instrumental analysis</h1>
+<div id="instrumental-analysis" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Instrumental analysis<a href="instrumental-analysis.html#instrumental-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>To get more information in the samples, full scan is preferred on GC/LC-MS. Each scan would collect a mass spectrum to cover the setting mass range. If you narrow down your mass range and keep the same scan time, each mass would gain the collection time and you would get a higher sensitivity. However, if you expand your scan range, the sensitivity for each mass would decrease. You could also extend the collection time for each scan. However, it would affect the separation process.</p>
-<p>Full scan is performed synchronously with the separation process. For a better separation on chromotograph, each peak should have at least 10 point to get a nice peak shape. If you want to separate two peaks with a retention time differences of 10s. Assuming the half peak width is 5s, you need to collect 10 mass spectrum within 10s. So the drwell time for each scan is 1s. If you use a high resolution column and the half peak width is 1s, you need to finish a scan within 0.2s. As we discussed above, shorter dwell time would decrease the sensitivity. Thus there is a trade-off between separation and sensitivity. If you use UPLC, the separation could be finished within 20 min while you need to calculate if you mass spectrometry could still show a good sensitivity.</p>
-<div id="column-and-gradient-selection" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Column and gradient selection</h2>
-<p>For GC, higher temperature could release compounds with higher boiling point. For LC, gradient and functional groups of stationary phase would be more important than temperature. Polarity of samples and column should match. More polar solvent could release polar compounds. Normal-phase column will not retain non-polar compounds while reversed-phase will elute polar column in the very beginning. To cover a wide polarity range or logP value compounds, normal phase column should match with non-polar to polar gradient to get a better separation of polar compounds while reverse phase column should match with polar to non-polar gradient to elute compounds. If you use an inappropriate order of gradient, you compounds would not be separated well. If you have no idea about column and gradient selection, check literature’s condition. Meanwhile, the pretreatment methods should fit the column and gradient selection. You will get limited information by injection of non-polar extracts on a normal phase column and nothing will be retained on column.</p>
+<p>Full scan is performed synchronously with the separation process. For a better separation on chromotograph, each peak should have at least 10 points to get a nice peak shape. If you want to separate two peaks with a retention time differences of 10s. Assuming the half peak width is 5s, you need to collect 10 mass spectrum within 10s. So the drwell time for each scan is 1s. If you use a high resolution column and the half peak width is 1s, you need to finish a scan within 0.2s. As we discussed above, shorter dwell time would decrease the sensitivity. Thus there is a trade-off between separation and sensitivity. If you use UPLC, the separation could be finished within 20 min while you need to calculate if you mass spectrometry could still show a good sensitivity. Recently a study <span class="citation">(<a href="#ref-cai2021" role="doc-biblioref">J. Cai and Yan 2021</a>)</span> show 6 points will be enough to generate peaks with 20 points with optimized workflow.</p>
+<div id="column-and-gradient-selection" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Column and gradient selection<a href="instrumental-analysis.html#column-and-gradient-selection" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For GC, higher temperature could release compounds with higher boiling point. For LC, gradient and functional groups of stationary phase would be more important than temperature. Polarity of samples and column should match. More polar solvent could release polar compounds. Normal-phase column will not retain non-polar compounds while reversed-phase will elute polar column in the very beginning. To cover a wide polarity range or logP value compounds, normal phase column should match with non-polar to polar gradient to get a better separation of polar compounds while reverse phase column should match with polar to non-polar gradient to elute compounds. If you use an inappropriate order of gradient, you compounds would not be separated well. If you have no idea about column and gradient selection, check literature’s condition. Meanwhile, the pretreatment methods should fit the column and gradient selection. You will get limited information by injection of non-polar extracts on a normal phase column and nothing will be retained on column. This study show improved chromatography conditions will improve the annotation results<span class="citation">(<a href="#ref-anderson2021" role="doc-biblioref">Anderson et al. 2021</a>)</span>.</p>
 </div>
-<div id="mass-resolution" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Mass resolution</h2>
-<p>For metabolomics, high resolution mass spectrum should be used to make identification of compounds easier. The Mass Resolving Power is very important for annotation and high resolution mass spectrum should be calibrated in real time. The region between 400–800 m/z was influenced the most by resolution<span class="citation">(<a href="references.html#ref-najdekr2016" role="doc-biblioref">Najdekr et al. 2016</a>)</span>. Orbitrap Fusion’s performance was evaluated here<span class="citation">(<a href="references.html#ref-barbiersainthilaire2018" role="doc-biblioref">Barbier Saint Hilaire et al. 2018</a>)</span>, as well as the comparison with Fourier transform ion cyclotron resonance (FT-ICR)<span class="citation">(<a href="references.html#ref-ghaste2016" role="doc-biblioref">Ghaste, Mistrik, and Shulaev 2016</a>)</span>. Mass Difference Maps could recalibrate HRMS data <span class="citation">(<a href="references.html#ref-smirnov2019" role="doc-biblioref">Smirnov et al. 2019</a>)</span>.</p>
+<div id="mass-resolution" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Mass resolution<a href="instrumental-analysis.html#mass-resolution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For metabolomics, high resolution mass spectrum should be used to make identification of compounds easier. The Mass Resolving Power is very important for annotation and high resolution mass spectrum should be calibrated in real time. The region between 400–800 m/z was influenced the most by resolution<span class="citation">(<a href="#ref-najdekr2016" role="doc-biblioref">Najdekr et al. 2016</a>)</span>. Orbitrap Fusion’s performance was evaluated here<span class="citation">(<a href="#ref-barbiersainthilaire2018" role="doc-biblioref">Barbier Saint Hilaire et al. 2018</a>)</span>, as well as the comparison with Fourier transform ion cyclotron resonance (FT-ICR)<span class="citation">(<a href="#ref-ghaste2016" role="doc-biblioref">Ghaste, Mistrik, and Shulaev 2016</a>; <a href="#ref-huang2021" role="doc-biblioref">Huang et al. 2021</a>)</span>. Mass Difference Maps could recalibrate HRMS data <span class="citation">(<a href="#ref-smirnov2019" role="doc-biblioref">Smirnov et al. 2019</a>)</span>.</p>
 </div>
-<div id="matrix-effects" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> Matrix effects</h2>
-<p>Matrix effects could decrease the sensitivity of untargeted analysis. Such matrix effects could be checked by low resolution mass spectrometry<span class="citation">(<a href="references.html#ref-yu2017a" role="doc-biblioref">M. Yu et al. 2017b</a>)</span> and found for high resolution mass spectrometry<span class="citation">(<a href="references.html#ref-calbiani2006" role="doc-biblioref">Calbiani et al. 2006</a>)</span>. Ion suppression should also be considered as a critical issue comparing heterogeneous metabolic profiles<span class="citation">(<a href="references.html#ref-ghosson2021" role="doc-biblioref">Ghosson et al. 2021</a>)</span>.</p>
+<div id="matrix-effects" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Matrix effects<a href="instrumental-analysis.html#matrix-effects" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Matrix effects could decrease the sensitivity of untargeted analysis. Such matrix effects could be checked by low resolution mass spectrometry<span class="citation">(<a href="#ref-yu2017a" role="doc-biblioref">M. Yu et al. 2017b</a>)</span> and found for high resolution mass spectrometry<span class="citation">(<a href="#ref-calbiani2006" role="doc-biblioref">Calbiani et al. 2006</a>)</span>. Ion suppression should also be considered as a critical issue comparing heterogeneous metabolic profiles<span class="citation">(<a href="#ref-ghosson2021" role="doc-biblioref">Ghosson et al. 2021</a>)</span>.</p>
 
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="instrumental-analysis.html#cb7-1" aria-hidden="true" tabindex="-1"></a>dist_loc <span class="ot">&lt;-</span> <span class="fu">list.files</span>(</span>
+<span id="cb7-2"><a href="instrumental-analysis.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">find.package</span>(<span class="st">&quot;DiagrammeR&quot;</span>),</span>
+<span id="cb7-3"><a href="instrumental-analysis.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">recursive =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb7-4"><a href="instrumental-analysis.html#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">pattern =</span> <span class="st">&quot;mermaid.*js&quot;</span>,</span>
+<span id="cb7-5"><a href="instrumental-analysis.html#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">full.names =</span> <span class="cn">TRUE</span></span>
+<span id="cb7-6"><a href="instrumental-analysis.html#cb7-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-7"><a href="instrumental-analysis.html#cb7-7" aria-hidden="true" tabindex="-1"></a>js_cdn_url <span class="ot">&lt;-</span> <span class="st">&quot;https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.0.1/mermaid.min.js&quot;</span></span>
+<span id="cb7-8"><a href="instrumental-analysis.html#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(js_cdn_url, dist_loc)</span></code></pre></div>
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-anderson2021" class="csl-entry">
+Anderson, Brady G., Alexander Raskind, Hani Habra, Robert T. Kennedy, and Charles R. Evans. 2021. <span>“Modifying Chromatography Conditions for Improved Unknown Feature Identification in Untargeted Metabolomics.”</span> <em>Analytical Chemistry</em> 93 (48): 15840–49. <a href="https://doi.org/10.1021/acs.analchem.1c02149">https://doi.org/10.1021/acs.analchem.1c02149</a>.
+</div>
+<div id="ref-barbiersainthilaire2018" class="csl-entry">
+Barbier Saint Hilaire, Pierre, Ulli M. Hohenester, Benoit Colsch, Jean-Claude Tabet, Christophe Junot, and François Fenaille. 2018. <span>“Evaluation of the High-Field Orbitrap Fusion for Compound Annotation in Metabolomics.”</span> <em>Analytical Chemistry</em> 90 (5): 3030–35. <a href="https://doi.org/10.1021/acs.analchem.7b05372">https://doi.org/10.1021/acs.analchem.7b05372</a>.
+</div>
+<div id="ref-cai2021" class="csl-entry">
+Cai, Jingwei, and Zhengyin Yan. 2021. <span>“Re-Examining the Impact of Minimal Scans in Liquid Chromatography<span></span>Mass Spectrometry Analysis.”</span> <em>Journal of the American Society for Mass Spectrometry</em>, June. <a href="https://doi.org/10.1021/jasms.1c00073">https://doi.org/10.1021/jasms.1c00073</a>.
+</div>
+<div id="ref-calbiani2006" class="csl-entry">
+Calbiani, F., M. Careri, L. Elviri, A. Mangia, and I. Zagnoni. 2006. <span>“Matrix Effects on Accurate Mass Measurements of Low-Molecular Weight Compounds Using Liquid Chromatography-Electrospray-Quadrupole Time-of-Flight Mass Spectrometry.”</span> <em>Journal of Mass Spectrometry</em> 41 (3): 289–94. <a href="https://doi.org/10.1002/jms.984">https://doi.org/10.1002/jms.984</a>.
+</div>
+<div id="ref-ghaste2016" class="csl-entry">
+Ghaste, Manoj, Robert Mistrik, and Vladimir Shulaev. 2016. <span>“Applications of Fourier Transform Ion Cyclotron Resonance (FT-ICR) and Orbitrap Based High Resolution Mass Spectrometry in Metabolomics and Lipidomics.”</span> <em>International Journal of Molecular Sciences</em> 17 (6). <a href="https://doi.org/10.3390/ijms17060816">https://doi.org/10.3390/ijms17060816</a>.
+</div>
+<div id="ref-ghosson2021" class="csl-entry">
+Ghosson, Hikmat, Yann Guitton, Amani Ben Jrad, Chandrashekhar Patil, Delphine Raviglione, Marie-Virginie Salvia, and Cédric Bertrand. 2021. <span>“Electrospray Ionization and Heterogeneous Matrix Effects in Liquid Chromatography/Mass Spectrometry Based Meta-Metabolomics: A Biomarker or a Suppressed Ion?”</span> <em>Rapid Communications in Mass Spectrometry</em> 35 (2): e8977. https://doi.org/<a href="https://doi.org/10.1002/rcm.8977">https://doi.org/10.1002/rcm.8977</a>.
+</div>
+<div id="ref-huang2021" class="csl-entry">
+Huang, Danning, Marcos Bouza, David A. Gaul, Franklin E. Leach, I. Jonathan Amster, Frank C. Schroeder, Arthur S. Edison, and Facundo M. Fernández. 2021. <span>“Comparison of High-Resolution Fourier Transform Mass Spectrometry Platforms for Putative Metabolite Annotation.”</span> <em>Analytical Chemistry</em> 93 (36): 12374–82. <a href="https://doi.org/10.1021/acs.analchem.1c02224">https://doi.org/10.1021/acs.analchem.1c02224</a>.
+</div>
+<div id="ref-najdekr2016" class="csl-entry">
+Najdekr, Lukáš, David Friedecký, Ralf Tautenhahn, Tomáš Pluskal, Junhua Wang, Yingying Huang, and Tomáš Adam. 2016. <span>“Influence of Mass Resolving Power in Orbital Ion-Trap Mass Spectrometry-Based Metabolomics.”</span> <em>Analytical Chemistry</em> 88 (23): 11429–35. <a href="https://doi.org/10.1021/acs.analchem.6b02319">https://doi.org/10.1021/acs.analchem.6b02319</a>.
+</div>
+<div id="ref-smirnov2019" class="csl-entry">
+Smirnov, Kirill S., Sara Forcisi, Franco Moritz, Marianna Lucio, and Philippe Schmitt-Kopplin. 2019. <span>“Mass Difference Maps and Their Application for the Recalibration of Mass Spectrometric Data in Nontargeted Metabolomics.”</span> <em>Analytical Chemistry</em> 91 (5): 3350–58. <a href="https://doi.org/10.1021/acs.analchem.8b04555">https://doi.org/10.1021/acs.analchem.8b04555</a>.
+</div>
+<div id="ref-yu2017a" class="csl-entry">
+———. 2017b. <span>“Evaluation and Reduction of the Analytical Uncertainties in GC-MS Analysis Using a Boundary Regression Model.”</span> <em>Talanta</em> 164 (March): 141–47. <a href="https://doi.org/10.1016/j.talanta.2016.11.046">https://doi.org/10.1016/j.talanta.2016.11.046</a>.
 </div>
 </div>
             </section>
@@ -366,7 +452,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -385,6 +470,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -405,6 +491,10 @@ gitbook.start({
 "text": null
 },
 "download": ["Metabolomics.pub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

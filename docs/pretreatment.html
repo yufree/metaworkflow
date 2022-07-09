@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Pretreatment | Meta-Workflow</title>
   <meta name="description" content="This is a workflow for metabolomics studies." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Pretreatment | Meta-Workflow" />
   <meta property="og:type" content="book" />
-  
-  <meta property="og:image" content="images/cover.png" />
+  <meta property="og:image" content="/images/cover.png" />
   <meta property="og:description" content="This is a workflow for metabolomics studies." />
   <meta name="github-repo" content="yufree/metaworkflow" />
 
@@ -19,12 +18,12 @@
   <meta name="twitter:title" content="Chapter 3 Pretreatment | Meta-Workflow" />
   
   <meta name="twitter:description" content="This is a workflow for metabolomics studies." />
-  <meta name="twitter:image" content="images/cover.png" />
+  <meta name="twitter:image" content="/images/cover.png" />
 
 <meta name="author" content="Miao YU" />
 
 
-<meta name="date" content="2021-01-08" />
+<meta name="date" content="2022-07-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 <link rel="prev" href="experimental-designdoe.html"/>
 <link rel="next" href="instrumental-analysis.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,17 +49,26 @@
 
 
 
-
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/grViz-binding-1.0.6.1/grViz.js"></script>
+<script src="libs/grViz-binding-1.0.9/grViz.js"></script>
+<script src="libs/d3-3.3.8/d3.min.js"></script>
+<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
+<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+<script src="libs/chromatography-0.1/chromatography.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.9/DiagrammeR.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -119,6 +127,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -231,43 +262,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.5.5" data-path="annotation.html"><a href="annotation.html#biocan"><i class="fa fa-check"></i><b>7.5.5</b> BioCAn</a></li>
 <li class="chapter" data-level="7.5.6" data-path="annotation.html"><a href="annotation.html#mzmatch"><i class="fa fa-check"></i><b>7.5.6</b> mzMatch</a></li>
 <li class="chapter" data-level="7.5.7" data-path="annotation.html"><a href="annotation.html#xmsannotator"><i class="fa fa-check"></i><b>7.5.7</b> xMSannotator</a></li>
-<li class="chapter" data-level="7.5.8" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>7.5.8</b> MAIT</a></li>
-<li class="chapter" data-level="7.5.9" data-path="annotation.html"><a href="annotation.html#pmd"><i class="fa fa-check"></i><b>7.5.9</b> pmd</a></li>
-<li class="chapter" data-level="7.5.10" data-path="annotation.html"><a href="annotation.html#nontarget"><i class="fa fa-check"></i><b>7.5.10</b> nontarget</a></li>
-<li class="chapter" data-level="7.5.11" data-path="annotation.html"><a href="annotation.html#binner"><i class="fa fa-check"></i><b>7.5.11</b> Binner</a></li>
-<li class="chapter" data-level="7.5.12" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>7.5.12</b> mz.unity</a></li>
-<li class="chapter" data-level="7.5.13" data-path="annotation.html"><a href="annotation.html#ms-flo"><i class="fa fa-check"></i><b>7.5.13</b> MS-FLO</a></li>
-<li class="chapter" data-level="7.5.14" data-path="annotation.html"><a href="annotation.html#cliquems"><i class="fa fa-check"></i><b>7.5.14</b> CliqueMS</a></li>
-<li class="chapter" data-level="7.5.15" data-path="annotation.html"><a href="annotation.html#interpretmsspectrum"><i class="fa fa-check"></i><b>7.5.15</b> InterpretMSSpectrum</a></li>
+<li class="chapter" data-level="7.5.8" data-path="annotation.html"><a href="annotation.html#mwise"><i class="fa fa-check"></i><b>7.5.8</b> mWise</a></li>
+<li class="chapter" data-level="7.5.9" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>7.5.9</b> MAIT</a></li>
+<li class="chapter" data-level="7.5.10" data-path="annotation.html"><a href="annotation.html#pmd"><i class="fa fa-check"></i><b>7.5.10</b> pmd</a></li>
+<li class="chapter" data-level="7.5.11" data-path="annotation.html"><a href="annotation.html#nontarget"><i class="fa fa-check"></i><b>7.5.11</b> nontarget</a></li>
+<li class="chapter" data-level="7.5.12" data-path="annotation.html"><a href="annotation.html#binner"><i class="fa fa-check"></i><b>7.5.12</b> Binner</a></li>
+<li class="chapter" data-level="7.5.13" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>7.5.13</b> mz.unity</a></li>
+<li class="chapter" data-level="7.5.14" data-path="annotation.html"><a href="annotation.html#ms-flo"><i class="fa fa-check"></i><b>7.5.14</b> MS-FLO</a></li>
+<li class="chapter" data-level="7.5.15" data-path="annotation.html"><a href="annotation.html#cliquems"><i class="fa fa-check"></i><b>7.5.15</b> CliqueMS</a></li>
+<li class="chapter" data-level="7.5.16" data-path="annotation.html"><a href="annotation.html#interpretmsspectrum"><i class="fa fa-check"></i><b>7.5.16</b> InterpretMSSpectrum</a></li>
+<li class="chapter" data-level="7.5.17" data-path="annotation.html"><a href="annotation.html#netid"><i class="fa fa-check"></i><b>7.5.17</b> NetID</a></li>
+<li class="chapter" data-level="7.5.18" data-path="annotation.html"><a href="annotation.html#isfrag"><i class="fa fa-check"></i><b>7.5.18</b> ISfrag</a></li>
 </ul></li>
-<li class="chapter" data-level="7.6" data-path="annotation.html"><a href="annotation.html#msms-annotation"><i class="fa fa-check"></i><b>7.6</b> MS/MS annotation</a>
+<li class="chapter" data-level="7.6" data-path="annotation.html"><a href="annotation.html#ms1-ms2-connection"><i class="fa fa-check"></i><b>7.6</b> MS1 MS2 connection</a>
 <ul>
-<li class="chapter" data-level="7.6.1" data-path="annotation.html"><a href="annotation.html#metdna"><i class="fa fa-check"></i><b>7.6.1</b> MetDNA</a></li>
-<li class="chapter" data-level="7.6.2" data-path="annotation.html"><a href="annotation.html#metfusion"><i class="fa fa-check"></i><b>7.6.2</b> MetFusion</a></li>
-<li class="chapter" data-level="7.6.3" data-path="annotation.html"><a href="annotation.html#ms2analyzer"><i class="fa fa-check"></i><b>7.6.3</b> MS2Analyzer</a></li>
-<li class="chapter" data-level="7.6.4" data-path="annotation.html"><a href="annotation.html#metfrag"><i class="fa fa-check"></i><b>7.6.4</b> MetFrag</a></li>
-<li class="chapter" data-level="7.6.5" data-path="annotation.html"><a href="annotation.html#cfm-id"><i class="fa fa-check"></i><b>7.6.5</b> CFM-ID</a></li>
-<li class="chapter" data-level="7.6.6" data-path="annotation.html"><a href="annotation.html#lipidfrag"><i class="fa fa-check"></i><b>7.6.6</b> LipidFrag</a></li>
-<li class="chapter" data-level="7.6.7" data-path="annotation.html"><a href="annotation.html#lipidmatch"><i class="fa fa-check"></i><b>7.6.7</b> Lipidmatch</a></li>
-<li class="chapter" data-level="7.6.8" data-path="annotation.html"><a href="annotation.html#barcoding"><i class="fa fa-check"></i><b>7.6.8</b> BarCoding</a></li>
-<li class="chapter" data-level="7.6.9" data-path="annotation.html"><a href="annotation.html#imet"><i class="fa fa-check"></i><b>7.6.9</b> iMet</a></li>
+<li class="chapter" data-level="7.6.1" data-path="annotation.html"><a href="annotation.html#pmdda"><i class="fa fa-check"></i><b>7.6.1</b> PMDDA</a></li>
+<li class="chapter" data-level="7.6.2" data-path="annotation.html"><a href="annotation.html#hermes"><i class="fa fa-check"></i><b>7.6.2</b> HERMES</a></li>
 </ul></li>
-<li class="chapter" data-level="7.7" data-path="annotation.html"><a href="annotation.html#knowledge-based-annotation"><i class="fa fa-check"></i><b>7.7</b> Knowledge based annotation</a>
+<li class="chapter" data-level="7.7" data-path="annotation.html"><a href="annotation.html#msms-annotation"><i class="fa fa-check"></i><b>7.7</b> MS/MS annotation</a>
 <ul>
-<li class="chapter" data-level="7.7.1" data-path="annotation.html"><a href="annotation.html#chromatographic-retention-related-criteria"><i class="fa fa-check"></i><b>7.7.1</b> Chromatographic retention-related criteria</a></li>
-<li class="chapter" data-level="7.7.2" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>7.7.2</b> ProbMetab</a></li>
-<li class="chapter" data-level="7.7.3" data-path="annotation.html"><a href="annotation.html#mi-pack"><i class="fa fa-check"></i><b>7.7.3</b> MI-Pack</a></li>
-<li class="chapter" data-level="7.7.4" data-path="annotation.html"><a href="annotation.html#metexpert"><i class="fa fa-check"></i><b>7.7.4</b> MetExpert</a></li>
-<li class="chapter" data-level="7.7.5" data-path="annotation.html"><a href="annotation.html#mycompoundid"><i class="fa fa-check"></i><b>7.7.5</b> MycompoundID</a></li>
-<li class="chapter" data-level="7.7.6" data-path="annotation.html"><a href="annotation.html#metfamily"><i class="fa fa-check"></i><b>7.7.6</b> MetFamily</a></li>
-<li class="chapter" data-level="7.7.7" data-path="annotation.html"><a href="annotation.html#plantmat"><i class="fa fa-check"></i><b>7.7.7</b> Plantmat</a></li>
+<li class="chapter" data-level="7.7.1" data-path="annotation.html"><a href="annotation.html#metdna"><i class="fa fa-check"></i><b>7.7.1</b> MetDNA</a></li>
+<li class="chapter" data-level="7.7.2" data-path="annotation.html"><a href="annotation.html#metfusion"><i class="fa fa-check"></i><b>7.7.2</b> MetFusion</a></li>
+<li class="chapter" data-level="7.7.3" data-path="annotation.html"><a href="annotation.html#ms2analyzer"><i class="fa fa-check"></i><b>7.7.3</b> MS2Analyzer</a></li>
+<li class="chapter" data-level="7.7.4" data-path="annotation.html"><a href="annotation.html#metfrag"><i class="fa fa-check"></i><b>7.7.4</b> MetFrag</a></li>
+<li class="chapter" data-level="7.7.5" data-path="annotation.html"><a href="annotation.html#cfm-id"><i class="fa fa-check"></i><b>7.7.5</b> CFM-ID</a></li>
+<li class="chapter" data-level="7.7.6" data-path="annotation.html"><a href="annotation.html#lipidfrag"><i class="fa fa-check"></i><b>7.7.6</b> LipidFrag</a></li>
+<li class="chapter" data-level="7.7.7" data-path="annotation.html"><a href="annotation.html#lipidmatch"><i class="fa fa-check"></i><b>7.7.7</b> Lipidmatch</a></li>
+<li class="chapter" data-level="7.7.8" data-path="annotation.html"><a href="annotation.html#barcoding"><i class="fa fa-check"></i><b>7.7.8</b> BarCoding</a></li>
+<li class="chapter" data-level="7.7.9" data-path="annotation.html"><a href="annotation.html#imet"><i class="fa fa-check"></i><b>7.7.9</b> iMet</a></li>
 </ul></li>
-<li class="chapter" data-level="7.8" data-path="annotation.html"><a href="annotation.html#ms-database-for-annotation"><i class="fa fa-check"></i><b>7.8</b> MS Database for annotation</a>
+<li class="chapter" data-level="7.8" data-path="annotation.html"><a href="annotation.html#knowledge-based-annotation"><i class="fa fa-check"></i><b>7.8</b> Knowledge based annotation</a>
 <ul>
-<li class="chapter" data-level="7.8.1" data-path="annotation.html"><a href="annotation.html#ms"><i class="fa fa-check"></i><b>7.8.1</b> MS</a></li>
-<li class="chapter" data-level="7.8.2" data-path="annotation.html"><a href="annotation.html#msms-1"><i class="fa fa-check"></i><b>7.8.2</b> MS/MS</a></li>
+<li class="chapter" data-level="7.8.1" data-path="annotation.html"><a href="annotation.html#chromatographic-retention-related-criteria"><i class="fa fa-check"></i><b>7.8.1</b> Chromatographic retention-related criteria</a></li>
+<li class="chapter" data-level="7.8.2" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>7.8.2</b> ProbMetab</a></li>
+<li class="chapter" data-level="7.8.3" data-path="annotation.html"><a href="annotation.html#mi-pack"><i class="fa fa-check"></i><b>7.8.3</b> MI-Pack</a></li>
+<li class="chapter" data-level="7.8.4" data-path="annotation.html"><a href="annotation.html#metexpert"><i class="fa fa-check"></i><b>7.8.4</b> MetExpert</a></li>
+<li class="chapter" data-level="7.8.5" data-path="annotation.html"><a href="annotation.html#mycompoundid"><i class="fa fa-check"></i><b>7.8.5</b> MycompoundID</a></li>
+<li class="chapter" data-level="7.8.6" data-path="annotation.html"><a href="annotation.html#metfamily"><i class="fa fa-check"></i><b>7.8.6</b> MetFamily</a></li>
+<li class="chapter" data-level="7.8.7" data-path="annotation.html"><a href="annotation.html#plantmat"><i class="fa fa-check"></i><b>7.8.7</b> Plantmat</a></li>
 </ul></li>
-<li class="chapter" data-level="7.9" data-path="annotation.html"><a href="annotation.html#compounds-database"><i class="fa fa-check"></i><b>7.9</b> Compounds Database</a></li>
+<li class="chapter" data-level="7.9" data-path="annotation.html"><a href="annotation.html#ms-database-for-annotation"><i class="fa fa-check"></i><b>7.9</b> MS Database for annotation</a>
+<ul>
+<li class="chapter" data-level="7.9.1" data-path="annotation.html"><a href="annotation.html#ms"><i class="fa fa-check"></i><b>7.9.1</b> MS</a></li>
+<li class="chapter" data-level="7.9.2" data-path="annotation.html"><a href="annotation.html#msms-1"><i class="fa fa-check"></i><b>7.9.2</b> MS/MS</a></li>
+</ul></li>
+<li class="chapter" data-level="7.10" data-path="annotation.html"><a href="annotation.html#compounds-database"><i class="fa fa-check"></i><b>7.10</b> Compounds Database</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>8</b> Omics analysis</a>
 <ul>
@@ -306,7 +345,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#pca"><i class="fa fa-check"></i><b>10.3</b> PCA</a></li>
 <li class="chapter" data-level="10.4" data-path="statistical-analysis.html"><a href="statistical-analysis.html#cluster-analysis"><i class="fa fa-check"></i><b>10.4</b> Cluster Analysis</a></li>
 <li class="chapter" data-level="10.5" data-path="statistical-analysis.html"><a href="statistical-analysis.html#plsda"><i class="fa fa-check"></i><b>10.5</b> PLSDA</a></li>
-<li class="chapter" data-level="10.6" data-path="statistical-analysis.html"><a href="statistical-analysis.html#software-1"><i class="fa fa-check"></i><b>10.6</b> Software</a></li>
+<li class="chapter" data-level="10.6" data-path="statistical-analysis.html"><a href="statistical-analysis.html#network-analysis-1"><i class="fa fa-check"></i><b>10.6</b> Network analysis</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="statistical-analysis.html"><a href="statistical-analysis.html#vertex-and-edge"><i class="fa fa-check"></i><b>10.6.1</b> Vertex and edge</a></li>
+<li class="chapter" data-level="10.6.2" data-path="statistical-analysis.html"><a href="statistical-analysis.html#build-the-network"><i class="fa fa-check"></i><b>10.6.2</b> Build the network</a></li>
+<li class="chapter" data-level="10.6.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#network-attributes"><i class="fa fa-check"></i><b>10.6.3</b> Network attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="statistical-analysis.html"><a href="statistical-analysis.html#software-1"><i class="fa fa-check"></i><b>10.7</b> Software</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="exposome.html"><a href="exposome.html"><i class="fa fa-check"></i><b>11</b> Exposome</a>
 <ul>
@@ -338,59 +383,131 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="pretreatment" class="section level1" number="3">
-<h1><span class="header-section-number">Chapter 3</span> Pretreatment</h1>
+<div id="pretreatment" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Pretreatment<a href="pretreatment.html#pretreatment" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Pretreatment will affect the results of metabolomics and cover the sample treatment from crude samples to injection vials for instrumental analysis. The purpose of sample pretreatment is the to retain more interesting compounds while remove unrelated compounds. For metabolomics studies, we might not know ‘interesting’ compounds in advance and the unrelated compounds are highly depended on research purpose. For example, Gel Permeation Chromatograph(GPC), Florisil, Alumina, Silica gel could be used to remove lipid while alcohols and strong acid/base could make protein denaturation to release more compounds. However, if we are interested in small lipid or peptide, such pretreatment methods should be changed. In general, sample collection, quenching, extraction methods, derivatization, and storage should be optimized in pretreatment.</p>
-<div id="collection" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Collection</h2>
-<p>Those papers investigated different fecal collection methods<span class="citation">(<a href="references.html#ref-loftfield2016" role="doc-biblioref">Loftfield et al. 2016</a>; <a href="references.html#ref-deda2017" role="doc-biblioref">Deda et al. 2017</a>)</span>.</p>
-<p>This paper discuss the influence of sample normalization<span class="citation">(<a href="references.html#ref-wu2016" role="doc-biblioref">Wu and Li 2016</a>)</span>.</p>
+<div id="collection" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Collection<a href="pretreatment.html#collection" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Those papers investigated different fecal collection methods<span class="citation">(<a href="#ref-loftfield2016" role="doc-biblioref">Loftfield et al. 2016</a>; <a href="#ref-deda2017" role="doc-biblioref">Deda et al. 2017</a>)</span>.</p>
+<p>This paper discuss the influence of sample normalization<span class="citation">(<a href="#ref-wu2016" role="doc-biblioref">Wu and Li 2016</a>)</span>.</p>
 </div>
-<div id="quenching" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Quenching</h2>
+<div id="quenching" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Quenching<a href="pretreatment.html#quenching" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Quenching solvent is always used to stop stop enzymatic activity.</p>
-<p>In this review<span class="citation">(<a href="references.html#ref-lu2017" role="doc-biblioref">W. Lu et al. 2017</a>)</span>, authors said:</p>
+<p>In this review<span class="citation">(<a href="#ref-lu2017" role="doc-biblioref">W. Lu et al. 2017</a>)</span>, authors said:</p>
 <blockquote>
 <p>A classical approach, which works well for many analytes, is boiling ethanol. Although the boiling solvent raises concerns about thermal degradation, it reliably denatures enzymes. In contrast, cold organic solvent may not fully denature enzymes or may do so too slowly such that some metabolic reactions continue, interconverting metabolites during the quenching process.</p>
 </blockquote>
-<p>This review<span class="citation">(<a href="references.html#ref-kim2020" role="doc-biblioref">Kim et al. 2020</a>)</span> summarized the urease-dependent metabolome sample preparation and found:</p>
+<p>This review<span class="citation">(<a href="#ref-kim2020" role="doc-biblioref">J. Kim et al. 2020</a>)</span> summarized the urease-dependent metabolome sample preparation and found:</p>
 <blockquote>
 <p>activities of urease and endogenous urinary enzymes and metabolite contaminants from the urease preparations introduce artefacts into metabolite profiles, thus leading to misinterpretation.</p>
 </blockquote>
 </div>
-<div id="extraction" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> Extraction</h2>
-<p>According to this research<span class="citation">(<a href="references.html#ref-bennett2009" role="doc-biblioref">Bennett et al. 2009</a>)</span>:</p>
+<div id="extraction" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Extraction<a href="pretreatment.html#extraction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>According to this research<span class="citation">(<a href="#ref-bennett2009" role="doc-biblioref">Bennett et al. 2009</a>)</span>:</p>
 <blockquote>
 <p>The total metabolome concentration is approximately 300 mM, whereas the protein concentration is approximately 7 mM., which implies that most cellular metabolites are in free form.</p>
 </blockquote>
-<p>Dmitri et.al<span class="citation">(<a href="references.html#ref-sitnikov2016" role="doc-biblioref">Sitnikov, Monnin, and Vuckovic 2016</a>)</span> thought the most orthogonal methods to methanol-based precipitation were ion-exchange solid-phase extraction and liquid-liquid extraction using methyl-tertbutyl ether.</p>
-<p>Another study used stable isotope labeled sample and found the use of a water-methanol-acetonitrile mixture for global metabolite extraction instead of aqueous methanol or aqueous acetonitrile alone <span class="citation">(<a href="references.html#ref-doppler2016" role="doc-biblioref">Doppler et al. 2016</a>)</span>.</p>
-<p>Metabolic information was highly influenced by the extraction solvent<span class="citation">(<a href="references.html#ref-ibanez2017" role="doc-biblioref">Ibáñez et al. 2017</a>)</span>.</p>
+<p>Dmitri et.al<span class="citation">(<a href="#ref-sitnikov2016" role="doc-biblioref">Sitnikov, Monnin, and Vuckovic 2016</a>)</span> thought the most orthogonal methods to methanol-based precipitation were ion-exchange solid-phase extraction and liquid-liquid extraction using methyl-tertbutyl ether.</p>
+<p>Another study used stable isotope labeled sample and found the use of a water-methanol-acetonitrile mixture for global metabolite extraction instead of aqueous methanol or aqueous acetonitrile alone <span class="citation">(<a href="#ref-doppler2016" role="doc-biblioref">Doppler et al. 2016</a>)</span>.</p>
+<p>Metabolic information was highly influenced by the extraction solvent<span class="citation">(<a href="#ref-ibanez2017" role="doc-biblioref">Ibáñez et al. 2017</a>)</span>.</p>
 <p>Tissue samples need to first be pulverized into fine powders.</p>
 <p>Feces collected with 95% ethanol or FOBT would be more reproducible and stable.</p>
-<p>In this review<span class="citation">(<a href="references.html#ref-lu2017" role="doc-biblioref">W. Lu et al. 2017</a>)</span>, authors said:</p>
+<p>In this review<span class="citation">(<a href="#ref-lu2017" role="doc-biblioref">W. Lu et al. 2017</a>)</span>, authors said:</p>
 <blockquote>
 <p>In our experience, for both cell and tissue specimens, 40:40:20 acetonitrile:methanol:water with 0.1 M formic acid (and subsequent neutralization with ammonium bicarbonate) is generally an effective solvent system for both quenching and extraction, including for ATP and other high-energy phosphorylated compounds. We typically use approximately 1 mL of solvent mix to extract 25 mg of biological specimen. …Thus, although drying is acceptable for most metabolites, care must be taken with redox-active species.</p>
 </blockquote>
-<p>nano LC-MS could be used to analysis small numbers of cells<span class="citation">(<a href="references.html#ref-luo2017a" role="doc-biblioref">Luo and Li 2017</a>)</span>.</p>
-<p>For plant like soybeans<span class="citation">(<a href="references.html#ref-mahmud2017" role="doc-biblioref">Mahmud et al. 2017</a>)</span>, ammonium acetate/methanol could be selected as extraction strategies compared with water/methanol and sodium phosphate/methanol. For general plant samples, check this comprehensive investigation<span class="citation">(<a href="references.html#ref-bijttebier2016" role="doc-biblioref">Bijttebier et al. 2016</a>)</span>.</p>
+<p>nano LC-MS could be used to analysis small numbers of cells<span class="citation">(<a href="#ref-luo2017a" role="doc-biblioref">Luo and Li 2017</a>)</span>.</p>
+<p>For plant like soybeans<span class="citation">(<a href="#ref-mahmud2017" role="doc-biblioref">Mahmud et al. 2017</a>)</span>, ammonium acetate/methanol could be selected as extraction strategies compared with water/methanol and sodium phosphate/methanol. For general plant samples, check this comprehensive investigation<span class="citation">(<a href="#ref-bijttebier2016" role="doc-biblioref">Bijttebier et al. 2016</a>)</span>.</p>
 </div>
-<div id="derivatization" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> Derivatization</h2>
-<p>Derivatization is always used in GC-based metabolomics study. This paper<span class="citation">(<a href="references.html#ref-miyagawa2019" role="doc-biblioref">Miyagawa and Bamba 2019</a>)</span> compared sequential derivatization methods and found different compounds would show different fluctuations during oximation or silylation process. This paper summarized derivatization methods for LC-MS <span class="citation">(<a href="references.html#ref-zhao2020" role="doc-biblioref">S. Zhao and Li 2020</a>)</span>.</p>
+<div id="derivatization" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Derivatization<a href="pretreatment.html#derivatization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Derivatization is always used in GC-based metabolomics study. This paper<span class="citation">(<a href="#ref-miyagawa2019" role="doc-biblioref">Miyagawa and Bamba 2019</a>)</span> compared sequential derivatization methods and found different compounds would show different fluctuations during oximation or silylation process. This paper summarized derivatization methods for LC-MS <span class="citation">(<a href="#ref-zhao2020" role="doc-biblioref">S. Zhao and Li 2020</a>)</span>.</p>
 </div>
-<div id="storage" class="section level2" number="3.5">
-<h2><span class="header-section-number">3.5</span> Storage</h2>
-<p>Samples should be stored after sample collection or sample pretreatment. -80°C or -20°C is always preferred to store samples. Dry ice should be used during sample pretreatment. However, comprehensive investigation of storage influences found the metabolites profile will change after one day storage at -80°C<span class="citation">(<a href="references.html#ref-yu2020" role="doc-biblioref">M. Yu et al. 2020</a>)</span> . Rapid analysis of samples should be considered to capture more accurate information in the samples.</p>
+<div id="storage" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Storage<a href="pretreatment.html#storage" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Samples should be stored after sample collection or sample pretreatment. -80°C or -20°C is always preferred to store samples. Dry ice should be used during sample pretreatment. However, comprehensive investigation of storage influences found the metabolites profile will change after one day storage at -80°C<span class="citation">(<a href="#ref-yu2020" role="doc-biblioref">M. Yu et al. 2020</a>)</span> . Rapid analysis of samples should be considered to capture more accurate information in the samples.</p>
 <blockquote>
-<p>Storage conditions such as temperature and time can affect the metabolite composition of various samples. Laparre et al.<span class="citation">(<a href="references.html#ref-laparre2017" role="doc-biblioref">Laparre et al. 2017a</a>)</span> noted that the metabolite profiles of urine samples were significantly changed after 5 days of storage at 4°C , while Wandro and colleagues<span class="citation">(<a href="references.html#ref-wandro2017" role="doc-biblioref">Wandro et al. 2017</a>)</span> observed that the metabolomic profiles of cystic fibrosis sputum samples underwent notable changes after only 1 day of storage at 4°C . Likewise, Roszkowska et al. demonstrated that various signaling molecules were lost from the lipidome profile of tissue after storing the samples for one year at 80°C <span class="citation">(<a href="references.html#ref-roszkowska2018" role="doc-biblioref">Roszkowska et al. 2018</a>)</span>. To date, most metabolomics studies involving storage of samples prior to the analysis have used a storage temperature of 80°C , as previous investigations have shown that low temperatures or freeze-thaw cycles do not significantly change the metabolite profile of certain samples<span class="citation">(<a href="references.html#ref-lin2007" role="doc-biblioref">Lin et al. 2007</a>)</span> .</p>
+<p>Storage conditions such as temperature and time can affect the metabolite composition of various samples. Laparre et al.<span class="citation">(<a href="#ref-laparre2017" role="doc-biblioref">Laparre et al. 2017a</a>)</span> noted that the metabolite profiles of urine samples were significantly changed after 5 days of storage at 4°C , while Wandro and colleagues<span class="citation">(<a href="#ref-wandro2017" role="doc-biblioref">Wandro et al. 2017</a>)</span> observed that the metabolomic profiles of cystic fibrosis sputum samples underwent notable changes after only 1 day of storage at 4°C . Likewise, Roszkowska et al. demonstrated that various signaling molecules were lost from the lipidome profile of tissue after storing the samples for one year at 80°C <span class="citation">(<a href="#ref-roszkowska2018" role="doc-biblioref">Roszkowska et al. 2018</a>)</span>. To date, most metabolomics studies involving storage of samples prior to the analysis have used a storage temperature of 80°C , as previous investigations have shown that low temperatures or freeze-thaw cycles do not significantly change the metabolite profile of certain samples<span class="citation">(<a href="#ref-lin2007" role="doc-biblioref">Lin et al. 2007</a>)</span> .</p>
 </blockquote>
-<p>For gut microbiota, this paper could be checked for storage issue<span class="citation">(<a href="references.html#ref-zubeldia-varela2020" role="doc-biblioref">Zubeldia-Varela et al. 2020</a>)</span>.</p>
-<p>For blood sample storage, you could check this paper<span class="citation">(<a href="references.html#ref-hernandes2017" role="doc-biblioref">Hernandes, Barbas, and Dudzik 2017</a>)</span>.</p>
-<p>For urine sample storage, check this<span class="citation">(<a href="references.html#ref-laparre2017a" role="doc-biblioref">Laparre et al. 2017b</a>)</span>.</p>
-<p>This piece reviewed the stability of energy metabolites<span class="citation">(<a href="references.html#ref-gil2015" role="doc-biblioref">Gil et al. 2015</a>)</span>.</p>
+<p>For gut microbiota, this paper could be checked for storage issue<span class="citation">(<a href="#ref-zubeldia-varela2020" role="doc-biblioref">Zubeldia-Varela et al. 2020</a>)</span>.</p>
+<p>For blood sample storage, you could check this paper<span class="citation">(<a href="#ref-hernandes2017" role="doc-biblioref">Hernandes, Barbas, and Dudzik 2017</a>)</span>.</p>
+<p>For urine sample storage, check this<span class="citation">(<a href="#ref-laparre2017a" role="doc-biblioref">Laparre et al. 2017b</a>)</span>.</p>
+<p>This piece reviewed the stability of energy metabolites<span class="citation">(<a href="#ref-gil2015" role="doc-biblioref">Gil et al. 2015</a>)</span>.</p>
 
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-bennett2009" class="csl-entry">
+Bennett, Bryson D., Elizabeth H. Kimball, Melissa Gao, Robin Osterhout, Stephen J. Van Dien, and Joshua D. Rabinowitz. 2009. <span>“Absolute Metabolite Concentrations and Implied Enzyme Active Site Occupancy in Escherichia Coli.”</span> <em>Nature Chemical Biology</em> 5 (8): 593–99. <a href="https://doi.org/10.1038/nchembio.186">https://doi.org/10.1038/nchembio.186</a>.
+</div>
+<div id="ref-bijttebier2016" class="csl-entry">
+Bijttebier, Sebastiaan, Anastasia Van der Auwera, Kenn Foubert, Stefan Voorspoels, Luc Pieters, and Sandra Apers. 2016. <span>“Bridging the Gap Between Comprehensive Extraction Protocols in Plant Metabolomics Studies and Method Validation.”</span> <em>Analytica Chimica Acta</em> 935 (September): 136–50. <a href="https://doi.org/10.1016/j.aca.2016.06.047">https://doi.org/10.1016/j.aca.2016.06.047</a>.
+</div>
+<div id="ref-deda2017" class="csl-entry">
+Deda, Olga, Anastasia Chrysovalantou Chatziioannou, Stella Fasoula, Dimitris Palachanis, Nicolaos Raikos, Georgios A. Theodoridis, and Helen G. Gika. 2017. <span>“Sample Preparation Optimization in Fecal Metabolic Profiling.”</span> <em>Journal of Chromatography B</em>, Advances in mass spectrometry-based applications, 1047 (March): 115–23. <a href="https://doi.org/10.1016/j.jchromb.2016.06.047">https://doi.org/10.1016/j.jchromb.2016.06.047</a>.
+</div>
+<div id="ref-doppler2016" class="csl-entry">
+Doppler, Maria, Bernhard Kluger, Christoph Bueschl, Christina Schneider, Rudolf Krska, Sylvie Delcambre, Karsten Hiller, Marc Lemmens, and Rainer Schuhmacher. 2016. <span>“Stable Isotope-Assisted Evaluation of Different Extraction Solvents for Untargeted Metabolomics of Plants.”</span> <em>International Journal of Molecular Sciences</em> 17 (7). <a href="https://doi.org/10.3390/ijms17071017">https://doi.org/10.3390/ijms17071017</a>.
+</div>
+<div id="ref-gil2015" class="csl-entry">
+Gil, Andres, David Siegel, Hjalmar Permentier, Dirk-Jan Reijngoud, Frank Dekker, and Rainer Bischoff. 2015. <span>“Stability of Energy Metabolites<span></span>An Often Overlooked Issue in Metabolomics Studies: A Review.”</span> <em>ELECTROPHORESIS</em> 36 (18): 2156–69. <a href="https://doi.org/10.1002/elps.201500031">https://doi.org/10.1002/elps.201500031</a>.
+</div>
+<div id="ref-hernandes2017" class="csl-entry">
+Hernandes, Vinicius Veri, Coral Barbas, and Danuta Dudzik. 2017. <span>“A Review of Blood Sample Handling and Pre-Processing for Metabolomics Studies.”</span> <em>ELECTROPHORESIS</em> 38 (18): 2232–41. <a href="https://doi.org/10.1002/elps.201700086">https://doi.org/10.1002/elps.201700086</a>.
+</div>
+<div id="ref-ibanez2017" class="csl-entry">
+Ibáñez, Clara, Carolina Simó, Mine Palazoglu, and Alejandro Cifuentes. 2017. <span>“GC-MS Based Metabolomics of Colon Cancer Cells Using Different Extraction Solvents.”</span> <em>Analytica Chimica Acta</em> 986 (September): 48–56. <a href="https://doi.org/10.1016/j.aca.2017.07.019">https://doi.org/10.1016/j.aca.2017.07.019</a>.
+</div>
+<div id="ref-kim2020" class="csl-entry">
+Kim, Jungyeon, Joong Kyong Ahn, Yu Eun Cheong, Sung-Joon Lee, Hoon-Suk Cha, and Kyoung Heon Kim. 2020. <span>“Systematic re-evaluation of the long-used standard protocol of urease-dependent metabolome sample preparation.”</span> <em>PloS One</em> 15 (3): e0230072. <a href="https://doi.org/10.1371/journal.pone.0230072">https://doi.org/10.1371/journal.pone.0230072</a>.
+</div>
+<div id="ref-laparre2017" class="csl-entry">
+Laparre, Jérôme, Zied Kaabia, Mark Mooney, Tom Buckley, Mark Sherry, Bruno Le Bizec, and Gaud Dervilly-Pinel. 2017a. <span>“Impact of Storage Conditions on the Urinary Metabolomics Fingerprint.”</span> <em>Analytica Chimica Acta</em> 951 (January): 99–107. <a href="https://doi.org/10.1016/j.aca.2016.11.055">https://doi.org/10.1016/j.aca.2016.11.055</a>.
+</div>
+<div id="ref-laparre2017a" class="csl-entry">
+———. 2017b. <span>“Impact of Storage Conditions on the Urinary Metabolomics Fingerprint.”</span> <em>Analytica Chimica Acta</em> 951 (January): 99–107. <a href="https://doi.org/10.1016/j.aca.2016.11.055">https://doi.org/10.1016/j.aca.2016.11.055</a>.
+</div>
+<div id="ref-lin2007" class="csl-entry">
+Lin, Ching Yu, Huifeng Wu, Ronald S. Tjeerdema, and Mark R. Viant. 2007. <span>“Evaluation of Metabolite Extraction Strategies from Tissue Samples Using NMR Metabolomics.”</span> <em>Metabolomics</em> 3 (1): 55–67. <a href="https://doi.org/10.1007/s11306-006-0043-1">https://doi.org/10.1007/s11306-006-0043-1</a>.
+</div>
+<div id="ref-loftfield2016" class="csl-entry">
+Loftfield, Erikka, Emily Vogtmann, Joshua N. Sampson, Steven C. Moore, Heidi Nelson, Rob Knight, Nicholas Chia, and Rashmi Sinha. 2016. <span>“Comparison of Collection Methods for Fecal Samples for Discovery Metabolomics in Epidemiologic Studies.”</span> <em>Cancer Epidemiology and Prevention Biomarkers</em> 25 (11): 1483–90. <a href="https://doi.org/10.1158/1055-9965.EPI-16-0409">https://doi.org/10.1158/1055-9965.EPI-16-0409</a>.
+</div>
+<div id="ref-lu2017" class="csl-entry">
+Lu, Wenyun, Xiaoyang Su, Matthias S. Klein, Ian A. Lewis, Oliver Fiehn, and Joshua D. Rabinowitz. 2017. <span>“Metabolite Measurement: Pitfalls to Avoid and Practices to Follow.”</span> <em>Annual Review of Biochemistry</em> 86 (1): 277–304. <a href="https://doi.org/10.1146/annurev-biochem-061516-044952">https://doi.org/10.1146/annurev-biochem-061516-044952</a>.
+</div>
+<div id="ref-luo2017a" class="csl-entry">
+Luo, Xian, and Liang Li. 2017. <span>“Metabolomics of Small Numbers of Cells: Metabolomic Profiling of 100, 1000, and 10000 Human Breast Cancer Cells.”</span> <em>Analytical Chemistry</em> 89 (21): 11664–71. <a href="https://doi.org/10.1021/acs.analchem.7b03100">https://doi.org/10.1021/acs.analchem.7b03100</a>.
+</div>
+<div id="ref-mahmud2017" class="csl-entry">
+Mahmud, Iqbal, Sandi Sternberg, Michael Williams, and Timothy J. Garrett. 2017. <span>“Comparison of Global Metabolite Extraction Strategies for Soybeans Using UHPLC-HRMS.”</span> <em>Analytical and Bioanalytical Chemistry</em> 409 (26): 6173–80. <a href="https://doi.org/10.1007/s00216-017-0557-6">https://doi.org/10.1007/s00216-017-0557-6</a>.
+</div>
+<div id="ref-miyagawa2019" class="csl-entry">
+Miyagawa, Hiromi, and Takeshi Bamba. 2019. <span>“Comparison of Sequential Derivatization with Concurrent Methods for GC/MS-Based Metabolomics.”</span> <em>Journal of Bioscience and Bioengineering</em> 127 (2): 160–68. <a href="https://doi.org/10.1016/j.jbiosc.2018.07.015">https://doi.org/10.1016/j.jbiosc.2018.07.015</a>.
+</div>
+<div id="ref-roszkowska2018" class="csl-entry">
+Roszkowska, Anna, Miao Yu, Vincent Bessonneau, Leslie Bragg, Mark Servos, and Janusz Pawliszyn. 2018. <span>“Tissue Storage Affects Lipidome Profiling in Comparison to in Vivo Microsampling Approach.”</span> <em>Scientific Reports</em> 8 (1): 6980. <a href="https://doi.org/10.1038/s41598-018-25428-2">https://doi.org/10.1038/s41598-018-25428-2</a>.
+</div>
+<div id="ref-sitnikov2016" class="csl-entry">
+Sitnikov, Dmitri G., Cian S. Monnin, and Dajana Vuckovic. 2016. <span>“Systematic Assessment of Seven Solvent and Solid-Phase Extraction Methods for Metabolomics Analysis of Human Plasma by LC-MS.”</span> <em>Scientific Reports</em> 6 (December). <a href="https://doi.org/10.1038/srep38885">https://doi.org/10.1038/srep38885</a>.
+</div>
+<div id="ref-wandro2017" class="csl-entry">
+Wandro, Stephen, Lisa Carmody, Tara Gallagher, John J. LiPuma, and Katrine Whiteson. 2017. <span>“Making It Last: Storage Time and Temperature Have Differential Impacts on Metabolite Profiles of Airway Samples from Cystic Fibrosis Patients.”</span> <em>mSystems</em> 2 (6). <a href="https://doi.org/10.1128/mSystems.00100-17">https://doi.org/10.1128/mSystems.00100-17</a>.
+</div>
+<div id="ref-wu2016" class="csl-entry">
+Wu, Yiman, and Liang Li. 2016. <span>“Sample Normalization Methods in Quantitative Metabolomics.”</span> <em>Journal of Chromatography A</em>, Editors’ choice x, 1430 (January): 80–95. <a href="https://doi.org/10.1016/j.chroma.2015.12.007">https://doi.org/10.1016/j.chroma.2015.12.007</a>.
+</div>
+<div id="ref-yu2020" class="csl-entry">
+Yu, Miao, Sofia Lendor, Anna Roszkowska, Mariola Olkowicz, Leslie Bragg, Mark Servos, and Janusz Pawliszyn. 2020. <span>“Metabolic Profile of Fish Muscle Tissue Changes with Sampling Method, Storage Strategy and Time.”</span> <em>Analytica Chimica Acta</em> 1136 (November): 42–50. <a href="https://doi.org/10.1016/j.aca.2020.08.050">https://doi.org/10.1016/j.aca.2020.08.050</a>.
+</div>
+<div id="ref-zhao2020" class="csl-entry">
+Zhao, Shuang, and Liang Li. 2020. <span>“Chemical Derivatization in LC-MS-Based Metabolomics Study.”</span> <em>TrAC Trends in Analytical Chemistry</em> 131 (October): 115988. <a href="https://doi.org/10.1016/j.trac.2020.115988">https://doi.org/10.1016/j.trac.2020.115988</a>.
+</div>
+<div id="ref-zubeldia-varela2020" class="csl-entry">
+Zubeldia-Varela, Elisa, Domingo Barber, Coral Barbas, Marina Perez-Gordo, and David Rojo. 2020. <span>“Sample Pre-Treatment Procedures for the Omics Analysis of Human Gut Microbiota: Turning Points, Tips and Tricks for Gene Sequencing and Metabolomics.”</span> <em>Journal of Pharmaceutical and Biomedical Analysis</em> 191 (November): 113592. <a href="https://doi.org/10.1016/j.jpba.2020.113592">https://doi.org/10.1016/j.jpba.2020.113592</a>.
 </div>
 </div>
             </section>
@@ -403,7 +520,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -422,6 +538,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -442,6 +559,10 @@ gitbook.start({
 "text": null
 },
 "download": ["Metabolomics.pub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

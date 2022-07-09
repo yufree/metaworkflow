@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 5 Workflow | Meta-Workflow</title>
   <meta name="description" content="This is a workflow for metabolomics studies." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 5 Workflow | Meta-Workflow" />
   <meta property="og:type" content="book" />
-  
-  <meta property="og:image" content="images/cover.png" />
+  <meta property="og:image" content="/images/cover.png" />
   <meta property="og:description" content="This is a workflow for metabolomics studies." />
   <meta name="github-repo" content="yufree/metaworkflow" />
 
@@ -19,12 +18,12 @@
   <meta name="twitter:title" content="Chapter 5 Workflow | Meta-Workflow" />
   
   <meta name="twitter:description" content="This is a workflow for metabolomics studies." />
-  <meta name="twitter:image" content="images/cover.png" />
+  <meta name="twitter:image" content="/images/cover.png" />
 
 <meta name="author" content="Miao YU" />
 
 
-<meta name="date" content="2021-01-08" />
+<meta name="date" content="2022-07-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 <link rel="prev" href="instrumental-analysis.html"/>
 <link rel="next" href="raw-data-pretreatment.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,17 +49,26 @@
 
 
 
-
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/grViz-binding-1.0.6.1/grViz.js"></script>
+<script src="libs/grViz-binding-1.0.9/grViz.js"></script>
+<script src="libs/d3-3.3.8/d3.min.js"></script>
+<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
+<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+<script src="libs/chromatography-0.1/chromatography.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.9/DiagrammeR.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -119,6 +127,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -231,43 +262,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.5.5" data-path="annotation.html"><a href="annotation.html#biocan"><i class="fa fa-check"></i><b>7.5.5</b> BioCAn</a></li>
 <li class="chapter" data-level="7.5.6" data-path="annotation.html"><a href="annotation.html#mzmatch"><i class="fa fa-check"></i><b>7.5.6</b> mzMatch</a></li>
 <li class="chapter" data-level="7.5.7" data-path="annotation.html"><a href="annotation.html#xmsannotator"><i class="fa fa-check"></i><b>7.5.7</b> xMSannotator</a></li>
-<li class="chapter" data-level="7.5.8" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>7.5.8</b> MAIT</a></li>
-<li class="chapter" data-level="7.5.9" data-path="annotation.html"><a href="annotation.html#pmd"><i class="fa fa-check"></i><b>7.5.9</b> pmd</a></li>
-<li class="chapter" data-level="7.5.10" data-path="annotation.html"><a href="annotation.html#nontarget"><i class="fa fa-check"></i><b>7.5.10</b> nontarget</a></li>
-<li class="chapter" data-level="7.5.11" data-path="annotation.html"><a href="annotation.html#binner"><i class="fa fa-check"></i><b>7.5.11</b> Binner</a></li>
-<li class="chapter" data-level="7.5.12" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>7.5.12</b> mz.unity</a></li>
-<li class="chapter" data-level="7.5.13" data-path="annotation.html"><a href="annotation.html#ms-flo"><i class="fa fa-check"></i><b>7.5.13</b> MS-FLO</a></li>
-<li class="chapter" data-level="7.5.14" data-path="annotation.html"><a href="annotation.html#cliquems"><i class="fa fa-check"></i><b>7.5.14</b> CliqueMS</a></li>
-<li class="chapter" data-level="7.5.15" data-path="annotation.html"><a href="annotation.html#interpretmsspectrum"><i class="fa fa-check"></i><b>7.5.15</b> InterpretMSSpectrum</a></li>
+<li class="chapter" data-level="7.5.8" data-path="annotation.html"><a href="annotation.html#mwise"><i class="fa fa-check"></i><b>7.5.8</b> mWise</a></li>
+<li class="chapter" data-level="7.5.9" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>7.5.9</b> MAIT</a></li>
+<li class="chapter" data-level="7.5.10" data-path="annotation.html"><a href="annotation.html#pmd"><i class="fa fa-check"></i><b>7.5.10</b> pmd</a></li>
+<li class="chapter" data-level="7.5.11" data-path="annotation.html"><a href="annotation.html#nontarget"><i class="fa fa-check"></i><b>7.5.11</b> nontarget</a></li>
+<li class="chapter" data-level="7.5.12" data-path="annotation.html"><a href="annotation.html#binner"><i class="fa fa-check"></i><b>7.5.12</b> Binner</a></li>
+<li class="chapter" data-level="7.5.13" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>7.5.13</b> mz.unity</a></li>
+<li class="chapter" data-level="7.5.14" data-path="annotation.html"><a href="annotation.html#ms-flo"><i class="fa fa-check"></i><b>7.5.14</b> MS-FLO</a></li>
+<li class="chapter" data-level="7.5.15" data-path="annotation.html"><a href="annotation.html#cliquems"><i class="fa fa-check"></i><b>7.5.15</b> CliqueMS</a></li>
+<li class="chapter" data-level="7.5.16" data-path="annotation.html"><a href="annotation.html#interpretmsspectrum"><i class="fa fa-check"></i><b>7.5.16</b> InterpretMSSpectrum</a></li>
+<li class="chapter" data-level="7.5.17" data-path="annotation.html"><a href="annotation.html#netid"><i class="fa fa-check"></i><b>7.5.17</b> NetID</a></li>
+<li class="chapter" data-level="7.5.18" data-path="annotation.html"><a href="annotation.html#isfrag"><i class="fa fa-check"></i><b>7.5.18</b> ISfrag</a></li>
 </ul></li>
-<li class="chapter" data-level="7.6" data-path="annotation.html"><a href="annotation.html#msms-annotation"><i class="fa fa-check"></i><b>7.6</b> MS/MS annotation</a>
+<li class="chapter" data-level="7.6" data-path="annotation.html"><a href="annotation.html#ms1-ms2-connection"><i class="fa fa-check"></i><b>7.6</b> MS1 MS2 connection</a>
 <ul>
-<li class="chapter" data-level="7.6.1" data-path="annotation.html"><a href="annotation.html#metdna"><i class="fa fa-check"></i><b>7.6.1</b> MetDNA</a></li>
-<li class="chapter" data-level="7.6.2" data-path="annotation.html"><a href="annotation.html#metfusion"><i class="fa fa-check"></i><b>7.6.2</b> MetFusion</a></li>
-<li class="chapter" data-level="7.6.3" data-path="annotation.html"><a href="annotation.html#ms2analyzer"><i class="fa fa-check"></i><b>7.6.3</b> MS2Analyzer</a></li>
-<li class="chapter" data-level="7.6.4" data-path="annotation.html"><a href="annotation.html#metfrag"><i class="fa fa-check"></i><b>7.6.4</b> MetFrag</a></li>
-<li class="chapter" data-level="7.6.5" data-path="annotation.html"><a href="annotation.html#cfm-id"><i class="fa fa-check"></i><b>7.6.5</b> CFM-ID</a></li>
-<li class="chapter" data-level="7.6.6" data-path="annotation.html"><a href="annotation.html#lipidfrag"><i class="fa fa-check"></i><b>7.6.6</b> LipidFrag</a></li>
-<li class="chapter" data-level="7.6.7" data-path="annotation.html"><a href="annotation.html#lipidmatch"><i class="fa fa-check"></i><b>7.6.7</b> Lipidmatch</a></li>
-<li class="chapter" data-level="7.6.8" data-path="annotation.html"><a href="annotation.html#barcoding"><i class="fa fa-check"></i><b>7.6.8</b> BarCoding</a></li>
-<li class="chapter" data-level="7.6.9" data-path="annotation.html"><a href="annotation.html#imet"><i class="fa fa-check"></i><b>7.6.9</b> iMet</a></li>
+<li class="chapter" data-level="7.6.1" data-path="annotation.html"><a href="annotation.html#pmdda"><i class="fa fa-check"></i><b>7.6.1</b> PMDDA</a></li>
+<li class="chapter" data-level="7.6.2" data-path="annotation.html"><a href="annotation.html#hermes"><i class="fa fa-check"></i><b>7.6.2</b> HERMES</a></li>
 </ul></li>
-<li class="chapter" data-level="7.7" data-path="annotation.html"><a href="annotation.html#knowledge-based-annotation"><i class="fa fa-check"></i><b>7.7</b> Knowledge based annotation</a>
+<li class="chapter" data-level="7.7" data-path="annotation.html"><a href="annotation.html#msms-annotation"><i class="fa fa-check"></i><b>7.7</b> MS/MS annotation</a>
 <ul>
-<li class="chapter" data-level="7.7.1" data-path="annotation.html"><a href="annotation.html#chromatographic-retention-related-criteria"><i class="fa fa-check"></i><b>7.7.1</b> Chromatographic retention-related criteria</a></li>
-<li class="chapter" data-level="7.7.2" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>7.7.2</b> ProbMetab</a></li>
-<li class="chapter" data-level="7.7.3" data-path="annotation.html"><a href="annotation.html#mi-pack"><i class="fa fa-check"></i><b>7.7.3</b> MI-Pack</a></li>
-<li class="chapter" data-level="7.7.4" data-path="annotation.html"><a href="annotation.html#metexpert"><i class="fa fa-check"></i><b>7.7.4</b> MetExpert</a></li>
-<li class="chapter" data-level="7.7.5" data-path="annotation.html"><a href="annotation.html#mycompoundid"><i class="fa fa-check"></i><b>7.7.5</b> MycompoundID</a></li>
-<li class="chapter" data-level="7.7.6" data-path="annotation.html"><a href="annotation.html#metfamily"><i class="fa fa-check"></i><b>7.7.6</b> MetFamily</a></li>
-<li class="chapter" data-level="7.7.7" data-path="annotation.html"><a href="annotation.html#plantmat"><i class="fa fa-check"></i><b>7.7.7</b> Plantmat</a></li>
+<li class="chapter" data-level="7.7.1" data-path="annotation.html"><a href="annotation.html#metdna"><i class="fa fa-check"></i><b>7.7.1</b> MetDNA</a></li>
+<li class="chapter" data-level="7.7.2" data-path="annotation.html"><a href="annotation.html#metfusion"><i class="fa fa-check"></i><b>7.7.2</b> MetFusion</a></li>
+<li class="chapter" data-level="7.7.3" data-path="annotation.html"><a href="annotation.html#ms2analyzer"><i class="fa fa-check"></i><b>7.7.3</b> MS2Analyzer</a></li>
+<li class="chapter" data-level="7.7.4" data-path="annotation.html"><a href="annotation.html#metfrag"><i class="fa fa-check"></i><b>7.7.4</b> MetFrag</a></li>
+<li class="chapter" data-level="7.7.5" data-path="annotation.html"><a href="annotation.html#cfm-id"><i class="fa fa-check"></i><b>7.7.5</b> CFM-ID</a></li>
+<li class="chapter" data-level="7.7.6" data-path="annotation.html"><a href="annotation.html#lipidfrag"><i class="fa fa-check"></i><b>7.7.6</b> LipidFrag</a></li>
+<li class="chapter" data-level="7.7.7" data-path="annotation.html"><a href="annotation.html#lipidmatch"><i class="fa fa-check"></i><b>7.7.7</b> Lipidmatch</a></li>
+<li class="chapter" data-level="7.7.8" data-path="annotation.html"><a href="annotation.html#barcoding"><i class="fa fa-check"></i><b>7.7.8</b> BarCoding</a></li>
+<li class="chapter" data-level="7.7.9" data-path="annotation.html"><a href="annotation.html#imet"><i class="fa fa-check"></i><b>7.7.9</b> iMet</a></li>
 </ul></li>
-<li class="chapter" data-level="7.8" data-path="annotation.html"><a href="annotation.html#ms-database-for-annotation"><i class="fa fa-check"></i><b>7.8</b> MS Database for annotation</a>
+<li class="chapter" data-level="7.8" data-path="annotation.html"><a href="annotation.html#knowledge-based-annotation"><i class="fa fa-check"></i><b>7.8</b> Knowledge based annotation</a>
 <ul>
-<li class="chapter" data-level="7.8.1" data-path="annotation.html"><a href="annotation.html#ms"><i class="fa fa-check"></i><b>7.8.1</b> MS</a></li>
-<li class="chapter" data-level="7.8.2" data-path="annotation.html"><a href="annotation.html#msms-1"><i class="fa fa-check"></i><b>7.8.2</b> MS/MS</a></li>
+<li class="chapter" data-level="7.8.1" data-path="annotation.html"><a href="annotation.html#chromatographic-retention-related-criteria"><i class="fa fa-check"></i><b>7.8.1</b> Chromatographic retention-related criteria</a></li>
+<li class="chapter" data-level="7.8.2" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>7.8.2</b> ProbMetab</a></li>
+<li class="chapter" data-level="7.8.3" data-path="annotation.html"><a href="annotation.html#mi-pack"><i class="fa fa-check"></i><b>7.8.3</b> MI-Pack</a></li>
+<li class="chapter" data-level="7.8.4" data-path="annotation.html"><a href="annotation.html#metexpert"><i class="fa fa-check"></i><b>7.8.4</b> MetExpert</a></li>
+<li class="chapter" data-level="7.8.5" data-path="annotation.html"><a href="annotation.html#mycompoundid"><i class="fa fa-check"></i><b>7.8.5</b> MycompoundID</a></li>
+<li class="chapter" data-level="7.8.6" data-path="annotation.html"><a href="annotation.html#metfamily"><i class="fa fa-check"></i><b>7.8.6</b> MetFamily</a></li>
+<li class="chapter" data-level="7.8.7" data-path="annotation.html"><a href="annotation.html#plantmat"><i class="fa fa-check"></i><b>7.8.7</b> Plantmat</a></li>
 </ul></li>
-<li class="chapter" data-level="7.9" data-path="annotation.html"><a href="annotation.html#compounds-database"><i class="fa fa-check"></i><b>7.9</b> Compounds Database</a></li>
+<li class="chapter" data-level="7.9" data-path="annotation.html"><a href="annotation.html#ms-database-for-annotation"><i class="fa fa-check"></i><b>7.9</b> MS Database for annotation</a>
+<ul>
+<li class="chapter" data-level="7.9.1" data-path="annotation.html"><a href="annotation.html#ms"><i class="fa fa-check"></i><b>7.9.1</b> MS</a></li>
+<li class="chapter" data-level="7.9.2" data-path="annotation.html"><a href="annotation.html#msms-1"><i class="fa fa-check"></i><b>7.9.2</b> MS/MS</a></li>
+</ul></li>
+<li class="chapter" data-level="7.10" data-path="annotation.html"><a href="annotation.html#compounds-database"><i class="fa fa-check"></i><b>7.10</b> Compounds Database</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>8</b> Omics analysis</a>
 <ul>
@@ -306,7 +345,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#pca"><i class="fa fa-check"></i><b>10.3</b> PCA</a></li>
 <li class="chapter" data-level="10.4" data-path="statistical-analysis.html"><a href="statistical-analysis.html#cluster-analysis"><i class="fa fa-check"></i><b>10.4</b> Cluster Analysis</a></li>
 <li class="chapter" data-level="10.5" data-path="statistical-analysis.html"><a href="statistical-analysis.html#plsda"><i class="fa fa-check"></i><b>10.5</b> PLSDA</a></li>
-<li class="chapter" data-level="10.6" data-path="statistical-analysis.html"><a href="statistical-analysis.html#software-1"><i class="fa fa-check"></i><b>10.6</b> Software</a></li>
+<li class="chapter" data-level="10.6" data-path="statistical-analysis.html"><a href="statistical-analysis.html#network-analysis-1"><i class="fa fa-check"></i><b>10.6</b> Network analysis</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="statistical-analysis.html"><a href="statistical-analysis.html#vertex-and-edge"><i class="fa fa-check"></i><b>10.6.1</b> Vertex and edge</a></li>
+<li class="chapter" data-level="10.6.2" data-path="statistical-analysis.html"><a href="statistical-analysis.html#build-the-network"><i class="fa fa-check"></i><b>10.6.2</b> Build the network</a></li>
+<li class="chapter" data-level="10.6.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#network-attributes"><i class="fa fa-check"></i><b>10.6.3</b> Network attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="statistical-analysis.html"><a href="statistical-analysis.html#software-1"><i class="fa fa-check"></i><b>10.7</b> Software</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="exposome.html"><a href="exposome.html"><i class="fa fa-check"></i><b>11</b> Exposome</a>
 <ul>
@@ -338,72 +383,92 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="workflow-2" class="section level1" number="5">
-<h1><span class="header-section-number">Chapter 5</span> Workflow</h1>
-<p>You could check this book for metabolomics data analysis <span class="citation">(<a href="references.html#ref-li2020" role="doc-biblioref">S. Li 2020</a>)</span>.</p>
-<div id="platform-for-metabolomics-data-analysis" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Platform for metabolomics data analysis</h2>
+<div id="workflow-2" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Workflow<a href="workflow-2.html#workflow-2" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>You could check this book for metabolomics data analysis <span class="citation">(<a href="#ref-li2020" role="doc-biblioref">S. Li 2020</a>)</span>.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="workflow-2.html#cb8-1" aria-hidden="true" tabindex="-1"></a>DiagrammeR<span class="sc">::</span><span class="fu">mermaid</span>(<span class="st">&quot;</span></span>
+<span id="cb8-2"><a href="workflow-2.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="st">flowchart TB</span></span>
+<span id="cb8-3"><a href="workflow-2.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="st">I(peak-picking) --&gt; C</span></span>
+<span id="cb8-4"><a href="workflow-2.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="st">C(visulization) --&gt; D(normalization/batch correction)</span></span>
+<span id="cb8-5"><a href="workflow-2.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="st">D --&gt; A(annotation/identification)</span></span>
+<span id="cb8-6"><a href="workflow-2.html#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="st">A --&gt; H(statistical analysis)</span></span>
+<span id="cb8-7"><a href="workflow-2.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="st">C --&gt; A --&gt; B(omics analysis)</span></span>
+<span id="cb8-8"><a href="workflow-2.html#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="st">D --&gt; H</span></span>
+<span id="cb8-9"><a href="workflow-2.html#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="st">B --&gt; H</span></span>
+<span id="cb8-10"><a href="workflow-2.html#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="st">H --&gt; E(experimental validation)</span></span>
+<span id="cb8-11"><a href="workflow-2.html#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="st">A --&gt; E</span></span>
+<span id="cb8-12"><a href="workflow-2.html#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="st">H --&gt; A</span></span>
+<span id="cb8-13"><a href="workflow-2.html#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="st">B --&gt; E</span></span>
+<span id="cb8-14"><a href="workflow-2.html#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="st">C --&gt; H</span></span>
+<span id="cb8-15"><a href="workflow-2.html#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span>)</span></code></pre></div>
+<div id="htmlwidget-390b37dbee763ef7ebdf" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-390b37dbee763ef7ebdf">{"x":{"diagram":"\nflowchart TB\nI(peak-picking) --> C\nC(visulization) --> D(normalization/batch correction)\nD --> A(annotation/identification)\nA --> H(statistical analysis)\nC --> A --> B(omics analysis)\nD --> H\nB --> H\nH --> E(experimental validation)\nA --> E\nH --> A\nB --> E\nC --> H\n"},"evals":[],"jsHooks":[]}</script>
+<div id="platform-for-metabolomics-data-analysis" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Platform for metabolomics data analysis<a href="workflow-2.html#platform-for-metabolomics-data-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Here is a list for related open source <a href="http://strimmerlab.org/notes/mass-spectrometry.html">projects</a></p>
-<div id="xcms-xcms-online" class="section level3" number="5.1.1">
-<h3><span class="header-section-number">5.1.1</span> XCMS &amp; XCMS online</h3>
+<div id="xcms-xcms-online" class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> XCMS &amp; XCMS online<a href="workflow-2.html#xcms-xcms-online" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><a href="https://xcmsonline.scripps.edu/landing_page.php?pgcontent=mainPage">XCMS online</a> is hosted by Scripps Institute. If your datasets are not large, XCMS online would be the best option for you. Recently they updated the online version to support more functions for systems biology. They use metlin and iso metlin to annotate the MS/MS data. Pathway analysis is also supported. Besides, to accelerate the process, xcms online employed stream (windows only). You could use stream to connect your instrument workstation to their server and process the data along with the data acquisition automate. They also developed apps for xcms online, but I think apps for slack would be even cooler to control the data processing.</p>
-<p><a href="https://bioconductor.org/packages/release/bioc/html/xcms.html">xcms</a> is different from xcms online while they might share the same code. I used it almost every data to run local metabolomics data analysis. Recently, they will change their version to xcms 3 with major update for object class. Their data format would integrate into the MSnbase package and the parameters would be easy to set up for each step. Normally, I will use msconvert-IPO-xcms-xMSannotator-metaboanalyst as workflow to process the offline data. It could accelerate the process by parallel processing. However, if you are not familiar with R, you would better to choose some software below.</p>
-<p><a href="https://github.com/rietho/IPO">IPO</a> A Tool for automated Optimization of XCMS Parameters <span class="citation">(<a href="references.html#ref-libiseller2015" role="doc-biblioref">Libiseller et al. 2015</a>)</span> and <a href="https://github.com/nathaniel-mahieu/warpgroup">Warpgroup</a> is used for chromatogram subregion detection, consensus integration bound determination and accurate missing value integration<span class="citation">(<a href="references.html#ref-mahieu2016" role="doc-biblioref">Nathaniel G. Mahieu, Genenbacher, and Patti 2016a</a>)</span>. Another option is AutoTuner, which are much faster than IPO<span class="citation">(<a href="references.html#ref-mclean2020" role="doc-biblioref">McLean and Kujawinski 2020</a>)</span>. Recently, MetaboAnalystR 3.0 could also optimize the parameters for xcms while you need to perform the following analysis within this software<span class="citation">(<a href="references.html#ref-pang2020" role="doc-biblioref">Pang et al. 2020</a>)</span>.</p>
-<p>Check those papers for the XCMS based workflow<span class="citation">(<a href="references.html#ref-forsberg2018" role="doc-biblioref">Forsberg et al. 2018</a>; <a href="references.html#ref-huan2017" role="doc-biblioref">Huan et al. 2017</a>; <a href="references.html#ref-mahieu2016a" role="doc-biblioref">Nathaniel G. Mahieu, Genenbacher, and Patti 2016b</a>; <a href="references.html#ref-montenegro-burke2017" role="doc-biblioref">Montenegro-Burke et al. 2017</a>; <a href="references.html#ref-domingo-almenara2020" role="doc-biblioref">Domingo-Almenara and Siuzdak 2020</a>)</span>. For metlin related annotation, check those papers<span class="citation">(<a href="references.html#ref-guijas2018" role="doc-biblioref">Guijas et al. 2018</a>; <a href="references.html#ref-tautenhahn2012" role="doc-biblioref">Tautenhahn et al. 2012</a>; <a href="references.html#ref-xue2020" role="doc-biblioref">Xue, Guijas, et al. 2020</a>; <a href="references.html#ref-domingo-almenara2018a" role="doc-biblioref">Domingo-Almenara, Montenegro-Burke, Ivanisevic, et al. 2018</a>)</span>.</p>
-<p><a href="https://www.bioconductor.org/packages/release/bioc/html/MAIT.html">MAIT</a> based on xcms and you could find source code <a href="https://github.com/jpgroup/MAIT">here</a><span class="citation">(<a href="references.html#ref-fernandez-albert2014a" role="doc-biblioref">Fernández-Albert et al. 2014</a>)</span>.</p>
-<p><a href="http://ms.iis.sinica.edu.tw/comics/Software_iMet-Q.html">iMet-Q</a> is an automated tool with friendly user interfaces for quantifying metabolites in full-scan liquid chromatography-mass spectrometry (LC-MS) data <span class="citation">(<a href="references.html#ref-chang2016" role="doc-biblioref">Chang et al. 2016</a>)</span></p>
-<p>compMS2Miner is an Automatable Metabolite Identification, Visualization, and Data-Sharing R Package for High-Resolution LC–MS Data Sets. Here is related papers <span class="citation">(<a href="references.html#ref-edmands2017" role="doc-biblioref">Edmands et al. 2017</a>; <a href="references.html#ref-edmands2018" role="doc-biblioref">Edmands, Hayes, and Rappaport 2018</a>; <a href="references.html#ref-edmands2015" role="doc-biblioref">Edmands, Barupal, and Scalbert 2015</a>)</span>.</p>
-<p>mzMatch is a modular, open source and platform independent data processing pipeline for metabolomics LC/MS data written in the Java language, which could be coupled with xcms <span class="citation">(<a href="references.html#ref-scheltema2011a" role="doc-biblioref">Scheltema et al. 2011a</a>; <a href="references.html#ref-creek2012b" role="doc-biblioref">Creek et al. 2012</a>)</span>. It also could be used for annotation with MetAssign<span class="citation">(<a href="references.html#ref-daly2014" role="doc-biblioref">Daly et al. 2014a</a>)</span>.</p>
+<p><a href="https://bioconductor.org/packages/release/bioc/html/xcms.html">xcms</a> is different from xcms online while they might share the same code. I used it almost every data to run local metabolomics data analysis. Recently, they will change their version to xcms 3 with major update for object class. Their data format would integrate into the MSnbase package and the parameters would be easy to set up for each step. Normally, I will use msconvert-IPO-xcms-xMSannotator-metaboanalyst as workflow to process the offline data. It could accelerate the process by parallel processing. However, if you are not familiar with R, you would better to choose some software below. For xcms, 1000 files will need around 5 hours to generate the peaks list on a regular workstation.</p>
+<p><a href="https://github.com/rietho/IPO">IPO</a> A Tool for automated Optimization of XCMS Parameters <span class="citation">(<a href="#ref-libiseller2015" role="doc-biblioref">Libiseller et al. 2015</a>)</span> and <a href="https://github.com/nathaniel-mahieu/warpgroup">Warpgroup</a> is used for chromatogram subregion detection, consensus integration bound determination and accurate missing value integration<span class="citation">(<a href="#ref-mahieu2016" role="doc-biblioref">Nathaniel G. Mahieu, Genenbacher, and Patti 2016a</a>)</span>. Another option is AutoTuner, which are much faster than IPO<span class="citation">(<a href="#ref-mclean2020" role="doc-biblioref">McLean and Kujawinski 2020</a>)</span>. Recently, MetaboAnalystR 3.0 could also optimize the parameters for xcms while you need to perform the following analysis within this software<span class="citation">(<a href="#ref-pang2020" role="doc-biblioref">Pang et al. 2020</a>)</span>. For IPO, ten files will need ~12 hours to generate the optimized results on a regular workstation. Another research use machine learning method to compare different optimization methods and they are all better than the default setting of xcms<span class="citation">(<a href="#ref-lassen2021" role="doc-biblioref">Lassen et al. 2021</a>)</span>.</p>
+<p>Check those papers for the XCMS based workflow<span class="citation">(<a href="#ref-forsberg2018" role="doc-biblioref">Forsberg et al. 2018</a>; <a href="#ref-huan2017" role="doc-biblioref">Huan et al. 2017</a>; <a href="#ref-mahieu2016a" role="doc-biblioref">Nathaniel G. Mahieu, Genenbacher, and Patti 2016b</a>; <a href="#ref-montenegro-burke2017" role="doc-biblioref">Montenegro-Burke et al. 2017</a>; <a href="#ref-domingo-almenara2020" role="doc-biblioref">Domingo-Almenara and Siuzdak 2020</a>)</span>. For metlin related annotation, check those papers<span class="citation">(<a href="#ref-guijas2018" role="doc-biblioref">Guijas et al. 2018</a>; <a href="#ref-tautenhahn2012" role="doc-biblioref">Tautenhahn et al. 2012</a>; <a href="#ref-xue2020" role="doc-biblioref">Xue, Guijas, et al. 2020</a>; <a href="#ref-domingo-almenara2018a" role="doc-biblioref">Domingo-Almenara, Montenegro-Burke, Ivanisevic, et al. 2018</a>)</span>.</p>
+<p><a href="https://www.bioconductor.org/packages/release/bioc/html/MAIT.html">MAIT</a> based on xcms and you could find source code <a href="https://github.com/jpgroup/MAIT">here</a><span class="citation">(<a href="#ref-fernandez-albert2014a" role="doc-biblioref">Fernández-Albert et al. 2014</a>)</span>.</p>
+<p><a href="http://ms.iis.sinica.edu.tw/comics/Software_iMet-Q.html">iMet-Q</a> is an automated tool with friendly user interfaces for quantifying metabolites in full-scan liquid chromatography-mass spectrometry (LC-MS) data <span class="citation">(<a href="#ref-chang2016" role="doc-biblioref">Chang et al. 2016</a>)</span></p>
+<p>compMS2Miner is an Automatable Metabolite Identification, Visualization, and Data-Sharing R Package for High-Resolution LC–MS Data Sets. Here is related papers <span class="citation">(<a href="#ref-edmands2017" role="doc-biblioref">Edmands et al. 2017</a>; <a href="#ref-edmands2018" role="doc-biblioref">Edmands, Hayes, and Rappaport 2018</a>; <a href="#ref-edmands2015" role="doc-biblioref">Edmands, Barupal, and Scalbert 2015</a>)</span>.</p>
+<p>mzMatch is a modular, open source and platform independent data processing pipeline for metabolomics LC/MS data written in the Java language, which could be coupled with xcms <span class="citation">(<a href="#ref-scheltema2011a" role="doc-biblioref">Scheltema et al. 2011a</a>; <a href="#ref-creek2012b" role="doc-biblioref">Creek et al. 2012</a>)</span>. It also could be used for annotation with MetAssign<span class="citation">(<a href="#ref-daly2014" role="doc-biblioref">Daly et al. 2014a</a>)</span>.</p>
 </div>
-<div id="prime" class="section level3" number="5.1.2">
-<h3><span class="header-section-number">5.1.2</span> PRIMe</h3>
-<p><a href="http://prime.psc.riken.jp/Metabolomics_Software/">PRIMe</a> is from RIKEN and UC Davis. They update their database frequently<span class="citation">(<a href="references.html#ref-tsugawa2016" role="doc-biblioref">Tsugawa et al. 2016</a>)</span>. It supports mzML and major MS vendor formats. They defined own file format ABF and eco-system for omics studies. The software are updated almost everyday. You could use MS-DIAL for untargeted analysis and MRMOROBS for targeted analysis. For annotation, they developed MS-FINDER and statistic tools with excel. This platform could replaced the dear software from company and well prepared for MS/MS data analysis and lipidomics. They are open source, work on Windows and also could run within mathmamtics. However, they don’t cover pathway analysis. Another feature is they always show the most recently spectral records from public repositories. You could always get the updated MSP spectra files for your own data analysis.</p>
-<p>For PRIMe based workflow, check those papers<span class="citation">(<a href="references.html#ref-lai2018" role="doc-biblioref">Lai et al. 2018a</a>; <a href="references.html#ref-matsuo2017" role="doc-biblioref">Matsuo et al. 2017</a>; <a href="references.html#ref-treutler2016" role="doc-biblioref">Treutler et al. 2016a</a>; <a href="references.html#ref-tsugawa2015a" role="doc-biblioref">Tsugawa et al. 2015a</a>; <a href="references.html#ref-tsugawa2016" role="doc-biblioref">Tsugawa et al. 2016</a>; <a href="references.html#ref-kind2018" role="doc-biblioref">Kind et al. 2018</a>)</span>.</p>
+<div id="prime" class="section level3 hasAnchor" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> PRIMe<a href="workflow-2.html#prime" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><a href="http://prime.psc.riken.jp/Metabolomics_Software/">PRIMe</a> is from RIKEN and UC Davis. They update their database frequently<span class="citation">(<a href="#ref-tsugawa2016" role="doc-biblioref">Tsugawa et al. 2016</a>)</span>. It supports mzML and major MS vendor formats. They defined own file format ABF and eco-system for omics studies. The software are updated almost everyday. You could use MS-DIAL for untargeted analysis and MRMOROBS for targeted analysis. For annotation, they developed MS-FINDER and statistic tools with excel. This platform could replaced the dear software from company and well prepared for MS/MS data analysis and lipidomics. They are open source, work on Windows and also could run within mathmamtics. However, they don’t cover pathway analysis. Another feature is they always show the most recently spectral records from public repositories. You could always get the updated MSP spectra files for your own data analysis.</p>
+<p>For PRIMe based workflow, check those papers<span class="citation">(<a href="#ref-lai2018" role="doc-biblioref">Lai et al. 2018a</a>; <a href="#ref-matsuo2017" role="doc-biblioref">Matsuo et al. 2017</a>; <a href="#ref-treutler2016" role="doc-biblioref">Treutler et al. 2016a</a>; <a href="#ref-tsugawa2015a" role="doc-biblioref">Tsugawa et al. 2015a</a>; <a href="#ref-tsugawa2016" role="doc-biblioref">Tsugawa et al. 2016</a>; <a href="#ref-kind2018" role="doc-biblioref">Kind et al. 2018</a>)</span>.</p>
 </div>
-<div id="gnps" class="section level3" number="5.1.3">
-<h3><span class="header-section-number">5.1.3</span> GNPS</h3>
-<p><a href="http://gnps.%20ucsd.edu">GNPS</a> is an open-access knowledge base for community-wide organization and sharing of raw, processed or identified tandem mass (MS/MS) spectrometry data. It’s a straight forward annotation methods for MS/MS data. Feature-based molecular networking (FBMN) within GNPS could be coupled with xcms, openMS, MS-DIAL, MZmine2, and other popular software.</p>
-<p>Check those papers for GNPS and related projects<span class="citation">(<a href="references.html#ref-aron2020a" role="doc-biblioref">Aron et al. 2020</a>; <a href="references.html#ref-nothias2020" role="doc-biblioref">Nothias et al. 2020</a>; <a href="references.html#ref-scheubert2017" role="doc-biblioref">Scheubert et al. 2017</a>; <a href="references.html#ref-silva2018" role="doc-biblioref">R. R. da Silva et al. 2018</a>; <a href="references.html#ref-wang2016" role="doc-biblioref">M. Wang et al. 2016</a>)</span>.</p>
+<div id="gnps" class="section level3 hasAnchor" number="5.1.3">
+<h3><span class="header-section-number">5.1.3</span> GNPS<a href="workflow-2.html#gnps" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><a href="http://gnps.%20ucsd.edu">GNPS</a> is an open-access knowledge base for community-wide organization and sharing of raw, processed or identified tandem mass (MS/MS) spectrometry data. It’s a straight forward annotation methods for MS/MS data. Feature-based molecular networking (FBMN) within GNPS could be coupled with xcms, openMS, MS-DIAL, MZmine2, and other popular software. GNPS also have a dashboard for online mass spectrometery data <a href="mailto:analysis$$@petras2021a" class="email">analysis$$@petras2021a</a>$$.</p>
+<p>Check those papers for GNPS and related projects<span class="citation">(<a href="#ref-aron2020a" role="doc-biblioref">Aron et al. 2020</a>; <a href="#ref-nothias2020" role="doc-biblioref">Nothias et al. 2020</a>; <a href="#ref-scheubert2017" role="doc-biblioref">Scheubert et al. 2017</a>; <a href="#ref-silva2018" role="doc-biblioref">R. R. da Silva et al. 2018</a>; <a href="#ref-wang2016" role="doc-biblioref">M. Wang et al. 2016</a>)</span>.</p>
 </div>
-<div id="openms-sirius" class="section level3" number="5.1.4">
-<h3><span class="header-section-number">5.1.4</span> OpenMS &amp; SIRIUS</h3>
+<div id="openms-sirius" class="section level3 hasAnchor" number="5.1.4">
+<h3><span class="header-section-number">5.1.4</span> OpenMS &amp; SIRIUS<a href="workflow-2.html#openms-sirius" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><a href="https://www.openms.de/">OpenMS</a> is another good platform for mass spectrum data analysis developed with C++. You could use them as plugin of <a href="https://www.knime.org/">KNIME</a>. I suggest anyone who want to be a data scientist to get familiar with platform like KNIME because they supplied various API for different programme language, which is easy to use and show every steps for others. Also TOPPView in OpenMS could be the best software to visualize the MS data. You could always use the metabolomics workflow to train starter about details in data processing. pyOpenMS and OpenSWATH are also used in this platform. If you want to turn into industry, this platform fit you best because you might get a clear idea about solution and workflow.</p>
-<p>Check those paper for OpenMS based workflow<span class="citation">(<a href="references.html#ref-bertsch2011" role="doc-biblioref">Bertsch et al. 2011</a>; <a href="references.html#ref-pfeuffer2017" role="doc-biblioref">Pfeuffer et al. 2017</a>; <a href="references.html#ref-röst2014" role="doc-biblioref">Röst et al. 2014</a>, <a href="references.html#ref-rost2016a" role="doc-biblioref">2016</a>; <a href="references.html#ref-rurik2020" role="doc-biblioref">Rurik et al. 2020</a>; <a href="references.html#ref-alka2020" role="doc-biblioref">Alka et al. 2020a</a>)</span>.</p>
-<p>OpenMS could be coupled to SIRIUS 4 for annotation. <a href="https://bio.informatik.uni-jena.de/software/sirius/">Sirius</a> is a new java-based software framework for discovering a landscape of de-novo identification of metabolites using single and tandem mass spectrometry. SIRIUS 4 project integrates a collection of our tools, including <a href="https://www.csi-fingerid.uni-jena.de/">CSI:FingerID</a>, <a href="https://bio.informatik.uni-jena.de/software/zodiac/">ZODIAC</a> and <a href="https://bio.informatik.uni-jena.de/software/canopus/">CANOPUS</a>. Check those papers for SIRIUS based workflow<span class="citation">(<a href="references.html#ref-dührkop2019" role="doc-biblioref">Dührkop et al. 2019</a>, <a href="references.html#ref-dührkop2020" role="doc-biblioref">2020</a>; <a href="references.html#ref-alka2020a" role="doc-biblioref">Alka et al. 2020b</a>; <a href="references.html#ref-ludwig2020" role="doc-biblioref">Ludwig et al. 2020</a>)</span>.</p>
+<p>Check those paper for OpenMS based workflow<span class="citation">(<a href="#ref-bertsch2011" role="doc-biblioref">Bertsch et al. 2011</a>; <a href="#ref-pfeuffer2017" role="doc-biblioref">Pfeuffer et al. 2017</a>; <a href="#ref-röst2014" role="doc-biblioref">Röst et al. 2014</a>, <a href="#ref-rost2016a" role="doc-biblioref">2016</a>; <a href="#ref-rurik2020" role="doc-biblioref">Rurik et al. 2020</a>; <a href="#ref-alka2020" role="doc-biblioref">Alka et al. 2020a</a>)</span>.</p>
+<p>OpenMS could be coupled to SIRIUS 4 for annotation. <a href="https://bio.informatik.uni-jena.de/software/sirius/">Sirius</a> is a new java-based software framework for discovering a landscape of de-novo identification of metabolites using single and tandem mass spectrometry. SIRIUS 4 project integrates a collection of our tools, including <a href="https://www.csi-fingerid.uni-jena.de/">CSI:FingerID</a>, <a href="https://bio.informatik.uni-jena.de/software/zodiac/">ZODIAC</a> and <a href="https://bio.informatik.uni-jena.de/software/canopus/">CANOPUS</a>. Check those papers for SIRIUS based workflow<span class="citation">(<a href="#ref-dührkop2019" role="doc-biblioref">Dührkop et al. 2019</a>, <a href="#ref-dührkop2020" role="doc-biblioref">2020</a>; <a href="#ref-alka2020a" role="doc-biblioref">Alka et al. 2020b</a>; <a href="#ref-ludwig2020" role="doc-biblioref">Ludwig et al. 2020</a>)</span>.</p>
 </div>
-<div id="mzmine-2" class="section level3" number="5.1.5">
-<h3><span class="header-section-number">5.1.5</span> MZmine 2</h3>
+<div id="mzmine-2" class="section level3 hasAnchor" number="5.1.5">
+<h3><span class="header-section-number">5.1.5</span> MZmine 2<a href="workflow-2.html#mzmine-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><a href="http://mzmine.github.io/">MZmine 2</a> has three version developed on Java platform and the lastest version is included into <a href="https://msdk.github.io/">MSDK</a>. Similar function could be found from MZmine 2 as shown in XCMS online. However, MZmine 2 do not have pathway analysis. You could use metaboanalyst for that purpose. Actually, you could go into MSDK to find similar function supplied by <a href="http://www.proteosuite.org">ProteoSuite</a> and <a href="https://www.openchrom.net/">Openchrom</a>. If you are a experienced coder for Java, you should start here.</p>
-<p>Check those papers for MZmine based workflow<span class="citation">(<a href="references.html#ref-pluskal2010a" role="doc-biblioref">Pluskal et al. 2010</a>; <a href="references.html#ref-pluskal2020" role="doc-biblioref">Pluskal et al. 2020</a>)</span>.</p>
+<p>Check those papers for MZmine based workflow<span class="citation">(<a href="#ref-pluskal2010a" role="doc-biblioref">Pluskal et al. 2010</a>; <a href="#ref-pluskal2020" role="doc-biblioref">Pluskal et al. 2020</a>)</span>.</p>
 </div>
-<div id="emory-mahpic" class="section level3" number="5.1.6">
-<h3><span class="header-section-number">5.1.6</span> Emory MaHPIC</h3>
+<div id="emory-mahpic" class="section level3 hasAnchor" number="5.1.6">
+<h3><span class="header-section-number">5.1.6</span> Emory MaHPIC<a href="workflow-2.html#emory-mahpic" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This platform is composed by several R packages from Emory University including <a href="https://sourceforge.net/projects/aplcms/">apLCMS</a> to collect the data, <a href="https://sourceforge.net/projects/xmsanalyzer/">xMSanalyzer</a> to handle automated pipeline for large-scale, non-targeted metabolomics data, <a href="https://sourceforge.net/projects/xmsannotator/">xMSannotator</a> for annotation of LC-MS data and <a href="https://code.google.com/archive/p/atcg/wikis/mummichog_for_metabolomics.wiki">Mummichog</a> for pathway and network analysis for high-throughput metabolomics. This platform would be preferred by someone from environmental science to study exposome.</p>
-<p>You could check those papers for Emory workflow<span class="citation">(<a href="references.html#ref-uppal2013a" role="doc-biblioref">Uppal et al. 2013</a>; <a href="references.html#ref-uppal2017" role="doc-biblioref">Uppal, Walker, and Jones 2017</a>; <a href="references.html#ref-yu2009a" role="doc-biblioref">T. Yu et al. 2009</a>; <a href="references.html#ref-li2013" role="doc-biblioref">S. Li et al. 2013</a>; <a href="references.html#ref-liu2020" role="doc-biblioref">Q. Liu et al. 2020</a>)</span>.</p>
+<p>You could check those papers for Emory workflow<span class="citation">(<a href="#ref-uppal2013a" role="doc-biblioref">Uppal et al. 2013</a>; <a href="#ref-uppal2017" role="doc-biblioref">Uppal, Walker, and Jones 2017</a>; <a href="#ref-yu2009a" role="doc-biblioref">T. Yu et al. 2009</a>; <a href="#ref-li2013" role="doc-biblioref">S. Li et al. 2013</a>; <a href="#ref-liu2020" role="doc-biblioref">Q. Liu et al. 2020</a>)</span>.</p>
 </div>
-<div id="others" class="section level3" number="5.1.7">
-<h3><span class="header-section-number">5.1.7</span> Others</h3>
+<div id="others" class="section level3 hasAnchor" number="5.1.7">
+<h3><span class="header-section-number">5.1.7</span> Others<a href="workflow-2.html#others" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li><p><a href="http://genomics-pubs.princeton.edu/mzroll/index.php?show=index">MAVEN</a> from Princeton University <span class="citation">(<a href="references.html#ref-melamud2010a" role="doc-biblioref">Melamud, Vastag, and Rabinowitz 2010</a>; <a href="references.html#ref-clasquin2012" role="doc-biblioref">Clasquin, Melamud, and Rabinowitz 2012</a>)</span>.</p></li>
+<li><p><a href="http://genomics-pubs.princeton.edu/mzroll/index.php?show=index">MAVEN</a> from Princeton University <span class="citation">(<a href="#ref-melamud2010a" role="doc-biblioref">Melamud, Vastag, and Rabinowitz 2010</a>; <a href="#ref-clasquin2012" role="doc-biblioref">Clasquin, Melamud, and Rabinowitz 2012</a>)</span>.</p></li>
 <li><p><a href="https://github.com/cran/metabolomics">metabolomics</a> is a CRAN package for analysis of metabolomics data.</p></li>
-<li><p><a href="http://software.tobaccodb.org/software/autogcmsdataanal">autoGCMSDataAnal</a> is a Matlab based comprehensive data analysis strategy for GC-MS-based untargeted metabolomics and <a href="http://software.tobaccodb.org/software/antdas2">AntDAS2</a> provided An automatic data analysis strategy for UPLC-HRMS-based metabolomics<span class="citation">(<a href="references.html#ref-yu2019" role="doc-biblioref">Y.-J. Yu et al. 2019</a>; <a href="references.html#ref-zhang2020" role="doc-biblioref">Y.-Y. Zhang et al. 2020</a>)</span>.</p></li>
-<li><p><a href="https://github.com/yufree/enviGCMS">enviGCMS</a> from environmental non-targeted analysis and <a href="https://github.com/yufree/rmwf">rmwf</a> for reproducible metabolomics workflow <span class="citation">(<a href="references.html#ref-yu2020a" role="doc-biblioref">M. Yu and Petrick 2020</a>; <a href="references.html#ref-yu2019a" role="doc-biblioref">M. Yu, Olkowicz, and Pawliszyn 2019a</a>)</span>.</p></li>
-<li><p>Pseudotargeted metabolomics method <span class="citation">(<a href="references.html#ref-zheng2020" role="doc-biblioref">Zheng et al. 2020</a>; <a href="references.html#ref-wang2016a" role="doc-biblioref">Y. Wang et al. 2016</a>)</span>.</p></li>
-<li><p><a href="https://github.com/alexandrovteam/pySM">pySM</a> provides a reference implementation of our pipeline for False Discovery Rate-controlled metabolite annotation of high-resolution imaging mass spectrometry data <span class="citation">(<a href="references.html#ref-palmer2017" role="doc-biblioref">Palmer et al. 2017</a>)</span>.</p></li>
-<li><p><a href="https://github.com/griquelme/tidyms">TinyMS</a> is a Python-Based Pipeline for Preprocessing LC–MS Data for Untargeted Metabolomics Workflows <span class="citation">(<a href="references.html#ref-riquelme2020" role="doc-biblioref">Riquelme et al. 2020</a>)</span></p></li>
-<li><p><a href="https://md.tu-bs.de/">MetaboliteDetector</a> is a QT4 based software package for the analysis of GC/MS based metabolomics data <span class="citation">(<a href="references.html#ref-hiller2009" role="doc-biblioref">Hiller et al. 2009</a>)</span>.</p></li>
-<li><p><a href="http://workflow4metabolomics.org/">W4M</a> and <a href="http://metax.genomics.cn/">metaX</a> could analysis data online <span class="citation">(<a href="references.html#ref-giacomoni2015" role="doc-biblioref">Giacomoni et al. 2015</a>; <a href="references.html#ref-wen2017a" role="doc-biblioref">Wen et al. 2017</a>; <a href="references.html#ref-jalili2020a" role="doc-biblioref">Jalili et al. 2020</a>)</span>.</p></li>
-<li><p><a href="https://github.com/wkew/FTMSVisualization">FTMSVisualization</a> is a suite of tools for visualizing complex mixture FT-MS data <span class="citation">(<a href="references.html#ref-kew2017" role="doc-biblioref">Kew et al. 2017</a>)</span></p></li>
+<li><p><a href="http://software.tobaccodb.org/software/autogcmsdataanal">autoGCMSDataAnal</a> is a Matlab based comprehensive data analysis strategy for GC-MS-based untargeted metabolomics and <a href="http://software.tobaccodb.org/software/antdas2">AntDAS2</a> provided An automatic data analysis strategy for UPLC-HRMS-based metabolomics<span class="citation">(<a href="#ref-yu2019" role="doc-biblioref">Y.-J. Yu et al. 2019</a>; <a href="#ref-zhang2020" role="doc-biblioref">Y.-Y. Zhang et al. 2020</a>)</span>.</p></li>
+<li><p><a href="https://github.com/yufree/enviGCMS">enviGCMS</a> from environmental non-targeted analysis and <a href="https://github.com/yufree/rmwf">rmwf</a> for reproducible metabolomics workflow <span class="citation">(<a href="#ref-yu2020a" role="doc-biblioref">M. Yu and Petrick 2020</a>; <a href="#ref-yu2019a" role="doc-biblioref">M. Yu, Olkowicz, and Pawliszyn 2019a</a>)</span>.</p></li>
+<li><p>Pseudotargeted metabolomics method <span class="citation">(<a href="#ref-zheng2020" role="doc-biblioref">Zheng et al. 2020</a>; <a href="#ref-wang2016a" role="doc-biblioref">Y. Wang et al. 2016</a>)</span>.</p></li>
+<li><p><a href="https://github.com/alexandrovteam/pySM">pySM</a> provides a reference implementation of our pipeline for False Discovery Rate-controlled metabolite annotation of high-resolution imaging mass spectrometry data <span class="citation">(<a href="#ref-palmer2017" role="doc-biblioref">Palmer et al. 2017</a>)</span>.</p></li>
+<li><p><a href="https://github.com/griquelme/tidyms">TinyMS</a> is a Python-Based Pipeline for Preprocessing LC–MS Data for Untargeted Metabolomics Workflows <span class="citation">(<a href="#ref-riquelme2020" role="doc-biblioref">Riquelme et al. 2020</a>)</span></p></li>
+<li><p><a href="https://md.tu-bs.de/">MetaboliteDetector</a> is a QT4 based software package for the analysis of GC/MS based metabolomics data <span class="citation">(<a href="#ref-hiller2009" role="doc-biblioref">Hiller et al. 2009</a>)</span>.</p></li>
+<li><p><a href="http://workflow4metabolomics.org/">W4M</a> and <a href="http://metax.genomics.cn/">metaX</a> could analysis data online <span class="citation">(<a href="#ref-giacomoni2015" role="doc-biblioref">Giacomoni et al. 2015</a>; <a href="#ref-wen2017a" role="doc-biblioref">Wen et al. 2017</a>; <a href="#ref-jalili2020a" role="doc-biblioref">Jalili et al. 2020</a>)</span>.</p></li>
+<li><p><a href="https://github.com/wkew/FTMSVisualization">FTMSVisualization</a> is a suite of tools for visualizing complex mixture FT-MS data <span class="citation">(<a href="#ref-kew2017" role="doc-biblioref">Kew et al. 2017</a>)</span></p></li>
 <li><p><a href="http://www.emetabolomics.org/magma">magma</a> could predict and match MS/MS files.</p></li>
+<li><p><a href="https://github.com/hhabra/metabCombiner">metabCombiner</a> Paired Untargeted LC-HRMS Metabolomics Feature Matching and Concatenation of Disparately Acquired Data Sets<span class="citation">(<a href="#ref-habra2021" role="doc-biblioref">Habra et al. 2021</a>)</span></p></li>
+<li><p><a href="https://github.com/zamboni-lab/SLAW">SLAW</a> is a scalable and self-Optimizing processing workflow for Untargeted LC-MS with a docker image <span class="citation">(<a href="#ref-delabriere2021" role="doc-biblioref">Delabriere et al. 2021</a>)</span>.</p></li>
+<li><p><a href="https://github.com/rickhelmus/patRoon">patRoon</a>: open source software platform for environmental mass spectrometry based non-target screening <span class="citation">(<a href="#ref-helmus2021" role="doc-biblioref">Helmus et al. 2021</a>)</span>.</p></li>
 </ul>
 </div>
-<div id="workflow-comparison" class="section level3" number="5.1.8">
-<h3><span class="header-section-number">5.1.8</span> Workflow Comparison</h3>
-<p>Here are some comparisons for different workflow and you could make selection based on their works<span class="citation">(<a href="references.html#ref-myers2017" role="doc-biblioref">Myers et al. 2017</a>; <a href="references.html#ref-weber2017" role="doc-biblioref">Weber et al. 2017</a>; <a href="references.html#ref-li2018" role="doc-biblioref">Z. Li et al. 2018</a>)</span>.</p>
+<div id="workflow-comparison" class="section level3 hasAnchor" number="5.1.8">
+<h3><span class="header-section-number">5.1.8</span> Workflow Comparison<a href="workflow-2.html#workflow-comparison" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Here are some comparisons for different workflow and you could make selection based on their works<span class="citation">(<a href="#ref-myers2017" role="doc-biblioref">Myers et al. 2017</a>; <a href="#ref-weber2017" role="doc-biblioref">Weber et al. 2017</a>; <a href="#ref-li2018" role="doc-biblioref">Z. Li et al. 2018</a>)</span>.</p>
 </div>
 </div>
-<div id="project-setup" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> Project Setup</h2>
+<div id="project-setup" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Project Setup<a href="workflow-2.html#project-setup" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>I suggest building your data analysis projects in RStudio (Click File - New project - New dictionary - Empty project). Then assign a name for your project. I also recommend the following tips if you are familiar with it.</p>
 <ul>
 <li><p>Use <a href="https://git-scm.com/">git</a>/<a href="https://github.com/">github</a> to make version control of your code and sync your project online.</p></li>
@@ -412,25 +477,254 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Use <strong>data</strong> folder in your project folder for the raw data and the results you get in data analysis</p></li>
 <li><p>Use <strong>figure</strong> folder in your project folder for the figure</p></li>
 <li><p>Use <strong>munuscript</strong> folder in your project folder for the manuscript (you could write paper in rstudio with the help of template in <a href="https://github.com/rstudio/rticles">Rmarkdown</a>)</p></li>
-<li><p>Just double click <strong>[yourprojectname].Rproj</strong> to start your project</p></li>
+<li><p>Just double click <span class="math display">\[yourprojectname\]</span>.Rproj to start your project</p></li>
 </ul>
 </div>
-<div id="data-sharing" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> Data sharing</h2>
-<p>See this paper<span class="citation">(<a href="references.html#ref-haug2017" role="doc-biblioref">Haug, Salek, and Steinbeck 2017</a>)</span>:</p>
+<div id="data-sharing" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Data sharing<a href="workflow-2.html#data-sharing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>See this paper<span class="citation">(<a href="#ref-haug2017" role="doc-biblioref">Haug, Salek, and Steinbeck 2017</a>)</span>:</p>
 <ul>
 <li><p><a href="http://www.ebi.ac.uk/metabolights/">MetaboLights</a> EU based</p></li>
 <li><p><a href="http://www.metabolomicsworkbench.org/">The Metabolomics Workbench</a> US based</p></li>
+<li><p><a href="https://mb2.ddbj.nig.ac.jp/">MetaboBank</a> Japan based</p></li>
 <li><p><a href="http://www.metabolomexchange.org/site/">MetabolomeXchange</a> search engine</p></li>
-<li><p><a href="https://www.metabolome-express.org/">MetabolomeExpress</a> a public place to process, interpret and share GC/MS metabolomics datasets<span class="citation">(<a href="references.html#ref-carroll2010" role="doc-biblioref">Carroll, Badger, and Harvey Millar 2010</a>)</span>.</p></li>
+<li><p><a href="https://www.metabolome-express.org/">MetabolomeExpress</a> a public place to process, interpret and share GC/MS metabolomics datasets<span class="citation">(<a href="#ref-carroll2010" role="doc-biblioref">Carroll, Badger, and Harvey Millar 2010</a>)</span>.</p></li>
 </ul>
 </div>
-<div id="contest" class="section level2" number="5.4">
-<h2><span class="header-section-number">5.4</span> Contest</h2>
+<div id="contest" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Contest<a href="workflow-2.html#contest" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li><a href="http://www.casmi-contest.org/">CASMI</a> predict small molecular contest<span class="citation">(<a href="references.html#ref-blaenovi2017" role="doc-biblioref">Blaženović et al. 2017</a>)</span></li>
+<li><a href="http://www.casmi-contest.org/">CASMI</a> predict small molecular contest<span class="citation">(<a href="#ref-blaenovi2017" role="doc-biblioref">Blaženović et al. 2017</a>)</span></li>
 </ul>
 
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-alka2020" class="csl-entry">
+Alka, Oliver, Timo Sachsenberg, Leon Bichmann, Julianus Pfeuffer, Hendrik Weisser, Samuel Wein, Eugen Netz, Marc Rurik, Oliver Kohlbacher, and Hannes Röst. 2020a. <span>“CHAPTER 6:OpenMS and KNIME for Mass Spectrometry Data Processing.”</span> In, 201–31. <a href="https://doi.org/10.1039/9781788019880-00201">https://doi.org/10.1039/9781788019880-00201</a>.
+</div>
+<div id="ref-alka2020a" class="csl-entry">
+———. 2020b. <span>“CHAPTER 6:OpenMS and KNIME for Mass Spectrometry Data Processing.”</span> In, 201–31. <a href="https://doi.org/10.1039/9781788019880-00201">https://doi.org/10.1039/9781788019880-00201</a>.
+</div>
+<div id="ref-aron2020a" class="csl-entry">
+Aron, Allegra T., Emily C. Gentry, Kerry L. McPhail, Louis-Félix Nothias, Mélissa Nothias-Esposito, Amina Bouslimani, Daniel Petras, et al. 2020. <span>“Reproducible Molecular Networking of Untargeted Mass Spectrometry Data Using GNPS.”</span> <em>Nature Protocols</em> 15 (6): 1954–91. <a href="https://doi.org/10.1038/s41596-020-0317-5">https://doi.org/10.1038/s41596-020-0317-5</a>.
+</div>
+<div id="ref-bertsch2011" class="csl-entry">
+Bertsch, Andreas, Clemens Gröpl, Knut Reinert, and Oliver Kohlbacher. 2011. <span>“OpenMS and TOPP: Open Source Software for LC-MS Data Analysis.”</span> In, edited by Michael Hamacher, Martin Eisenacher, and Christian Stephan, 353–67. Methods in Molecular Biology. Totowa, NJ: Humana Press. <a href="https://doi.org/10.1007/978-1-60761-987-1_23">https://doi.org/10.1007/978-1-60761-987-1_23</a>.
+</div>
+<div id="ref-blaenovi2017" class="csl-entry">
+Blaženović, Ivana, Tobias Kind, Hrvoje Torbašinović, Slobodan Obrenović, Sajjan S. Mehta, Hiroshi Tsugawa, Tobias Wermuth, et al. 2017. <span>“Comprehensive Comparison of in Silico MS/MS Fragmentation Tools of the CASMI Contest: Database Boosting Is Needed to Achieve 93.”</span> <em>Journal of Cheminformatics</em> 9 (1): 32. <a href="https://doi.org/10.1186/s13321-017-0219-x">https://doi.org/10.1186/s13321-017-0219-x</a>.
+</div>
+<div id="ref-carroll2010" class="csl-entry">
+Carroll, Adam J., Murray R. Badger, and A. Harvey Millar. 2010. <span>“The MetabolomeExpress Project: Enabling Web-Based Processing, Analysis and Transparent Dissemination of GC/MS Metabolomics Datasets.”</span> <em>BMC Bioinformatics</em> 11 (1): 376. <a href="https://doi.org/10.1186/1471-2105-11-376">https://doi.org/10.1186/1471-2105-11-376</a>.
+</div>
+<div id="ref-chang2016" class="csl-entry">
+Chang, Hui-Yin, Ching-Tai Chen, T. Mamie Lih, Ke-Shiuan Lynn, Chiun-Gung Juo, Wen-Lian Hsu, and Ting-Yi Sung. 2016. <span>“iMet-Q: A User-Friendly Tool for Label-Free Metabolomics Quantitation Using Dynamic Peak-Width Determination.”</span> <em>PLOS ONE</em> 11 (1): e0146112. <a href="https://doi.org/10.1371/journal.pone.0146112">https://doi.org/10.1371/journal.pone.0146112</a>.
+</div>
+<div id="ref-clasquin2012" class="csl-entry">
+Clasquin, Michelle F., Eugene Melamud, and Joshua D. Rabinowitz. 2012. <span>“LC-MS Data Processing with MAVEN: A Metabolomic Analysis and Visualization Engine.”</span> <em>Current Protocols in Bioinformatics</em> 37 (1): 14.11.1–23. https://doi.org/<a href="https://doi.org/10.1002/0471250953.bi1411s37">https://doi.org/10.1002/0471250953.bi1411s37</a>.
+</div>
+<div id="ref-creek2012b" class="csl-entry">
+Creek, Darren J., Andris Jankevics, Karl E. V. Burgess, Rainer Breitling, and Michael P. Barrett. 2012. <span>“IDEOM: An Excel Interface for Analysis of LC<span></span>MS-Based Metabolomics Data.”</span> <em>Bioinformatics</em> 28 (7): 1048–49. <a href="https://doi.org/10.1093/bioinformatics/bts069">https://doi.org/10.1093/bioinformatics/bts069</a>.
+</div>
+<div id="ref-daly2014" class="csl-entry">
+Daly, Rónán, Simon Rogers, Joe Wandy, Andris Jankevics, Karl E. V. Burgess, and Rainer Breitling. 2014a. <span>“MetAssign: Probabilistic Annotation of Metabolites from LC<span></span>MS Data Using a Bayesian Clustering Approach.”</span> <em>Bioinformatics</em> 30 (19): 2764–71. <a href="https://doi.org/10.1093/bioinformatics/btu370">https://doi.org/10.1093/bioinformatics/btu370</a>.
+</div>
+<div id="ref-delabriere2021" class="csl-entry">
+Delabriere, Alexis, Philipp Warmer, Vincenth Brennsteiner, and Nicola Zamboni. 2021. <span>“SLAW: A Scalable and Self-Optimizing Processing Workflow for Untargeted LC-MS.”</span> <em>Analytical Chemistry</em> 93 (45): 15024–32. <a href="https://doi.org/10.1021/acs.analchem.1c02687">https://doi.org/10.1021/acs.analchem.1c02687</a>.
+</div>
+<div id="ref-domingo-almenara2018a" class="csl-entry">
+Domingo-Almenara, Xavier, J. Rafael Montenegro-Burke, Julijana Ivanisevic, Aurelien Thomas, Jonathan Sidibé, Tony Teav, Carlos Guijas, et al. 2018. <span>“XCMS-MRM and METLIN-MRM: A Cloud Library and Public Resource for Targeted Analysis of Small Molecules.”</span> <em>Nature Methods</em> 15 (9): 681–84. <a href="https://doi.org/10.1038/s41592-018-0110-3">https://doi.org/10.1038/s41592-018-0110-3</a>.
+</div>
+<div id="ref-domingo-almenara2020" class="csl-entry">
+Domingo-Almenara, Xavier, and Gary Siuzdak. 2020. <span>“Metabolomics Data Processing Using XCMS.”</span> In, edited by Shuzhao Li, 11–24. Methods in Molecular Biology. New York, NY: Springer US. <a href="https://doi.org/10.1007/978-1-0716-0239-3_2">https://doi.org/10.1007/978-1-0716-0239-3_2</a>.
+</div>
+<div id="ref-dührkop2019" class="csl-entry">
+Dührkop, Kai, Markus Fleischauer, Marcus Ludwig, Alexander A. Aksenov, Alexey V. Melnik, Marvin Meusel, Pieter C. Dorrestein, Juho Rousu, and Sebastian Böcker. 2019. <span>“SIRIUS 4: A Rapid Tool for Turning Tandem Mass Spectra into Metabolite Structure Information.”</span> <em>Nature Methods</em> 16 (4): 299–302. <a href="https://doi.org/10.1038/s41592-019-0344-8">https://doi.org/10.1038/s41592-019-0344-8</a>.
+</div>
+<div id="ref-dührkop2020" class="csl-entry">
+Dührkop, Kai, Louis-Félix Nothias, Markus Fleischauer, Raphael Reher, Marcus Ludwig, Martin A. Hoffmann, Daniel Petras, et al. 2020. <span>“Systematic Classification of Unknown Metabolites Using High-Resolution Fragmentation Mass Spectra.”</span> <em>Nature Biotechnology</em>, November, 1–10. <a href="https://doi.org/10.1038/s41587-020-0740-8">https://doi.org/10.1038/s41587-020-0740-8</a>.
+</div>
+<div id="ref-edmands2015" class="csl-entry">
+Edmands, William M. B., Dinesh K. Barupal, and Augustin Scalbert. 2015. <span>“MetMSLine: An Automated and Fully Integrated Pipeline for Rapid Processing of High-Resolution LC<span></span>MS Metabolomic Datasets.”</span> <em>Bioinformatics</em> 31 (5): 788–90. <a href="https://doi.org/10.1093/bioinformatics/btu705">https://doi.org/10.1093/bioinformatics/btu705</a>.
+</div>
+<div id="ref-edmands2018" class="csl-entry">
+Edmands, William M. B., Josie Hayes, and Stephen M. Rappaport. 2018. <span>“SimExTargId: A Comprehensive Package for Real-Time LC-MS Data Acquisition and Analysis.”</span> <em>Bioinformatics</em> 34 (20): 3589–90. <a href="https://doi.org/10.1093/bioinformatics/bty218">https://doi.org/10.1093/bioinformatics/bty218</a>.
+</div>
+<div id="ref-edmands2017" class="csl-entry">
+Edmands, William M. B., Lauren Petrick, Dinesh K. Barupal, Augustin Scalbert, Mark J. Wilson, Jeffrey K. Wickliffe, and Stephen M. Rappaport. 2017. <span>“compMS2Miner: An Automatable Metabolite Identification, Visualization, and Data-Sharing r Package for High-Resolution LC<span></span>MS Data Sets.”</span> <em>Analytical Chemistry</em> 89 (7): 3919–28. <a href="https://doi.org/10.1021/acs.analchem.6b02394">https://doi.org/10.1021/acs.analchem.6b02394</a>.
+</div>
+<div id="ref-fernandez-albert2014a" class="csl-entry">
+Fernández-Albert, Francesc, Rafael Llorach, Cristina Andrés-Lacueva, and Alexandre Perera. 2014. <span>“An r Package to Analyse LC/MS Metabolomic Data: MAIT (Metabolite Automatic Identification Toolkit).”</span> <em>Bioinformatics</em> 30 (13): 1937–39. <a href="https://doi.org/10.1093/bioinformatics/btu136">https://doi.org/10.1093/bioinformatics/btu136</a>.
+</div>
+<div id="ref-forsberg2018" class="csl-entry">
+Forsberg, Erica M., Tao Huan, Duane Rinehart, H. Paul Benton, Benedikt Warth, Brian Hilmers, and Gary Siuzdak. 2018. <span>“Data Processing, Multi-Omic Pathway Mapping, and Metabolite Activity Analysis Using XCMS Online.”</span> <em>Nature Protocols</em> 13 (4): 633–51. <a href="https://doi.org/10.1038/nprot.2017.151">https://doi.org/10.1038/nprot.2017.151</a>.
+</div>
+<div id="ref-giacomoni2015" class="csl-entry">
+Giacomoni, Franck, Gildas Le Corguillé, Misharl Monsoor, Marion Landi, Pierre Pericard, Mélanie Pétéra, Christophe Duperier, et al. 2015. <span>“Workflow4Metabolomics: A Collaborative Research Infrastructure for Computational Metabolomics.”</span> <em>Bioinformatics</em> 31 (9): 1493–95. <a href="https://doi.org/10.1093/bioinformatics/btu813">https://doi.org/10.1093/bioinformatics/btu813</a>.
+</div>
+<div id="ref-guijas2018" class="csl-entry">
+Guijas, Carlos, J. Rafael Montenegro-Burke, Xavier Domingo-Almenara, Amelia Palermo, Benedikt Warth, Gerrit Hermann, Gunda Koellensperger, et al. 2018. <span>“METLIN: A Technology Platform for Identifying Knowns and Unknowns.”</span> <em>Analytical Chemistry</em> 90 (5): 3156–64. <a href="https://doi.org/10.1021/acs.analchem.7b04424">https://doi.org/10.1021/acs.analchem.7b04424</a>.
+</div>
+<div id="ref-habra2021" class="csl-entry">
+Habra, Hani, Maureen Kachman, Kevin Bullock, Clary Clish, Charles R. Evans, and Alla Karnovsky. 2021. <span>“metabCombiner: Paired Untargeted LC-HRMS Metabolomics Feature Matching and Concatenation of Disparately Acquired Data Sets.”</span> <em>Analytical Chemistry</em> 93 (12): 5028–36. <a href="https://doi.org/10.1021/acs.analchem.0c03693">https://doi.org/10.1021/acs.analchem.0c03693</a>.
+</div>
+<div id="ref-haug2017" class="csl-entry">
+Haug, Kenneth, Reza M Salek, and Christoph Steinbeck. 2017. <span>“Global Open Data Management in Metabolomics.”</span> <em>Current Opinion in Chemical Biology</em>, Omics, 36 (February): 58–63. <a href="https://doi.org/10.1016/j.cbpa.2016.12.024">https://doi.org/10.1016/j.cbpa.2016.12.024</a>.
+</div>
+<div id="ref-helmus2021" class="csl-entry">
+Helmus, Rick, Thomas L. ter Laak, Annemarie P. van Wezel, Pim de Voogt, and Emma L. Schymanski. 2021. <span>“patRoon: Open Source Software Platform for Environmental Mass Spectrometry Based Non-Target Screening.”</span> <em>Journal of Cheminformatics</em> 13 (1). <a href="https://doi.org/10.1186/s13321-020-00477-w">https://doi.org/10.1186/s13321-020-00477-w</a>.
+</div>
+<div id="ref-hiller2009" class="csl-entry">
+Hiller, Karsten, Jasper Hangebrauk, Christian Jäger, Jana Spura, Kerstin Schreiber, and Dietmar Schomburg. 2009. <span>“MetaboliteDetector: Comprehensive Analysis Tool for Targeted and Nontargeted GC/MS Based Metabolome Analysis.”</span> <em>Analytical Chemistry</em> 81 (9): 3429–39. <a href="https://doi.org/10.1021/ac802689c">https://doi.org/10.1021/ac802689c</a>.
+</div>
+<div id="ref-huan2017" class="csl-entry">
+Huan, Tao, Erica M. Forsberg, Duane Rinehart, Caroline H. Johnson, Julijana Ivanisevic, H. Paul Benton, Mingliang Fang, et al. 2017. <span>“Systems Biology Guided by XCMS Online Metabolomics.”</span> <em>Nature Methods</em> 14 (5): 461–62. <a href="https://doi.org/10.1038/nmeth.4260">https://doi.org/10.1038/nmeth.4260</a>.
+</div>
+<div id="ref-jalili2020a" class="csl-entry">
+Jalili, Vahid, Enis Afgan, Qiang Gu, Dave Clements, Daniel Blankenberg, Jeremy Goecks, James Taylor, and Anton Nekrutenko. 2020. <span>“The Galaxy Platform for Accessible, Reproducible and Collaborative Biomedical Analyses: 2020 Update.”</span> <em>Nucleic Acids Research</em> 48 (W1): W395–402. <a href="https://doi.org/10.1093/nar/gkaa434">https://doi.org/10.1093/nar/gkaa434</a>.
+</div>
+<div id="ref-kew2017" class="csl-entry">
+Kew, William, John W. T. Blackburn, David J. Clarke, and Dušan Uhrín. 2017. <span>“Interactive van Krevelen Diagrams <span></span> Advanced Visualisation of Mass Spectrometry Data of Complex Mixtures.”</span> <em>Rapid Communications in Mass Spectrometry</em> 31 (7): 658–62. <a href="https://doi.org/10.1002/rcm.7823">https://doi.org/10.1002/rcm.7823</a>.
+</div>
+<div id="ref-kind2018" class="csl-entry">
+Kind, Tobias, Hiroshi Tsugawa, Tomas Cajka, Yan Ma, Zijuan Lai, Sajjan S. Mehta, Gert Wohlgemuth, et al. 2018. <span>“Identification of Small Molecules Using Accurate Mass MS/MS Search.”</span> <em>Mass Spectrometry Reviews</em> 37 (4): 513–32. https://doi.org/<a href="https://doi.org/10.1002/mas.21535">https://doi.org/10.1002/mas.21535</a>.
+</div>
+<div id="ref-lai2018" class="csl-entry">
+Lai, Zijuan, Hiroshi Tsugawa, Gert Wohlgemuth, Sajjan Mehta, Matthew Mueller, Yuxuan Zheng, Atsushi Ogiwara, et al. 2018a. <span>“Identifying Metabolites by Integrating Metabolome Databases with Mass Spectrometry Cheminformatics.”</span> <em>Nature Methods</em> 15 (1): 53–56. <a href="https://doi.org/10.1038/nmeth.4512">https://doi.org/10.1038/nmeth.4512</a>.
+</div>
+<div id="ref-lassen2021" class="csl-entry">
+Lassen, Johan, Kirstine Lykke Nielsen, Mogens Johannsen, and Palle Villesen. 2021. <span>“Assessment of XCMS Optimization Methods with Machine-Learning Performance.”</span> <em>Analytical Chemistry</em> 93 (40): 13459–66. <a href="https://doi.org/10.1021/acs.analchem.1c02000">https://doi.org/10.1021/acs.analchem.1c02000</a>.
+</div>
+<div id="ref-li2020" class="csl-entry">
+Li, Shuzhao. 2020. <em>Computational Methods and Data Analysis for Metabolomics</em>. Springer.
+</div>
+<div id="ref-li2013" class="csl-entry">
+Li, Shuzhao, Youngja Park, Sai Duraisingham, Frederick H. Strobel, Nooruddin Khan, Quinlyn A. Soltow, Dean P. Jones, and Bali Pulendran. 2013. <span>“Predicting Network Activity from High Throughput Metabolomics.”</span> <em>PLOS Computational Biology</em> 9 (7): e1003123. <a href="https://doi.org/10.1371/journal.pcbi.1003123">https://doi.org/10.1371/journal.pcbi.1003123</a>.
+</div>
+<div id="ref-li2018" class="csl-entry">
+Li, Zhucui, Yan Lu, Yufeng Guo, Haijie Cao, Qinhong Wang, and Wenqing Shui. 2018. <span>“Comprehensive Evaluation of Untargeted Metabolomics Data Processing Software in Feature Detection, Quantification and Discriminating Marker Selection.”</span> <em>Analytica Chimica Acta</em> 1029 (October): 50–57. <a href="https://doi.org/10.1016/j.aca.2018.05.001">https://doi.org/10.1016/j.aca.2018.05.001</a>.
+</div>
+<div id="ref-libiseller2015" class="csl-entry">
+Libiseller, Gunnar, Michaela Dvorzak, Ulrike Kleb, Edgar Gander, Tobias Eisenberg, Frank Madeo, Steffen Neumann, et al. 2015. <span>“IPO: A Tool for Automated Optimization of XCMS Parameters.”</span> <em>BMC Bioinformatics</em> 16 (April): 118. <a href="https://doi.org/10.1186/s12859-015-0562-8">https://doi.org/10.1186/s12859-015-0562-8</a>.
+</div>
+<div id="ref-liu2020" class="csl-entry">
+Liu, Qin, Douglas Walker, Karan Uppal, Zihe Liu, Chunyu Ma, ViLinh Tran, Shuzhao Li, Dean P. Jones, and Tianwei Yu. 2020. <span>“Addressing the Batch Effect Issue for LC/MS Metabolomics Data in Data Preprocessing.”</span> <em>Scientific Reports</em> 10 (1): 13856. <a href="https://doi.org/10.1038/s41598-020-70850-0">https://doi.org/10.1038/s41598-020-70850-0</a>.
+</div>
+<div id="ref-ludwig2020" class="csl-entry">
+Ludwig, Marcus, Louis-Félix Nothias, Kai Dührkop, Irina Koester, Markus Fleischauer, Martin A. Hoffmann, Daniel Petras, et al. 2020. <span>“Database-Independent Molecular Formula Annotation Using Gibbs Sampling Through ZODIAC.”</span> <em>Nature Machine Intelligence</em> 2 (10): 629–41. <a href="https://doi.org/10.1038/s42256-020-00234-6">https://doi.org/10.1038/s42256-020-00234-6</a>.
+</div>
+<div id="ref-mahieu2016" class="csl-entry">
+Mahieu, Nathaniel G, Jessica Lloyd Genenbacher, and Gary J Patti. 2016a. <span>“A Roadmap for the XCMS Family of Software Solutions in Metabolomics.”</span> <em>Current Opinion in Chemical Biology</em> 30 (February): 87–93. <a href="https://doi.org/10.1016/j.cbpa.2015.11.009">https://doi.org/10.1016/j.cbpa.2015.11.009</a>.
+</div>
+<div id="ref-mahieu2016a" class="csl-entry">
+———. 2016b. <span>“A Roadmap for the XCMS Family of Software Solutions in Metabolomics.”</span> <em>Current Opinion in Chemical Biology</em> 30 (February): 87–93. <a href="https://doi.org/10.1016/j.cbpa.2015.11.009">https://doi.org/10.1016/j.cbpa.2015.11.009</a>.
+</div>
+<div id="ref-matsuo2017" class="csl-entry">
+Matsuo, Teruko, Hiroshi Tsugawa, Hiromi Miyagawa, and Eiichiro Fukusaki. 2017. <span>“Integrated Strategy for Unknown EI<span></span>MS Identification Using Quality Control Calibration Curve, Multivariate Analysis, EI<span></span>MS Spectral Database, and Retention Index Prediction.”</span> <em>Analytical Chemistry</em> 89 (12): 6766–73. <a href="https://doi.org/10.1021/acs.analchem.7b01010">https://doi.org/10.1021/acs.analchem.7b01010</a>.
+</div>
+<div id="ref-mclean2020" class="csl-entry">
+McLean, Craig, and Elizabeth B. Kujawinski. 2020. <span>“AutoTuner: High Fidelity and Robust Parameter Selection for Metabolomics Data Processing.”</span> <em>Analytical Chemistry</em> 92 (8): 5724–32. <a href="https://doi.org/10.1021/acs.analchem.9b04804">https://doi.org/10.1021/acs.analchem.9b04804</a>.
+</div>
+<div id="ref-melamud2010a" class="csl-entry">
+Melamud, Eugene, Livia Vastag, and Joshua D. Rabinowitz. 2010. <span>“Metabolomic Analysis and Visualization Engine for LC<span>-</span>MS Data.”</span> <em>Analytical Chemistry</em> 82 (23): 9818–26. <a href="https://doi.org/10.1021/ac1021166">https://doi.org/10.1021/ac1021166</a>.
+</div>
+<div id="ref-montenegro-burke2017" class="csl-entry">
+Montenegro-Burke, J. Rafael, Aries E. Aisporna, H. Paul Benton, Duane Rinehart, Mingliang Fang, Tao Huan, Benedikt Warth, et al. 2017. <span>“Data Streaming for Metabolomics: Accelerating Data Processing and Analysis from Days to Minutes.”</span> <em>Analytical Chemistry</em> 89 (2): 1254–59. <a href="https://doi.org/10.1021/acs.analchem.6b03890">https://doi.org/10.1021/acs.analchem.6b03890</a>.
+</div>
+<div id="ref-myers2017" class="csl-entry">
+Myers, Owen D., Susan J. Sumner, Shuzhao Li, Stephen Barnes, and Xiuxia Du. 2017. <span>“Detailed Investigation and Comparison of the XCMS and MZmine 2 Chromatogram Construction and Chromatographic Peak Detection Methods for Preprocessing Mass Spectrometry Metabolomics Data.”</span> <em>Analytical Chemistry</em> 89 (17): 8689–95. <a href="https://doi.org/10.1021/acs.analchem.7b01069">https://doi.org/10.1021/acs.analchem.7b01069</a>.
+</div>
+<div id="ref-nothias2020" class="csl-entry">
+Nothias, Louis-Félix, Daniel Petras, Robin Schmid, Kai Dührkop, Johannes Rainer, Abinesh Sarvepalli, Ivan Protsyuk, et al. 2020. <span>“Feature-based molecular networking in the GNPS analysis environment.”</span> <em>Nature Methods</em> 17 (9): 905–8. <a href="https://doi.org/10.1038/s41592-020-0933-6">https://doi.org/10.1038/s41592-020-0933-6</a>.
+</div>
+<div id="ref-palmer2017" class="csl-entry">
+Palmer, Andrew, Prasad Phapale, Ilya Chernyavsky, Regis Lavigne, Dominik Fay, Artem Tarasov, Vitaly Kovalev, et al. 2017. <span>“FDR-Controlled Metabolite Annotation for High-Resolution Imaging Mass Spectrometry.”</span> <em>Nature Methods</em> 14 (1): 57–60. <a href="https://doi.org/10.1038/nmeth.4072">https://doi.org/10.1038/nmeth.4072</a>.
+</div>
+<div id="ref-pang2020" class="csl-entry">
+Pang, Zhiqiang, Jasmine Chong, Shuzhao Li, and Jianguo Xia. 2020. <span>“MetaboAnalystR 3.0: Toward an Optimized Workflow for Global Metabolomics.”</span> <em>Metabolites</em> 10 (5): 186. <a href="https://doi.org/10.3390/metabo10050186">https://doi.org/10.3390/metabo10050186</a>.
+</div>
+<div id="ref-pfeuffer2017" class="csl-entry">
+Pfeuffer, Julianus, Timo Sachsenberg, Oliver Alka, Mathias Walzer, Alexander Fillbrunn, Lars Nilse, Oliver Schilling, Knut Reinert, and Oliver Kohlbacher. 2017. <span>“OpenMS <span></span> A Platform for Reproducible Analysis of Mass Spectrometry Data.”</span> <em>Journal of Biotechnology</em>, Bioinformatics Solutions for Big Data Analysis in Life Sciences presented by the German Network for Bioinformatics Infrastructure, 261 (November): 142–48. <a href="https://doi.org/10.1016/j.jbiotec.2017.05.016">https://doi.org/10.1016/j.jbiotec.2017.05.016</a>.
+</div>
+<div id="ref-pluskal2010a" class="csl-entry">
+Pluskal, Tomáš, Sandra Castillo, Alejandro Villar-Briones, and Matej Orešič. 2010. <span>“MZmine 2: Modular Framework for Processing, Visualizing, and Analyzing Mass Spectrometry-Based Molecular Profile Data.”</span> <em>BMC Bioinformatics</em> 11: 395. <a href="https://doi.org/10.1186/1471-2105-11-395">https://doi.org/10.1186/1471-2105-11-395</a>.
+</div>
+<div id="ref-pluskal2020" class="csl-entry">
+Pluskal, Tomáš, Ansgar Korf, Aleksandr Smirnov, Robin Schmid, Timothy R. Fallon, Xiuxia Du, and Jing-Ke Weng. 2020. <span>“CHAPTER 7:Metabolomics Data Analysis Using MZmine.”</span> In, 232–54. <a href="https://doi.org/10.1039/9781788019880-00232">https://doi.org/10.1039/9781788019880-00232</a>.
+</div>
+<div id="ref-riquelme2020" class="csl-entry">
+Riquelme, Gabriel, Nicolás Zabalegui, Pablo Marchi, Christina M. Jones, and María Eugenia Monge. 2020. <span>“A Python-Based Pipeline for Preprocessing LC<span></span>MS Data for Untargeted Metabolomics Workflows.”</span> <em>Metabolites</em> 10 (10): 416. <a href="https://doi.org/10.3390/metabo10100416">https://doi.org/10.3390/metabo10100416</a>.
+</div>
+<div id="ref-rost2016a" class="csl-entry">
+Röst, Hannes L., Timo Sachsenberg, Stephan Aiche, Chris Bielow, Hendrik Weisser, Fabian Aicheler, Sandro Andreotti, et al. 2016. <span>“OpenMS: A Flexible Open-Source Software Platform for Mass Spectrometry Data Analysis.”</span> <em>Nature Methods</em> 13 (9): 741–48. <a href="https://doi.org/10.1038/nmeth.3959">https://doi.org/10.1038/nmeth.3959</a>.
+</div>
+<div id="ref-röst2014" class="csl-entry">
+Röst, Hannes L., Uwe Schmitt, Ruedi Aebersold, and Lars Malmström. 2014. <span>“pyOpenMS: A Python-Based Interface to the OpenMS Mass-Spectrometry Algorithm Library.”</span> <em>PROTEOMICS</em> 14 (1): 74–77. https://doi.org/<a href="https://doi.org/10.1002/pmic.201300246">https://doi.org/10.1002/pmic.201300246</a>.
+</div>
+<div id="ref-rurik2020" class="csl-entry">
+Rurik, Marc, Oliver Alka, Fabian Aicheler, and Oliver Kohlbacher. 2020. <span>“Metabolomics Data Processing Using OpenMS.”</span> In, edited by Shuzhao Li, 49–60. Methods in Molecular Biology. New York, NY: Springer US. <a href="https://doi.org/10.1007/978-1-0716-0239-3_4">https://doi.org/10.1007/978-1-0716-0239-3_4</a>.
+</div>
+<div id="ref-scheltema2011a" class="csl-entry">
+———. 2011a. <span>“PeakML/mzMatch: A File Format, Java Library, r Library, and Tool-Chain for Mass Spectrometry Data Analysis.”</span> <em>Analytical Chemistry</em> 83 (7): 2786–93. <a href="https://doi.org/10.1021/ac2000994">https://doi.org/10.1021/ac2000994</a>.
+</div>
+<div id="ref-scheubert2017" class="csl-entry">
+Scheubert, Kerstin, Franziska Hufsky, Daniel Petras, Mingxun Wang, Louis-Félix Nothias, Kai Dührkop, Nuno Bandeira, Pieter C. Dorrestein, and Sebastian Böcker. 2017. <span>“Significance Estimation for Large Scale Metabolomics Annotations by Spectral Matching.”</span> <em>Nature Communications</em> 8 (1): 1494. <a href="https://doi.org/10.1038/s41467-017-01318-5">https://doi.org/10.1038/s41467-017-01318-5</a>.
+</div>
+<div id="ref-silva2018" class="csl-entry">
+Silva, Ricardo R. da, Mingxun Wang, Louis-Félix Nothias, Justin J. J. van der Hooft, Andrés Mauricio Caraballo-Rodríguez, Evan Fox, Marcy J. Balunas, Jonathan L. Klassen, Norberto Peporine Lopes, and Pieter C. Dorrestein. 2018. <span>“Propagating Annotations of Molecular Networks Using in Silico Fragmentation.”</span> <em>PLOS Computational Biology</em> 14 (4): e1006089. <a href="https://doi.org/10.1371/journal.pcbi.1006089">https://doi.org/10.1371/journal.pcbi.1006089</a>.
+</div>
+<div id="ref-tautenhahn2012" class="csl-entry">
+Tautenhahn, Ralf, Kevin Cho, Winnie Uritboonthai, Zhengjiang Zhu, Gary J. Patti, and Gary Siuzdak. 2012. <span>“An Accelerated Workflow for Untargeted Metabolomics Using the METLIN Database.”</span> <em>Nature Biotechnology</em> 30 (9): 826–28. <a href="https://doi.org/10.1038/nbt.2348">https://doi.org/10.1038/nbt.2348</a>.
+</div>
+<div id="ref-treutler2016" class="csl-entry">
+Treutler, Hendrik, Hiroshi Tsugawa, Andrea Porzel, Karin Gorzolka, Alain Tissier, Steffen Neumann, and Gerd Ulrich Balcke. 2016a. <span>“Discovering Regulated Metabolite Families in Untargeted Metabolomics Studies.”</span> <em>Analytical Chemistry</em> 88 (16): 8082–90. <a href="https://doi.org/10.1021/acs.analchem.6b01569">https://doi.org/10.1021/acs.analchem.6b01569</a>.
+</div>
+<div id="ref-tsugawa2015a" class="csl-entry">
+Tsugawa, Hiroshi, Tomas Cajka, Tobias Kind, Yan Ma, Brendan Higgins, Kazutaka Ikeda, Mitsuhiro Kanazawa, Jean VanderGheynst, Oliver Fiehn, and Masanori Arita. 2015a. <span>“MS-DIAL: Data-Independent MS/MS Deconvolution for Comprehensive Metabolome Analysis.”</span> <em>Nature Methods</em> 12 (6): 523–26. <a href="https://doi.org/10.1038/nmeth.3393">https://doi.org/10.1038/nmeth.3393</a>.
+</div>
+<div id="ref-tsugawa2016" class="csl-entry">
+Tsugawa, Hiroshi, Tobias Kind, Ryo Nakabayashi, Daichi Yukihira, Wataru Tanaka, Tomas Cajka, Kazuki Saito, Oliver Fiehn, and Masanori Arita. 2016. <span>“Hydrogen Rearrangement Rules: Computational MS/MS Fragmentation and Structure Elucidation Using MS-FINDER Software.”</span> <em>Analytical Chemistry</em> 88 (16): 7946–58. <a href="https://doi.org/10.1021/acs.analchem.6b00770">https://doi.org/10.1021/acs.analchem.6b00770</a>.
+</div>
+<div id="ref-uppal2013a" class="csl-entry">
+Uppal, Karan, Quinlyn A. Soltow, Frederick H. Strobel, W. Stephen Pittard, Kim M. Gernert, Tianwei Yu, and Dean P. Jones. 2013. <span>“xMSanalyzer: Automated Pipeline for Improved Feature Detection and Downstream Analysis of Large-Scale, Non-Targeted Metabolomics Data.”</span> <em>BMC Bioinformatics</em> 14 (1): 15. <a href="https://doi.org/10.1186/1471-2105-14-15">https://doi.org/10.1186/1471-2105-14-15</a>.
+</div>
+<div id="ref-uppal2017" class="csl-entry">
+Uppal, Karan, Douglas I. Walker, and Dean P. Jones. 2017. <span>“xMSannotator: An r Package for Network-Based Annotation of High-Resolution Metabolomics Data.”</span> <em>Analytical Chemistry</em> 89 (2): 1063–67. <a href="https://doi.org/10.1021/acs.analchem.6b01214">https://doi.org/10.1021/acs.analchem.6b01214</a>.
+</div>
+<div id="ref-wang2016" class="csl-entry">
+Wang, Mingxun, Jeremy J. Carver, Vanessa V. Phelan, Laura M. Sanchez, Neha Garg, Yao Peng, Don Duy Nguyen, et al. 2016. <span>“Sharing and Community Curation of Mass Spectrometry Data with Global Natural Products Social Molecular Networking.”</span> <em>Nature Biotechnology</em> 34 (8): 828–37. <a href="https://doi.org/10.1038/nbt.3597">https://doi.org/10.1038/nbt.3597</a>.
+</div>
+<div id="ref-wang2016a" class="csl-entry">
+Wang, Yang, Fang Liu, Peng Li, Chengwei He, Ruibing Wang, Huanxing Su, and Jian-Bo Wan. 2016. <span>“An improved pseudotargeted metabolomics approach using multiple ion monitoring with time-staggered ion lists based on ultra-high performance liquid chromatography/quadrupole time-of-flight mass spectrometry.”</span> <em>Analytica Chimica Acta</em> 927 (July): 82–88. <a href="https://doi.org/10.1016/j.aca.2016.05.008">https://doi.org/10.1016/j.aca.2016.05.008</a>.
+</div>
+<div id="ref-weber2017" class="csl-entry">
+Weber, Ralf J. M., Thomas N. Lawson, Reza M. Salek, Timothy M. D. Ebbels, Robert C. Glen, Royston Goodacre, Julian L. Griffin, et al. 2017. <span>“Computational Tools and Workflows in Metabolomics: An International Survey Highlights the Opportunity for Harmonisation Through Galaxy.”</span> <em>Metabolomics</em> 13 (2). <a href="https://doi.org/10.1007/s11306-016-1147-x">https://doi.org/10.1007/s11306-016-1147-x</a>.
+</div>
+<div id="ref-wen2017a" class="csl-entry">
+Wen, Bo, Zhanlong Mei, Chunwei Zeng, and Siqi Liu. 2017. <span>“metaX: A Flexible and Comprehensive Software for Processing Metabolomics Data.”</span> <em>BMC Bioinformatics</em> 18 (March): 183. <a href="https://doi.org/10.1186/s12859-017-1579-y">https://doi.org/10.1186/s12859-017-1579-y</a>.
+</div>
+<div id="ref-xue2020" class="csl-entry">
+Xue, Jingchuan, Carlos Guijas, H. Paul Benton, Benedikt Warth, and Gary Siuzdak. 2020. <span>“METLIN MS 2 Molecular Standards Database: A Broad Chemical and Biological Resource.”</span> <em>Nature Methods</em> 17 (10): 953–54. <a href="https://doi.org/10.1038/s41592-020-0942-5">https://doi.org/10.1038/s41592-020-0942-5</a>.
+</div>
+<div id="ref-yu2019a" class="csl-entry">
+Yu, Miao, Mariola Olkowicz, and Janusz Pawliszyn. 2019a. <span>“Structure/Reaction Directed Analysis for LC-MS Based Untargeted Analysis.”</span> <em>Analytica Chimica Acta</em> 1050 (March): 16–24. <a href="https://doi.org/10.1016/j.aca.2018.10.062">https://doi.org/10.1016/j.aca.2018.10.062</a>.
+</div>
+<div id="ref-yu2020a" class="csl-entry">
+Yu, Miao, and Lauren Petrick. 2020. <span>“Untargeted High-Resolution Paired Mass Distance Data Mining for Retrieving General Chemical Relationships.”</span> <em>Communications Chemistry</em> 3 (1): 1–6. <a href="https://doi.org/10.1038/s42004-020-00403-z">https://doi.org/10.1038/s42004-020-00403-z</a>.
+</div>
+<div id="ref-yu2009a" class="csl-entry">
+Yu, Tianwei, Youngja Park, Jennifer M. Johnson, and Dean P. Jones. 2009. <span>“apLCMS<span></span>adaptive Processing of High-Resolution LC/MS Data.”</span> <em>Bioinformatics</em> 25 (15): 1930–36. <a href="https://doi.org/10.1093/bioinformatics/btp291">https://doi.org/10.1093/bioinformatics/btp291</a>.
+</div>
+<div id="ref-yu2019" class="csl-entry">
+Yu, Yong-Jie, Qing-Xia Zheng, Yue-Ming Zhang, Qian Zhang, Yu-Ying Zhang, Ping-Ping Liu, Peng Lu, et al. 2019. <span>“Automatic Data Analysis Workflow for Ultra-High Performance Liquid Chromatography-High Resolution Mass Spectrometry-Based Metabolomics.”</span> <em>Journal of Chromatography A</em> 1585 (January): 172–81. <a href="https://doi.org/10.1016/j.chroma.2018.11.070">https://doi.org/10.1016/j.chroma.2018.11.070</a>.
+</div>
+<div id="ref-zhang2020" class="csl-entry">
+Zhang, Yu-Ying, Qian Zhang, Yue-Ming Zhang, Wei-Wei Wang, Li Zhang, Yong-Jie Yu, Chang-Cai Bai, Ji-Zhao Guo, Hai-Yan Fu, and Yuanbin She. 2020. <span>“A Comprehensive Automatic Data Analysis Strategy for Gas Chromatography-Mass Spectrometry Based Untargeted Metabolomics.”</span> <em>Journal of Chromatography A</em> 1616 (April): 460787. <a href="https://doi.org/10.1016/j.chroma.2019.460787">https://doi.org/10.1016/j.chroma.2019.460787</a>.
+</div>
+<div id="ref-zheng2020" class="csl-entry">
+Zheng, Fujian, Xinjie Zhao, Zhongda Zeng, Lichao Wang, Wangjie Lv, Qingqing Wang, and Guowang Xu. 2020. <span>“Development of a Plasma Pseudotargeted Metabolomics Method Based on Ultra-High-Performance Liquid Chromatography<span></span>mass Spectrometry.”</span> <em>Nature Protocols</em> 15 (8): 2519–37. <a href="https://doi.org/10.1038/s41596-020-0341-5">https://doi.org/10.1038/s41596-020-0341-5</a>.
 </div>
 </div>
             </section>
@@ -443,7 +737,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -462,6 +755,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -482,6 +776,10 @@ gitbook.start({
 "text": null
 },
 "download": ["Metabolomics.pub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

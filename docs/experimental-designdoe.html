@@ -6,12 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Experimental design(DoE) | Meta-Workflow</title>
   <meta name="description" content="This is a workflow for metabolomics studies." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Experimental design(DoE) | Meta-Workflow" />
   <meta property="og:type" content="book" />
-  
-  <meta property="og:image" content="images/cover.png" />
+  <meta property="og:image" content="/images/cover.png" />
   <meta property="og:description" content="This is a workflow for metabolomics studies." />
   <meta name="github-repo" content="yufree/metaworkflow" />
 
@@ -19,12 +18,12 @@
   <meta name="twitter:title" content="Chapter 2 Experimental design(DoE) | Meta-Workflow" />
   
   <meta name="twitter:description" content="This is a workflow for metabolomics studies." />
-  <meta name="twitter:image" content="images/cover.png" />
+  <meta name="twitter:image" content="/images/cover.png" />
 
 <meta name="author" content="Miao YU" />
 
 
-<meta name="date" content="2021-01-08" />
+<meta name="date" content="2022-07-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,8 +32,8 @@
   
 <link rel="prev" href="introduction.html"/>
 <link rel="next" href="pretreatment.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -50,17 +49,26 @@
 
 
 
-
-<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/grViz-binding-1.0.6.1/grViz.js"></script>
+<script src="libs/grViz-binding-1.0.9/grViz.js"></script>
+<script src="libs/d3-3.3.8/d3.min.js"></script>
+<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
+<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+<script src="libs/chromatography-0.1/chromatography.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.9/DiagrammeR.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -119,6 +127,29 @@ code span.st { color: #4070a0; } /* String */
 code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -231,43 +262,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.5.5" data-path="annotation.html"><a href="annotation.html#biocan"><i class="fa fa-check"></i><b>7.5.5</b> BioCAn</a></li>
 <li class="chapter" data-level="7.5.6" data-path="annotation.html"><a href="annotation.html#mzmatch"><i class="fa fa-check"></i><b>7.5.6</b> mzMatch</a></li>
 <li class="chapter" data-level="7.5.7" data-path="annotation.html"><a href="annotation.html#xmsannotator"><i class="fa fa-check"></i><b>7.5.7</b> xMSannotator</a></li>
-<li class="chapter" data-level="7.5.8" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>7.5.8</b> MAIT</a></li>
-<li class="chapter" data-level="7.5.9" data-path="annotation.html"><a href="annotation.html#pmd"><i class="fa fa-check"></i><b>7.5.9</b> pmd</a></li>
-<li class="chapter" data-level="7.5.10" data-path="annotation.html"><a href="annotation.html#nontarget"><i class="fa fa-check"></i><b>7.5.10</b> nontarget</a></li>
-<li class="chapter" data-level="7.5.11" data-path="annotation.html"><a href="annotation.html#binner"><i class="fa fa-check"></i><b>7.5.11</b> Binner</a></li>
-<li class="chapter" data-level="7.5.12" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>7.5.12</b> mz.unity</a></li>
-<li class="chapter" data-level="7.5.13" data-path="annotation.html"><a href="annotation.html#ms-flo"><i class="fa fa-check"></i><b>7.5.13</b> MS-FLO</a></li>
-<li class="chapter" data-level="7.5.14" data-path="annotation.html"><a href="annotation.html#cliquems"><i class="fa fa-check"></i><b>7.5.14</b> CliqueMS</a></li>
-<li class="chapter" data-level="7.5.15" data-path="annotation.html"><a href="annotation.html#interpretmsspectrum"><i class="fa fa-check"></i><b>7.5.15</b> InterpretMSSpectrum</a></li>
+<li class="chapter" data-level="7.5.8" data-path="annotation.html"><a href="annotation.html#mwise"><i class="fa fa-check"></i><b>7.5.8</b> mWise</a></li>
+<li class="chapter" data-level="7.5.9" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>7.5.9</b> MAIT</a></li>
+<li class="chapter" data-level="7.5.10" data-path="annotation.html"><a href="annotation.html#pmd"><i class="fa fa-check"></i><b>7.5.10</b> pmd</a></li>
+<li class="chapter" data-level="7.5.11" data-path="annotation.html"><a href="annotation.html#nontarget"><i class="fa fa-check"></i><b>7.5.11</b> nontarget</a></li>
+<li class="chapter" data-level="7.5.12" data-path="annotation.html"><a href="annotation.html#binner"><i class="fa fa-check"></i><b>7.5.12</b> Binner</a></li>
+<li class="chapter" data-level="7.5.13" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>7.5.13</b> mz.unity</a></li>
+<li class="chapter" data-level="7.5.14" data-path="annotation.html"><a href="annotation.html#ms-flo"><i class="fa fa-check"></i><b>7.5.14</b> MS-FLO</a></li>
+<li class="chapter" data-level="7.5.15" data-path="annotation.html"><a href="annotation.html#cliquems"><i class="fa fa-check"></i><b>7.5.15</b> CliqueMS</a></li>
+<li class="chapter" data-level="7.5.16" data-path="annotation.html"><a href="annotation.html#interpretmsspectrum"><i class="fa fa-check"></i><b>7.5.16</b> InterpretMSSpectrum</a></li>
+<li class="chapter" data-level="7.5.17" data-path="annotation.html"><a href="annotation.html#netid"><i class="fa fa-check"></i><b>7.5.17</b> NetID</a></li>
+<li class="chapter" data-level="7.5.18" data-path="annotation.html"><a href="annotation.html#isfrag"><i class="fa fa-check"></i><b>7.5.18</b> ISfrag</a></li>
 </ul></li>
-<li class="chapter" data-level="7.6" data-path="annotation.html"><a href="annotation.html#msms-annotation"><i class="fa fa-check"></i><b>7.6</b> MS/MS annotation</a>
+<li class="chapter" data-level="7.6" data-path="annotation.html"><a href="annotation.html#ms1-ms2-connection"><i class="fa fa-check"></i><b>7.6</b> MS1 MS2 connection</a>
 <ul>
-<li class="chapter" data-level="7.6.1" data-path="annotation.html"><a href="annotation.html#metdna"><i class="fa fa-check"></i><b>7.6.1</b> MetDNA</a></li>
-<li class="chapter" data-level="7.6.2" data-path="annotation.html"><a href="annotation.html#metfusion"><i class="fa fa-check"></i><b>7.6.2</b> MetFusion</a></li>
-<li class="chapter" data-level="7.6.3" data-path="annotation.html"><a href="annotation.html#ms2analyzer"><i class="fa fa-check"></i><b>7.6.3</b> MS2Analyzer</a></li>
-<li class="chapter" data-level="7.6.4" data-path="annotation.html"><a href="annotation.html#metfrag"><i class="fa fa-check"></i><b>7.6.4</b> MetFrag</a></li>
-<li class="chapter" data-level="7.6.5" data-path="annotation.html"><a href="annotation.html#cfm-id"><i class="fa fa-check"></i><b>7.6.5</b> CFM-ID</a></li>
-<li class="chapter" data-level="7.6.6" data-path="annotation.html"><a href="annotation.html#lipidfrag"><i class="fa fa-check"></i><b>7.6.6</b> LipidFrag</a></li>
-<li class="chapter" data-level="7.6.7" data-path="annotation.html"><a href="annotation.html#lipidmatch"><i class="fa fa-check"></i><b>7.6.7</b> Lipidmatch</a></li>
-<li class="chapter" data-level="7.6.8" data-path="annotation.html"><a href="annotation.html#barcoding"><i class="fa fa-check"></i><b>7.6.8</b> BarCoding</a></li>
-<li class="chapter" data-level="7.6.9" data-path="annotation.html"><a href="annotation.html#imet"><i class="fa fa-check"></i><b>7.6.9</b> iMet</a></li>
+<li class="chapter" data-level="7.6.1" data-path="annotation.html"><a href="annotation.html#pmdda"><i class="fa fa-check"></i><b>7.6.1</b> PMDDA</a></li>
+<li class="chapter" data-level="7.6.2" data-path="annotation.html"><a href="annotation.html#hermes"><i class="fa fa-check"></i><b>7.6.2</b> HERMES</a></li>
 </ul></li>
-<li class="chapter" data-level="7.7" data-path="annotation.html"><a href="annotation.html#knowledge-based-annotation"><i class="fa fa-check"></i><b>7.7</b> Knowledge based annotation</a>
+<li class="chapter" data-level="7.7" data-path="annotation.html"><a href="annotation.html#msms-annotation"><i class="fa fa-check"></i><b>7.7</b> MS/MS annotation</a>
 <ul>
-<li class="chapter" data-level="7.7.1" data-path="annotation.html"><a href="annotation.html#chromatographic-retention-related-criteria"><i class="fa fa-check"></i><b>7.7.1</b> Chromatographic retention-related criteria</a></li>
-<li class="chapter" data-level="7.7.2" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>7.7.2</b> ProbMetab</a></li>
-<li class="chapter" data-level="7.7.3" data-path="annotation.html"><a href="annotation.html#mi-pack"><i class="fa fa-check"></i><b>7.7.3</b> MI-Pack</a></li>
-<li class="chapter" data-level="7.7.4" data-path="annotation.html"><a href="annotation.html#metexpert"><i class="fa fa-check"></i><b>7.7.4</b> MetExpert</a></li>
-<li class="chapter" data-level="7.7.5" data-path="annotation.html"><a href="annotation.html#mycompoundid"><i class="fa fa-check"></i><b>7.7.5</b> MycompoundID</a></li>
-<li class="chapter" data-level="7.7.6" data-path="annotation.html"><a href="annotation.html#metfamily"><i class="fa fa-check"></i><b>7.7.6</b> MetFamily</a></li>
-<li class="chapter" data-level="7.7.7" data-path="annotation.html"><a href="annotation.html#plantmat"><i class="fa fa-check"></i><b>7.7.7</b> Plantmat</a></li>
+<li class="chapter" data-level="7.7.1" data-path="annotation.html"><a href="annotation.html#metdna"><i class="fa fa-check"></i><b>7.7.1</b> MetDNA</a></li>
+<li class="chapter" data-level="7.7.2" data-path="annotation.html"><a href="annotation.html#metfusion"><i class="fa fa-check"></i><b>7.7.2</b> MetFusion</a></li>
+<li class="chapter" data-level="7.7.3" data-path="annotation.html"><a href="annotation.html#ms2analyzer"><i class="fa fa-check"></i><b>7.7.3</b> MS2Analyzer</a></li>
+<li class="chapter" data-level="7.7.4" data-path="annotation.html"><a href="annotation.html#metfrag"><i class="fa fa-check"></i><b>7.7.4</b> MetFrag</a></li>
+<li class="chapter" data-level="7.7.5" data-path="annotation.html"><a href="annotation.html#cfm-id"><i class="fa fa-check"></i><b>7.7.5</b> CFM-ID</a></li>
+<li class="chapter" data-level="7.7.6" data-path="annotation.html"><a href="annotation.html#lipidfrag"><i class="fa fa-check"></i><b>7.7.6</b> LipidFrag</a></li>
+<li class="chapter" data-level="7.7.7" data-path="annotation.html"><a href="annotation.html#lipidmatch"><i class="fa fa-check"></i><b>7.7.7</b> Lipidmatch</a></li>
+<li class="chapter" data-level="7.7.8" data-path="annotation.html"><a href="annotation.html#barcoding"><i class="fa fa-check"></i><b>7.7.8</b> BarCoding</a></li>
+<li class="chapter" data-level="7.7.9" data-path="annotation.html"><a href="annotation.html#imet"><i class="fa fa-check"></i><b>7.7.9</b> iMet</a></li>
 </ul></li>
-<li class="chapter" data-level="7.8" data-path="annotation.html"><a href="annotation.html#ms-database-for-annotation"><i class="fa fa-check"></i><b>7.8</b> MS Database for annotation</a>
+<li class="chapter" data-level="7.8" data-path="annotation.html"><a href="annotation.html#knowledge-based-annotation"><i class="fa fa-check"></i><b>7.8</b> Knowledge based annotation</a>
 <ul>
-<li class="chapter" data-level="7.8.1" data-path="annotation.html"><a href="annotation.html#ms"><i class="fa fa-check"></i><b>7.8.1</b> MS</a></li>
-<li class="chapter" data-level="7.8.2" data-path="annotation.html"><a href="annotation.html#msms-1"><i class="fa fa-check"></i><b>7.8.2</b> MS/MS</a></li>
+<li class="chapter" data-level="7.8.1" data-path="annotation.html"><a href="annotation.html#chromatographic-retention-related-criteria"><i class="fa fa-check"></i><b>7.8.1</b> Chromatographic retention-related criteria</a></li>
+<li class="chapter" data-level="7.8.2" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>7.8.2</b> ProbMetab</a></li>
+<li class="chapter" data-level="7.8.3" data-path="annotation.html"><a href="annotation.html#mi-pack"><i class="fa fa-check"></i><b>7.8.3</b> MI-Pack</a></li>
+<li class="chapter" data-level="7.8.4" data-path="annotation.html"><a href="annotation.html#metexpert"><i class="fa fa-check"></i><b>7.8.4</b> MetExpert</a></li>
+<li class="chapter" data-level="7.8.5" data-path="annotation.html"><a href="annotation.html#mycompoundid"><i class="fa fa-check"></i><b>7.8.5</b> MycompoundID</a></li>
+<li class="chapter" data-level="7.8.6" data-path="annotation.html"><a href="annotation.html#metfamily"><i class="fa fa-check"></i><b>7.8.6</b> MetFamily</a></li>
+<li class="chapter" data-level="7.8.7" data-path="annotation.html"><a href="annotation.html#plantmat"><i class="fa fa-check"></i><b>7.8.7</b> Plantmat</a></li>
 </ul></li>
-<li class="chapter" data-level="7.9" data-path="annotation.html"><a href="annotation.html#compounds-database"><i class="fa fa-check"></i><b>7.9</b> Compounds Database</a></li>
+<li class="chapter" data-level="7.9" data-path="annotation.html"><a href="annotation.html#ms-database-for-annotation"><i class="fa fa-check"></i><b>7.9</b> MS Database for annotation</a>
+<ul>
+<li class="chapter" data-level="7.9.1" data-path="annotation.html"><a href="annotation.html#ms"><i class="fa fa-check"></i><b>7.9.1</b> MS</a></li>
+<li class="chapter" data-level="7.9.2" data-path="annotation.html"><a href="annotation.html#msms-1"><i class="fa fa-check"></i><b>7.9.2</b> MS/MS</a></li>
+</ul></li>
+<li class="chapter" data-level="7.10" data-path="annotation.html"><a href="annotation.html#compounds-database"><i class="fa fa-check"></i><b>7.10</b> Compounds Database</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>8</b> Omics analysis</a>
 <ul>
@@ -306,7 +345,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#pca"><i class="fa fa-check"></i><b>10.3</b> PCA</a></li>
 <li class="chapter" data-level="10.4" data-path="statistical-analysis.html"><a href="statistical-analysis.html#cluster-analysis"><i class="fa fa-check"></i><b>10.4</b> Cluster Analysis</a></li>
 <li class="chapter" data-level="10.5" data-path="statistical-analysis.html"><a href="statistical-analysis.html#plsda"><i class="fa fa-check"></i><b>10.5</b> PLSDA</a></li>
-<li class="chapter" data-level="10.6" data-path="statistical-analysis.html"><a href="statistical-analysis.html#software-1"><i class="fa fa-check"></i><b>10.6</b> Software</a></li>
+<li class="chapter" data-level="10.6" data-path="statistical-analysis.html"><a href="statistical-analysis.html#network-analysis-1"><i class="fa fa-check"></i><b>10.6</b> Network analysis</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="statistical-analysis.html"><a href="statistical-analysis.html#vertex-and-edge"><i class="fa fa-check"></i><b>10.6.1</b> Vertex and edge</a></li>
+<li class="chapter" data-level="10.6.2" data-path="statistical-analysis.html"><a href="statistical-analysis.html#build-the-network"><i class="fa fa-check"></i><b>10.6.2</b> Build the network</a></li>
+<li class="chapter" data-level="10.6.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#network-attributes"><i class="fa fa-check"></i><b>10.6.3</b> Network attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="statistical-analysis.html"><a href="statistical-analysis.html#software-1"><i class="fa fa-check"></i><b>10.7</b> Software</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="exposome.html"><a href="exposome.html"><i class="fa fa-check"></i><b>11</b> Exposome</a>
 <ul>
@@ -338,20 +383,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="experimental-designdoe" class="section level1" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Experimental design(DoE)</h1>
-<p>Before you perform any metabolomics experiment, a clean and meaningful experimental design is the best start. Depending on different research purposes, experimental design can be classified into homogeneity and heterogeneity study. Technique such as isotope labeled media will not be discussed in this chapter while this paper<span class="citation">(<a href="references.html#ref-jang2018" role="doc-biblioref">Jang, Chen, and Rabinowitz 2018</a>)</span> could be a good start.</p>
-<div id="homogeneity-study" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Homogeneity study</h2>
+<div id="experimental-designdoe" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Experimental design(DoE)<a href="experimental-designdoe.html#experimental-designdoe" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Before you perform any metabolomics experiment, a clean and meaningful experimental design is the best start. Depending on different research purposes, experimental design can be classified into homogeneity and heterogeneity study. Technique such as isotope labeled media will not be discussed in this chapter while this paper<span class="citation">(<a href="#ref-jang2018" role="doc-biblioref">Jang, Chen, and Rabinowitz 2018</a>)</span> could be a good start.</p>
+<div id="homogeneity-study" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Homogeneity study<a href="experimental-designdoe.html#homogeneity-study" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In homogeneity study, the research purpose is about method validation in most cases. Pooled sample made from multiple samples or technical replicates from same population will be used. Variances within the samples should be attributed to factors other than the samples themselves. For example, we want to know if sample injection order will affect the intensities of the unknown peaks, one pooled sample or technical replicates samples should be used.</p>
 <p>Another experimental design for homogeneity study will use biological replicates to find the common features from a group of samples. Biological replicates mean samples from same population with same biological process. For example, we wanted to know metabolites profiles of a certain species and we could collected lots of the individual samples from the population. Then only the peaks/compounds appeared in all samples will be used to describe the metabolites profiles of this species. Technical replicates could also be used with biological replicates.</p>
 </div>
-<div id="heterogeneity-study" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Heterogeneity study</h2>
+<div id="heterogeneity-study" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Heterogeneity study<a href="experimental-designdoe.html#heterogeneity-study" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In heterogeneity study, the research purpose is to find the differences among samples. You need at least a baseline to perform the comparison. Such baseline could be generated by random process, control samples or background knowledge. For example, outlier detection can be performed to find abnormal samples in unsupervised manners. Distribution or spatial analysis could be used to find geological relationship of known and unknown compounds. Temporal trend of metabolites profile could be found by time series or cohort studies. Clinical trial or random control trial is also an important class of heterogeneity studies. In this cases, you need at least two groups: treated group and control group. Also you could treat this group information as the one primary variable or primary variables to be explored for certain research purposes. In the following discussion about experimental design, we will use random control trail as model to discuss important issues.</p>
 </div>
-<div id="power-analysis" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Power analysis</h2>
+<div id="power-analysis" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Power analysis<a href="experimental-designdoe.html#power-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Supposing we have control and treated groups, the numbers of samples in each group should be carefully calculated.For each metabolite, such comparison could be treated as one t-test. You need to perform a Power analysis to get the numbers. For example, we have two groups of samples with 10 samples in each group. Then we set the power at 0.9, which means one minus Type II error probability, the standard deviation at 1 and the significance level (Type 1 error probability) at 0.05. Then we will get the meaningful delta between the two groups should be higher than 1.53367 under this experiment design. Also we could set the delta to get the minimized numbers of the samples in each group. To get those data such as the standard deviation or delta for power analysis, you need to perform preliminary or pilot experiments.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="experimental-designdoe.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">power.t.test</span>(<span class="at">n=</span><span class="dv">10</span>,<span class="at">sd=</span><span class="dv">1</span>,<span class="at">sig.level =</span> <span class="fl">0.05</span>,<span class="at">power =</span> <span class="fl">0.9</span>)</span></code></pre></div>
 <pre><code>## 
@@ -378,32 +423,83 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## NOTE: n is number in *each* group</code></pre>
 <p>However, since sometimes we could not perform preliminary experiment, we could directly compute the power based on false discovery rate control. If the power is lower than certain value, say 0.8, we just exclude this peak as significant features.</p>
-<p>In this review <span class="citation">(<a href="references.html#ref-oberg2009" role="doc-biblioref">Oberg and Vitek 2009</a>)</span>, author suggest to estimate an average <span class="math inline">\(\alpha\)</span> according to this equation <span class="citation">(<a href="references.html#ref-benjamini1995" role="doc-biblioref">Benjamini and Hochberg 1995</a>)</span> and then use normal way to calculate the sample numbers:</p>
+<p>In this review <span class="citation">(<a href="#ref-oberg2009" role="doc-biblioref">Oberg and Vitek 2009</a>)</span>, author suggest to estimate an average <span class="math inline">\(\alpha\)</span> according to this equation <span class="citation">(<a href="#ref-benjamini1995" role="doc-biblioref">Benjamini and Hochberg 1995</a>)</span> and then use normal way to calculate the sample numbers:</p>
 <p><span class="math display">\[
 \alpha_{ave} \leq (1-\beta_{ave})\cdot q\frac{1}{1+(1-q)\cdot m_0/m_1}
 \]</span></p>
-<p>Other study <span class="citation">(<a href="references.html#ref-blaise2016a" role="doc-biblioref">Blaise et al. 2016</a>)</span> show a method based on simulation to estimate the sample size. They used BY correction to limit the influences from correlations. Other investigation could be found here<span class="citation">(<a href="references.html#ref-saccenti2016" role="doc-biblioref">Saccenti and Timmerman 2016</a>; <a href="references.html#ref-blaise2013" role="doc-biblioref">Blaise 2013</a>)</span>. However, the nature of omics study make the power analysis hard to use one number for all metabolites and all the methods are trying to find a balance to represent more peaks with least samples.</p>
+<p>Other study <span class="citation">(<a href="#ref-blaise2016a" role="doc-biblioref">Blaise et al. 2016</a>)</span> show a method based on simulation to estimate the sample size. They used BY correction to limit the influences from correlations. Other investigation could be found here<span class="citation">(<a href="#ref-saccenti2016" role="doc-biblioref">Saccenti and Timmerman 2016</a>; <a href="#ref-blaise2013" role="doc-biblioref">Blaise 2013</a>)</span>. However, the nature of omics study make the power analysis hard to use one number for all metabolites and all the methods are trying to find a balance to represent more peaks with least samples.</p>
 <ul>
-<li><p><a href="https://github.com/cran/MetSizeR">MetSizeR</a> GUI Tool for Estimating Sample Sizes for metabolomics Experiments<span class="citation">(<a href="references.html#ref-nyamundanda2013" role="doc-biblioref">Nyamundanda et al. 2013</a>)</span>.</p></li>
-<li><p><a href="https://www.bioconductor.org/packages/release/bioc/vignettes/MSstats/inst/doc/MSstats.html">MSstats</a> Protein/Peptide significance analysis <span class="citation">(<a href="references.html#ref-choi2014" role="doc-biblioref">Choi et al. 2014a</a>)</span>.</p></li>
-<li><p><a href="https://cran.rstudio.com/web/packages/enviGCMS/index.html">enviGCMS</a> GC/LC-MS Data Analysis for Environmental Science<span class="citation">(<a href="references.html#ref-yu2017" role="doc-biblioref">M. Yu et al. 2017a</a>)</span>.</p></li>
+<li><p><a href="https://github.com/cran/MetSizeR">MetSizeR</a> GUI Tool for Estimating Sample Sizes for metabolomics Experiments<span class="citation">(<a href="#ref-nyamundanda2013" role="doc-biblioref">Nyamundanda et al. 2013</a>)</span>.</p></li>
+<li><p><a href="https://www.bioconductor.org/packages/release/bioc/vignettes/MSstats/inst/doc/MSstats.html">MSstats</a> Protein/Peptide significance analysis <span class="citation">(<a href="#ref-choi2014" role="doc-biblioref">Choi et al. 2014a</a>)</span>.</p></li>
+<li><p><a href="https://cran.rstudio.com/web/packages/enviGCMS/index.html">enviGCMS</a> GC/LC-MS Data Analysis for Environmental Science<span class="citation">(<a href="#ref-yu2017" role="doc-biblioref">M. Yu et al. 2017a</a>)</span>.</p></li>
 </ul>
 </div>
-<div id="optimization" class="section level2" number="2.4">
-<h2><span class="header-section-number">2.4</span> Optimization</h2>
-<p>One experiment can contain lots of factors with different levels and only one set of parameters for different factors will show the best sensitivity or reproducibility for certain study. To find this set of parameters, Plackett-Burman Design (PBD), Response Surface Methodology (RSM), Central Composite Design (CCD), and Taguchi methods could be used to optimize the parameters for metabolomics study. The target could be the quality of peaks, the numbers of peaks, the stability of peaks intensity, and/or the statistics of the combination of those targets. You could check those paper for details<span class="citation">(<a href="references.html#ref-jacyna2019" role="doc-biblioref">Jacyna, Kordalewska, and Markuszewski 2019</a>; <a href="references.html#ref-box2005" role="doc-biblioref">Box, Hunter, and Hunter 2005</a>)</span>.</p>
+<div id="optimization" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Optimization<a href="experimental-designdoe.html#optimization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>One experiment can contain lots of factors with different levels and only one set of parameters for different factors will show the best sensitivity or reproducibility for certain study. To find this set of parameters, Plackett-Burman Design (PBD), Response Surface Methodology (RSM), Central Composite Design (CCD), and Taguchi methods could be used to optimize the parameters for metabolomics study. The target could be the quality of peaks, the numbers of peaks, the stability of peaks intensity, and/or the statistics of the combination of those targets. You could check those paper for details<span class="citation">(<a href="#ref-jacyna2019" role="doc-biblioref">Jacyna, Kordalewska, and Markuszewski 2019</a>; <a href="#ref-box2005" role="doc-biblioref">Box, Hunter, and Hunter 2005</a>)</span>.</p>
 </div>
-<div id="pooled-qc" class="section level2" number="2.5">
-<h2><span class="header-section-number">2.5</span> Pooled QC</h2>
-<p>Pooled QC samples are unique and very important for metabolomics study. Every 10 or 20 samples, a pooled sample from all samples and blank sample in one study should be injected as quality control samples. Pooled QC samples contain the changes during the instrumental analysis and blank samples could tell where the variances come from. Meanwhile the cap of sequence should old the column with pooled QC samples. The injection sequence should be randomized. Those papers<span class="citation">(<a href="references.html#ref-phapale2020" role="doc-biblioref">Phapale et al. 2020</a>; <a href="references.html#ref-dudzik2018" role="doc-biblioref">Dudzik et al. 2018</a>; <a href="references.html#ref-dunn2012" role="doc-biblioref">Dunn et al. 2012</a>; <a href="references.html#ref-broadhurst2018" role="doc-biblioref">Broadhurst et al. 2018</a>)</span> should be read for details.</p>
+<div id="pooled-qc" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Pooled QC<a href="experimental-designdoe.html#pooled-qc" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Pooled QC samples are unique and very important for metabolomics study. Every 10 or 20 samples, a pooled sample from all samples and blank sample in one study should be injected as quality control samples. Pooled QC samples contain the changes during the instrumental analysis and blank samples could tell where the variances come from. Meanwhile the cap of sequence should old the column with pooled QC samples. The injection sequence should be randomized. Those papers<span class="citation">(<a href="#ref-phapale2020" role="doc-biblioref">Phapale et al. 2020</a>; <a href="#ref-dudzik2018" role="doc-biblioref">Dudzik et al. 2018</a>; <a href="#ref-dunn2012" role="doc-biblioref">Dunn et al. 2012</a>; <a href="#ref-broadhurst2018" role="doc-biblioref">Broadhurst et al. 2018</a>)</span> should be read for details.</p>
 <p>If there are other co-factors, a linear model or randomizing would be applied to eliminate their influences. You need to record the values of those co-factors for further data analysis. Common co-factors in metabolomics studies are age, gender, location, etc.</p>
 <p>If you need data correction, some background or calibration samples are required. However, control samples could also be used for data correction in certain DoE.</p>
-<p>Another important factors are instrumentals. High-resolution mass spectrum is always preferred. As shown in Lukas’s study <span class="citation">(<a href="references.html#ref-najdekr2016" role="doc-biblioref">Najdekr et al. 2016</a>)</span>:</p>
+<p>Another important factors are instrumentals. High-resolution mass spectrum is always preferred. As shown in Lukas’s study <span class="citation">(<a href="#ref-najdekr2016" role="doc-biblioref">Najdekr et al. 2016</a>)</span>:</p>
 <blockquote>
 <p>the most effective mass resolving powers for profiling analyses of metabolite rich biofluids on the Orbitrap Elite were around 60000–120000 fwhm to retrieve the highest amount of information. The region between 400–800 m/z was influenced the most by resolution.</p>
 </blockquote>
 <p>However, elimination of peaks with high RSD% within group were always omitted by most study. Based on pre-experiment, you could get a description of RSD% distribution and set cut-off to use stable peaks for further data analysis. To my knowledge, 30% is suitable considering the batch effects.</p>
 
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-benjamini1995" class="csl-entry">
+Benjamini, Yoav, and Yosef Hochberg. 1995. <span>“Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing.”</span> <em>Journal of the Royal Statistical Society. Series B (Methodological)</em> 57 (1): 289–300. <a href="https://www.jstor.org/stable/2346101">https://www.jstor.org/stable/2346101</a>.
+</div>
+<div id="ref-blaise2013" class="csl-entry">
+Blaise, Benjamin J. 2013. <span>“Data-Driven Sample Size Determination for Metabolic Phenotyping Studies.”</span> <em>Analytical Chemistry</em> 85 (19): 8943–50. <a href="https://doi.org/10.1021/ac4022314">https://doi.org/10.1021/ac4022314</a>.
+</div>
+<div id="ref-blaise2016a" class="csl-entry">
+Blaise, Benjamin J., Gonçalo Correia, Adrienne Tin, J. Hunter Young, Anne-Claire Vergnaud, Matthew Lewis, Jake T. M. Pearce, et al. 2016. <span>“Power Analysis and Sample Size Determination in Metabolic Phenotyping.”</span> <em>Analytical Chemistry</em> 88 (10): 5179–88. <a href="https://doi.org/10.1021/acs.analchem.6b00188">https://doi.org/10.1021/acs.analchem.6b00188</a>.
+</div>
+<div id="ref-box2005" class="csl-entry">
+Box, George E. P., J. Stuart Hunter, and William G. Hunter. 2005. <em>Statistics for Experimenters</em>. Wiley-Interscience. <a href="https://book.douban.com/subject/1775779/">https://book.douban.com/subject/1775779/</a>.
+</div>
+<div id="ref-broadhurst2018" class="csl-entry">
+Broadhurst, David, Royston Goodacre, Stacey N. Reinke, Julia Kuligowski, Ian D. Wilson, Matthew R. Lewis, and Warwick B. Dunn. 2018. <span>“Guidelines and Considerations for the Use of System Suitability and Quality Control Samples in Mass Spectrometry Assays Applied in Untargeted Clinical Metabolomic Studies.”</span> <em>Metabolomics</em> 14 (6). <a href="https://doi.org/10.1007/s11306-018-1367-3">https://doi.org/10.1007/s11306-018-1367-3</a>.
+</div>
+<div id="ref-choi2014" class="csl-entry">
+Choi, Meena, Ching-Yun Chang, Timothy Clough, Daniel Broudy, Trevor Killeen, Brendan MacLean, and Olga Vitek. 2014a. <span>“MSstats: An r Package for Statistical Analysis of Quantitative Mass Spectrometry-Based Proteomic Experiments.”</span> <em>Bioinformatics</em> 30 (17): 2524–26. <a href="https://doi.org/10.1093/bioinformatics/btu305">https://doi.org/10.1093/bioinformatics/btu305</a>.
+</div>
+<div id="ref-dudzik2018" class="csl-entry">
+Dudzik, Danuta, Cecilia Barbas-Bernardos, Antonia García, and Coral Barbas. 2018. <span>“Quality Assurance Procedures for Mass Spectrometry Untargeted Metabolomics. A Review.”</span> <em>Journal of Pharmaceutical and Biomedical Analysis</em>, Review issue 2017, 147 (January): 149–73. <a href="https://doi.org/10.1016/j.jpba.2017.07.044">https://doi.org/10.1016/j.jpba.2017.07.044</a>.
+</div>
+<div id="ref-dunn2012" class="csl-entry">
+Dunn, Warwick B, Ian D Wilson, Andrew W Nicholls, and David Broadhurst. 2012. <span>“The Importance of Experimental Design and QC Samples in Large-Scale and MS-Driven Untargeted Metabolomic Studies of Humans.”</span> <em>Bioanalysis</em> 4 (18): 2249–64. <a href="https://doi.org/10.4155/bio.12.204">https://doi.org/10.4155/bio.12.204</a>.
+</div>
+<div id="ref-jacyna2019" class="csl-entry">
+Jacyna, Julia, Marta Kordalewska, and Michał J. Markuszewski. 2019. <span>“Design of Experiments in Metabolomics-Related Studies: An Overview.”</span> <em>Journal of Pharmaceutical and Biomedical Analysis</em> 164 (February): 598–606. <a href="https://doi.org/10.1016/j.jpba.2018.11.027">https://doi.org/10.1016/j.jpba.2018.11.027</a>.
+</div>
+<div id="ref-jang2018" class="csl-entry">
+Jang, Cholsoon, Li Chen, and Joshua D. Rabinowitz. 2018. <span>“Metabolomics and Isotope Tracing.”</span> <em>Cell</em> 173 (4): 822–37. <a href="https://doi.org/10.1016/j.cell.2018.03.055">https://doi.org/10.1016/j.cell.2018.03.055</a>.
+</div>
+<div id="ref-najdekr2016" class="csl-entry">
+Najdekr, Lukáš, David Friedecký, Ralf Tautenhahn, Tomáš Pluskal, Junhua Wang, Yingying Huang, and Tomáš Adam. 2016. <span>“Influence of Mass Resolving Power in Orbital Ion-Trap Mass Spectrometry-Based Metabolomics.”</span> <em>Analytical Chemistry</em> 88 (23): 11429–35. <a href="https://doi.org/10.1021/acs.analchem.6b02319">https://doi.org/10.1021/acs.analchem.6b02319</a>.
+</div>
+<div id="ref-nyamundanda2013" class="csl-entry">
+Nyamundanda, Gift, Isobel Claire Gormley, Yue Fan, William M. Gallagher, and Lorraine Brennan. 2013. <span>“MetSizeR: Selecting the Optimal Sample Size for Metabolomic Studies Using an Analysis Based Approach.”</span> <em>BMC Bioinformatics</em> 14: 338. <a href="https://doi.org/10.1186/1471-2105-14-338">https://doi.org/10.1186/1471-2105-14-338</a>.
+</div>
+<div id="ref-oberg2009" class="csl-entry">
+Oberg, Ann L., and Olga Vitek. 2009. <span>“Statistical Design of Quantitative Mass Spectrometry-Based Proteomic Experiments.”</span> <em>Journal of Proteome Research</em> 8 (5): 2144–56. <a href="https://doi.org/10.1021/pr8010099">https://doi.org/10.1021/pr8010099</a>.
+</div>
+<div id="ref-phapale2020" class="csl-entry">
+Phapale, Prasad, Vineeta Rai, Ashok Kumar Mohanty, and Sanjeeva Srivastava. 2020. <span>“Untargeted Metabolomics Workshop Report: Quality Control Considerations from Sample Preparation to Data Analysis.”</span> <em>Journal of the American Society for Mass Spectrometry</em> 31 (9): 2006–10. <a href="https://doi.org/10.1021/jasms.0c00224">https://doi.org/10.1021/jasms.0c00224</a>.
+</div>
+<div id="ref-saccenti2016" class="csl-entry">
+Saccenti, Edoardo, and Marieke E. Timmerman. 2016. <span>“Approaches to Sample Size Determination for Multivariate Data: Applications to PCA and PLS-DA of Omics Data.”</span> <em>Journal of Proteome Research</em> 15 (8): 2379–93. <a href="https://doi.org/10.1021/acs.jproteome.5b01029">https://doi.org/10.1021/acs.jproteome.5b01029</a>.
+</div>
+<div id="ref-yu2017" class="csl-entry">
+Yu, Miao, Xingwang Hou, Qian Liu, Yawei Wang, Jiyan Liu, and Guibin Jiang. 2017a. <span>“Evaluation and Reduction of the Analytical Uncertainties in GC-MS Analysis Using a Boundary Regression Model.”</span> <em>Talanta</em> 164 (March): 141–47. <a href="https://doi.org/10.1016/j.talanta.2016.11.046">https://doi.org/10.1016/j.talanta.2016.11.046</a>.
 </div>
 </div>
             </section>
@@ -416,7 +512,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -435,6 +530,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -455,6 +551,10 @@ gitbook.start({
 "text": null
 },
 "download": ["Metabolomics.pub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
