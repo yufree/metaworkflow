@@ -510,19 +510,6 @@ Figure 6.5: Demo of many GC/LC-MS data
 ## 
 ## Coefficients:
 ##             Estimate Std. Error z value Pr(&gt;|z|)    
-<<<<<<< HEAD
-## (Intercept)   1.0000     0.4254   2.351   0.0187 *  
-## x            10.0000     0.3162  31.623   &lt;2e-16 ***
-## Log(scale)    2.1122     0.0000     Inf   &lt;2e-16 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Scale: 8.267 
-## 
-## Gaussian distribution
-## Number of Newton-Raphson Iterations: 1 
-## Log-likelihood: -3031 on 3 Df
-=======
 ## (Intercept)   1.0000     0.4399   2.273    0.023 *  
 ## x            10.0000     0.3162  31.623   &lt;2e-16 ***
 ## Log(scale)    2.1737     0.0000     Inf   &lt;2e-16 ***
@@ -534,7 +521,6 @@ Figure 6.5: Demo of many GC/LC-MS data
 ## Gaussian distribution
 ## Number of Newton-Raphson Iterations: 1 
 ## Log-likelihood: -3093 on 3 Df
->>>>>>> 0fbb9f50c66db641d3a6480b9ec4752a1517a38a
 ## Wald-statistic:  1000 on 1 Df, p-value: &lt; 2.22e-16</code></pre>
 <p>According to Ronald Hites’s simulation<span class="citation">(<a href="#ref-hites2019" role="doc-biblioref">Hites 2019</a>)</span>, measurements below the LOD (even missing measurements) with the LOD/2 or with the <span class="math inline">\(LOD/\sqrt2\)</span> causes little bias and “Any time you have a % non-detected &gt;20%, for whatever reason, it is unlikely that the data set can give useful results.”</p>
 <p>Another study find random forest could be the best imputation method for missing at random (MAR), and missing completely at random (MCAR) data. Quantile regression imputation of left-censored data is the best imputation methods for left-censored missing not at random data <span class="citation">(<a href="#ref-wei2018" role="doc-biblioref">Wei et al. 2018</a>)</span>.</p>
