@@ -386,6 +386,7 @@ div.csl-indent {
 <div id="workflow-2" class="section level1 hasAnchor" number="5">
 <h1><span class="header-section-number">Chapter 5</span> Workflow<a href="workflow-2.html#workflow-2" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>You could check this book for metabolomics data analysis <span class="citation">(<a href="#ref-li2020" role="doc-biblioref">S. Li 2020</a>)</span>.</p>
+<<<<<<< HEAD
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="workflow-2.html#cb7-1" aria-hidden="true" tabindex="-1"></a>DiagrammeR<span class="sc">::</span><span class="fu">mermaid</span>(<span class="st">&quot;</span></span>
 <span id="cb7-2"><a href="workflow-2.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="st">flowchart TB</span></span>
 <span id="cb7-3"><a href="workflow-2.html#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="st">I(peak-picking) --&gt; C</span></span>
@@ -403,6 +404,25 @@ div.csl-indent {
 <span id="cb7-15"><a href="workflow-2.html#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span>)</span></code></pre></div>
 <div class="DiagrammeR html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-55c03a59d06c8aca3db0" style="width:672px;height:480px;"></div>
 <script type="application/json" data-for="htmlwidget-55c03a59d06c8aca3db0">{"x":{"diagram":"\nflowchart TB\nI(peak-picking) --> C\nC(visulization) --> D(normalization/batch correction)\nD --> A(annotation/identification)\nA --> H(statistical analysis)\nC --> A --> B(omics analysis)\nD --> H\nB --> H\nH --> E(experimental validation)\nA --> E\nH --> A\nB --> E\nC --> H\n"},"evals":[],"jsHooks":[]}</script>
+=======
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="workflow-2.html#cb8-1" aria-hidden="true" tabindex="-1"></a>DiagrammeR<span class="sc">::</span><span class="fu">mermaid</span>(<span class="st">&quot;</span></span>
+<span id="cb8-2"><a href="workflow-2.html#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="st">flowchart TB</span></span>
+<span id="cb8-3"><a href="workflow-2.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="st">I(peak-picking) --&gt; C</span></span>
+<span id="cb8-4"><a href="workflow-2.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="st">C(visulization) --&gt; D(normalization/batch correction)</span></span>
+<span id="cb8-5"><a href="workflow-2.html#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="st">D --&gt; A(annotation/identification)</span></span>
+<span id="cb8-6"><a href="workflow-2.html#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="st">A --&gt; H(statistical analysis)</span></span>
+<span id="cb8-7"><a href="workflow-2.html#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="st">C --&gt; A --&gt; B(omics analysis)</span></span>
+<span id="cb8-8"><a href="workflow-2.html#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="st">D --&gt; H</span></span>
+<span id="cb8-9"><a href="workflow-2.html#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="st">B --&gt; H</span></span>
+<span id="cb8-10"><a href="workflow-2.html#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="st">H --&gt; E(experimental validation)</span></span>
+<span id="cb8-11"><a href="workflow-2.html#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="st">A --&gt; E</span></span>
+<span id="cb8-12"><a href="workflow-2.html#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="st">H --&gt; A</span></span>
+<span id="cb8-13"><a href="workflow-2.html#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="st">B --&gt; E</span></span>
+<span id="cb8-14"><a href="workflow-2.html#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="st">C --&gt; H</span></span>
+<span id="cb8-15"><a href="workflow-2.html#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span>)</span></code></pre></div>
+<div id="htmlwidget-2e035f8f1609b2ca815f" style="width:672px;height:480px;" class="DiagrammeR html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2e035f8f1609b2ca815f">{"x":{"diagram":"\nflowchart TB\nI(peak-picking) --> C\nC(visulization) --> D(normalization/batch correction)\nD --> A(annotation/identification)\nA --> H(statistical analysis)\nC --> A --> B(omics analysis)\nD --> H\nB --> H\nH --> E(experimental validation)\nA --> E\nH --> A\nB --> E\nC --> H\n"},"evals":[],"jsHooks":[]}</script>
+>>>>>>> 287aa8233339e049543a69ceadad7d8abf326e98
 <div id="platform-for-metabolomics-data-analysis" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> Platform for metabolomics data analysis<a href="workflow-2.html#platform-for-metabolomics-data-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Here is a list for related open source <a href="http://strimmerlab.org/notes/mass-spectrometry.html">projects</a></p>
