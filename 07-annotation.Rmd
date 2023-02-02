@@ -47,6 +47,8 @@ According to the definition from the Chemical Analysis Working Group of the Meta
 
 In practice, data analysis based annotation could reach level 2. For level 1, we need at extra methods such as MS/MS, retention time, accurate mass, 2D NMR spectra, and so on to confirm the compounds. However, standards are always required for solid proof.
 
+For specific group of compounds such as PFASs, the communication of confidence level could be slightly different[@charbonnet2022].
+
 Through MS/MS seemed a required step for identification, recent study found ESI might also generate fragments ions for structure identification [@xue2020a; @xue2021].
 
 ## Molecular Formula Assignment
@@ -233,9 +235,13 @@ a molecular-formula-oriented method to target the metabolome[@giné2021].
 
 ## MS/MS annotation
 
-MS/MS annotation is performed to generate a matching score with library spectra. The most popular matching algorithm is dot product similarity. A recent study found spectral entropy algorithm outperformed dot product similarity [@li2021].
+MS/MS annotation is performed to generate a matching score with library spectra. The most popular matching algorithm is dot product similarity. A recent study found spectral entropy algorithm outperformed dot product similarity [@li2021]. Comparison of Cosine, Modified Cosine, and Neutral Loss Based Spectrum Alignment showed modified cosine similarity outperformed neutral loss matching and the cosine similarity in all cases. The performance of MS/MS spectrum alignment depends on the location and type of the modification, as well as the chemical compound class of fragmented molecules. [@bittremieux2022]
 
 You could check $$Workflow$$ section for popular platform. Here are some stand-alone annotation software:
+
+### Matchms
+
+[Matchms](https://github.com/matchms/matchms) is an open-source Python package to import, process, clean, and compare mass spectrometry data (MS/MS). It allows to implement and run an easy-to-follow, easy-to-reproduce workflow from raw mass spectra to pre- and post-processed spectral data. Spectral data can be imported from common formats such mzML, mzXML, msp, metabolomics-USI, MGF, or json (e.g. GNPS-syle json files). Matchms then provides filters for metadata cleaning and checking, as well as for basic peak filtering. Finally, matchms was build to import and apply different similarity measures to compare large amounts of spectra. This includes common Cosine scores, but can also easily be extended by custom measures. Example for spectrum similarity measures that were designed to work in matchms are Spec2Vec and MS2DeepScore[@huber2020].
 
 ### MetDNA
 
@@ -256,6 +262,10 @@ MS2Analyzer could annotate small molecule substructure from accurate tandem mass
 ### CFM-ID
 
 [CFM-ID](https://sourceforge.net/projects/cfm-id/) use Metlin's data to make prediction $$@allen2014$$ and 4.0 [@allen2014].
+
+### LC-MS2Struct 
+
+A machine learning framework for structural annotation of small-molecule data arising from liquid chromatography–tandem mass spectrometry (LC-MS2) measurements.[@bach2022]
 
 ### LipidFrag
 
@@ -308,6 +318,14 @@ You could find python software [here](http://www.biosciences-labs.bham.ac.uk/via
 ### Plantmat
 
 [excel library](https://sourceforge.net/projects/plantmat/) based prediction for plant metabolites[@qiu2016].
+
+### CoA-Blast
+
+For certain group of compounds such as [Acyl-CoA](https://github.com/urikeshet/CoA-Blast), you might build a class level in silico database to annotated compounds with certain structure[@keshet2022].
+
+### KGMN
+
+Knowledge-guided multi-layer network (KGMN) integrates three-layer networks, including knowledge-based metabolic reaction network, knowledge-guided MS/MS similarity network, and global peak correlation network for annotaiton [@zhou2022].
 
 ## MS Database for annotation
 

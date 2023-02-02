@@ -32,7 +32,7 @@ According to this research[@bennett2009]:
 
 Dmitri et.al[@sitnikov2016] thought the most orthogonal methods to methanol-based precipitation were ion-exchange solid-phase extraction and liquid-liquid extraction using methyl-tertbutyl ether.
 
-Another study used stable isotope labeled sample and found the use of a water-methanol-acetonitrile mixture for global metabolite extraction instead of aqueous methanol or aqueous acetonitrile alone [@doppler2016].
+Another study used stable isotope labeled sample and found the use of a water-methanol-acetonitrile mixture for global metabolite extraction instead of aqueous methanol or aqueous acetonitrile alone [@doppler2016]. 
 
 Metabolic information was highly influenced by the extraction solvent[@ibanez2017].
 
@@ -48,9 +48,15 @@ nano LC-MS could be used to analysis small numbers of cells[@luo2017a].
 
 For plant like soybeans[@mahmud2017], ammonium acetate/methanol could be selected as extraction strategies compared with water/methanol and sodium phosphate/methanol. For general plant samples, check this comprehensive investigation[@bijttebier2016].
 
+For blood plasma and serum sample, a comprehensive evaluation of 12 sample preparation methods (SPM) using phospholipid and protein removal plates (PLR), solid phase extraction plates (SPE), supported liquid extraction cartridge (SLE), and conventionally used protein precipitation (PPT) were purformed. Results show PPT and PLR on the same samples by implementing a simple analytical workflow as their complementarity would allow the broadening of the visible chemical space [@chaker2022].
+
 ## Derivatization
 
 Derivatization is always used in GC-based metabolomics study. This paper[@miyagawa2019] compared sequential derivatization methods and found different compounds would show different fluctuations during oximation or silylation process. This paper summarized derivatization methods for LC-MS [@zhao2020].
+
+## Isotope label
+
+You might try heavy water to exchange oxygen atom with samples to track certain metabolites[@osipenko2022] or MS-IDF[@wang2022g].
 
 ## Storage
 

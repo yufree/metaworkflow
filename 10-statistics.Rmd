@@ -158,3 +158,5 @@ Sparse network has similar number of edges and the number of nodes. Dense networ
 -   [pROC](https://cran.r-project.org/web/packages/pROC/index.html) Tools for visualizing, smoothing and comparing receiver operating characteristic (ROC curves). (Partial) area under the curve (AUC) can be compared with statistical tests based on U-statistics or bootstrap. Confidence intervals can be computed for (p)AUC or ROC curves.
 
 -   [gWQS](https://cran.r-project.org/web/packages/gWQS/index.html) Fits Weighted Quantile Sum (WQS) regressions for continuous, binomial, multinomial and count outcomes.
+
+-  Community ecology tool could be used to analysis metabolomic data[@passosmansoldo2022].

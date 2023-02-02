@@ -58,3 +58,5 @@ Another important factors are instrumentals. High-resolution mass spectrum is al
 > the most effective mass resolving powers for profiling analyses of metabolite rich biofluids on the Orbitrap Elite were around 60000--120000 fwhm to retrieve the highest amount of information. The region between 400--800 m/z was influenced the most by resolution.
 
 However, elimination of peaks with high RSD% within group were always omitted by most study. Based on pre-experiment, you could get a description of RSD% distribution and set cut-off to use stable peaks for further data analysis. To my knowledge, 30% is suitable considering the batch effects.
+
+Adding certified reference material or standard reference material will help to evaluate the quality large scale data collocation or important metabolites[@wise2022; @wright2022].

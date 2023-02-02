@@ -88,7 +88,9 @@ Those papers are recommended[@gonzález-riano2020; @pezzatti2020; @liu2019; @bar
 
 ### Data analysis
 
-You could firstly read those papers[@barnes2016; @kusonmano2016a; @madsen2010a; @uppal2016a; @alonso2015] to get the concepts and issues for data analysis in metabolomics. Then this paper[@gromski2015a] could be treated as a step-by-step tutorial.
+You could firstly read those papers[@barnes2016; @kusonmano2016a; @madsen2010a; @uppal2016a; @alonso2015] to get the concepts and issues for data analysis in metabolomics. Then this paper[@gromski2015a] could be treated as a step-by-step tutorial. For GC-MS based metabolomics, check this paper[@rey-stolle2022].
+
+-  A guide could be used choose a inofrmatics software and tools for lipidomics[@ni2022].
 
 -   For annotation, this paper[@domingo-almenara2018] is a well organized review.
 
@@ -110,7 +112,6 @@ Here is the slides for metabolomics data analysis workshop and I have made prese
 
 -   [Annotation](http://yufree.github.io/presentation/metabolomics/Annotation#1)
 
--   [Demo](http://yufree.github.io/presentation/metabolomics/demo#1)
 
 ### Application
 
@@ -134,35 +135,29 @@ Here is the slides for metabolomics data analysis workshop and I have made prese
 
 General challenge for metabolomics studies could be found here [@schymanski2017; @uppal2016; @schrimpe-rutledge2016; @wolfender2015].
 
--   For reproducible research, check those papers [@place2021; @verhoeven2020; @mangul2019; @wallach2018; @hites2018; @considine2017; @sarpe2017].
+-   For reproducible research, check those papers [@du2022; @place2021; @verhoeven2020; @mangul2019; @wallach2018; @hites2018; @considine2017; @sarpe2017]. To match data from different LC system, [M2S](https://github.com/rjdossan/M2S) could be used[@climacopinto2022].
 
--   Quantitative Metabolomics related issues could be found here[@kapoore2016b; @jorge2016aa].
+-   Quantitative Metabolomics related issues could be found here[@kapoore2016b; @jorge2016aa; @lv2022; @vitale2022].
 
--   For quality control issues, check here[@dudzik2018; @siskos2017; @sumner2007; @place2021].
+-   For quality control issues, check here[@dudzik2018; @siskos2017; @sumner2007; @place2021]. You might also try postcolumn infusion as a quality control tool[@gonzalez2022].
 
 ## Trends in Metabolomics
-
-```{r gtrends}
-library(gtrendsR)
-res <- gtrends(c("metabolomics", "metabolomics"), geo = c("CA","US"))
-plot(res)
-```
 
 ```{r rentrez}
 library(rentrez)
 papers_by_year <- function(years, search_term){
     return(sapply(years, function(y) entrez_search(db="pubmed",term=search_term, mindate=y, maxdate=y, retmax=0)$count))
 }
-years <- 1987:2020
+years <- 2002:2022
 total_papers <- papers_by_year(years, "")
-omics <- c("genomic", "epigenomic",  "metagenomic", "proteomic", "transcriptomic","metabolomics","exposome", "pharmacogenomic", "connectomic")
+omics <- c("genomics", "epigenomics",  "metagenomic", "proteomics", "transcriptomics","metabolomics","exposomics")
 trend_data <- sapply(omics, function(t) papers_by_year(years, t))
 trend_props <- trend_data/total_papers
 library(reshape)
 library(ggplot2)
 trend_df <- melt(data.frame(years, trend_data), id.vars="years")
 p <- ggplot(trend_df, aes(years, value, colour=variable))
-p + geom_line(size=1) + scale_y_log10("number of papers")
+p + geom_line(size=1) + scale_y_log10("number of papers") + theme_bw()
 ```
 
 ## Workflow

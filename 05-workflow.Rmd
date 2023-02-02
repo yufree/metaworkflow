@@ -45,9 +45,9 @@ Here is a list for related open source [projects](http://strimmerlab.org/notes/m
 
 [xcms](https://bioconductor.org/packages/release/bioc/html/xcms.html) is different from xcms online while they might share the same code. I used it almost every data to run local metabolomics data analysis. Recently, they will change their version to xcms 3 with major update for object class. Their data format would integrate into the MSnbase package and the parameters would be easy to set up for each step. Normally, I will use msconvert-IPO-xcms-xMSannotator-metaboanalyst as workflow to process the offline data. It could accelerate the process by parallel processing. However, if you are not familiar with R, you would better to choose some software below. For xcms, 1000 files will need around 5 hours to generate the peaks list on a regular workstation.
 
-[IPO](https://github.com/rietho/IPO) A Tool for automated Optimization of XCMS Parameters [@libiseller2015] and [Warpgroup](https://github.com/nathaniel-mahieu/warpgroup) is used for chromatogram subregion detection, consensus integration bound determination and accurate missing value integration[@mahieu2016]. Another option is AutoTuner, which are much faster than IPO[@mclean2020]. Recently, MetaboAnalystR 3.0 could also optimize the parameters for xcms while you need to perform the following analysis within this software[@pang2020]. For IPO, ten files will need \~12 hours to generate the optimized results on a regular workstation. Another research use machine learning method to compare different optimization methods and they are all better than the default setting of xcms[@lassen2021].
+[IPO](https://github.com/rietho/IPO) A Tool for automated Optimization of XCMS Parameters [@libiseller2015] and [Warpgroup](https://github.com/nathaniel-mahieu/warpgroup) is used for chromatogram subregion detection, consensus integration bound determination and accurate missing value integration[@mahieu2016]. Another option is AutoTuner, which are much faster than IPO[@mclean2020]. Recently, MetaboAnalystR 3.0 could also optimize the parameters for xcms while you need to perform the following analysis within this software[@pang2020]. For IPO, ten files will need \~12 hours to generate the optimized results on a regular workstation. [Paramounter](https://github.com/HuanLab/Paramounter) is a direct measurement of universal parameters to process metabolomics data in a “White Box”[@guo2022]. Another research use machine learning method to compare different optimization methods and they are all better than the default setting of xcms[@lassen2021]. It could be extended to include ion mobility[@dodds2022].
 
-Check those papers for the XCMS based workflow[@forsberg2018; @huan2017; @mahieu2016a; @montenegro-burke2017; @domingo-almenara2020]. For metlin related annotation, check those papers[@guijas2018; @tautenhahn2012; @xue2020; @domingo-almenara2018a].
+Check those papers for the XCMS based workflow[@forsberg2018; @huan2017; @mahieu2016a; @montenegro-burke2017; @domingo-almenara2020; @stancliffe2022]. For metlin related annotation, check those papers[@guijas2018; @tautenhahn2012; @xue2020; @domingo-almenara2018a].
 
 [MAIT](https://www.bioconductor.org/packages/release/bioc/html/MAIT.html) based on xcms and you could find source code [here](https://github.com/jpgroup/MAIT)[@fernandez-albert2014a].
 
@@ -61,7 +61,7 @@ mzMatch is a modular, open source and platform independent data processing pipel
 
 [PRIMe](http://prime.psc.riken.jp/Metabolomics_Software/) is from RIKEN and UC Davis. They update their database frequently[@tsugawa2016]. It supports mzML and major MS vendor formats. They defined own file format ABF and eco-system for omics studies. The software are updated almost everyday. You could use MS-DIAL for untargeted analysis and MRMOROBS for targeted analysis. For annotation, they developed MS-FINDER and statistic tools with excel. This platform could replaced the dear software from company and well prepared for MS/MS data analysis and lipidomics. They are open source, work on Windows and also could run within mathmamtics. However, they don't cover pathway analysis. Another feature is they always show the most recently spectral records from public repositories. You could always get the updated MSP spectra files for your own data analysis.
 
-For PRIMe based workflow, check those papers[@lai2018; @matsuo2017; @treutler2016; @tsugawa2015a; @tsugawa2016; @kind2018].
+For PRIMe based workflow, check those papers[@lai2018; @matsuo2017; @treutler2016; @tsugawa2015a; @tsugawa2016; @kind2018]. There are also extensions for their workflow[@uchino2022].
 
 ### GNPS
 
@@ -91,6 +91,12 @@ You could check those papers for Emory workflow[@uppal2013a; @uppal2017; @yu2009
 
 ### Others
 
+- [PMDDA](https://yufree.github.io/pmdda/script.html) is a reproducible workflow for exhaustive MS2 data acquisition of MS1 features[@yu2022b] will data and script available online.
+
+- [tidymass](https://www.tidymass.org/) is an object-oriented reproducible analysis framework for LC–MS data[@shen2022].
+
+- [R for mass spectrometry](https://www.rformassspectrometry.org/) is a R software collection for the analysis and interpretation of high throughput mass spectrometry assays.
+
 -   [MAVEN](http://genomics-pubs.princeton.edu/mzroll/index.php?show=index) from Princeton University [@melamud2010a; @clasquin2012].
 
 -   [metabolomics](https://github.com/cran/metabolomics) is a CRAN package for analysis of metabolomics data.
@@ -119,9 +125,23 @@ You could check those papers for Emory workflow[@uppal2013a; @uppal2017; @yu2009
 
 -   [patRoon](https://github.com/rickhelmus/patRoon): open source software platform for environmental mass spectrometry based non-target screening [@helmus2021].
 
+- 'shape-orientated' algorithm: A new 'shape-orientated' continuous wavelet transform (CWT)-based algorithm employing an adapted Marr wavelet (AMW) with a shape matching index (SMI), defined as peak height normalized wavelet coefficient for feature filtering, was developed for chromatographic peak detection and quantification. [@bai2022]
+
+- automRm An R Package for Fully Automatic LC-QQQ-MS Data Preprocessing Powered by Machine Learning. [@eilertz2022] 
+
+- [IDSL.UFA](https://ufa.idsl.me/)Intrinsic Peak Analysis (IPA) for HRMS Data. [@baygi2022]
+
+- [DEIMoS](https://github.com/pnnl/deimos): An Open-Source Tool for Processing High-Dimensional Mass Spectrometry Data [@colby2022]
+
+- Omics Untargeted Key Script is a tools to make untargeted LC-MS metabolomic profiling with the latest computational features readily accessible in a ready-to-use unified manner to a research community[@plyushchenko2022].
+
+- [MetEx](http://www.metaboex.cn/MetEx) is a targeted extraction strategy for improving the coverage and accuracy of metabolite annotation[@zheng2022a].
+
 ### Workflow Comparison
 
 Here are some comparisons for different workflow and you could make selection based on their works[@myers2017; @weber2017; @li2018].
+
+[xcmsrocker](https://github.com/yufree/xcmsrocker) is a docker image for metabolomics to compare R based software with template[@yu2022b].
 
 ## Project Setup
 

@@ -12,6 +12,10 @@ According to [CDC](https://www.cdc.gov/niosh/topics/exposome/default.html), The 
 
 -   External exposure assessment relies on measuring environmental stresses.
 
+Human Early Life Exposome (HELIX) project[@maitre2022a], a multi-centre cohort of 1301 mother-child pairs, associated individual exposomes consisting of >100 chemical, outdoor, social and lifestyle exposures assessed in pregnancy and childhood, with multi-omics profiles (methylome, transcriptome, proteins and metabolites) in childhood. The data could be found [online](https://helixomics.isglobal.org/).
+
+“molecular gatekeepers”, key metabolites that link single or multiple exposure biomarkers with correlated clusters of endogenous metabolites, could be used to find health-relevant biological metabolites. [@yu2022c]
+
 ## Internal exposure
 
 -   [Virtual Metabolic Human Database](https://www.vmh.life/) integrating human and gut microbiome metabolism with nutrition and disease.

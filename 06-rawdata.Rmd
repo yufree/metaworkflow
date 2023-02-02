@@ -48,7 +48,11 @@ knitr::include_graphics('images/matchedfilter.jpg')
 
 The `Centwave` algorithm [@tautenhahn2008] based on detection of regions of interest(ROI) and the following Continuous Wavelet Transform (CWT) is preferred for high-resolution mass spectrum. ROI means a region with stable mass for a certain time. When we find the ROIs, the peak shape is evaluated and ROI could be extended if needed. This algorithm use `prefilter` to accelerate the processing speed. `prefilter` with 3 and 100 means the ROI should contain 3 scan with intensity above 100. Centwave use a peak width range which should be checked on pool QC. Another important parameter is `ppm`. It is the maximum allowed deviation between scans when locating regions of interest (ROIs), which is different from vendor number and you need to extend them larger than the company claimed. For `profparam`, it's used for fill peaks or align peaks instead of peak picking. `snthr` is the cutoff of signal to noise ratio.
 
-Deep learning frame for LC-MS feature detection on 2D pseudo color image could improve the peak picking process [@zhao2021].
+An Open-source feature detection algorithm for non-target LC–MS analytics could be found here to understand peak picking process[@dietrich2022]. Pseudo F-ratio moving window could also be used to select untargeted region of interest for gas chromatography – mass spectrometry data[@giebelhaus2022].
+
+[mzRAPP](https://github.com/YasinEl/mzRAPP) could enables the generation of benchmark peak lists by using an internal set of known molecules in the analyzed data set to compare workflows[@elabiead2022].
+
+Machine learning can also be used for feature extraxtion. Deep learning frame for LC-MS feature detection on 2D pseudo color image could improve the peak picking process [@zhao2021]. Another deep learning-assisted peak curation (NeatMS) can also be used for large-scale LC-MS metabolomics[@gloaguen2022]. A featuer selection pipeline based on neural network and genetic algorithm could be applied for metabolomics data analysis[@konanov2022].
 
 ## MS/MS
 
@@ -64,7 +68,7 @@ Various data acquisition workflow could be checked here[@fenaille2017a].
 
 ### DDA
 
-The coverage of DDA could be enhanced by a feature classification strategy $$@hu2019$$ or iterative process$$@anderson2021$$.
+The coverage of DDA could be enhanced by a feature classification strategy $$@hu2019$$ or iterative [process\$\$\@anderson2021](mailto:process$$@anderson2021){.email}\$\$.
 
 ### DIA
 
@@ -89,6 +93,10 @@ DIA methods could be summarized here including MSE, stepwise windows and random 
 -   [MSstats](https://github.com/MeenaChoi/MSstats) is an R-based/Bioconductor package for statistical relative quantification of peptides and proteins in mass spectrometry-based proteomic experiments[@choi2014a]. It is applicable to multiple types of sample preparation, including label-free workflows, workflows that use stable isotope labeled reference proteins and peptides, and work-flows that use fractionation. It is applicable to targeted Selected Reactin Monitoring(SRM), Data-Dependent Acquisiton(DDA or shotgun), and Data-Independent Acquisition(DIA or SWATH-MS). This github page is for sharing source and testing.
 
 Other related papers could be found here to cover SWATH and other topic in DIA[@bonner2018; @wang2019]
+
+- [MetaboAnnotatoR](https://github.com/gggraca/MetaboAnnotatoR) is designed to perform metabolite annotation of features from LC-MS All-ion fragmentation (AIF) datasets, using ion fragment databases[@graca2022]. 
+
+- DIAMetAlyzer is a pipeline for assay library generation and targeted analysis with statistical validation.[@alka2022]
 
 ## Retention Time Correction
 
@@ -145,7 +153,7 @@ Another study find random forest could be the best imputation method for missing
 
 ## RSD/fold change Filter
 
-Some peaks need to be rule out due to high RSD% and small fold changes compared with blank samples. A more general feature filtering for biomarker discovery can be found here[@gadara2021].
+Some peaks need to be rule out due to high RSD% and small fold changes compared with blank samples. A more general feature filtering for biomarker discovery can be found here[@gadara2021] and a detailed discussion on intensity thresholds could be found here[@houriet2022].
 
 ## Power Analysis Filter
 

@@ -38,7 +38,7 @@ Pathway analysis maps annotated data into known pathway and make statistical ana
 
 -   [SMPDB](http://smpdb.ca/view) (The Small Molecule Pathway Database) is an interactive, visual database containing more than 618 small molecule pathways found in humans. More than 70% of these pathways (\>433) are not found in any other pathway database. The pathways include metabolic, drug, and disease pathways.
 
--   [KEGG](https://www.genome.jp/kegg/) (Kyoto Encyclopedia of Genes and Genomes) is one of the most complete and widely used databases containing metabolic pathways (495 reference pathways) from a wide variety of organisms (\>4,700). These pathways are hyperlinked to metabolite and protein/enzyme information. Currently KEGG has >17,000 compounds (from animals, plants and bacteria), 10,000 drugs (including different salt forms and drug carriers) and nearly 11,000 glycan structures.
+-   [KEGG](https://www.genome.jp/kegg/) (Kyoto Encyclopedia of Genes and Genomes) is one of the most complete and widely used databases containing metabolic pathways (495 reference pathways) from a wide variety of organisms (\>4,700). These pathways are hyperlinked to metabolite and protein/enzyme information. Currently KEGG has \>17,000 compounds (from animals, plants and bacteria), 10,000 drugs (including different salt forms and drug carriers) and nearly 11,000 glycan structures.
 
 -   [BioCyc](https://biocyc.org/) is a collection of 14558 Pathway/Genome Databases (PGDBs), plus software tools for exploring them.
 
@@ -64,6 +64,8 @@ Pathway analysis maps annotated data into known pathway and make statistical ana
 
 [MSS](http://web1.sph.emory.edu/users/tyu8/MSS): sequential feature screening procedure to select important sub-network and identify the optimal matching for metabolimics data [@cai2017].
 
+[Metapone](https://bioconductor.org/packages/devel/bioc/html/metapone.html) is joint pathway testing package for untargeted metabolomics data [@tian2022].
+
 ## Omics integration
 
 -   [Blast](https://blast.ncbi.nlm.nih.gov/Blast.cgi) finds regions of similarity between biological sequences. The program compares nucleotide or protein sequences to sequence databases and calculates the statistical significance.
@@ -71,3 +73,5 @@ Pathway analysis maps annotated data into known pathway and make statistical ana
 -   [The Omics Discovery Index (OmicsDI)](https://www.omicsdi.org/) provides a knowledge discovery framework across heterogeneous omics data (genomics, proteomics, transcriptomics and metabolomics).
 
 -   [Omics Data Integration Project](https://github.com/cran/mixOmics)
+
+-   Standardized multi-omics of Earth's microbiomes could check this GNPS based work[@shaffer2022].
