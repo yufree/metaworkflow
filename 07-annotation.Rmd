@@ -4,7 +4,7 @@ bibliography: references.bib
 
 # Annotation
 
-When you get the peaks table or features table, annotation of the peaks would help you. Check this review[@domingo-almenara2018] or other reviews[@chaleckis2019; @lai2018a; @nash2019; @viant2017; @allard2017; @domingo-almenara2018b] for a detailed notes on annotation. The first paper proposed five levels regarding currently computational annotation strategies.
+When you get the peaks table or features table, annotation of the peaks would help you. Check this review[@domingo-almenara2018] or other reviews[@chaleckis2019; @lai2018; @nash2019; @viant2017; @allard2017; @domingo-almenara2018] for a detailed notes on annotation. The first paper proposed five levels regarding currently computational annotation strategies.
 
 -   Level 1: Peak Grouping: MS Psedospectra extraction based on peak shape similarity and peak abundance correlation
 
@@ -151,7 +151,7 @@ Here is some other Cheminformatics tools, which could be used to assign meaningf
 
 ## Redundant peaks
 
-Full scan mass spectra always contain lots of redundant peaks such as adducts, isotope, fragments, multiple charged ions and other oligomers. Such peaks dominated the features table[@xu2015; @sindelar2020; @mahieu2017]. Annotation tools could label those peaks either by known list or frequency analysis of the paired mass distances[@ju2020; @kouil].
+Full scan mass spectra always contain lots of redundant peaks such as adducts, isotope, fragments, multiple charged ions and other oligomers. Such peaks dominated the features table[@xu2015; @sindelar2020; @mahieu2017]. Annotation tools could label those peaks either by known list or frequency analysis of the paired mass distances[@ju2020; @kouril2020].
 
 ### Adducts list
 
@@ -175,7 +175,7 @@ BioCAn combines the results from database searches and in silico fragmentation a
 
 ### mzMatch
 
-[mzMatch](https://github.com/andzajan/mzmatch.R) is a modular, open source and platform independent data processing pipeline for metabolomics LC/MS data written in the Java language. [@chokkathukalam2013; @scheltema2011] and MetAssign is a probabilistic annotation method using a Bayesian clustering approach, which is part of mzMatch[@daly2014a].
+[mzMatch](https://github.com/andzajan/mzmatch.R) is a modular, open source and platform independent data processing pipeline for metabolomics LC/MS data written in the Java language. [@chokkathukalam2013; @scheltema2011] and MetAssign is a probabilistic annotation method using a Bayesian clustering approach, which is part of mzMatch[@daly2014].
 
 ### xMSannotator
 
@@ -191,7 +191,7 @@ You could find source code [here](https://github.com/jpgroup/MAIT)[@fernandez-al
 
 ### pmd
 
-[Paired Mass Distance(PMD)](https://github.com/yufree/pmd) analysis for GC/LC-MS based nontarget analysis to remove redundant peaks[@yu2019b].
+[Paired Mass Distance(PMD)](https://github.com/yufree/pmd) analysis for GC/LC-MS based nontarget analysis to remove redundant peaks[@yu2019a].
 
 ### nontarget
 
@@ -203,7 +203,7 @@ You could find source code [here](https://github.com/jpgroup/MAIT)[@fernandez-al
 
 ### mz.unity
 
-You could find source code [here](https://github.com/nathaniel-mahieu/mz.unity) [@mahieu2016aa] and it's for detecting and exploring complex relationships in accurate-mass mass spectrometry data.
+You could find source code [here](https://github.com/nathaniel-mahieu/mz.unity) [@mahieu2016a] and it's for detecting and exploring complex relationships in accurate-mass mass spectrometry data.
 
 ### MS-FLO
 
@@ -231,7 +231,7 @@ De Novo Recognition of In-Source Fragments for Liquid Chromatography--Mass Spect
 
 ### HERMES
 
-a molecular-formula-oriented method to target the metabolome[@giné2021].
+a molecular-formula-oriented method to target the metabolome[@gine2021].
 
 ## MS/MS annotation
 
@@ -253,7 +253,7 @@ Java based [integration](https://github.com/mgerlich/MetFusion) of compound iden
 
 ### MS2Analyzer
 
-MS2Analyzer could annotate small molecule substructure from accurate tandem mass spectra. [@ma2014]
+MS2Analyzer could annotate small molecule substructure from accurate tandem mass spectra. [@ma2014a]
 
 ### MetFrag
 
@@ -261,7 +261,7 @@ MS2Analyzer could annotate small molecule substructure from accurate tandem mass
 
 ### CFM-ID
 
-[CFM-ID](https://sourceforge.net/projects/cfm-id/) use Metlin's data to make prediction $$@allen2014$$ and 4.0 [@allen2014].
+[CFM-ID](https://sourceforge.net/projects/cfm-id/) use Metlin's data to make prediction [@allen2014] and 4.0 [@allen2014].
 
 ### LC-MS2Struct 
 
@@ -337,11 +337,7 @@ Knowledge-guided multi-layer network (KGMN) integrates three-layer networks, inc
 
 -   [Spectral Database for Organic Compounds, SDBS](https://sdbs.db.aist.go.jp/sdbs/cgi-bin/cre_index.cgi?lang=eng)
 
--   [MINE](http://minedatabase.mcs.anl.gov/#/faq) is an open access database of computationally predicted enzyme promiscuity products for untargeted metabolomics
-
--   [Database](https://www.sciencedirect.com/science/article/abs/pii/S0039914019311786?via%3Dihub) of free solution mobilities for 276 metabolites for capillary zone electrophoresis / mass spectrometry [@petrov2020].
-
--   [MINE](http://minedatabase.mcs.anl.gov/) is an open access database of computationally predicted enzyme promiscuity products for untargeted metabolomics. The annotation would be accurate for general compounds database.
+-   [MINE](http://minedatabase.mcs.anl.gov/#/faq) is an open access database of computationally predicted enzyme promiscuity products for untargeted metabolomics. The annotation would be accurate for general compounds database.
 
 ### MS/MS
 

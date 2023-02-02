@@ -10,7 +10,7 @@ Information in living organism communicates along the Central Dogma in different
 knitr::include_graphics('images/metaintro.png')
 ```
 
-Metabolomics studies always employ GC-MS[@theodoridis2012; @beale2018], GC\*GC-MS[@tian2016], LC-MS[@gika2014], LC-MS/MS[@begou2017a], IM-MS[@levy2019], infrared ion spectroscopy[@martens2017] or NMR[\@b.dunn2011] to measure metabolites. For analytical methods, this review could be checked[@zhang2012]. The overall technique progress of metabolomics (2012-2018) could be found here[@miggiels2019]. However, this workflow will only cover mass spectrometry based metabolomics or XC-MS based research.
+Metabolomics studies always employ GC-MS[@theodoridis2012; @beale2018], GC\*GC-MS[@tian2016], LC-MS[@gika2014], LC-MS/MS[@begou2017], IM-MS[@levy2019], infrared ion spectroscopy[@martens2017] or NMR[\@b.dunn2011] to measure metabolites. For analytical methods, this review could be checked[@zhang2012e]. The overall technique progress of metabolomics (2012-2018) could be found here[@miggiels2019]. However, this workflow will only cover mass spectrometry based metabolomics or XC-MS based research.
 
 ## History
 
@@ -82,13 +82,13 @@ Some nice reviews and tutorials related to this workflow could be found in those
 
 ### Workflow
 
-Those papers are recommended[@gonzález-riano2020; @pezzatti2020; @liu2019; @barnes2016a; @cajka2016; @gika2014; @theodoridis2012; @lu2008; @fiehn2002] for general metabolomics related topics.
+Those papers are recommended[@gonzalez-riano2020; @pezzatti2020; @liu2019; @barnes2016a; @cajka2016; @gika2014; @theodoridis2012; @lu2008; @fiehn2002] for general metabolomics related topics.
 
--   For targeted metabolomics, you could check those reviews[@griffiths2010a; @lu2008a; @weljie2006; @yuan2012; @zhou2016b; @begou2017b].
+-   For targeted metabolomics, you could check those reviews[@griffiths2010; @lu2008a; @weljie2006; @yuan2012; @zhou2016; @begou2017].
 
 ### Data analysis
 
-You could firstly read those papers[@barnes2016; @kusonmano2016a; @madsen2010a; @uppal2016a; @alonso2015] to get the concepts and issues for data analysis in metabolomics. Then this paper[@gromski2015a] could be treated as a step-by-step tutorial. For GC-MS based metabolomics, check this paper[@rey-stolle2022].
+You could firstly read those papers[@barnes2016; @kusonmano2016; @madsen2010; @uppal2016; @alonso2015] to get the concepts and issues for data analysis in metabolomics. Then this paper[@gromski2015] could be treated as a step-by-step tutorial. For GC-MS based metabolomics, check this paper[@rey-stolle2022].
 
 -  A guide could be used choose a inofrmatics software and tools for lipidomics[@ni2022].
 
@@ -115,19 +115,19 @@ Here is the slides for metabolomics data analysis workshop and I have made prese
 
 ### Application
 
--   For environmental research related metabolomics or exposome, check those papers[@matich2019a; @tang2020; @warth2017; @bundy2009].
+-   For environmental research related metabolomics or exposome, check those papers[@matich2019; @tang2020; @warth2017; @bundy2009].
 
 -   For toxicology, check this paper[@viant2019].
 
 -   Check this piece[@wishart2016] for drug discovery and precision medicine.
 
--   For food chemistry, check this paper[@castro-puyana2017], this paper for livestock[@goldansaz2017] and those papers for nutrition[@allam-ndoul2016; @jones2012; @müller2020a].
+-   For food chemistry, check this paper[@castro-puyana2017], this paper for livestock[@goldansaz2017] and those papers for nutrition[@allam-ndoul2016; @jones2012; @muller2020].
 
 -   For disease related metabolomics such as oncology[@spratlin2009], Cardiovascular[@cheng2017] . This paper[@kennedy2018] cover the metabolomics realted clinic research.
 
--   For plant science, check those paper[@sumner2003; @jorge2016a; @hansen2018a].
+-   For plant science, check those paper[@sumner2003; @jorge2016a; @hansen2018].
 
--   For single cell metabolomics analysis, check here[@fessenden2016; @zenobi2013; @ali2019a; @hansen2018].
+-   For single cell metabolomics analysis, check here[@fessenden2016; @zenobi2013; @ali2019; @hansen2018].
 
 -   For gut microbiota, check here[@smirnov2016].
 
@@ -137,13 +137,13 @@ General challenge for metabolomics studies could be found here [@schymanski2017;
 
 -   For reproducible research, check those papers [@du2022; @place2021; @verhoeven2020; @mangul2019; @wallach2018; @hites2018; @considine2017; @sarpe2017]. To match data from different LC system, [M2S](https://github.com/rjdossan/M2S) could be used[@climacopinto2022].
 
--   Quantitative Metabolomics related issues could be found here[@kapoore2016b; @jorge2016aa; @lv2022; @vitale2022].
+-   Quantitative Metabolomics related issues could be found here[@kapoore2016b; @jorge2016a; @lv2022; @vitale2022].
 
 -   For quality control issues, check here[@dudzik2018; @siskos2017; @sumner2007; @place2021]. You might also try postcolumn infusion as a quality control tool[@gonzalez2022].
 
 ## Trends in Metabolomics
 
-```{r rentrez}
+```{r rentrez, eval=F}
 library(rentrez)
 papers_by_year <- function(years, search_term){
     return(sapply(years, function(y) entrez_search(db="pubmed",term=search_term, mindate=y, maxdate=y, retmax=0)$count))

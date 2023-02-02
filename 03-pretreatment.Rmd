@@ -68,6 +68,6 @@ For gut microbiota, this paper could be checked for storage issue[@zubeldia-vare
 
 For blood sample storage, you could check this paper[@hernandes2017].
 
-For urine sample storage, check this[@laparre2017a].
+For urine sample storage, check this[@laparre2017].
 
 This piece reviewed the stability of energy metabolites[@gil2015].

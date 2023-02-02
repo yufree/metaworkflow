@@ -29,6 +29,7 @@ collection
 quenching
 extraction
 derivatization
+isotope-label
 storage
 instrumental-analysis
 column-and-gradient-selection
@@ -90,11 +91,13 @@ ms1-ms2-connection
 pmdda
 hermes
 msms-annotation
+matchms
 metdna
 metfusion
 ms2analyzer
 metfrag
 cfm-id
+lc-ms2struct
 lipidfrag
 lipidmatch
 barcoding
@@ -107,6 +110,8 @@ metexpert
 mycompoundid
 metfamily
 plantmat
+coa-blast
+kgmn
 ms-database-for-annotation
 ms
 msms-1
@@ -143,6 +148,7 @@ detection-of-unmodeled-factors
 construction-of-surrogate-variables
 ruv-remove-unwanted-variation
 rrmix
+norm-iswsvr
 method-to-validate-the-normalization
 software
 statistical-analysis

@@ -20,4 +20,4 @@ For metabolomics, high resolution mass spectrum should be used to make identific
 
 ## Matrix effects
 
-Matrix effects could decrease the sensitivity of untargeted analysis. Such matrix effects could be checked by low resolution mass spectrometry[@yu2017a] and found for high resolution mass spectrometry[@calbiani2006]. Ion suppression should also be considered as a critical issue comparing heterogeneous metabolic profiles[@ghosson2021].
+Matrix effects could decrease the sensitivity of untargeted analysis. Such matrix effects could be checked by low resolution mass spectrometry[@yu2017] and found for high resolution mass spectrometry[@calbiani2006]. Ion suppression should also be considered as a critical issue comparing heterogeneous metabolic profiles[@ghosson2021].
