@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 1 Introduction | Meta-Workflow</title>
   <meta name="description" content="This is a workflow for metabolomics studies." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 1 Introduction | Meta-Workflow" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Miao YU" />
 
 
-<meta name="date" content="2022-07-09" />
+<meta name="date" content="2023-02-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,7 +52,7 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
@@ -102,7 +102,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -115,7 +115,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -501,35 +501,25 @@ Figure 1.3: Metabolomics timeline during pre- and post-metabolomics era
 </div>
 <div id="trends-in-metabolomics" class="section level2 hasAnchor" number="1.3">
 <h2><span class="header-section-number">1.3</span> Trends in Metabolomics<a href="introduction.html#trends-in-metabolomics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="introduction.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtrendsR)</span>
-<span id="cb1-2"><a href="introduction.html#cb1-2" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">gtrends</span>(<span class="fu">c</span>(<span class="st">&quot;metabolomics&quot;</span>, <span class="st">&quot;metabolomics&quot;</span>), <span class="at">geo =</span> <span class="fu">c</span>(<span class="st">&quot;CA&quot;</span>,<span class="st">&quot;US&quot;</span>))</span>
-<span id="cb1-3"><a href="introduction.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(res)</span></code></pre></div>
-<p><img src="Metabolomics_files/figure-html/gtrends-1.png" width="672" /></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="introduction.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rentrez)</span>
-<span id="cb2-2"><a href="introduction.html#cb2-2" aria-hidden="true" tabindex="-1"></a>papers_by_year <span class="ot">&lt;-</span> <span class="cf">function</span>(years, search_term){</span>
-<span id="cb2-3"><a href="introduction.html#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">sapply</span>(years, <span class="cf">function</span>(y) <span class="fu">entrez_search</span>(<span class="at">db=</span><span class="st">&quot;pubmed&quot;</span>,<span class="at">term=</span>search_term, <span class="at">mindate=</span>y, <span class="at">maxdate=</span>y, <span class="at">retmax=</span><span class="dv">0</span>)<span class="sc">$</span>count))</span>
-<span id="cb2-4"><a href="introduction.html#cb2-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-5"><a href="introduction.html#cb2-5" aria-hidden="true" tabindex="-1"></a>years <span class="ot">&lt;-</span> <span class="dv">1987</span><span class="sc">:</span><span class="dv">2020</span></span>
-<span id="cb2-6"><a href="introduction.html#cb2-6" aria-hidden="true" tabindex="-1"></a>total_papers <span class="ot">&lt;-</span> <span class="fu">papers_by_year</span>(years, <span class="st">&quot;&quot;</span>)</span>
-<span id="cb2-7"><a href="introduction.html#cb2-7" aria-hidden="true" tabindex="-1"></a>omics <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;genomic&quot;</span>, <span class="st">&quot;epigenomic&quot;</span>,  <span class="st">&quot;metagenomic&quot;</span>, <span class="st">&quot;proteomic&quot;</span>, <span class="st">&quot;transcriptomic&quot;</span>,<span class="st">&quot;metabolomics&quot;</span>,<span class="st">&quot;exposome&quot;</span>, <span class="st">&quot;pharmacogenomic&quot;</span>, <span class="st">&quot;connectomic&quot;</span>)</span>
-<span id="cb2-8"><a href="introduction.html#cb2-8" aria-hidden="true" tabindex="-1"></a>trend_data <span class="ot">&lt;-</span> <span class="fu">sapply</span>(omics, <span class="cf">function</span>(t) <span class="fu">papers_by_year</span>(years, t))</span>
-<span id="cb2-9"><a href="introduction.html#cb2-9" aria-hidden="true" tabindex="-1"></a>trend_props <span class="ot">&lt;-</span> trend_data<span class="sc">/</span>total_papers</span>
-<span id="cb2-10"><a href="introduction.html#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape)</span>
-<span id="cb2-11"><a href="introduction.html#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb2-12"><a href="introduction.html#cb2-12" aria-hidden="true" tabindex="-1"></a>trend_df <span class="ot">&lt;-</span> <span class="fu">melt</span>(<span class="fu">data.frame</span>(years, trend_data), <span class="at">id.vars=</span><span class="st">&quot;years&quot;</span>)</span>
-<span id="cb2-13"><a href="introduction.html#cb2-13" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(trend_df, <span class="fu">aes</span>(years, value, <span class="at">colour=</span>variable))</span>
-<span id="cb2-14"><a href="introduction.html#cb2-14" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span> <span class="fu">scale_y_log10</span>(<span class="st">&quot;number of papers&quot;</span>)</span></code></pre></div>
-<p><img src="Metabolomics_files/figure-html/rentrez-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="introduction.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rentrez)</span>
+<span id="cb1-2"><a href="introduction.html#cb1-2" aria-hidden="true" tabindex="-1"></a>papers_by_year <span class="ot">&lt;-</span> <span class="cf">function</span>(years, search_term){</span>
+<span id="cb1-3"><a href="introduction.html#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fu">sapply</span>(years, <span class="cf">function</span>(y) <span class="fu">entrez_search</span>(<span class="at">db=</span><span class="st">&quot;pubmed&quot;</span>,<span class="at">term=</span>search_term, <span class="at">mindate=</span>y, <span class="at">maxdate=</span>y, <span class="at">retmax=</span><span class="dv">0</span>)<span class="sc">$</span>count))</span>
+<span id="cb1-4"><a href="introduction.html#cb1-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-5"><a href="introduction.html#cb1-5" aria-hidden="true" tabindex="-1"></a>years <span class="ot">&lt;-</span> <span class="dv">2002</span><span class="sc">:</span><span class="dv">2022</span></span>
+<span id="cb1-6"><a href="introduction.html#cb1-6" aria-hidden="true" tabindex="-1"></a>total_papers <span class="ot">&lt;-</span> <span class="fu">papers_by_year</span>(years, <span class="st">&quot;&quot;</span>)</span>
+<span id="cb1-7"><a href="introduction.html#cb1-7" aria-hidden="true" tabindex="-1"></a>omics <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;genomics&quot;</span>, <span class="st">&quot;epigenomics&quot;</span>,  <span class="st">&quot;metagenomic&quot;</span>, <span class="st">&quot;proteomics&quot;</span>, <span class="st">&quot;transcriptomics&quot;</span>,<span class="st">&quot;metabolomics&quot;</span>,<span class="st">&quot;exposomics&quot;</span>)</span>
+<span id="cb1-8"><a href="introduction.html#cb1-8" aria-hidden="true" tabindex="-1"></a>trend_data <span class="ot">&lt;-</span> <span class="fu">sapply</span>(omics, <span class="cf">function</span>(t) <span class="fu">papers_by_year</span>(years, t))</span>
+<span id="cb1-9"><a href="introduction.html#cb1-9" aria-hidden="true" tabindex="-1"></a>trend_props <span class="ot">&lt;-</span> trend_data<span class="sc">/</span>total_papers</span>
+<span id="cb1-10"><a href="introduction.html#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape)</span>
+<span id="cb1-11"><a href="introduction.html#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-12"><a href="introduction.html#cb1-12" aria-hidden="true" tabindex="-1"></a>trend_df <span class="ot">&lt;-</span> <span class="fu">melt</span>(<span class="fu">data.frame</span>(years, trend_data), <span class="at">id.vars=</span><span class="st">&quot;years&quot;</span>)</span>
+<span id="cb1-13"><a href="introduction.html#cb1-13" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(trend_df, <span class="fu">aes</span>(years, value, <span class="at">colour=</span>variable))</span>
+<span id="cb1-14"><a href="introduction.html#cb1-14" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span> <span class="fu">scale_y_log10</span>(<span class="st">&quot;number of papers&quot;</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code></pre></div>
 </div>
 <div id="workflow-1" class="section level2 hasAnchor" number="1.4">
 <h2><span class="header-section-number">1.4</span> Workflow<a href="introduction.html#workflow-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<<<<<<< HEAD
-<div id="htmlwidget-035c26727a06244cad61" style="width:300px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-035c26727a06244cad61">{"x":{"diagram":"digraph workflow {\nnode [shape = box]\nA [label = \"raw data\"]\nB [label = \"open source format\"]\nC [label = \"DoE folder\"]\nD [label = \"peaks list\"]\nE [label = \"retention time correction\"]\nF [label = \"peaks grouping\"]\nG [label = \"peaks filling\"]\nH [label = \"raw peaks\"]\nI [label = \"data visulization\"]\nJ [label = \"batch effects correction\"]\nK [label = \"corrected peaks\"]\nL [label = \"annotation\"]\nM [label = \"metabolomics pathway analysis\"]\nN [label = \"omics analysis\"]\nO [label = \"biomarkers discovery/diagnoise\"]\n\nA -> B -> C -> D -> E -> F -> G -> H\nH -> I\nI -> J\nH -> J -> K -> L\nL -> M -> N\nL -> O\n                  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
-=======
-<div id="htmlwidget-821d6956c48a1f2d6ee9" style="width:300px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-821d6956c48a1f2d6ee9">{"x":{"diagram":"digraph workflow {\nnode [shape = box]\nA [label = \"raw data\"]\nB [label = \"open source format\"]\nC [label = \"DoE folder\"]\nD [label = \"peaks list\"]\nE [label = \"retention time correction\"]\nF [label = \"peaks grouping\"]\nG [label = \"peaks filling\"]\nH [label = \"raw peaks\"]\nI [label = \"data visulization\"]\nJ [label = \"batch effects correction\"]\nK [label = \"corrected peaks\"]\nL [label = \"annotation\"]\nM [label = \"metabolomics pathway analysis\"]\nN [label = \"omics analysis\"]\nO [label = \"biomarkers discovery/diagnoise\"]\n\nA -> B -> C -> D -> E -> F -> G -> H\nH -> I\nI -> J\nH -> J -> K -> L\nL -> M -> N\nL -> O\n                  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
->>>>>>> 0fbb9f50c66db641d3a6480b9ec4752a1517a38a
+<div id="htmlwidget-7af011d2c546fd1b936a" style="width:300px;height:480px;" class="grViz html-widget "></div>
+<script type="application/json" data-for="htmlwidget-7af011d2c546fd1b936a">{"x":{"diagram":"digraph workflow {\nnode [shape = box]\nA [label = \"raw data\"]\nB [label = \"open source format\"]\nC [label = \"DoE folder\"]\nD [label = \"peaks list\"]\nE [label = \"retention time correction\"]\nF [label = \"peaks grouping\"]\nG [label = \"peaks filling\"]\nH [label = \"raw peaks\"]\nI [label = \"data visulization\"]\nJ [label = \"batch effects correction\"]\nK [label = \"corrected peaks\"]\nL [label = \"annotation\"]\nM [label = \"metabolomics pathway analysis\"]\nN [label = \"omics analysis\"]\nO [label = \"biomarkers discovery/diagnoise\"]\n\nA -> B -> C -> D -> E -> F -> G -> H\nH -> I\nI -> J\nH -> J -> K -> L\nL -> M -> N\nL -> O\n                  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 
 </div>
 </div>
@@ -752,7 +742,7 @@ Wallach, Joshua D., Kevin W. Boyack, and John P. A. Ioannidis. 2018. <span>“Re
 Warth, Benedikt, Scott Spangler, Mingliang Fang, Caroline H. Johnson, Erica M. Forsberg, Ana Granados, Richard L. Martin, et al. 2017. <span>“Exposome-Scale Investigations Guided by Global Metabolomics, Pathway Analysis, and Cognitive Computing.”</span> <em>Analytical Chemistry</em> 89 (21): 11505–13. <a href="https://doi.org/10.1021/acs.analchem.7b02759">https://doi.org/10.1021/acs.analchem.7b02759</a>.
 </div>
 <div id="ref-weljie2006" class="csl-entry">
-Weljie, Aalim M., Jack Newton, Pascal Mercier, Erin Carlson, and Carolyn M. Slupsky. 2006. <span>“Targeted Profiling:<span></span> Quantitative Analysis of 1h NMR Metabolomics Data.”</span> <em>Analytical Chemistry</em> 78 (13): 4430–42. <a href="https://doi.org/10.1021/ac060209g">https://doi.org/10.1021/ac060209g</a>.
+Weljie, Aalim M., Jack Newton, Pascal Mercier, Erin Carlson, and Carolyn M. Slupsky. 2006. <span>“Targeted Profiling:<span></span> Quantitative Analysis of 1H NMR Metabolomics Data.”</span> <em>Analytical Chemistry</em> 78 (13): 4430–42. <a href="https://doi.org/10.1021/ac060209g">https://doi.org/10.1021/ac060209g</a>.
 </div>
 <div id="ref-wishart2016" class="csl-entry">
 Wishart, David S. 2016. <span>“Emerging Applications of Metabolomics in Drug Discovery and Precision Medicine.”</span> <em>Nature Reviews Drug Discovery</em> 15 (7): 473–84. <a href="https://doi.org/10.1038/nrd.2016.32">https://doi.org/10.1038/nrd.2016.32</a>.
@@ -842,7 +832,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

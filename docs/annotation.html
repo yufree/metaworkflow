@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 7 Annotation | Meta-Workflow</title>
   <meta name="description" content="This is a workflow for metabolomics studies." />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 7 Annotation | Meta-Workflow" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Miao YU" />
 
 
-<meta name="date" content="2022-07-09" />
+<meta name="date" content="2023-02-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,7 +52,7 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
@@ -102,7 +102,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -115,7 +115,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -433,41 +433,22 @@ div.csl-indent {
 <ul>
 <li>Apply heuristic restrictions for number of elements during formula generation. This is the table for known compounds:</li>
 </ul>
-<<<<<<< HEAD
-<pre><code>##   Mass.Range.[Da] Library C.max H.max N.max O.max P.max S.max F.max
-## 1           &lt; 500     DNP    29    72    10    18     4     7    15
-## 2            &lt;NA&gt;   Wiley    39    72    20    20     9    10    16
-## 3          &lt; 1000     DNP    66   126    25    27     6     8    16
-## 4            &lt;NA&gt;   Wiley    78   126    20    27     9    14    34
-## 5          &lt; 2000     DNP   115   236    32    63     6     8    16
-## 6            &lt;NA&gt;   Wiley   156   180    20    40     9    14    48
-## 7          &lt; 3000     DNP   162   208    48    78     6     9    16
-##   Cl.max Br.max Si.max
-## 1      8      5     NA
-## 2     10      4      8
-## 3     11      8     NA
-## 4     12      8     14
-## 5     11      8     NA
-## 6     12     10     15
-## 7     11      8     NA</code></pre>
-=======
-<pre><code>##   Mass.Range.[Da] Library C.max H.max N.max O.max P.max S.max F.max Cl.max
-## 1           &lt; 500     DNP    29    72    10    18     4     7    15      8
-## 2            &lt;NA&gt;   Wiley    39    72    20    20     9    10    16     10
-## 3          &lt; 1000     DNP    66   126    25    27     6     8    16     11
-## 4            &lt;NA&gt;   Wiley    78   126    20    27     9    14    34     12
-## 5          &lt; 2000     DNP   115   236    32    63     6     8    16     11
-## 6            &lt;NA&gt;   Wiley   156   180    20    40     9    14    48     12
-## 7          &lt; 3000     DNP   162   208    48    78     6     9    16     11
-##   Br.max Si.max
-## 1      5     NA
-## 2      4      8
-## 3      8     NA
-## 4      8     14
-## 5      8     NA
-## 6     10     15
-## 7      8     NA</code></pre>
->>>>>>> 0fbb9f50c66db641d3a6480b9ec4752a1517a38a
+<pre><code>##   Mass.Range.[Da] Library C.max H.max N.max O.max P.max S.max
+## 1           &lt; 500     DNP    29    72    10    18     4     7
+## 2            &lt;NA&gt;   Wiley    39    72    20    20     9    10
+## 3          &lt; 1000     DNP    66   126    25    27     6     8
+## 4            &lt;NA&gt;   Wiley    78   126    20    27     9    14
+## 5          &lt; 2000     DNP   115   236    32    63     6     8
+## 6            &lt;NA&gt;   Wiley   156   180    20    40     9    14
+## 7          &lt; 3000     DNP   162   208    48    78     6     9
+##   F.max Cl.max Br.max Si.max
+## 1    15      8      5     NA
+## 2    16     10      4      8
+## 3    16     11      8     NA
+## 4    34     12      8     14
+## 5    16     11      8     NA
+## 6    48     12     10     15
+## 7    16     11      8     NA</code></pre>
 <ul>
 <li><p>Perform LEWIS and SENIOR check. The LEWIS rule demands that molecules consisting of main group elements, especially carbon, nitrogen and oxygen, share electrons in a way that all atoms have completely filled s, p-valence shells (‘<a href="https://en.wikipedia.org/wiki/Octet_rule">octet rule</a>’). Senior’s theorem requires three essential conditions for the existence of molecular graphs</p>
 <ul>
@@ -479,7 +460,6 @@ div.csl-indent {
 <li><p>Perform H/C ratio check (hydrogen/carbon ratio). In most cases the hydrogen/carbon ratio does not exceed H/C &gt; 3 with rare exception such as in methylhydrazine (CH6N2). Conversely, the H/C ratio is usually smaller than 2, and should not be less than 0.125 like in the case of tetracyanopyrrole (C8HN5).</p></li>
 <li><p>Perform NOPS ratio check (N, O, P, S/C ratios).</p></li>
 </ul>
-<<<<<<< HEAD
 <pre><code>##   Element.ratios Common.range.(covering.99.7%)
 ## 1            H/C                       0.2–3.1
 ## 2            F/C                         0–1.5
@@ -500,43 +480,21 @@ div.csl-indent {
 ## 7                              0–2                         &gt; 0.3
 ## 8                              0–3                         &gt; 0.8
 ## 9                              0–1                         &gt; 0.5</code></pre>
-=======
-<pre><code>##   Element.ratios Common.range.(covering.99.7%) Extended.range.(covering.99.99%)
-## 1            H/C                       0.2–3.1                            0.1–6
-## 2            F/C                         0–1.5                              0–6
-## 3           Cl/C                         0–0.8                              0–2
-## 4           Br/C                         0–0.8                              0–2
-## 5            N/C                         0–1.3                              0–4
-## 6            O/C                         0–1.2                              0–3
-## 7            P/C                         0–0.3                              0–2
-## 8            S/C                         0–0.8                              0–3
-## 9           Si/C                         0–0.5                              0–1
-##   Extreme.range.(beyond.99.99%)
-## 1                 &lt; 0.1 and 6–9
-## 2                         &gt; 1.5
-## 3                         &gt; 0.8
-## 4                         &gt; 0.8
-## 5                         &gt; 1.3
-## 6                         &gt; 1.2
-## 7                         &gt; 0.3
-## 8                         &gt; 0.8
-## 9                         &gt; 0.5</code></pre>
->>>>>>> 0fbb9f50c66db641d3a6480b9ec4752a1517a38a
 <ul>
 <li>Perform heuristic HNOPS probability check (H, N, O, P, S/C high probability ratios)</li>
 </ul>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="annotation.html#cb14-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb14-2"><a href="annotation.html#cb14-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb14-3"><a href="annotation.html#cb14-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Element.counts =</span> <span class="fu">c</span>(<span class="st">&quot;NOPS all &gt; 1&quot;</span>,<span class="st">&quot;NOP all &gt; 3&quot;</span>,<span class="st">&quot;OPS all &gt; 1&quot;</span>,</span>
-<span id="cb14-4"><a href="annotation.html#cb14-4" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;PSN all &gt; 1&quot;</span>,<span class="st">&quot;NOS all &gt; 6&quot;</span>),</span>
-<span id="cb14-5"><a href="annotation.html#cb14-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Heuristic.Rule =</span> <span class="fu">c</span>(<span class="st">&quot;N&lt; 10, O &lt; 20, P &lt; 4, S &lt; 3&quot;</span>,</span>
-<span id="cb14-6"><a href="annotation.html#cb14-6" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;N &lt; 11, O &lt; 22, P &lt; 6&quot;</span>,<span class="st">&quot;O &lt; 14, P &lt; 3, S &lt; 3&quot;</span>,</span>
-<span id="cb14-7"><a href="annotation.html#cb14-7" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;P &lt; 3, S &lt; 3, N &lt; 4&quot;</span>,<span class="st">&quot;N &lt; 19 O &lt; 14 S &lt; 8&quot;</span>),</span>
-<span id="cb14-8"><a href="annotation.html#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">DB.examples.for.maximum.values =</span> <span class="fu">c</span>(<span class="st">&quot;C15H34N9O8PS, C22H44N4O14P2S2, C24H38N7O19P3S&quot;</span>,<span class="st">&quot;C20H28N10O21P4, C10H18N5O20P5&quot;</span>,</span>
-<span id="cb14-9"><a href="annotation.html#cb14-9" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;C22H44N4O14P2S2, C16H36N4O4P2S2&quot;</span>,</span>
-<span id="cb14-10"><a href="annotation.html#cb14-10" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;C22H44N4O14P2S2, C16H36N4O4P2S2&quot;</span>,<span class="st">&quot;C59H64N18O14S7&quot;</span>)</span>
-<span id="cb14-11"><a href="annotation.html#cb14-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb14-12"><a href="annotation.html#cb14-12" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="annotation.html#cb13-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb13-2"><a href="annotation.html#cb13-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb13-3"><a href="annotation.html#cb13-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Element.counts =</span> <span class="fu">c</span>(<span class="st">&quot;NOPS all &gt; 1&quot;</span>,<span class="st">&quot;NOP all &gt; 3&quot;</span>,<span class="st">&quot;OPS all &gt; 1&quot;</span>,</span>
+<span id="cb13-4"><a href="annotation.html#cb13-4" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;PSN all &gt; 1&quot;</span>,<span class="st">&quot;NOS all &gt; 6&quot;</span>),</span>
+<span id="cb13-5"><a href="annotation.html#cb13-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Heuristic.Rule =</span> <span class="fu">c</span>(<span class="st">&quot;N&lt; 10, O &lt; 20, P &lt; 4, S &lt; 3&quot;</span>,</span>
+<span id="cb13-6"><a href="annotation.html#cb13-6" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;N &lt; 11, O &lt; 22, P &lt; 6&quot;</span>,<span class="st">&quot;O &lt; 14, P &lt; 3, S &lt; 3&quot;</span>,</span>
+<span id="cb13-7"><a href="annotation.html#cb13-7" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;P &lt; 3, S &lt; 3, N &lt; 4&quot;</span>,<span class="st">&quot;N &lt; 19 O &lt; 14 S &lt; 8&quot;</span>),</span>
+<span id="cb13-8"><a href="annotation.html#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">DB.examples.for.maximum.values =</span> <span class="fu">c</span>(<span class="st">&quot;C15H34N9O8PS, C22H44N4O14P2S2, C24H38N7O19P3S&quot;</span>,<span class="st">&quot;C20H28N10O21P4, C10H18N5O20P5&quot;</span>,</span>
+<span id="cb13-9"><a href="annotation.html#cb13-9" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;C22H44N4O14P2S2, C16H36N4O4P2S2&quot;</span>,</span>
+<span id="cb13-10"><a href="annotation.html#cb13-10" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;C22H44N4O14P2S2, C16H36N4O4P2S2&quot;</span>,<span class="st">&quot;C59H64N18O14S7&quot;</span>)</span>
+<span id="cb13-11"><a href="annotation.html#cb13-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-12"><a href="annotation.html#cb13-12" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
 <pre><code>##   Element.counts              Heuristic.Rule
 ## 1   NOPS all &gt; 1 N&lt; 10, O &lt; 20, P &lt; 4, S &lt; 3
 ## 2    NOP all &gt; 3       N &lt; 11, O &lt; 22, P &lt; 6
@@ -805,7 +763,7 @@ Bonini, Paolo, Tobias Kind, Hiroshi Tsugawa, Dinesh Kumar Barupal, and Oliver Fi
 Broeckling, C. D., F. A. Afsar, S. Neumann, A. Ben-Hur, and J. E. Prenni. 2014. <span>“RAMClust: A Novel Feature Clustering Method Enables Spectral-Matching-Based Annotation for Metabolomics Data.”</span> <em>Analytical Chemistry</em> 86 (14): 6812–17. <a href="https://doi.org/10.1021/ac501530d">https://doi.org/10.1021/ac501530d</a>.
 </div>
 <div id="ref-broeckling2016" class="csl-entry">
-Broeckling, Corey D., Andrea Ganna, Mark Layer, Kevin Brown, Ben Sutton, Erik Ingelsson, Graham Peers, and Jessica E. Prenni. 2016. <span>“Enabling Efficient and Confident Annotation of LC<span>-</span>MS Metabolomics Data Through Ms1 Spectrum and Time Prediction.”</span> <em>Analytical Chemistry</em> 88 (18): 9226–34. <a href="https://doi.org/10.1021/acs.analchem.6b02479">https://doi.org/10.1021/acs.analchem.6b02479</a>.
+Broeckling, Corey D., Andrea Ganna, Mark Layer, Kevin Brown, Ben Sutton, Erik Ingelsson, Graham Peers, and Jessica E. Prenni. 2016. <span>“Enabling Efficient and Confident Annotation of LC<span>-</span>MS Metabolomics Data Through MS1 Spectrum and Time Prediction.”</span> <em>Analytical Chemistry</em> 88 (18): 9226–34. <a href="https://doi.org/10.1021/acs.analchem.6b02479">https://doi.org/10.1021/acs.analchem.6b02479</a>.
 </div>
 <div id="ref-chaleckis2019" class="csl-entry">
 Chaleckis, Romanas, Isabel Meister, Pei Zhang, and Craig E Wheelock. 2019. <span>“Challenges, Progress and Promises of Metabolite Annotation for LC<span></span>MS-Based Metabolomics.”</span> <em>Current Opinion in Biotechnology</em>, Analytical biotechnology, 55 (February): 44–50. <a href="https://doi.org/10.1016/j.copbio.2018.07.010">https://doi.org/10.1016/j.copbio.2018.07.010</a>.
@@ -937,7 +895,7 @@ Silva, Ricardo R., Fabien Jourdan, Diego M. Salvanha, Fabien Letisse, Emilien L.
 Sindelar, Miriam, and Gary J. Patti. 2020. <span>“Chemical Discovery in the Era of Metabolomics.”</span> <em>Journal of the American Chemical Society</em>, April. <a href="https://doi.org/10.1021/jacs.9b13198">https://doi.org/10.1021/jacs.9b13198</a>.
 </div>
 <div id="ref-spalding2016" class="csl-entry">
-Spalding, Jonathan L., Kevin Cho, Nathaniel G. Mahieu, Igor Nikolskiy, Elizabeth M. Llufrio, Stephen L. Johnson, and Gary J. Patti. 2016. <span>“Bar Coding Ms2 Spectra for Metabolite Identification.”</span> <em>Analytical Chemistry</em> 88 (5): 2538–42. <a href="https://doi.org/10.1021/acs.analchem.5b04925">https://doi.org/10.1021/acs.analchem.5b04925</a>.
+Spalding, Jonathan L., Kevin Cho, Nathaniel G. Mahieu, Igor Nikolskiy, Elizabeth M. Llufrio, Stephen L. Johnson, and Gary J. Patti. 2016. <span>“Bar Coding MS2 Spectra for Metabolite Identification.”</span> <em>Analytical Chemistry</em> 88 (5): 2538–42. <a href="https://doi.org/10.1021/acs.analchem.5b04925">https://doi.org/10.1021/acs.analchem.5b04925</a>.
 </div>
 <div id="ref-sumner2007" class="csl-entry">
 Sumner, Lloyd W., Alexander Amberg, Dave Barrett, Michael H. Beale, Richard Beger, Clare A. Daykin, Teresa W.-M. Fan, et al. 2007. <span>“Proposed Minimum Reporting Standards for Chemical Analysis Chemical Analysis Working Group (CAWG) Metabolomics Standards Initiative (MSI).”</span> <em>Metabolomics : Official Journal of the Metabolomic Society</em> 3 (3): 211–21. <a href="https://doi.org/10.1007/s11306-007-0082-2">https://doi.org/10.1007/s11306-007-0082-2</a>.
@@ -1042,7 +1000,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
