@@ -2,4 +2,3 @@ Package: metabobook
 Title: Metabolomics Workflow
 Version: 2023.1
 Imports: survival (>= 2.40-1),bookdown,multtest,xcms,faahKO,qvalue,CAMERA,sva,limma,RColorBrewer,AER,DiagrammeR,rentrez,reshape,ggplot2
-Remotes: PMassicotte/gtrendsR
