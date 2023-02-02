@@ -23,7 +23,7 @@
 <meta name="author" content="Miao YU" />
 
 
-<meta name="date" content="2023-02-01" />
+<meta name="date" content="2023-02-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,6 +56,12 @@
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
+<script src="libs/d3-3.3.8/d3.min.js"></script>
+<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
+<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+<script src="libs/chromatography-0.1/chromatography.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.9/DiagrammeR.js"></script>
 
 
 <style type="text/css">
@@ -391,7 +397,7 @@ div.csl-indent {
 Figure 1.1: The complex interactions of functional levels in biological systems.
 </p>
 </div>
-<p>Metabolomics studies always employ GC-MS<span class="citation">(<a href="#ref-theodoridis2012" role="doc-biblioref">Theodoridis et al. 2012</a>; <a href="#ref-beale2018" role="doc-biblioref">Beale et al. 2018</a>)</span>, GC*GC-MS<span class="citation">(<a href="#ref-tian2016" role="doc-biblioref">Tian et al. 2016</a>)</span>, LC-MS<span class="citation">(<a href="#ref-gika2014" role="doc-biblioref">Gika et al. 2014</a>)</span>, LC-MS/MS<span class="citation">(<a href="#ref-begou2017" role="doc-biblioref">Begou et al. 2017</a>)</span>, IM-MS<span class="citation">(<a href="#ref-levy2019" role="doc-biblioref">Levy et al. 2019</a>)</span>, infrared ion spectroscopy<span class="citation">(<a href="#ref-martens2017" role="doc-biblioref">Martens et al. 2017</a>)</span> or NMR[@b.dunn2011] to measure metabolites. For analytical methods, this review could be checked<span class="citation">(<a href="#ref-zhang2012e" role="doc-biblioref">Zhang et al. 2012</a>)</span>. The overall technique progress of metabolomics (2012-2018) could be found here<span class="citation">(<a href="#ref-miggiels2019" role="doc-biblioref">Miggiels et al. 2019</a>)</span>. However, this workflow will only cover mass spectrometry based metabolomics or XC-MS based research.</p>
+<p>Metabolomics studies always employ GC-MS<span class="citation">(<a href="#ref-theodoridis2012" role="doc-biblioref">Theodoridis et al. 2012</a>; <a href="#ref-beale2018" role="doc-biblioref">Beale et al. 2018</a>)</span>, GC*GC-MS<span class="citation">(<a href="#ref-tian2016" role="doc-biblioref">T.-F. Tian et al. 2016</a>)</span>, LC-MS<span class="citation">(<a href="#ref-gika2014" role="doc-biblioref">Gika et al. 2014</a>)</span>, LC-MS/MS<span class="citation">(<a href="#ref-begou2017" role="doc-biblioref">Begou et al. 2017</a>)</span>, IM-MS<span class="citation">(<a href="#ref-levy2019" role="doc-biblioref">Levy et al. 2019</a>)</span>, infrared ion spectroscopy<span class="citation">(<a href="#ref-martens2017" role="doc-biblioref">Martens et al. 2017</a>)</span> or NMR[@b.dunn2011] to measure metabolites. For analytical methods, this review could be checked<span class="citation">(<a href="#ref-zhang2012e" role="doc-biblioref">A. Zhang et al. 2012</a>)</span>. The overall technique progress of metabolomics (2012-2018) could be found here<span class="citation">(<a href="#ref-miggiels2019" role="doc-biblioref">Miggiels et al. 2019</a>)</span>. However, this workflow will only cover mass spectrometry based metabolomics or XC-MS based research.</p>
 <div id="history" class="section level2 hasAnchor" number="1.1">
 <h2><span class="header-section-number">1.1</span> History<a href="introduction.html#history" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="history-of-mass-spectrometry" class="section level3 hasAnchor" number="1.1.1">
@@ -451,17 +457,17 @@ Figure 1.3: Metabolomics timeline during pre- and post-metabolomics era
 <p>Some nice reviews and tutorials related to this workflow could be found in those papers or directly online:</p>
 <div id="workflow" class="section level3 hasAnchor" number="1.2.1">
 <h3><span class="header-section-number">1.2.1</span> Workflow<a href="introduction.html#workflow" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Those papers are recommended<span class="citation">(<a href="#ref-gonzalez-riano2020" role="doc-biblioref">González-Riano et al. 2020</a>; <a href="#ref-pezzatti2020" role="doc-biblioref">Pezzatti et al. 2020</a>; <a href="#ref-liu2019" role="doc-biblioref">Liu et al. 2019</a>; <a href="#ref-barnes2016a" role="doc-biblioref">Barnes et al. 2016a</a>; <a href="#ref-cajka2016" role="doc-biblioref">Cajka and Fiehn 2016</a>; <a href="#ref-gika2014" role="doc-biblioref">Gika et al. 2014</a>; <a href="#ref-theodoridis2012" role="doc-biblioref">Theodoridis et al. 2012</a>; <a href="#ref-lu2008" role="doc-biblioref">X. Lu and Xu 2008</a>; <a href="#ref-fiehn2002" role="doc-biblioref">Fiehn 2002</a>)</span> for general metabolomics related topics.</p>
+<p>Those papers are recommended<span class="citation">(<a href="#ref-gonzalez-riano2020" role="doc-biblioref">González-Riano et al. 2020</a>; <a href="#ref-pezzatti2020" role="doc-biblioref">Pezzatti et al. 2020</a>; <a href="#ref-liu2019" role="doc-biblioref">X. Liu et al. 2019</a>; <a href="#ref-barnes2016a" role="doc-biblioref">Barnes et al. 2016a</a>; <a href="#ref-cajka2016" role="doc-biblioref">Cajka and Fiehn 2016</a>; <a href="#ref-gika2014" role="doc-biblioref">Gika et al. 2014</a>; <a href="#ref-theodoridis2012" role="doc-biblioref">Theodoridis et al. 2012</a>; <a href="#ref-lu2008" role="doc-biblioref">X. Lu and Xu 2008</a>; <a href="#ref-fiehn2002" role="doc-biblioref">Fiehn 2002</a>)</span> for general metabolomics related topics.</p>
 <ul>
-<li>For targeted metabolomics, you could check those reviews<span class="citation">(<a href="#ref-griffiths2010" role="doc-biblioref">Griffiths et al. 2010</a>; <a href="#ref-lu2008a" role="doc-biblioref">W. Lu, Bennett, and Rabinowitz 2008</a>; <a href="#ref-weljie2006" role="doc-biblioref">Weljie et al. 2006</a>; <a href="#ref-yuan2012" role="doc-biblioref">Yuan et al. 2012</a>; <a href="#ref-zhou2016" role="doc-biblioref">Zhou and Yin 2016</a>; <a href="#ref-begou2017" role="doc-biblioref">Begou et al. 2017</a>)</span>.</li>
+<li>For targeted metabolomics, you could check those reviews<span class="citation">(<a href="#ref-griffiths2010" role="doc-biblioref">Griffiths et al. 2010</a>; <a href="#ref-lu2008a" role="doc-biblioref">W. Lu, Bennett, and Rabinowitz 2008</a>; <a href="#ref-weljie2006" role="doc-biblioref">Weljie et al. 2006</a>; <a href="#ref-yuan2012" role="doc-biblioref">Yuan et al. 2012</a>; <a href="#ref-zhou2016" role="doc-biblioref">J. Zhou and Yin 2016</a>; <a href="#ref-begou2017" role="doc-biblioref">Begou et al. 2017</a>)</span>.</li>
 </ul>
 </div>
 <div id="data-analysis" class="section level3 hasAnchor" number="1.2.2">
 <h3><span class="header-section-number">1.2.2</span> Data analysis<a href="introduction.html#data-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>You could firstly read those papers<span class="citation">(<a href="#ref-barnes2016" role="doc-biblioref">Barnes et al. 2016b</a>; <a href="#ref-kusonmano2016" role="doc-biblioref">Kusonmano, Vongsangnak, and Chumnanpuen 2016</a>; <a href="#ref-madsen2010" role="doc-biblioref">Madsen, Lundstedt, and Trygg 2010</a>; <a href="#ref-uppal2016" role="doc-biblioref">Uppal et al. 2016</a>; <a href="#ref-alonso2015" role="doc-biblioref">Alonso, Marsal, and Julià 2015</a>)</span> to get the concepts and issues for data analysis in metabolomics. Then this paper<span class="citation">(<a href="#ref-gromski2015" role="doc-biblioref">Gromski et al. 2015</a>)</span> could be treated as a step-by-step tutorial. For GC-MS based metabolomics, check this paper<span class="citation">(<a href="#ref-rey-stolle2022" role="doc-biblioref">Rey-Stolle et al. 2022</a>)</span>.</p>
 <ul>
-<li><p>A guide could be used choose a inofrmatics software and tools for lipidomics<span class="citation">(<a href="#ref-ni2022" role="doc-biblioref">Ni et al. 2022</a>)</span>.</p></li>
-<li><p>For annotation, this paper<span class="citation">(<a href="#ref-domingo-almenara2018" role="doc-biblioref">Domingo-Almenara et al. 2018</a>)</span> is a well organized review.</p></li>
+<li><p>A guide could be used choose a inofrmatics software and tools for lipidomics<span class="citation">(<a href="#ref-ni2022" role="doc-biblioref">Z. Ni et al. 2022</a>)</span>.</p></li>
+<li><p>For annotation, this paper<span class="citation">(<a href="#ref-domingo-almenara2018" role="doc-biblioref">Domingo-Almenara, Montenegro-Burke, Benton, et al. 2018</a>)</span> is a well organized review.</p></li>
 <li><p>For database used in metabolomics, you could check this review<span class="citation">(<a href="#ref-vinaixa2016" role="doc-biblioref">Vinaixa et al. 2016</a>)</span>.</p></li>
 <li><p>For metabolomics software, check this series of reviews for each year<span class="citation">(<a href="#ref-misra2016" role="doc-biblioref">Misra and van der Hooft 2016</a>; <a href="#ref-misra2017" role="doc-biblioref">Misra, Fahrmann, and Grapov 2017</a>; <a href="#ref-misra2018" role="doc-biblioref">Misra 2018</a>)</span>.</p></li>
 <li><p>For open sourced software, those reviews<span class="citation">(<a href="#ref-chang2021" role="doc-biblioref">Chang et al. 2021</a>; <a href="#ref-spicer2017" role="doc-biblioref">Spicer et al. 2017</a>; <a href="#ref-dryden2017" role="doc-biblioref">Dryden et al. 2017</a>)</span> could be a good start.</p></li>
@@ -479,7 +485,7 @@ Figure 1.3: Metabolomics timeline during pre- and post-metabolomics era
 <h3><span class="header-section-number">1.2.3</span> Application<a href="introduction.html#application" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><p>For environmental research related metabolomics or exposome, check those papers<span class="citation">(<a href="#ref-matich2019" role="doc-biblioref">Matich et al. 2019</a>; <a href="#ref-tang2020" role="doc-biblioref">Tang et al. 2020</a>; <a href="#ref-warth2017" role="doc-biblioref">Warth et al. 2017</a>; <a href="#ref-bundy2009" role="doc-biblioref">Bundy, Davey, and Viant 2009</a>)</span>.</p></li>
-<li><p>For toxicology, check this paper<span class="citation">(<a href="#ref-viant2019" role="doc-biblioref">Viant et al. 2019</a>)</span>.</p></li>
+<li><p>For toxicology, check this paper<span class="citation">(<a href="#ref-viant2019" role="doc-biblioref">Mark R. Viant et al. 2019</a>)</span>.</p></li>
 <li><p>Check this piece<span class="citation">(<a href="#ref-wishart2016" role="doc-biblioref">Wishart 2016</a>)</span> for drug discovery and precision medicine.</p></li>
 <li><p>For food chemistry, check this paper<span class="citation">(<a href="#ref-castro-puyana2017" role="doc-biblioref">Castro-Puyana et al. 2017</a>)</span>, this paper for livestock<span class="citation">(<a href="#ref-goldansaz2017" role="doc-biblioref">Goldansaz et al. 2017</a>)</span> and those papers for nutrition<span class="citation">(<a href="#ref-allam-ndoul2016" role="doc-biblioref">Allam-Ndoul et al. 2016</a>; <a href="#ref-jones2012" role="doc-biblioref">Jones, Park, and Ziegler 2012</a>; <a href="#ref-muller2020" role="doc-biblioref">Müller and Bosy-Westphal 2020</a>)</span>.</p></li>
 <li><p>For disease related metabolomics such as oncology<span class="citation">(<a href="#ref-spratlin2009" role="doc-biblioref">Spratlin, Serkova, and Eckhardt 2009</a>)</span>, Cardiovascular<span class="citation">(<a href="#ref-cheng2017" role="doc-biblioref">Cheng et al. 2017</a>)</span> . This paper<span class="citation">(<a href="#ref-kennedy2018" role="doc-biblioref">Kennedy et al. 2018</a>)</span> cover the metabolomics realted clinic research.</p></li>
@@ -492,7 +498,7 @@ Figure 1.3: Metabolomics timeline during pre- and post-metabolomics era
 <h3><span class="header-section-number">1.2.4</span> Challenge<a href="introduction.html#challenge" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>General challenge for metabolomics studies could be found here <span class="citation">(<a href="#ref-schymanski2017" role="doc-biblioref">Schymanski and Williams 2017</a>; <a href="#ref-uppal2016" role="doc-biblioref">Uppal et al. 2016</a>; <a href="#ref-schrimpe-rutledge2016" role="doc-biblioref">Schrimpe-Rutledge et al. 2016</a>; <a href="#ref-wolfender2015" role="doc-biblioref">Wolfender et al. 2015</a>)</span>.</p>
 <ul>
-<li><p>For reproducible research, check those papers <span class="citation">(<a href="#ref-du2022" role="doc-biblioref">Du et al. 2022</a>; <a href="#ref-place2021" role="doc-biblioref">Place et al. 2021</a>; <a href="#ref-verhoeven2020" role="doc-biblioref">Verhoeven, Giera, and Mayboroda 2020</a>; <a href="#ref-mangul2019" role="doc-biblioref">Mangul et al. 2019</a>; <a href="#ref-wallach2018" role="doc-biblioref">Wallach, Boyack, and Ioannidis 2018</a>; <a href="#ref-hites2018" role="doc-biblioref">Hites and Jobst 2018</a>; <a href="#ref-considine2017" role="doc-biblioref">Considine et al. 2017</a>; <a href="#ref-sarpe2017" role="doc-biblioref">Sarpe and Schriemer 2017</a>)</span>. To match data from different LC system, <a href="https://github.com/rjdossan/M2S">M2S</a> could be used<span class="citation">(<a href="#ref-climacopinto2022" role="doc-biblioref">Climaco Pinto et al. 2022</a>)</span>.</p></li>
+<li><p>For reproducible research, check those papers <span class="citation">(<a href="#ref-du2022" role="doc-biblioref">Xinsong Du et al. 2022</a>; <a href="#ref-place2021" role="doc-biblioref">Place et al. 2021</a>; <a href="#ref-verhoeven2020" role="doc-biblioref">Verhoeven, Giera, and Mayboroda 2020</a>; <a href="#ref-mangul2019" role="doc-biblioref">Mangul et al. 2019</a>; <a href="#ref-wallach2018" role="doc-biblioref">Wallach, Boyack, and Ioannidis 2018</a>; <a href="#ref-hites2018" role="doc-biblioref">Hites and Jobst 2018</a>; <a href="#ref-considine2017" role="doc-biblioref">Considine et al. 2017</a>; <a href="#ref-sarpe2017" role="doc-biblioref">Sarpe and Schriemer 2017</a>)</span>. To match data from different LC system, <a href="https://github.com/rjdossan/M2S">M2S</a> could be used<span class="citation">(<a href="#ref-climacopinto2022" role="doc-biblioref">Climaco Pinto et al. 2022</a>)</span>.</p></li>
 <li><p>Quantitative Metabolomics related issues could be found here<span class="citation">(<a href="#ref-kapoore2016b" role="doc-biblioref">Kapoore and Vaidyanathan 2016</a>; <a href="#ref-jorge2016a" role="doc-biblioref">Jorge, Mata, and António 2016</a>; <a href="#ref-lv2022" role="doc-biblioref">Lv et al. 2022</a>; <a href="#ref-vitale2022" role="doc-biblioref">Vitale et al. 2022</a>)</span>.</p></li>
 <li><p>For quality control issues, check here<span class="citation">(<a href="#ref-dudzik2018" role="doc-biblioref">Dudzik et al. 2018</a>; <a href="#ref-siskos2017" role="doc-biblioref">Siskos et al. 2017</a>; <a href="#ref-sumner2007" role="doc-biblioref">Lloyd W. Sumner et al. 2007</a>; <a href="#ref-place2021" role="doc-biblioref">Place et al. 2021</a>)</span>. You might also try postcolumn infusion as a quality control tool<span class="citation">(<a href="#ref-gonzalez2022" role="doc-biblioref">González, Dubbelman, and Hankemeier 2022</a>)</span>.</p></li>
 </ul>
@@ -517,8 +523,8 @@ Figure 1.3: Metabolomics timeline during pre- and post-metabolomics era
 </div>
 <div id="workflow-1" class="section level2 hasAnchor" number="1.4">
 <h2><span class="header-section-number">1.4</span> Workflow<a href="introduction.html#workflow-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="htmlwidget-42cb6033a8e4b6aafaa0" style="width:300px;height:480px;" class="grViz html-widget "></div>
-<script type="application/json" data-for="htmlwidget-42cb6033a8e4b6aafaa0">{"x":{"diagram":"digraph workflow {\nnode [shape = box]\nA [label = \"raw data\"]\nB [label = \"open source format\"]\nC [label = \"DoE folder\"]\nD [label = \"peaks list\"]\nE [label = \"retention time correction\"]\nF [label = \"peaks grouping\"]\nG [label = \"peaks filling\"]\nH [label = \"raw peaks\"]\nI [label = \"data visulization\"]\nJ [label = \"batch effects correction\"]\nK [label = \"corrected peaks\"]\nL [label = \"annotation\"]\nM [label = \"metabolomics pathway analysis\"]\nN [label = \"omics analysis\"]\nO [label = \"biomarkers discovery/diagnoise\"]\n\nA -> B -> C -> D -> E -> F -> G -> H\nH -> I\nI -> J\nH -> J -> K -> L\nL -> M -> N\nL -> O\n                  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-beabc24ff1a59a8c19f6" style="width:300px;height:480px;" class="grViz html-widget "></div>
+<script type="application/json" data-for="htmlwidget-beabc24ff1a59a8c19f6">{"x":{"diagram":"digraph workflow {\nnode [shape = box]\nA [label = \"raw data\"]\nB [label = \"open source format\"]\nC [label = \"DoE folder\"]\nD [label = \"peaks list\"]\nE [label = \"retention time correction\"]\nF [label = \"peaks grouping\"]\nG [label = \"peaks filling\"]\nH [label = \"raw peaks\"]\nI [label = \"data visulization\"]\nJ [label = \"batch effects correction\"]\nK [label = \"corrected peaks\"]\nL [label = \"annotation\"]\nM [label = \"metabolomics pathway analysis\"]\nN [label = \"omics analysis\"]\nO [label = \"biomarkers discovery/diagnoise\"]\n\nA -> B -> C -> D -> E -> F -> G -> H\nH -> I\nI -> J\nH -> J -> K -> L\nL -> M -> N\nL -> O\n                  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 
 </div>
 </div>
@@ -828,6 +834,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

@@ -1,9 +1,4 @@
-base
-gtrendsR
-rentrez
-reshape
-ggplot2
-shiny
+DiagrammeR
 carData
 car
 zoo
@@ -11,4 +6,3 @@ lmtest
 sandwich
 survival
 AER
-DiagrammeR
