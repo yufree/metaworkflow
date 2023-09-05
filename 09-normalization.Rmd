@@ -4,6 +4,16 @@ bibliography: references.bib
 
 # Peaks normalization
 
+## Batch effects
+
+Batch effects are the variances caused by factor other than the experimental design. We could simply make a linear model for the intensity of one peak:
+
+$$Intensity =  Average + Condition + Batch + Error$$
+
+Research is focused on condition contribution part and overall average or random error could be estimated. However, we know little about the batch contribution. Sometimes we could use known variables such as injection order or operators as the batch part. However, in most cases we such variable is unknown. Almost all the batch correction methods are trying to use some estimations to balance or remove the batch effect.
+
+For analytical chemistry, internal standards or pool quality control samples are actually standing for the batch contribution part in the model. However, it's impractical to get all the internal standards when the data is collected untargeted. For methods using internal standards or pool quality control samples, the variations among those samples are usually removed as median, quantile, mean or the ratios. Other ways like quantile regression, centering and scaling based on distribution within samples could be treated as using the stable distribution of peaks intensity to remove batch effects. 
+
 ## Batch effects classification
 
 Variances among the samples across all the extracted peaks might be affected by factors other than the experiment design. There are three types of those batch effects: Monotone, Block and Mixed.
@@ -341,6 +351,8 @@ RRmix also use a latent factor models correct the data [@jr2017]. This method co
 It is a two-step approach via combining the best-performance internal standard correction with support vector regression normalization, comprehensively removing the systematic and random errors and matrix effects[@ding2022a].
 
 ## Method to validate the normalization
+
+Various methods have been used for batch correction and evaluation. Simulation will ensure groud turth. Difference analysis would be a common method for evaluation. Then we could check whether this peak is true positive or false positive by settings of the simulation. Other methods need statistics or lots of standards to describ the performance of batch correction or normalization results.
 
 ## Software
 
