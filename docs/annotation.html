@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 Annotation | Meta-Workflow</title>
+  <title>Chapter 8 Annotation | Meta-Workflow</title>
   <meta name="description" content="This is a workflow for metabolomics studies." />
-  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 Annotation | Meta-Workflow" />
+  <meta property="og:title" content="Chapter 8 Annotation | Meta-Workflow" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="/images/cover.png" />
   <meta property="og:description" content="This is a workflow for metabolomics studies." />
   <meta name="github-repo" content="yufree/metaworkflow" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 Annotation | Meta-Workflow" />
+  <meta name="twitter:title" content="Chapter 8 Annotation | Meta-Workflow" />
   
   <meta name="twitter:description" content="This is a workflow for metabolomics studies." />
   <meta name="twitter:image" content="/images/cover.png" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Miao YU" />
 
 
-<meta name="date" content="2023-02-02" />
+<meta name="date" content="2024-03-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,21 +52,21 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/grViz-binding-1.0.9/grViz.js"></script>
+<script src="libs/grViz-binding-1.0.11/grViz.js"></script>
 <script src="libs/d3-3.3.8/d3.min.js"></script>
 <script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
 <link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
 <script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
 <script src="libs/chromatography-0.1/chromatography.js"></script>
-<script src="libs/DiagrammeR-binding-1.0.9/DiagrammeR.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.11/DiagrammeR.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -130,10 +130,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 <style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -169,202 +174,209 @@ div.csl-indent {
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#history"><i class="fa fa-check"></i><b>1.1</b> History</a>
+<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#history"><i class="fa fa-check"></i><b>2.1</b> History</a>
 <ul>
-<li class="chapter" data-level="1.1.1" data-path="introduction.html"><a href="introduction.html#history-of-mass-spectrometry"><i class="fa fa-check"></i><b>1.1.1</b> History of Mass Spectrometry</a></li>
-<li class="chapter" data-level="1.1.2" data-path="introduction.html"><a href="introduction.html#history-of-metabolomcis"><i class="fa fa-check"></i><b>1.1.2</b> History of Metabolomcis</a></li>
-<li class="chapter" data-level="1.1.3" data-path="introduction.html"><a href="introduction.html#defination"><i class="fa fa-check"></i><b>1.1.3</b> Defination</a></li>
+<li class="chapter" data-level="2.1.1" data-path="introduction.html"><a href="introduction.html#history-of-mass-spectrometry"><i class="fa fa-check"></i><b>2.1.1</b> History of Mass Spectrometry</a></li>
+<li class="chapter" data-level="2.1.2" data-path="introduction.html"><a href="introduction.html#history-of-metabolomcis"><i class="fa fa-check"></i><b>2.1.2</b> History of Metabolomcis</a></li>
+<li class="chapter" data-level="2.1.3" data-path="introduction.html"><a href="introduction.html#defination"><i class="fa fa-check"></i><b>2.1.3</b> Defination</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#reviews-and-tutorials"><i class="fa fa-check"></i><b>1.2</b> Reviews and tutorials</a>
+<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#reviews-and-tutorials"><i class="fa fa-check"></i><b>2.2</b> Reviews and tutorials</a>
 <ul>
-<li class="chapter" data-level="1.2.1" data-path="introduction.html"><a href="introduction.html#workflow"><i class="fa fa-check"></i><b>1.2.1</b> Workflow</a></li>
-<li class="chapter" data-level="1.2.2" data-path="introduction.html"><a href="introduction.html#data-analysis"><i class="fa fa-check"></i><b>1.2.2</b> Data analysis</a></li>
-<li class="chapter" data-level="1.2.3" data-path="introduction.html"><a href="introduction.html#application"><i class="fa fa-check"></i><b>1.2.3</b> Application</a></li>
-<li class="chapter" data-level="1.2.4" data-path="introduction.html"><a href="introduction.html#challenge"><i class="fa fa-check"></i><b>1.2.4</b> Challenge</a></li>
+<li class="chapter" data-level="2.2.1" data-path="introduction.html"><a href="introduction.html#workflow"><i class="fa fa-check"></i><b>2.2.1</b> Workflow</a></li>
+<li class="chapter" data-level="2.2.2" data-path="introduction.html"><a href="introduction.html#data-analysis"><i class="fa fa-check"></i><b>2.2.2</b> Data analysis</a></li>
+<li class="chapter" data-level="2.2.3" data-path="introduction.html"><a href="introduction.html#application"><i class="fa fa-check"></i><b>2.2.3</b> Application</a></li>
+<li class="chapter" data-level="2.2.4" data-path="introduction.html"><a href="introduction.html#challenge"><i class="fa fa-check"></i><b>2.2.4</b> Challenge</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#trends-in-metabolomics"><i class="fa fa-check"></i><b>1.3</b> Trends in Metabolomics</a></li>
-<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#workflow-1"><i class="fa fa-check"></i><b>1.4</b> Workflow</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#trends-in-metabolomics"><i class="fa fa-check"></i><b>2.3</b> Trends in Metabolomics</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction.html"><a href="introduction.html#workflow-1"><i class="fa fa-check"></i><b>2.4</b> Workflow</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html"><i class="fa fa-check"></i><b>2</b> Experimental design(DoE)</a>
+<li class="chapter" data-level="3" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html"><i class="fa fa-check"></i><b>3</b> Experimental design(DoE)</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#homogeneity-study"><i class="fa fa-check"></i><b>2.1</b> Homogeneity study</a></li>
-<li class="chapter" data-level="2.2" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#heterogeneity-study"><i class="fa fa-check"></i><b>2.2</b> Heterogeneity study</a></li>
-<li class="chapter" data-level="2.3" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#power-analysis"><i class="fa fa-check"></i><b>2.3</b> Power analysis</a></li>
-<li class="chapter" data-level="2.4" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#optimization"><i class="fa fa-check"></i><b>2.4</b> Optimization</a></li>
-<li class="chapter" data-level="2.5" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#pooled-qc"><i class="fa fa-check"></i><b>2.5</b> Pooled QC</a></li>
+<li class="chapter" data-level="3.1" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#homogeneity-study"><i class="fa fa-check"></i><b>3.1</b> Homogeneity study</a></li>
+<li class="chapter" data-level="3.2" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#heterogeneity-study"><i class="fa fa-check"></i><b>3.2</b> Heterogeneity study</a></li>
+<li class="chapter" data-level="3.3" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#power-analysis"><i class="fa fa-check"></i><b>3.3</b> Power analysis</a></li>
+<li class="chapter" data-level="3.4" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#optimization"><i class="fa fa-check"></i><b>3.4</b> Optimization</a></li>
+<li class="chapter" data-level="3.5" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#pooled-qc"><i class="fa fa-check"></i><b>3.5</b> Pooled QC</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="pretreatment.html"><a href="pretreatment.html"><i class="fa fa-check"></i><b>3</b> Pretreatment</a>
+<li class="chapter" data-level="4" data-path="pretreatment.html"><a href="pretreatment.html"><i class="fa fa-check"></i><b>4</b> Pretreatment</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="pretreatment.html"><a href="pretreatment.html#collection"><i class="fa fa-check"></i><b>3.1</b> Collection</a></li>
-<li class="chapter" data-level="3.2" data-path="pretreatment.html"><a href="pretreatment.html#quenching"><i class="fa fa-check"></i><b>3.2</b> Quenching</a></li>
-<li class="chapter" data-level="3.3" data-path="pretreatment.html"><a href="pretreatment.html#extraction"><i class="fa fa-check"></i><b>3.3</b> Extraction</a></li>
-<li class="chapter" data-level="3.4" data-path="pretreatment.html"><a href="pretreatment.html#derivatization"><i class="fa fa-check"></i><b>3.4</b> Derivatization</a></li>
-<li class="chapter" data-level="3.5" data-path="pretreatment.html"><a href="pretreatment.html#isotope-label"><i class="fa fa-check"></i><b>3.5</b> Isotope label</a></li>
-<li class="chapter" data-level="3.6" data-path="pretreatment.html"><a href="pretreatment.html#storage"><i class="fa fa-check"></i><b>3.6</b> Storage</a></li>
+<li class="chapter" data-level="4.1" data-path="pretreatment.html"><a href="pretreatment.html#collection"><i class="fa fa-check"></i><b>4.1</b> Collection</a></li>
+<li class="chapter" data-level="4.2" data-path="pretreatment.html"><a href="pretreatment.html#quenching"><i class="fa fa-check"></i><b>4.2</b> Quenching</a></li>
+<li class="chapter" data-level="4.3" data-path="pretreatment.html"><a href="pretreatment.html#extraction"><i class="fa fa-check"></i><b>4.3</b> Extraction</a></li>
+<li class="chapter" data-level="4.4" data-path="pretreatment.html"><a href="pretreatment.html#derivatization"><i class="fa fa-check"></i><b>4.4</b> Derivatization</a></li>
+<li class="chapter" data-level="4.5" data-path="pretreatment.html"><a href="pretreatment.html#isotope-label"><i class="fa fa-check"></i><b>4.5</b> Isotope label</a></li>
+<li class="chapter" data-level="4.6" data-path="pretreatment.html"><a href="pretreatment.html#storage"><i class="fa fa-check"></i><b>4.6</b> Storage</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html"><i class="fa fa-check"></i><b>4</b> Instrumental analysis</a>
+<li class="chapter" data-level="5" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html"><i class="fa fa-check"></i><b>5</b> Instrumental analysis</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#column-and-gradient-selection"><i class="fa fa-check"></i><b>4.1</b> Column and gradient selection</a></li>
-<li class="chapter" data-level="4.2" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#mass-resolution"><i class="fa fa-check"></i><b>4.2</b> Mass resolution</a></li>
-<li class="chapter" data-level="4.3" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#matrix-effects"><i class="fa fa-check"></i><b>4.3</b> Matrix effects</a></li>
+<li class="chapter" data-level="5.1" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#column-and-gradient-selection"><i class="fa fa-check"></i><b>5.1</b> Column and gradient selection</a></li>
+<li class="chapter" data-level="5.2" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#mass-resolution"><i class="fa fa-check"></i><b>5.2</b> Mass resolution</a></li>
+<li class="chapter" data-level="5.3" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#matrix-effects"><i class="fa fa-check"></i><b>5.3</b> Matrix effects</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="workflow-2.html"><a href="workflow-2.html"><i class="fa fa-check"></i><b>5</b> Workflow</a>
+<li class="chapter" data-level="6" data-path="workflow-2.html"><a href="workflow-2.html"><i class="fa fa-check"></i><b>6</b> Workflow</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="workflow-2.html"><a href="workflow-2.html#platform-for-metabolomics-data-analysis"><i class="fa fa-check"></i><b>5.1</b> Platform for metabolomics data analysis</a>
+<li class="chapter" data-level="6.1" data-path="workflow-2.html"><a href="workflow-2.html#platform-for-metabolomics-data-analysis"><i class="fa fa-check"></i><b>6.1</b> Platform for metabolomics data analysis</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="workflow-2.html"><a href="workflow-2.html#xcms-xcms-online"><i class="fa fa-check"></i><b>5.1.1</b> XCMS &amp; XCMS online</a></li>
-<li class="chapter" data-level="5.1.2" data-path="workflow-2.html"><a href="workflow-2.html#prime"><i class="fa fa-check"></i><b>5.1.2</b> PRIMe</a></li>
-<li class="chapter" data-level="5.1.3" data-path="workflow-2.html"><a href="workflow-2.html#gnps"><i class="fa fa-check"></i><b>5.1.3</b> GNPS</a></li>
-<li class="chapter" data-level="5.1.4" data-path="workflow-2.html"><a href="workflow-2.html#openms-sirius"><i class="fa fa-check"></i><b>5.1.4</b> OpenMS &amp; SIRIUS</a></li>
-<li class="chapter" data-level="5.1.5" data-path="workflow-2.html"><a href="workflow-2.html#mzmine-2"><i class="fa fa-check"></i><b>5.1.5</b> MZmine 2</a></li>
-<li class="chapter" data-level="5.1.6" data-path="workflow-2.html"><a href="workflow-2.html#emory-mahpic"><i class="fa fa-check"></i><b>5.1.6</b> Emory MaHPIC</a></li>
-<li class="chapter" data-level="5.1.7" data-path="workflow-2.html"><a href="workflow-2.html#others"><i class="fa fa-check"></i><b>5.1.7</b> Others</a></li>
-<li class="chapter" data-level="5.1.8" data-path="workflow-2.html"><a href="workflow-2.html#workflow-comparison"><i class="fa fa-check"></i><b>5.1.8</b> Workflow Comparison</a></li>
+<li class="chapter" data-level="6.1.1" data-path="workflow-2.html"><a href="workflow-2.html#xcms-xcms-online"><i class="fa fa-check"></i><b>6.1.1</b> XCMS &amp; XCMS online</a></li>
+<li class="chapter" data-level="6.1.2" data-path="workflow-2.html"><a href="workflow-2.html#prime"><i class="fa fa-check"></i><b>6.1.2</b> PRIMe</a></li>
+<li class="chapter" data-level="6.1.3" data-path="workflow-2.html"><a href="workflow-2.html#gnps"><i class="fa fa-check"></i><b>6.1.3</b> GNPS</a></li>
+<li class="chapter" data-level="6.1.4" data-path="workflow-2.html"><a href="workflow-2.html#openms-sirius"><i class="fa fa-check"></i><b>6.1.4</b> OpenMS &amp; SIRIUS</a></li>
+<li class="chapter" data-level="6.1.5" data-path="workflow-2.html"><a href="workflow-2.html#mzmine-2"><i class="fa fa-check"></i><b>6.1.5</b> MZmine 2</a></li>
+<li class="chapter" data-level="6.1.6" data-path="workflow-2.html"><a href="workflow-2.html#emory-mahpic"><i class="fa fa-check"></i><b>6.1.6</b> Emory MaHPIC</a></li>
+<li class="chapter" data-level="6.1.7" data-path="workflow-2.html"><a href="workflow-2.html#others"><i class="fa fa-check"></i><b>6.1.7</b> Others</a></li>
+<li class="chapter" data-level="6.1.8" data-path="workflow-2.html"><a href="workflow-2.html#workflow-comparison"><i class="fa fa-check"></i><b>6.1.8</b> Workflow Comparison</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="workflow-2.html"><a href="workflow-2.html#project-setup"><i class="fa fa-check"></i><b>5.2</b> Project Setup</a></li>
-<li class="chapter" data-level="5.3" data-path="workflow-2.html"><a href="workflow-2.html#data-sharing"><i class="fa fa-check"></i><b>5.3</b> Data sharing</a></li>
-<li class="chapter" data-level="5.4" data-path="workflow-2.html"><a href="workflow-2.html#contest"><i class="fa fa-check"></i><b>5.4</b> Contest</a></li>
+<li class="chapter" data-level="6.2" data-path="workflow-2.html"><a href="workflow-2.html#project-setup"><i class="fa fa-check"></i><b>6.2</b> Project Setup</a></li>
+<li class="chapter" data-level="6.3" data-path="workflow-2.html"><a href="workflow-2.html#data-sharing"><i class="fa fa-check"></i><b>6.3</b> Data sharing</a></li>
+<li class="chapter" data-level="6.4" data-path="workflow-2.html"><a href="workflow-2.html#contest"><i class="fa fa-check"></i><b>6.4</b> Contest</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html"><i class="fa fa-check"></i><b>6</b> Raw data pretreatment</a>
+<li class="chapter" data-level="7" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html"><i class="fa fa-check"></i><b>7</b> Raw data pretreatment</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#data-visualization"><i class="fa fa-check"></i><b>6.1</b> Data visualization</a></li>
-<li class="chapter" data-level="6.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#peak-extraction"><i class="fa fa-check"></i><b>6.2</b> Peak extraction</a></li>
-<li class="chapter" data-level="6.3" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#msms"><i class="fa fa-check"></i><b>6.3</b> MS/MS</a>
+<li class="chapter" data-level="7.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#data-visualization"><i class="fa fa-check"></i><b>7.1</b> Data visualization</a></li>
+<li class="chapter" data-level="7.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#peak-extraction"><i class="fa fa-check"></i><b>7.2</b> Peak extraction</a></li>
+<li class="chapter" data-level="7.3" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#msms"><i class="fa fa-check"></i><b>7.3</b> MS/MS</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#mrm"><i class="fa fa-check"></i><b>6.3.1</b> MRM</a></li>
-<li class="chapter" data-level="6.3.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#dda"><i class="fa fa-check"></i><b>6.3.2</b> DDA</a></li>
-<li class="chapter" data-level="6.3.3" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#dia"><i class="fa fa-check"></i><b>6.3.3</b> DIA</a></li>
+<li class="chapter" data-level="7.3.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#mrm"><i class="fa fa-check"></i><b>7.3.1</b> MRM</a></li>
+<li class="chapter" data-level="7.3.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#dda"><i class="fa fa-check"></i><b>7.3.2</b> DDA</a></li>
+<li class="chapter" data-level="7.3.3" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#dia"><i class="fa fa-check"></i><b>7.3.3</b> DIA</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#retention-time-correction"><i class="fa fa-check"></i><b>6.4</b> Retention Time Correction</a></li>
-<li class="chapter" data-level="6.5" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#filling-missing-values"><i class="fa fa-check"></i><b>6.5</b> Filling missing values</a></li>
-<li class="chapter" data-level="6.6" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#spectral-deconvolution"><i class="fa fa-check"></i><b>6.6</b> Spectral deconvolution</a></li>
-<li class="chapter" data-level="6.7" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#dynamic-range"><i class="fa fa-check"></i><b>6.7</b> Dynamic Range</a>
+<li class="chapter" data-level="7.4" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#retention-time-correction"><i class="fa fa-check"></i><b>7.4</b> Retention Time Correction</a></li>
+<li class="chapter" data-level="7.5" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#filling-missing-values"><i class="fa fa-check"></i><b>7.5</b> Filling missing values</a></li>
+<li class="chapter" data-level="7.6" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#spectral-deconvolution"><i class="fa fa-check"></i><b>7.6</b> Spectral deconvolution</a></li>
+<li class="chapter" data-level="7.7" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#dynamic-range"><i class="fa fa-check"></i><b>7.7</b> Dynamic Range</a>
 <ul>
-<li class="chapter" data-level="6.7.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#non-detects"><i class="fa fa-check"></i><b>6.7.1</b> Non-detects</a></li>
-<li class="chapter" data-level="6.7.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#over-detection-limit"><i class="fa fa-check"></i><b>6.7.2</b> Over Detection Limit</a></li>
+<li class="chapter" data-level="7.7.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#non-detects"><i class="fa fa-check"></i><b>7.7.1</b> Non-detects</a></li>
+<li class="chapter" data-level="7.7.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#over-detection-limit"><i class="fa fa-check"></i><b>7.7.2</b> Over Detection Limit</a></li>
 </ul></li>
-<li class="chapter" data-level="6.8" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#rsdfold-change-filter"><i class="fa fa-check"></i><b>6.8</b> RSD/fold change Filter</a></li>
-<li class="chapter" data-level="6.9" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#power-analysis-filter"><i class="fa fa-check"></i><b>6.9</b> Power Analysis Filter</a></li>
+<li class="chapter" data-level="7.8" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#rsdfold-change-filter"><i class="fa fa-check"></i><b>7.8</b> RSD/fold change Filter</a></li>
+<li class="chapter" data-level="7.9" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#power-analysis-filter"><i class="fa fa-check"></i><b>7.9</b> Power Analysis Filter</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="annotation.html"><a href="annotation.html"><i class="fa fa-check"></i><b>7</b> Annotation</a>
+<li class="chapter" data-level="8" data-path="annotation.html"><a href="annotation.html"><i class="fa fa-check"></i><b>8</b> Annotation</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="annotation.html"><a href="annotation.html#issues-in-annotation"><i class="fa fa-check"></i><b>7.1</b> Issues in annotation</a></li>
-<li class="chapter" data-level="7.2" data-path="annotation.html"><a href="annotation.html#peak-misidentification"><i class="fa fa-check"></i><b>7.2</b> Peak misidentification</a></li>
-<li class="chapter" data-level="7.3" data-path="annotation.html"><a href="annotation.html#annotation-v.s.-identification"><i class="fa fa-check"></i><b>7.3</b> Annotation v.s. identification</a></li>
-<li class="chapter" data-level="7.4" data-path="annotation.html"><a href="annotation.html#molecular-formula-assignment"><i class="fa fa-check"></i><b>7.4</b> Molecular Formula Assignment</a></li>
-<li class="chapter" data-level="7.5" data-path="annotation.html"><a href="annotation.html#redundant-peaks"><i class="fa fa-check"></i><b>7.5</b> Redundant peaks</a>
+<li class="chapter" data-level="8.1" data-path="annotation.html"><a href="annotation.html#issues-in-annotation"><i class="fa fa-check"></i><b>8.1</b> Issues in annotation</a></li>
+<li class="chapter" data-level="8.2" data-path="annotation.html"><a href="annotation.html#peak-misidentification"><i class="fa fa-check"></i><b>8.2</b> Peak misidentification</a></li>
+<li class="chapter" data-level="8.3" data-path="annotation.html"><a href="annotation.html#annotation-v.s.-identification"><i class="fa fa-check"></i><b>8.3</b> Annotation v.s. identification</a></li>
+<li class="chapter" data-level="8.4" data-path="annotation.html"><a href="annotation.html#molecular-formula-assignment"><i class="fa fa-check"></i><b>8.4</b> Molecular Formula Assignment</a></li>
+<li class="chapter" data-level="8.5" data-path="annotation.html"><a href="annotation.html#redundant-peaks"><i class="fa fa-check"></i><b>8.5</b> Redundant peaks</a>
 <ul>
-<li class="chapter" data-level="7.5.1" data-path="annotation.html"><a href="annotation.html#adducts-list"><i class="fa fa-check"></i><b>7.5.1</b> Adducts list</a></li>
-<li class="chapter" data-level="7.5.2" data-path="annotation.html"><a href="annotation.html#isotope"><i class="fa fa-check"></i><b>7.5.2</b> Isotope</a></li>
-<li class="chapter" data-level="7.5.3" data-path="annotation.html"><a href="annotation.html#camera"><i class="fa fa-check"></i><b>7.5.3</b> CAMERA</a></li>
-<li class="chapter" data-level="7.5.4" data-path="annotation.html"><a href="annotation.html#ramclustr"><i class="fa fa-check"></i><b>7.5.4</b> RAMClustR</a></li>
-<li class="chapter" data-level="7.5.5" data-path="annotation.html"><a href="annotation.html#biocan"><i class="fa fa-check"></i><b>7.5.5</b> BioCAn</a></li>
-<li class="chapter" data-level="7.5.6" data-path="annotation.html"><a href="annotation.html#mzmatch"><i class="fa fa-check"></i><b>7.5.6</b> mzMatch</a></li>
-<li class="chapter" data-level="7.5.7" data-path="annotation.html"><a href="annotation.html#xmsannotator"><i class="fa fa-check"></i><b>7.5.7</b> xMSannotator</a></li>
-<li class="chapter" data-level="7.5.8" data-path="annotation.html"><a href="annotation.html#mwise"><i class="fa fa-check"></i><b>7.5.8</b> mWise</a></li>
-<li class="chapter" data-level="7.5.9" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>7.5.9</b> MAIT</a></li>
-<li class="chapter" data-level="7.5.10" data-path="annotation.html"><a href="annotation.html#pmd"><i class="fa fa-check"></i><b>7.5.10</b> pmd</a></li>
-<li class="chapter" data-level="7.5.11" data-path="annotation.html"><a href="annotation.html#nontarget"><i class="fa fa-check"></i><b>7.5.11</b> nontarget</a></li>
-<li class="chapter" data-level="7.5.12" data-path="annotation.html"><a href="annotation.html#binner"><i class="fa fa-check"></i><b>7.5.12</b> Binner</a></li>
-<li class="chapter" data-level="7.5.13" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>7.5.13</b> mz.unity</a></li>
-<li class="chapter" data-level="7.5.14" data-path="annotation.html"><a href="annotation.html#ms-flo"><i class="fa fa-check"></i><b>7.5.14</b> MS-FLO</a></li>
-<li class="chapter" data-level="7.5.15" data-path="annotation.html"><a href="annotation.html#cliquems"><i class="fa fa-check"></i><b>7.5.15</b> CliqueMS</a></li>
-<li class="chapter" data-level="7.5.16" data-path="annotation.html"><a href="annotation.html#interpretmsspectrum"><i class="fa fa-check"></i><b>7.5.16</b> InterpretMSSpectrum</a></li>
-<li class="chapter" data-level="7.5.17" data-path="annotation.html"><a href="annotation.html#netid"><i class="fa fa-check"></i><b>7.5.17</b> NetID</a></li>
-<li class="chapter" data-level="7.5.18" data-path="annotation.html"><a href="annotation.html#isfrag"><i class="fa fa-check"></i><b>7.5.18</b> ISfrag</a></li>
+<li class="chapter" data-level="8.5.1" data-path="annotation.html"><a href="annotation.html#adducts-list"><i class="fa fa-check"></i><b>8.5.1</b> Adducts list</a></li>
+<li class="chapter" data-level="8.5.2" data-path="annotation.html"><a href="annotation.html#isotope"><i class="fa fa-check"></i><b>8.5.2</b> Isotope</a></li>
+<li class="chapter" data-level="8.5.3" data-path="annotation.html"><a href="annotation.html#camera"><i class="fa fa-check"></i><b>8.5.3</b> CAMERA</a></li>
+<li class="chapter" data-level="8.5.4" data-path="annotation.html"><a href="annotation.html#ramclustr"><i class="fa fa-check"></i><b>8.5.4</b> RAMClustR</a></li>
+<li class="chapter" data-level="8.5.5" data-path="annotation.html"><a href="annotation.html#biocan"><i class="fa fa-check"></i><b>8.5.5</b> BioCAn</a></li>
+<li class="chapter" data-level="8.5.6" data-path="annotation.html"><a href="annotation.html#mzmatch"><i class="fa fa-check"></i><b>8.5.6</b> mzMatch</a></li>
+<li class="chapter" data-level="8.5.7" data-path="annotation.html"><a href="annotation.html#xmsannotator"><i class="fa fa-check"></i><b>8.5.7</b> xMSannotator</a></li>
+<li class="chapter" data-level="8.5.8" data-path="annotation.html"><a href="annotation.html#mwise"><i class="fa fa-check"></i><b>8.5.8</b> mWise</a></li>
+<li class="chapter" data-level="8.5.9" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>8.5.9</b> MAIT</a></li>
+<li class="chapter" data-level="8.5.10" data-path="annotation.html"><a href="annotation.html#pmd"><i class="fa fa-check"></i><b>8.5.10</b> pmd</a></li>
+<li class="chapter" data-level="8.5.11" data-path="annotation.html"><a href="annotation.html#nontarget"><i class="fa fa-check"></i><b>8.5.11</b> nontarget</a></li>
+<li class="chapter" data-level="8.5.12" data-path="annotation.html"><a href="annotation.html#binner"><i class="fa fa-check"></i><b>8.5.12</b> Binner</a></li>
+<li class="chapter" data-level="8.5.13" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>8.5.13</b> mz.unity</a></li>
+<li class="chapter" data-level="8.5.14" data-path="annotation.html"><a href="annotation.html#ms-flo"><i class="fa fa-check"></i><b>8.5.14</b> MS-FLO</a></li>
+<li class="chapter" data-level="8.5.15" data-path="annotation.html"><a href="annotation.html#cliquems"><i class="fa fa-check"></i><b>8.5.15</b> CliqueMS</a></li>
+<li class="chapter" data-level="8.5.16" data-path="annotation.html"><a href="annotation.html#interpretmsspectrum"><i class="fa fa-check"></i><b>8.5.16</b> InterpretMSSpectrum</a></li>
+<li class="chapter" data-level="8.5.17" data-path="annotation.html"><a href="annotation.html#netid"><i class="fa fa-check"></i><b>8.5.17</b> NetID</a></li>
+<li class="chapter" data-level="8.5.18" data-path="annotation.html"><a href="annotation.html#isfrag"><i class="fa fa-check"></i><b>8.5.18</b> ISfrag</a></li>
+<li class="chapter" data-level="8.5.19" data-path="annotation.html"><a href="annotation.html#fastei"><i class="fa fa-check"></i><b>8.5.19</b> FastEI</a></li>
 </ul></li>
-<li class="chapter" data-level="7.6" data-path="annotation.html"><a href="annotation.html#ms1-ms2-connection"><i class="fa fa-check"></i><b>7.6</b> MS1 MS2 connection</a>
+<li class="chapter" data-level="8.6" data-path="annotation.html"><a href="annotation.html#ms1-ms2-connection"><i class="fa fa-check"></i><b>8.6</b> MS1 MS2 connection</a>
 <ul>
-<li class="chapter" data-level="7.6.1" data-path="annotation.html"><a href="annotation.html#pmdda"><i class="fa fa-check"></i><b>7.6.1</b> PMDDA</a></li>
-<li class="chapter" data-level="7.6.2" data-path="annotation.html"><a href="annotation.html#hermes"><i class="fa fa-check"></i><b>7.6.2</b> HERMES</a></li>
+<li class="chapter" data-level="8.6.1" data-path="annotation.html"><a href="annotation.html#pmdda"><i class="fa fa-check"></i><b>8.6.1</b> PMDDA</a></li>
+<li class="chapter" data-level="8.6.2" data-path="annotation.html"><a href="annotation.html#hermes"><i class="fa fa-check"></i><b>8.6.2</b> HERMES</a></li>
+<li class="chapter" data-level="8.6.3" data-path="annotation.html"><a href="annotation.html#dpdda"><i class="fa fa-check"></i><b>8.6.3</b> dpDDA</a></li>
 </ul></li>
-<li class="chapter" data-level="7.7" data-path="annotation.html"><a href="annotation.html#msms-annotation"><i class="fa fa-check"></i><b>7.7</b> MS/MS annotation</a>
+<li class="chapter" data-level="8.7" data-path="annotation.html"><a href="annotation.html#ms2-msn-connection"><i class="fa fa-check"></i><b>8.7</b> MS2 MSn connection</a></li>
+<li class="chapter" data-level="8.8" data-path="annotation.html"><a href="annotation.html#msms-annotation"><i class="fa fa-check"></i><b>8.8</b> MS/MS annotation</a>
 <ul>
-<li class="chapter" data-level="7.7.1" data-path="annotation.html"><a href="annotation.html#matchms"><i class="fa fa-check"></i><b>7.7.1</b> Matchms</a></li>
-<li class="chapter" data-level="7.7.2" data-path="annotation.html"><a href="annotation.html#metdna"><i class="fa fa-check"></i><b>7.7.2</b> MetDNA</a></li>
-<li class="chapter" data-level="7.7.3" data-path="annotation.html"><a href="annotation.html#metfusion"><i class="fa fa-check"></i><b>7.7.3</b> MetFusion</a></li>
-<li class="chapter" data-level="7.7.4" data-path="annotation.html"><a href="annotation.html#ms2analyzer"><i class="fa fa-check"></i><b>7.7.4</b> MS2Analyzer</a></li>
-<li class="chapter" data-level="7.7.5" data-path="annotation.html"><a href="annotation.html#metfrag"><i class="fa fa-check"></i><b>7.7.5</b> MetFrag</a></li>
-<li class="chapter" data-level="7.7.6" data-path="annotation.html"><a href="annotation.html#cfm-id"><i class="fa fa-check"></i><b>7.7.6</b> CFM-ID</a></li>
-<li class="chapter" data-level="7.7.7" data-path="annotation.html"><a href="annotation.html#lc-ms2struct"><i class="fa fa-check"></i><b>7.7.7</b> LC-MS2Struct</a></li>
-<li class="chapter" data-level="7.7.8" data-path="annotation.html"><a href="annotation.html#lipidfrag"><i class="fa fa-check"></i><b>7.7.8</b> LipidFrag</a></li>
-<li class="chapter" data-level="7.7.9" data-path="annotation.html"><a href="annotation.html#lipidmatch"><i class="fa fa-check"></i><b>7.7.9</b> Lipidmatch</a></li>
-<li class="chapter" data-level="7.7.10" data-path="annotation.html"><a href="annotation.html#barcoding"><i class="fa fa-check"></i><b>7.7.10</b> BarCoding</a></li>
-<li class="chapter" data-level="7.7.11" data-path="annotation.html"><a href="annotation.html#imet"><i class="fa fa-check"></i><b>7.7.11</b> iMet</a></li>
+<li class="chapter" data-level="8.8.1" data-path="annotation.html"><a href="annotation.html#matchms"><i class="fa fa-check"></i><b>8.8.1</b> Matchms</a></li>
+<li class="chapter" data-level="8.8.2" data-path="annotation.html"><a href="annotation.html#metdna"><i class="fa fa-check"></i><b>8.8.2</b> MetDNA</a></li>
+<li class="chapter" data-level="8.8.3" data-path="annotation.html"><a href="annotation.html#metfusion"><i class="fa fa-check"></i><b>8.8.3</b> MetFusion</a></li>
+<li class="chapter" data-level="8.8.4" data-path="annotation.html"><a href="annotation.html#ms2analyzer"><i class="fa fa-check"></i><b>8.8.4</b> MS2Analyzer</a></li>
+<li class="chapter" data-level="8.8.5" data-path="annotation.html"><a href="annotation.html#metfrag"><i class="fa fa-check"></i><b>8.8.5</b> MetFrag</a></li>
+<li class="chapter" data-level="8.8.6" data-path="annotation.html"><a href="annotation.html#cfm-id"><i class="fa fa-check"></i><b>8.8.6</b> CFM-ID</a></li>
+<li class="chapter" data-level="8.8.7" data-path="annotation.html"><a href="annotation.html#lc-ms2struct"><i class="fa fa-check"></i><b>8.8.7</b> LC-MS2Struct</a></li>
+<li class="chapter" data-level="8.8.8" data-path="annotation.html"><a href="annotation.html#lipidfrag"><i class="fa fa-check"></i><b>8.8.8</b> LipidFrag</a></li>
+<li class="chapter" data-level="8.8.9" data-path="annotation.html"><a href="annotation.html#lipidmatch"><i class="fa fa-check"></i><b>8.8.9</b> Lipidmatch</a></li>
+<li class="chapter" data-level="8.8.10" data-path="annotation.html"><a href="annotation.html#barcoding"><i class="fa fa-check"></i><b>8.8.10</b> BarCoding</a></li>
+<li class="chapter" data-level="8.8.11" data-path="annotation.html"><a href="annotation.html#imet"><i class="fa fa-check"></i><b>8.8.11</b> iMet</a></li>
+<li class="chapter" data-level="8.8.12" data-path="annotation.html"><a href="annotation.html#dnms2purifier"><i class="fa fa-check"></i><b>8.8.12</b> DNMS2Purifier</a></li>
+<li class="chapter" data-level="8.8.13" data-path="annotation.html"><a href="annotation.html#idsl.csa"><i class="fa fa-check"></i><b>8.8.13</b> IDSL.CSA</a></li>
 </ul></li>
-<li class="chapter" data-level="7.8" data-path="annotation.html"><a href="annotation.html#knowledge-based-annotation"><i class="fa fa-check"></i><b>7.8</b> Knowledge based annotation</a>
+<li class="chapter" data-level="8.9" data-path="annotation.html"><a href="annotation.html#knowledge-based-annotation"><i class="fa fa-check"></i><b>8.9</b> Knowledge based annotation</a>
 <ul>
-<li class="chapter" data-level="7.8.1" data-path="annotation.html"><a href="annotation.html#chromatographic-retention-related-criteria"><i class="fa fa-check"></i><b>7.8.1</b> Chromatographic retention-related criteria</a></li>
-<li class="chapter" data-level="7.8.2" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>7.8.2</b> ProbMetab</a></li>
-<li class="chapter" data-level="7.8.3" data-path="annotation.html"><a href="annotation.html#mi-pack"><i class="fa fa-check"></i><b>7.8.3</b> MI-Pack</a></li>
-<li class="chapter" data-level="7.8.4" data-path="annotation.html"><a href="annotation.html#metexpert"><i class="fa fa-check"></i><b>7.8.4</b> MetExpert</a></li>
-<li class="chapter" data-level="7.8.5" data-path="annotation.html"><a href="annotation.html#mycompoundid"><i class="fa fa-check"></i><b>7.8.5</b> MycompoundID</a></li>
-<li class="chapter" data-level="7.8.6" data-path="annotation.html"><a href="annotation.html#metfamily"><i class="fa fa-check"></i><b>7.8.6</b> MetFamily</a></li>
-<li class="chapter" data-level="7.8.7" data-path="annotation.html"><a href="annotation.html#plantmat"><i class="fa fa-check"></i><b>7.8.7</b> Plantmat</a></li>
-<li class="chapter" data-level="7.8.8" data-path="annotation.html"><a href="annotation.html#coa-blast"><i class="fa fa-check"></i><b>7.8.8</b> CoA-Blast</a></li>
-<li class="chapter" data-level="7.8.9" data-path="annotation.html"><a href="annotation.html#kgmn"><i class="fa fa-check"></i><b>7.8.9</b> KGMN</a></li>
+<li class="chapter" data-level="8.9.1" data-path="annotation.html"><a href="annotation.html#experimental-design"><i class="fa fa-check"></i><b>8.9.1</b> Experimental design</a></li>
+<li class="chapter" data-level="8.9.2" data-path="annotation.html"><a href="annotation.html#chromatographic-retention-related-criteria"><i class="fa fa-check"></i><b>8.9.2</b> Chromatographic retention-related criteria</a></li>
+<li class="chapter" data-level="8.9.3" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>8.9.3</b> ProbMetab</a></li>
+<li class="chapter" data-level="8.9.4" data-path="annotation.html"><a href="annotation.html#mi-pack"><i class="fa fa-check"></i><b>8.9.4</b> MI-Pack</a></li>
+<li class="chapter" data-level="8.9.5" data-path="annotation.html"><a href="annotation.html#metexpert"><i class="fa fa-check"></i><b>8.9.5</b> MetExpert</a></li>
+<li class="chapter" data-level="8.9.6" data-path="annotation.html"><a href="annotation.html#mycompoundid"><i class="fa fa-check"></i><b>8.9.6</b> MycompoundID</a></li>
+<li class="chapter" data-level="8.9.7" data-path="annotation.html"><a href="annotation.html#metfamily"><i class="fa fa-check"></i><b>8.9.7</b> MetFamily</a></li>
+<li class="chapter" data-level="8.9.8" data-path="annotation.html"><a href="annotation.html#coa-blast"><i class="fa fa-check"></i><b>8.9.8</b> CoA-Blast</a></li>
+<li class="chapter" data-level="8.9.9" data-path="annotation.html"><a href="annotation.html#kgmn"><i class="fa fa-check"></i><b>8.9.9</b> KGMN</a></li>
+<li class="chapter" data-level="8.9.10" data-path="annotation.html"><a href="annotation.html#ccmn"><i class="fa fa-check"></i><b>8.9.10</b> CCMN</a></li>
 </ul></li>
-<li class="chapter" data-level="7.9" data-path="annotation.html"><a href="annotation.html#ms-database-for-annotation"><i class="fa fa-check"></i><b>7.9</b> MS Database for annotation</a>
+<li class="chapter" data-level="8.10" data-path="annotation.html"><a href="annotation.html#ms-database-for-annotation"><i class="fa fa-check"></i><b>8.10</b> MS Database for annotation</a>
 <ul>
-<li class="chapter" data-level="7.9.1" data-path="annotation.html"><a href="annotation.html#ms"><i class="fa fa-check"></i><b>7.9.1</b> MS</a></li>
-<li class="chapter" data-level="7.9.2" data-path="annotation.html"><a href="annotation.html#msms-1"><i class="fa fa-check"></i><b>7.9.2</b> MS/MS</a></li>
+<li class="chapter" data-level="8.10.1" data-path="annotation.html"><a href="annotation.html#ms"><i class="fa fa-check"></i><b>8.10.1</b> MS</a></li>
+<li class="chapter" data-level="8.10.2" data-path="annotation.html"><a href="annotation.html#msms-1"><i class="fa fa-check"></i><b>8.10.2</b> MS/MS</a></li>
 </ul></li>
-<li class="chapter" data-level="7.10" data-path="annotation.html"><a href="annotation.html#compounds-database"><i class="fa fa-check"></i><b>7.10</b> Compounds Database</a></li>
+<li class="chapter" data-level="8.11" data-path="annotation.html"><a href="annotation.html#compounds-database"><i class="fa fa-check"></i><b>8.11</b> Compounds Database</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>8</b> Omics analysis</a>
+<li class="chapter" data-level="9" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>9</b> Omics analysis</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="omics-analysis.html"><a href="omics-analysis.html#from-bottom-up-to-top-down"><i class="fa fa-check"></i><b>8.1</b> From Bottom-up to Top-down</a></li>
-<li class="chapter" data-level="8.2" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-analysis"><i class="fa fa-check"></i><b>8.2</b> Pathway analysis</a>
+<li class="chapter" data-level="9.1" data-path="omics-analysis.html"><a href="omics-analysis.html#from-bottom-up-to-top-down"><i class="fa fa-check"></i><b>9.1</b> From Bottom-up to Top-down</a></li>
+<li class="chapter" data-level="9.2" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-analysis"><i class="fa fa-check"></i><b>9.2</b> Pathway analysis</a>
 <ul>
-<li class="chapter" data-level="8.2.1" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-database"><i class="fa fa-check"></i><b>8.2.1</b> Pathway Database</a></li>
-<li class="chapter" data-level="8.2.2" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-software"><i class="fa fa-check"></i><b>8.2.2</b> Pathway software</a></li>
+<li class="chapter" data-level="9.2.1" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-database"><i class="fa fa-check"></i><b>9.2.1</b> Pathway Database</a></li>
+<li class="chapter" data-level="9.2.2" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-software"><i class="fa fa-check"></i><b>9.2.2</b> Pathway software</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="omics-analysis.html"><a href="omics-analysis.html#network-analysis"><i class="fa fa-check"></i><b>8.3</b> Network analysis</a></li>
-<li class="chapter" data-level="8.4" data-path="omics-analysis.html"><a href="omics-analysis.html#omics-integration"><i class="fa fa-check"></i><b>8.4</b> Omics integration</a></li>
+<li class="chapter" data-level="9.3" data-path="omics-analysis.html"><a href="omics-analysis.html#network-analysis"><i class="fa fa-check"></i><b>9.3</b> Network analysis</a></li>
+<li class="chapter" data-level="9.4" data-path="omics-analysis.html"><a href="omics-analysis.html#omics-integration"><i class="fa fa-check"></i><b>9.4</b> Omics integration</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="peaks-normalization.html"><a href="peaks-normalization.html"><i class="fa fa-check"></i><b>9</b> Peaks normalization</a>
+<li class="chapter" data-level="10" data-path="peaks-normalization.html"><a href="peaks-normalization.html"><i class="fa fa-check"></i><b>10</b> Peaks normalization</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="peaks-normalization.html"><a href="peaks-normalization.html#batch-effects-classification"><i class="fa fa-check"></i><b>9.1</b> Batch effects classification</a></li>
-<li class="chapter" data-level="9.2" data-path="peaks-normalization.html"><a href="peaks-normalization.html#batch-effects-visualization"><i class="fa fa-check"></i><b>9.2</b> Batch effects visualization</a></li>
-<li class="chapter" data-level="9.3" data-path="peaks-normalization.html"><a href="peaks-normalization.html#source-of-batch-effects"><i class="fa fa-check"></i><b>9.3</b> Source of batch effects</a></li>
-<li class="chapter" data-level="9.4" data-path="peaks-normalization.html"><a href="peaks-normalization.html#avoid-batch-effects-by-doe"><i class="fa fa-check"></i><b>9.4</b> Avoid batch effects by DoE</a></li>
-<li class="chapter" data-level="9.5" data-path="peaks-normalization.html"><a href="peaks-normalization.html#post-hoc-data-normalization"><i class="fa fa-check"></i><b>9.5</b> <em>post hoc</em> data normalization</a>
+<li class="chapter" data-level="10.1" data-path="peaks-normalization.html"><a href="peaks-normalization.html#batch-effects"><i class="fa fa-check"></i><b>10.1</b> Batch effects</a></li>
+<li class="chapter" data-level="10.2" data-path="peaks-normalization.html"><a href="peaks-normalization.html#batch-effects-classification"><i class="fa fa-check"></i><b>10.2</b> Batch effects classification</a></li>
+<li class="chapter" data-level="10.3" data-path="peaks-normalization.html"><a href="peaks-normalization.html#batch-effects-visualization"><i class="fa fa-check"></i><b>10.3</b> Batch effects visualization</a></li>
+<li class="chapter" data-level="10.4" data-path="peaks-normalization.html"><a href="peaks-normalization.html#source-of-batch-effects"><i class="fa fa-check"></i><b>10.4</b> Source of batch effects</a></li>
+<li class="chapter" data-level="10.5" data-path="peaks-normalization.html"><a href="peaks-normalization.html#avoid-batch-effects-by-doe"><i class="fa fa-check"></i><b>10.5</b> Avoid batch effects by DoE</a></li>
+<li class="chapter" data-level="10.6" data-path="peaks-normalization.html"><a href="peaks-normalization.html#post-hoc-data-normalization"><i class="fa fa-check"></i><b>10.6</b> <em>post hoc</em> data normalization</a>
 <ul>
-<li class="chapter" data-level="9.5.1" data-path="peaks-normalization.html"><a href="peaks-normalization.html#unsupervised-methods"><i class="fa fa-check"></i><b>9.5.1</b> Unsupervised methods</a></li>
-<li class="chapter" data-level="9.5.2" data-path="peaks-normalization.html"><a href="peaks-normalization.html#supervised-methods"><i class="fa fa-check"></i><b>9.5.2</b> Supervised methods</a></li>
+<li class="chapter" data-level="10.6.1" data-path="peaks-normalization.html"><a href="peaks-normalization.html#unsupervised-methods"><i class="fa fa-check"></i><b>10.6.1</b> Unsupervised methods</a></li>
+<li class="chapter" data-level="10.6.2" data-path="peaks-normalization.html"><a href="peaks-normalization.html#supervised-methods"><i class="fa fa-check"></i><b>10.6.2</b> Supervised methods</a></li>
 </ul></li>
-<li class="chapter" data-level="9.6" data-path="peaks-normalization.html"><a href="peaks-normalization.html#method-to-validate-the-normalization"><i class="fa fa-check"></i><b>9.6</b> Method to validate the normalization</a></li>
-<li class="chapter" data-level="9.7" data-path="peaks-normalization.html"><a href="peaks-normalization.html#software"><i class="fa fa-check"></i><b>9.7</b> Software</a></li>
+<li class="chapter" data-level="10.7" data-path="peaks-normalization.html"><a href="peaks-normalization.html#method-to-validate-the-normalization"><i class="fa fa-check"></i><b>10.7</b> Method to validate the normalization</a></li>
+<li class="chapter" data-level="10.8" data-path="peaks-normalization.html"><a href="peaks-normalization.html#software"><i class="fa fa-check"></i><b>10.8</b> Software</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="statistical-analysis.html"><a href="statistical-analysis.html"><i class="fa fa-check"></i><b>10</b> Statistical analysis</a>
+<li class="chapter" data-level="11" data-path="statistical-analysis.html"><a href="statistical-analysis.html"><i class="fa fa-check"></i><b>11</b> Statistical analysis</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="statistical-analysis.html"><a href="statistical-analysis.html#basic-statistical-analysis"><i class="fa fa-check"></i><b>10.1</b> Basic Statistical Analysis</a></li>
-<li class="chapter" data-level="10.2" data-path="statistical-analysis.html"><a href="statistical-analysis.html#differences-analysis"><i class="fa fa-check"></i><b>10.2</b> Differences analysis</a>
+<li class="chapter" data-level="11.1" data-path="statistical-analysis.html"><a href="statistical-analysis.html#basic-statistical-analysis"><i class="fa fa-check"></i><b>11.1</b> Basic Statistical Analysis</a></li>
+<li class="chapter" data-level="11.2" data-path="statistical-analysis.html"><a href="statistical-analysis.html#differences-analysis"><i class="fa fa-check"></i><b>11.2</b> Differences analysis</a>
 <ul>
-<li class="chapter" data-level="10.2.1" data-path="statistical-analysis.html"><a href="statistical-analysis.html#t-test-or-anova"><i class="fa fa-check"></i><b>10.2.1</b> T-test or ANOVA</a></li>
-<li class="chapter" data-level="10.2.2" data-path="statistical-analysis.html"><a href="statistical-analysis.html#limma"><i class="fa fa-check"></i><b>10.2.2</b> LIMMA</a></li>
-<li class="chapter" data-level="10.2.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#bayesian-mixture-model"><i class="fa fa-check"></i><b>10.2.3</b> Bayesian mixture model</a></li>
+<li class="chapter" data-level="11.2.1" data-path="statistical-analysis.html"><a href="statistical-analysis.html#t-test-or-anova"><i class="fa fa-check"></i><b>11.2.1</b> T-test or ANOVA</a></li>
+<li class="chapter" data-level="11.2.2" data-path="statistical-analysis.html"><a href="statistical-analysis.html#limma"><i class="fa fa-check"></i><b>11.2.2</b> LIMMA</a></li>
+<li class="chapter" data-level="11.2.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#bayesian-mixture-model"><i class="fa fa-check"></i><b>11.2.3</b> Bayesian mixture model</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#pca"><i class="fa fa-check"></i><b>10.3</b> PCA</a></li>
-<li class="chapter" data-level="10.4" data-path="statistical-analysis.html"><a href="statistical-analysis.html#cluster-analysis"><i class="fa fa-check"></i><b>10.4</b> Cluster Analysis</a></li>
-<li class="chapter" data-level="10.5" data-path="statistical-analysis.html"><a href="statistical-analysis.html#plsda"><i class="fa fa-check"></i><b>10.5</b> PLSDA</a></li>
-<li class="chapter" data-level="10.6" data-path="statistical-analysis.html"><a href="statistical-analysis.html#network-analysis-1"><i class="fa fa-check"></i><b>10.6</b> Network analysis</a>
+<li class="chapter" data-level="11.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#pca"><i class="fa fa-check"></i><b>11.3</b> PCA</a></li>
+<li class="chapter" data-level="11.4" data-path="statistical-analysis.html"><a href="statistical-analysis.html#cluster-analysis"><i class="fa fa-check"></i><b>11.4</b> Cluster Analysis</a></li>
+<li class="chapter" data-level="11.5" data-path="statistical-analysis.html"><a href="statistical-analysis.html#plsda"><i class="fa fa-check"></i><b>11.5</b> PLSDA</a></li>
+<li class="chapter" data-level="11.6" data-path="statistical-analysis.html"><a href="statistical-analysis.html#network-analysis-1"><i class="fa fa-check"></i><b>11.6</b> Network analysis</a>
 <ul>
-<li class="chapter" data-level="10.6.1" data-path="statistical-analysis.html"><a href="statistical-analysis.html#vertex-and-edge"><i class="fa fa-check"></i><b>10.6.1</b> Vertex and edge</a></li>
-<li class="chapter" data-level="10.6.2" data-path="statistical-analysis.html"><a href="statistical-analysis.html#build-the-network"><i class="fa fa-check"></i><b>10.6.2</b> Build the network</a></li>
-<li class="chapter" data-level="10.6.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#network-attributes"><i class="fa fa-check"></i><b>10.6.3</b> Network attributes</a></li>
+<li class="chapter" data-level="11.6.1" data-path="statistical-analysis.html"><a href="statistical-analysis.html#vertex-and-edge"><i class="fa fa-check"></i><b>11.6.1</b> Vertex and edge</a></li>
+<li class="chapter" data-level="11.6.2" data-path="statistical-analysis.html"><a href="statistical-analysis.html#build-the-network"><i class="fa fa-check"></i><b>11.6.2</b> Build the network</a></li>
+<li class="chapter" data-level="11.6.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#network-attributes"><i class="fa fa-check"></i><b>11.6.3</b> Network attributes</a></li>
 </ul></li>
-<li class="chapter" data-level="10.7" data-path="statistical-analysis.html"><a href="statistical-analysis.html#software-1"><i class="fa fa-check"></i><b>10.7</b> Software</a></li>
+<li class="chapter" data-level="11.7" data-path="statistical-analysis.html"><a href="statistical-analysis.html#software-1"><i class="fa fa-check"></i><b>11.7</b> Software</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="exposome.html"><a href="exposome.html"><i class="fa fa-check"></i><b>11</b> Exposome</a>
+<li class="chapter" data-level="12" data-path="exposome.html"><a href="exposome.html"><i class="fa fa-check"></i><b>12</b> Exposome</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="exposome.html"><a href="exposome.html#internal-exposure"><i class="fa fa-check"></i><b>11.1</b> Internal exposure</a></li>
-<li class="chapter" data-level="11.2" data-path="exposome.html"><a href="exposome.html#external-exposure"><i class="fa fa-check"></i><b>11.2</b> External exposure</a>
+<li class="chapter" data-level="12.1" data-path="exposome.html"><a href="exposome.html#internal-exposure"><i class="fa fa-check"></i><b>12.1</b> Internal exposure</a></li>
+<li class="chapter" data-level="12.2" data-path="exposome.html"><a href="exposome.html#external-exposure"><i class="fa fa-check"></i><b>12.2</b> External exposure</a>
 <ul>
-<li class="chapter" data-level="11.2.1" data-path="exposome.html"><a href="exposome.html#environmental-fate-of-compounds"><i class="fa fa-check"></i><b>11.2.1</b> Environmental fate of compounds</a></li>
-<li class="chapter" data-level="11.2.2" data-path="exposome.html"><a href="exposome.html#exposure-study-database"><i class="fa fa-check"></i><b>11.2.2</b> Exposure study database</a></li>
+<li class="chapter" data-level="12.2.1" data-path="exposome.html"><a href="exposome.html#environmental-fate-of-compounds"><i class="fa fa-check"></i><b>12.2.1</b> Environmental fate of compounds</a></li>
+<li class="chapter" data-level="12.2.2" data-path="exposome.html"><a href="exposome.html#exposure-study-database"><i class="fa fa-check"></i><b>12.2.2</b> Exposure study database</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -388,9 +400,9 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="annotation" class="section level1 hasAnchor" number="7">
-<h1><span class="header-section-number">Chapter 7</span> Annotation<a href="annotation.html#annotation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>When you get the peaks table or features table, annotation of the peaks would help you. Check this review<span class="citation">(<a href="#ref-domingo-almenara2018" role="doc-biblioref">Domingo-Almenara, Montenegro-Burke, Benton, et al. 2018</a>)</span> or other reviews<span class="citation">(<a href="#ref-chaleckis2019" role="doc-biblioref">Chaleckis et al. 2019</a>; <a href="#ref-lai2018" role="doc-biblioref">Lai et al. 2018</a>; <a href="#ref-nash2019" role="doc-biblioref">Nash and Dunn 2019</a>; <a href="#ref-viant2017" role="doc-biblioref">Mark R. Viant et al. 2017</a>; <a href="#ref-allard2017" role="doc-biblioref">Allard, Genta-Jouve, and Wolfender 2017</a>; <a href="#ref-domingo-almenara2018" role="doc-biblioref">Domingo-Almenara, Montenegro-Burke, Benton, et al. 2018</a>)</span> for a detailed notes on annotation. The first paper proposed five levels regarding currently computational annotation strategies.</p>
+<div id="annotation" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Chapter 8</span> Annotation<a href="annotation.html#annotation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>When you get the peaks table or features table, annotation of the peaks would help you. Check this review<span class="citation">(<a href="#ref-domingo-almenara2018">Domingo-Almenara, Montenegro-Burke, Benton, et al. 2018</a>)</span> or other reviews<span class="citation">(<a href="#ref-chaleckis2019">Chaleckis et al. 2019</a>; <a href="#ref-lai2018">Lai et al. 2018</a>; <a href="#ref-nash2019">Nash and Dunn 2019</a>; <a href="#ref-viant2017">Mark R. Viant et al. 2017</a>; <a href="#ref-allard2017">Allard, Genta-Jouve, and Wolfender 2017</a>; <a href="#ref-domingo-almenara2018">Domingo-Almenara, Montenegro-Burke, Benton, et al. 2018</a>)</span> for a detailed notes on annotation. The first paper proposed five levels regarding currently computational annotation strategies.</p>
 <ul>
 <li><p>Level 1: Peak Grouping: MS Psedospectra extraction based on peak shape similarity and peak abundance correlation</p></li>
 <li><p>Level 2: Peak Annotation: Adducts, Neutral losses, isotopes, and other mass relationships based on mass distances</p></li>
@@ -399,13 +411,13 @@ div.csl-indent {
 <li><p>Level 5: Retention time prediction based on library-available retention index or quantitative structure-retention relationships (QSRR) models.</p></li>
 </ul>
 <p>Most of the software are at level 1 or 2. If we only have compounds structure, we could guess ions under different ionization method. If we have mass spectrum, we could match the mass spectral by a similarity analysis to the database. In metabolomics, we only have mass spectrum or mass-to-charge ratios. Single mass-to-charge ratio is not enough for identification. That’s the one bottleneck for annotation. So prediction is always performed on MS/MS data.</p>
-<div id="issues-in-annotation" class="section level2 hasAnchor" number="7.1">
-<h2><span class="header-section-number">7.1</span> Issues in annotation<a href="annotation.html#issues-in-annotation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="issues-in-annotation" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Issues in annotation<a href="annotation.html#issues-in-annotation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The major issue in annotation is the redundancy peaks from same metabolite. Unlike genomes, peaks or features from peak selection are not independent with each other. Adducts, in-source fragments and isotopes would lead to wrong annotation. A common solution is that use known adducts, neutral losses, molecular multimers or multiple charged ions to compare mass distances.</p>
-<p>Another issue is about the MS/MS database. Only 10% of known metabolites in databases have experimental spectral data. Thus <em>in silico</em> prediction is required. Some works try to fill the gap between experimental data, theoretical values(from chemical database like chemspider) and prediction together. Here is a nice review about MS/MS prediction<span class="citation">(<a href="#ref-hufsky2014" role="doc-biblioref">Hufsky, Scheubert, and Böcker 2014</a>)</span>.</p>
+<p>Another issue is about the MS/MS database. Only 10% of known metabolites in databases have experimental spectral data. Thus <em>in silico</em> prediction is required. Some works try to fill the gap between experimental data, theoretical values(from chemical database like chemspider) and prediction together. Here is a nice review about MS/MS prediction<span class="citation">(<a href="#ref-hufsky2014">Hufsky, Scheubert, and Böcker 2014</a>)</span>.</p>
 </div>
-<div id="peak-misidentification" class="section level2 hasAnchor" number="7.2">
-<h2><span class="header-section-number">7.2</span> Peak misidentification<a href="annotation.html#peak-misidentification" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="peak-misidentification" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Peak misidentification<a href="annotation.html#peak-misidentification" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>Isomer</li>
 </ul>
@@ -418,9 +430,9 @@ div.csl-indent {
 <li>In-source degradation products</li>
 </ul>
 </div>
-<div id="annotation-v.s.-identification" class="section level2 hasAnchor" number="7.3">
-<h2><span class="header-section-number">7.3</span> Annotation v.s. identification<a href="annotation.html#annotation-v.s.-identification" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>According to the definition from the Chemical Analysis Working Group of the Metabolomics Standards Intitvative<span class="citation">(<a href="#ref-sumner2007" role="doc-biblioref">Lloyd W. Sumner et al. 2007</a>; <a href="#ref-viant2017" role="doc-biblioref">Mark R. Viant et al. 2017</a>)</span>. Four levels of confidence could be assigned to identification:</p>
+<div id="annotation-v.s.-identification" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> Annotation v.s. identification<a href="annotation.html#annotation-v.s.-identification" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>According to the definition from the Chemical Analysis Working Group of the Metabolomics Standards Intitvative<span class="citation">(<a href="#ref-sumner2007">Lloyd W. Sumner et al. 2007</a>; <a href="#ref-viant2017">Mark R. Viant et al. 2017</a>)</span>. Four levels of confidence could be assigned to identification:</p>
 <ul>
 <li>Level 1 ‘identified metabolites’</li>
 <li>Level 2 ‘Putatively annotated compounds’</li>
@@ -428,14 +440,14 @@ div.csl-indent {
 <li>Level 4 ‘Unknown’</li>
 </ul>
 <p>In practice, data analysis based annotation could reach level 2. For level 1, we need at extra methods such as MS/MS, retention time, accurate mass, 2D NMR spectra, and so on to confirm the compounds. However, standards are always required for solid proof.</p>
-<p>For specific group of compounds such as PFASs, the communication of confidence level could be slightly different<span class="citation">(<a href="#ref-charbonnet2022" role="doc-biblioref">Charbonnet et al. 2022</a>)</span>.</p>
-<p>Through MS/MS seemed a required step for identification, recent study found ESI might also generate fragments ions for structure identification <span class="citation">(<a href="#ref-xue2020a" role="doc-biblioref">Xue, Guijas, et al. 2020</a>; <a href="#ref-xue2021" role="doc-biblioref">Xue et al. 2021</a>)</span>.</p>
+<p>For specific group of compounds such as PFASs, the communication of confidence level could be slightly different<span class="citation">(<a href="#ref-charbonnet2022">Charbonnet et al. 2022</a>)</span>.</p>
+<p>Through MS/MS seemed a required step for identification, recent study found ESI might also generate fragments ions for structure identification <span class="citation">(<a href="#ref-xue2020a">Xue, Guijas, et al. 2020</a>; <a href="#ref-xue2021">Xue et al. 2021</a>, <a href="#ref-xue2023">2023</a>; <a href="#ref-bernardo-bermejo2023">Bernardo-Bermejo et al. 2023</a>)</span>.</p>
 </div>
-<div id="molecular-formula-assignment" class="section level2 hasAnchor" number="7.4">
-<h2><span class="header-section-number">7.4</span> Molecular Formula Assignment<a href="annotation.html#molecular-formula-assignment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="molecular-formula-assignment" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> Molecular Formula Assignment<a href="annotation.html#molecular-formula-assignment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Cheminformatics will help for MS annotation. The first task is molecular formula assignment. For a given accurate mass, the formula should be constrained by predefined element type and atom number, mass error window and rules of chemical bonding, such as double bond equivalent (DBE) and the nitrogen rule. The nitrogen rule is that an odd nominal molecular mass implies also an odd number of nitrogen. This rule should only be used with nominal (integer) masses. Degree of unsaturation or DBE use rings-plus-double-bonds equivalent (RDBE) values, which should be interger. The elements oxygen and sulphur were not taken into account. Otherwise the molecular formula will not be true.</p>
 <p><span class="math display">\[RDBE = C+Si - 1/2(H+F+Cl+Br+I) + 1/2(N+P)+1 \]</span></p>
-<p>To assign molecular formula to a mass to charge ratio, Seven Golden Rules <span class="citation">(<a href="#ref-kind2007" role="doc-biblioref">Kind and Fiehn 2007</a>)</span> for heuristic filtering of molecular formulas should be considered:</p>
+<p>To assign molecular formula to a mass to charge ratio, Seven Golden Rules <span class="citation">(<a href="#ref-kind2007">Kind and Fiehn 2007</a>)</span> for heuristic filtering of molecular formulas should be considered:</p>
 <ul>
 <li>Apply heuristic restrictions for number of elements during formula generation. This is the table for known compounds:</li>
 </ul>
@@ -489,18 +501,18 @@ div.csl-indent {
 <ul>
 <li>Perform heuristic HNOPS probability check (H, N, O, P, S/C high probability ratios)</li>
 </ul>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="annotation.html#cb13-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb13-2"><a href="annotation.html#cb13-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb13-3"><a href="annotation.html#cb13-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Element.counts =</span> <span class="fu">c</span>(<span class="st">&quot;NOPS all &gt; 1&quot;</span>,<span class="st">&quot;NOP all &gt; 3&quot;</span>,<span class="st">&quot;OPS all &gt; 1&quot;</span>,</span>
-<span id="cb13-4"><a href="annotation.html#cb13-4" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;PSN all &gt; 1&quot;</span>,<span class="st">&quot;NOS all &gt; 6&quot;</span>),</span>
-<span id="cb13-5"><a href="annotation.html#cb13-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">Heuristic.Rule =</span> <span class="fu">c</span>(<span class="st">&quot;N&lt; 10, O &lt; 20, P &lt; 4, S &lt; 3&quot;</span>,</span>
-<span id="cb13-6"><a href="annotation.html#cb13-6" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;N &lt; 11, O &lt; 22, P &lt; 6&quot;</span>,<span class="st">&quot;O &lt; 14, P &lt; 3, S &lt; 3&quot;</span>,</span>
-<span id="cb13-7"><a href="annotation.html#cb13-7" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;P &lt; 3, S &lt; 3, N &lt; 4&quot;</span>,<span class="st">&quot;N &lt; 19 O &lt; 14 S &lt; 8&quot;</span>),</span>
-<span id="cb13-8"><a href="annotation.html#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">DB.examples.for.maximum.values =</span> <span class="fu">c</span>(<span class="st">&quot;C15H34N9O8PS, C22H44N4O14P2S2, C24H38N7O19P3S&quot;</span>,<span class="st">&quot;C20H28N10O21P4, C10H18N5O20P5&quot;</span>,</span>
-<span id="cb13-9"><a href="annotation.html#cb13-9" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;C22H44N4O14P2S2, C16H36N4O4P2S2&quot;</span>,</span>
-<span id="cb13-10"><a href="annotation.html#cb13-10" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">&quot;C22H44N4O14P2S2, C16H36N4O4P2S2&quot;</span>,<span class="st">&quot;C59H64N18O14S7&quot;</span>)</span>
-<span id="cb13-11"><a href="annotation.html#cb13-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb13-12"><a href="annotation.html#cb13-12" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="annotation.html#cb13-1" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb13-2"><a href="annotation.html#cb13-2" tabindex="-1"></a>                <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb13-3"><a href="annotation.html#cb13-3" tabindex="-1"></a>                  <span class="at">Element.counts =</span> <span class="fu">c</span>(<span class="st">&quot;NOPS all &gt; 1&quot;</span>,<span class="st">&quot;NOP all &gt; 3&quot;</span>,<span class="st">&quot;OPS all &gt; 1&quot;</span>,</span>
+<span id="cb13-4"><a href="annotation.html#cb13-4" tabindex="-1"></a>                                     <span class="st">&quot;PSN all &gt; 1&quot;</span>,<span class="st">&quot;NOS all &gt; 6&quot;</span>),</span>
+<span id="cb13-5"><a href="annotation.html#cb13-5" tabindex="-1"></a>                  <span class="at">Heuristic.Rule =</span> <span class="fu">c</span>(<span class="st">&quot;N&lt; 10, O &lt; 20, P &lt; 4, S &lt; 3&quot;</span>,</span>
+<span id="cb13-6"><a href="annotation.html#cb13-6" tabindex="-1"></a>                                     <span class="st">&quot;N &lt; 11, O &lt; 22, P &lt; 6&quot;</span>,<span class="st">&quot;O &lt; 14, P &lt; 3, S &lt; 3&quot;</span>,</span>
+<span id="cb13-7"><a href="annotation.html#cb13-7" tabindex="-1"></a>                                     <span class="st">&quot;P &lt; 3, S &lt; 3, N &lt; 4&quot;</span>,<span class="st">&quot;N &lt; 19 O &lt; 14 S &lt; 8&quot;</span>),</span>
+<span id="cb13-8"><a href="annotation.html#cb13-8" tabindex="-1"></a>  <span class="at">DB.examples.for.maximum.values =</span> <span class="fu">c</span>(<span class="st">&quot;C15H34N9O8PS, C22H44N4O14P2S2, C24H38N7O19P3S&quot;</span>,<span class="st">&quot;C20H28N10O21P4, C10H18N5O20P5&quot;</span>,</span>
+<span id="cb13-9"><a href="annotation.html#cb13-9" tabindex="-1"></a>                                     <span class="st">&quot;C22H44N4O14P2S2, C16H36N4O4P2S2&quot;</span>,</span>
+<span id="cb13-10"><a href="annotation.html#cb13-10" tabindex="-1"></a>                                     <span class="st">&quot;C22H44N4O14P2S2, C16H36N4O4P2S2&quot;</span>,<span class="st">&quot;C59H64N18O14S7&quot;</span>)</span>
+<span id="cb13-11"><a href="annotation.html#cb13-11" tabindex="-1"></a>)</span>
+<span id="cb13-12"><a href="annotation.html#cb13-12" tabindex="-1"></a>df</span></code></pre></div>
 <pre><code>##   Element.counts              Heuristic.Rule
 ## 1   NOPS all &gt; 1 N&lt; 10, O &lt; 20, P &lt; 4, S &lt; 3
 ## 2    NOP all &gt; 3       N &lt; 11, O &lt; 22, P &lt; 6
@@ -516,202 +528,231 @@ div.csl-indent {
 <ul>
 <li>Perform TMS check (for GC-MS if a silylation step is involved). For TMS derivatized molecules detected in GC/MS analyses, the rules on element ratio checks and valence tests are hence best applied after TMS groups are subtracted, in a similar manner as adducts need to be first recognized and subtracted in LC/MS analyses.</li>
 </ul>
-<p>Seven Golden Rules were built for GC-MS and Hydrogen Rearrangement Rules were major designed for LC-CID-MS/MS<span class="citation">(<a href="#ref-tsugawa2016" role="doc-biblioref">Tsugawa et al. 2016</a>)</span>. Based on extensively curated database records and enthalpy calculations, “hydrogen rearrangement (HR) rules” could be extending the even-electron rule for carbon (C) and heteroatoms, oxygen (O), nitrogen (N), phosphorus (P), and sulfur (S). They used high abundance MS/MS peaks that exceeded 10% of their base peaks to identify common features in terms of 4 HR rules for positive mode and 5 HR rules for negative mode.</p>
+<p>Seven Golden Rules were built for GC-MS and Hydrogen Rearrangement Rules were major designed for LC-CID-MS/MS<span class="citation">(<a href="#ref-tsugawa2016">Tsugawa et al. 2016</a>)</span>. Based on extensively curated database records and enthalpy calculations, “hydrogen rearrangement (HR) rules” could be extending the even-electron rule for carbon (C) and heteroatoms, oxygen (O), nitrogen (N), phosphorus (P), and sulfur (S). They used high abundance MS/MS peaks that exceeded 10% of their base peaks to identify common features in terms of 4 HR rules for positive mode and 5 HR rules for negative mode.</p>
 <p>Seven Golden Rules and Hydrogen Rearrangement Rules might also be captured by statistical models. However, such heuristic rules could reduce the searching space of possible formula.</p>
-<p><a href="http://molgen.de">molgen</a> generating all structures (connectivity isomers, constitutions) that correspond to a given molecular formula, with optional further restrictions, e.g. presence or absence of particular substructures <span class="citation">(<a href="#ref-gugisch2015" role="doc-biblioref">Gugisch et al. 2015</a>)</span>.</p>
-<p><a href="http://www.chemcalc.org/mf_finder/mfFinder_em_new">mfFinder</a> can predict formula based on accurate mass <span class="citation">(<a href="#ref-patiny2013" role="doc-biblioref">Patiny and Borel 2013</a>)</span>.</p>
-<p>RAMSI is the robust automated mass spectra interpretation and chemical formula calculation method using mixed integer linear programming optimization <span class="citation">(<a href="#ref-baran2013" role="doc-biblioref">Baran and Northen 2013</a>)</span>.</p>
+<p><a href="http://molgen.de">molgen</a> generating all structures (connectivity isomers, constitutions) that correspond to a given molecular formula, with optional further restrictions, e.g. presence or absence of particular substructures <span class="citation">(<a href="#ref-gugisch2015">Gugisch et al. 2015</a>)</span>.</p>
+<p><a href="http://www.chemcalc.org/mf_finder/mfFinder_em_new">mfFinder</a> can predict formula based on accurate mass <span class="citation">(<a href="#ref-patiny2013">Patiny and Borel 2013</a>)</span>.</p>
+<p>RAMSI is the robust automated mass spectra interpretation and chemical formula calculation method using mixed integer linear programming optimization <span class="citation">(<a href="#ref-baran2013">Baran and Northen 2013</a>)</span>.</p>
 <p>Here is some other Cheminformatics tools, which could be used to assign meaningful formula or structures for mass spectra.</p>
 <ul>
 <li><a href="https://www.rdkit.org/">RDKit</a> Open-Source Cheminformatics Software</li>
-<li><a href="https://sourceforge.net/projects/cdk/">cdk</a> The Chemistry Development Kit (CDK) is a scientific, LGPL-ed library for bio- and cheminformatics and computational chemistry written in Java <span class="citation">(<a href="#ref-guha2007" role="doc-biblioref">Guha 2007</a>)</span>.</li>
-<li><a href="http://openbabel.org/wiki/Main_Page">Open Babel</a> Open Babel is a chemical toolbox designed to speak the many languages of chemical data <span class="citation">(<a href="#ref-oboyle2011" role="doc-biblioref">O’Boyle et al. 2011</a>)</span>.</li>
-<li><a href="http://classyfire.wishartlab.com/">ClassyFire</a> is a tool for automated chemical classification with a comprehensive, computable taxonomy <span class="citation">(<a href="#ref-djoumboufeunang2016" role="doc-biblioref">Djoumbou Feunang et al. 2016</a>)</span>.</li>
+<li><a href="https://sourceforge.net/projects/cdk/">cdk</a> The Chemistry Development Kit (CDK) is a scientific, LGPL-ed library for bio- and cheminformatics and computational chemistry written in Java <span class="citation">(<a href="#ref-guha2007">Guha 2007</a>)</span>.</li>
+<li><a href="http://openbabel.org/wiki/Main_Page">Open Babel</a> Open Babel is a chemical toolbox designed to speak the many languages of chemical data <span class="citation">(<a href="#ref-oboyle2011">O’Boyle et al. 2011</a>)</span>.</li>
+<li><a href="http://classyfire.wishartlab.com/">ClassyFire</a> is a tool for automated chemical classification with a comprehensive, computable taxonomy <span class="citation">(<a href="#ref-djoumboufeunang2016">Djoumbou Feunang et al. 2016</a>)</span>.</li>
+<li>BUDDY can perform molecular formula discovery via bottom-up MS/MS interrogation<span class="citation">(<a href="#ref-xing2023">Xing et al. 2023</a>)</span>.</li>
 </ul>
 </div>
-<div id="redundant-peaks" class="section level2 hasAnchor" number="7.5">
-<h2><span class="header-section-number">7.5</span> Redundant peaks<a href="annotation.html#redundant-peaks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Full scan mass spectra always contain lots of redundant peaks such as adducts, isotope, fragments, multiple charged ions and other oligomers. Such peaks dominated the features table<span class="citation">(<a href="#ref-xu2015" role="doc-biblioref">Xu, Lu, and Rabinowitz 2015</a>; <a href="#ref-sindelar2020" role="doc-biblioref">Sindelar and Patti 2020</a>; <a href="#ref-mahieu2017" role="doc-biblioref">Mahieu and Patti 2017</a>)</span>. Annotation tools could label those peaks either by known list or frequency analysis of the paired mass distances<span class="citation">(<a href="#ref-ju2020" role="doc-biblioref">Ju et al. 2020</a>; <a href="#ref-kouril2020" role="doc-biblioref">Kouřil et al. 2020</a>)</span>.</p>
-<div id="adducts-list" class="section level3 hasAnchor" number="7.5.1">
-<h3><span class="header-section-number">7.5.1</span> Adducts list<a href="annotation.html#adducts-list" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="redundant-peaks" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> Redundant peaks<a href="annotation.html#redundant-peaks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Full scan mass spectra always contain lots of redundant peaks such as adducts, isotope, fragments, multiple charged ions and other oligomers. Such peaks dominated the features table<span class="citation">(<a href="#ref-xu2015">Xu, Lu, and Rabinowitz 2015</a>; <a href="#ref-sindelar2020">Sindelar and Patti 2020</a>; <a href="#ref-mahieu2017">Mahieu and Patti 2017</a>)</span>. Annotation tools could label those peaks either by known list or frequency analysis of the paired mass distances<span class="citation">(<a href="#ref-ju2020">Ju et al. 2020</a>; <a href="#ref-kouril2020">Kouřil et al. 2020</a>)</span>.</p>
+<div id="adducts-list" class="section level3 hasAnchor" number="8.5.1">
+<h3><span class="header-section-number">8.5.1</span> Adducts list<a href="annotation.html#adducts-list" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>You could find adducts list <a href="https://github.com/stanstrup/commonMZ">here</a> from commonMZ project.</p>
 </div>
-<div id="isotope" class="section level3 hasAnchor" number="7.5.2">
-<h3><span class="header-section-number">7.5.2</span> Isotope<a href="annotation.html#isotope" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="isotope" class="section level3 hasAnchor" number="8.5.2">
+<h3><span class="header-section-number">8.5.2</span> Isotope<a href="annotation.html#isotope" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Here is <a href="https://www.envipat.eawag.ch/index.php">Isotope</a> pattern prediction.</p>
 </div>
-<div id="camera" class="section level3 hasAnchor" number="7.5.3">
-<h3><span class="header-section-number">7.5.3</span> CAMERA<a href="annotation.html#camera" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Common <a href="https://bioconductor.org/packages/release/bioc/html/CAMERA.html">annotation</a> for xcms workflow<span class="citation">(<a href="#ref-kuhl2012" role="doc-biblioref">Kuhl et al. 2012</a>)</span>.</p>
+<div id="camera" class="section level3 hasAnchor" number="8.5.3">
+<h3><span class="header-section-number">8.5.3</span> CAMERA<a href="annotation.html#camera" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Common <a href="https://bioconductor.org/packages/release/bioc/html/CAMERA.html">annotation</a> for xcms workflow<span class="citation">(<a href="#ref-kuhl2012">Kuhl et al. 2012</a>)</span>.</p>
 </div>
-<div id="ramclustr" class="section level3 hasAnchor" number="7.5.4">
-<h3><span class="header-section-number">7.5.4</span> RAMClustR<a href="annotation.html#ramclustr" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The software could be found <a href="https://github.com/cbroeckl/RAMClustR">here</a> <span class="citation">(<a href="#ref-broeckling2014" role="doc-biblioref">C. D. Broeckling et al. 2014</a>; <a href="#ref-broeckling2016" role="doc-biblioref">Corey D. Broeckling et al. 2016</a>)</span>. The package included a vignette to follow.</p>
+<div id="ramclustr" class="section level3 hasAnchor" number="8.5.4">
+<h3><span class="header-section-number">8.5.4</span> RAMClustR<a href="annotation.html#ramclustr" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The software could be found <a href="https://github.com/cbroeckl/RAMClustR">here</a> <span class="citation">(<a href="#ref-broeckling2014">C. D. Broeckling et al. 2014</a>; <a href="#ref-broeckling2016">Corey D. Broeckling et al. 2016</a>)</span>. The package included a vignette to follow.</p>
 </div>
-<div id="biocan" class="section level3 hasAnchor" number="7.5.5">
-<h3><span class="header-section-number">7.5.5</span> BioCAn<a href="annotation.html#biocan" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>BioCAn combines the results from database searches and in silico fragmentation analyses and places these results into a relevant biological context for the sample as captured by a metabolic model <span class="citation">(<a href="#ref-alden2017" role="doc-biblioref">Alden et al. 2017</a>)</span>.</p>
+<div id="biocan" class="section level3 hasAnchor" number="8.5.5">
+<h3><span class="header-section-number">8.5.5</span> BioCAn<a href="annotation.html#biocan" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>BioCAn combines the results from database searches and in silico fragmentation analyses and places these results into a relevant biological context for the sample as captured by a metabolic model <span class="citation">(<a href="#ref-alden2017">Alden et al. 2017</a>)</span>.</p>
 </div>
-<div id="mzmatch" class="section level3 hasAnchor" number="7.5.6">
-<h3><span class="header-section-number">7.5.6</span> mzMatch<a href="annotation.html#mzmatch" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><a href="https://github.com/andzajan/mzmatch.R">mzMatch</a> is a modular, open source and platform independent data processing pipeline for metabolomics LC/MS data written in the Java language. <span class="citation">(<a href="#ref-chokkathukalam2013" role="doc-biblioref">Chokkathukalam et al. 2013</a>; <a href="#ref-scheltema2011" role="doc-biblioref">Scheltema et al. 2011</a>)</span> and MetAssign is a probabilistic annotation method using a Bayesian clustering approach, which is part of mzMatch<span class="citation">(<a href="#ref-daly2014" role="doc-biblioref">Daly et al. 2014</a>)</span>.</p>
+<div id="mzmatch" class="section level3 hasAnchor" number="8.5.6">
+<h3><span class="header-section-number">8.5.6</span> mzMatch<a href="annotation.html#mzmatch" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><a href="https://github.com/andzajan/mzmatch.R">mzMatch</a> is a modular, open source and platform independent data processing pipeline for metabolomics LC/MS data written in the Java language. <span class="citation">(<a href="#ref-chokkathukalam2013">Chokkathukalam et al. 2013</a>; <a href="#ref-scheltema2011">Scheltema et al. 2011</a>)</span> and MetAssign is a probabilistic annotation method using a Bayesian clustering approach, which is part of mzMatch<span class="citation">(<a href="#ref-daly2014">Daly et al. 2014</a>)</span>.</p>
 </div>
-<div id="xmsannotator" class="section level3 hasAnchor" number="7.5.7">
-<h3><span class="header-section-number">7.5.7</span> xMSannotator<a href="annotation.html#xmsannotator" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>The software could be found <a href="https://github.com/yufree/xMSannotator">here</a><span class="citation">(<a href="#ref-uppal2017" role="doc-biblioref">Uppal, Walker, and Jones 2017</a>)</span>.</p>
+<div id="xmsannotator" class="section level3 hasAnchor" number="8.5.7">
+<h3><span class="header-section-number">8.5.7</span> xMSannotator<a href="annotation.html#xmsannotator" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The software could be found <a href="https://github.com/yufree/xMSannotator">here</a><span class="citation">(<a href="#ref-uppal2017">Uppal, Walker, and Jones 2017</a>)</span>.</p>
 </div>
-<div id="mwise" class="section level3 hasAnchor" number="7.5.8">
-<h3><span class="header-section-number">7.5.8</span> mWise<a href="annotation.html#mwise" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><a href="https://github.com/b2slab/mWISE">mWise</a> is an Algorithm for Context-Based Annotation of Liquid Chromatography–Mass Spectrometry Features through Diffusion in Graphs<span class="citation">(<a href="#ref-barranco-altirriba2021" role="doc-biblioref">Barranco-Altirriba et al. 2021</a>)</span>.</p>
+<div id="mwise" class="section level3 hasAnchor" number="8.5.8">
+<h3><span class="header-section-number">8.5.8</span> mWise<a href="annotation.html#mwise" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><a href="https://github.com/b2slab/mWISE">mWise</a> is an Algorithm for Context-Based Annotation of Liquid Chromatography–Mass Spectrometry Features through Diffusion in Graphs<span class="citation">(<a href="#ref-barranco-altirriba2021">Barranco-Altirriba et al. 2021</a>)</span>.</p>
 </div>
-<div id="mait" class="section level3 hasAnchor" number="7.5.9">
-<h3><span class="header-section-number">7.5.9</span> MAIT<a href="annotation.html#mait" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>You could find source code <a href="https://github.com/jpgroup/MAIT">here</a><span class="citation">(<a href="#ref-fernandez-albert2014a" role="doc-biblioref">Fernández-Albert et al. 2014</a>)</span>.</p>
+<div id="mait" class="section level3 hasAnchor" number="8.5.9">
+<h3><span class="header-section-number">8.5.9</span> MAIT<a href="annotation.html#mait" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You could find source code <a href="https://github.com/jpgroup/MAIT">here</a><span class="citation">(<a href="#ref-fernandez-albert2014a">Fernández-Albert et al. 2014</a>)</span>.</p>
 </div>
-<div id="pmd" class="section level3 hasAnchor" number="7.5.10">
-<h3><span class="header-section-number">7.5.10</span> pmd<a href="annotation.html#pmd" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><a href="https://github.com/yufree/pmd">Paired Mass Distance(PMD)</a> analysis for GC/LC-MS based nontarget analysis to remove redundant peaks<span class="citation">(<a href="#ref-yu2019a" role="doc-biblioref">M. Yu, Olkowicz, and Pawliszyn 2019</a>)</span>.</p>
+<div id="pmd" class="section level3 hasAnchor" number="8.5.10">
+<h3><span class="header-section-number">8.5.10</span> pmd<a href="annotation.html#pmd" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><a href="https://github.com/yufree/pmd">Paired Mass Distance(PMD)</a> analysis for GC/LC-MS based nontarget analysis to remove redundant peaks<span class="citation">(<a href="#ref-yu2019a">M. Yu, Olkowicz, and Pawliszyn 2019</a>)</span>.</p>
 </div>
-<div id="nontarget" class="section level3 hasAnchor" number="7.5.11">
-<h3><span class="header-section-number">7.5.11</span> nontarget<a href="annotation.html#nontarget" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><a href="https://github.com/blosloos/nontarget">nontarget</a> could find Isotope &amp; adduct peak grouping, and perform homologue series detection <span class="citation">(<a href="#ref-loos2017" role="doc-biblioref">Loos and Singer 2017</a>)</span>.</p>
+<div id="nontarget" class="section level3 hasAnchor" number="8.5.11">
+<h3><span class="header-section-number">8.5.11</span> nontarget<a href="annotation.html#nontarget" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><a href="https://github.com/blosloos/nontarget">nontarget</a> could find Isotope &amp; adduct peak grouping, and perform homologue series detection <span class="citation">(<a href="#ref-loos2017">Loos and Singer 2017</a>)</span>.</p>
 </div>
-<div id="binner" class="section level3 hasAnchor" number="7.5.12">
-<h3><span class="header-section-number">7.5.12</span> Binner<a href="annotation.html#binner" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><a href="https://binner.med.umich.edu/">Binner</a> Deep annotation of untargeted LC-MS metabolomics data <span class="citation">(<a href="#ref-kachman2020" role="doc-biblioref">Kachman et al. 2020</a>)</span></p>
+<div id="binner" class="section level3 hasAnchor" number="8.5.12">
+<h3><span class="header-section-number">8.5.12</span> Binner<a href="annotation.html#binner" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><a href="https://binner.med.umich.edu/">Binner</a> Deep annotation of untargeted LC-MS metabolomics data <span class="citation">(<a href="#ref-kachman2020">Kachman et al. 2020</a>)</span></p>
 </div>
-<div id="mz.unity" class="section level3 hasAnchor" number="7.5.13">
-<h3><span class="header-section-number">7.5.13</span> mz.unity<a href="annotation.html#mz.unity" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>You could find source code <a href="https://github.com/nathaniel-mahieu/mz.unity">here</a> <span class="citation">(<a href="#ref-mahieu2016a" role="doc-biblioref">Mahieu et al. 2016</a>)</span> and it’s for detecting and exploring complex relationships in accurate-mass mass spectrometry data.</p>
+<div id="mz.unity" class="section level3 hasAnchor" number="8.5.13">
+<h3><span class="header-section-number">8.5.13</span> mz.unity<a href="annotation.html#mz.unity" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You could find source code <a href="https://github.com/nathaniel-mahieu/mz.unity">here</a> <span class="citation">(<a href="#ref-mahieu2016a">Mahieu et al. 2016</a>)</span> and it’s for detecting and exploring complex relationships in accurate-mass mass spectrometry data.</p>
 </div>
-<div id="ms-flo" class="section level3 hasAnchor" number="7.5.14">
-<h3><span class="header-section-number">7.5.14</span> MS-FLO<a href="annotation.html#ms-flo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><a href="https://bitbucket.org/fiehnlab/ms-flo/src/657d85ec7bdd?at=master">ms-flo</a> A Tool To Minimize False Positive Peak Reports in Untargeted Liquid Chromatography–Mass Spectroscopy (LC-MS) Data Processing <span class="citation">(<a href="#ref-defelice2017" role="doc-biblioref">DeFelice et al. 2017</a>)</span>.</p>
+<div id="ms-flo" class="section level3 hasAnchor" number="8.5.14">
+<h3><span class="header-section-number">8.5.14</span> MS-FLO<a href="annotation.html#ms-flo" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><a href="https://bitbucket.org/fiehnlab/ms-flo/src/657d85ec7bdd?at=master">ms-flo</a> A Tool To Minimize False Positive Peak Reports in Untargeted Liquid Chromatography–Mass Spectroscopy (LC-MS) Data Processing <span class="citation">(<a href="#ref-defelice2017">DeFelice et al. 2017</a>)</span>.</p>
 </div>
-<div id="cliquems" class="section level3 hasAnchor" number="7.5.15">
-<h3><span class="header-section-number">7.5.15</span> CliqueMS<a href="annotation.html#cliquems" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>CliqueMS is a computational tool for annotating in-source metabolite ions from LC-MS untargeted metabolomics data based on a coelution similarity network <span class="citation">(<a href="#ref-senan2019" role="doc-biblioref">Senan et al. 2019</a>)</span>.</p>
+<div id="cliquems" class="section level3 hasAnchor" number="8.5.15">
+<h3><span class="header-section-number">8.5.15</span> CliqueMS<a href="annotation.html#cliquems" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>CliqueMS is a computational tool for annotating in-source metabolite ions from LC-MS untargeted metabolomics data based on a coelution similarity network <span class="citation">(<a href="#ref-senan2019">Senan et al. 2019</a>)</span>.</p>
 </div>
-<div id="interpretmsspectrum" class="section level3 hasAnchor" number="7.5.16">
-<h3><span class="header-section-number">7.5.16</span> InterpretMSSpectrum<a href="annotation.html#interpretmsspectrum" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>This <a href="https://github.com/cran/InterpretMSSpectrum">package</a> is for annotate and interpret deconvoluted mass spectra (mass*intensity pairs) from high resolution mass spectrometry devices. You could use this package to find molecular ions for GC-MS <span class="citation">(<a href="#ref-jaeger2016" role="doc-biblioref">Jaeger et al. 2016</a>)</span>.</p>
+<div id="interpretmsspectrum" class="section level3 hasAnchor" number="8.5.16">
+<h3><span class="header-section-number">8.5.16</span> InterpretMSSpectrum<a href="annotation.html#interpretmsspectrum" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This <a href="https://github.com/cran/InterpretMSSpectrum">package</a> is for annotate and interpret deconvoluted mass spectra (mass*intensity pairs) from high resolution mass spectrometry devices. You could use this package to find molecular ions for GC-MS <span class="citation">(<a href="#ref-jaeger2016">Jaeger et al. 2016</a>)</span>.</p>
 </div>
-<div id="netid" class="section level3 hasAnchor" number="7.5.17">
-<h3><span class="header-section-number">7.5.17</span> NetID<a href="annotation.html#netid" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>NetID is a global network optimization approach to annotate untargeted LC-MS metabolomics data<span class="citation">(<a href="#ref-chen2021" role="doc-biblioref">L. Chen et al. 2021</a>)</span>.</p>
+<div id="netid" class="section level3 hasAnchor" number="8.5.17">
+<h3><span class="header-section-number">8.5.17</span> NetID<a href="annotation.html#netid" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>NetID is a global network optimization approach to annotate untargeted LC-MS metabolomics data<span class="citation">(<a href="#ref-chen2021">L. Chen et al. 2021</a>)</span>.</p>
 </div>
-<div id="isfrag" class="section level3 hasAnchor" number="7.5.18">
-<h3><span class="header-section-number">7.5.18</span> ISfrag<a href="annotation.html#isfrag" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>De Novo Recognition of In-Source Fragments for Liquid Chromatography–Mass Spectrometry Data<span class="citation">(<a href="#ref-guo2021" role="doc-biblioref">Guo et al. 2021</a>)</span></p>
+<div id="isfrag" class="section level3 hasAnchor" number="8.5.18">
+<h3><span class="header-section-number">8.5.18</span> ISfrag<a href="annotation.html#isfrag" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>De Novo Recognition of In-Source Fragments for Liquid Chromatography–Mass Spectrometry Data<span class="citation">(<a href="#ref-guo2021">J. Guo et al. 2021</a>)</span></p>
 </div>
-</div>
-<div id="ms1-ms2-connection" class="section level2 hasAnchor" number="7.6">
-<h2><span class="header-section-number">7.6</span> MS1 MS2 connection<a href="annotation.html#ms1-ms2-connection" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="pmdda" class="section level3 hasAnchor" number="7.6.1">
-<h3><span class="header-section-number">7.6.1</span> PMDDA<a href="annotation.html#pmdda" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-</div>
-<div id="hermes" class="section level3 hasAnchor" number="7.6.2">
-<h3><span class="header-section-number">7.6.2</span> HERMES<a href="annotation.html#hermes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>a molecular-formula-oriented method to target the metabolome<span class="citation">(<a href="#ref-gine2021" role="doc-biblioref">Giné et al. 2021</a>)</span>.</p>
+<div id="fastei" class="section level3 hasAnchor" number="8.5.19">
+<h3><span class="header-section-number">8.5.19</span> FastEI<a href="annotation.html#fastei" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Ultra-fast and accurate electron ionization mass spectrum matching for compound identification with million-scale in-silico library<span class="citation">(<a href="#ref-yang2023a">Qiong Yang et al. 2023</a>)</span></p>
 </div>
 </div>
-<div id="msms-annotation" class="section level2 hasAnchor" number="7.7">
-<h2><span class="header-section-number">7.7</span> MS/MS annotation<a href="annotation.html#msms-annotation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>MS/MS annotation is performed to generate a matching score with library spectra. The most popular matching algorithm is dot product similarity. A recent study found spectral entropy algorithm outperformed dot product similarity <span class="citation">(<a href="#ref-li2021" role="doc-biblioref">Y. Li et al. 2021</a>)</span>. Comparison of Cosine, Modified Cosine, and Neutral Loss Based Spectrum Alignment showed modified cosine similarity outperformed neutral loss matching and the cosine similarity in all cases. The performance of MS/MS spectrum alignment depends on the location and type of the modification, as well as the chemical compound class of fragmented molecules. <span class="citation">(<a href="#ref-bittremieux2022" role="doc-biblioref">Bittremieux et al. 2022</a>)</span></p>
+<div id="ms1-ms2-connection" class="section level2 hasAnchor" number="8.6">
+<h2><span class="header-section-number">8.6</span> MS1 MS2 connection<a href="annotation.html#ms1-ms2-connection" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="pmdda" class="section level3 hasAnchor" number="8.6.1">
+<h3><span class="header-section-number">8.6.1</span> PMDDA<a href="annotation.html#pmdda" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Three step workflow: MS1 full scan peak-picking, GlobalStd algorithm to select precursor ions for MS2 from MS1 data and collect the MS2 data and annotation with GNPS<span class="citation">(<a href="#ref-yu2022b">M. Yu, Dolios, and Petrick 2022</a>)</span>.</p>
+</div>
+<div id="hermes" class="section level3 hasAnchor" number="8.6.2">
+<h3><span class="header-section-number">8.6.2</span> HERMES<a href="annotation.html#hermes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A molecular-formula-oriented method to target the metabolome<span class="citation">(<a href="#ref-gine2021">Giné et al. 2021</a>)</span>.</p>
+</div>
+<div id="dpdda" class="section level3 hasAnchor" number="8.6.3">
+<h3><span class="header-section-number">8.6.3</span> dpDDA<a href="annotation.html#dpdda" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Similar work can be found here with inclusion list of differential and preidentified ions (dpDDA)<span class="citation">(<a href="#ref-zhang2023">Y. Zhang et al. 2023</a>)</span>.</p>
+</div>
+</div>
+<div id="ms2-msn-connection" class="section level2 hasAnchor" number="8.7">
+<h2><span class="header-section-number">8.7</span> MS2 MSn connection<a href="annotation.html#ms2-msn-connection" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A computational approach to generate adatabase of high-resolution-MS n spectra by converting existing low-resolution MSn spectra using complementary high-resolution-MS2 spectra generated by beam-type CAD<span class="citation">(<a href="#ref-lieng2023">Lieng et al. 2023</a>)</span>.</p>
+</div>
+<div id="msms-annotation" class="section level2 hasAnchor" number="8.8">
+<h2><span class="header-section-number">8.8</span> MS/MS annotation<a href="annotation.html#msms-annotation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>MS/MS annotation is performed to generate a matching score with library spectra. The most popular matching algorithm is dot product similarity. A recent study found spectral entropy algorithm outperformed dot product similarity [<span class="citation">Y. Li et al. (<a href="#ref-li2021">2021</a>)</span>;<span class="citation">Y. Li and Fiehn (<a href="#ref-li2023b">2023</a>)</span>;]. Comparison of Cosine, Modified Cosine, and Neutral Loss Based Spectrum Alignment showed modified cosine similarity outperformed neutral loss matching and the cosine similarity in all cases. The performance of MS/MS spectrum alignment depends on the location and type of the modification, as well as the chemical compound class of fragmented molecules<span class="citation">(<a href="#ref-bittremieux2022">Bittremieux et al. 2022</a>)</span>. This work proposed a method weighting low-intensity MS/MS ions and m/z frequency for spectral library annotation, which will be help to annotate unknown spectra<span class="citation">(<a href="#ref-englerhart2024">Engler Hart et al. 2024</a>)</span>. <a href="https://github.com/biorack/blink">BLINK</a> enables ultrafast tandem mass spectrometry cosine similarity scoring<span class="citation">(<a href="#ref-harwood2023">Harwood et al. 2023</a>)</span>. MS2Query enable the reliable and scalable MS2 mass spectra-based analogue search by machine learning<span class="citation">(<a href="#ref-dejonge2023">de Jonge et al. 2023</a>)</span>. However, A spectroscopic test suggests that fragment ion structure annotations in MS/MS libraries are frequently incorrect<span class="citation">(<a href="#ref-vantetering2024">van Tetering et al. 2024</a>)</span>.</p>
+<p>Machine learning can also be applied for MS2 annotation<span class="citation">(<a href="#ref-codrean2023">Codrean et al. 2023</a>; <a href="#ref-guo2023">H. Guo et al. 2023</a>; <a href="#ref-bilbao2023">Bilbao et al. 2023</a>)</span>.</p>
 <p>You could check <span class="math display">\[Workflow\]</span> section for popular platform. Here are some stand-alone annotation software:</p>
-<div id="matchms" class="section level3 hasAnchor" number="7.7.1">
-<h3><span class="header-section-number">7.7.1</span> Matchms<a href="annotation.html#matchms" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><a href="https://github.com/matchms/matchms">Matchms</a> is an open-source Python package to import, process, clean, and compare mass spectrometry data (MS/MS). It allows to implement and run an easy-to-follow, easy-to-reproduce workflow from raw mass spectra to pre- and post-processed spectral data. Spectral data can be imported from common formats such mzML, mzXML, msp, metabolomics-USI, MGF, or json (e.g. GNPS-syle json files). Matchms then provides filters for metadata cleaning and checking, as well as for basic peak filtering. Finally, matchms was build to import and apply different similarity measures to compare large amounts of spectra. This includes common Cosine scores, but can also easily be extended by custom measures. Example for spectrum similarity measures that were designed to work in matchms are Spec2Vec and MS2DeepScore<span class="citation">(<a href="#ref-huber2020" role="doc-biblioref">Huber et al. 2020</a>)</span>.</p>
+<div id="matchms" class="section level3 hasAnchor" number="8.8.1">
+<h3><span class="header-section-number">8.8.1</span> Matchms<a href="annotation.html#matchms" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><a href="https://github.com/matchms/matchms">Matchms</a> is an open-source Python package to import, process, clean, and compare mass spectrometry data (MS/MS). It allows to implement and run an easy-to-follow, easy-to-reproduce workflow from raw mass spectra to pre- and post-processed spectral data. Spectral data can be imported from common formats such mzML, mzXML, msp, metabolomics-USI, MGF, or json (e.g. GNPS-syle json files). Matchms then provides filters for metadata cleaning and checking, as well as for basic peak filtering. Finally, matchms was build to import and apply different similarity measures to compare large amounts of spectra. This includes common Cosine scores, but can also easily be extended by custom measures. Example for spectrum similarity measures that were designed to work in matchms are Spec2Vec and MS2DeepScore<span class="citation">(<a href="#ref-huber2020">Huber et al. 2020</a>)</span>.</p>
 </div>
-<div id="metdna" class="section level3 hasAnchor" number="7.7.2">
-<h3><span class="header-section-number">7.7.2</span> MetDNA<a href="annotation.html#metdna" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>MetDNA is the Metabolic reaction network-based recursive metabolite annotation for untargeted metabolomics <span class="citation">(<a href="#ref-shen2019" role="doc-biblioref">Shen et al. 2019</a>)</span>.</p>
+<div id="metdna" class="section level3 hasAnchor" number="8.8.2">
+<h3><span class="header-section-number">8.8.2</span> MetDNA<a href="annotation.html#metdna" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>MetDNA is the Metabolic reaction network-based recursive metabolite annotation for untargeted metabolomics <span class="citation">(<a href="#ref-shen2019">Shen et al. 2019</a>)</span>.</p>
 </div>
-<div id="metfusion" class="section level3 hasAnchor" number="7.7.3">
-<h3><span class="header-section-number">7.7.3</span> MetFusion<a href="annotation.html#metfusion" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Java based <a href="https://github.com/mgerlich/MetFusion">integration</a> of compound identiﬁcation strategies. You could access the application <a href="https://msbi.ipb-halle.de/MetFusion/">here</a> <span class="citation">(<a href="#ref-gerlich2013" role="doc-biblioref">Gerlich and Neumann 2013</a>)</span>.</p>
+<div id="metfusion" class="section level3 hasAnchor" number="8.8.3">
+<h3><span class="header-section-number">8.8.3</span> MetFusion<a href="annotation.html#metfusion" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Java based <a href="https://github.com/mgerlich/MetFusion">integration</a> of compound identiﬁcation strategies. You could access the application <a href="https://msbi.ipb-halle.de/MetFusion/">here</a> <span class="citation">(<a href="#ref-gerlich2013">Gerlich and Neumann 2013</a>)</span>.</p>
 </div>
-<div id="ms2analyzer" class="section level3 hasAnchor" number="7.7.4">
-<h3><span class="header-section-number">7.7.4</span> MS2Analyzer<a href="annotation.html#ms2analyzer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>MS2Analyzer could annotate small molecule substructure from accurate tandem mass spectra. <span class="citation">(<a href="#ref-ma2014a" role="doc-biblioref">Ma et al. 2014</a>)</span></p>
+<div id="ms2analyzer" class="section level3 hasAnchor" number="8.8.4">
+<h3><span class="header-section-number">8.8.4</span> MS2Analyzer<a href="annotation.html#ms2analyzer" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>MS2Analyzer could annotate small molecule substructure from accurate tandem mass spectra. <span class="citation">(<a href="#ref-ma2014a">Ma et al. 2014</a>)</span></p>
 </div>
-<div id="metfrag" class="section level3 hasAnchor" number="7.7.5">
-<h3><span class="header-section-number">7.7.5</span> MetFrag<a href="annotation.html#metfrag" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><a href="http://c-ruttkies.github.io/MetFrag/">MetFrag</a> could be used to make <em>in silico</em> prediction/match of MS/MS data<span class="citation">(<a href="#ref-ruttkies2016" role="doc-biblioref">Ruttkies et al. 2016</a>; <a href="#ref-wolf2010" role="doc-biblioref">Wolf et al. 2010</a>)</span>.</p>
+<div id="metfrag" class="section level3 hasAnchor" number="8.8.5">
+<h3><span class="header-section-number">8.8.5</span> MetFrag<a href="annotation.html#metfrag" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><a href="http://c-ruttkies.github.io/MetFrag/">MetFrag</a> could be used to make <em>in silico</em> prediction/match of MS/MS data<span class="citation">(<a href="#ref-ruttkies2016">Ruttkies et al. 2016</a>; <a href="#ref-wolf2010">Wolf et al. 2010</a>)</span>.</p>
 </div>
-<div id="cfm-id" class="section level3 hasAnchor" number="7.7.6">
-<h3><span class="header-section-number">7.7.6</span> CFM-ID<a href="annotation.html#cfm-id" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><a href="https://sourceforge.net/projects/cfm-id/">CFM-ID</a> use Metlin’s data to make prediction <span class="citation">(<a href="#ref-allen2014" role="doc-biblioref">Allen et al. 2014</a>)</span> and 4.0 <span class="citation">(<a href="#ref-allen2014" role="doc-biblioref">Allen et al. 2014</a>)</span>.</p>
+<div id="cfm-id" class="section level3 hasAnchor" number="8.8.6">
+<h3><span class="header-section-number">8.8.6</span> CFM-ID<a href="annotation.html#cfm-id" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><a href="https://sourceforge.net/projects/cfm-id/">CFM-ID</a> use Metlin’s data to make prediction <span class="citation">(<a href="#ref-allen2014">Allen et al. 2014</a>)</span> and 4.0 <span class="citation">(<a href="#ref-allen2014">Allen et al. 2014</a>)</span>.</p>
 </div>
-<div id="lc-ms2struct" class="section level3 hasAnchor" number="7.7.7">
-<h3><span class="header-section-number">7.7.7</span> LC-MS2Struct<a href="annotation.html#lc-ms2struct" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>A machine learning framework for structural annotation of small-molecule data arising from liquid chromatography–tandem mass spectrometry (LC-MS2) measurements.<span class="citation">(<a href="#ref-bach2022" role="doc-biblioref">Bach, Schymanski, and Rousu 2022</a>)</span></p>
+<div id="lc-ms2struct" class="section level3 hasAnchor" number="8.8.7">
+<h3><span class="header-section-number">8.8.7</span> LC-MS2Struct<a href="annotation.html#lc-ms2struct" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A machine learning framework for structural annotation of small-molecule data arising from liquid chromatography–tandem mass spectrometry (LC-MS2) measurements.<span class="citation">(<a href="#ref-bach2022">Bach, Schymanski, and Rousu 2022</a>)</span></p>
 </div>
-<div id="lipidfrag" class="section level3 hasAnchor" number="7.7.8">
-<h3><span class="header-section-number">7.7.8</span> LipidFrag<a href="annotation.html#lipidfrag" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><a href="https://msbi.ipb-halle.de/msbi/lipidfrag">LipidFrag</a> could be used to make <em>in silico</em> prediction/match of lipid related MS/MS data <span class="citation">(<a href="#ref-witting2017" role="doc-biblioref">Witting et al. 2017</a>)</span>.</p>
+<div id="lipidfrag" class="section level3 hasAnchor" number="8.8.8">
+<h3><span class="header-section-number">8.8.8</span> LipidFrag<a href="annotation.html#lipidfrag" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><a href="https://msbi.ipb-halle.de/msbi/lipidfrag">LipidFrag</a> could be used to make <em>in silico</em> prediction/match of lipid related MS/MS data <span class="citation">(<a href="#ref-witting2017">Witting et al. 2017</a>)</span>.</p>
 </div>
-<div id="lipidmatch" class="section level3 hasAnchor" number="7.7.9">
-<h3><span class="header-section-number">7.7.9</span> Lipidmatch<a href="annotation.html#lipidmatch" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><a href="http://secim.ufl.edu/secim-tools/lipidmatch/">in silico</a>: <em>in silico</em> lipid mass spectrum search <span class="citation">(<a href="#ref-koelmel2017" role="doc-biblioref">Koelmel et al. 2017</a>)</span>.</p>
+<div id="lipidmatch" class="section level3 hasAnchor" number="8.8.9">
+<h3><span class="header-section-number">8.8.9</span> Lipidmatch<a href="annotation.html#lipidmatch" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><a href="http://secim.ufl.edu/secim-tools/lipidmatch/">in silico</a>: <em>in silico</em> lipid mass spectrum search <span class="citation">(<a href="#ref-koelmel2017">Koelmel et al. 2017</a>)</span>.</p>
 </div>
-<div id="barcoding" class="section level3 hasAnchor" number="7.7.10">
-<h3><span class="header-section-number">7.7.10</span> BarCoding<a href="annotation.html#barcoding" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Bar coding select mass-to-charge regions containing the most informative metabolite fragments and designate them as bins. Then translate each metabolite fragmentation pattern into a binary code by assigning 1’s to bins containing fragments and 0’s to bins without fragments. Such coding annotation could be used for MRM data <span class="citation">(<a href="#ref-spalding2016" role="doc-biblioref">Spalding et al. 2016</a>)</span>.</p>
+<div id="barcoding" class="section level3 hasAnchor" number="8.8.10">
+<h3><span class="header-section-number">8.8.10</span> BarCoding<a href="annotation.html#barcoding" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Bar coding select mass-to-charge regions containing the most informative metabolite fragments and designate them as bins. Then translate each metabolite fragmentation pattern into a binary code by assigning 1’s to bins containing fragments and 0’s to bins without fragments. Such coding annotation could be used for MRM data <span class="citation">(<a href="#ref-spalding2016">Spalding et al. 2016</a>)</span>.</p>
 </div>
-<div id="imet" class="section level3 hasAnchor" number="7.7.11">
-<h3><span class="header-section-number">7.7.11</span> iMet<a href="annotation.html#imet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>This online <a href="http://imet.seeslab.net/">application</a> is a network-based computation method for annotation <span class="citation">(<a href="#ref-aguilar-mogas2017" role="doc-biblioref">Aguilar-Mogas et al. 2017</a>)</span>.</p>
+<div id="imet" class="section level3 hasAnchor" number="8.8.11">
+<h3><span class="header-section-number">8.8.11</span> iMet<a href="annotation.html#imet" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This online <a href="http://imet.seeslab.net/">application</a> is a network-based computation method for annotation <span class="citation">(<a href="#ref-aguilar-mogas2017">Aguilar-Mogas et al. 2017</a>)</span>.</p>
+</div>
+<div id="dnms2purifier" class="section level3 hasAnchor" number="8.8.12">
+<h3><span class="header-section-number">8.8.12</span> DNMS2Purifier<a href="annotation.html#dnms2purifier" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>XGBoost based MS/MS spectral cleaning tool using intensity ratio fluctuation, appearance rate, and relative intensity<span class="citation">(<a href="#ref-zhao2023">T. Zhao et al. 2023</a>)</span>.</p>
+</div>
+<div id="idsl.csa" class="section level3 hasAnchor" number="8.8.13">
+<h3><span class="header-section-number">8.8.13</span> IDSL.CSA<a href="annotation.html#idsl.csa" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Composite Spectra Analysis for Chemical Annotation of Untargeted Metabolomics Datasets<span class="citation">(<a href="#ref-baygi2023">Baygi, Kumar, and Barupal 2023</a>)</span>.</p>
 </div>
 </div>
-<div id="knowledge-based-annotation" class="section level2 hasAnchor" number="7.8">
-<h2><span class="header-section-number">7.8</span> Knowledge based annotation<a href="annotation.html#knowledge-based-annotation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="chromatographic-retention-related-criteria" class="section level3 hasAnchor" number="7.8.1">
-<h3><span class="header-section-number">7.8.1</span> Chromatographic retention-related criteria<a href="annotation.html#chromatographic-retention-related-criteria" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="knowledge-based-annotation" class="section level2 hasAnchor" number="8.9">
+<h2><span class="header-section-number">8.9</span> Knowledge based annotation<a href="annotation.html#knowledge-based-annotation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="experimental-design" class="section level3 hasAnchor" number="8.9.1">
+<h3><span class="header-section-number">8.9.1</span> Experimental design<a href="annotation.html#experimental-design" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Physicochemical Property can be used for annotation with a specific experimental design<span class="citation">(<a href="#ref-abrahamsson2023">Abrahamsson et al. 2023</a>)</span>.</p>
+</div>
+<div id="chromatographic-retention-related-criteria" class="section level3 hasAnchor" number="8.9.2">
+<h3><span class="header-section-number">8.9.2</span> Chromatographic retention-related criteria<a href="annotation.html#chromatographic-retention-related-criteria" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>For targeted analysis, chromatographic retention time could be the qualitative method for certain compounds with a carefully designed pre-treatment. For untargeted analysis, such information could also be used for annotation. GC-MS usually use retention index for certain column while LC-MS might not show enough reproducible results as GC. Such method could be tracked back to quantitative structure-retention relationship (QSRR) models or linear solvation energy relationship (LSER). However, such methods need molecular descriptors as much as possible. For untargeted analysis, retention time and mass to charge ratio could not generate enough molecular descriptors to build QSPR models. In this case, such criteria might be usefully for validation instead of annotation unless we could measure or extract more information such as ion mobility from unknown compounds.</p>
 <ul>
-<li><p><a href="https://www.retip.app/">Retip</a> Retention Time Prediction for Compound Annotation in Untargeted Metabolomics <span class="citation">(<a href="#ref-bonini2020" role="doc-biblioref">Bonini et al. 2020</a>)</span>.</p></li>
-<li><p>JAVA based <a href="http://metabolomics.pharm.uconn.edu/?q=Software.html">MolFind</a> could make annotation for unknown chemical structure by prediction based on RI, ECOM50, drift time and CID spectra <span class="citation">(<a href="#ref-menikarachchi2012" role="doc-biblioref">Menikarachchi et al. 2012</a>)</span>.</p></li>
+<li><p><a href="https://www.retip.app/">Retip</a> Retention Time Prediction for Compound Annotation in Untargeted Metabolomics <span class="citation">(<a href="#ref-bonini2020">Bonini et al. 2020</a>)</span>.</p></li>
+<li><p>JAVA based <a href="http://metabolomics.pharm.uconn.edu/?q=Software.html">MolFind</a> could make annotation for unknown chemical structure by prediction based on RI, ECOM50, drift time and CID spectra <span class="citation">(<a href="#ref-menikarachchi2012">Menikarachchi et al. 2012</a>)</span>.</p></li>
 <li><p><a href="https://water.for-ident.org/#!search">For-ident</a> could give a score for identification with the help of logD(relative retention time) and/or MS/MS.</p></li>
+<li><p><a href="https://github.com/01dadada/RT-Transformer">RT-Transformer</a>: retention time prediction for metabolite annotation to assist in metabolite identification,which is a novel deep neural network model coupled with graph attention network and 1D-Transformer, which can predict retention times under any chromatographic methods.</p></li>
+<li><p>RT prediction model(random forest) of unified-HILIC/AEX/HRMS/MS, which enables the comprehensive structural annotation of polar metabolites(Unified-HILIC/AEX/HRMS/MS)<span class="citation">(<a href="#ref-torigoe2024a">Torigoe et al. 2024</a>)</span>.</p></li>
 </ul>
 </div>
-<div id="probmetab" class="section level3 hasAnchor" number="7.8.2">
-<h3><span class="header-section-number">7.8.2</span> ProbMetab<a href="annotation.html#probmetab" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Provides probability ranking to candidate compounds assigned to masses, with the prior assumption of connected sample and additional previous and spectral information modeled by the user. You could find source code <a href="https://github.com/rsilvabioinfo/ProbMetab">here</a> <span class="citation">(<a href="#ref-silva2014" role="doc-biblioref">Ricardo R. Silva et al. 2014</a>)</span>.</p>
+<div id="probmetab" class="section level3 hasAnchor" number="8.9.3">
+<h3><span class="header-section-number">8.9.3</span> ProbMetab<a href="annotation.html#probmetab" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Provides probability ranking to candidate compounds assigned to masses, with the prior assumption of connected sample and additional previous and spectral information modeled by the user. You could find source code <a href="https://github.com/rsilvabioinfo/ProbMetab">here</a> <span class="citation">(<a href="#ref-silva2014">Ricardo R. Silva et al. 2014</a>)</span>.</p>
 </div>
-<div id="mi-pack" class="section level3 hasAnchor" number="7.8.3">
-<h3><span class="header-section-number">7.8.3</span> MI-Pack<a href="annotation.html#mi-pack" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>You could find python software <a href="http://www.biosciences-labs.bham.ac.uk/viant/mipack/">here</a> <span class="citation">(<a href="#ref-weber2010" role="doc-biblioref">Weber and Viant 2010</a>)</span>.</p>
+<div id="mi-pack" class="section level3 hasAnchor" number="8.9.4">
+<h3><span class="header-section-number">8.9.4</span> MI-Pack<a href="annotation.html#mi-pack" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You could find python software <a href="http://www.biosciences-labs.bham.ac.uk/viant/mipack/">here</a> <span class="citation">(<a href="#ref-weber2010">Weber and Viant 2010</a>)</span>.</p>
 </div>
-<div id="metexpert" class="section level3 hasAnchor" number="7.8.4">
-<h3><span class="header-section-number">7.8.4</span> MetExpert<a href="annotation.html#metexpert" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><a href="https://sourceforge.net/projects/metexpert/">MetExpert</a> is an expert system to assist users with limited expertise in informatics to interpret GCMS data for metabolite identification without querying spectral databases <span class="citation">(<a href="#ref-qiu2018" role="doc-biblioref">Qiu, Lei, and Sumner 2018</a>)</span>.</p>
+<div id="metexpert" class="section level3 hasAnchor" number="8.9.5">
+<h3><span class="header-section-number">8.9.5</span> MetExpert<a href="annotation.html#metexpert" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><a href="https://sourceforge.net/projects/metexpert/">MetExpert</a> is an expert system to assist users with limited expertise in informatics to interpret GCMS data for metabolite identification without querying spectral databases <span class="citation">(<a href="#ref-qiu2018">Qiu, Lei, and Sumner 2018</a>)</span>.</p>
 </div>
-<div id="mycompoundid" class="section level3 hasAnchor" number="7.8.5">
-<h3><span class="header-section-number">7.8.5</span> MycompoundID<a href="annotation.html#mycompoundid" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><a href="http://www.mycompoundid.org/mycompoundid_IsoMS/single.jsp">MycompoundID</a> could be used to search known and unknown metabolites online <span class="citation">(<a href="#ref-li2013a" role="doc-biblioref">Liang Li et al. 2013</a>)</span>.</p>
+<div id="mycompoundid" class="section level3 hasAnchor" number="8.9.6">
+<h3><span class="header-section-number">8.9.6</span> MycompoundID<a href="annotation.html#mycompoundid" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><a href="http://www.mycompoundid.org/mycompoundid_IsoMS/single.jsp">MycompoundID</a> could be used to search known and unknown metabolites online <span class="citation">(<a href="#ref-li2013a">Liang Li et al. 2013</a>)</span>.</p>
 </div>
-<div id="metfamily" class="section level3 hasAnchor" number="7.8.6">
-<h3><span class="header-section-number">7.8.6</span> MetFamily<a href="annotation.html#metfamily" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><a href="https://msbi.ipb-halle.de/MetFamily/">Shiny app</a> for MS and MS/MS data annotation <span class="citation">(<a href="#ref-treutler2016" role="doc-biblioref">Treutler et al. 2016</a>)</span>.</p>
+<div id="metfamily" class="section level3 hasAnchor" number="8.9.7">
+<h3><span class="header-section-number">8.9.7</span> MetFamily<a href="annotation.html#metfamily" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><a href="https://msbi.ipb-halle.de/MetFamily/">Shiny app</a> for MS and MS/MS data annotation <span class="citation">(<a href="#ref-treutler2016">Treutler et al. 2016</a>)</span>.</p>
 </div>
-<div id="plantmat" class="section level3 hasAnchor" number="7.8.7">
-<h3><span class="header-section-number">7.8.7</span> Plantmat<a href="annotation.html#plantmat" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><a href="https://sourceforge.net/projects/plantmat/">excel library</a> based prediction for plant metabolites<span class="citation">(<a href="#ref-qiu2016" role="doc-biblioref">Qiu et al. 2016</a>)</span>.</p>
+<div id="coa-blast" class="section level3 hasAnchor" number="8.9.8">
+<h3><span class="header-section-number">8.9.8</span> CoA-Blast<a href="annotation.html#coa-blast" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For certain group of compounds such as <a href="https://github.com/urikeshet/CoA-Blast">Acyl-CoA</a>, you might build a class level in silico database to annotated compounds with certain structure<span class="citation">(<a href="#ref-keshet2022">Keshet et al. 2022</a>)</span>.</p>
 </div>
-<div id="coa-blast" class="section level3 hasAnchor" number="7.8.8">
-<h3><span class="header-section-number">7.8.8</span> CoA-Blast<a href="annotation.html#coa-blast" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>For certain group of compounds such as <a href="https://github.com/urikeshet/CoA-Blast">Acyl-CoA</a>, you might build a class level in silico database to annotated compounds with certain structure<span class="citation">(<a href="#ref-keshet2022" role="doc-biblioref">Keshet et al. 2022</a>)</span>.</p>
+<div id="kgmn" class="section level3 hasAnchor" number="8.9.9">
+<h3><span class="header-section-number">8.9.9</span> KGMN<a href="annotation.html#kgmn" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Knowledge-guided multi-layer network (KGMN) integrates three-layer networks, including knowledge-based metabolic reaction network, knowledge-guided MS/MS similarity network, and global peak correlation network for annotaiton <span class="citation">(<a href="#ref-zhou2022">Z. Zhou et al. 2022</a>)</span>.</p>
 </div>
-<div id="kgmn" class="section level3 hasAnchor" number="7.8.9">
-<h3><span class="header-section-number">7.8.9</span> KGMN<a href="annotation.html#kgmn" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Knowledge-guided multi-layer network (KGMN) integrates three-layer networks, including knowledge-based metabolic reaction network, knowledge-guided MS/MS similarity network, and global peak correlation network for annotaiton <span class="citation">(<a href="#ref-zhou2022" role="doc-biblioref">Z. Zhou et al. 2022</a>)</span>.</p>
+<div id="ccmn" class="section level3 hasAnchor" number="8.9.10">
+<h3><span class="header-section-number">8.9.10</span> CCMN<a href="annotation.html#ccmn" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>CCMNs were then constructed using metabolic features shared classes, which facilitated the structure- or class annotation for completely unknown metabolic features<span class="citation">(<a href="#ref-zhang2024">X. Zhang et al. 2024</a>)</span>.</p>
 </div>
 </div>
-<div id="ms-database-for-annotation" class="section level2 hasAnchor" number="7.9">
-<h2><span class="header-section-number">7.9</span> MS Database for annotation<a href="annotation.html#ms-database-for-annotation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="ms" class="section level3 hasAnchor" number="7.9.1">
-<h3><span class="header-section-number">7.9.1</span> MS<a href="annotation.html#ms" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="ms-database-for-annotation" class="section level2 hasAnchor" number="8.10">
+<h2><span class="header-section-number">8.10</span> MS Database for annotation<a href="annotation.html#ms-database-for-annotation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="ms" class="section level3 hasAnchor" number="8.10.1">
+<h3><span class="header-section-number">8.10.1</span> MS<a href="annotation.html#ms" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><p><a href="http://fiehnlab.ucdavis.edu/projects/binbase-setup">Fiehn Lab</a></p></li>
 <li><p><a href="https://www.nist.gov/srd/nist-standard-reference-database-1a-v17">NIST</a>: No free</p></li>
@@ -719,14 +760,15 @@ div.csl-indent {
 <li><p><a href="http://minedatabase.mcs.anl.gov/#/faq">MINE</a> is an open access database of computationally predicted enzyme promiscuity products for untargeted metabolomics. The annotation would be accurate for general compounds database.</p></li>
 </ul>
 </div>
-<div id="msms-1" class="section level3 hasAnchor" number="7.9.2">
-<h3><span class="header-section-number">7.9.2</span> MS/MS<a href="annotation.html#msms-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="msms-1" class="section level3 hasAnchor" number="8.10.2">
+<h3><span class="header-section-number">8.10.2</span> MS/MS<a href="annotation.html#msms-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>LibGen can generate high quality spectral libraries of Natural Products for EAD-, UVPD-, and HCD-High Resolution Mass Spectrometers<span class="citation">(<a href="#ref-kong2023">Kong et al. 2023</a>)</span>.</p>
 <ul>
 <li><p><a href="http://mona.fiehnlab.ucdavis.edu/">MoNA</a> Platform to collect all other open source database</p></li>
 <li><p><a href="http://www.massbank.jp/?lang=en">MassBank</a></p></li>
 <li><p><a href="https://gnps.ucsd.edu/ProteoSAFe/static/gnps-splash.jsp">GNPS</a> use inner correlationship in the data and make network analysis at peaks’ level instand of annotated compounds to annotate the data.</p></li>
 <li><p><a href="http://spectra.psc.riken.jp/">ReSpect</a>: phytochemicals</p></li>
-<li><p><a href="https://metlin.scripps.edu/">Metlin</a> is another useful online application for annotation<span class="citation">(<a href="#ref-guijas2018" role="doc-biblioref">Guijas et al. 2018</a>)</span>.</p></li>
+<li><p><a href="https://metlin.scripps.edu/">Metlin</a> is another useful online application for annotation<span class="citation">(<a href="#ref-guijas2018">Guijas et al. 2018</a>)</span>.</p></li>
 <li><p><a href="http://fiehnlab.ucdavis.edu/projects/LipidBlast">LipidBlast</a>: <em>in silico</em> prediction</p></li>
 <li><p><a href="http://www.lipidmaps.org/">Lipid Maps</a></p></li>
 <li><p><a href="https://www.mzcloud.org/">MZcloud</a></p></li>
@@ -737,8 +779,8 @@ div.csl-indent {
 </ul>
 </div>
 </div>
-<div id="compounds-database" class="section level2 hasAnchor" number="7.10">
-<h2><span class="header-section-number">7.10</span> Compounds Database<a href="annotation.html#compounds-database" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="compounds-database" class="section level2 hasAnchor" number="8.11">
+<h2><span class="header-section-number">8.11</span> Compounds Database<a href="annotation.html#compounds-database" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><p><a href="https://pubchem.ncbi.nlm.nih.gov/">PubChem</a> is an open chemistry database at the National Institutes of Health (NIH).</p></li>
 <li><p><a href="http://www.chemspider.com/">Chemspider</a> is a free chemical structure database providing fast text and structure search access to over 67 million structures from hundreds of data sources.</p></li>
@@ -753,11 +795,20 @@ div.csl-indent {
 <li><p><a href="http://lmdb.ca">LMDB</a> is a freely available electronic database containing detailed information about small molecule metabolites found in different livestock species.</p></li>
 <li><p><a href="https://iaspub.epa.gov/oppthpv/hpv_hc_characterization.get_report?doctype=2">HPV</a> High Production Volume Information System</p></li>
 </ul>
+<p>There are also metabolites atlas for specific domain.</p>
+<ul>
+<li><p>PMhub 1.0: a comprehensive plant metabolome database<span class="citation">(<a href="#ref-tian2023">Z. Tian et al. 2023</a>)</span></p></li>
+<li><p>Atlas of Circadian Metabolism<span class="citation">(<a href="#ref-dyar2018">Dyar et al. 2018</a>)</span></p></li>
+<li><p>Plantmat <a href="https://sourceforge.net/projects/plantmat/">excel library</a> based prediction for plant metabolites<span class="citation">(<a href="#ref-qiu2016">Qiu et al. 2016</a>)</span>.</p></li>
+</ul>
 
 </div>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-abrahamsson2023" class="csl-entry">
+Abrahamsson, Dimitri, Christopher L. Brueck, Carsten Prasse, Dimitra A. Lambropoulou, Lelouda-Athanasia Koronaiou, Miaomiao Wang, June-Soo Park, and Tracey J. Woodruff. 2023. <span>“Extracting <span>Structural Information</span> from <span>Physicochemical Property Measurements Using Machine Learning</span>-<span>A New Approach</span> for <span>Structure Elucidation</span> in <span class="nocase">Non-targeted Analysis</span>.”</span> <em>Environmental Science &amp; Technology</em>, September. <a href="https://doi.org/10.1021/acs.est.3c03003">https://doi.org/10.1021/acs.est.3c03003</a>.
+</div>
 <div id="ref-aguilar-mogas2017" class="csl-entry">
 Aguilar-Mogas, Antoni, Marta Sales-Pardo, Miriam Navarro, Roger Guimerà, and Oscar Yanes. 2017. <span>“<span class="nocase">iMet</span>: <span>A Network-Based Computational Tool To Assist</span> in the <span>Annotation</span> of <span>Metabolites</span> from <span>Tandem Mass Spectra</span>.”</span> <em>Analytical Chemistry</em> 89 (6): 3474–82. <a href="https://doi.org/10.1021/acs.analchem.6b04512">https://doi.org/10.1021/acs.analchem.6b04512</a>.
 </div>
@@ -777,7 +828,16 @@ Bach, Eric, Emma L. Schymanski, and Juho Rousu. 2022. <span>“Joint Structural 
 Baran, Richard, and Trent R. Northen. 2013. <span>“Robust <span>Automated Mass Spectra Interpretation</span> and <span>Chemical Formula Calculation Using Mixed Integer Linear Programming</span>.”</span> <em>Analytical Chemistry</em> 85 (20): 9777–84. <a href="https://doi.org/10.1021/ac402180c">https://doi.org/10.1021/ac402180c</a>.
 </div>
 <div id="ref-barranco-altirriba2021" class="csl-entry">
-Barranco-Altirriba, Maria, Pol Solà-Santos, Sergio Picart-Armada, Samir Kanaan-Izquierdo, Jordi Fonollosa, and Alexandre Perera-Lluna. 2021. <span>“<span class="nocase">mWISE</span>: <span>An Algorithm</span> for <span>Context-Based Annotation</span> of <span>Liquid Chromatography</span> Through <span>Diffusion</span> in <span>Graphs</span>.”</span> <em>Analytical Chemistry</em> 93 (31): 10772–78. <a href="https://doi.org/10.1021/acs.analchem.1c00238">https://doi.org/10.1021/acs.analchem.1c00238</a>.
+Barranco-Altirriba, Maria, Pol Solà-Santos, Sergio Picart-Armada, Samir Kanaan-Izquierdo, Jordi Fonollosa, and Alexandre Perera-Lluna. 2021. <span>“<span class="nocase">mWISE</span>: <span>An Algorithm</span> for <span>Context-Based Annotation</span> of <span>Liquid Chromatography</span>–<span>Mass Spectrometry Features</span> Through <span>Diffusion</span> in <span>Graphs</span>.”</span> <em>Analytical Chemistry</em> 93 (31): 10772–78. <a href="https://doi.org/10.1021/acs.analchem.1c00238">https://doi.org/10.1021/acs.analchem.1c00238</a>.
+</div>
+<div id="ref-baygi2023" class="csl-entry">
+Baygi, Sadjad Fakouri, Yashwant Kumar, and Dinesh Kumar Barupal. 2023. <span>“<span>IDSL</span>.<span>CSA</span>: <span>Composite Spectra Analysis</span> for <span>Chemical Annotation</span> of <span>Untargeted Metabolomics Datasets</span>.”</span> <em>IDSL.CSA: Composite Spectra Analysis for Chemical Annotation of Untargeted Metabolomics Datasets</em>, June. <a href="https://doi.org/10.1021/acs.analchem.3c00376">https://doi.org/10.1021/acs.analchem.3c00376</a>.
+</div>
+<div id="ref-bernardo-bermejo2023" class="csl-entry">
+Bernardo-Bermejo, Samuel, Jingchuan Xue, Linh Hoang, Elizabeth Billings, Bill Webb, M. Willy Honders, Sanne Venneker, et al. 2023. <span>“Quantitative Multiple Fragment Monitoring with Enhanced in-Source Fragmentation/Annotation Mass Spectrometry.”</span> <em>Nature Protocols</em>, February, 1–20. <a href="https://doi.org/10.1038/s41596-023-00803-0">https://doi.org/10.1038/s41596-023-00803-0</a>.
+</div>
+<div id="ref-bilbao2023" class="csl-entry">
+Bilbao, Aivett, Nathalie Munoz, Joonhoon Kim, Daniel J. Orton, Yuqian Gao, Kunal Poorey, Kyle R. Pomraning, et al. 2023. <span>“<span>PeakDecoder</span> Enables Machine Learning-Based Metabolite Annotation and Accurate Profiling in Multidimensional Mass Spectrometry Measurements.”</span> <em>Nature Communications</em> 14 (1): 2461. <a href="https://doi.org/10.1038/s41467-023-37031-9">https://doi.org/10.1038/s41467-023-37031-9</a>.
 </div>
 <div id="ref-bittremieux2022" class="csl-entry">
 Bittremieux, Wout, Robin Schmid, Florian Huber, Justin J. J. van der Hooft, Mingxun Wang, and Pieter C. Dorrestein. 2022. <span>“Comparison of <span>Cosine</span>, <span>Modified Cosine</span>, and <span>Neutral Loss Based Spectrum Alignment For Discovery</span> of <span>Structurally Related Molecules</span>.”</span> <em>Journal of the American Society for Mass Spectrometry</em> 33 (9): 1733–44. <a href="https://doi.org/10.1021/jasms.2c00153">https://doi.org/10.1021/jasms.2c00153</a>.
@@ -792,7 +852,7 @@ Broeckling, C. D., F. A. Afsar, S. Neumann, A. Ben-Hur, and J. E. Prenni. 2014. 
 Broeckling, Corey D., Andrea Ganna, Mark Layer, Kevin Brown, Ben Sutton, Erik Ingelsson, Graham Peers, and Jessica E. Prenni. 2016. <span>“Enabling <span>Efficient</span> and <span>Confident Annotation</span> of <span>LC</span>-<span>MS Metabolomics Data</span> Through <span>MS1 Spectrum</span> and <span>Time Prediction</span>.”</span> <em>Analytical Chemistry</em> 88 (18): 9226–34. <a href="https://doi.org/10.1021/acs.analchem.6b02479">https://doi.org/10.1021/acs.analchem.6b02479</a>.
 </div>
 <div id="ref-chaleckis2019" class="csl-entry">
-Chaleckis, Romanas, Isabel Meister, Pei Zhang, and Craig E Wheelock. 2019. <span>“Challenges, Progress and Promises of Metabolite Annotation for <span>LC</span> Metabolomics.”</span> <em>Current Opinion in Biotechnology</em>, Analytical <span>Biotechnology</span>, 55 (February): 44–50. <a href="https://doi.org/10.1016/j.copbio.2018.07.010">https://doi.org/10.1016/j.copbio.2018.07.010</a>.
+Chaleckis, Romanas, Isabel Meister, Pei Zhang, and Craig E Wheelock. 2019. <span>“Challenges, Progress and Promises of Metabolite Annotation for <span>LC</span>–<span class="nocase">MS-based</span> Metabolomics.”</span> <em>Current Opinion in Biotechnology</em>, Analytical <span>Biotechnology</span>, 55 (February): 44–50. <a href="https://doi.org/10.1016/j.copbio.2018.07.010">https://doi.org/10.1016/j.copbio.2018.07.010</a>.
 </div>
 <div id="ref-charbonnet2022" class="csl-entry">
 Charbonnet, Joseph A., Carrie A. McDonough, Feng Xiao, Trever Schwichtenberg, Dunping Cao, Sarit Kaserzon, Kevin V. Thomas, et al. 2022. <span>“Communicating <span>Confidence</span> of <span>Per-</span> and <span>Polyfluoroalkyl Substance Identification</span> via <span>High-Resolution Mass Spectrometry</span>.”</span> <em>Environmental Science &amp; Technology Letters</em>, May. <a href="https://doi.org/10.1021/acs.estlett.2c00206">https://doi.org/10.1021/acs.estlett.2c00206</a>.
@@ -801,19 +861,31 @@ Charbonnet, Joseph A., Carrie A. McDonough, Feng Xiao, Trever Schwichtenberg, Du
 Chen, Li, Wenyun Lu, Lin Wang, Xi Xing, Ziyang Chen, Xin Teng, Xianfeng Zeng, et al. 2021. <span>“Metabolite Discovery Through Global Annotation of Untargeted Metabolomics Data.”</span> <em>Nature Methods</em> 18 (11): 1377–85. <a href="https://doi.org/10.1038/s41592-021-01303-3">https://doi.org/10.1038/s41592-021-01303-3</a>.
 </div>
 <div id="ref-chokkathukalam2013" class="csl-entry">
-Chokkathukalam, Achuthanunni, Andris Jankevics, Darren J. Creek, Fiona Achcar, Michael P. Barrett, and Rainer Breitling. 2013. <span>“<span class="nocase">mzMatch</span>: An <span>R</span> Tool for the Annotation and Relative Quantification of Isotope-Labelled Mass Spectrometry Data.”</span> <em>Bioinformatics</em> 29 (2): 281–83. <a href="https://doi.org/10.1093/bioinformatics/bts674">https://doi.org/10.1093/bioinformatics/bts674</a>.
+Chokkathukalam, Achuthanunni, Andris Jankevics, Darren J. Creek, Fiona Achcar, Michael P. Barrett, and Rainer Breitling. 2013. <span>“<span class="nocase">mzMatch</span>–<span>ISO</span>: An <span>R</span> Tool for the Annotation and Relative Quantification of Isotope-Labelled Mass Spectrometry Data.”</span> <em>Bioinformatics</em> 29 (2): 281–83. <a href="https://doi.org/10.1093/bioinformatics/bts674">https://doi.org/10.1093/bioinformatics/bts674</a>.
+</div>
+<div id="ref-codrean2023" class="csl-entry">
+Codrean, S., B. Kruit, N. Meekel, D. Vughs, and F. Béen. 2023. <span>“Predicting the <span>Diagnostic Information</span> of <span>Tandem Mass Spectra</span> of <span>Environmentally Relevant Compounds Using Machine Learning</span>.”</span> <em>Analytical Chemistry</em>, October. <a href="https://doi.org/10.1021/acs.analchem.3c03470">https://doi.org/10.1021/acs.analchem.3c03470</a>.
 </div>
 <div id="ref-daly2014" class="csl-entry">
-Daly, Rónán, Simon Rogers, Joe Wandy, Andris Jankevics, Karl E. V. Burgess, and Rainer Breitling. 2014. <span>“<span>MetAssign</span>: Probabilistic Annotation of Metabolites from <span>LC</span> Data Using a <span>Bayesian</span> Clustering Approach.”</span> <em>Bioinformatics</em> 30 (19): 2764–71. <a href="https://doi.org/10.1093/bioinformatics/btu370">https://doi.org/10.1093/bioinformatics/btu370</a>.
+Daly, Rónán, Simon Rogers, Joe Wandy, Andris Jankevics, Karl E. V. Burgess, and Rainer Breitling. 2014. <span>“<span>MetAssign</span>: Probabilistic Annotation of Metabolites from <span>LC</span>–<span>MS</span> Data Using a <span>Bayesian</span> Clustering Approach.”</span> <em>Bioinformatics</em> 30 (19): 2764–71. <a href="https://doi.org/10.1093/bioinformatics/btu370">https://doi.org/10.1093/bioinformatics/btu370</a>.
+</div>
+<div id="ref-dejonge2023" class="csl-entry">
+de Jonge, Niek F., Joris J. R. Louwen, Elena Chekmeneva, Stephane Camuzeaux, Femke J. Vermeir, Robert S. Jansen, Florian Huber, and Justin J. J. van der Hooft. 2023. <span>“<span>MS2Query</span>: Reliable and Scalable <span>MS2</span> Mass Spectra-Based Analogue Search.”</span> <em>Nature Communications</em> 14 (1): 1752. <a href="https://doi.org/10.1038/s41467-023-37446-4">https://doi.org/10.1038/s41467-023-37446-4</a>.
 </div>
 <div id="ref-defelice2017" class="csl-entry">
-DeFelice, Brian C., Sajjan Singh Mehta, Stephanie Samra, Tomáš Čajka, Benjamin Wancewicz, Johannes F. Fahrmann, and Oliver Fiehn. 2017. <span>“Mass <span>Spectral Feature List Optimizer</span> (<span>MS-FLO</span>): <span>A Tool To Minimize False Positive Peak Reports</span> in <span>Untargeted Liquid Chromatography</span> (<span>LC-MS</span>) <span>Data Processing</span>.”</span> <em>Analytical Chemistry</em> 89 (6): 3250–55. <a href="https://doi.org/10.1021/acs.analchem.6b04372">https://doi.org/10.1021/acs.analchem.6b04372</a>.
+DeFelice, Brian C., Sajjan Singh Mehta, Stephanie Samra, Tomáš Čajka, Benjamin Wancewicz, Johannes F. Fahrmann, and Oliver Fiehn. 2017. <span>“Mass <span>Spectral Feature List Optimizer</span> (<span>MS-FLO</span>): <span>A Tool To Minimize False Positive Peak Reports</span> in <span>Untargeted Liquid Chromatography</span>–<span>Mass Spectroscopy</span> (<span>LC-MS</span>) <span>Data Processing</span>.”</span> <em>Analytical Chemistry</em> 89 (6): 3250–55. <a href="https://doi.org/10.1021/acs.analchem.6b04372">https://doi.org/10.1021/acs.analchem.6b04372</a>.
 </div>
 <div id="ref-djoumboufeunang2016" class="csl-entry">
 Djoumbou Feunang, Yannick, Roman Eisner, Craig Knox, Leonid Chepelev, Janna Hastings, Gareth Owen, Eoin Fahy, et al. 2016. <span>“<span>ClassyFire</span>: Automated Chemical Classification with a Comprehensive, Computable Taxonomy.”</span> <em>Journal of Cheminformatics</em> 8 (1): 61. <a href="https://doi.org/10.1186/s13321-016-0174-y">https://doi.org/10.1186/s13321-016-0174-y</a>.
 </div>
 <div id="ref-domingo-almenara2018" class="csl-entry">
 Domingo-Almenara, Xavier, J. Rafael Montenegro-Burke, H. Paul Benton, and Gary Siuzdak. 2018. <span>“Annotation: <span>A Computational Solution</span> for <span>Streamlining Metabolomics Analysis</span>.”</span> <em>Analytical Chemistry</em> 90 (1): 480–89. <a href="https://doi.org/10.1021/acs.analchem.7b03929">https://doi.org/10.1021/acs.analchem.7b03929</a>.
+</div>
+<div id="ref-dyar2018" class="csl-entry">
+Dyar, Kenneth A., Dominik Lutter, Anna Artati, Nicholas J. Ceglia, Yu Liu, Danny Armenta, Martin Jastroch, et al. 2018. <span>“Atlas of <span class="nocase">Circadian Metabolism Reveals System-wide Coordination</span> and <span>Communication</span> Between <span>Clocks</span>.”</span> <em>Cell</em> 174 (6): 1571–1585.e11. <a href="https://doi.org/10.1016/j.cell.2018.08.042">https://doi.org/10.1016/j.cell.2018.08.042</a>.
+</div>
+<div id="ref-englerhart2024" class="csl-entry">
+Engler Hart, Chloe, Tobias Kind, Pieter C. Dorrestein, David Healey, and Daniel Domingo-Fernández. 2024. <span>“Weighting <span>Low-Intensity MS</span>/<span>MS Ions</span> and m/z <span>Frequency</span> for <span>Spectral Library Annotation</span>.”</span> <em>Journal of the American Society for Mass Spectrometry</em> 35 (2): 266–74. <a href="https://doi.org/10.1021/jasms.3c00353">https://doi.org/10.1021/jasms.3c00353</a>.
 </div>
 <div id="ref-fernandez-albert2014a" class="csl-entry">
 Fernández-Albert, Francesc, Rafael Llorach, Cristina Andrés-Lacueva, and Alexandre Perera. 2014. <span>“An <span>R</span> Package to Analyse <span>LC</span>/<span>MS</span> Metabolomic Data: <span>MAIT</span> (<span>Metabolite Automatic Identification Toolkit</span>).”</span> <em>Bioinformatics</em> 30 (13): 1937–39. <a href="https://doi.org/10.1093/bioinformatics/btu136">https://doi.org/10.1093/bioinformatics/btu136</a>.
@@ -825,7 +897,7 @@ Gerlich, Michael, and Steffen Neumann. 2013. <span>“<span>MetFusion</span>: In
 Giné, Roger, Jordi Capellades, Josep M. Badia, Dennis Vughs, Michaela Schwaiger-Haber, Theodore Alexandrov, Maria Vinaixa, Andrea M. Brunner, Gary J. Patti, and Oscar Yanes. 2021. <span>“<span>HERMES</span>: A Molecular-Formula-Oriented Method to Target the Metabolome.”</span> <em>Nature Methods</em> 18 (11): 1370–76. <a href="https://doi.org/10.1038/s41592-021-01307-z">https://doi.org/10.1038/s41592-021-01307-z</a>.
 </div>
 <div id="ref-gugisch2015" class="csl-entry">
-Gugisch, Ralf, Adalbert Kerber, Axel Kohnert, Reinhard Laue, Markus Meringer, Christoph Rücker, and Alfred Wassermann. 2015. <span>“Chapter 6 - <span>MOLGEN</span> 5.0, <span>A Molecular Structure Generator</span>.”</span> In <em>Advances in <span>Mathematical Chemistry</span> and <span>Applications</span></em>, edited by Subhash C. Basak, Guillermo Restrepo, and José L. Villaveces, 113–38. <span>Bentham Science Publishers</span>. <a href="https://doi.org/10.1016/B978-1-68108-198-4.50006-0">https://doi.org/10.1016/B978-1-68108-198-4.50006-0</a>.
+Gugisch, Ralf, Adalbert Kerber, Axel Kohnert, Reinhard Laue, Markus Meringer, Christoph Rücker, and Alfred Wassermann. 2015. <span>“Chapter 6 - <span>MOLGEN</span> 5.0, <span>A Molecular Structure Generator</span>.”</span> In <em>Advances in <span>Mathematical Chemistry</span> and <span>Applications</span></em>, edited by Subhash C. Basak, Guillermo Restrepo, and José L. Villaveces, 113–38. Bentham Science Publishers. <a href="https://doi.org/10.1016/B978-1-68108-198-4.50006-0">https://doi.org/10.1016/B978-1-68108-198-4.50006-0</a>.
 </div>
 <div id="ref-guha2007" class="csl-entry">
 Guha, Rajarshi. 2007. <span>“Chemical <span>Informatics Functionality</span> in <span>R</span>.”</span> <em>Journal of Statistical Software</em> 18 (1): 1–16. <a href="https://doi.org/10.18637/jss.v018.i05">https://doi.org/10.18637/jss.v018.i05</a>.
@@ -833,8 +905,14 @@ Guha, Rajarshi. 2007. <span>“Chemical <span>Informatics Functionality</span> i
 <div id="ref-guijas2018" class="csl-entry">
 Guijas, Carlos, J. Rafael Montenegro-Burke, Xavier Domingo-Almenara, Amelia Palermo, Benedikt Warth, Gerrit Hermann, Gunda Koellensperger, et al. 2018. <span>“<span>METLIN</span>: <span>A Technology Platform</span> for <span>Identifying Knowns</span> and <span>Unknowns</span>.”</span> <em>Analytical Chemistry</em> 90 (5): 3156–64. <a href="https://doi.org/10.1021/acs.analchem.7b04424">https://doi.org/10.1021/acs.analchem.7b04424</a>.
 </div>
+<div id="ref-guo2023" class="csl-entry">
+Guo, Hao, Kebing Xue, Haiming Sun, Weihao Jiang, and Shiliang Pu. 2023. <span>“Contrastive <span>Learning-Based Embedder</span> for the <span>Representation</span> of <span>Tandem Mass Spectra</span>.”</span> <em>Analytical Chemistry</em>, May. <a href="https://doi.org/10.1021/acs.analchem.3c00260">https://doi.org/10.1021/acs.analchem.3c00260</a>.
+</div>
 <div id="ref-guo2021" class="csl-entry">
-Guo, Jian, Sam Shen, Shipei Xing, Huaxu Yu, and Tao Huan. 2021. <span>“<span>ISFrag</span>: <span>De Novo Recognition</span> of <span>In-Source Fragments</span> for <span>Liquid Chromatography</span>.”</span> <em>Analytical Chemistry</em>, July. <a href="https://doi.org/10.1021/acs.analchem.1c01644">https://doi.org/10.1021/acs.analchem.1c01644</a>.
+Guo, Jian, Sam Shen, Shipei Xing, Huaxu Yu, and Tao Huan. 2021. <span>“<span>ISFrag</span>: <span>De Novo Recognition</span> of <span>In-Source Fragments</span> for <span>Liquid Chromatography</span>–<span>Mass Spectrometry Data</span>.”</span> <em>Analytical Chemistry</em>, July. <a href="https://doi.org/10.1021/acs.analchem.1c01644">https://doi.org/10.1021/acs.analchem.1c01644</a>.
+</div>
+<div id="ref-harwood2023" class="csl-entry">
+Harwood, Thomas V., Daniel G. C. Treen, Mingxun Wang, Wibe de Jong, Trent R. Northen, and Benjamin P. Bowen. 2023. <span>“<span>BLINK</span> Enables Ultrafast Tandem Mass Spectrometry Cosine Similarity Scoring.”</span> <em>Scientific Reports</em> 13 (1): 13462. <a href="https://doi.org/10.1038/s41598-023-40496-9">https://doi.org/10.1038/s41598-023-40496-9</a>.
 </div>
 <div id="ref-huber2020" class="csl-entry">
 Huber, Florian, Stefan Verhoeven, Christiaan Meijer, Hanno Spreeuw, Efraín Manuel Villanueva Castilla, Cunliang Geng, Justin J. j van der Hooft, et al. 2020. <span>“Matchms - Processing and Similarity Evaluation of Mass Spectrometry Data.”</span> <em>Journal of Open Source Software</em> 5 (52): 2411. <a href="https://doi.org/10.21105/joss.02411">https://doi.org/10.21105/joss.02411</a>.
@@ -860,6 +938,9 @@ Kind, Tobias, and Oliver Fiehn. 2007. <span>“Seven <span>Golden Rules</span> f
 <div id="ref-koelmel2017" class="csl-entry">
 Koelmel, Jeremy P., Nicholas M. Kroeger, Candice Z. Ulmer, John A. Bowden, Rainey E. Patterson, Jason A. Cochran, Christopher W. W. Beecher, Timothy J. Garrett, and Richard A. Yost. 2017. <span>“<span>LipidMatch</span>: An Automated Workflow for Rule-Based Lipid Identification Using Untargeted High-Resolution Tandem Mass Spectrometry Data.”</span> <em>BMC Bioinformatics</em> 18 (July): 331. <a href="https://doi.org/10.1186/s12859-017-1744-3">https://doi.org/10.1186/s12859-017-1744-3</a>.
 </div>
+<div id="ref-kong2023" class="csl-entry">
+Kong, Fanzhou, Uri Keshet, Tong Shen, Elys Rodriguez, and Oliver Fiehn. 2023. <span>“<span>LibGen</span>: <span>Generating High Quality Spectral Libraries</span> of <span>Natural Products</span> for <span>EAD-</span>, <span>UVPD-</span>, and <span>HCD-High Resolution Mass Spectrometers</span>.”</span> <em>Analytical Chemistry</em>, November. <a href="https://doi.org/10.1021/acs.analchem.3c02263">https://doi.org/10.1021/acs.analchem.3c02263</a>.
+</div>
 <div id="ref-kouril2020" class="csl-entry">
 Kouřil, Štěpán, Julie de Sousa, Jan Václavík, David Friedecký, and Tomáš Adam. 2020. <span>“<span>CROP</span>: Correlation-Based Reduction of Feature Multiplicities in Untargeted Metabolomic Data.”</span> <em>Bioinformatics</em> 36 (9): 2941–42. <a href="https://doi.org/10.1093/bioinformatics/btaa012">https://doi.org/10.1093/bioinformatics/btaa012</a>.
 </div>
@@ -872,8 +953,14 @@ Lai, Zijuan, Hiroshi Tsugawa, Gert Wohlgemuth, Sajjan Mehta, Matthew Mueller, Yu
 <div id="ref-li2013a" class="csl-entry">
 Li, Liang, Ronghong Li, Jianjun Zhou, Azeret Zuniga, Avalyn E. Stanislaus, Yiman Wu, Tao Huan, et al. 2013. <span>“<span>MyCompoundID</span>: <span>Using</span> an <span>Evidence-Based Metabolome Library</span> for <span>Metabolite Identification</span>.”</span> <em>Analytical Chemistry</em> 85 (6): 3401–8. <a href="https://doi.org/10.1021/ac400099b">https://doi.org/10.1021/ac400099b</a>.
 </div>
+<div id="ref-li2023b" class="csl-entry">
+Li, Yuanyue, and Oliver Fiehn. 2023. <span>“Flash Entropy Search to Query All Mass Spectral Libraries in Real Time.”</span> <em>Nature Methods</em> 20 (10): 1475–78. <a href="https://doi.org/10.1038/s41592-023-02012-9">https://doi.org/10.1038/s41592-023-02012-9</a>.
+</div>
 <div id="ref-li2021" class="csl-entry">
 Li, Yuanyue, Tobias Kind, Jacob Folz, Arpana Vaniya, Sajjan Singh Mehta, and Oliver Fiehn. 2021. <span>“Spectral Entropy Outperforms <span>MS</span>/<span>MS</span> Dot Product Similarity for Small-Molecule Compound Identification.”</span> <em>Nature Methods</em> 18 (12): 1524–31. <a href="https://doi.org/10.1038/s41592-021-01331-z">https://doi.org/10.1038/s41592-021-01331-z</a>.
+</div>
+<div id="ref-lieng2023" class="csl-entry">
+Lieng, Brandon Y., Andrew T. Quaile, Xavier Domingo-Almenara, Hannes L. Röst, and J. Rafael Montenegro-Burke. 2023. <span>“Computational <span>Expansion</span> of <span>High-Resolution-MSn Spectral Libraries</span>.”</span> <em>Analytical Chemistry</em>, November. <a href="https://doi.org/10.1021/acs.analchem.3c03343">https://doi.org/10.1021/acs.analchem.3c03343</a>.
 </div>
 <div id="ref-loos2017" class="csl-entry">
 Loos, Martin, and Heinz Singer. 2017. <span>“Nontargeted Homologue Series Extraction from Hyphenated High Resolution Mass Spectrometry Data.”</span> <em>Journal of Cheminformatics</em> 9 (February). <a href="https://doi.org/10.1186/s13321-017-0197-z">https://doi.org/10.1186/s13321-017-0197-z</a>.
@@ -918,7 +1005,7 @@ Senan, Oriol, Antoni Aguilar-Mogas, Miriam Navarro, Jordi Capellades, Luke Noon,
 Shen, Xiaotao, Ruohong Wang, Xin Xiong, Yandong Yin, Yuping Cai, Zaijun Ma, Nan Liu, and Zheng-Jiang Zhu. 2019. <span>“Metabolic Reaction Network-Based Recursive Metabolite Annotation for Untargeted Metabolomics.”</span> <em>Nature Communications</em> 10 (1): 1–14. <a href="https://doi.org/10.1038/s41467-019-09550-x">https://doi.org/10.1038/s41467-019-09550-x</a>.
 </div>
 <div id="ref-silva2014" class="csl-entry">
-Silva, Ricardo R., Fabien Jourdan, Diego M. Salvanha, Fabien Letisse, Emilien L. Jamin, Simone Guidetti-Gonzalez, Carlos A. Labate, and Ricardo Z. N. Vêncio. 2014. <span>“<span>ProbMetab</span>: An <span>R</span> Package for <span>Bayesian</span> Probabilistic Annotation of <span>LC</span> Metabolomics.”</span> <em>Bioinformatics</em> 30 (9): 1336–37. <a href="https://doi.org/10.1093/bioinformatics/btu019">https://doi.org/10.1093/bioinformatics/btu019</a>.
+Silva, Ricardo R., Fabien Jourdan, Diego M. Salvanha, Fabien Letisse, Emilien L. Jamin, Simone Guidetti-Gonzalez, Carlos A. Labate, and Ricardo Z. N. Vêncio. 2014. <span>“<span>ProbMetab</span>: An <span>R</span> Package for <span>Bayesian</span> Probabilistic Annotation of <span>LC</span>–<span class="nocase">MS-based</span> Metabolomics.”</span> <em>Bioinformatics</em> 30 (9): 1336–37. <a href="https://doi.org/10.1093/bioinformatics/btu019">https://doi.org/10.1093/bioinformatics/btu019</a>.
 </div>
 <div id="ref-sindelar2020" class="csl-entry">
 Sindelar, Miriam, and Gary J. Patti. 2020. <span>“Chemical <span>Discovery</span> in the <span>Era</span> of <span>Metabolomics</span>.”</span> <em>Journal of the American Chemical Society</em>, April. <a href="https://doi.org/10.1021/jacs.9b13198">https://doi.org/10.1021/jacs.9b13198</a>.
@@ -929,6 +1016,12 @@ Spalding, Jonathan L., Kevin Cho, Nathaniel G. Mahieu, Igor Nikolskiy, Elizabeth
 <div id="ref-sumner2007" class="csl-entry">
 Sumner, Lloyd W., Alexander Amberg, Dave Barrett, Michael H. Beale, Richard Beger, Clare A. Daykin, Teresa W.-M. Fan, et al. 2007. <span>“Proposed Minimum Reporting Standards for Chemical Analysis <span>Chemical Analysis Working Group</span> (<span>CAWG</span>) <span>Metabolomics Standards Initiative</span> (<span>MSI</span>).”</span> <em>Metabolomics : Official Journal of the Metabolomic Society</em> 3 (3): 211–21. <a href="https://doi.org/10.1007/s11306-007-0082-2">https://doi.org/10.1007/s11306-007-0082-2</a>.
 </div>
+<div id="ref-tian2023" class="csl-entry">
+Tian, Zhitao, Xin Hu, Yingying Xu, Mengmeng Liu, Hongbo Liu, Dongqin Li, Lisong Hu, Guozhu Wei, and Wei Chen. 2023. <span>“<span>PMhub</span> 1.0: A Comprehensive Plant Metabolome Database.”</span> <em>Nucleic Acids Research</em>, October, gkad811. <a href="https://doi.org/10.1093/nar/gkad811">https://doi.org/10.1093/nar/gkad811</a>.
+</div>
+<div id="ref-torigoe2024a" class="csl-entry">
+Torigoe, Taihei, Masatomo Takahashi, Omidreza Heravizadeh, Kazuki Ikeda, Kohta Nakatani, Takeshi Bamba, and Yoshihiro Izumi. 2024. <span>“Predicting <span>Retention Time</span> in <span>Unified-Hydrophilic-Interaction</span>/<span>Anion-Exchange Liquid Chromatography High-Resolution Tandem Mass Spectrometry</span> (<span>Unified-HILIC</span>/<span>AEX</span>/<span>HRMS</span>/<span>MS</span>) for <span>Comprehensive Structural Annotation</span> of <span>Polar Metabolome</span>.”</span> <em>Analytical Chemistry</em> 96 (3): 1275–83. <a href="https://doi.org/10.1021/acs.analchem.3c04618">https://doi.org/10.1021/acs.analchem.3c04618</a>.
+</div>
 <div id="ref-treutler2016" class="csl-entry">
 Treutler, Hendrik, Hiroshi Tsugawa, Andrea Porzel, Karin Gorzolka, Alain Tissier, Steffen Neumann, and Gerd Ulrich Balcke. 2016. <span>“Discovering <span>Regulated Metabolite Families</span> in <span>Untargeted Metabolomics Studies</span>.”</span> <em>Analytical Chemistry</em> 88 (16): 8082–90. <a href="https://doi.org/10.1021/acs.analchem.6b01569">https://doi.org/10.1021/acs.analchem.6b01569</a>.
 </div>
@@ -937,6 +1030,9 @@ Tsugawa, Hiroshi, Tobias Kind, Ryo Nakabayashi, Daichi Yukihira, Wataru Tanaka, 
 </div>
 <div id="ref-uppal2017" class="csl-entry">
 Uppal, Karan, Douglas I. Walker, and Dean P. Jones. 2017. <span>“<span class="nocase">xMSannotator</span>: <span>An R Package</span> for <span>Network-Based Annotation</span> of <span>High-Resolution Metabolomics Data</span>.”</span> <em>Analytical Chemistry</em> 89 (2): 1063–67. <a href="https://doi.org/10.1021/acs.analchem.6b01214">https://doi.org/10.1021/acs.analchem.6b01214</a>.
+</div>
+<div id="ref-vantetering2024" class="csl-entry">
+van Tetering, Lara, Sylvia Spies, Quirine D. K. Wildeman, Kas J. Houthuijs, Rianne E. van Outersterp, Jonathan Martens, Ron A. Wevers, David S. Wishart, Giel Berden, and Jos Oomens. 2024. <span>“A Spectroscopic Test Suggests That Fragment Ion Structure Annotations in <span>MS</span>/<span>MS</span> Libraries Are Frequently Incorrect.”</span> <em>Communications Chemistry</em> 7 (1): 1–11. <a href="https://doi.org/10.1038/s42004-024-01112-7">https://doi.org/10.1038/s42004-024-01112-7</a>.
 </div>
 <div id="ref-viant2017" class="csl-entry">
 Viant, Mark R, Irwin J Kurland, Martin R Jones, and Warwick B Dunn. 2017. <span>“How Close Are We to Complete Annotation of Metabolomes?”</span> <em>Current Opinion in Chemical Biology</em>, Omics, 36 (February): 64–69. <a href="https://doi.org/10.1016/j.cbpa.2017.01.001">https://doi.org/10.1016/j.cbpa.2017.01.001</a>.
@@ -950,8 +1046,11 @@ Witting, Michael, Christoph Ruttkies, Steffen Neumann, and Philippe Schmitt-Kopp
 <div id="ref-wolf2010" class="csl-entry">
 Wolf, Sebastian, Stephan Schmidt, Matthias Müller-Hannemann, and Steffen Neumann. 2010. <span>“In Silico Fragmentation for Computer Assisted Identification of Metabolite Mass Spectra.”</span> <em>BMC Bioinformatics</em> 11 (March): 148. <a href="https://doi.org/10.1186/1471-2105-11-148">https://doi.org/10.1186/1471-2105-11-148</a>.
 </div>
+<div id="ref-xing2023" class="csl-entry">
+Xing, Shipei, Sam Shen, Banghua Xu, Xiaoxiao Li, and Tao Huan. 2023. <span>“<span>BUDDY</span>: Molecular Formula Discovery via Bottom-up <span>MS</span>/<span>MS</span> Interrogation.”</span> <em>Nature Methods</em>, April, 1–10. <a href="https://doi.org/10.1038/s41592-023-01850-x">https://doi.org/10.1038/s41592-023-01850-x</a>.
+</div>
 <div id="ref-xu2015" class="csl-entry">
-Xu, Yi-Fan, Wenyun Lu, and Joshua D. Rabinowitz. 2015. <span>“Avoiding <span>Misannotation</span> of <span>In-Source Fragmentation Products</span> as <span>Cellular Metabolites</span> in <span>Liquid Chromatography</span>.”</span> <em>Analytical Chemistry</em> 87 (4): 2273–81. <a href="https://doi.org/10.1021/ac504118y">https://doi.org/10.1021/ac504118y</a>.
+Xu, Yi-Fan, Wenyun Lu, and Joshua D. Rabinowitz. 2015. <span>“Avoiding <span>Misannotation</span> of <span>In-Source Fragmentation Products</span> as <span>Cellular Metabolites</span> in <span>Liquid Chromatography</span>–<span>Mass Spectrometry-Based Metabolomics</span>.”</span> <em>Analytical Chemistry</em> 87 (4): 2273–81. <a href="https://doi.org/10.1021/ac504118y">https://doi.org/10.1021/ac504118y</a>.
 </div>
 <div id="ref-xue2021" class="csl-entry">
 Xue, Jingchuan, Rico J. E. Derks, Bill Webb, Elizabeth M. Billings, Aries Aisporna, Martin Giera, and Gary Siuzdak. 2021. <span>“Single <span>Quadrupole Multiple Fragment Ion Monitoring Quantitative Mass Spectrometry</span>.”</span> <em>Analytical Chemistry</em> 93 (31): 10879–89. <a href="https://doi.org/10.1021/acs.analchem.1c01246">https://doi.org/10.1021/acs.analchem.1c01246</a>.
@@ -959,8 +1058,26 @@ Xue, Jingchuan, Rico J. E. Derks, Bill Webb, Elizabeth M. Billings, Aries Aispor
 <div id="ref-xue2020a" class="csl-entry">
 Xue, Jingchuan, Carlos Guijas, H. Paul Benton, Benedikt Warth, and Gary Siuzdak. 2020. <span>“<span>METLIN MS</span> 2 Molecular Standards Database: A Broad Chemical and Biological Resource.”</span> <em>Nature Methods</em> 17 (10): 953–54. <a href="https://doi.org/10.1038/s41592-020-0942-5">https://doi.org/10.1038/s41592-020-0942-5</a>.
 </div>
+<div id="ref-xue2023" class="csl-entry">
+Xue, Jingchuan, Jiamin Zhu, Lixin Hu, Junjie Yang, Yunbo Lv, Fanrong Zhao, Yuxian Liu, Tao Zhang, Yanpeng Cai, and Mingliang Fang. 2023. <span>“<span>EISA-EXPOSOME</span>: <span>One Highly Sensitive</span> and <span>Autonomous Exposomic Platform</span> with <span>Enhanced</span> in-<span>Source Fragmentation</span>/<span>Annotation</span>.”</span> <em>Analytical Chemistry</em>, November. <a href="https://doi.org/10.1021/acs.analchem.3c02697">https://doi.org/10.1021/acs.analchem.3c02697</a>.
+</div>
+<div id="ref-yang2023a" class="csl-entry">
+Yang, Qiong, Hongchao Ji, Zhenbo Xu, Yiming Li, Pingshan Wang, Jinyu Sun, Xiaqiong Fan, Hailiang Zhang, Hongmei Lu, and Zhimin Zhang. 2023. <span>“Ultra-Fast and Accurate Electron Ionization Mass Spectrum Matching for Compound Identification with Million-Scale in-Silico Library.”</span> <em>Nature Communications</em> 14 (1): 3722. <a href="https://doi.org/10.1038/s41467-023-39279-7">https://doi.org/10.1038/s41467-023-39279-7</a>.
+</div>
+<div id="ref-yu2022b" class="csl-entry">
+Yu, Miao, Georgia Dolios, and Lauren Petrick. 2022. <span>“Reproducible Untargeted Metabolomics Workflow for Exhaustive <span>MS2</span> Data Acquisition of <span>MS1</span> Features.”</span> <em>Journal of Cheminformatics</em> 14 (1): 6. <a href="https://doi.org/10.1186/s13321-022-00586-8">https://doi.org/10.1186/s13321-022-00586-8</a>.
+</div>
 <div id="ref-yu2019a" class="csl-entry">
 Yu, Miao, Mariola Olkowicz, and Janusz Pawliszyn. 2019. <span>“Structure/Reaction Directed Analysis for <span>LC-MS</span> Based Untargeted Analysis.”</span> <em>Analytica Chimica Acta</em> 1050 (March): 16–24. <a href="https://doi.org/10.1016/j.aca.2018.10.062">https://doi.org/10.1016/j.aca.2018.10.062</a>.
+</div>
+<div id="ref-zhang2024" class="csl-entry">
+Zhang, Xiuqiong, Zaifang Li, Chunxia Zhao, Tiantian Chen, Xinxin Wang, Xiaoshan Sun, Xinjie Zhao, Xin Lu, and Guowang Xu. 2024. <span>“Leveraging <span>Unidentified Metabolic Features</span> for <span>Key Pathway Discovery</span>: <span class="nocase">Chemical Classification-driven Network Analysis</span> in <span>Untargeted Metabolomics</span>.”</span> <em>Analytical Chemistry</em>, February. <a href="https://doi.org/10.1021/acs.analchem.3c04591">https://doi.org/10.1021/acs.analchem.3c04591</a>.
+</div>
+<div id="ref-zhang2023" class="csl-entry">
+Zhang, Yuhao, Jingyu Liao, Wanqi Le, Gaosong Wu, and Weidong Zhang. 2023. <span>“Improving the <span>Data Quality</span> of <span>Untargeted Metabolomics</span> Through a <span>Targeted Data-Dependent Acquisition Based</span> on an <span>Inclusion List</span> of <span>Differential</span> and <span>Preidentified Ions</span>.”</span> <em>Analytical Chemistry</em> 95 (34): 12964–73. <a href="https://doi.org/10.1021/acs.analchem.3c02888">https://doi.org/10.1021/acs.analchem.3c02888</a>.
+</div>
+<div id="ref-zhao2023" class="csl-entry">
+Zhao, Tingting, Shipei Xing, Huaxu Yu, and Tao Huan. 2023. <span>“De <span>Novo Cleaning</span> of <span>Chimeric MS</span>/<span>MS Spectra</span> for <span>LC-MS</span>/<span>MS-Based Metabolomics</span>.”</span> <em>Analytical Chemistry</em> 95 (35): 13018–28. <a href="https://doi.org/10.1021/acs.analchem.3c00736">https://doi.org/10.1021/acs.analchem.3c00736</a>.
 </div>
 <div id="ref-zhou2022" class="csl-entry">
 Zhou, Zhiwei, Mingdu Luo, Haosong Zhang, Yandong Yin, Yuping Cai, and Zheng-Jiang Zhu. 2022. <span>“Metabolite Annotation from Knowns to Unknowns Through Knowledge-Guided Multi-Layer Metabolic Networking.”</span> <em>Nature Communications</em> 13 (1): 6656. <a href="https://doi.org/10.1038/s41467-022-34537-6">https://doi.org/10.1038/s41467-022-34537-6</a>.

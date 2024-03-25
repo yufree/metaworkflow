@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Pretreatment | Meta-Workflow</title>
+  <title>Chapter 4 Pretreatment | Meta-Workflow</title>
   <meta name="description" content="This is a workflow for metabolomics studies." />
-  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 Pretreatment | Meta-Workflow" />
+  <meta property="og:title" content="Chapter 4 Pretreatment | Meta-Workflow" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="/images/cover.png" />
   <meta property="og:description" content="This is a workflow for metabolomics studies." />
   <meta name="github-repo" content="yufree/metaworkflow" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Pretreatment | Meta-Workflow" />
+  <meta name="twitter:title" content="Chapter 4 Pretreatment | Meta-Workflow" />
   
   <meta name="twitter:description" content="This is a workflow for metabolomics studies." />
   <meta name="twitter:image" content="/images/cover.png" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Miao YU" />
 
 
-<meta name="date" content="2023-02-02" />
+<meta name="date" content="2024-03-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -52,21 +52,21 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-<script src="libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
-<script src="libs/grViz-binding-1.0.9/grViz.js"></script>
+<script src="libs/grViz-binding-1.0.11/grViz.js"></script>
 <script src="libs/d3-3.3.8/d3.min.js"></script>
 <script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
 <link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
 <script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
 <script src="libs/chromatography-0.1/chromatography.js"></script>
-<script src="libs/DiagrammeR-binding-1.0.9/DiagrammeR.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.11/DiagrammeR.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -130,10 +130,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 <style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -169,202 +174,209 @@ div.csl-indent {
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#history"><i class="fa fa-check"></i><b>1.1</b> History</a>
+<li class="chapter" data-level="2.1" data-path="introduction.html"><a href="introduction.html#history"><i class="fa fa-check"></i><b>2.1</b> History</a>
 <ul>
-<li class="chapter" data-level="1.1.1" data-path="introduction.html"><a href="introduction.html#history-of-mass-spectrometry"><i class="fa fa-check"></i><b>1.1.1</b> History of Mass Spectrometry</a></li>
-<li class="chapter" data-level="1.1.2" data-path="introduction.html"><a href="introduction.html#history-of-metabolomcis"><i class="fa fa-check"></i><b>1.1.2</b> History of Metabolomcis</a></li>
-<li class="chapter" data-level="1.1.3" data-path="introduction.html"><a href="introduction.html#defination"><i class="fa fa-check"></i><b>1.1.3</b> Defination</a></li>
+<li class="chapter" data-level="2.1.1" data-path="introduction.html"><a href="introduction.html#history-of-mass-spectrometry"><i class="fa fa-check"></i><b>2.1.1</b> History of Mass Spectrometry</a></li>
+<li class="chapter" data-level="2.1.2" data-path="introduction.html"><a href="introduction.html#history-of-metabolomcis"><i class="fa fa-check"></i><b>2.1.2</b> History of Metabolomcis</a></li>
+<li class="chapter" data-level="2.1.3" data-path="introduction.html"><a href="introduction.html#defination"><i class="fa fa-check"></i><b>2.1.3</b> Defination</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#reviews-and-tutorials"><i class="fa fa-check"></i><b>1.2</b> Reviews and tutorials</a>
+<li class="chapter" data-level="2.2" data-path="introduction.html"><a href="introduction.html#reviews-and-tutorials"><i class="fa fa-check"></i><b>2.2</b> Reviews and tutorials</a>
 <ul>
-<li class="chapter" data-level="1.2.1" data-path="introduction.html"><a href="introduction.html#workflow"><i class="fa fa-check"></i><b>1.2.1</b> Workflow</a></li>
-<li class="chapter" data-level="1.2.2" data-path="introduction.html"><a href="introduction.html#data-analysis"><i class="fa fa-check"></i><b>1.2.2</b> Data analysis</a></li>
-<li class="chapter" data-level="1.2.3" data-path="introduction.html"><a href="introduction.html#application"><i class="fa fa-check"></i><b>1.2.3</b> Application</a></li>
-<li class="chapter" data-level="1.2.4" data-path="introduction.html"><a href="introduction.html#challenge"><i class="fa fa-check"></i><b>1.2.4</b> Challenge</a></li>
+<li class="chapter" data-level="2.2.1" data-path="introduction.html"><a href="introduction.html#workflow"><i class="fa fa-check"></i><b>2.2.1</b> Workflow</a></li>
+<li class="chapter" data-level="2.2.2" data-path="introduction.html"><a href="introduction.html#data-analysis"><i class="fa fa-check"></i><b>2.2.2</b> Data analysis</a></li>
+<li class="chapter" data-level="2.2.3" data-path="introduction.html"><a href="introduction.html#application"><i class="fa fa-check"></i><b>2.2.3</b> Application</a></li>
+<li class="chapter" data-level="2.2.4" data-path="introduction.html"><a href="introduction.html#challenge"><i class="fa fa-check"></i><b>2.2.4</b> Challenge</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#trends-in-metabolomics"><i class="fa fa-check"></i><b>1.3</b> Trends in Metabolomics</a></li>
-<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#workflow-1"><i class="fa fa-check"></i><b>1.4</b> Workflow</a></li>
+<li class="chapter" data-level="2.3" data-path="introduction.html"><a href="introduction.html#trends-in-metabolomics"><i class="fa fa-check"></i><b>2.3</b> Trends in Metabolomics</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction.html"><a href="introduction.html#workflow-1"><i class="fa fa-check"></i><b>2.4</b> Workflow</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html"><i class="fa fa-check"></i><b>2</b> Experimental design(DoE)</a>
+<li class="chapter" data-level="3" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html"><i class="fa fa-check"></i><b>3</b> Experimental design(DoE)</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#homogeneity-study"><i class="fa fa-check"></i><b>2.1</b> Homogeneity study</a></li>
-<li class="chapter" data-level="2.2" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#heterogeneity-study"><i class="fa fa-check"></i><b>2.2</b> Heterogeneity study</a></li>
-<li class="chapter" data-level="2.3" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#power-analysis"><i class="fa fa-check"></i><b>2.3</b> Power analysis</a></li>
-<li class="chapter" data-level="2.4" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#optimization"><i class="fa fa-check"></i><b>2.4</b> Optimization</a></li>
-<li class="chapter" data-level="2.5" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#pooled-qc"><i class="fa fa-check"></i><b>2.5</b> Pooled QC</a></li>
+<li class="chapter" data-level="3.1" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#homogeneity-study"><i class="fa fa-check"></i><b>3.1</b> Homogeneity study</a></li>
+<li class="chapter" data-level="3.2" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#heterogeneity-study"><i class="fa fa-check"></i><b>3.2</b> Heterogeneity study</a></li>
+<li class="chapter" data-level="3.3" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#power-analysis"><i class="fa fa-check"></i><b>3.3</b> Power analysis</a></li>
+<li class="chapter" data-level="3.4" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#optimization"><i class="fa fa-check"></i><b>3.4</b> Optimization</a></li>
+<li class="chapter" data-level="3.5" data-path="experimental-designdoe.html"><a href="experimental-designdoe.html#pooled-qc"><i class="fa fa-check"></i><b>3.5</b> Pooled QC</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="pretreatment.html"><a href="pretreatment.html"><i class="fa fa-check"></i><b>3</b> Pretreatment</a>
+<li class="chapter" data-level="4" data-path="pretreatment.html"><a href="pretreatment.html"><i class="fa fa-check"></i><b>4</b> Pretreatment</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="pretreatment.html"><a href="pretreatment.html#collection"><i class="fa fa-check"></i><b>3.1</b> Collection</a></li>
-<li class="chapter" data-level="3.2" data-path="pretreatment.html"><a href="pretreatment.html#quenching"><i class="fa fa-check"></i><b>3.2</b> Quenching</a></li>
-<li class="chapter" data-level="3.3" data-path="pretreatment.html"><a href="pretreatment.html#extraction"><i class="fa fa-check"></i><b>3.3</b> Extraction</a></li>
-<li class="chapter" data-level="3.4" data-path="pretreatment.html"><a href="pretreatment.html#derivatization"><i class="fa fa-check"></i><b>3.4</b> Derivatization</a></li>
-<li class="chapter" data-level="3.5" data-path="pretreatment.html"><a href="pretreatment.html#isotope-label"><i class="fa fa-check"></i><b>3.5</b> Isotope label</a></li>
-<li class="chapter" data-level="3.6" data-path="pretreatment.html"><a href="pretreatment.html#storage"><i class="fa fa-check"></i><b>3.6</b> Storage</a></li>
+<li class="chapter" data-level="4.1" data-path="pretreatment.html"><a href="pretreatment.html#collection"><i class="fa fa-check"></i><b>4.1</b> Collection</a></li>
+<li class="chapter" data-level="4.2" data-path="pretreatment.html"><a href="pretreatment.html#quenching"><i class="fa fa-check"></i><b>4.2</b> Quenching</a></li>
+<li class="chapter" data-level="4.3" data-path="pretreatment.html"><a href="pretreatment.html#extraction"><i class="fa fa-check"></i><b>4.3</b> Extraction</a></li>
+<li class="chapter" data-level="4.4" data-path="pretreatment.html"><a href="pretreatment.html#derivatization"><i class="fa fa-check"></i><b>4.4</b> Derivatization</a></li>
+<li class="chapter" data-level="4.5" data-path="pretreatment.html"><a href="pretreatment.html#isotope-label"><i class="fa fa-check"></i><b>4.5</b> Isotope label</a></li>
+<li class="chapter" data-level="4.6" data-path="pretreatment.html"><a href="pretreatment.html#storage"><i class="fa fa-check"></i><b>4.6</b> Storage</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html"><i class="fa fa-check"></i><b>4</b> Instrumental analysis</a>
+<li class="chapter" data-level="5" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html"><i class="fa fa-check"></i><b>5</b> Instrumental analysis</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#column-and-gradient-selection"><i class="fa fa-check"></i><b>4.1</b> Column and gradient selection</a></li>
-<li class="chapter" data-level="4.2" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#mass-resolution"><i class="fa fa-check"></i><b>4.2</b> Mass resolution</a></li>
-<li class="chapter" data-level="4.3" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#matrix-effects"><i class="fa fa-check"></i><b>4.3</b> Matrix effects</a></li>
+<li class="chapter" data-level="5.1" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#column-and-gradient-selection"><i class="fa fa-check"></i><b>5.1</b> Column and gradient selection</a></li>
+<li class="chapter" data-level="5.2" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#mass-resolution"><i class="fa fa-check"></i><b>5.2</b> Mass resolution</a></li>
+<li class="chapter" data-level="5.3" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#matrix-effects"><i class="fa fa-check"></i><b>5.3</b> Matrix effects</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="workflow-2.html"><a href="workflow-2.html"><i class="fa fa-check"></i><b>5</b> Workflow</a>
+<li class="chapter" data-level="6" data-path="workflow-2.html"><a href="workflow-2.html"><i class="fa fa-check"></i><b>6</b> Workflow</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="workflow-2.html"><a href="workflow-2.html#platform-for-metabolomics-data-analysis"><i class="fa fa-check"></i><b>5.1</b> Platform for metabolomics data analysis</a>
+<li class="chapter" data-level="6.1" data-path="workflow-2.html"><a href="workflow-2.html#platform-for-metabolomics-data-analysis"><i class="fa fa-check"></i><b>6.1</b> Platform for metabolomics data analysis</a>
 <ul>
-<li class="chapter" data-level="5.1.1" data-path="workflow-2.html"><a href="workflow-2.html#xcms-xcms-online"><i class="fa fa-check"></i><b>5.1.1</b> XCMS &amp; XCMS online</a></li>
-<li class="chapter" data-level="5.1.2" data-path="workflow-2.html"><a href="workflow-2.html#prime"><i class="fa fa-check"></i><b>5.1.2</b> PRIMe</a></li>
-<li class="chapter" data-level="5.1.3" data-path="workflow-2.html"><a href="workflow-2.html#gnps"><i class="fa fa-check"></i><b>5.1.3</b> GNPS</a></li>
-<li class="chapter" data-level="5.1.4" data-path="workflow-2.html"><a href="workflow-2.html#openms-sirius"><i class="fa fa-check"></i><b>5.1.4</b> OpenMS &amp; SIRIUS</a></li>
-<li class="chapter" data-level="5.1.5" data-path="workflow-2.html"><a href="workflow-2.html#mzmine-2"><i class="fa fa-check"></i><b>5.1.5</b> MZmine 2</a></li>
-<li class="chapter" data-level="5.1.6" data-path="workflow-2.html"><a href="workflow-2.html#emory-mahpic"><i class="fa fa-check"></i><b>5.1.6</b> Emory MaHPIC</a></li>
-<li class="chapter" data-level="5.1.7" data-path="workflow-2.html"><a href="workflow-2.html#others"><i class="fa fa-check"></i><b>5.1.7</b> Others</a></li>
-<li class="chapter" data-level="5.1.8" data-path="workflow-2.html"><a href="workflow-2.html#workflow-comparison"><i class="fa fa-check"></i><b>5.1.8</b> Workflow Comparison</a></li>
+<li class="chapter" data-level="6.1.1" data-path="workflow-2.html"><a href="workflow-2.html#xcms-xcms-online"><i class="fa fa-check"></i><b>6.1.1</b> XCMS &amp; XCMS online</a></li>
+<li class="chapter" data-level="6.1.2" data-path="workflow-2.html"><a href="workflow-2.html#prime"><i class="fa fa-check"></i><b>6.1.2</b> PRIMe</a></li>
+<li class="chapter" data-level="6.1.3" data-path="workflow-2.html"><a href="workflow-2.html#gnps"><i class="fa fa-check"></i><b>6.1.3</b> GNPS</a></li>
+<li class="chapter" data-level="6.1.4" data-path="workflow-2.html"><a href="workflow-2.html#openms-sirius"><i class="fa fa-check"></i><b>6.1.4</b> OpenMS &amp; SIRIUS</a></li>
+<li class="chapter" data-level="6.1.5" data-path="workflow-2.html"><a href="workflow-2.html#mzmine-2"><i class="fa fa-check"></i><b>6.1.5</b> MZmine 2</a></li>
+<li class="chapter" data-level="6.1.6" data-path="workflow-2.html"><a href="workflow-2.html#emory-mahpic"><i class="fa fa-check"></i><b>6.1.6</b> Emory MaHPIC</a></li>
+<li class="chapter" data-level="6.1.7" data-path="workflow-2.html"><a href="workflow-2.html#others"><i class="fa fa-check"></i><b>6.1.7</b> Others</a></li>
+<li class="chapter" data-level="6.1.8" data-path="workflow-2.html"><a href="workflow-2.html#workflow-comparison"><i class="fa fa-check"></i><b>6.1.8</b> Workflow Comparison</a></li>
 </ul></li>
-<li class="chapter" data-level="5.2" data-path="workflow-2.html"><a href="workflow-2.html#project-setup"><i class="fa fa-check"></i><b>5.2</b> Project Setup</a></li>
-<li class="chapter" data-level="5.3" data-path="workflow-2.html"><a href="workflow-2.html#data-sharing"><i class="fa fa-check"></i><b>5.3</b> Data sharing</a></li>
-<li class="chapter" data-level="5.4" data-path="workflow-2.html"><a href="workflow-2.html#contest"><i class="fa fa-check"></i><b>5.4</b> Contest</a></li>
+<li class="chapter" data-level="6.2" data-path="workflow-2.html"><a href="workflow-2.html#project-setup"><i class="fa fa-check"></i><b>6.2</b> Project Setup</a></li>
+<li class="chapter" data-level="6.3" data-path="workflow-2.html"><a href="workflow-2.html#data-sharing"><i class="fa fa-check"></i><b>6.3</b> Data sharing</a></li>
+<li class="chapter" data-level="6.4" data-path="workflow-2.html"><a href="workflow-2.html#contest"><i class="fa fa-check"></i><b>6.4</b> Contest</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html"><i class="fa fa-check"></i><b>6</b> Raw data pretreatment</a>
+<li class="chapter" data-level="7" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html"><i class="fa fa-check"></i><b>7</b> Raw data pretreatment</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#data-visualization"><i class="fa fa-check"></i><b>6.1</b> Data visualization</a></li>
-<li class="chapter" data-level="6.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#peak-extraction"><i class="fa fa-check"></i><b>6.2</b> Peak extraction</a></li>
-<li class="chapter" data-level="6.3" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#msms"><i class="fa fa-check"></i><b>6.3</b> MS/MS</a>
+<li class="chapter" data-level="7.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#data-visualization"><i class="fa fa-check"></i><b>7.1</b> Data visualization</a></li>
+<li class="chapter" data-level="7.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#peak-extraction"><i class="fa fa-check"></i><b>7.2</b> Peak extraction</a></li>
+<li class="chapter" data-level="7.3" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#msms"><i class="fa fa-check"></i><b>7.3</b> MS/MS</a>
 <ul>
-<li class="chapter" data-level="6.3.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#mrm"><i class="fa fa-check"></i><b>6.3.1</b> MRM</a></li>
-<li class="chapter" data-level="6.3.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#dda"><i class="fa fa-check"></i><b>6.3.2</b> DDA</a></li>
-<li class="chapter" data-level="6.3.3" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#dia"><i class="fa fa-check"></i><b>6.3.3</b> DIA</a></li>
+<li class="chapter" data-level="7.3.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#mrm"><i class="fa fa-check"></i><b>7.3.1</b> MRM</a></li>
+<li class="chapter" data-level="7.3.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#dda"><i class="fa fa-check"></i><b>7.3.2</b> DDA</a></li>
+<li class="chapter" data-level="7.3.3" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#dia"><i class="fa fa-check"></i><b>7.3.3</b> DIA</a></li>
 </ul></li>
-<li class="chapter" data-level="6.4" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#retention-time-correction"><i class="fa fa-check"></i><b>6.4</b> Retention Time Correction</a></li>
-<li class="chapter" data-level="6.5" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#filling-missing-values"><i class="fa fa-check"></i><b>6.5</b> Filling missing values</a></li>
-<li class="chapter" data-level="6.6" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#spectral-deconvolution"><i class="fa fa-check"></i><b>6.6</b> Spectral deconvolution</a></li>
-<li class="chapter" data-level="6.7" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#dynamic-range"><i class="fa fa-check"></i><b>6.7</b> Dynamic Range</a>
+<li class="chapter" data-level="7.4" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#retention-time-correction"><i class="fa fa-check"></i><b>7.4</b> Retention Time Correction</a></li>
+<li class="chapter" data-level="7.5" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#filling-missing-values"><i class="fa fa-check"></i><b>7.5</b> Filling missing values</a></li>
+<li class="chapter" data-level="7.6" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#spectral-deconvolution"><i class="fa fa-check"></i><b>7.6</b> Spectral deconvolution</a></li>
+<li class="chapter" data-level="7.7" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#dynamic-range"><i class="fa fa-check"></i><b>7.7</b> Dynamic Range</a>
 <ul>
-<li class="chapter" data-level="6.7.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#non-detects"><i class="fa fa-check"></i><b>6.7.1</b> Non-detects</a></li>
-<li class="chapter" data-level="6.7.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#over-detection-limit"><i class="fa fa-check"></i><b>6.7.2</b> Over Detection Limit</a></li>
+<li class="chapter" data-level="7.7.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#non-detects"><i class="fa fa-check"></i><b>7.7.1</b> Non-detects</a></li>
+<li class="chapter" data-level="7.7.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#over-detection-limit"><i class="fa fa-check"></i><b>7.7.2</b> Over Detection Limit</a></li>
 </ul></li>
-<li class="chapter" data-level="6.8" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#rsdfold-change-filter"><i class="fa fa-check"></i><b>6.8</b> RSD/fold change Filter</a></li>
-<li class="chapter" data-level="6.9" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#power-analysis-filter"><i class="fa fa-check"></i><b>6.9</b> Power Analysis Filter</a></li>
+<li class="chapter" data-level="7.8" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#rsdfold-change-filter"><i class="fa fa-check"></i><b>7.8</b> RSD/fold change Filter</a></li>
+<li class="chapter" data-level="7.9" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#power-analysis-filter"><i class="fa fa-check"></i><b>7.9</b> Power Analysis Filter</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="annotation.html"><a href="annotation.html"><i class="fa fa-check"></i><b>7</b> Annotation</a>
+<li class="chapter" data-level="8" data-path="annotation.html"><a href="annotation.html"><i class="fa fa-check"></i><b>8</b> Annotation</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="annotation.html"><a href="annotation.html#issues-in-annotation"><i class="fa fa-check"></i><b>7.1</b> Issues in annotation</a></li>
-<li class="chapter" data-level="7.2" data-path="annotation.html"><a href="annotation.html#peak-misidentification"><i class="fa fa-check"></i><b>7.2</b> Peak misidentification</a></li>
-<li class="chapter" data-level="7.3" data-path="annotation.html"><a href="annotation.html#annotation-v.s.-identification"><i class="fa fa-check"></i><b>7.3</b> Annotation v.s. identification</a></li>
-<li class="chapter" data-level="7.4" data-path="annotation.html"><a href="annotation.html#molecular-formula-assignment"><i class="fa fa-check"></i><b>7.4</b> Molecular Formula Assignment</a></li>
-<li class="chapter" data-level="7.5" data-path="annotation.html"><a href="annotation.html#redundant-peaks"><i class="fa fa-check"></i><b>7.5</b> Redundant peaks</a>
+<li class="chapter" data-level="8.1" data-path="annotation.html"><a href="annotation.html#issues-in-annotation"><i class="fa fa-check"></i><b>8.1</b> Issues in annotation</a></li>
+<li class="chapter" data-level="8.2" data-path="annotation.html"><a href="annotation.html#peak-misidentification"><i class="fa fa-check"></i><b>8.2</b> Peak misidentification</a></li>
+<li class="chapter" data-level="8.3" data-path="annotation.html"><a href="annotation.html#annotation-v.s.-identification"><i class="fa fa-check"></i><b>8.3</b> Annotation v.s. identification</a></li>
+<li class="chapter" data-level="8.4" data-path="annotation.html"><a href="annotation.html#molecular-formula-assignment"><i class="fa fa-check"></i><b>8.4</b> Molecular Formula Assignment</a></li>
+<li class="chapter" data-level="8.5" data-path="annotation.html"><a href="annotation.html#redundant-peaks"><i class="fa fa-check"></i><b>8.5</b> Redundant peaks</a>
 <ul>
-<li class="chapter" data-level="7.5.1" data-path="annotation.html"><a href="annotation.html#adducts-list"><i class="fa fa-check"></i><b>7.5.1</b> Adducts list</a></li>
-<li class="chapter" data-level="7.5.2" data-path="annotation.html"><a href="annotation.html#isotope"><i class="fa fa-check"></i><b>7.5.2</b> Isotope</a></li>
-<li class="chapter" data-level="7.5.3" data-path="annotation.html"><a href="annotation.html#camera"><i class="fa fa-check"></i><b>7.5.3</b> CAMERA</a></li>
-<li class="chapter" data-level="7.5.4" data-path="annotation.html"><a href="annotation.html#ramclustr"><i class="fa fa-check"></i><b>7.5.4</b> RAMClustR</a></li>
-<li class="chapter" data-level="7.5.5" data-path="annotation.html"><a href="annotation.html#biocan"><i class="fa fa-check"></i><b>7.5.5</b> BioCAn</a></li>
-<li class="chapter" data-level="7.5.6" data-path="annotation.html"><a href="annotation.html#mzmatch"><i class="fa fa-check"></i><b>7.5.6</b> mzMatch</a></li>
-<li class="chapter" data-level="7.5.7" data-path="annotation.html"><a href="annotation.html#xmsannotator"><i class="fa fa-check"></i><b>7.5.7</b> xMSannotator</a></li>
-<li class="chapter" data-level="7.5.8" data-path="annotation.html"><a href="annotation.html#mwise"><i class="fa fa-check"></i><b>7.5.8</b> mWise</a></li>
-<li class="chapter" data-level="7.5.9" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>7.5.9</b> MAIT</a></li>
-<li class="chapter" data-level="7.5.10" data-path="annotation.html"><a href="annotation.html#pmd"><i class="fa fa-check"></i><b>7.5.10</b> pmd</a></li>
-<li class="chapter" data-level="7.5.11" data-path="annotation.html"><a href="annotation.html#nontarget"><i class="fa fa-check"></i><b>7.5.11</b> nontarget</a></li>
-<li class="chapter" data-level="7.5.12" data-path="annotation.html"><a href="annotation.html#binner"><i class="fa fa-check"></i><b>7.5.12</b> Binner</a></li>
-<li class="chapter" data-level="7.5.13" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>7.5.13</b> mz.unity</a></li>
-<li class="chapter" data-level="7.5.14" data-path="annotation.html"><a href="annotation.html#ms-flo"><i class="fa fa-check"></i><b>7.5.14</b> MS-FLO</a></li>
-<li class="chapter" data-level="7.5.15" data-path="annotation.html"><a href="annotation.html#cliquems"><i class="fa fa-check"></i><b>7.5.15</b> CliqueMS</a></li>
-<li class="chapter" data-level="7.5.16" data-path="annotation.html"><a href="annotation.html#interpretmsspectrum"><i class="fa fa-check"></i><b>7.5.16</b> InterpretMSSpectrum</a></li>
-<li class="chapter" data-level="7.5.17" data-path="annotation.html"><a href="annotation.html#netid"><i class="fa fa-check"></i><b>7.5.17</b> NetID</a></li>
-<li class="chapter" data-level="7.5.18" data-path="annotation.html"><a href="annotation.html#isfrag"><i class="fa fa-check"></i><b>7.5.18</b> ISfrag</a></li>
+<li class="chapter" data-level="8.5.1" data-path="annotation.html"><a href="annotation.html#adducts-list"><i class="fa fa-check"></i><b>8.5.1</b> Adducts list</a></li>
+<li class="chapter" data-level="8.5.2" data-path="annotation.html"><a href="annotation.html#isotope"><i class="fa fa-check"></i><b>8.5.2</b> Isotope</a></li>
+<li class="chapter" data-level="8.5.3" data-path="annotation.html"><a href="annotation.html#camera"><i class="fa fa-check"></i><b>8.5.3</b> CAMERA</a></li>
+<li class="chapter" data-level="8.5.4" data-path="annotation.html"><a href="annotation.html#ramclustr"><i class="fa fa-check"></i><b>8.5.4</b> RAMClustR</a></li>
+<li class="chapter" data-level="8.5.5" data-path="annotation.html"><a href="annotation.html#biocan"><i class="fa fa-check"></i><b>8.5.5</b> BioCAn</a></li>
+<li class="chapter" data-level="8.5.6" data-path="annotation.html"><a href="annotation.html#mzmatch"><i class="fa fa-check"></i><b>8.5.6</b> mzMatch</a></li>
+<li class="chapter" data-level="8.5.7" data-path="annotation.html"><a href="annotation.html#xmsannotator"><i class="fa fa-check"></i><b>8.5.7</b> xMSannotator</a></li>
+<li class="chapter" data-level="8.5.8" data-path="annotation.html"><a href="annotation.html#mwise"><i class="fa fa-check"></i><b>8.5.8</b> mWise</a></li>
+<li class="chapter" data-level="8.5.9" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>8.5.9</b> MAIT</a></li>
+<li class="chapter" data-level="8.5.10" data-path="annotation.html"><a href="annotation.html#pmd"><i class="fa fa-check"></i><b>8.5.10</b> pmd</a></li>
+<li class="chapter" data-level="8.5.11" data-path="annotation.html"><a href="annotation.html#nontarget"><i class="fa fa-check"></i><b>8.5.11</b> nontarget</a></li>
+<li class="chapter" data-level="8.5.12" data-path="annotation.html"><a href="annotation.html#binner"><i class="fa fa-check"></i><b>8.5.12</b> Binner</a></li>
+<li class="chapter" data-level="8.5.13" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>8.5.13</b> mz.unity</a></li>
+<li class="chapter" data-level="8.5.14" data-path="annotation.html"><a href="annotation.html#ms-flo"><i class="fa fa-check"></i><b>8.5.14</b> MS-FLO</a></li>
+<li class="chapter" data-level="8.5.15" data-path="annotation.html"><a href="annotation.html#cliquems"><i class="fa fa-check"></i><b>8.5.15</b> CliqueMS</a></li>
+<li class="chapter" data-level="8.5.16" data-path="annotation.html"><a href="annotation.html#interpretmsspectrum"><i class="fa fa-check"></i><b>8.5.16</b> InterpretMSSpectrum</a></li>
+<li class="chapter" data-level="8.5.17" data-path="annotation.html"><a href="annotation.html#netid"><i class="fa fa-check"></i><b>8.5.17</b> NetID</a></li>
+<li class="chapter" data-level="8.5.18" data-path="annotation.html"><a href="annotation.html#isfrag"><i class="fa fa-check"></i><b>8.5.18</b> ISfrag</a></li>
+<li class="chapter" data-level="8.5.19" data-path="annotation.html"><a href="annotation.html#fastei"><i class="fa fa-check"></i><b>8.5.19</b> FastEI</a></li>
 </ul></li>
-<li class="chapter" data-level="7.6" data-path="annotation.html"><a href="annotation.html#ms1-ms2-connection"><i class="fa fa-check"></i><b>7.6</b> MS1 MS2 connection</a>
+<li class="chapter" data-level="8.6" data-path="annotation.html"><a href="annotation.html#ms1-ms2-connection"><i class="fa fa-check"></i><b>8.6</b> MS1 MS2 connection</a>
 <ul>
-<li class="chapter" data-level="7.6.1" data-path="annotation.html"><a href="annotation.html#pmdda"><i class="fa fa-check"></i><b>7.6.1</b> PMDDA</a></li>
-<li class="chapter" data-level="7.6.2" data-path="annotation.html"><a href="annotation.html#hermes"><i class="fa fa-check"></i><b>7.6.2</b> HERMES</a></li>
+<li class="chapter" data-level="8.6.1" data-path="annotation.html"><a href="annotation.html#pmdda"><i class="fa fa-check"></i><b>8.6.1</b> PMDDA</a></li>
+<li class="chapter" data-level="8.6.2" data-path="annotation.html"><a href="annotation.html#hermes"><i class="fa fa-check"></i><b>8.6.2</b> HERMES</a></li>
+<li class="chapter" data-level="8.6.3" data-path="annotation.html"><a href="annotation.html#dpdda"><i class="fa fa-check"></i><b>8.6.3</b> dpDDA</a></li>
 </ul></li>
-<li class="chapter" data-level="7.7" data-path="annotation.html"><a href="annotation.html#msms-annotation"><i class="fa fa-check"></i><b>7.7</b> MS/MS annotation</a>
+<li class="chapter" data-level="8.7" data-path="annotation.html"><a href="annotation.html#ms2-msn-connection"><i class="fa fa-check"></i><b>8.7</b> MS2 MSn connection</a></li>
+<li class="chapter" data-level="8.8" data-path="annotation.html"><a href="annotation.html#msms-annotation"><i class="fa fa-check"></i><b>8.8</b> MS/MS annotation</a>
 <ul>
-<li class="chapter" data-level="7.7.1" data-path="annotation.html"><a href="annotation.html#matchms"><i class="fa fa-check"></i><b>7.7.1</b> Matchms</a></li>
-<li class="chapter" data-level="7.7.2" data-path="annotation.html"><a href="annotation.html#metdna"><i class="fa fa-check"></i><b>7.7.2</b> MetDNA</a></li>
-<li class="chapter" data-level="7.7.3" data-path="annotation.html"><a href="annotation.html#metfusion"><i class="fa fa-check"></i><b>7.7.3</b> MetFusion</a></li>
-<li class="chapter" data-level="7.7.4" data-path="annotation.html"><a href="annotation.html#ms2analyzer"><i class="fa fa-check"></i><b>7.7.4</b> MS2Analyzer</a></li>
-<li class="chapter" data-level="7.7.5" data-path="annotation.html"><a href="annotation.html#metfrag"><i class="fa fa-check"></i><b>7.7.5</b> MetFrag</a></li>
-<li class="chapter" data-level="7.7.6" data-path="annotation.html"><a href="annotation.html#cfm-id"><i class="fa fa-check"></i><b>7.7.6</b> CFM-ID</a></li>
-<li class="chapter" data-level="7.7.7" data-path="annotation.html"><a href="annotation.html#lc-ms2struct"><i class="fa fa-check"></i><b>7.7.7</b> LC-MS2Struct</a></li>
-<li class="chapter" data-level="7.7.8" data-path="annotation.html"><a href="annotation.html#lipidfrag"><i class="fa fa-check"></i><b>7.7.8</b> LipidFrag</a></li>
-<li class="chapter" data-level="7.7.9" data-path="annotation.html"><a href="annotation.html#lipidmatch"><i class="fa fa-check"></i><b>7.7.9</b> Lipidmatch</a></li>
-<li class="chapter" data-level="7.7.10" data-path="annotation.html"><a href="annotation.html#barcoding"><i class="fa fa-check"></i><b>7.7.10</b> BarCoding</a></li>
-<li class="chapter" data-level="7.7.11" data-path="annotation.html"><a href="annotation.html#imet"><i class="fa fa-check"></i><b>7.7.11</b> iMet</a></li>
+<li class="chapter" data-level="8.8.1" data-path="annotation.html"><a href="annotation.html#matchms"><i class="fa fa-check"></i><b>8.8.1</b> Matchms</a></li>
+<li class="chapter" data-level="8.8.2" data-path="annotation.html"><a href="annotation.html#metdna"><i class="fa fa-check"></i><b>8.8.2</b> MetDNA</a></li>
+<li class="chapter" data-level="8.8.3" data-path="annotation.html"><a href="annotation.html#metfusion"><i class="fa fa-check"></i><b>8.8.3</b> MetFusion</a></li>
+<li class="chapter" data-level="8.8.4" data-path="annotation.html"><a href="annotation.html#ms2analyzer"><i class="fa fa-check"></i><b>8.8.4</b> MS2Analyzer</a></li>
+<li class="chapter" data-level="8.8.5" data-path="annotation.html"><a href="annotation.html#metfrag"><i class="fa fa-check"></i><b>8.8.5</b> MetFrag</a></li>
+<li class="chapter" data-level="8.8.6" data-path="annotation.html"><a href="annotation.html#cfm-id"><i class="fa fa-check"></i><b>8.8.6</b> CFM-ID</a></li>
+<li class="chapter" data-level="8.8.7" data-path="annotation.html"><a href="annotation.html#lc-ms2struct"><i class="fa fa-check"></i><b>8.8.7</b> LC-MS2Struct</a></li>
+<li class="chapter" data-level="8.8.8" data-path="annotation.html"><a href="annotation.html#lipidfrag"><i class="fa fa-check"></i><b>8.8.8</b> LipidFrag</a></li>
+<li class="chapter" data-level="8.8.9" data-path="annotation.html"><a href="annotation.html#lipidmatch"><i class="fa fa-check"></i><b>8.8.9</b> Lipidmatch</a></li>
+<li class="chapter" data-level="8.8.10" data-path="annotation.html"><a href="annotation.html#barcoding"><i class="fa fa-check"></i><b>8.8.10</b> BarCoding</a></li>
+<li class="chapter" data-level="8.8.11" data-path="annotation.html"><a href="annotation.html#imet"><i class="fa fa-check"></i><b>8.8.11</b> iMet</a></li>
+<li class="chapter" data-level="8.8.12" data-path="annotation.html"><a href="annotation.html#dnms2purifier"><i class="fa fa-check"></i><b>8.8.12</b> DNMS2Purifier</a></li>
+<li class="chapter" data-level="8.8.13" data-path="annotation.html"><a href="annotation.html#idsl.csa"><i class="fa fa-check"></i><b>8.8.13</b> IDSL.CSA</a></li>
 </ul></li>
-<li class="chapter" data-level="7.8" data-path="annotation.html"><a href="annotation.html#knowledge-based-annotation"><i class="fa fa-check"></i><b>7.8</b> Knowledge based annotation</a>
+<li class="chapter" data-level="8.9" data-path="annotation.html"><a href="annotation.html#knowledge-based-annotation"><i class="fa fa-check"></i><b>8.9</b> Knowledge based annotation</a>
 <ul>
-<li class="chapter" data-level="7.8.1" data-path="annotation.html"><a href="annotation.html#chromatographic-retention-related-criteria"><i class="fa fa-check"></i><b>7.8.1</b> Chromatographic retention-related criteria</a></li>
-<li class="chapter" data-level="7.8.2" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>7.8.2</b> ProbMetab</a></li>
-<li class="chapter" data-level="7.8.3" data-path="annotation.html"><a href="annotation.html#mi-pack"><i class="fa fa-check"></i><b>7.8.3</b> MI-Pack</a></li>
-<li class="chapter" data-level="7.8.4" data-path="annotation.html"><a href="annotation.html#metexpert"><i class="fa fa-check"></i><b>7.8.4</b> MetExpert</a></li>
-<li class="chapter" data-level="7.8.5" data-path="annotation.html"><a href="annotation.html#mycompoundid"><i class="fa fa-check"></i><b>7.8.5</b> MycompoundID</a></li>
-<li class="chapter" data-level="7.8.6" data-path="annotation.html"><a href="annotation.html#metfamily"><i class="fa fa-check"></i><b>7.8.6</b> MetFamily</a></li>
-<li class="chapter" data-level="7.8.7" data-path="annotation.html"><a href="annotation.html#plantmat"><i class="fa fa-check"></i><b>7.8.7</b> Plantmat</a></li>
-<li class="chapter" data-level="7.8.8" data-path="annotation.html"><a href="annotation.html#coa-blast"><i class="fa fa-check"></i><b>7.8.8</b> CoA-Blast</a></li>
-<li class="chapter" data-level="7.8.9" data-path="annotation.html"><a href="annotation.html#kgmn"><i class="fa fa-check"></i><b>7.8.9</b> KGMN</a></li>
+<li class="chapter" data-level="8.9.1" data-path="annotation.html"><a href="annotation.html#experimental-design"><i class="fa fa-check"></i><b>8.9.1</b> Experimental design</a></li>
+<li class="chapter" data-level="8.9.2" data-path="annotation.html"><a href="annotation.html#chromatographic-retention-related-criteria"><i class="fa fa-check"></i><b>8.9.2</b> Chromatographic retention-related criteria</a></li>
+<li class="chapter" data-level="8.9.3" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>8.9.3</b> ProbMetab</a></li>
+<li class="chapter" data-level="8.9.4" data-path="annotation.html"><a href="annotation.html#mi-pack"><i class="fa fa-check"></i><b>8.9.4</b> MI-Pack</a></li>
+<li class="chapter" data-level="8.9.5" data-path="annotation.html"><a href="annotation.html#metexpert"><i class="fa fa-check"></i><b>8.9.5</b> MetExpert</a></li>
+<li class="chapter" data-level="8.9.6" data-path="annotation.html"><a href="annotation.html#mycompoundid"><i class="fa fa-check"></i><b>8.9.6</b> MycompoundID</a></li>
+<li class="chapter" data-level="8.9.7" data-path="annotation.html"><a href="annotation.html#metfamily"><i class="fa fa-check"></i><b>8.9.7</b> MetFamily</a></li>
+<li class="chapter" data-level="8.9.8" data-path="annotation.html"><a href="annotation.html#coa-blast"><i class="fa fa-check"></i><b>8.9.8</b> CoA-Blast</a></li>
+<li class="chapter" data-level="8.9.9" data-path="annotation.html"><a href="annotation.html#kgmn"><i class="fa fa-check"></i><b>8.9.9</b> KGMN</a></li>
+<li class="chapter" data-level="8.9.10" data-path="annotation.html"><a href="annotation.html#ccmn"><i class="fa fa-check"></i><b>8.9.10</b> CCMN</a></li>
 </ul></li>
-<li class="chapter" data-level="7.9" data-path="annotation.html"><a href="annotation.html#ms-database-for-annotation"><i class="fa fa-check"></i><b>7.9</b> MS Database for annotation</a>
+<li class="chapter" data-level="8.10" data-path="annotation.html"><a href="annotation.html#ms-database-for-annotation"><i class="fa fa-check"></i><b>8.10</b> MS Database for annotation</a>
 <ul>
-<li class="chapter" data-level="7.9.1" data-path="annotation.html"><a href="annotation.html#ms"><i class="fa fa-check"></i><b>7.9.1</b> MS</a></li>
-<li class="chapter" data-level="7.9.2" data-path="annotation.html"><a href="annotation.html#msms-1"><i class="fa fa-check"></i><b>7.9.2</b> MS/MS</a></li>
+<li class="chapter" data-level="8.10.1" data-path="annotation.html"><a href="annotation.html#ms"><i class="fa fa-check"></i><b>8.10.1</b> MS</a></li>
+<li class="chapter" data-level="8.10.2" data-path="annotation.html"><a href="annotation.html#msms-1"><i class="fa fa-check"></i><b>8.10.2</b> MS/MS</a></li>
 </ul></li>
-<li class="chapter" data-level="7.10" data-path="annotation.html"><a href="annotation.html#compounds-database"><i class="fa fa-check"></i><b>7.10</b> Compounds Database</a></li>
+<li class="chapter" data-level="8.11" data-path="annotation.html"><a href="annotation.html#compounds-database"><i class="fa fa-check"></i><b>8.11</b> Compounds Database</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>8</b> Omics analysis</a>
+<li class="chapter" data-level="9" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>9</b> Omics analysis</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="omics-analysis.html"><a href="omics-analysis.html#from-bottom-up-to-top-down"><i class="fa fa-check"></i><b>8.1</b> From Bottom-up to Top-down</a></li>
-<li class="chapter" data-level="8.2" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-analysis"><i class="fa fa-check"></i><b>8.2</b> Pathway analysis</a>
+<li class="chapter" data-level="9.1" data-path="omics-analysis.html"><a href="omics-analysis.html#from-bottom-up-to-top-down"><i class="fa fa-check"></i><b>9.1</b> From Bottom-up to Top-down</a></li>
+<li class="chapter" data-level="9.2" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-analysis"><i class="fa fa-check"></i><b>9.2</b> Pathway analysis</a>
 <ul>
-<li class="chapter" data-level="8.2.1" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-database"><i class="fa fa-check"></i><b>8.2.1</b> Pathway Database</a></li>
-<li class="chapter" data-level="8.2.2" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-software"><i class="fa fa-check"></i><b>8.2.2</b> Pathway software</a></li>
+<li class="chapter" data-level="9.2.1" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-database"><i class="fa fa-check"></i><b>9.2.1</b> Pathway Database</a></li>
+<li class="chapter" data-level="9.2.2" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-software"><i class="fa fa-check"></i><b>9.2.2</b> Pathway software</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="omics-analysis.html"><a href="omics-analysis.html#network-analysis"><i class="fa fa-check"></i><b>8.3</b> Network analysis</a></li>
-<li class="chapter" data-level="8.4" data-path="omics-analysis.html"><a href="omics-analysis.html#omics-integration"><i class="fa fa-check"></i><b>8.4</b> Omics integration</a></li>
+<li class="chapter" data-level="9.3" data-path="omics-analysis.html"><a href="omics-analysis.html#network-analysis"><i class="fa fa-check"></i><b>9.3</b> Network analysis</a></li>
+<li class="chapter" data-level="9.4" data-path="omics-analysis.html"><a href="omics-analysis.html#omics-integration"><i class="fa fa-check"></i><b>9.4</b> Omics integration</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="peaks-normalization.html"><a href="peaks-normalization.html"><i class="fa fa-check"></i><b>9</b> Peaks normalization</a>
+<li class="chapter" data-level="10" data-path="peaks-normalization.html"><a href="peaks-normalization.html"><i class="fa fa-check"></i><b>10</b> Peaks normalization</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="peaks-normalization.html"><a href="peaks-normalization.html#batch-effects-classification"><i class="fa fa-check"></i><b>9.1</b> Batch effects classification</a></li>
-<li class="chapter" data-level="9.2" data-path="peaks-normalization.html"><a href="peaks-normalization.html#batch-effects-visualization"><i class="fa fa-check"></i><b>9.2</b> Batch effects visualization</a></li>
-<li class="chapter" data-level="9.3" data-path="peaks-normalization.html"><a href="peaks-normalization.html#source-of-batch-effects"><i class="fa fa-check"></i><b>9.3</b> Source of batch effects</a></li>
-<li class="chapter" data-level="9.4" data-path="peaks-normalization.html"><a href="peaks-normalization.html#avoid-batch-effects-by-doe"><i class="fa fa-check"></i><b>9.4</b> Avoid batch effects by DoE</a></li>
-<li class="chapter" data-level="9.5" data-path="peaks-normalization.html"><a href="peaks-normalization.html#post-hoc-data-normalization"><i class="fa fa-check"></i><b>9.5</b> <em>post hoc</em> data normalization</a>
+<li class="chapter" data-level="10.1" data-path="peaks-normalization.html"><a href="peaks-normalization.html#batch-effects"><i class="fa fa-check"></i><b>10.1</b> Batch effects</a></li>
+<li class="chapter" data-level="10.2" data-path="peaks-normalization.html"><a href="peaks-normalization.html#batch-effects-classification"><i class="fa fa-check"></i><b>10.2</b> Batch effects classification</a></li>
+<li class="chapter" data-level="10.3" data-path="peaks-normalization.html"><a href="peaks-normalization.html#batch-effects-visualization"><i class="fa fa-check"></i><b>10.3</b> Batch effects visualization</a></li>
+<li class="chapter" data-level="10.4" data-path="peaks-normalization.html"><a href="peaks-normalization.html#source-of-batch-effects"><i class="fa fa-check"></i><b>10.4</b> Source of batch effects</a></li>
+<li class="chapter" data-level="10.5" data-path="peaks-normalization.html"><a href="peaks-normalization.html#avoid-batch-effects-by-doe"><i class="fa fa-check"></i><b>10.5</b> Avoid batch effects by DoE</a></li>
+<li class="chapter" data-level="10.6" data-path="peaks-normalization.html"><a href="peaks-normalization.html#post-hoc-data-normalization"><i class="fa fa-check"></i><b>10.6</b> <em>post hoc</em> data normalization</a>
 <ul>
-<li class="chapter" data-level="9.5.1" data-path="peaks-normalization.html"><a href="peaks-normalization.html#unsupervised-methods"><i class="fa fa-check"></i><b>9.5.1</b> Unsupervised methods</a></li>
-<li class="chapter" data-level="9.5.2" data-path="peaks-normalization.html"><a href="peaks-normalization.html#supervised-methods"><i class="fa fa-check"></i><b>9.5.2</b> Supervised methods</a></li>
+<li class="chapter" data-level="10.6.1" data-path="peaks-normalization.html"><a href="peaks-normalization.html#unsupervised-methods"><i class="fa fa-check"></i><b>10.6.1</b> Unsupervised methods</a></li>
+<li class="chapter" data-level="10.6.2" data-path="peaks-normalization.html"><a href="peaks-normalization.html#supervised-methods"><i class="fa fa-check"></i><b>10.6.2</b> Supervised methods</a></li>
 </ul></li>
-<li class="chapter" data-level="9.6" data-path="peaks-normalization.html"><a href="peaks-normalization.html#method-to-validate-the-normalization"><i class="fa fa-check"></i><b>9.6</b> Method to validate the normalization</a></li>
-<li class="chapter" data-level="9.7" data-path="peaks-normalization.html"><a href="peaks-normalization.html#software"><i class="fa fa-check"></i><b>9.7</b> Software</a></li>
+<li class="chapter" data-level="10.7" data-path="peaks-normalization.html"><a href="peaks-normalization.html#method-to-validate-the-normalization"><i class="fa fa-check"></i><b>10.7</b> Method to validate the normalization</a></li>
+<li class="chapter" data-level="10.8" data-path="peaks-normalization.html"><a href="peaks-normalization.html#software"><i class="fa fa-check"></i><b>10.8</b> Software</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="statistical-analysis.html"><a href="statistical-analysis.html"><i class="fa fa-check"></i><b>10</b> Statistical analysis</a>
+<li class="chapter" data-level="11" data-path="statistical-analysis.html"><a href="statistical-analysis.html"><i class="fa fa-check"></i><b>11</b> Statistical analysis</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="statistical-analysis.html"><a href="statistical-analysis.html#basic-statistical-analysis"><i class="fa fa-check"></i><b>10.1</b> Basic Statistical Analysis</a></li>
-<li class="chapter" data-level="10.2" data-path="statistical-analysis.html"><a href="statistical-analysis.html#differences-analysis"><i class="fa fa-check"></i><b>10.2</b> Differences analysis</a>
+<li class="chapter" data-level="11.1" data-path="statistical-analysis.html"><a href="statistical-analysis.html#basic-statistical-analysis"><i class="fa fa-check"></i><b>11.1</b> Basic Statistical Analysis</a></li>
+<li class="chapter" data-level="11.2" data-path="statistical-analysis.html"><a href="statistical-analysis.html#differences-analysis"><i class="fa fa-check"></i><b>11.2</b> Differences analysis</a>
 <ul>
-<li class="chapter" data-level="10.2.1" data-path="statistical-analysis.html"><a href="statistical-analysis.html#t-test-or-anova"><i class="fa fa-check"></i><b>10.2.1</b> T-test or ANOVA</a></li>
-<li class="chapter" data-level="10.2.2" data-path="statistical-analysis.html"><a href="statistical-analysis.html#limma"><i class="fa fa-check"></i><b>10.2.2</b> LIMMA</a></li>
-<li class="chapter" data-level="10.2.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#bayesian-mixture-model"><i class="fa fa-check"></i><b>10.2.3</b> Bayesian mixture model</a></li>
+<li class="chapter" data-level="11.2.1" data-path="statistical-analysis.html"><a href="statistical-analysis.html#t-test-or-anova"><i class="fa fa-check"></i><b>11.2.1</b> T-test or ANOVA</a></li>
+<li class="chapter" data-level="11.2.2" data-path="statistical-analysis.html"><a href="statistical-analysis.html#limma"><i class="fa fa-check"></i><b>11.2.2</b> LIMMA</a></li>
+<li class="chapter" data-level="11.2.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#bayesian-mixture-model"><i class="fa fa-check"></i><b>11.2.3</b> Bayesian mixture model</a></li>
 </ul></li>
-<li class="chapter" data-level="10.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#pca"><i class="fa fa-check"></i><b>10.3</b> PCA</a></li>
-<li class="chapter" data-level="10.4" data-path="statistical-analysis.html"><a href="statistical-analysis.html#cluster-analysis"><i class="fa fa-check"></i><b>10.4</b> Cluster Analysis</a></li>
-<li class="chapter" data-level="10.5" data-path="statistical-analysis.html"><a href="statistical-analysis.html#plsda"><i class="fa fa-check"></i><b>10.5</b> PLSDA</a></li>
-<li class="chapter" data-level="10.6" data-path="statistical-analysis.html"><a href="statistical-analysis.html#network-analysis-1"><i class="fa fa-check"></i><b>10.6</b> Network analysis</a>
+<li class="chapter" data-level="11.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#pca"><i class="fa fa-check"></i><b>11.3</b> PCA</a></li>
+<li class="chapter" data-level="11.4" data-path="statistical-analysis.html"><a href="statistical-analysis.html#cluster-analysis"><i class="fa fa-check"></i><b>11.4</b> Cluster Analysis</a></li>
+<li class="chapter" data-level="11.5" data-path="statistical-analysis.html"><a href="statistical-analysis.html#plsda"><i class="fa fa-check"></i><b>11.5</b> PLSDA</a></li>
+<li class="chapter" data-level="11.6" data-path="statistical-analysis.html"><a href="statistical-analysis.html#network-analysis-1"><i class="fa fa-check"></i><b>11.6</b> Network analysis</a>
 <ul>
-<li class="chapter" data-level="10.6.1" data-path="statistical-analysis.html"><a href="statistical-analysis.html#vertex-and-edge"><i class="fa fa-check"></i><b>10.6.1</b> Vertex and edge</a></li>
-<li class="chapter" data-level="10.6.2" data-path="statistical-analysis.html"><a href="statistical-analysis.html#build-the-network"><i class="fa fa-check"></i><b>10.6.2</b> Build the network</a></li>
-<li class="chapter" data-level="10.6.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#network-attributes"><i class="fa fa-check"></i><b>10.6.3</b> Network attributes</a></li>
+<li class="chapter" data-level="11.6.1" data-path="statistical-analysis.html"><a href="statistical-analysis.html#vertex-and-edge"><i class="fa fa-check"></i><b>11.6.1</b> Vertex and edge</a></li>
+<li class="chapter" data-level="11.6.2" data-path="statistical-analysis.html"><a href="statistical-analysis.html#build-the-network"><i class="fa fa-check"></i><b>11.6.2</b> Build the network</a></li>
+<li class="chapter" data-level="11.6.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#network-attributes"><i class="fa fa-check"></i><b>11.6.3</b> Network attributes</a></li>
 </ul></li>
-<li class="chapter" data-level="10.7" data-path="statistical-analysis.html"><a href="statistical-analysis.html#software-1"><i class="fa fa-check"></i><b>10.7</b> Software</a></li>
+<li class="chapter" data-level="11.7" data-path="statistical-analysis.html"><a href="statistical-analysis.html#software-1"><i class="fa fa-check"></i><b>11.7</b> Software</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="exposome.html"><a href="exposome.html"><i class="fa fa-check"></i><b>11</b> Exposome</a>
+<li class="chapter" data-level="12" data-path="exposome.html"><a href="exposome.html"><i class="fa fa-check"></i><b>12</b> Exposome</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="exposome.html"><a href="exposome.html#internal-exposure"><i class="fa fa-check"></i><b>11.1</b> Internal exposure</a></li>
-<li class="chapter" data-level="11.2" data-path="exposome.html"><a href="exposome.html#external-exposure"><i class="fa fa-check"></i><b>11.2</b> External exposure</a>
+<li class="chapter" data-level="12.1" data-path="exposome.html"><a href="exposome.html#internal-exposure"><i class="fa fa-check"></i><b>12.1</b> Internal exposure</a></li>
+<li class="chapter" data-level="12.2" data-path="exposome.html"><a href="exposome.html#external-exposure"><i class="fa fa-check"></i><b>12.2</b> External exposure</a>
 <ul>
-<li class="chapter" data-level="11.2.1" data-path="exposome.html"><a href="exposome.html#environmental-fate-of-compounds"><i class="fa fa-check"></i><b>11.2.1</b> Environmental fate of compounds</a></li>
-<li class="chapter" data-level="11.2.2" data-path="exposome.html"><a href="exposome.html#exposure-study-database"><i class="fa fa-check"></i><b>11.2.2</b> Exposure study database</a></li>
+<li class="chapter" data-level="12.2.1" data-path="exposome.html"><a href="exposome.html#environmental-fate-of-compounds"><i class="fa fa-check"></i><b>12.2.1</b> Environmental fate of compounds</a></li>
+<li class="chapter" data-level="12.2.2" data-path="exposome.html"><a href="exposome.html#exposure-study-database"><i class="fa fa-check"></i><b>12.2.2</b> Exposure study database</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -388,68 +400,68 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="pretreatment" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">Chapter 3</span> Pretreatment<a href="pretreatment.html#pretreatment" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="pretreatment" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Pretreatment<a href="pretreatment.html#pretreatment" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Pretreatment will affect the results of metabolomics and cover the sample treatment from crude samples to injection vials for instrumental analysis. The purpose of sample pretreatment is the to retain more interesting compounds while remove unrelated compounds. For metabolomics studies, we might not know ‘interesting’ compounds in advance and the unrelated compounds are highly depended on research purpose. For example, Gel Permeation Chromatograph(GPC), Florisil, Alumina, Silica gel could be used to remove lipid while alcohols and strong acid/base could make protein denaturation to release more compounds. However, if we are interested in small lipid or peptide, such pretreatment methods should be changed. In general, sample collection, quenching, extraction methods, derivatization, and storage should be optimized in pretreatment.</p>
-<div id="collection" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> Collection<a href="pretreatment.html#collection" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Those papers investigated different fecal collection methods<span class="citation">(<a href="#ref-loftfield2016" role="doc-biblioref">Loftfield et al. 2016</a>; <a href="#ref-deda2017" role="doc-biblioref">Deda et al. 2017</a>)</span>.</p>
-<p>This paper discuss the influence of sample normalization<span class="citation">(<a href="#ref-wu2016" role="doc-biblioref">Wu and Li 2016</a>)</span>.</p>
+<div id="collection" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Collection<a href="pretreatment.html#collection" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Those papers investigated different fecal collection methods<span class="citation">(<a href="#ref-loftfield2016">Loftfield et al. 2016</a>; <a href="#ref-deda2017">Deda et al. 2017</a>)</span>.</p>
+<p>This paper discuss the influence of sample normalization<span class="citation">(<a href="#ref-wu2016">Wu and Li 2016</a>)</span>.</p>
 </div>
-<div id="quenching" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> Quenching<a href="pretreatment.html#quenching" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="quenching" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Quenching<a href="pretreatment.html#quenching" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Quenching solvent is always used to stop stop enzymatic activity.</p>
-<p>In this review<span class="citation">(<a href="#ref-lu2017" role="doc-biblioref">W. Lu et al. 2017</a>)</span>, authors said:</p>
+<p>In this review<span class="citation">(<a href="#ref-lu2017">W. Lu et al. 2017</a>)</span>, authors said:</p>
 <blockquote>
 <p>A classical approach, which works well for many analytes, is boiling ethanol. Although the boiling solvent raises concerns about thermal degradation, it reliably denatures enzymes. In contrast, cold organic solvent may not fully denature enzymes or may do so too slowly such that some metabolic reactions continue, interconverting metabolites during the quenching process.</p>
 </blockquote>
-<p>This review<span class="citation">(<a href="#ref-kim2020" role="doc-biblioref">J. Kim et al. 2020</a>)</span> summarized the urease-dependent metabolome sample preparation and found:</p>
+<p>This review<span class="citation">(<a href="#ref-kim2020">J. Kim et al. 2020</a>)</span> summarized the urease-dependent metabolome sample preparation and found:</p>
 <blockquote>
 <p>activities of urease and endogenous urinary enzymes and metabolite contaminants from the urease preparations introduce artefacts into metabolite profiles, thus leading to misinterpretation.</p>
 </blockquote>
 </div>
-<div id="extraction" class="section level2 hasAnchor" number="3.3">
-<h2><span class="header-section-number">3.3</span> Extraction<a href="pretreatment.html#extraction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>According to this research<span class="citation">(<a href="#ref-bennett2009" role="doc-biblioref">Bennett et al. 2009</a>)</span>:</p>
+<div id="extraction" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Extraction<a href="pretreatment.html#extraction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>According to this research<span class="citation">(<a href="#ref-bennett2009">Bennett et al. 2009</a>)</span>:</p>
 <blockquote>
 <p>The total metabolome concentration is approximately 300 mM, whereas the protein concentration is approximately 7 mM., which implies that most cellular metabolites are in free form.</p>
 </blockquote>
-<p>Dmitri et.al<span class="citation">(<a href="#ref-sitnikov2016" role="doc-biblioref">Sitnikov, Monnin, and Vuckovic 2016</a>)</span> thought the most orthogonal methods to methanol-based precipitation were ion-exchange solid-phase extraction and liquid-liquid extraction using methyl-tertbutyl ether.</p>
-<p>Another study used stable isotope labeled sample and found the use of a water-methanol-acetonitrile mixture for global metabolite extraction instead of aqueous methanol or aqueous acetonitrile alone <span class="citation">(<a href="#ref-doppler2016" role="doc-biblioref">Doppler et al. 2016</a>)</span>.</p>
-<p>Metabolic information was highly influenced by the extraction solvent<span class="citation">(<a href="#ref-ibanez2017" role="doc-biblioref">Ibáñez et al. 2017</a>)</span>.</p>
+<p>Dmitri et.al<span class="citation">(<a href="#ref-sitnikov2016">Sitnikov, Monnin, and Vuckovic 2016</a>)</span> thought the most orthogonal methods to methanol-based precipitation were ion-exchange solid-phase extraction and liquid-liquid extraction using methyl-tertbutyl ether.</p>
+<p>Another study used stable isotope labeled sample and found the use of a water-methanol-acetonitrile mixture for global metabolite extraction instead of aqueous methanol or aqueous acetonitrile alone <span class="citation">(<a href="#ref-doppler2016">Doppler et al. 2016</a>)</span>.</p>
+<p>Metabolic information was highly influenced by the extraction solvent<span class="citation">(<a href="#ref-ibanez2017">Ibáñez et al. 2017</a>)</span>.</p>
 <p>Tissue samples need to first be pulverized into fine powders.</p>
 <p>Feces collected with 95% ethanol or FOBT would be more reproducible and stable.</p>
-<p>In this review<span class="citation">(<a href="#ref-lu2017" role="doc-biblioref">W. Lu et al. 2017</a>)</span>, authors said:</p>
+<p>In this review<span class="citation">(<a href="#ref-lu2017">W. Lu et al. 2017</a>)</span>, authors said:</p>
 <blockquote>
 <p>In our experience, for both cell and tissue specimens, 40:40:20 acetonitrile:methanol:water with 0.1 M formic acid (and subsequent neutralization with ammonium bicarbonate) is generally an effective solvent system for both quenching and extraction, including for ATP and other high-energy phosphorylated compounds. We typically use approximately 1 mL of solvent mix to extract 25 mg of biological specimen. …Thus, although drying is acceptable for most metabolites, care must be taken with redox-active species.</p>
 </blockquote>
-<p>nano LC-MS could be used to analysis small numbers of cells<span class="citation">(<a href="#ref-luo2017a" role="doc-biblioref">Luo and Li 2017</a>)</span>.</p>
-<p>For plant like soybeans<span class="citation">(<a href="#ref-mahmud2017" role="doc-biblioref">Mahmud et al. 2017</a>)</span>, ammonium acetate/methanol could be selected as extraction strategies compared with water/methanol and sodium phosphate/methanol. For general plant samples, check this comprehensive investigation<span class="citation">(<a href="#ref-bijttebier2016" role="doc-biblioref">Bijttebier et al. 2016</a>)</span>.</p>
-<p>For blood plasma and serum sample, a comprehensive evaluation of 12 sample preparation methods (SPM) using phospholipid and protein removal plates (PLR), solid phase extraction plates (SPE), supported liquid extraction cartridge (SLE), and conventionally used protein precipitation (PPT) were purformed. Results show PPT and PLR on the same samples by implementing a simple analytical workflow as their complementarity would allow the broadening of the visible chemical space <span class="citation">(<a href="#ref-chaker2022" role="doc-biblioref">Chaker et al. 2022</a>)</span>.</p>
+<p>nano LC-MS could be used to analysis small numbers of cells<span class="citation">(<a href="#ref-luo2017a">Luo and Li 2017</a>)</span>.</p>
+<p>For plant like soybeans<span class="citation">(<a href="#ref-mahmud2017">Mahmud et al. 2017</a>)</span>, ammonium acetate/methanol could be selected as extraction strategies compared with water/methanol and sodium phosphate/methanol. For general plant samples, check this comprehensive investigation<span class="citation">(<a href="#ref-bijttebier2016">Bijttebier et al. 2016</a>)</span>.</p>
+<p>For blood plasma and serum sample, a comprehensive evaluation of 12 sample preparation methods (SPM) using phospholipid and protein removal plates (PLR), solid phase extraction plates (SPE), supported liquid extraction cartridge (SLE), and conventionally used protein precipitation (PPT) were purformed. Results show PPT and PLR on the same samples by implementing a simple analytical workflow as their complementarity would allow the broadening of the visible chemical space <span class="citation">(<a href="#ref-chaker2022">Chaker et al. 2022</a>)</span>.</p>
 </div>
-<div id="derivatization" class="section level2 hasAnchor" number="3.4">
-<h2><span class="header-section-number">3.4</span> Derivatization<a href="pretreatment.html#derivatization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Derivatization is always used in GC-based metabolomics study. This paper<span class="citation">(<a href="#ref-miyagawa2019" role="doc-biblioref">Miyagawa and Bamba 2019</a>)</span> compared sequential derivatization methods and found different compounds would show different fluctuations during oximation or silylation process. This paper summarized derivatization methods for LC-MS <span class="citation">(<a href="#ref-zhao2020" role="doc-biblioref">S. Zhao and Li 2020</a>)</span>.</p>
+<div id="derivatization" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Derivatization<a href="pretreatment.html#derivatization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Derivatization is always used in GC-based metabolomics study. This paper<span class="citation">(<a href="#ref-miyagawa2019">Miyagawa and Bamba 2019</a>)</span> compared sequential derivatization methods and found different compounds would show different fluctuations during oximation or silylation process. This paper summarized derivatization methods for LC-MS <span class="citation">(<a href="#ref-zhao2020">S. Zhao and Li 2020</a>)</span>.</p>
 </div>
-<div id="isotope-label" class="section level2 hasAnchor" number="3.5">
-<h2><span class="header-section-number">3.5</span> Isotope label<a href="pretreatment.html#isotope-label" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>You might try heavy water to exchange oxygen atom with samples to track certain metabolites<span class="citation">(<a href="#ref-osipenko2022" role="doc-biblioref">Osipenko et al. 2022</a>)</span> or MS-IDF<span class="citation">(<a href="#ref-wang2022g" role="doc-biblioref">S. Wang et al. 2022</a>)</span>.</p>
+<div id="isotope-label" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Isotope label<a href="pretreatment.html#isotope-label" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You might try heavy water to exchange oxygen atom with samples to track certain metabolites<span class="citation">(<a href="#ref-osipenko2022">Osipenko et al. 2022</a>)</span> or MS-IDF<span class="citation">(<a href="#ref-wang2022g">S. Wang et al. 2022</a>)</span>.</p>
 </div>
-<div id="storage" class="section level2 hasAnchor" number="3.6">
-<h2><span class="header-section-number">3.6</span> Storage<a href="pretreatment.html#storage" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Samples should be stored after sample collection or sample pretreatment. -80°C or -20°C is always preferred to store samples. Dry ice should be used during sample pretreatment. However, comprehensive investigation of storage influences found the metabolites profile will change after one day storage at -80°C<span class="citation">(<a href="#ref-yu2020" role="doc-biblioref">M. Yu et al. 2020</a>)</span> . Rapid analysis of samples should be considered to capture more accurate information in the samples.</p>
+<div id="storage" class="section level2 hasAnchor" number="4.6">
+<h2><span class="header-section-number">4.6</span> Storage<a href="pretreatment.html#storage" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Samples should be stored after sample collection or sample pretreatment. -80°C or -20°C is always preferred to store samples. Dry ice should be used during sample pretreatment. However, comprehensive investigation of storage influences found the metabolites profile will change after one day storage at -80°C<span class="citation">(<a href="#ref-yu2020">M. Yu et al. 2020</a>)</span> . Rapid analysis of samples should be considered to capture more accurate information in the samples.</p>
 <blockquote>
-<p>Storage conditions such as temperature and time can affect the metabolite composition of various samples. Laparre et al.<span class="citation">(<a href="#ref-laparre2017" role="doc-biblioref">Laparre et al. 2017</a>)</span> noted that the metabolite profiles of urine samples were significantly changed after 5 days of storage at 4°C , while Wandro and colleagues<span class="citation">(<a href="#ref-wandro2017" role="doc-biblioref">Wandro et al. 2017</a>)</span> observed that the metabolomic profiles of cystic fibrosis sputum samples underwent notable changes after only 1 day of storage at 4°C . Likewise, Roszkowska et al. demonstrated that various signaling molecules were lost from the lipidome profile of tissue after storing the samples for one year at 80°C <span class="citation">(<a href="#ref-roszkowska2018" role="doc-biblioref">Roszkowska et al. 2018</a>)</span>. To date, most metabolomics studies involving storage of samples prior to the analysis have used a storage temperature of 80°C , as previous investigations have shown that low temperatures or freeze-thaw cycles do not significantly change the metabolite profile of certain samples<span class="citation">(<a href="#ref-lin2007" role="doc-biblioref">Lin et al. 2007</a>)</span> .</p>
+<p>Storage conditions such as temperature and time can affect the metabolite composition of various samples. Laparre et al.<span class="citation">(<a href="#ref-laparre2017">Laparre et al. 2017</a>)</span> noted that the metabolite profiles of urine samples were significantly changed after 5 days of storage at 4°C , while Wandro and colleagues<span class="citation">(<a href="#ref-wandro2017">Wandro et al. 2017</a>)</span> observed that the metabolomic profiles of cystic fibrosis sputum samples underwent notable changes after only 1 day of storage at 4°C . Likewise, Roszkowska et al. demonstrated that various signaling molecules were lost from the lipidome profile of tissue after storing the samples for one year at 80°C <span class="citation">(<a href="#ref-roszkowska2018">Roszkowska et al. 2018</a>)</span>. To date, most metabolomics studies involving storage of samples prior to the analysis have used a storage temperature of 80°C , as previous investigations have shown that low temperatures or freeze-thaw cycles do not significantly change the metabolite profile of certain samples<span class="citation">(<a href="#ref-lin2007">Lin et al. 2007</a>)</span> .</p>
 </blockquote>
-<p>For gut microbiota, this paper could be checked for storage issue<span class="citation">(<a href="#ref-zubeldia-varela2020" role="doc-biblioref">Zubeldia-Varela et al. 2020</a>)</span>.</p>
-<p>For blood sample storage, you could check this paper<span class="citation">(<a href="#ref-hernandes2017" role="doc-biblioref">Hernandes, Barbas, and Dudzik 2017</a>)</span>.</p>
-<p>For urine sample storage, check this<span class="citation">(<a href="#ref-laparre2017" role="doc-biblioref">Laparre et al. 2017</a>)</span>.</p>
-<p>This piece reviewed the stability of energy metabolites<span class="citation">(<a href="#ref-gil2015" role="doc-biblioref">Gil et al. 2015</a>)</span>.</p>
+<p>For gut microbiota, this paper could be checked for storage issue<span class="citation">(<a href="#ref-zubeldia-varela2020">Zubeldia-Varela et al. 2020</a>)</span>.</p>
+<p>For blood sample storage, you could check this paper<span class="citation">(<a href="#ref-hernandes2017">Hernandes, Barbas, and Dudzik 2017</a>)</span>.</p>
+<p>For urine sample storage, check this<span class="citation">(<a href="#ref-laparre2017">Laparre et al. 2017</a>)</span>.</p>
+<p>This piece reviewed the stability of energy metabolites<span class="citation">(<a href="#ref-gil2015">Gil et al. 2015</a>)</span>.</p>
 
 </div>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-bennett2009" class="csl-entry">
 Bennett, Bryson D., Elizabeth H. Kimball, Melissa Gao, Robin Osterhout, Stephen J. Van Dien, and Joshua D. Rabinowitz. 2009. <span>“Absolute Metabolite Concentrations and Implied Enzyme Active Site Occupancy in <span>Escherichia</span> Coli.”</span> <em>Nature Chemical Biology</em> 5 (8): 593–99. <a href="https://doi.org/10.1038/nchembio.186">https://doi.org/10.1038/nchembio.186</a>.
 </div>
@@ -466,7 +478,7 @@ Deda, Olga, Anastasia Chrysovalantou Chatziioannou, Stella Fasoula, Dimitris Pal
 Doppler, Maria, Bernhard Kluger, Christoph Bueschl, Christina Schneider, Rudolf Krska, Sylvie Delcambre, Karsten Hiller, Marc Lemmens, and Rainer Schuhmacher. 2016. <span>“Stable <span>Isotope-Assisted Evaluation</span> of <span>Different Extraction Solvents</span> for <span>Untargeted Metabolomics</span> of <span>Plants</span>.”</span> <em>International Journal of Molecular Sciences</em> 17 (7). <a href="https://doi.org/10.3390/ijms17071017">https://doi.org/10.3390/ijms17071017</a>.
 </div>
 <div id="ref-gil2015" class="csl-entry">
-Gil, Andres, David Siegel, Hjalmar Permentier, Dirk-Jan Reijngoud, Frank Dekker, and Rainer Bischoff. 2015. <span>“Stability of Energy Metabolites Often Overlooked Issue in Metabolomics Studies: <span>A</span> Review.”</span> <em>ELECTROPHORESIS</em> 36 (18): 2156–69. <a href="https://doi.org/10.1002/elps.201500031">https://doi.org/10.1002/elps.201500031</a>.
+Gil, Andres, David Siegel, Hjalmar Permentier, Dirk-Jan Reijngoud, Frank Dekker, and Rainer Bischoff. 2015. <span>“Stability of Energy Metabolites—<span>An</span> Often Overlooked Issue in Metabolomics Studies: <span>A</span> Review.”</span> <em>ELECTROPHORESIS</em> 36 (18): 2156–69. <a href="https://doi.org/10.1002/elps.201500031">https://doi.org/10.1002/elps.201500031</a>.
 </div>
 <div id="ref-hernandes2017" class="csl-entry">
 Hernandes, Vinicius Veri, Coral Barbas, and Danuta Dudzik. 2017. <span>“A Review of Blood Sample Handling and Pre-Processing for Metabolomics Studies.”</span> <em>ELECTROPHORESIS</em> 38 (18): 2232–41. <a href="https://doi.org/10.1002/elps.201700086">https://doi.org/10.1002/elps.201700086</a>.
@@ -499,7 +511,7 @@ Mahmud, Iqbal, Sandi Sternberg, Michael Williams, and Timothy J. Garrett. 2017. 
 Miyagawa, Hiromi, and Takeshi Bamba. 2019. <span>“Comparison of Sequential Derivatization with Concurrent Methods for <span>GC</span>/<span class="nocase">MS-based</span> Metabolomics.”</span> <em>Journal of Bioscience and Bioengineering</em> 127 (2): 160–68. <a href="https://doi.org/10.1016/j.jbiosc.2018.07.015">https://doi.org/10.1016/j.jbiosc.2018.07.015</a>.
 </div>
 <div id="ref-osipenko2022" class="csl-entry">
-Osipenko, Sergey, Alexander Zherebker, Lidiia Rumiantseva, Oxana Kovaleva, Evgeny N. Nikolaev, and Yury Kostyukevich. 2022. <span>“Oxygen <span>Isotope Exchange Reaction</span> for <span>Untargeted LC</span>.”</span> <em>Journal of the American Society for Mass Spectrometry</em> 33 (2): 390–98. <a href="https://doi.org/10.1021/jasms.1c00383">https://doi.org/10.1021/jasms.1c00383</a>.
+Osipenko, Sergey, Alexander Zherebker, Lidiia Rumiantseva, Oxana Kovaleva, Evgeny N. Nikolaev, and Yury Kostyukevich. 2022. <span>“Oxygen <span>Isotope Exchange Reaction</span> for <span>Untargeted LC</span>–<span>MS Analysis</span>.”</span> <em>Journal of the American Society for Mass Spectrometry</em> 33 (2): 390–98. <a href="https://doi.org/10.1021/jasms.1c00383">https://doi.org/10.1021/jasms.1c00383</a>.
 </div>
 <div id="ref-roszkowska2018" class="csl-entry">
 Roszkowska, Anna, Miao Yu, Vincent Bessonneau, Leslie Bragg, Mark Servos, and Janusz Pawliszyn. 2018. <span>“Tissue Storage Affects Lipidome Profiling in Comparison to in Vivo Microsampling Approach.”</span> <em>Scientific Reports</em> 8 (1): 6980. <a href="https://doi.org/10.1038/s41598-018-25428-2">https://doi.org/10.1038/s41598-018-25428-2</a>.
