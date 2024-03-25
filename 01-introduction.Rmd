@@ -139,7 +139,7 @@ General challenge for metabolomics studies could be found here [@schymanski2017;
 
 -   Quantitative Metabolomics related issues could be found here[@kapoore2016b; @jorge2016a; @lv2022; @vitale2022].
 
--   For quality control issues, check here[@dudzik2018; @siskos2017; @sumner2007; @place2021]. You might also try postcolumn infusion as a quality control tool[@gonzalez2022].
+-   For quality control issues, check here[@dudzik2018; @siskos2017; @sumner2007; @place2021;@broeckling2023;@gonzalez-dominguez2024]. You might also try postcolumn infusion as a quality control tool[@gonzalez2022].
 
 ## Trends in Metabolomics
 

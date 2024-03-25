@@ -47,7 +47,7 @@ One experiment can contain lots of factors with different levels and only one se
 
 ## Pooled QC
 
-Pooled QC samples are unique and very important for metabolomics study. Every 10 or 20 samples, a pooled sample from all samples and blank sample in one study should be injected as quality control samples. Pooled QC samples contain the changes during the instrumental analysis and blank samples could tell where the variances come from. Meanwhile the cap of sequence should old the column with pooled QC samples. The injection sequence should be randomized. Those papers[@phapale2020; @dudzik2018; @dunn2012; @broadhurst2018] should be read for details.
+Pooled QC samples are unique and very important for metabolomics study. Every 10 or 20 samples, a pooled sample from all samples and blank sample in one study should be injected as quality control samples. Pooled QC samples contain the changes during the instrumental analysis and blank samples could tell where the variances come from. Meanwhile the cap of sequence should old the column with pooled QC samples. The injection sequence should be randomized. Those papers[@phapale2020; @dudzik2018; @dunn2012; @broadhurst2018;@broeckling2023;@gonzalez-dominguez2024] should be read for details.
 
 If there are other co-factors, a linear model or randomizing would be applied to eliminate their influences. You need to record the values of those co-factors for further data analysis. Common co-factors in metabolomics studies are age, gender, location, etc.
 
@@ -55,8 +55,12 @@ If you need data correction, some background or calibration samples are required
 
 Another important factors are instrumentals. High-resolution mass spectrum is always preferred. As shown in Lukas's study [@najdekr2016]:
 
-> the most effective mass resolving powers for profiling analyses of metabolite rich biofluids on the Orbitrap Elite were around 60000--120000 fwhm to retrieve the highest amount of information. The region between 400--800 m/z was influenced the most by resolution.
+> the most effective mass resolving powers for profiling analyses of metabolite rich biofluids on the Orbitrap Elite were around 60000-120000 fwhm to retrieve the highest amount of information. The region between 400-800 m/z was influenced the most by resolution.
 
 However, elimination of peaks with high RSD% within group were always omitted by most study. Based on pre-experiment, you could get a description of RSD% distribution and set cut-off to use stable peaks for further data analysis. To my knowledge, 30% is suitable considering the batch effects.
 
 Adding certified reference material or standard reference material will help to evaluate the quality large scale data collocation or important metabolites[@wise2022; @wright2022].
+
+For quality control in long term, ScreenDB provide a data analysis strategy for HRMS data founded on structured query language database archiving[@mardal2023].
+
+AVIR develops a computational solution to automatically recognize metabolic features with computational variation in a metabolomics data set[@zhang2024a].

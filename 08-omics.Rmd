@@ -75,3 +75,7 @@ Pathway analysis maps annotated data into known pathway and make statistical ana
 -   [Omics Data Integration Project](https://github.com/cran/mixOmics)
 
 -   Standardized multi-omics of Earth's microbiomes could check this GNPS based work[@shaffer2022].
+
+- Windows Scanning Multiomics: Integrated Metabolomics and Proteomics[@shi2023]
+
+

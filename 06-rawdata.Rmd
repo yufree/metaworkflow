@@ -52,11 +52,15 @@ An Open-source feature detection algorithm for non-target LC–MS analytics coul
 
 [mzRAPP](https://github.com/YasinEl/mzRAPP) could enables the generation of benchmark peak lists by using an internal set of known molecules in the analyzed data set to compare workflows[@elabiead2022].
 
+G-Aligner is a graph-based feature alignment method for untargeted LC–MS-based metabolomics[@wang2023b], which will consider the importance of feature matching.
+
+qBinning is a novel algorithm for constructing extracted ion chromatograms (EICs) based on statistical principles and without the need to set user parameters[@reuschenbach2023].
+
 Machine learning can also be used for feature extraxtion. Deep learning frame for LC-MS feature detection on 2D pseudo color image could improve the peak picking process [@zhao2021]. Another deep learning-assisted peak curation (NeatMS) can also be used for large-scale LC-MS metabolomics[@gloaguen2022]. A feature selection pipeline based on neural network and genetic algorithm could be applied for metabolomics data analysis[@lisitsyna2022].
 
 ## MS/MS
 
-Various data acquisition workflow could be checked here[@fenaille2017].
+Various data acquisition workflow could be checked here[@fenaille2017]. Before using MS/MS annotation, it's better to know that DDA and DIA will lose precursor found in MS1[@guo2020a;@stincone2023].
 
 ### MRM
 
@@ -98,11 +102,15 @@ Other related papers could be found here to cover SWATH and other topic in DIA[@
 
 - DIAMetAlyzer is a pipeline for assay library generation and targeted analysis with statistical validation.[@alka2022]
 
+- MetaboMSDIA: A tool for implementing data-independent acquisition in metabolomic-based mass spectrometry analysis[@ledesma-escobar2023].
+
+- CRISP: a cross-run ion selection and peak-picking (CRISP) tool that utilizes the important advantage of run-to-run consistency of DIA and simultaneously examines the DIA data from the whole set of runs to filter out the interfering signals, instead of only looking at a single run at a time[@yan2023].
+
 ## Retention Time Correction
 
 For single file, we could get peaks. However, we should make the peaks align across samples for as features and retention time corrections should be performed. The basic idea behind retention time correction is that use the high quality grouped peaks to make a new retention time. You might choose `obiwarp`(for dramatic shifts) or loess regression(fast) method to get the corrected retention time for all of the samples. Remember the original retention times might be changed and you might need cross-correct the data. After the correction, you could group the peaks again for a better cross-sample peaks list. However, if you directly use `obiwarp`, you don't have to group peaks before correction.
 
-This paper show a matlab based shift correction methods[@fu2017]. Retention time correction is a Parametric time warping process and this paper is a good start [@wehrens2015]. Meanwhile, you could use MS2 for retention time correction[@li2017b].
+This paper show a matlab based shift correction methods[@fu2017]. Retention time correction is a Parametric time warping process and this paper is a good start [@wehrens2015]. Meanwhile, you could use MS2 for retention time correction[@li2017b]. This work is a python based RI system and peak shift correction model, significantly enhancing alignment accuracy[@hao2023].
 
 ## Filling missing values
 
