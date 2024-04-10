@@ -119,7 +119,7 @@ for article_data in new_articles_data:
     # Find the most similar section title for each article
     most_similar_section_title = find_most_similar_sections(keywords, sections_data, 1)
 
-    Check if the most similar section title exists
+    # Check if the most similar section title exists
     if most_similar_section_title:
         # Add the article information to the issue body
         issue_body += f"- Article Abstract: {abstract}\n"
