@@ -41,7 +41,7 @@ def get_pubmed_abstracts(rss_url):
     feed = feedparser.parse(rss_url)
 
     # Calculate the date one week ago
-    one_week_ago = datetime.now(timezone.utc) - timedelta(weeks=1)
+    one_week_ago = datetime.now(timezone.utc) - timedelta(weeks=6)
 
     # Iterate over entries in the PubMed RSS feed and extract abstracts and URLs
     for entry in feed.entries:
