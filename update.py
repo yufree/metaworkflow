@@ -8,7 +8,6 @@ import os
 # Example PubMed RSS feed URL
 rss_url = 'https://pubmed.ncbi.nlm.nih.gov/rss/search/1l_vN2os9ImczaHy8lsTexdGZzzcnVxwynmusavJy3uipkZkrY/?limit=15&utm_campaign=pubmed-2&fc=20210105094324'
 
-repo_name = os.getenv('GITHUB_REPOSITORY_ID')
 access_token = os.getenv('GITHUB_TOKEN')
 openaiapikey = os.getenv('OPENAI_API_KEY')
 
@@ -134,15 +133,21 @@ for article_data in new_articles_data:
     most_similar_section_title = find_most_similar_sections(keywords, sections_data, 1)
 
     # Check if the most similar section title exists
-    if most_similar_section_title:
-        # Add the article information to the issue body
-        issue_body += f"- Article Abstract: {abstract}\n"
-        issue_body += f"  Keywords: {', '.join(keywords)}\n"
-        issue_body += f"  Section Title: {most_similar_section_title}\n"
-        issue_body += f"  One-sentence Summary: {summary}\n"
-        issue_body += f"  DOI: {doi}\n\n"
+    # if most_similar_section_title:
+    #     # Add the article information to the issue body
+    #     issue_body += f"- Article Abstract: {abstract}\n"
+    #     issue_body += f"  Keywords: {', '.join(keywords)}\n"
+    #     issue_body += f"  Section Title: {most_similar_section_title}\n"
+    #     issue_body += f"  One-sentence Summary: {summary}\n"
+    #     issue_body += f"  DOI: {doi}\n\n"
+    
+    issue_body += f"- Article Abstract: {abstract}\n"
+    issue_body += f"  Keywords: {', '.join(keywords)}\n"
+    issue_body += f"  Section Title: {most_similar_section_title}\n"
+    issue_body += f"  One-sentence Summary: {summary}\n"
+    issue_body += f"  DOI: {doi}\n\n"
 
-def create_github_issue(title, body, repo_name, access_token):
+def create_github_issue(title, body, access_token):
     url = f"https://api.github.com/repos/yufree/metaworkflow/issues"
     headers = {
         "Authorization": f"token {access_token}",
@@ -162,4 +167,4 @@ def create_github_issue(title, body, repo_name, access_token):
         print("Response:", response.text)
 
 # Create the issue
-create_github_issue(issue_title, issue_body, repo_name, access_token)
+create_github_issue(issue_title, issue_body, access_token)

@@ -1,9 +1,8 @@
 name: Weekly Article Matching
 
 on:
-  push:
-    branches:
-      - master
+  schedule:
+    - cron: '0 0 * * 0'
 
 jobs:
   run_script:
@@ -25,4 +24,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          GITHUB_REPOSITORY_ID: ${{ github.repository }}
