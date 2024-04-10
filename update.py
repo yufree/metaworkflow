@@ -6,7 +6,7 @@ import requests
 import os
 
 # Example PubMed RSS feed URL
-rss_url = 'https://pubmed.ncbi.nlm.nih.gov/rss/search/1l_vN2os9ImczaHy8lsTexdGZzzcnVxwynmusavJy3uipkZkrY/?limit=15&utm_campaign=pubmed-2&fc=20210105094324'
+rss_url = 'https://pubmed.ncbi.nlm.nih.gov/rss/search/1ZuzHwMscydbBrxsekXamSNNn2OJqDR8kluBwohEqNuRy5aMp_/?limit=15&utm_campaign=pubmed-2&fc=20240410170436'
 
 access_token = os.getenv('GITHUB_TOKEN')
 openaiapikey = os.getenv('OPENAI_API_KEY')
@@ -41,7 +41,7 @@ def get_pubmed_abstracts(rss_url):
     feed = feedparser.parse(rss_url)
 
     # Calculate the date one week ago
-    one_week_ago = datetime.now(timezone.utc) - timedelta(weeks=4)
+    one_week_ago = datetime.now(timezone.utc) - timedelta(weeks=1)
 
     # Iterate over entries in the PubMed RSS feed and extract abstracts and URLs
     for entry in feed.entries:
@@ -82,39 +82,26 @@ for abstract_data in pubmed_abstracts:
 
 def find_most_similar_sections(new_article_keywords, sections_data, n):
     similar_section_titles = {}
-
     for article_keywords in new_article_keywords:
         highest_similarity = 0
         most_similar_section_title = None
-        new_article_keywords_list = [keyword.strip() for keyword in article_keywords.split(",")]
-        new_article_keywords_list = [keyword for keyword in new_article_keywords_list if len(keyword) > 2]
-
-        if new_article_keywords_list:  # Check if new_article_keywords_list is not empty
+        new_article_keywords_list = [keyword.strip().lower() for keyword in article_keywords.split(",")]
+        new_article_keywords_list = [keyword for keyword in new_article_keywords_list if len(keyword) > 1]
+        if new_article_keywords_list:
             for section_title, section_data in sections_data.items():
-                section_keywords_list = [keyword.strip() for keyword in section_data["keywords"][0].split(",")]
-
-                # Filter out keywords with less than two characters
-                section_keywords_list = [keyword for keyword in section_keywords_list if len(keyword) > 2]
-
+                section_keywords_list = [keyword.strip().lower() for keyword in section_data["keywords"][0].split(",")]
+                section_keywords_list = [keyword for keyword in section_keywords_list if len(keyword) > 1]
                 overlap_count = 0
                 for keyword in new_article_keywords_list:
                     if keyword in section_keywords_list:
                         overlap_count += 1
-
                 similarity = overlap_count / len(new_article_keywords_list)
-
                 if similarity > highest_similarity:
                     highest_similarity = similarity
                     most_similar_section_title = section_title
-
-            if most_similar_section_title is not None:
-                similar_section_titles[article_keywords] = most_similar_section_title
-
+        if most_similar_section_title is not None:
+            similar_section_titles[article_keywords] = most_similar_section_title
     return similar_section_titles
-
-# Convert the keywords list for each abstract into a string, and merge all keywords into a single list
-new_article_keywords = [article["keywords"] for article in new_articles_data]
-
 # Read the merged section data from JSON file
 with open('bookkeywords.json', 'r') as file:
     sections_data = json.load(file)
@@ -125,27 +112,21 @@ issue_body = "Below are the article matching results from the past week:\n\n"
 
 for article_data in new_articles_data:
     abstract = article_data["abstract"]
-    keywords = article_data["keywords"]
+    keywords = article_data["keywords"].split(", ")
     summary = article_data["summary"]
     doi = article_data.get("doi", "No DOI available")  # Default to "No DOI available" if DOI field is missing
 
     # Find the most similar section title for each article
     most_similar_section_title = find_most_similar_sections(keywords, sections_data, 1)
 
-    # Check if the most similar section title exists
-    # if most_similar_section_title:
-    #     # Add the article information to the issue body
-    #     issue_body += f"- Article Abstract: {abstract}\n"
-    #     issue_body += f"  Keywords: {', '.join(keywords)}\n"
-    #     issue_body += f"  Section Title: {most_similar_section_title}\n"
-    #     issue_body += f"  One-sentence Summary: {summary}\n"
-    #     issue_body += f"  DOI: {doi}\n\n"
-    
-    issue_body += f"- Article Abstract: {abstract}\n"
-    issue_body += f"  Keywords: {', '.join(keywords)}\n"
-    issue_body += f"  Section Title: {most_similar_section_title}\n"
-    issue_body += f"  One-sentence Summary: {summary}\n"
-    issue_body += f"  DOI: {doi}\n\n"
+    Check if the most similar section title exists
+    if most_similar_section_title:
+        # Add the article information to the issue body
+        issue_body += f"- Article Abstract: {abstract}\n"
+        issue_body += f"  Keywords: {', '.join(keywords)}\n"
+        issue_body += f"  Section Title: {most_similar_section_title}\n"
+        issue_body += f"  One-sentence Summary: {summary}\n"
+        issue_body += f"  DOI: {doi}\n\n"
 
 def create_github_issue(title, body, access_token):
     url = f"https://api.github.com/repos/yufree/metaworkflow/issues"
