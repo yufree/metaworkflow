@@ -118,7 +118,7 @@ def find_most_similar_sections(new_article_keywords, sections_data, n):
 new_article_keywords = [article["keywords"] for article in new_articles_data]
 
 # Read the merged section data from JSON file
-with open('merged_file.json', 'r') as file:
+with open('bookkeywords.json', 'r') as file:
     sections_data = json.load(file)
 
 # Create issue title and content

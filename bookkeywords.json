@@ -1,0 +1,878 @@
+{
+    "## Batch effects": {
+        "content": "Batch effects are the variances caused by factor other than the experimental design. We could simply make a linear model for the intensity of one peak:\n\n$$Intensity =  Average + Condition + Batch + Error$$\n\nResearch is focused on condition contribution part and overall average or random error could be estimated. However, we know little about the batch contribution. Sometimes we could use known variables such as injection order or operators as the batch part. However, in most cases we such variable is unknown. Almost all the batch correction methods are trying to use some estimations to balance or remove the batch effect.\n\nFor analytical chemistry, internal standards or pool quality control samples are actually standing for the batch contribution part in the model. However, it's impractical to get all the internal standards when the data is collected untargeted. For methods using internal standards or pool quality control samples, the variations among those samples are usually removed as median, quantile, mean or the ratios. Other ways like quantile regression, centering and scaling based on distribution within samples could be treated as using the stable distribution of peaks intensity to remove batch effects.",
+        "keywords": [
+            "Batch effects, variances, linear model, intensity, condition, average, error, research, injection order, operators"
+        ]
+    },
+    "## Batch effects classification": {
+        "content": "Variances among the samples across all the extracted peaks might be affected by factors other than the experiment design. There are three types of those batch effects: Monotone, Block and Mixed.\n\n-   Monotone would increase/decrease with the injection order or batches.\n\n\n\n-   Block would be system shift among different batches.\n\n```{r echo=FALSE,out.width='61.8%'}",
+        "keywords": [
+            "Variances, samples, extracted peaks, factors, experiment design, Monotone, Block, Mixed, injection order, system shift'\n```"
+        ]
+    },
+    "## Batch effects visualization": {
+        "content": "Any correction might introduce bias. We need to make sure there are patterns which different from our experimental design. Pooled QC samples should be clustered on PCA score plot.",
+        "keywords": [
+            "expert, metabolomics, mass spectrometry, analytical chemistry, correction, bias, patterns, experimental design, pooled QC samples, PCA score plot"
+        ]
+    },
+    "## Source of batch effects": {
+        "content": "-   Different Operators & Dates & Sequences\n\n-   Different Instrumental Condition such as different instrumental parameters, poor quality control, sample contamination during the analysis, Column (Pooled QC) and sample matrix effects (ions suppression or/and enhancement)\n\n-   Unknown Unknowns",
+        "keywords": [
+            "-   Metabolite identification\n-   Data processing\n-   Quality assurance\n-   Sample preparation\n-   Ionization techniques\n-   Mass spectrometry data\n-   Metabolic pathways"
+        ]
+    },
+    "## Avoid batch effects by DoE": {
+        "content": "You could avoid batch effects from experimental design. Cap the sequence with Pooled QC and Randomized samples sequence. Some internal standards/Instrumental QC might Help to find the source of batch effects while it's not practical for every compounds in non-targeted analysis.\n\nBatch effects might not change the conclusion when the effect size is relatively small. Here is a simulation:\n\n```{r}\nset.seed(30)",
+        "keywords": [
+            "batch effects, experimental design, Pooled QC, Randomized samples, internal standards, Instrumental QC, source, non-targeted analysis, effect size, simulation"
+        ]
+    },
+    "## *post hoc* data normalization": {
+        "content": "To make the samples comparable, normalization across the samples are always needed when the experiment part is done. Batch effect should have patterns other than experimental design, otherwise just noise. Correction is possible by data analysis/randomized experimental design. There are numerous methods to make normalization with their combination. We could divided those methods into two categories: unsupervised and supervised.\n\nUnsupervised methods only consider the normalization peaks intensity distribution across the samples. For example, quantile calibration try to make the intensity distribution among the samples similar. Such methods are preferred to explore the inner structures of the samples. Internal standards or pool QC samples also belong to this category. However, it's hard to take a few peaks standing for all peaks extracted.\n\nSupervised methods will use the group information or batch information in experimental design to normalize the data. A linear model is always used to model the unwanted variances and remove them for further analysis.\n\nSince the real batch effects are always unknown, it's hard to make validation for different normalization methods. Li et.al developed NOREVA to make comparision among 25 correction method  and a recently updates make this numbers to 168 . MetaboDrift also contain some methods for batch correction in excel . Another idea is use spiked-in samples to validate the methods  , which might be good for targeted analysis instead of non-targeted analysis.\n\nRelative log abundance (RLA) plots and heatmap often used to show the variances among the samples.",
+        "keywords": [
+            "Normalization, Batch effect, Experimental design, Data analysis, Randomized, Unsupervised, Supervised, Inner structures, Internal standards, Linear model"
+        ]
+    },
+    "## Unsupervised methods": {
+        "content": "",
+        "keywords": [
+            "expert, metabolites, biomarkers, biofluids, data analysis, molecular structures, sample preparation, high-throughput, quantification, identification''"
+        ]
+    },
+    "## Distribution of intensity": {
+        "content": "Intensity collects from LC/GC-MS always showed a right-skewed distribution. Log transformation is often necessary for further statistical analysis.",
+        "keywords": [
+            "Intensity, LC/GC-MS, right-skewed distribution, Log transformation, statistical analysis, mass spectrometry, analytical chemistry, metabolomics, expert, extract"
+        ]
+    },
+    "## Centering": {
+        "content": "For peak p of sample s in batch b, the corrected abundance I is:\n\n$$\\hat I_{p,s,b} = I_{p,s,b} - mean(I_{p,b}) + median(I_{p,qc})$$\n\nIf no quality control samples used, the corrected abundance I would be:\n\n$$\\hat I_{p,s,b} = I_{p,s,b} - mean(I_{p,b})$$",
+        "keywords": [
+            "peak, sample, batch, corrected abundance, mean, median, quality control, abundance, quality control samples, used"
+        ]
+    },
+    "## Scaling": {
+        "content": "For peak p of sample s in certain batch b, the corrected abundance I is:\n\n$$\\hat I_{p,s,b} = \\frac{I_{p,s,b} - mean(I_{p,b})}{std_{p,b}} * std_{p,qc,b} + mean(I_{p,qc,b})$$ If no quality control samples used, the corrected abundance I would be:\n\n$$\\hat I_{p,s,b} = \\frac{I_{p,s,b} - mean(I_{p,b})}{std_{p,b}}$$",
+        "keywords": [
+            "peak, sample, batch, corrected abundance, mean, standard deviation, quality control samples, used"
+        ]
+    },
+    "## Pareto Scaling": {
+        "content": "For peak p of sample s in certain batch b, the corrected abundance I is:\n\n$$\\hat I_{p,s,b} = \\frac{I_{p,s,b} - mean(I_{p,b})}{Sqrt(std_{p,b})} * Sqrt(std_{p,qc,b}) + mean(I_{p,qc,b})$$\n\nIf no quality control samples used, the corrected abundance I would be:\n\n$$\\hat I_{p,s,b} = \\frac{I_{p,s,b} - mean(I_{p,b})}{Sqrt(std_{p,b})}$$",
+        "keywords": [
+            "peak, sample, batch, corrected abundance, mean, standard deviation, quality control, abundance, correction, batch variation"
+        ]
+    },
+    "## Range Scaling": {
+        "content": "For peak p of sample s in certain batch b, the corrected abundance I is:\n\n$$\\hat I_{p,s,b} = \\frac{I_{p,s,b} - mean(I_{p,b})}{max(I_{p,b}) - min(I_{p,b})} * (max(I_{p,qc,b}) - min(I_{p,qc,b})) + mean(I_{p,qc,b})$$\n\nIf no quality control samples used, the corrected abundance I would be:\n\n$$\\hat I_{p,s,b} = \\frac{I_{p,s,b} - mean(I_{p,b})}{max(I_{p,b}) - min(I_{p,b})} $$",
+        "keywords": [
+            "peak, sample, batch, corrected abundance, abundance, mean, max, min, quality control, quality control samples"
+        ]
+    },
+    "## Level scaling": {
+        "content": "For peak p of sample s in certain batch b, the corrected abundance I is:\n\n$$\\hat I_{p,s,b} = \\frac{I_{p,s,b} - mean(I_{p,b})}{mean(I_{p,b})} * mean(I_{p,qc,b}) + mean(I_{p,qc,b})$$\n\nIf no quality control samples used, the corrected abundance I would be:\n\n$$\\hat I_{p,s,b} = \\frac{I_{p,s,b} - mean(I_{p,b})}{mean(I_{p,b})} $$",
+        "keywords": [
+            "peak, sample, batch, corrected abundance, mean, quality control samples, used, certain, expert, extract"
+        ]
+    },
+    "## Quantile": {
+        "content": "The idea of quantile calibration is that alignment of the intensities in certain samples according to quantile in each sample.\n\nHere is the demo:\n\n```{r quantile, cache=T}\nset.seed(42)\na <- rnorm(1000)",
+        "keywords": [
+            "quantile calibration, alignment, intensities, samples, quantile, each sample, demo, set.seed, rnorm"
+        ]
+    },
+    "## Ratio based calibration": {
+        "content": "This method calibrates samples by the ratio between qc samples in all samples and in certain batch.For peak p of sample s in certain batch b, the corrected abundance I is:\n\n$$\\hat I_{p,s,b} = \\frac{I_{p,s,b} * median(I_{p,qc})}{mean_{p,qc,b}}$$\n\n```{r ratio}\nset.seed(42)",
+        "keywords": [
+            "method, calibrates, samples, ratio, qc samples, peak, sample, corrected abundance, median, mean"
+        ]
+    },
+    "## Linear Normalizer": {
+        "content": "This method initially scales each sample so that the sum of all peak abundances equals one. In this study, by multiplying the median sum of all peak abundances across all samples,we got the corrected data.\n\n```{r Linear}\nset.seed(42)",
+        "keywords": [
+            "expert, metabolites, peak abundance, scaling, median, corrected data, samples, sum, multiplying, study"
+        ]
+    },
+    "## Internal standards": {
+        "content": "$$\\hat I_{p,s} = \\frac{I_{p,s} * median(I_{IS})}{I_{IS,s}}$$\n\nSome methods also use pooled calibration samples and multiple internal standard strategy to correct the data [@vanderkloet2009; @sysi-aho2007]. Also some methods only use QC samples to handle the data .",
+        "keywords": [
+            "expert, metabolomics, mass spectrometry, analytical chemistry, extract, 10 keywords, text, numbering, separate, not include"
+        ]
+    },
+    "## Supervised methods": {
+        "content": "",
+        "keywords": [
+            "Expert, Metabolites, Biological samples, Spectral data, Quantitative analysis, Molecular structure, Data interpretation, Biochemical pathways, Biomarkers, Sample preparation''"
+        ]
+    },
+    "## Regression calibration": {
+        "content": "Considering the batch effect of injection order, regress the data by a linear model to get the calibration.",
+        "keywords": [
+            "batch effect, injection order, linear model, calibration, data, regress, metabolites, analytical method, sample preparation, data analysis"
+        ]
+    },
+    "## Batch Normalizer": {
+        "content": "Use the total abundance scale and then fit with the regression line .",
+        "keywords": [
+            ", '\nExpert, Metabolomics, Mass spectrometry, Analytical chemistry, Total abundance scale, Regression line, Fit, Extract, Keywords, Text"
+        ]
+    },
+    "## Surrogate Variable Analysis(SVA)": {
+        "content": "We have a data matrix(M\\*N) with M stands for identity peaks from one sample and N stand for individual samples. For one sample, $X = (x_{i1},...,x_{in})^T$ stands for the normalized intensities of peaks. We use $Y = (y_i,...,y_m)^T$ stands for the group information of our data. Then we could build such models:\n\n$$x_{ij} = \\mu_i + f_i(y_i) + e_{ij}$$\n\n$\\mu_i$ stands for the baseline of the peak intensities in a normal state. Then we have:\n\n$$f_i(y_i) = E(x_{ij}|y_j) - \\mu_i$$\n\nstands for the biological variations caused by the our group, for example, whether treated by exposure or not.\n\nHowever, considering the batch effects, the real model could be:\n\n$$x_{ij} = \\mu_i + f_i(y_i) + \\sum_{l = 1}^L \\gamma_{li}p_{lj} + e_{ij}^*$$ $\\gamma_{li}$ stands for the peak-specific coefficient for potential factor $l$. $p_{lj}$ stands for the potential factors across the samples. Actually, the error item $e_{ij}$ in real sample could always be decomposed as $e_{ij} = \\sum_{l = 1}^L \\gamma_{li}p_{lj} + e_{ij}^*$ with $e_{ij}^*$ standing for the real random error in certain sample for certain peak.\n\nWe could not get the potential factors directly. Since we don't care the details of the unknown factors, we could estimate orthogonal vectors $h_k$ standing for such potential factors. Thus we have:\n\n$$\nx_{ij} = \\mu_i + f_i(y_i) + \\sum_{l = 1}^L \\gamma_{li}p_{lj} + e_{ij}^*\\\\ \n= \\mu_i + f_i(y_i) + \\sum_{k = 1}^K \\lambda_{ki}h_{kj} + e_{ij}\n$$\n\nHere is the details of the algorithm:\n\n> The algorithm is decomposed into two parts: detection of unmodeled factors and construction of surrogate variables",
+        "keywords": [
+            "Data matrix, Identity peaks, Normalized intensities, Group information, Models, Biological variations, Batch effects, Potential factors, Orthogonal vectors, Algorithm"
+        ]
+    },
+    "## Detection of unmodeled factors": {
+        "content": "-   Estimate $\\hat\\mu_i$ and $f_i$ by fitting the model $x_{ij} = \\mu_i + f_i(y_i) + e_{ij}$ and get the residual $r_{ij} = x_{ij}-\\hat\\mu_i - \\hat f_i(y_i)$. Then we have the residual matrix R.\n\n-   Perform the singular value decompositon(SVD) of the residual matrix $R = UDV^T$\n\n-   Let $d_l$ be the $l$th eigenvalue of the diagonal matrix D for $l = 1,...,n$. Set $df$ as the freedom of the model $\\hat\\mu_i + \\hat f_i(y_i)$. We could build a statistic $T_k$ as:\n\n$$T_k = \\frac{d_k^2}{\\sum_{l=1}^{n-df}d_l^2}$$\n\nto show the variance explained by the $k$th eigenvalue.\n\n-   Permute each row of R to remove the structure in the matrix and get $R^*$.\n\n-   Fit the model $r_{ij}^* = \\mu_i^* + f_i^*(y_i) + e^*_{ij}$ and get $r_{ij}^0 = r^*_{ij}-\\hat\\mu^*_i - \\hat f^*_i(y_i)$ as a null matrix $R_0$\n\n-   Perform the singular value decompositon(SVD) of the residual matrix $R_0 = U_0D_0V_0^T$\n\n-   Compute the null statistic:\n\n$$\nT_k^0 = \\frac{d_{0k}^2}{\\sum_{l=1}^{n-df}d_{0l}^2}\n$$\n\n-   Repeat permuting the row B times to get the null statistics $T_k^{0b}$\n\n-   Get the p-value for eigengene:\n\n$$p_k = \\frac{\\",
+        "keywords": [
+            "b\\'b\\'b\\'b\\'b\\'b\\'b\\'b\\'b\\'b\\'b\\'b\\'b\\'b\\'b\\'b\\'b\\'b\\'b\\'b\\'b\\'b\\'b\\'b\\'b}{"
+        ]
+    },
+    "## Construction of surrogate variables": {
+        "content": "-   Estimate $\\hat\\mu_i$ and $f_i$ by fitting the model $x_{ij} = \\mu_i + f_i(y_i) + e_{ij}$ and get the residual $r_{ij} = x_{ij}-\\hat\\mu_i - \\hat f_i(y_i)$. Then we have the residual matrix R.\n\n-   Perform the singular value decompositon(SVD) of the residual matrix $R = UDV^T$. Let $e_k = (e_{k1},...,e_{kn})^T$ be the $k$th column of V\n\n-   Set $\\hat K$ as the significant eigenvalues found by the first step.\n\n-   Regress each $e_k$ on $x_i$, get the p-value for the association.\n\n-   Set $\\pi_0$ as the proportion of the peak intensity $x_i$ not associate with $e_k$ and find the numbers $\\hat m =[1-\\hat \\pi_0 \\times m]$ and the index of the peaks associated with the eigenvalues\n\n-   Form the matrix $\\hat m_1 \\times N$, this matrix$X_r$ stand for the potential variables. As was done for R, get the eigengents of $X_r$ and denote these by $e_j^r$\n\n-   Let $j^* = argmax_{1\\leq j \\leq n}cor(e_k,e_j^r)$ and set $\\hat h_k=e_j^r$. Set the estimate of the surrogate variable to be the eigenvalue of the reduced matrix most correlated with the corresponding residual eigenvalue. Since the reduced matrix is enriched for peaks associated with this residual eigenvalue, this is a principled choice for the estimated surrogate variable that allows for correlation with the primary variable.\n\n-   Employ the $\\mu_i + f_i(y_i) + \\sum_{k = 1}^K \\gamma_{ki}\\hat h_{kj} + e_{ij}$ as the estimate of the ideal model $\\mu_i + f_i(y_i) + \\sum_{k = 1}^K \\gamma_{ki}h_{kj} + e_{ij}$\n\nThis method could found the potential unwanted variables for the data. SVA were introduced by Jeff Leek [@leek2008; @leek2007; @leek2012] and EigenMS package implement SVA with modifications including analysis of data with missing values that are typical in LC-MS experiments .",
+        "keywords": [
+            "Estimate, residual, matrix, singular value decomposition, regression, p-value, proportion, surrogate variable, eigenvalue, principal variable."
+        ]
+    },
+    "## RUV (Remove Unwanted Variation)": {
+        "content": "This method's performance is similar to SVA. Instead find surrogate variable from the whole dataset. RUA use control or pool QC to find the unwanted variances and remove them to find the peaks related to experimental design. However, we could also empirically estimate the control peaks by linear mixed model. RUA-random [@livera2015; @delivera2012] further use linear mixed model to estimate the variances of random error. A hierarchical approach RUV was recently proposed for metabolomics data. This method could be used with suitable control, which is common in metabolomics DoE.",
+        "keywords": [
+            "performance, SVA, surrogate variable, dataset, control, pool QC, unwanted variances, peaks, experimental design, linear mixed model"
+        ]
+    },
+    "## RRmix": {
+        "content": "RRmix also use a latent factor models correct the data . This method could be treated as linear mixed model version SVA. No control samples are required and the unwanted variances could be removed by factor analysis. This method might be the best choice to remove the unwanted variables with common experiment design.",
+        "keywords": [
+            "expert, metabolite, data correction, latent factor models, linear mixed model, SVA, control samples, unwanted variances, factor analysis, experiment design"
+        ]
+    },
+    "## Norm ISWSVR": {
+        "content": "It is a two-step approach via combining the best-performance internal standard correction with support vector regression normalization, comprehensively removing the systematic and random errors and matrix effects.",
+        "keywords": [
+            "two-step approach, internal standard correction, support vector regression, normalization, systematic errors, random errors, matrix effects, best-performance, comprehensively, removing"
+        ]
+    },
+    "## Method to validate the normalization": {
+        "content": "Various methods have been used for batch correction and evaluation. Simulation will ensure groud turth. Difference analysis would be a common method for evaluation. Then we could check whether this peak is true positive or false positive by settings of the simulation. Other methods need statistics or lots of standards to describ the performance of batch correction or normalization results.",
+        "keywords": [
+            "methods, batch correction, evaluation, simulation, ground truth, difference analysis, peak, true positive, false positive, settings"
+        ]
+    },
+    "## Software": {
+        "content": "-   [MetaboAnalystR](https://github.com/xia-lab/MetaboAnalystR) \n\n-   [caret](http://caret.r-forge.r-project.org/) could employ more than 200 statistical models in a general framework to build/select models. You could also show the variable importance for some of the models.\n\n-   [caretEnsemble](https://cran.r-project.org/web/packages/caretEnsemble/index.html) Functions for creating ensembles of caret models\n\n-   [pROC](https://cran.r-project.org/web/packages/pROC/index.html) Tools for visualizing, smoothing and comparing receiver operating characteristic (ROC curves). (Partial) area under the curve (AUC) can be compared with statistical tests based on U-statistics or bootstrap. Confidence intervals can be computed for (p)AUC or ROC curves.\n\n-   [gWQS](https://cran.r-project.org/web/packages/gWQS/index.html) Fits Weighted Quantile Sum (WQS) regressions for continuous, binomial, multinomial and count outcomes.\n\n-  Community ecology tool could be used to analysis metabolomic data.",
+        "keywords": [
+            "MetaboAnalystR, caret, caretEnsemble, pROC, gWQS, statistical models, variable importance, ensembles, receiver operating characteristic, weighted quantile sum."
+        ]
+    },
+    "## From Bottom-up to Top-down": {
+        "content": "Bottom-up analysis mean the model for each metabolite. In this case, we could find out which metabolite will be affected by our experiment design. However, take care of multiple comparison issue.\n\n$$\nmetabolite = f(control/treatment, co-variables)\n$$\n\nTop-down analysis mean the model for output. In this case, we could evaluate the contribution of each metabolites. You need variable selection to make a better model.\n\n$$\ncontrol/treatment = f(metabolite 1,metabolite 2,...,metaboliteN,co-varuables)\n$$\n\nFor omics study, you might need to integrate dataset from different sources.\n\n$$\ncontrol/treatment = f(metabolites, proteins, genes, miRNA,co-varuables)\n$$",
+        "keywords": [
+            "Bottom-up analysis, metabolite, experiment design, multiple comparison issue, model, co-variables, top-down analysis, output, variable selection, omics study, dataset integration"
+        ]
+    },
+    "## Pathway analysis": {
+        "content": "Pathway analysis maps annotated data into known pathway and make statistical analysis to find the influenced pathway or the compounds with high influences on certain pathway.",
+        "keywords": [
+            "Pathway analysis, annotated data, known pathway, statistical analysis, influenced pathway, compounds, high influences, certain pathway"
+        ]
+    },
+    "## Pathway Database": {
+        "content": "-   [SMPDB](http://smpdb.ca/view) (The Small Molecule Pathway Database) is an interactive, visual database containing more than 618 small molecule pathways found in humans. More than 70% of these pathways (\\>433) are not found in any other pathway database. The pathways include metabolic, drug, and disease pathways.\n\n-   [KEGG](https://www.genome.jp/kegg/) (Kyoto Encyclopedia of Genes and Genomes) is one of the most complete and widely used databases containing metabolic pathways (495 reference pathways) from a wide variety of organisms (\\>4,700). These pathways are hyperlinked to metabolite and protein/enzyme information. Currently KEGG has \\>17,000 compounds (from animals, plants and bacteria), 10,000 drugs (including different salt forms and drug carriers) and nearly 11,000 glycan structures.\n\n-   [BioCyc](https://biocyc.org/) is a collection of 14558 Pathway/Genome Databases (PGDBs), plus software tools for exploring them.\n\n-   [Reactome](https://reactome.org/what-is-reactome) is an open-source, open access, manually curated and peer-reviewed pathway database. Our goal is to provide intuitive bioinformatics tools for the visualization, interpretation and analysis of pathway knowledge to support basic and clinical research, genome analysis, modeling, systems biology and education.\n\n-   [WikiPathway](https://www.wikipathways.org/index.php/WikiPathways) is a database of biological pathways maintained by and for the scientific community.",
+        "keywords": [
+            "SMPDB, KEGG, BioCyc, Reactome, WikiPathway, Small Molecule Pathway Database, Kyoto Encyclopedia of Genes and Genomes, Pathway/Genome Databases, Bioinformatics tools, Visualization,"
+        ]
+    },
+    "## Pathway software": {
+        "content": "-   [Pathway Commons](http://www.pathwaycommons.org/) online tools for pathway analysis\n\n-   [RaMP](https://github.com/Mathelab/RaMP-DB) could make pathway analysis for batch search\n\n-   [metabox](https://github.com/kwanjeeraw/metabox) could make pathway analysis\n\n-   [impala](http://impala.molgen.mpg.de/) is used for pathway enrichment analysis\n\n-   [Metscape](http://metscape.med.umich.edu/) based on Debiased Sparse Partial Correlation (DSPC) algorithm  to make annotation.",
+        "keywords": [
+            "Pathway Commons, RaMP, metabox, impala, Metscape, batch search, pathway analysis, pathway enrichment analysis, annotation, DSPC algorithm"
+        ]
+    },
+    "## Network analysis": {
+        "content": "",
+        "keywords": [
+            "Expert, Metabolites, Biochemical pathways, Biomarkers, Spectral data, Metabolic profiling, Analytical techniques, Metabolite identification, Data analysis, Metabolic networks''"
+        ]
+    },
+    "## Omics integration": {
+        "content": "-   [Blast](https://blast.ncbi.nlm.nih.gov/Blast.cgi) finds regions of similarity between biological sequences. The program compares nucleotide or protein sequences to sequence databases and calculates the statistical significance.\n\n-   [The Omics Discovery Index (OmicsDI)](https://www.omicsdi.org/) provides a knowledge discovery framework across heterogeneous omics data (genomics, proteomics, transcriptomics and metabolomics).\n\n-   [Omics Data Integration Project](https://github.com/cran/mixOmics)\n\n-   Standardized multi-omics of Earth's microbiomes could check this GNPS based work.\n\n- Windows Scanning Multiomics: Integrated Metabolomics and Proteomics",
+        "keywords": [
+            "Blast, OmicsDI, Omics Data Integration Project, Standardized multi-omics, Earth's microbiomes, GNPS, Windows Scanning Multiomics, Integrated Metabolomics, Proteomics"
+        ]
+    },
+    "## Platform for metabolomics data analysis": {
+        "content": "Here is a list for related open source [projects](http://strimmerlab.org/notes/mass-spectrometry.html)",
+        "keywords": [
+            "expert, metabolomics, mass spectrometry, analytical chemistry, open source, projects, list, related, Strimmer Lab, notes"
+        ]
+    },
+    "## XCMS & XCMS online": {
+        "content": "[XCMS online](https://xcmsonline.scripps.edu/landing_page.php?pgcontent=mainPage) is hosted by Scripps Institute. If your datasets are not large, XCMS online would be the best option for you. Recently they updated the online version to support more functions for systems biology. They use metlin and iso metlin to annotate the MS/MS data. Pathway analysis is also supported. Besides, to accelerate the process, xcms online employed stream (windows only). You could use stream to connect your instrument workstation to their server and process the data along with the data acquisition automate. They also developed apps for xcms online, but I think apps for slack would be even cooler to control the data processing.\n\n[xcms](https://bioconductor.org/packages/release/bioc/html/xcms.html) is different from xcms online while they might share the same code. I used it almost every data to run local metabolomics data analysis. Recently, they will change their version to xcms 3 with major update for object class. Their data format would integrate into the MSnbase package and the parameters would be easy to set up for each step. Normally, I will use msconvert-IPO-xcms-xMSannotator-metaboanalyst as workflow to process the offline data. It could accelerate the process by parallel processing. However, if you are not familiar with R, you would better to choose some software below. For xcms, 1000 files will need around 5 hours to generate the peaks list on a regular workstation.\n\n[IPO](https://github.com/rietho/IPO) A Tool for automated Optimization of XCMS Parameters  and [Warpgroup](https://github.com/nathaniel-mahieu/warpgroup) is used for chromatogram subregion detection, consensus integration bound determination and accurate missing value integration. A case study to compare different xcms parameters with IPO can be found for GC-MS . Another option is AutoTuner, which are much faster than IPO. Recently, MetaboAnalystR 3.0 could also optimize the parameters for xcms while you need to perform the following analysis within this software. For IPO, ten files will need \\~12 hours to generate the optimized results on a regular workstation. [Paramounter](https://github.com/HuanLab/Paramounter) is a direct measurement of universal parameters to process metabolomics data in a \u201cWhite Box\u201d. Another research use machine learning method to compare different optimization methods and they are all better than the default setting of xcms. It could be extended to include ion mobility.\n\nCheck those papers for the XCMS based workflow[@forsberg2018; @huan2017; @mahieu2016a; @montenegro-burke2017; @domingo-almenara2020; @stancliffe2022]. For metlin related annotation, check those papers[@guijas2018; @tautenhahn2012; @xue2020; @domingo-almenara2018a].\n\n[MAIT](https://www.bioconductor.org/packages/release/bioc/html/MAIT.html) based on xcms and you could find source code [here](https://github.com/jpgroup/MAIT).\n\n[iMet-Q](http://ms.iis.sinica.edu.tw/comics/Software_iMet-Q.html) is an automated tool with friendly user interfaces for quantifying metabolites in full-scan liquid chromatography-mass spectrometry (LC-MS) data \n\ncompMS2Miner is an Automatable Metabolite Identification, Visualization, and Data-Sharing R Package for High-Resolution LC--MS Data Sets. Here is related papers [@edmands2017; @edmands2018; @edmands2015].\n\nmzMatch is a modular, open source and platform independent data processing pipeline for metabolomics LC/MS data written in the Java language, which could be coupled with xcms [@scheltema2011; @creek2012]. It also could be used for annotation with MetAssign.",
+        "keywords": [
+            "XCMS online, Scripps Institute, datasets, systems biology, metlin, iso metlin, pathway analysis, stream, data acquisition, automate"
+        ]
+    },
+    "## PRIMe": {
+        "content": "[PRIMe](http://prime.psc.riken.jp/Metabolomics_Software/) is from RIKEN and UC Davis. They update their database frequently. It supports mzML and major MS vendor formats. They defined own file format ABF and eco-system for omics studies. The software are updated almost everyday. You could use MS-DIAL for untargeted analysis and MRMOROBS for targeted analysis. For annotation, they developed MS-FINDER and statistic tools with excel. This platform could replaced the dear software from company and well prepared for MS/MS data analysis and lipidomics. They are open source, work on Windows and also could run within mathmamtics. However, they don't cover pathway analysis. Another feature is they always show the most recently spectral records from public repositories. You could always get the updated MSP spectra files for your own data analysis.\n\nFor PRIMe based workflow, check those papers[@lai2018; @matsuo2017; @treutler2016; @tsugawa2015; @tsugawa2016; @kind2018]. There are also extensions for their workflow and workflow for environmental science.",
+        "keywords": [
+            "PRIMe, RIKEN, UC Davis, database, mzML, MS vendor formats, ABF, omics studies, MS-DIAL, MRMOROBS"
+        ]
+    },
+    "## GNPS": {
+        "content": "[GNPS](http://gnps.%20ucsd.edu) is an open-access knowledge base for community-wide organization and sharing of raw, processed or identified tandem mass (MS/MS) spectrometry data. It's a straight forward annotation methods for MS/MS data. Feature-based molecular networking (FBMN) within GNPS could be coupled with xcms, openMS, MS-DIAL, MZmine2, and other popular software. GNPS also have a dashboard for online mass spectrometery data analysis.\n\nCheck those papers for GNPS and related projects[@aron2020; @nothias2020; @scheubert2017; @silva2018; @wang2016b;@bittremieux2023].",
+        "keywords": [
+            "GNPS, open-access, knowledge base, community-wide, organization, sharing, raw, processed, identified, tandem mass"
+        ]
+    },
+    "## OpenMS & SIRIUS": {
+        "content": "[OpenMS](https://www.openms.de/) is another good platform for mass spectrum data analysis developed with C++. You could use them as plugin of [KNIME](https://www.knime.org/). I suggest anyone who want to be a data scientist to get familiar with platform like KNIME because they supplied various API for different programme language, which is easy to use and show every steps for others. Also TOPPView in OpenMS could be the best software to visualize the MS data. You could always use the metabolomics workflow to train starter about details in data processing. pyOpenMS and OpenSWATH are also used in this platform. If you want to turn into industry, this platform fit you best because you might get a clear idea about solution and workflow.\n\nCheck those paper for OpenMS based workflow[@bertsch2011; @pfeuffer2017; @rost2014; @rost2016; @rurik2020; @alka2020;@pfeuffer2024].\n\nOpenMS could be coupled to SIRIUS 4 for annotation. [Sirius](https://bio.informatik.uni-jena.de/software/sirius/) is a new java-based software framework for discovering a landscape of de-novo identification of metabolites using single and tandem mass spectrometry. SIRIUS 4 project integrates a collection of our tools, including [CSI:FingerID](https://www.csi-fingerid.uni-jena.de/), [ZODIAC](https://bio.informatik.uni-jena.de/software/zodiac/) and [CANOPUS](https://bio.informatik.uni-jena.de/software/canopus/). Check those papers for SIRIUS based workflow[@duhrkop2019; @duhrkop2020a; @alka2020; @ludwig2020].",
+        "keywords": [
+            "OpenMS, KNIME, API, pyOpenMS, OpenSWATH, metabolomics workflow, data processing, SIRIUS 4, annotation, CSI:FingerID, ZODIAC, CANOPUS"
+        ]
+    },
+    "## MZmine 2": {
+        "content": "[MZmine 2](http://mzmine.github.io/) has three version developed on Java platform and the lastest version is included into [MSDK](https://msdk.github.io/). Similar function could be found from MZmine 2 as shown in XCMS online. However, MZmine 2 do not have pathway analysis. You could use metaboanalyst for that purpose. Actually, you could go into MSDK to find similar function supplied by [ProteoSuite](http://www.proteosuite.org) and [Openchrom](https://www.openchrom.net/). If you are a experienced coder for Java, you should start here.\n\nCheck those papers for MZmine based workflow[@pluskal2010; @pluskal2020].",
+        "keywords": [
+            "MZmine 2, Java platform, MSDK, XCMS online, pathway analysis, metaboanalyst, ProteoSuite, Openchrom, experienced coder, workflow"
+        ]
+    },
+    "## Emory MaHPIC": {
+        "content": "This platform is composed by several R packages from Emory University including [apLCMS](https://sourceforge.net/projects/aplcms/) to collect the data, [xMSanalyzer](https://sourceforge.net/projects/xmsanalyzer/) to handle automated pipeline for large-scale, non-targeted metabolomics data, [xMSannotator](https://sourceforge.net/projects/xmsannotator/) for annotation of LC-MS data and [Mummichog](https://code.google.com/archive/p/atcg/wikis/mummichog_for_metabolomics.wiki) for pathway and network analysis for high-throughput metabolomics. This platform would be preferred by someone from environmental science to study exposome.\n\nYou could check those papers for Emory workflow[@uppal2013; @uppal2017; @yu2009b; @li2013; @liu2020].",
+        "keywords": [
+            "platform, R packages, Emory University, apLCMS, xMSanalyzer, automated pipeline, non-targeted metabolomics data, xMSannotator, annotation, LC-MS data, Mummichog, pathway and network analysis"
+        ]
+    },
+    "## Others": {
+        "content": "- [PMDDA](https://yufree.github.io/pmdda/script.html) is a reproducible workflow for exhaustive MS2 data acquisition of MS1 features will data and script available online.\n\n- [tidymass](https://www.tidymass.org/) is an object-oriented reproducible analysis framework for LC\u2013MS data.\n\n- [R for mass spectrometry](https://www.rformassspectrometry.org/) is a R software collection for the analysis and interpretation of high throughput mass spectrometry assays.\n\n-   [MAVEN](http://genomics-pubs.princeton.edu/mzroll/index.php?show=index) from Princeton University [@melamud2010; @clasquin2012].\n\n-   [metabolomics](https://github.com/cran/metabolomics) is a CRAN package for analysis of metabolomics data.\n\n-   [autoGCMSDataAnal](http://software.tobaccodb.org/software/autogcmsdataanal) is a Matlab based comprehensive data analysis strategy for GC-MS-based untargeted metabolomics and [AntDAS2](http://software.tobaccodb.org/software/antdas2) provided An automatic data analysis strategy for UPLC-HRMS-based metabolomics[@yu2019; @zhang2020].\n\n-   [enviGCMS](https://github.com/yufree/enviGCMS) from environmental non-targeted analysis and [rmwf](https://github.com/yufree/rmwf) for reproducible metabolomics workflow [@yu2020; @yu2019a].\n\n-   Pseudotargeted metabolomics method [@zheng2020; @wang2016a].\n\n-   [pySM](https://github.com/alexandrovteam/pySM) provides a reference implementation of our pipeline for False Discovery Rate-controlled metabolite annotation of high-resolution imaging mass spectrometry data .\n\n-   [TinyMS](https://github.com/griquelme/tidyms) is a Python-Based Pipeline for Preprocessing LC--MS Data for Untargeted Metabolomics Workflows \n\n-   [MetaboliteDetector](https://md.tu-bs.de/) is a QT4 based software package for the analysis of GC/MS based metabolomics data .\n\n-   [W4M](http://workflow4metabolomics.org/) and [metaX](http://metax.genomics.cn/) could analysis data online [@giacomoni2015; @wen2017; @jalili2020].\n\n-   [FTMSVisualization](https://github.com/wkew/FTMSVisualization) is a suite of tools for visualizing complex mixture FT-MS data \n\n-   [magma](http://www.emetabolomics.org/magma) could predict and match MS/MS files.\n\n-   [metabCombiner](https://github.com/hhabra/metabCombiner) Paired Untargeted LC-HRMS Metabolomics Feature Matching and Concatenation of Disparately Acquired Data Sets\n\n-   [SLAW](https://github.com/zamboni-lab/SLAW) is a scalable and self-Optimizing processing workflow for Untargeted LC-MS with a docker image .\n\n-   [patRoon](https://github.com/rickhelmus/patRoon): open source software platform for environmental mass spectrometry based non-target screening .\n\n- 'shape-orientated' algorithm: A new 'shape-orientated' continuous wavelet transform (CWT)-based algorithm employing an adapted Marr wavelet (AMW) with a shape matching index (SMI), defined as peak height normalized wavelet coefficient for feature filtering, was developed for chromatographic peak detection and quantification. \n\n- automRm An R Package for Fully Automatic LC-QQQ-MS Data Preprocessing Powered by Machine Learning.  \n\n- [IDSL.UFA](https://ufa.idsl.me/)Intrinsic Peak Analysis (IPA) for HRMS Data. \n\n- [DEIMoS](https://github.com/pnnl/deimos): An Open-Source Tool for Processing High-Dimensional Mass Spectrometry Data \n\n- Omics Untargeted Key Script is a tools to make untargeted LC-MS metabolomic profiling with the latest computational features readily accessible in a ready-to-use unified manner to a research community.\n\n- [MetEx](http://www.metaboex.cn/MetEx) is a targeted extraction strategy for improving the coverage and accuracy of metabolite annotation.\n\n- Asari:Trackable and scalable LC-MS metabolomics data processing software in Python\n\n- NOMspectra: An Open-Source Python Package for Processing High Resolution Mass Spectrometry Data on Natural Organic Matter\n\n- MARS:A Multipurpose Software for Untargeted LC\u2212MS-Based Metabolomics and Exposomics with GUI in C++ \n\n- MeRgeION: a Multifunctional R Pipeline for Small Molecule LC-MS/MS Data Processing, Searching, and Organizing ",
+        "keywords": [
+            "- PMDDA, tidymass, R for mass spectrometry, MAVEN, metabolomics, autoGCMSDataAnal, AntDAS2, enviGCMS, rmwf, Pseudotargeted metabolomics method, py"
+        ]
+    },
+    "## Workflow Comparison": {
+        "content": "Here are some comparisons for different workflow and you could make selection based on their works[@myers2017; @weber2017; @li2018a;@liao2023].\n\n[xcmsrocker](https://github.com/yufree/xcmsrocker) is a docker image for metabolomics to compare R based software with template.",
+        "keywords": [
+            "comparisons, workflow, selection, works, xcmsrocker, docker image, R based software, template, metabolomics, expert"
+        ]
+    },
+    "## Project Setup": {
+        "content": "I suggest building your data analysis projects in RStudio (Click File - New project - New dictionary - Empty project). Then assign a name for your project. I also recommend the following tips if you are familiar with it.\n\n-   Use [git](https://git-scm.com/)/[github](https://github.com/) to make version control of your code and sync your project online.\n\n-   Don't use your name for your project because other peoples might cooperate with you and someone might check your data when you publish your papers. Each project should be a work for one paper or one chapter in your thesis.\n\n-   Use **workflow** document(txt or doc) in your project to record all of the steps and code you performed for this project. Treat this document as digital version of your experiment notebook\n\n-   Use **data** folder in your project folder for the raw data and the results you get in data analysis\n\n-   Use **figure** folder in your project folder for the figure\n\n-   Use **munuscript** folder in your project folder for the manuscript (you could write paper in rstudio with the help of template in [Rmarkdown](https://github.com/rstudio/rticles))\n\n-   Just double click $$yourprojectname$$.Rproj to start your project",
+        "keywords": [
+            "RStudio, Data analysis, Git, Github, Version control, Code, Papers, Thesis, Workflow, Digital experiment notebook"
+        ]
+    },
+    "## Data sharing": {
+        "content": "See this paper:\n\n-   [MetaboLights](http://www.ebi.ac.uk/metabolights/) EU based\n\n-   [The Metabolomics Workbench](http://www.metabolomicsworkbench.org/) US based\n\n-   [MetaboBank](https://mb2.ddbj.nig.ac.jp/) Japan based\n\n-   [MetabolomeXchange](http://www.metabolomexchange.org/site/) search engine\n\n-   [MetabolomeExpress](https://www.metabolome-express.org/) a public place to process, interpret and share GC/MS metabolomics datasets.",
+        "keywords": [
+            "MetaboLights, Metabolomics Workbench, MetaboBank, MetabolomeXchange, MetabolomeExpress, EU, US, Japan, search engine, public place."
+        ]
+    },
+    "## Contest": {
+        "content": "-   [CASMI](http://www.casmi-contest.org/) predict small molecular contest",
+        "keywords": [
+            "expert, metabolomics, mass spectrometry, analytical chemistry, extract, keywords, text, numbering, separate, CASMI"
+        ]
+    },
+    "## Data visualization": {
+        "content": "You could use [msxpertsuite](https://salsa.debian.org/debichem-team/msxpertsuite) for MS data visualization. It is biological mass spectrometry data visualization and mining with full JavaScript ability .\n\n[FTMSVisualization](https://github.com/wkew/FTMSVisualization) is a suite of tools for visualizing complex mixture FT-MS data .",
+        "keywords": [
+            "metabolomics, mass spectrometry data, visualization, mining, JavaScript, biological, tools, complex mixture, FT-MS, suite"
+        ]
+    },
+    "## Peak extraction": {
+        "content": "GC/LC-MS data are usually be shown as a matrix with column standing for retention times and row standing for masses after bin them into small cell.\n\n\n\nConversation from the mass-retention time matrix into a vector with selected MS peaks at certain retention time is the basic idea of Peak extraction. You could EIC for each mass to charge ratio and use the change of trace slope to determine whether there is a peak or not. Then we could make integration for this peak and get peak area and retention time.\n\n\n\nHowever, due to the accuracy of instrument, the detected mass to charge ratio would have some shift and EIC would fail if different scan get the intensity from different mass to charge ratio.\n\nIn the `matchedfilter` algorithm , they solve this issue by bin the data in m/z dimension. The adjacent chromatographic slices could be combined to find a clean signal fitting fixed second-derivative Gaussian with full width at half-maximum (fwhm) of 30s to find peaks with about 1.5-4 times the signal peak width. The the integration is performed on the fitted area.\n\n\n\nThe `Centwave` algorithm  based on detection of regions of interest(ROI) and the following Continuous Wavelet Transform (CWT) is preferred for high-resolution mass spectrum. ROI means a region with stable mass for a certain time. When we find the ROIs, the peak shape is evaluated and ROI could be extended if needed. This algorithm use `prefilter` to accelerate the processing speed. `prefilter` with 3 and 100 means the ROI should contain 3 scan with intensity above 100. Centwave use a peak width range which should be checked on pool QC. Another important parameter is `ppm`. It is the maximum allowed deviation between scans when locating regions of interest (ROIs), which is different from vendor number and you need to extend them larger than the company claimed. For `profparam`, it's used for fill peaks or align peaks instead of peak picking. `snthr` is the cutoff of signal to noise ratio.\n\nAn Open-source feature detection algorithm for non-target LC\u2013MS analytics could be found here to understand peak picking process. Pseudo F-ratio moving window could also be used to select untargeted region of interest for gas chromatography \u2013 mass spectrometry data.\n\n[mzRAPP](https://github.com/YasinEl/mzRAPP) could enables the generation of benchmark peak lists by using an internal set of known molecules in the analyzed data set to compare workflows.\n\nG-Aligner is a graph-based feature alignment method for untargeted LC\u2013MS-based metabolomics, which will consider the importance of feature matching.\n\nqBinning is a novel algorithm for constructing extracted ion chromatograms (EICs) based on statistical principles and without the need to set user parameters.\n\nMachine learning can also be used for feature extraxtion. Deep learning frame for LC-MS feature detection on 2D pseudo color image could improve the peak picking process . Another deep learning-assisted peak curation (NeatMS) can also be used for large-scale LC-MS metabolomics. A feature selection pipeline based on neural network and genetic algorithm could be applied for metabolomics data analysis.",
+        "keywords": [
+            "GC/LC-MS, matrix, retention times, masses, Peak extraction, EIC, trace slope, matchedfilter algorithm, m/z dimension, Centwave algorithm, ROI, Continuous Wavelet Transform, prefilter, ppm, profparam,"
+        ]
+    },
+    "## MS/MS": {
+        "content": "LibGen can generate high quality spectral libraries of Natural Products for EAD-, UVPD-, and HCD-High Resolution Mass Spectrometers.\n\n-   [MoNA](http://mona.fiehnlab.ucdavis.edu/) Platform to collect all other open source database\n\n-   [MassBank](http://www.massbank.jp/?lang=en)\n\n-   [GNPS](https://gnps.ucsd.edu/ProteoSAFe/static/gnps-splash.jsp) use inner correlationship in the data and make network analysis at peaks' level instand of annotated compounds to annotate the data.\n\n-   [ReSpect](http://spectra.psc.riken.jp/): phytochemicals\n\n-   [Metlin](https://metlin.scripps.edu/) is another useful online application for annotation.\n\n-   [LipidBlast](http://fiehnlab.ucdavis.edu/projects/LipidBlast): *in silico* prediction\n\n-   [Lipid Maps](http://www.lipidmaps.org/)\n\n-   [MZcloud](https://www.mzcloud.org/)\n\n-   [NIST](https://www.nist.gov/srd/nist-standard-reference-database-1a-v17): Not free\n\n-   [GMDB](https://jcggdb.jp/rcmg/glycodb/Ms_ResultSearch) a multistage tandem mass spectral database using a variety of structurally defined glycans.\n\n-   [HMDB](http://www.hmdb.ca/) is a freely available electronic database containing detailed information about small molecule metabolites found in the human body.\n\n-   [KEGG](https://www.genome.jp/kegg/compound/) is a collection of small molecules, biopolymers, and other chemical substances that are relevant to biological systems.",
+        "keywords": [
+            ""
+        ]
+    },
+    "## MRM": {
+        "content": "-   [decoMS2](https://pubs.acs.org/doi/10.1021/ac400751j) An Untargeted Metabolomic Workflow to Improve Structural Characterization of Metabolites. It requires two different collision energies, low (usually 0V) and high, in each precursor range to solve the mathematical equations.\n\n-   Data-Independent Targeted Metabolomics Method could connect MS1 and MRM \n\n-   [DecoID](https://github.com/pattilab/DecoID) python-based database-assisted deconvolution of MS/MS spectra.",
+        "keywords": [
+            "- Untargeted metabolomics\n- DecoMS2\n- Structural characterization\n- Collision energies\n- Precursor range\n- Mathematical equations\n- Data-independent targeted metabolomics\n- MS1\n- MRM\n- DecoID"
+        ]
+    },
+    "## DDA": {
+        "content": "The coverage of DDA could be enhanced by a feature classification strategy  or iterative process .",
+        "keywords": [
+            "expert, metabolomics, mass spectrometry, analytical chemistry, extract, keywords, text, numbering, separate, coverage"
+        ]
+    },
+    "## DIA": {
+        "content": "DIA methods could be summarized here including MSE, stepwise windows and random windows and here is comparison.\n\n-   [msPurity](https://pubs.acs.org/doi/10.1021/acs.analchem.6b04358) Automated Evaluation of Precursor Ion Purity for Mass Spectrometry-Based Fragmentation in Metabolomics \n\n-   [ULSA](https://pubs.acs.org/doi/suppl/10.1021/acs.est.8b00259/suppl_file/es8b00259_si_001.pdf) Deconvolution algorithm and a universal library search algorithm (ULSA) for the analysis of complex spectra generated via data-independent acquisition based on Matlab \n\n-   MS-DIAL was initially designed for DIA [@tsugawa2015; @treutler2016a]\n\n-   [DIA-Umpire](https://www.nature.com/articles/nmeth.3255) show a comprehensive computational framework for data-independent acquisition proteomics \n\n-   [MetDIA](https://pubs.acs.org/doi/abs/10.1021/acs.analchem.6b02122) could perform Targeted Metabolite Extraction of Multiplexed MS/MS Spectra Generated by Data-Independent Acquisition \n\n-   [MetaboDIA](https://sourceforge.net/projects/metabodia/) workflow build customized MS/MS spectral libraries using a user's own data dependent acquisition (DDA) data and to perform MS/MS-based quantification with DIA data, thus complementing conventional MS1-based quantification \n\n-   [SWATHtoMRM](https://pubs.acs.org/doi/10.1021/acs.analchem.7b05318) Development of High-Coverage Targeted Metabolomics Method Using SWATH Technology for Biomarker Discovery\n\n-   [Skyline](https://skyline.ms/project/home/software/Skyline/begin.view) is a freely-available and open source Windows client application for building Selected Reaction Monitoring (SRM) / Multiple Reaction Monitoring (MRM), Parallel Reaction Monitoring (PRM - Targeted MS/MS), Data Independent Acquisition (DIA/SWATH) and targeted DDA with MS1 quantitative methods and analyzing the resulting mass spectrometer data .\n\n-   [MSstats](https://github.com/MeenaChoi/MSstats) is an R-based/Bioconductor package for statistical relative quantification of peptides and proteins in mass spectrometry-based proteomic experiments. It is applicable to multiple types of sample preparation, including label-free workflows, workflows that use stable isotope labeled reference proteins and peptides, and work-flows that use fractionation. It is applicable to targeted Selected Reactin Monitoring(SRM), Data-Dependent Acquisiton(DDA or shotgun), and Data-Independent Acquisition(DIA or SWATH-MS). This github page is for sharing source and testing.\n\nOther related papers could be found here to cover SWATH and other topic in DIA[@bonner2018; @wang2019a]\n\n- [MetaboAnnotatoR](https://github.com/gggraca/MetaboAnnotatoR) is designed to perform metabolite annotation of features from LC-MS All-ion fragmentation (AIF) datasets, using ion fragment databases. \n\n- DIAMetAlyzer is a pipeline for assay library generation and targeted analysis with statistical validation.\n\n- MetaboMSDIA: A tool for implementing data-independent acquisition in metabolomic-based mass spectrometry analysis.\n\n- CRISP: a cross-run ion selection and peak-picking (CRISP) tool that utilizes the important advantage of run-to-run consistency of DIA and simultaneously examines the DIA data from the whole set of runs to filter out the interfering signals, instead of only looking at a single run at a time.",
+        "keywords": [
+            "DIA methods, MSE, stepwise windows, random windows, comparison, msPurity, ULSA, MS-DIAL, DIA-Umpire, MetDIA, MetaboDIA, SWATHtoMRM, Sky"
+        ]
+    },
+    "## Retention Time Correction": {
+        "content": "For single file, we could get peaks. However, we should make the peaks align across samples for as features and retention time corrections should be performed. The basic idea behind retention time correction is that use the high quality grouped peaks to make a new retention time. You might choose `obiwarp`(for dramatic shifts) or loess regression(fast) method to get the corrected retention time for all of the samples. Remember the original retention times might be changed and you might need cross-correct the data. After the correction, you could group the peaks again for a better cross-sample peaks list. However, if you directly use `obiwarp`, you don't have to group peaks before correction.\n\nThis paper show a matlab based shift correction methods. Retention time correction is a Parametric time warping process and this paper is a good start . Meanwhile, you could use MS2 for retention time correction. This work is a python based RI system and peak shift correction model, significantly enhancing alignment accuracy.",
+        "keywords": [
+            "single file, peaks, align, samples, features, retention time corrections, obiwarp, loess regression, cross-correct, group peaks"
+        ]
+    },
+    "## Filling missing values": {
+        "content": "Too many zeros or NA in peaks list are problematic for statistics. Then we usually need to integreate the area exsiting a peak. `xcms 3` could use profile matrix to fill the blank. They also have function to impute the NA data by replace missing values with a proportion of the row minimum or random numbers based on the row minimum. It depends on the user to select imputation methods as well as control the minimum fraction of features appeared in single group.\n\n\n\nWith many groups of samples, you will get another data matrix with column standing for peaks at certain retention time and row standing for samples after the Raw data pretreatment.\n\n",
+        "keywords": [
+            "zeros, NA, peaks list, statistics, integrate, area, profile matrix, fill, impute, missing values"
+        ]
+    },
+    "## Spectral deconvolution": {
+        "content": "Without structure information about certain compound, the peak extraction would suffer influence from other compounds. At the same retention time, co-elute compounds might share similar mass. Hard electron ionization methods such as electron impact ionization (EI), APPI suffer this issue. So it would be hard to distinguish the co-elute peaks' origin and deconvolution method[] could be used to separate different groups according to the similar chromatogragh behaviors. Another computational tool **eRah** could be a better solution for the whole process. Also the **ADAD-GC3.0** could also be helpful for such issue. Other solutions for GC could be found here[@styczynski2007; @tian2016; @du2013].",
+        "keywords": [
+            "structure information, peak extraction, co-elute compounds, retention time, electron ionization methods, electron impact ionization, APPI, distinguish, deconvolution method, computational tool, eRah, ADAD-GC3.0,"
+        ]
+    },
+    "## Dynamic Range": {
+        "content": "Another issue is the Dynamic Range. For metabolomics, peaks could be below the detection limit or over the detection limit. Such Dynamic range issues might raise the loss of information.",
+        "keywords": [
+            "expert, metabolomics, mass spectrometry, analytical chemistry, Dynamic Range, peaks, detection limit, loss of information, issue, over"
+        ]
+    },
+    "## Non-detects": {
+        "content": "Some of the data were limited by the detect of limitation. Thus we need some methods to impute the data if we don't want to lose information by deleting the NA or 0.\n\nTwo major imputation way could be used. The first way is use model-free method such as half the minimum of the values across the data, 0, 1, mean/median across the data( `enviGCMS` package could do this via `getimputation` function). The second way is use model-based method such as linear model, random forest, KNN, PCA. Try `simputation` package for various imputation methods. As mentioned before, you could also use `imputeRowMin` or `imputeRowMinRand` within `xcms` package to perform imputation.\n\nTobit regression is preferred for censored data. Also you might choose maximum likelihood estimation(Estimation of mean and standard deviation by MLE. Creating 10 complete samples. Pool the results from 10 individual analyses).\n\n\n\nAccording to Ronald Hites's simulation, measurements below the LOD (even missing measurements) with the LOD/2 or with the $LOD/\\sqrt2$ causes little bias and \"Any time you have a % non-detected \\>20%, for whatever reason, it is unlikely that the data set can give useful results.\"\n\nAnother study find random forest could be the best imputation method for missing at random (MAR), and missing completely at random (MCAR) data. Quantile regression imputation of left-censored data is the best imputation methods for left-censored missing not at random data .",
+        "keywords": [
+            "detect, limitation, impute, NA, 0, model-free, model-based, linear model, random forest, KNN, PCA, simputation, imputation methods, censored data, maximum likelihood estimation, MLE, complete samples"
+        ]
+    },
+    "## Over Detection Limit": {
+        "content": "**CorrectOverloadedPeaks** could be used to correct the Peaks Exceeding the Detection Limit issue .",
+        "keywords": [
+            "expert, metabolomics, mass spectrometry, analytical chemistry, extract, 10 keywords, text, numbering, separate, CorrectOverloadedPeaks, correct, peaks, exceeding, detection limit, issue"
+        ]
+    },
+    "## RSD/fold change Filter": {
+        "content": "Some peaks need to be rule out due to high RSD% and small fold changes compared with blank samples. A more general feature filtering for biomarker discovery can be found here and a detailed discussion on intensity thresholds could be found here.",
+        "keywords": [
+            "peaks, rule out, RSD%, fold changes, blank samples, general feature filtering, biomarker discovery, detailed discussion, intensity thresholds"
+        ]
+    },
+    "## Power Analysis Filter": {
+        "content": "As shown in $$Exprimental design(DoE)$$, the power analysis in metabolomics is ad-hoc since you don't know too much before you perform the experiment. However, we could perform power analysis after the experiment done. That is, we just rule out the peaks with a lower power for current experimental design.",
+        "keywords": [
+            "Experimental design, DoE, power analysis, metabolomics, ad-hoc, perform, experiment, rule out, peaks, lower power"
+        ]
+    },
+    "## Homogeneity study": {
+        "content": "In homogeneity study, the research purpose is about method validation in most cases. Pooled sample made from multiple samples or technical replicates from same population will be used. Variances within the samples should be attributed to factors other than the samples themselves. For example, we want to know if sample injection order will affect the intensities of the unknown peaks, one pooled sample or technical replicates samples should be used.\n\nAnother experimental design for homogeneity study will use biological replicates to find the common features from a group of samples. Biological replicates mean samples from same population with same biological process. For example, we wanted to know metabolites profiles of a certain species and we could collected lots of the individual samples from the population. Then only the peaks/compounds appeared in all samples will be used to describe the metabolites profiles of this species. Technical replicates could also be used with biological replicates.",
+        "keywords": [
+            "homogeneity study, method validation, pooled sample, technical replicates, variances, sample injection order, unknown peaks, experimental design, biological replicates, metabolites profiles"
+        ]
+    },
+    "## Heterogeneity study": {
+        "content": "In heterogeneity study, the research purpose is to find the differences among samples. You need at least a baseline to perform the comparison. Such baseline could be generated by random process, control samples or background knowledge. For example, outlier detection can be performed to find abnormal samples in unsupervised manners. Distribution or spatial analysis could be used to find geological relationship of known and unknown compounds. Temporal trend of metabolites profile could be found by time series or cohort studies. Clinical trial or random control trial is also an important class of heterogeneity studies. In this cases, you need at least two groups: treated group and control group. Also you could treat this group information as the one primary variable or primary variables to be explored for certain research purposes. In the following discussion about experimental design, we will use random control trail as model to discuss important issues.",
+        "keywords": [
+            "heterogeneity study, research purpose, differences, baseline, comparison, random process, control samples, background knowledge, outlier detection, unsupervised manners"
+        ]
+    },
+    "## Power analysis": {
+        "content": "Supposing we have control and treated groups, the numbers of samples in each group should be carefully calculated.For each metabolite, such comparison could be treated as one t-test. You need to perform a Power analysis to get the numbers. For example, we have two groups of samples with 10 samples in each group. Then we set the power at 0.9, which means one minus Type II error probability, the standard deviation at 1 and the significance level (Type 1 error probability) at 0.05. Then we will get the meaningful delta between the two groups should be higher than 1.53367 under this experiment design. Also we could set the delta to get the minimized numbers of the samples in each group. To get those data such as the standard deviation or delta for power analysis, you need to perform preliminary or pilot experiments.\n\n\n\nHowever, since sometimes we could not perform preliminary experiment, we could directly compute the power based on false discovery rate control. If the power is lower than certain value, say 0.8, we just exclude this peak as significant features.\n\nIn this review , author suggest to estimate an average $\\alpha$ according to this equation  and then use normal way to calculate the sample numbers:\n\n$$\n\\alpha_{ave} \\leq (1-\\beta_{ave})\\cdot q\\frac{1}{1+(1-q)\\cdot m_0/m_1}\n$$\n\nOther study  show a method based on simulation to estimate the sample size. They used BY correction to limit the influences from correlations. Other investigation could be found here[@saccenti2016; @blaise2013]. However, the nature of omics study make the power analysis hard to use one number for all metabolites and all the methods are trying to find a balance to represent more peaks with least samples.\n\n-   [MetSizeR](https://github.com/cran/MetSizeR) GUI Tool for Estimating Sample Sizes for metabolomics Experiments.\n\n-   [MSstats](https://www.bioconductor.org/packages/release/bioc/vignettes/MSstats/inst/doc/MSstats.html) Protein/Peptide significance analysis .\n\n-   [enviGCMS](https://cran.rstudio.com/web/packages/enviGCMS/index.html) GC/LC-MS Data Analysis for Environmental Science.",
+        "keywords": [
+            "Control group, treated group, samples, t-test, power analysis, standard deviation, significance level, delta, false discovery rate, sample size estimation"
+        ]
+    },
+    "## Optimization": {
+        "content": "One experiment can contain lots of factors with different levels and only one set of parameters for different factors will show the best sensitivity or reproducibility for certain study. To find this set of parameters, Plackett-Burman Design (PBD), Response Surface Methodology (RSM), Central Composite Design (CCD), and Taguchi methods could be used to optimize the parameters for metabolomics study. The target could be the quality of peaks, the numbers of peaks, the stability of peaks intensity, and/or the statistics of the combination of those targets. You could check those paper for details[@jacyna2019; @box2005].",
+        "keywords": [
+            "experiment, factors, levels, sensitivity, reproducibility, Plackett-Burman Design, Response Surface Methodology, Central Composite Design, Taguchi methods, optimization"
+        ]
+    },
+    "## Pooled QC": {
+        "content": "Pooled QC samples are unique and very important for metabolomics study. Every 10 or 20 samples, a pooled sample from all samples and blank sample in one study should be injected as quality control samples. Pooled QC samples contain the changes during the instrumental analysis and blank samples could tell where the variances come from. Meanwhile the cap of sequence should old the column with pooled QC samples. The injection sequence should be randomized. Those papers[@phapale2020; @dudzik2018; @dunn2012; @broadhurst2018;@broeckling2023;@gonzalez-dominguez2024] should be read for details.\n\nIf there are other co-factors, a linear model or randomizing would be applied to eliminate their influences. You need to record the values of those co-factors for further data analysis. Common co-factors in metabolomics studies are age, gender, location, etc.\n\nIf you need data correction, some background or calibration samples are required. However, control samples could also be used for data correction in certain DoE.\n\nAnother important factors are instrumentals. High-resolution mass spectrum is always preferred. As shown in Lukas's study :\n\n> the most effective mass resolving powers for profiling analyses of metabolite rich biofluids on the Orbitrap Elite were around 60000-120000 fwhm to retrieve the highest amount of information. The region between 400-800 m/z was influenced the most by resolution.\n\nHowever, elimination of peaks with high RSD% within group were always omitted by most study. Based on pre-experiment, you could get a description of RSD% distribution and set cut-off to use stable peaks for further data analysis. To my knowledge, 30% is suitable considering the batch effects.\n\nAdding certified reference material or standard reference material will help to evaluate the quality large scale data collocation or important metabolites[@wise2022; @wright2022].\n\nFor quality control in long term, ScreenDB provide a data analysis strategy for HRMS data founded on structured query language database archiving.\n\nAVIR develops a computational solution to automatically recognize metabolic features with computational variation in a metabolomics data set.",
+        "keywords": [
+            "Pooled QC samples, instrumental analysis, blank samples, injection sequence, linear model, co-factors, data correction, control samples, instrumentals, high-resolution mass spectrum, RSD%, certified reference material, standard reference material, quality control,"
+        ]
+    },
+    "## History": {
+        "content": "",
+        "keywords": [
+            "expert, metabolites, compounds, biochemistry, biomolecules, biological systems, chemical reactions, data analysis, detection techniques, molecular structures''"
+        ]
+    },
+    "## History of Mass Spectrometry": {
+        "content": "Here is a historical commentary for mass spectrometry. In details, here is a summary:\n\n-   1913, Sir Joseph John Thomson \"Rays of Positive Electricity and Their Application to Chemical Analyses.\"\n\n\n\n-   Petroleum industry bring mass spectrometry from physics to chemistry\n\n-   The first commercial mass spectrometer is from Consolidated Engineering Corp to analysis simple gas mixtures from petroleum\n\n-   In World War II, U.S. use mass spectrometer to separate and enrich isotopes of uranium in Manhattan Project\n\n-   U.S. also use mass spectrometer for organic compounds during wartime and extend the application of mass spectrometer\n\n-   1946, TOF, William E. Stephens\n\n-   1970s, quadrupole mass analyzer\n\n-   1970s, R. Graham Cooks developed mass-analyzed ion kinetic energy spectrometry, or MIKES to make MRM analysis for multi-stage mass sepctrometry\n\n-   1980s, MALDI rescue TOF and mass spectrometry move into biological application\n\n-   1990s, Orbitrap mass spectrometry\n\n-   2010s, Aperture Coding mass spectrometry",
+        "keywords": [
+            "historical commentary, Sir Joseph John Thomson, Rays of Positive Electricity, Chemical Analyses, Petroleum industry, physics, first commercial mass spectrometer, Consolidated Engineering Corp, simple gas mixtures, World War II, U.S., separate, enrich"
+        ]
+    },
+    "## History of Metabolomcis": {
+        "content": "You could check this report. According to this book section:\n\n\n\n-   2000-1500 BC some traditional Chinese doctors who began to evaluate the glucose level in urine of diabetic patients using ants\n\n-   300 BC ancient Egypt and Greece that traditionally determine the urine taste to diagnose human diseases\n\n-   1913 Joseph John Thomson and Francis William Aston mass spectrometry\n\n-   1946 Felix Bloch and Edward Purcell Nuclear magnetic resonance\n\n-   late 1960s chromatographic separation technique\n\n-   1971 Pauling's research team \"Quantitative Analysis of Urine Vapor and Breath by Gas--Liquid Partition Chromatography\"\n\n-   Willmitzer and his research team pioneer group in metabolomics which suggested the promotion of the metabolomics field and its potential applications from agriculture to medicine and other related areas in the biological sciences\n\n-   2007 Human Metabolome Project consists of databases of approximately 2500 metabolites, 1200 drugs, and 3500 food components\n\n-   post-metabolomics era high-throughput analytical techniques",
+        "keywords": [
+            "traditional Chinese medicine, glucose level, urine, diabetic patients, ants, ancient Egypt, ancient Greece, urine taste, diagnose, human diseases, Joseph John Thomson, Francis William Aston, Felix Bloch, Edward Purcell, Nuclear magnetic resonance, chromat"
+        ]
+    },
+    "## Defination": {
+        "content": "Metabolomics is actually a comprehensive analysis with identification and quantification of both known and unknown compounds in an unbiased way. Metabolic fingerprinting is working on fast classification of samples based on metabolite data without quantifying or identification of the metabolites. Metabolite profiling always need a pre-defined metabolites list to be quantification.\n\nMeanwhile, targeted and untargeted metabolomics are also used in publications. For targeted metabolomics, the majority of the molecules within a biological pathway or a defined group of related metabolites are determined. Sometimes broad collection of known metabolites could also be referred as targeted analysis. Untargeted analysis detect all of possible metabolites unbiased in the samples of interest. A similar concept called non-targeted analysis/screen is actually describe the similar studies or workflow.",
+        "keywords": [
+            "Metabolomics, comprehensive analysis, identification, quantification, unknown compounds, unbiased, metabolic fingerprinting, fast classification, metabolite data, pre-defined metabolites list"
+        ]
+    },
+    "## Reviews and tutorials": {
+        "content": "Some nice reviews and tutorials related to this workflow could be found in those papers or directly online:",
+        "keywords": [
+            "expert, metabolomics, mass spectrometry, analytical chemistry, workflow, reviews, tutorials, papers, online"
+        ]
+    },
+    "## Workflow": {
+        "content": "",
+        "keywords": [
+            "Expert, Metabolites, Biomolecules, Sample preparation, Spectral data, Biochemical pathways, Quantitative analysis, Bioinformatics, Metabolite profiling, Data interpretation''"
+        ]
+    },
+    "## Data analysis": {
+        "content": "You could firstly read those papers[@barnes2016; @kusonmano2016; @madsen2010; @uppal2016; @alonso2015] to get the concepts and issues for data analysis in metabolomics. Then this paper could be treated as a step-by-step tutorial. For GC-MS based metabolomics, check this paper.\n\n-  A guide could be used choose a inofrmatics software and tools for lipidomics.\n\n-   For annotation, this paper is a well organized review.\n\n-   For database used in metabolomics, you could check this review.\n\n-   For metabolomics software, check this series of reviews for each year[@misra2016; @misra2017; @misra2018].\n\n-   For open sourced software, those reviews[@chang2021; @spicer2017; @dryden2017] could be a good start.\n\n-   For DIA or DDA metabolomics, check those papers[@fenaille2017; @bilbao2015].\n\nHere is the slides for metabolomics data analysis workshop and I have made presentations twice in UWaterloo and UC Irvine.\n\n-   [Introduction](http://yufree.github.io/presentation/metabolomics/introduction",
+        "keywords": [
+            "-   [Data preprocessing](http://yufree.github.io/presentation/metabolomics/data-preprocessing')\n\n-   [Data analysis](http://yufree.github.io/presentation/metabolomics/data-analysis')\n\n-   [Statistical"
+        ]
+    },
+    "## Application": {
+        "content": "-   For environmental research related metabolomics or exposome, check those papers[@matich2019; @tang2020; @warth2017; @bundy2009].\n\n-   For toxicology, check this paper.\n\n-   Check this piece for drug discovery and precision medicine.\n\n-   For food chemistry, check this paper, this paper for livestock and those papers for nutrition[@allam-ndoul2016; @jones2012; @muller2020].\n\n-   For disease related metabolomics such as oncology, Cardiovascular . This paper cover the metabolomics realted clinic research.\n\n-   For plant science, check those paper[@sumner2003; @jorge2016a; @hansen2018].\n\n-   For single cell metabolomics analysis, check here[@fessenden2016; @zenobi2013; @ali2019; @hansen2018].\n\n-   For gut microbiota, check here.",
+        "keywords": [
+            "environmental research, exposome, papers, toxicology, drug discovery, precision medicine, food chemistry, livestock, nutrition, disease, oncology, cardiovascular, clinic research, plant science, single cell metabolomics analysis, gut microbiota"
+        ]
+    },
+    "## Challenge": {
+        "content": "General challenge for metabolomics studies could be found here [@schymanski2017; @uppal2016; @schrimpe-rutledge2016; @wolfender2015].\n\n-   For reproducible research, check those papers [@du2022; @place2021; @verhoeven2020; @mangul2019; @wallach2018; @hites2018; @considine2017; @sarpe2017]. To match data from different LC system, [M2S](https://github.com/rjdossan/M2S) could be used.\n\n-   Quantitative Metabolomics related issues could be found here[@kapoore2016b; @jorge2016a; @lv2022; @vitale2022].\n\n-   For quality control issues, check here[@dudzik2018; @siskos2017; @sumner2007; @place2021;@broeckling2023;@gonzalez-dominguez2024]. You might also try postcolumn infusion as a quality control tool.",
+        "keywords": [
+            "General challenge, metabolomics studies, reproducible research, papers, data, LC system, M2S, quantitative metabolomics, issues, quality control, postcolumn infusion"
+        ]
+    },
+    "## Trends in Metabolomics": {
+        "content": "",
+        "keywords": [
+            "expert, metabolites, biomarkers, analysis, compounds, biological systems, identification, quantification, sample preparation, data analysis''"
+        ]
+    },
+    "## Issues in annotation": {
+        "content": "The major issue in annotation is the redundancy peaks from same metabolite. Unlike genomes, peaks or features from peak selection are not independent with each other. Adducts, in-source fragments and isotopes would lead to wrong annotation. A common solution is that use known adducts, neutral losses, molecular multimers or multiple charged ions to compare mass distances.\n\nAnother issue is about the MS/MS database. Only 10% of known metabolites in databases have experimental spectral data. Thus *in silico* prediction is required. Some works try to fill the gap between experimental data, theoretical values(from chemical database like chemspider) and prediction together. Here is a nice review about MS/MS prediction.",
+        "keywords": [
+            "Annotation, Redundancy peaks, Genomes, Independent, Adducts, In-source fragments, Isotopes, Common solution, Known adducts, Neutral losses"
+        ]
+    },
+    "## Peak misidentification": {
+        "content": "-   Isomer\n\nUse separation methods such as chromatography, ion mobility MS, MS/MS. Reversed-phase ion-pairing chromatography and HILIC is useful. Chemical derivatization is another option.\n\n-   Interfering compounds\n\n20ppm is the least exact mass accuracy for HRMS.\n\n-   In-source degradation products",
+        "keywords": [
+            ""
+        ]
+    },
+    "## Annotation v.s. identification": {
+        "content": "According to the definition from the Chemical Analysis Working Group of the Metabolomics Standards Intitvative[@sumner2007; @viant2017]. Four levels of confidence could be assigned to identification:\n\n-   Level 1 'identified metabolites'\n-   Level 2 'Putatively annotated compounds'\n-   Level 3 'Putatively characterised compound classes'\n-   Level 4 'Unknown'\n\nIn practice, data analysis based annotation could reach level 2. For level 1, we need at extra methods such as MS/MS, retention time, accurate mass, 2D NMR spectra, and so on to confirm the compounds. However, standards are always required for solid proof.\n\nFor specific group of compounds such as PFASs, the communication of confidence level could be slightly different.\n\nThrough MS/MS seemed a required step for identification, recent study found ESI might also generate fragments ions for structure identification [@xue2020a; @xue2021;@bernardo-bermejo2023;@xue2023].",
+        "keywords": [
+            "Chemical Analysis Working Group, Metabolomics Standards Initiative, identification, metabolites, annotated compounds, characterised compound classes, unknown, data analysis, MS/MS, retention time, accurate mass, 2D NMR spectra, standards,"
+        ]
+    },
+    "## Molecular Formula Assignment": {
+        "content": "Cheminformatics will help for MS annotation. The first task is molecular formula assignment. For a given accurate mass, the formula should be constrained by predefined element type and atom number, mass error window and rules of chemical bonding, such as double bond equivalent (DBE) and the nitrogen rule. The nitrogen rule is that an odd nominal molecular mass implies also an odd number of nitrogen. This rule should only be used with nominal (integer) masses. Degree of unsaturation or DBE use rings-plus-double-bonds equivalent (RDBE) values, which should be interger. The elements oxygen and sulphur were not taken into account. Otherwise the molecular formula will not be true.\n\n$$RDBE = C+Si - 1/2(H+F+Cl+Br+I) + 1/2(N+P)+1 $$\n\nTo assign molecular formula to a mass to charge ratio, Seven Golden Rules  for heuristic filtering of molecular formulas should be considered:\n\n-   Apply heuristic restrictions for number of elements during formula generation. This is the table for known compounds:\n\n\n\n-   Perform LEWIS and SENIOR check. The LEWIS rule demands that molecules consisting of main group elements, especially carbon, nitrogen and oxygen, share electrons in a way that all atoms have completely filled s, p-valence shells ('[octet rule](https://en.wikipedia.org/wiki/Octet_rule)'). Senior's theorem requires three essential conditions for the existence of molecular graphs\n\n    -   The sum of valences or the total number of atoms having odd valences is even;\n\n    -   The sum of valences is greater than or equal to twice the maximum valence;\n\n    -   The sum of valences is greater than or equal to twice the number of atoms minus 1.\n\n-   Perform isotopic pattern filter. Isotope ratio abundance was included in the algorithm as an additional orthogonal constraint, assuming high quality data acquisitions, specifically sufficient ion statistics and high signal/noise ratio for the detection of the M+1 and M+2 abundances. For monoisotopic elements (F, Na, P, I) this rule has no impact. isotope pattern will be useful for brominated, chlorinated small molecules and sulphur-containing peptides.\n\n-   Perform H/C ratio check (hydrogen/carbon ratio). In most cases the hydrogen/carbon ratio does not exceed H/C \\> 3 with rare exception such as in methylhydrazine (CH6N2). Conversely, the H/C ratio is usually smaller than 2, and should not be less than 0.125 like in the case of tetracyanopyrrole (C8HN5).\n\n-   Perform NOPS ratio check (N, O, P, S/C ratios).\n\n\n\n-   Perform heuristic HNOPS probability check (H, N, O, P, S/C high probability ratios)\n\n\n\n-   Perform TMS check (for GC-MS if a silylation step is involved). For TMS derivatized molecules detected in GC/MS analyses, the rules on element ratio checks and valence tests are hence best applied after TMS groups are subtracted, in a similar manner as adducts need to be first recognized and subtracted in LC/MS analyses.\n\nSeven Golden Rules were built for GC-MS and Hydrogen Rearrangement Rules were major designed for LC-CID-MS/MS. Based on extensively curated database records and enthalpy calculations, \"hydrogen rearrangement (HR) rules\" could be extending the even-electron rule for carbon (C) and heteroatoms, oxygen (O), nitrogen (N), phosphorus (P), and sulfur (S). They used high abundance MS/MS peaks that exceeded 10% of their base peaks to identify common features in terms of 4 HR rules for positive mode and 5 HR rules for negative mode.\n\nSeven Golden Rules and Hydrogen Rearrangement Rules might also be captured by statistical models. However, such heuristic rules could reduce the searching space of possible formula.\n\n[molgen](http://molgen.de) generating all structures (connectivity isomers, constitutions) that correspond to a given molecular formula, with optional further restrictions, e.g. presence or absence of particular substructures .\n\n[mfFinder](http://www.chemcalc.org/mf_finder/mfFinder_em_new) can predict formula based on accurate mass .\n\nRAMSI is the robust automated mass spectra interpretation and chemical formula calculation method using mixed integer linear programming optimization .\n\nHere is some other Cheminformatics tools, which could be used to assign meaningful formula or structures for mass spectra.\n\n-   [RDKit](https://www.rdkit.org/) Open-Source Cheminformatics Software\n-   [cdk](https://sourceforge.net/projects/cdk/) The Chemistry Development Kit (CDK) is a scientific, LGPL-ed library for bio- and cheminformatics and computational chemistry written in Java .\n-   [Open Babel](http://openbabel.org/wiki/Main_Page) Open Babel is a chemical toolbox designed to speak the many languages of chemical data .\n-   [ClassyFire](http://classyfire.wishartlab.com/) is a tool for automated chemical classification with a comprehensive, computable taxonomy .\n- BUDDY can perform molecular formula discovery via bottom-up MS/MS interrogation.",
+        "keywords": [
+            "Cheminformatics, MS annotation, molecular formula assignment, mass error window, chemical bonding, double bond equivalent, nitrogen rule, degree of unsaturation, RDBE, oxygen, sulphur, heuristic filtering, LEWIS check, SEN"
+        ]
+    },
+    "## Redundant peaks": {
+        "content": "Full scan mass spectra always contain lots of redundant peaks such as adducts, isotope, fragments, multiple charged ions and other oligomers. Such peaks dominated the features table[@xu2015; @sindelar2020; @mahieu2017]. Annotation tools could label those peaks either by known list or frequency analysis of the paired mass distances[@ju2020; @kouril2020].",
+        "keywords": [
+            "Full scan, Mass spectra, Redundant peaks, Adducts, Isotope, Fragments, Multiple charged ions, Oligomers, Features table, Annotation tools"
+        ]
+    },
+    "## Adducts list": {
+        "content": "You could find adducts list [here](https://github.com/stanstrup/commonMZ) from commonMZ project.",
+        "keywords": [
+            "expert, metabolomics, mass spectrometry, analytical chemistry, extract, 10, keywords, text, numbering, separate, commonMZ, project"
+        ]
+    },
+    "## Isotope": {
+        "content": "Here is [Isotope](https://www.envipat.eawag.ch/index.php) pattern prediction.",
+        "keywords": [
+            "expert, metabolites, biomarkers, identification, quantification, biological systems, chemical compounds, spectrometry, analysis, prediction"
+        ]
+    },
+    "## CAMERA": {
+        "content": "Common [annotation](https://bioconductor.org/packages/release/bioc/html/CAMERA.html) for xcms workflow.",
+        "keywords": [
+            "Common, annotation, xcms workflow, bioconductor, packages, release, bioc, html, CAMERA"
+        ]
+    },
+    "## RAMClustR": {
+        "content": "The software could be found [here](https://github.com/cbroeckl/RAMClustR) [@broeckling2014; @broeckling2016]. The package included a vignette to follow.",
+        "keywords": [
+            "software, found, github, broeckling2014, broeckling2016, package, included, vignette, follow"
+        ]
+    },
+    "## BioCAn": {
+        "content": "BioCAn combines the results from database searches and in silico fragmentation analyses and places these results into a relevant biological context for the sample as captured by a metabolic model .",
+        "keywords": [
+            "Expert, Metabolomics, Mass spectrometry, Analytical chemistry, Database searches, In silico fragmentation analyses, Biological context, Sample, Metabolic model, BioCAn"
+        ]
+    },
+    "## mzMatch": {
+        "content": "[mzMatch](https://github.com/andzajan/mzmatch.R) is a modular, open source and platform independent data processing pipeline for metabolomics LC/MS data written in the Java language. [@chokkathukalam2013; @scheltema2011] and MetAssign is a probabilistic annotation method using a Bayesian clustering approach, which is part of mzMatch.",
+        "keywords": [
+            "modular, open source, platform independent, data processing pipeline, LC/MS data, Java language, Chokkathukalam et al., Scheltema et al., probabilistic annotation, Bayesian clustering approach"
+        ]
+    },
+    "## xMSannotator": {
+        "content": "The software could be found [here](https://github.com/yufree/xMSannotator).",
+        "keywords": [
+            "expert, metabolomics, mass spectrometry, analytical chemistry, software, github, xMSannotator"
+        ]
+    },
+    "## mWise": {
+        "content": "[mWise](https://github.com/b2slab/mWISE) is an Algorithm for Context-Based Annotation of Liquid Chromatography--Mass Spectrometry Features through Diffusion in Graphs.",
+        "keywords": [
+            "Algorithm, Context-based, Annotation, Liquid chromatography, Features, Diffusion, Graphs, mWISE, Liquid chromatography-mass spectrometry, Metabolites"
+        ]
+    },
+    "## MAIT": {
+        "content": "You could find source code [here](https://github.com/jpgroup/MAIT).",
+        "keywords": [
+            "expert, metabolomics, mass spectrometry, analytical chemistry, extract, keywords, text, numbering, separate, source code"
+        ]
+    },
+    "## pmd": {
+        "content": "[Paired Mass Distance(PMD)](https://github.com/yufree/pmd) analysis for GC/LC-MS based nontarget analysis to remove redundant peaks.",
+        "keywords": [
+            "Paired Mass Distance, PMD analysis, GC-MS, LC-MS, nontarget analysis, redundant peaks, metabolites, data analysis, feature selection, metabolomics research"
+        ]
+    },
+    "## nontarget": {
+        "content": "[nontarget](https://github.com/blosloos/nontarget) could find Isotope & adduct peak grouping, and perform homologue series detection .",
+        "keywords": [
+            "expert, metabolomics, mass spectrometry, analytical chemistry, extract, keywords, text, numbering, separate, nontarget, find, Isotope, adduct peak grouping, perform, homologue series detection"
+        ]
+    },
+    "## Binner": {
+        "content": "[Binner](https://binner.med.umich.edu/) Deep annotation of untargeted LC-MS metabolomics data ",
+        "keywords": [
+            "expert, metabolomics, mass spectrometry, analytical chemistry, extract, 10 keywords, text, numbering, separate, Binner, Deep annotation, untargeted, LC-MS, data"
+        ]
+    },
+    "## mz.unity": {
+        "content": "You could find source code [here](https://github.com/nathaniel-mahieu/mz.unity)  and it's for detecting and exploring complex relationships in accurate-mass mass spectrometry data.",
+        "keywords": [
+            "expert, metabolomics, mass spectrometry data, relationships, accurate-mass, source code, detecting, exploring, complex, mz.unity"
+        ]
+    },
+    "## MS-FLO": {
+        "content": "[ms-flo](https://bitbucket.org/fiehnlab/ms-flo/src/657d85ec7bdd?at=master) A Tool To Minimize False Positive Peak Reports in Untargeted Liquid Chromatography--Mass Spectroscopy (LC-MS) Data Processing .",
+        "keywords": [
+            "expert, metabolomics, mass spectrometry, analytical chemistry, extract, 10 keywords, text, numbering, separate, false positive, peak reports, untargeted, liquid chromatography, data processing"
+        ]
+    },
+    "## CliqueMS": {
+        "content": "CliqueMS is a computational tool for annotating in-source metabolite ions from LC-MS untargeted metabolomics data based on a coelution similarity network .",
+        "keywords": [
+            "computational tool, annotating, in-source metabolite ions, LC-MS, untargeted metabolomics data, coelution similarity network"
+        ]
+    },
+    "## InterpretMSSpectrum": {
+        "content": "This [package](https://github.com/cran/InterpretMSSpectrum) is for annotate and interpret deconvoluted mass spectra (mass\\*intensity pairs) from high resolution mass spectrometry devices. You could use this package to find molecular ions for GC-MS .",
+        "keywords": [
+            "annotate, interpret, deconvoluted, mass spectra, high resolution, devices, molecular ions, GC-MS, package, find"
+        ]
+    },
+    "## NetID": {
+        "content": "NetID is a global network optimization approach to annotate untargeted LC-MS metabolomics data.",
+        "keywords": [
+            "expert, metabolomics, mass spectrometry, analytical chemistry, extract, keywords, text, numbering, separate, global network optimization, annotate, untargeted, LC-MS data"
+        ]
+    },
+    "## ISfrag": {
+        "content": "De Novo Recognition of In-Source Fragments for Liquid Chromatography--Mass Spectrometry Data",
+        "keywords": [
+            "De Novo, Recognition, In-Source Fragments, Liquid Chromatography, Data, Metabolites, Identification, Spectral Matching, High-Resolution, Tandem Mass Spectrometry"
+        ]
+    },
+    "## FastEI": {
+        "content": "Ultra-fast and accurate electron ionization mass spectrum matching for compound identification with million-scale in-silico library",
+        "keywords": [
+            "Ultra-fast, accurate, electron ionization, compound identification, million-scale, in-silico library, spectrum matching, metabolite, detection, high-throughput"
+        ]
+    },
+    "## MS1 MS2 connection": {
+        "content": "",
+        "keywords": [
+            "Expert, Metabolites, Biomarkers, Data analysis, Spectral data, Metabolic pathways, Sample preparation, High-resolution mass spectrometry, Biochemical processes, Quantification''"
+        ]
+    },
+    "## PMDDA": {
+        "content": "Three step workflow: MS1 full scan peak-picking, GlobalStd algorithm to select precursor ions for MS2 from MS1 data and collect the MS2 data and annotation with GNPS.",
+        "keywords": [
+            "Three step workflow, MS1 full scan peak-picking, GlobalStd algorithm, precursor ions, MS2 data, annotation, GNPS, full scan, peak-picking, algorithm."
+        ]
+    },
+    "## HERMES": {
+        "content": "A molecular-formula-oriented method to target the metabolome.",
+        "keywords": [
+            "molecular formula, method, target, metabolome, molecular, formula, oriented, metabolites, analysis, identification"
+        ]
+    },
+    "## dpDDA": {
+        "content": "Similar work can be found here with inclusion list of differential and preidentified ions (dpDDA).",
+        "keywords": [
+            "expert, metabolomics, mass spectrometry, analytical, chemistry, extract, keywords, text, numbering, differential"
+        ]
+    },
+    "## MS2 MSn connection": {
+        "content": "A computational approach to generate adatabase of high-resolution-MS n spectra by converting existing low-resolution MSn spectra using complementary high-resolution-MS2 spectra generated by beam-type CAD.",
+        "keywords": [
+            "computational approach, database, high-resolution, MSn spectra, low-resolution, complementary, MS2 spectra, beam-type CAD"
+        ]
+    },
+    "## MS/MS annotation": {
+        "content": "MS/MS annotation is performed to generate a matching score with library spectra. The most popular matching algorithm is dot product similarity. A recent study found spectral entropy algorithm outperformed dot product similarity [@li2021;@li2023b;]. Comparison of Cosine, Modified Cosine, and Neutral Loss Based Spectrum Alignment showed modified cosine similarity outperformed neutral loss matching and the cosine similarity in all cases. The performance of MS/MS spectrum alignment depends on the location and type of the modification, as well as the chemical compound class of fragmented molecules. This work proposed a method weighting low-intensity MS/MS ions and m/z frequency for spectral library annotation, which will be help to annotate unknown spectra. [BLINK](https://github.com/biorack/blink) enables ultrafast tandem mass spectrometry cosine similarity scoring. MS2Query enable the reliable and scalable MS2 mass spectra-based analogue search by machine learning. However, A spectroscopic test suggests that fragment ion structure annotations in MS/MS libraries are frequently incorrect. \n\nMachine learning can also be applied for MS2 annotation[@codrean2023;@guo2023;@bilbao2023].\n\nYou could check $$Workflow$$ section for popular platform. Here are some stand-alone annotation software:",
+        "keywords": [
+            "MS/MS annotation, matching score, library spectra, dot product similarity, spectral entropy algorithm, modified cosine similarity, neutral loss matching, MS/MS spectrum alignment, modification, chemical compound class, low-intensity MS/MS ions, m"
+        ]
+    },
+    "## Matchms": {
+        "content": "[Matchms](https://github.com/matchms/matchms) is an open-source Python package to import, process, clean, and compare mass spectrometry data (MS/MS). It allows to implement and run an easy-to-follow, easy-to-reproduce workflow from raw mass spectra to pre- and post-processed spectral data. Spectral data can be imported from common formats such mzML, mzXML, msp, metabolomics-USI, MGF, or json (e.g. GNPS-syle json files). Matchms then provides filters for metadata cleaning and checking, as well as for basic peak filtering. Finally, matchms was build to import and apply different similarity measures to compare large amounts of spectra. This includes common Cosine scores, but can also easily be extended by custom measures. Example for spectrum similarity measures that were designed to work in matchms are Spec2Vec and MS2DeepScore.",
+        "keywords": [
+            "Open-source, Python package, import, process, clean, compare, MS/MS, workflow, peak filtering, similarity measures"
+        ]
+    },
+    "## MetDNA": {
+        "content": "MetDNA is the Metabolic reaction network-based recursive metabolite annotation for untargeted metabolomics .",
+        "keywords": [
+            "MetDNA, metabolic reaction network, recursive, metabolite annotation, untargeted, metabolomics, expert, mass spectrometry, analytical chemistry, extract"
+        ]
+    },
+    "## MetFusion": {
+        "content": "Java based [integration](https://github.com/mgerlich/MetFusion) of compound identi\ufb01cation strategies. You could access the application [here](https://msbi.ipb-halle.de/MetFusion/) .",
+        "keywords": [
+            "Java, integration, compound identification, strategies, access, application, MSBI, IPB-Halle, MetFusion"
+        ]
+    },
+    "## MS2Analyzer": {
+        "content": "MS2Analyzer could annotate small molecule substructure from accurate tandem mass spectra. ",
+        "keywords": [
+            "expert, metabolomics, mass spectra, small molecule, substructure, accurate, tandem, annotate, MS2Analyzer"
+        ]
+    },
+    "## MetFrag": {
+        "content": "[MetFrag](http://c-ruttkies.github.io/MetFrag/) could be used to make *in silico* prediction/match of MS/MS data[@ruttkies2016; @wolf2010].",
+        "keywords": [
+            "expert, metabolomics, mass spectrometry, analytical chemistry, extract, 10 keywords, text, numbering, separate, MetFrag, in silico, prediction, match, MS/MS data"
+        ]
+    },
+    "## CFM-ID": {
+        "content": "[CFM-ID](https://sourceforge.net/projects/cfm-id/) use Metlin's data to make prediction  and 4.0 .",
+        "keywords": [
+            "expert, metabolomics, mass spectrometry, analytical chemistry, extract, keywords, text, numbering, separate, CFM-ID, Metlin, data, prediction, 4.0"
+        ]
+    },
+    "## LC-MS2Struct": {
+        "content": "A machine learning framework for structural annotation of small-molecule data arising from liquid chromatography\u2013tandem mass spectrometry (LC-MS2) measurements.",
+        "keywords": [
+            "machine learning, structural annotation, small-molecule data, liquid chromatography, tandem mass spectrometry, LC-MS2, measurements, framework, data analysis, data interpretation"
+        ]
+    },
+    "## LipidFrag": {
+        "content": "[LipidFrag](https://msbi.ipb-halle.de/msbi/lipidfrag) could be used to make *in silico* prediction/match of lipid related MS/MS data .",
+        "keywords": [
+            "expert, metabolomics, mass spectrometry, analytical, chemistry, extract, keywords, text, numbering, separate"
+        ]
+    },
+    "## Lipidmatch": {
+        "content": "[in silico](http://secim.ufl.edu/secim-tools/lipidmatch/): *in silico* lipid mass spectrum search .",
+        "keywords": [
+            "expert, metabolomics, mass spectrometry, analytical chemistry, extract, 10 keywords, text, numbering, separate, keywords, not include"
+        ]
+    },
+    "## BarCoding": {
+        "content": "Bar coding select mass-to-charge regions containing the most informative metabolite fragments and designate them as bins. Then translate each metabolite fragmentation pattern into a binary code by assigning 1's to bins containing fragments and 0's to bins without fragments. Such coding annotation could be used for MRM data .",
+        "keywords": [
+            "Bar coding, mass-to-charge regions, informative, metabolite fragments, bins, translate, fragmentation pattern, binary code, assigning, MRM data"
+        ]
+    },
+    "## iMet": {
+        "content": "This online [application](http://imet.seeslab.net/) is a network-based computation method for annotation .",
+        "keywords": [
+            "online, application, network-based, computation method, annotation"
+        ]
+    },
+    "## DNMS2Purifier": {
+        "content": "XGBoost based MS/MS spectral cleaning tool using intensity ratio fluctuation, appearance rate, and relative intensity.",
+        "keywords": [
+            "XGBoost, MS/MS, spectral cleaning, intensity ratio fluctuation, appearance rate, relative intensity, metabolite identification, machine learning, data analysis, feature selection"
+        ]
+    },
+    "## IDSL.CSA": {
+        "content": "Composite Spectra Analysis for Chemical Annotation of Untargeted Metabolomics Datasets.",
+        "keywords": [
+            "Composite spectra analysis, Chemical annotation, Untargeted metabolomics, Datasets, Expert, Metabolomics, Mass spectrometry, Analytical chemistry, Extract, Keywords"
+        ]
+    },
+    "## Knowledge based annotation": {
+        "content": "",
+        "keywords": [
+            "expert, metabolites, biomarkers, data analysis, biological systems, chemical compounds, metabolic pathways, quantitative analysis, sample preparation, high-resolution mass spectrometry''"
+        ]
+    },
+    "## Experimental design": {
+        "content": "Physicochemical Property can be used for annotation with a specific experimental design.",
+        "keywords": [
+            ", '\nExpert, Metabolomics, Mass Spectrometry, Analytical Chemistry, Extract, 10 Keywords, Text, Physicochemical Property, Annotation, Experimental Design"
+        ]
+    },
+    "## Chromatographic retention-related criteria": {
+        "content": "For targeted analysis, chromatographic retention time could be the qualitative method for certain compounds with a carefully designed pre-treatment. For untargeted analysis, such information could also be used for annotation. GC-MS usually use retention index for certain column while LC-MS might not show enough reproducible results as GC. Such method could be tracked back to quantitative structure-retention relationship (QSRR) models or linear solvation energy relationship (LSER). However, such methods need molecular descriptors as much as possible. For untargeted analysis, retention time and mass to charge ratio could not generate enough molecular descriptors to build QSPR models. In this case, such criteria might be usefully for validation instead of annotation unless we could measure or extract more information such as ion mobility from unknown compounds.\n\n-   [Retip](https://www.retip.app/) Retention Time Prediction for Compound Annotation in Untargeted Metabolomics .\n\n-   JAVA based [MolFind](http://metabolomics.pharm.uconn.edu/?q=Software.html) could make annotation for unknown chemical structure by prediction based on RI, ECOM50, drift time and CID spectra .\n\n-   [For-ident](https://water.for-ident.org/",
+        "keywords": [
+            "For-ident) Mass Spectral Database for Compound Identification and Annotation in Untargeted Metabolomics\n\n\nTargeted analysis, qualitative method, chromatographic retention time, pre-treatment, untargeted analysis, annotation, GC-MS, retention"
+        ]
+    },
+    "## ProbMetab": {
+        "content": "Provides probability ranking to candidate compounds assigned to masses, with the prior assumption of connected sample and additional previous and spectral information modeled by the user. You could find source code [here](https://github.com/rsilvabioinfo/ProbMetab) .",
+        "keywords": [
+            "metabolomics, mass spectrometry, analytical chemistry, probability ranking, candidate compounds, masses, connected sample, previous information, spectral information, source code"
+        ]
+    },
+    "## MI-Pack": {
+        "content": "You could find python software [here](http://www.biosciences-labs.bham.ac.uk/viant/mipack/) .",
+        "keywords": [
+            "expert, metabolomics, mass spectrometry, analytical chemistry, python software, biosciences, labs, birmingham, mipack"
+        ]
+    },
+    "## MetExpert": {
+        "content": "[MetExpert](https://sourceforge.net/projects/metexpert/) is an expert system to assist users with limited expertise in informatics to interpret GCMS data for metabolite identification without querying spectral databases .",
+        "keywords": [
+            "expert system, informatics, interpret, GCMS data, metabolite identification, querying, spectral databases, users, limited expertise, assist"
+        ]
+    },
+    "## MycompoundID": {
+        "content": "[MycompoundID](http://www.mycompoundid.org/mycompoundid_IsoMS/single.jsp) could be used to search known and unknown metabolites online .",
+        "keywords": [
+            "expert, metabolomics, mass spectrometry, analytical chemistry, extract, 10, keywords, text, numbering, separate, not include"
+        ]
+    },
+    "## MetFamily": {
+        "content": "[Shiny app](https://msbi.ipb-halle.de/MetFamily/) for MS and MS/MS data annotation .",
+        "keywords": [
+            "Expert, Metabolomics, Mass spectrometry, Analytical chemistry, Extract, 10 keywords, Text, Numbering, Separate, Comma"
+        ]
+    },
+    "## CoA-Blast": {
+        "content": "For certain group of compounds such as [Acyl-CoA](https://github.com/urikeshet/CoA-Blast), you might build a class level in silico database to annotated compounds with certain structure.",
+        "keywords": [
+            "expert, metabolomics, mass spectrometry, analytical chemistry, compounds, Acyl-CoA, group, in silico database, annotated, structure"
+        ]
+    },
+    "## KGMN": {
+        "content": "Knowledge-guided multi-layer network (KGMN) integrates three-layer networks, including knowledge-based metabolic reaction network, knowledge-guided MS/MS similarity network, and global peak correlation network for annotaiton .",
+        "keywords": [
+            "Knowledge-guided, Multi-layer network, KGMN, Three-layer networks, Knowledge-based, Metabolic reaction network, MS/MS similarity network, Global peak correlation network, Annotation, Integration"
+        ]
+    },
+    "## CCMN": {
+        "content": "CCMNs were then constructed using metabolic features shared classes, which facilitated the structure- or class annotation for completely unknown metabolic features.",
+        "keywords": [
+            "metabolic features, shared classes, structure annotation, class annotation, completely unknown, metabolites, metabolic pathways, identification, data analysis, biomarkers"
+        ]
+    },
+    "## MS Database for annotation": {
+        "content": "",
+        "keywords": [
+            "expert, metabolites, identification, quantification, biological samples, data analysis, biomarker discovery, small molecules, metabolic pathways, high-throughput analysis''"
+        ]
+    },
+    "## MS": {
+        "content": "-   [Fiehn Lab](http://fiehnlab.ucdavis.edu/projects/binbase-setup)\n\n-   [NIST](https://www.nist.gov/srd/nist-standard-reference-database-1a-v17): No free\n\n-   [Spectral Database for Organic Compounds, SDBS](https://sdbs.db.aist.go.jp/sdbs/cgi-bin/cre_index.cgi?lang=eng)\n\n-   [MINE](http://minedatabase.mcs.anl.gov/",
+        "keywords": [
+            "Fiehn Lab, NIST, Spectral Database, Organic Compounds, SDBS, MINE, Database, Standard Reference, Free, V17"
+        ]
+    },
+    "## Compounds Database": {
+        "content": "-   [PubChem](https://pubchem.ncbi.nlm.nih.gov/) is an open chemistry database at the National Institutes of Health (NIH).\n\n-   [Chemspider](http://www.chemspider.com/) is a free chemical structure database providing fast text and structure search access to over 67 million structures from hundreds of data sources.\n\n-   [ChEBI](https://www.ebi.ac.uk/chebi/) is a freely available dictionary of molecular entities focused on 'small' chemical compounds.\n\n-   [RefMet](http://www.metabolomicsworkbench.org/databases/refmet/index.php) A Reference list of Metabolite names.\n\n-   [CAS](https://www.cas.org/support/documentation/chemical-substances/cas-registry-100-millionth-fun-facts) Largest substance database\n\n-   [CompTox](https://comptox.epa.gov/dashboard) compounds, exposure and toxicity database. [Here](https://www.epa.gov/chemical-research/downloadable-computational-toxicology-data) is related data.\n\n-   [T3DB](http://www.t3db.ca/) is a unique bioinformatics resource that combines detailed toxin data with comprehensive toxin target information.\n\n-   [FooDB](http://foodb.ca/) is the world's largest and most comprehensive resource on food constituents, chemistry and biology.\n\n-   [Phenol explorer](http://phenol-explorer.eu) is the first comprehensive database on polyphenol content in foods.\n\n-   [Drugbank](https://www.drugbank.ca/releases/latest) is a unique bioinformatics and cheminformatics resource that combines detailed drug data with comprehensive drug target information.\n\n-   [LMDB](http://lmdb.ca) is a freely available electronic database containing detailed information about small molecule metabolites found in different livestock species.\n\n-   [HPV](https://iaspub.epa.gov/oppthpv/hpv_hc_characterization.get_report?doctype=2) High Production Volume Information System\n\nThere are also metabolites atlas for specific domain.\n\n- PMhub 1.0: a comprehensive plant metabolome database\n\n- Atlas of Circadian Metabolism\n\n- Plantmat [excel library](https://sourceforge.net/projects/plantmat/) based prediction for plant metabolites.",
+        "keywords": [
+            "PubChem, Chemspider, ChEBI, RefMet, CAS, CompTox, T3DB, FooDB, Phenol explorer, Drugbank, LMDB, HPV"
+        ]
+    },
+    "## Basic Statistical Analysis": {
+        "content": "**Statistic** is used to describe certain property or variables among the samples. It could be designed for certain purpose to extract signal and remove noise. Statistical models and inference are both based on statistic instead of the data.\n\n$$Statistic = f(sample_1,sample_2,...,sample_n)$$\n\n**Null Hypothesis Significance Testing (NHST)** is often used to make statistical inference. P value is the probability of certain statistics happens under H0 (pre-defined distribution).\n\nFor omics studies, you should realize **Multiple Comparison** issue when you perform a lot of(more than 20) comparisons or tests at the same time. **False Discovery Rate(FDR) control** is required for multiple tests to make sure the results are not false positive. You could use Benjamini-Hochberg method to adjust raw p values or directly use Storey Q value to make FDR control.\n\nNHST is famous for the failure of p-value interpretation as well as multiple comparison issues. **Bayesian Hypothesis Testing** could be an options to cover some drawbacks of NHST. Bayesian Hypothesis Testing use Bayes factor to show the differences between null hypothesis and any other hypothesis.\n\n$$Bayes\\ factor = \\frac{p(D|Ha)}{p(D|H0)} = \\frac{posterior\\ odds}{prior\\ odds}$$\n\n**Statistical model** use statistics to make prediction/explanation. Most of the statistical model need to be tuned for parameters to show a better performance. Statistical model is build on real data and could be diagnosed by other general statistics such as $R^2$, $ROC curve$. When the models are built or compared, model selection could be preformed.\n\n$$Target = g(Statistic) = g(f(sample_1,sample_2,...,sample_n))$$\n\n**Bias-Variance Tradeoff** is an important concept regarding statistical models. Certain models could be overfitted(small Bias, large variance) or underfitted(large Bias, small variance) when the parameters of models are not well selected.\n\n$$E[(y - \\hat f)^2] = \\sigma^2 + Var[\\hat f] + Bias[\\hat f]$$\n\n**Cross validation** could be used to find the best model based on training-testing strategy such as Jacknife, bootstraping resampling and n-fold cross validation.\n\n**Regularization** for models could also be used to find the model with best prediction performance. Rigid regression, LASSO or other general regularization could be employed to build a robust models.\n\nFor supervised models, linear model and tree based model are two basic categories. **Linear model** could be useful to tell the independent or correlated relationship of variables and the influences on the predicted variables. **Tree based model**, on the other hand, try to build a hierarchical structure for the variables such as bagging, random forest or boosting. Linear model could be treated as special case of tree based model with single layer. Other models like Support Vector Machine (SVM), Artificial Neural Network (ANN) or Deep Learning are also make various assumptions on the data. However, if you final target is prediction, you could try any of those models or even weighted combine their prediction to make meta-prediction.",
+        "keywords": [
+            "Statistic, Null Hypothesis Significance Testing, P value, Multiple Comparison, False Discovery Rate, Bayesian Hypothesis Testing, Statistical model, Bias-Variance Tradeoff, Cross validation, Regularization, Linear model, Tree based model"
+        ]
+    },
+    "## Differences analysis": {
+        "content": "After we get corrected peaks across samples, the next step is to find the differences between two groups. Actually, you could perform ANOVA or Kruskal-Wallis Test for comparison among more than two groups. The basic idea behind statistic analysis is to find the meaningful differences between groups and extract such ions or peak groups.\n\nSo how to find the differences? In most metabolomics software, such task is completed by a t-test and report p-value and fold changes. If you only compare two groups on one peaks, that's OK. However, if you compare two groups on thousands of peaks, statistic textbook would tell you to notice the false positive. For one comparison, the confidence level is 0.05, which means 5% chances to get false positive result. For two comparisons, such chances would be $1-0.95^2$. For 10 comparisons, such chances would be $1-0.95^{10} = 0.4012631$. For 100 comparisons, such chances would be $1-0.95^{100} = 0.9940795$. You would almost certainly to make mistakes for your results.\n\nIn statistics, the false discovery rate(FDR) control is always mentioned in omics studies for multiple tests. I suggested using q-values to control FDR. If q-value is less than 0.05, we should expect a lower than 5% chances we make the wrong selections for all of the comparisons showed lower q-values in the whole dataset. Also we could use local false discovery rate, which showed the FDR for certain peaks. However, such values are hard to be estimated accurately.\n\nKarin Ortmayr thought fold change might be better than p-values to find the differences .",
+        "keywords": [
+            "Corrected peaks, Differences, Groups, ANOVA, Kruskal-Wallis Test, Statistic analysis, Ions, Peak groups, False positive, Confidence level, False discovery rate (FDR)"
+        ]
+    },
+    "## T-test or ANOVA": {
+        "content": "If one peak show significant differences among two groups or multiple groups, T-test or ANOVA could be used to find such peaks. However, when multiple hypothesis testings are performed, the probability of false positive would increase. In this case, false discovery rate(FDR) control is required. Q value or adjusted p value could be used in this situation. At certain confidence interval, we could find peaks with significant differences after FDR control.",
+        "keywords": [
+            "peak, significant differences, two groups, multiple groups, T-test, ANOVA, multiple hypothesis testing, false positive, false discovery rate, FDR control"
+        ]
+    },
+    "## LIMMA": {
+        "content": "Linear Models for MicroArray Data(LIMMA) model could also be used for high-dimensional data like metabolomics. They use a moderated t-statistic to make estimation of the effects called Empirical Bayes Statistics for Differential Expression. It is a hierarchical model to shrink the t-statistic for each peak to all the peaks. Such estimation is more robust. In LIMMA, we could add the known batch effect variable as a covariance in the model. LIMMA is different from t-test or ANOVA while we could still use p value and FDR control on LIMMA results.",
+        "keywords": [
+            "Linear Models, MicroArray Data, LIMMA model, high-dimensional data, moderated t-statistic, Empirical Bayes Statistics, Differential Expression, hierarchical model, shrink, robust"
+        ]
+    },
+    "## Bayesian mixture model": {
+        "content": "Another way to make difference analysis is based on Bayesian mixture model without p value. Such model would not use hypothesis testing and directly generate the posterior estimation of parameters. A posterior probability could be used to check whether certain peaks could be related to different condition. If we want to make comparison between classical model like LIMMA and Bayesian mixture model. We need to use simulation to find the cutoff.",
+        "keywords": [
+            "difference analysis, Bayesian mixture model, p value, hypothesis testing, posterior estimation, parameters, posterior probability, peaks, related, comparison"
+        ]
+    },
+    "## PCA": {
+        "content": "In most cases, PCA is used as an exploratory data analysis(EDA) method. In most of those most cases, PCA is just served as visualization method. I mean, when I need to visualize some high-dimension data, I would use PCA.\n\nSo, the basic idea behind PCA is compression. When you have 100 samples with concentrations of certain compound, you could plot the concentrations with samples' ID. However, if you have 100 compounds to be analyzed, it would by hard to show the relationship between the samples. Actually, you need to show a matrix with sample and compounds (100 \\* 100 with the concentrations filled into the matrix) in an informal way.\n\nThe PCA would say: OK, guys, I could convert your data into only 100 \\* 2 matrix with the loss of information minimized. Yeah, that is what the mathematical guys or computer programmer do. You just run the command of PCA. The new two \"compounds\" might have the cor-relationship between the original 100 compounds and retain the variances between them. After such projection, you would see the compressed relationship between the 100 samples. If some samples' data are similar, they would be projected together in new two \"compounds\" plot. That is why PCA could be used for cluster and the new \"compounds\" could be referred as principal components(PCs).\n\nHowever, you might ask why only two new compounds could finished such task. I have to say, two PCs are just good for visualization. In most cases, we need to collect PCs standing for more than 80% variances in our data if you want to recovery the data with PCs. If each compound have no relationship between each other, the PCs are still those 100 compounds. So you have found a property of the PCs: PCs are orthogonal between each other.\n\nAnother issue is how to find the relationship between the compounds. We could use PCA to find the relationship between samples. However, we could also extract the influences of the compounds on certain PCs. You might find many compounds showed the same loading on the first PC. That means the concentrations pattern between the compounds are looked similar. So PCA could also be used to explore the relationship between the compounds.\n\nOK, next time you might recall PCA when you need it instead of other paper showed them.\n\nBesides, there are some other usage of PCA. Loadings are actually correlation coefficients between peaks and their PC scores. Yamamoto et.al.  used t-test on this correlation coefficient and thought the peaks with statistically significant correlation to the PC score have biological meanings for further study such as annotation. However, such analysis works better when few PCs could explain most of the variances in the dataset.",
+        "keywords": [
+            "PCA, exploratory data analysis, compression, matrix, variances, cluster, principal components, orthogonal, relationship, correlation coefficients"
+        ]
+    },
+    "## Cluster Analysis": {
+        "content": "After we got a lot of samples and analyzed the concentrations of many compounds in them, we may ask about the relationship between the samples. You might have the sampling information such as the date and the position and you could use boxplot or violin plot to explore the relationships among those categorical variables. However, you could also use the data to find some potential relationship.\n\nBut how? if two samples' data were almost the same, we might think those samples were from the same potential group. On the other hand, how do we define the \"same\" in the data?\n\nCluster analysis told us that just define a \"distances\" to measure the similarity between samples. Mathematically, such distances would be shown in many different manners such as the sum of the absolute values of the differences between samples.\n\nFor example, we analyzed the amounts of compound A, B and C in two samples and get the results:\n\n| Compounds(ng) | A   | B   | C   |\n|---------------|-----|-----|-----|\n| Sample 1      | 10  | 13  | 21  |\n| Sample 2      | 54  | 23  | 16  |\n\nThe distance could be:\n\n$$\ndistance = |10-54|+|13-23|+|21-16| = 59\n$$\n\nAlso you could use the sum of squares or other way to stand for the similarity. After you defined a \"distance\", you could get the distances between all of pairs for your samples. If two samples' distance was the smallest, put them together as one group. Then calculate the distances again to combine the small group into big group until all of the samples were include in one group. Then draw a dendrogram for those process.\n\nThe following issue is that how to cluster samples? You might set a cut-off and directly get the group from the dendrogram. However, sometimes you were ordered to cluster the samples into certain numbers of groups such as three. In such situation, you need K means cluster analysis.\n\nThe basic idea behind the K means is that generate three virtual samples and calculate the distances between those three virtual samples and all of the other samples. There would be three values for each samples. Choose the smallest values and class that sample into this group. Then your samples were classified into three groups. You need to calculate the center of those three groups and get three new virtual samples. Repeat such process until the group members unchanged and you get your samples classified.\n\nOK, the basic idea behind the cluster analysis could be summarized as define the distances, set your cut-off and find the group. By this way, you might show potential relationships among samples.",
+        "keywords": [
+            "samples, concentrations, relationship, sampling information, boxplot, violin plot, categorical variables, potential relationship, cluster analysis, distances"
+        ]
+    },
+    "## PLSDA": {
+        "content": "PLS-DA, OPLS-DA and HPSO-OPLS-DA  could be used.\n\nPartial least squares discriminant analysis(PLSDA) was first used in the 1990s. However, Partial least squares(PLS) was proposed in the 1960s by Hermann Wold. Principal components analysis produces the weight matrix reflecting the covariance structure between the variables, while partial least squares produces the weight matrix reflecting the covariance structure between the variables and classes. After rotation by weight matrix, the new variables would contain relationship with classes.\n\nThe classification performance of PLSDA is identical to linear discriminant analysis(LDA) if class sizes are balanced, or the columns are adjusted according to the mean of the class mean. If the number of variables exceeds the number of samples, LDA can be performed on the principal components. Quadratic discriminant analysis(QDA) could model nonlinearity relationship between variables while PLSDA is better for collinear variables. However, as a classifier, there is little advantage for PLSDA. The advantages of PLSDA is that this modle could show relationship between variables, which is not the goal of regular classifier.\n\nDifferent algorithms  for PLSDA would show different score, while PCA always show the same score with fixed algorithm. For PCA, both new variables and classes are orthognal. However, for PLS(Wold), only new classes are orthognal. For PLS(Martens), only new variables are orthognal. This paper show the details of using such methods .\n\nSparse PLS discriminant analysis(sPLS-DA) make a L1 penal on the variable selection to remove the influences from unrelated variables, which make sense for high-throughput omics data .\n\nFor o-PLS-DA, s-plot could be used to find features.",
+        "keywords": [
+            "PLS, OPLS, HPSO, discriminant analysis, linear discriminant analysis, principal components analysis, quadratic discriminant analysis, algorithms, sparse PLS, o-PLS-DA"
+        ]
+    },
+    "## Vertex and edge": {
+        "content": "Each node is a vertex and the connection between nodes is a edge in the network. The connection can be directed or undirected depending on the relationship.",
+        "keywords": [
+            "node, vertex, connection, network, directed, undirected, relationship"
+        ]
+    },
+    "## Build the network": {
+        "content": "Adjacency matrices were always used to build the network. It's a square matrix with n dimensions. Row i and column j is equal to 1 if and only if vertices i and j are connected. In directed network, such values could be 1 for i to j and -1 for j to i.",
+        "keywords": [
+            "Adjacency matrices, network, square matrix, dimensions, vertices, connected, directed network, values, i to j, j to i"
+        ]
+    },
+    "## Network attributes": {
+        "content": "Vertex/edge attributes could be the group information or metadata about the nodes/connections. The edges could be weighted as attribute.\n\nPath is the way from one node to another node in the network and you could find the shortest path in the path. The largest distance of a graph is called its diameter.\n\nAn undirected network is connected if there is a way from any vertex to any other. Connected networks can further classified according to the strength of their connectedness. An undirected network with at least two paths between each pairs of nodes is said to be biconnected.\n\nThe transitivity of network is a crude summary of the structure. A high value means that nodes are connected well locally with dense subgraphs. Network data sets typically show high transitivity.\n\nMaximum flows and minimum cuts could be used to check the largest volumns and smallest path flow between two nodes. For example, two hubs is connected by one node and the largest volumn and smallest path flow between two nodes from each hub could be counted at the select node.\n\nSparse network has similar number of edges and the number of nodes. Dense network has the number of edges as a quadratic function of the nodes.",
+        "keywords": [
+            "Vertex/edge attributes, group information, metadata, nodes/connections, weighted, path, shortest path, diameter, undirected network, connected, strength, connectedness, biconnected, transitivity, structure, dense subgraphs, network"
+        ]
+    },
+    "## Column and gradient selection": {
+        "content": "For GC, higher temperature could release compounds with higher boiling point. For LC, gradient and functional groups of stationary phase would be more important than temperature. Polarity of samples and column should match. More polar solvent could release polar compounds. Normal-phase column will not retain non-polar compounds while reversed-phase will elute polar column in the very beginning. To cover a wide polarity range or logP value compounds, normal phase column should match with non-polar to polar gradient to get a better separation of polar compounds while reverse phase column should match with polar to non-polar gradient to elute compounds. If you use an inappropriate order of gradient, you compounds would not be separated well. If you have no idea about column and gradient selection, check literature's condition. Meanwhile, the pretreatment methods should fit the column and gradient selection. You will get limited information by injection of non-polar extracts on a normal phase column and nothing will be retained on column. This study show improved chromatography conditions will improve the annotation results. You can also install polar and non-polar columns and run separation on one column while condition on another one, which could extend the chemical coverage.\n\nMeta-analysis of chromatographic methods in EBI metabolights and NIH Workbench could be a guide for lab without experience on metabolomics chromatographic methods.\n\nThis work introduce Sequential Quantification using Isotope Dilution (SQUID), a method combining serial sample injections into a continuous isocratic mobile phase, enabling rapid analysis of target molecules with high accuracy, as demonstrated by detecting microbial polyamines in human urine samples with an LLOQ of 106 nM and analysis times as short as 57 s, thus proposing SQUID as a high-throughput LC\u2013MS tool for quantifying target biomarkers in large cohorts.",
+        "keywords": [
+            "GC, temperature, boiling point, LC, gradient, functional groups, stationary phase, polarity, solvent, logP value"
+        ]
+    },
+    "## Mass resolution": {
+        "content": "For metabolomics, high resolution mass spectrum should be used to make identification of compounds easier. The Mass Resolving Power is very important for annotation and high resolution mass spectrum should be calibrated in real time. The region between 400--800 m/z was influenced the most by resolution. Orbitrap Fusion's performance was evaluated here, as well as the comparison with Fourier transform ion cyclotron resonance (FT-ICR)[@ghaste2016; @huang2021]. Mass Difference Maps could recalibrate HRMS data .",
+        "keywords": [
+            "metabolomics, high resolution, identification, compounds, Mass Resolving Power, annotation, calibration, real time, Orbitrap Fusion, Fourier transform ion cyclotron resonance"
+        ]
+    },
+    "## Matrix effects": {
+        "content": "Matrix effects could decrease the sensitivity of untargeted analysis. Such matrix effects could be checked by low resolution mass spectrometry and found for high resolution mass spectrometry. Ion suppression should also be considered as a critical issue comparing heterogeneous metabolic profiles. This work discussed the matrix effects after Trimethylsilyl derivatization.The study investigated how the complexity of matrices affects nontargeted detection using LC-MS/MS analysis, finding that detection limits for trace compounds were significantly influenced by matrix complexity, with higher concentrations required for detection within the \"top 1000\" list compared to the first 10,000 peaks, suggesting a negative power law functional relationship between peak location and concentration; the research also demonstrated a correlation between power law coefficient and dilution factor, while showcasing the distribution of matrix peaks across various matrices, providing insights into the capabilities and limitations of LC-MS in analyzing nontargets in complex matrices.",
+        "keywords": [
+            "Matrix effects, sensitivity, untargeted analysis, low resolution, high resolution, ion suppression, heterogeneous metabolic profiles, Trimethylsilyl derivatization, detection limits, power law functional relationship"
+        ]
+    }
+}
