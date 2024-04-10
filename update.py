@@ -143,7 +143,7 @@ for article_data in new_articles_data:
         issue_body += f"  DOI: {doi}\n\n"
 
 def create_github_issue(title, body, repo_name, access_token):
-    url = f"https://api.github.com/repos/{repo_name}/issues"
+    url = f"https://api.github.com/repos/yufree/metaworkflow/issues"
     headers = {
         "Authorization": f"token {access_token}",
         "Accept": "application/vnd.github.v3+json"
