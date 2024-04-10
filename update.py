@@ -8,7 +8,6 @@ import os
 # Example PubMed RSS feed URL
 rss_url = 'https://pubmed.ncbi.nlm.nih.gov/rss/search/1l_vN2os9ImczaHy8lsTexdGZzzcnVxwynmusavJy3uipkZkrY/?limit=15&utm_campaign=pubmed-2&fc=20210105094324'
 
-repo_owner = os.getenv('GITHUB_REPOSITORY_OWNER')
 repo_name = os.getenv('GITHUB_REPOSITORY_ID')
 access_token = os.getenv('GITHUB_TOKEN')
 openaiapikey = os.getenv('OPENAI_API_KEY')
@@ -143,8 +142,8 @@ for article_data in new_articles_data:
         issue_body += f"  One-sentence Summary: {summary}\n"
         issue_body += f"  DOI: {doi}\n\n"
 
-def create_github_issue(title, body, repo_owner, repo_name, access_token):
-    url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/issues"
+def create_github_issue(title, body, repo_name, access_token):
+    url = f"https://api.github.com/repos/{repo_name}/issues"
     headers = {
         "Authorization": f"token {access_token}",
         "Accept": "application/vnd.github.v3+json"
@@ -163,4 +162,4 @@ def create_github_issue(title, body, repo_owner, repo_name, access_token):
         print("Response:", response.text)
 
 # Create the issue
-create_github_issue(issue_title, issue_body, repo_owner, repo_name, access_token)
+create_github_issue(issue_title, issue_body, repo_name, access_token)
