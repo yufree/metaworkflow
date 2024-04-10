@@ -9,7 +9,7 @@ import os
 rss_url = 'https://pubmed.ncbi.nlm.nih.gov/rss/search/1l_vN2os9ImczaHy8lsTexdGZzzcnVxwynmusavJy3uipkZkrY/?limit=15&utm_campaign=pubmed-2&fc=20210105094324'
 
 repo_owner = os.getenv('GITHUB_REPOSITORY_OWNER')
-repo_name = os.getenv('GITHUB_REPOSITORY_OWNER_ID')
+repo_name = os.getenv('GITHUB_REPOSITORY_ID')
 access_token = os.getenv('GITHUB_TOKEN')
 openaiapikey = os.getenv('OPENAI_API_KEY')
 
