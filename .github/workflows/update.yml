@@ -1,8 +1,9 @@
 name: Weekly Article Matching
 
 on:
-  schedule:
-    - cron: '0 0 * * 0'
+  push:
+    branches:
+      - master
 
 jobs:
   run_script:
