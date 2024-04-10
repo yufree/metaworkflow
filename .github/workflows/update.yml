@@ -25,3 +25,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GITHUB_REPOSITORY_OWNER_ID: ${{ env.REGISTRY }}
+          GITHUB_REPOSITORY_OWNER: ${{ github.actor }}
