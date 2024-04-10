@@ -51,7 +51,7 @@ def get_pubmed_abstracts(rss_url):
         # If the publication date is within one week, extract the abstract and URL
         if published_date >= one_week_ago:
             # Get the abstract and URL of the entry
-            abstract = entry.summary
+            abstract = entry.content[0].value
             doi = entry.dc_identifier
             abstracts_with_urls.append({"abstract": abstract, "doi": doi})
 
