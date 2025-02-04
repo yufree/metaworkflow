@@ -18,7 +18,7 @@ client = OpenAI(
 def extract_keywords_and_summary(text):
     # Use the OpenAI API to generate keywords and summary
     response = client.completions.create(
-        model="gpt-3.5-turbo-instruct",
+        model="gpt-4o-mini",
         prompt=f"Given the text '{text[:4000]}', extract 10 keywords without numbering, separating them by comma and begin the keywords with Keywords:. Additionally, generate a one-sentence summary of the text and begin the keywords with Summary:.Output keywords first then summary",
         max_tokens=150,  # Adjust the length of the generated summary
         n=1,
