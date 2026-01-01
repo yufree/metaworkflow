@@ -1,0 +1,10 @@
+name: Metabolomics
+title:
+username: yufree
+account: yufree
+server: connect.posit.cloud
+hostUrl: https://api.connect.posit.cloud/v1
+appId: 019b77c9-6c2b-5ee3-2332-d9c97c8a2821
+bundleId:
+url: https://connect.posit.cloud/yufree/content/019b77c9-6c2b-5ee3-2332-d9c97c8a2821
+version: 1

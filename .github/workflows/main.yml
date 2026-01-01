@@ -48,14 +48,3 @@ jobs:
         with:
           commit-message: '[Auto] update github online book preview'
           remote: origin  
-      - name: Deploy book to bookdown.org
-        if: github.event_name == 'push'
-        env:
-          CONNECT_API_KEY: ${{ secrets.RSC_BOOKDOWN_ORG_TOKEN }}
-          CONTENT_ID: 1055
-        run: |
-          rsconnect::addConnectServer("https://bookdown.org", "bookdown.org")
-          rsconnect::connectApiUser(account = "yufree", server = "bookdown.org", apiKey = Sys.getenv("CONNECT_API_KEY"))
-          rsconnect::deploySite(appId = Sys.getenv("CONTENT_ID"), server = "bookdown.org", render = "none", logLevel = "verbose", forceUpdate = TRUE)
-        shell: Rscript {0}
-      
