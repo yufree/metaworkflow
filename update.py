@@ -1,37 +1,37 @@
 import feedparser
 from datetime import datetime, timedelta, timezone
 import json
-from openai import OpenAI
 import requests
 import os
+import openai
 
 # Example PubMed RSS feed URL
-rss_url = 'https://pubmed.ncbi.nlm.nih.gov/rss/search/1ZuzHwMscydbBrxsekXamSNNn2OJqDR8kluBwohEqNuRy5aMp_/?limit=15&utm_campaign=pubmed-2&fc=20240410170436'
+rss_url = 'https://pubmed.ncbi.nlm.nih.gov/rss/search/1roWqUHnCMOw0LYZD2R1suracmWnrHoePMKeDCnAP7yHFdPILE/?limit=20&utm_campaign=pubmed-2&fc=20240425120030'
 
 access_token = os.getenv('GITHUB_TOKEN')
 openaiapikey = os.getenv('OPENAI_API_KEY')
 
-client = OpenAI(
-    api_key=openaiapikey
-)
+client = openai.OpenAI(api_key=openaiapikey)
 
 def extract_keywords_and_summary(text):
     # Use the OpenAI API to generate keywords and summary
-    response = client.completions.create(
-        model="gpt-3.5-turbo-instruct",
-        prompt=f"Given the text '{text[:4000]}', extract 10 keywords without numbering, separating them by comma and begin the keywords with Keywords:. Additionally, generate a one-sentence summary of the text and begin the keywords with Summary:.Output keywords first then summary",
-        max_tokens=150,  # Adjust the length of the generated summary
-        n=1,
-        stop=None,
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {"role": "system", "content": "You are a metabolomics expert and researcher."},
+            {"role": "user", "content": f"Given the text '{text[:4000]}', extract 10 keywords without numbering, separating them by comma and begin the keywords with Keywords:. Additionally, generate a one-sentence summary of the text and begin the summary with Summary:. Output keywords first then summary."}
+        ],
+        max_tokens=150,
         temperature=0.5
     )
-    # Parse the API response to extract keywords and summary
-    choices = response.choices[0]
-    generated_text = choices.text.strip()
+
+    generated_text = response.choices[0].message.content.strip()  
     keywords_start_index = generated_text.find("Keywords:")
     summary_start_index = generated_text.find("Summary:")
+    
     keywords = generated_text[keywords_start_index+len("Keywords:"):summary_start_index].strip()
     summary = generated_text[summary_start_index+len("Summary:"):].strip()
+    
     return keywords, summary
 
 def get_pubmed_abstracts(rss_url):
