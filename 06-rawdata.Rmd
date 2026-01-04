@@ -55,6 +55,8 @@ An Open-source feature detection algorithm for non-target LC–MS analytics coul
 G-Aligner is a graph-based feature alignment method for untargeted LC–MS-based metabolomics[@wang2023b], which will consider the importance of feature matching.
 
 qBinning is a novel algorithm for constructing extracted ion chromatograms (EICs) based on statistical principles and without the need to set user parameters[@reuschenbach2023].
+ 
+ Recent developments in 2025 have further refined peak detection. The Local Asymmetric Gaussian Fitting Algorithm offers enhanced peak detection for LC-HRMS data[@zou2025]. For large-scale cohort studies, MetCohort provides precise feature detection and correspondence[@yang2025]. Additionally, raw data simulation tools like Mzrtsim are becoming crucial for reproducible nontargeted metabolomics data analysis[@yu2025].
 
 Machine learning can also be used for feature extraxtion. Deep learning frame for LC-MS feature detection on 2D pseudo color image could improve the peak picking process [@zhao2021]. Another deep learning-assisted peak curation (NeatMS) can also be used for large-scale LC-MS metabolomics[@gloaguen2022]. A feature selection pipeline based on neural network and genetic algorithm could be applied for metabolomics data analysis[@lisitsyna2022].
 

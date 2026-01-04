@@ -147,6 +147,10 @@ Maximum flows and minimum cuts could be used to check the largest volumns and sm
 
 Sparse network has similar number of edges and the number of nodes. Dense network has the number of edges as a quadratic function of the nodes.
 
+## Machine Learning Guidelines
+
+With the increasing application of machine learning in metabolomics, proper training and reporting are critical. Practical guidance for training machine learning models suggests rigorous validation strategies to avoid overfitting and ensure reproducibility[@zhao2025a]. Furthermore, the EMBRACE checklist provides a framework for environmental machine learning, emphasizing baseline reporting and comprehensive evaluation[@zhu2024].
+
 ## Software
 
 -   [MetaboAnalystR](https://github.com/xia-lab/MetaboAnalystR) [@chong2019]

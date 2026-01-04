@@ -4,7 +4,7 @@ bibliography: references.bib
 
 # Exposome
 
-Nature or nurture debate has a similar paradigm in environmental study: is the ecological system and human health risk dominated by heredity or environment? Twins and siblings study[@lakhani2019; @polderman2015] show that both heritability and environmental factors could explain the phenotypic variance among population. The contribution of environment among different disease functional domain such as hematological and endocrine could achieve almost half of the total variances [@polderman2015]. However, besides those epidemiology proof, little is known about the influences of overall environmental exposure process at molecular level. Conventional exposure study always investigate one or several specific compounds and their environmental fate or toxicology endpoint. Exposome, on the other hand, tries to access multiple exposure factors from biological or environmental samples as much as possible without a predefined compounds list. Those endogenous and exogenous molecules can reveal the exposure process in details. Exposome could not only help to investigate the comprehensive molecules level changes, but also the interactions among molecules in an non-targeted design. By following annotation of captured compounds, exposome can discover exposure markers for certain type of pollution, as well as biomarkers for certain exposure process and discuss related physiological process. The workflow for exposome is quite similar to metabolomics[@hu2021a].
+Nature or nurture debate has a similar paradigm in environmental study: is the ecological system and human health risk dominated by heredity or environment? Twins and siblings study[@lakhani2019; @polderman2015] show that both heritability and environmental factors could explain the phenotypic variance among population. The contribution of environment among different disease functional domain such as hematological and endocrine could achieve almost half of the total variances [@polderman2015]. However, besides those epidemiology proof, little is known about the influences of overall environmental exposure process at molecular level. Conventional exposure study always investigate one or several specific compounds and their environmental fate or toxicology endpoint. Exposome, on the other hand, tries to access multiple exposure factors from biological or environmental samples as much as possible without a predefined compounds list. Those endogenous and exogenous molecules can reveal the exposure process in details. Exposome could not only help to investigate the comprehensive molecules level changes, but also the interactions among molecules in an non-targeted design. By following annotation of captured compounds, exposome can discover exposure markers for certain type of pollution, as well as biomarkers for certain exposure process and discuss related physiological process. The workflow for exposome is quite similar to metabolomics[@hu2021a]. As the field grows, ethical frameworks for data-driven environmental health studies, particularly in the AI era, are becoming essential to guide research practices[@yu2025a].
 
 According to [CDC](https://www.cdc.gov/niosh/topics/exposome/default.html), The exposome can be defined as the measure of all the exposures of an individual in a lifetime and how those exposures relate to health. Exposomics is the study of the exposome and relies on the application of internal and external exposure assessment methods.
 
@@ -20,7 +20,13 @@ Human Early Life Exposome (HELIX) project[@maitre2022a], a multi-centre cohort o
 
 -   [Virtual Metabolic Human Database](https://www.vmh.life/) integrating human and gut microbiome metabolism with nutrition and disease.
 
+Recent studies have expanded the scope of internal exposure. For example, empirical drug exposure records can now be established directly from untargeted metabolomics data, providing a resource for understanding pharmaceutical interventions[@zhao2025]. Additionally, active molecular network discovery has linked lifestyle variables to health outcomes, such as breast cancer, demonstrating the power of integrating lifestyle data with molecular networks[@yu2024].
+
 ## External exposure
+
+### Specific Contaminants
+
+Machine learning is increasingly used to identify specific environmental contaminants. For instance, ChloroDBPFinder utilizes machine learning to recognize chlorinated disinfection byproducts from nontargeted LC-HRMS analysis[@zhao2024].
 
 ### Environmental fate of compounds
 

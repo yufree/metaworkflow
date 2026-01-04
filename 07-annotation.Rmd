@@ -253,7 +253,7 @@ A computational approach to generate adatabase of high-resolution-MS n spectra b
 
 MS/MS annotation is performed to generate a matching score with library spectra. The most popular matching algorithm is dot product similarity. A recent study found spectral entropy algorithm outperformed dot product similarity [@li2021;@li2023b;]. Comparison of Cosine, Modified Cosine, and Neutral Loss Based Spectrum Alignment showed modified cosine similarity outperformed neutral loss matching and the cosine similarity in all cases. The performance of MS/MS spectrum alignment depends on the location and type of the modification, as well as the chemical compound class of fragmented molecules[@bittremieux2022]. This work proposed a method weighting low-intensity MS/MS ions and m/z frequency for spectral library annotation, which will be help to annotate unknown spectra[@englerhart2024]. [BLINK](https://github.com/biorack/blink) enables ultrafast tandem mass spectrometry cosine similarity scoring[@harwood2023]. MS2Query enable the reliable and scalable MS2 mass spectra-based analogue search by machine learning[@dejonge2023]. However, A spectroscopic test suggests that fragment ion structure annotations in MS/MS libraries are frequently incorrect[@vantetering2024]. 
 
-Machine learning can also be applied for MS2 annotation[@codrean2023;@guo2023;@bilbao2023].
+Machine learning can also be applied for MS2 annotation[@codrean2023;@guo2023;@bilbao2023]. Recent advancements in 2024 and 2025 have seen a surge in deep learning and large language model (LLM) applications. For instance, MSBERT uses mask learning and contrastive learning to embed tandem mass spectra into a chemically rational space[@zhang2024c]. Graph neural networks and transformers are also being adapted; Graph Transformers have been used for tandem mass spectrum prediction[@young2024], and graph embedding techniques are enhancing precursor-product ion pair analysis[@zheng2024]. Furthermore, contrastive learning frameworks like CSU-MS2 are improving cross-modal compound identification[@xie2025], and LLMs are now being empowered to derive spectral embeddings[@xu2025] and predict collision cross-sections[@zhu2025].
 
 You could check $$Workflow$$ section for popular platform. Here are some stand-alone annotation software:
 
@@ -325,7 +325,7 @@ For targeted analysis, chromatographic retention time could be the qualitative m
 
 -   [For-ident](https://water.for-ident.org/#!search) could give a score for identification with the help of logD(relative retention time) and/or MS/MS.
 
-- [RT-Transformer](https://github.com/01dadada/RT-Transformer): retention time prediction for metabolite annotation to assist in metabolite identification,which is a novel deep neural network model coupled with graph attention network and 1D-Transformer, which can predict retention times under any chromatographic methods.
+- [RT-Transformer](https://github.com/01dadada/RT-Transformer): retention time prediction for metabolite annotation to assist in metabolite identification,which is a novel deep neural network model coupled with graph attention network and 1D-Transformer, which can predict retention times under any chromatographic methods[@xue2024].
 
 - RT prediction model(random forest) of unified-HILIC/AEX/HRMS/MS, which enables the comprehensive structural annotation of polar metabolites(Unified-HILIC/AEX/HRMS/MS)[@torigoe2024a].
 
