@@ -17,6 +17,7 @@ data-analysis
 application
 challenge
 trends-in-metabolomics
+glossary
 workflow-1
 experimental-design-doe
 study-objective

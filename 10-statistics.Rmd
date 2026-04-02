@@ -85,7 +85,7 @@ Karin Ortmayr thought fold change might be better than p-values to find the diff
 
 ### T-test or ANOVA
 
-If one peak show significant differences among two groups or multiple groups, T-test or ANOVA could be used to find such peaks. However, when multiple hypothesis testings are performed, the probability of false positive would increase. In this case, false discovery rate(FDR) control is required. Q value or adjusted p value could be used in this situation. At certain confidence interval, we could find peaks with significant differences after FDR control.
+If one peak shows significant differences among two groups or multiple groups, T-test or ANOVA could be used to find such peaks. However, when multiple hypothesis testings are performed, the probability of false positive would increase. In this case, false discovery rate(FDR) control is required. Q value or adjusted p value could be used in this situation. At certain confidence interval, we could find peaks with significant differences after FDR control.
 
 ### LIMMA
 
@@ -167,9 +167,9 @@ PLS-DA, OPLS-DA and HPSO-OPLS-DA [@yang2017a] could be used.
 
 Partial least squares discriminant analysis(PLSDA) was first used in the 1990s. However, Partial least squares(PLS) was proposed in the 1960s by Hermann Wold. Principal components analysis produces the weight matrix reflecting the covariance structure between the variables, while partial least squares produces the weight matrix reflecting the covariance structure between the variables and classes. After rotation by weight matrix, the new variables would contain relationship with classes.
 
-The classification performance of PLSDA is identical to linear discriminant analysis(LDA) if class sizes are balanced, or the columns are adjusted according to the mean of the class mean. If the number of variables exceeds the number of samples, LDA can be performed on the principal components. Quadratic discriminant analysis(QDA) could model nonlinearity relationship between variables while PLSDA is better for collinear variables. However, as a classifier, there is little advantage for PLSDA. The advantages of PLSDA is that this modle could show relationship between variables, which is not the goal of regular classifier.
+The classification performance of PLSDA is identical to linear discriminant analysis(LDA) if class sizes are balanced, or the columns are adjusted according to the mean of the class mean. If the number of variables exceeds the number of samples, LDA can be performed on the principal components. Quadratic discriminant analysis(QDA) could model nonlinearity relationship between variables while PLSDA is better for collinear variables. However, as a classifier, there is little advantage for PLSDA. The advantage of PLSDA is that this model could show relationship between variables, which is not the goal of regular classifier.
 
-Different algorithms [@andersson2009] for PLSDA would show different score, while PCA always show the same score with fixed algorithm. For PCA, both new variables and classes are orthogonal. However, for PLS(Wold), only new classes are orthogonal. For PLS(Martens), only new variables are orthogonal. This paper show the details of using such methods [@brereton2018].
+Different algorithms [@andersson2009] for PLSDA would show different scores, while PCA always shows the same score with fixed algorithm. For PCA, both new variables and classes are orthogonal. However, for PLS(Wold), only new classes are orthogonal. For PLS(Martens), only new variables are orthogonal. This paper show the details of using such methods [@brereton2018].
 
 Sparse PLS discriminant analysis(sPLS-DA) make an L1 penalty on the variable selection to remove the influences from unrelated variables, which make sense for high-throughput omics data [@lecao2011].
 

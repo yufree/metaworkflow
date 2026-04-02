@@ -164,6 +164,49 @@ p <- ggplot(trend_df, aes(years, value, colour=variable))
 p + geom_line(size=1) + scale_y_log10("number of papers") + theme_bw()
 ```
 
+## Glossary
+
+The following abbreviations and terms are used throughout this book:
+
+| Abbreviation | Full Name |
+|---|---|
+| ANOVA | Analysis of Variance |
+| APCI | Atmospheric Pressure Chemical Ionization |
+| CID | Collision-Induced Dissociation |
+| DBS | Dried Blood Spots |
+| DDA | Data-Dependent Acquisition |
+| DIA | Data-Independent Acquisition |
+| DoE | Design of Experiments |
+| EIC | Extracted Ion Chromatogram |
+| ESI | Electrospray Ionization |
+| ExWAS | Exposome-Wide Association Study |
+| FDR | False Discovery Rate |
+| GC-MS | Gas Chromatography-Mass Spectrometry |
+| GNPS | Global Natural Products Social Molecular Networking |
+| HILIC | Hydrophilic Interaction Liquid Chromatography |
+| HMDB | Human Metabolome Database |
+| HRMS | High-Resolution Mass Spectrometry |
+| ISF | In-Source Fragmentation |
+| LC-MS | Liquid Chromatography-Mass Spectrometry |
+| ML/DL | Machine Learning / Deep Learning |
+| MR | Mendelian Randomization |
+| MRM | Multiple Reaction Monitoring |
+| MS/MS (MS2) | Tandem Mass Spectrometry |
+| MSI | Metabolomics Standards Initiative |
+| NMR | Nuclear Magnetic Resonance |
+| PCA | Principal Component Analysis |
+| PLS-DA | Partial Least Squares Discriminant Analysis |
+| PMD | Paired Mass Distance |
+| QC | Quality Control |
+| QSPR | Quantitative Structure-Property Relationship |
+| ROI | Region of Interest |
+| RSD | Relative Standard Deviation |
+| SIL-IS | Stable Isotope-Labeled Internal Standard |
+| SPME | Solid-Phase Microextraction |
+| TOF | Time-of-Flight |
+| UPLC | Ultra-Performance Liquid Chromatography |
+| VAMS | Volumetric Absorptive Microsampling |
+
 ## Workflow
 
 ```{r, echo = F}

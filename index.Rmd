@@ -39,6 +39,14 @@ This is a book written in **Bookdown**. You could contribute it by a pull reques
 
 [**R**](https://www.r-project.org/) and [**Rstudio**](https://www.rstudio.com/) are the software needed in this workflow.
 
+## License {.unnumbered}
+
+This book is dedicated to the public domain under the [CC0 1.0 Universal (Public Domain Dedication)](https://creativecommons.org/publicdomain/zero/1.0/).
+
+<a rel="license" href="https://creativecommons.org/publicdomain/zero/1.0/"><img alt="CC0" style="border-width:0" src="https://licensebuttons.net/p/zero/1.0/88x31.png" /></a>
+
+You are free to copy, modify, distribute, and use this work, even for commercial purposes, without asking permission or giving attribution.
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6S0CPNLV6R"></script>
 <script>

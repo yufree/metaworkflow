@@ -164,7 +164,7 @@ One experiment can contain lots of factors with different levels and only one se
 
 ## Pooled QC
 
-Pooled QC samples are unique and very important for metabolomics study. Every 10 or 20 samples, a pooled sample from all samples and blank sample in one study should be injected as quality control samples. Pooled QC samples contain the changes during the instrumental analysis and blank samples could tell where the variances come from. Meanwhile the cap of sequence should old the column with pooled QC samples. The injection sequence should be randomized. Those papers[@phapale2020; @dudzik2018; @dunn2012; @broadhurst2018;@broeckling2023;@gonzalez-dominguez2024] should be read for details.
+Pooled QC samples are unique and very important for metabolomics study. Every 10 or 20 samples, a pooled sample from all samples and blank sample in one study should be injected as quality control samples. Pooled QC samples contain the changes during the instrumental analysis and blank samples could tell where the variances come from. Meanwhile the cap of sequence should hold the column with pooled QC samples. The injection sequence should be randomized. Those papers[@phapale2020; @dudzik2018; @dunn2012; @broadhurst2018;@broeckling2023;@gonzalez-dominguez2024] should be read for details.
 
 If the total run is long, pooled QC samples should also be used to monitor drift over time and to support batch effect correction in later chapters. In other words, pooled QC samples are not only for instrument checking. They are also part of the data analysis design.
 

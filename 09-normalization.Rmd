@@ -127,7 +127,7 @@ Unsupervised methods only consider the normalization peaks intensity distributio
 
 Supervised methods will use the group information or batch information in experimental design to normalize the data. A linear model is always used to model the unwanted variances and remove them for further analysis.
 
-Since the real batch effects are always unknown, it's hard to make validation for different normalization methods. Li et.al developed NOREVA to make comparision among 25 correction method [@li2017a] and a recently updates make this numbers to 168 [@yang2020]. MetaboDrift also contain some methods for batch correction in excel [@thonusin2017]. Another idea is use spiked-in samples to validate the methods [@franceschi2012] , which might be good for targeted analysis instead of non-targeted analysis.
+Since the real batch effects are always unknown, it's hard to make validation for different normalization methods. Li et al. developed NOREVA to make comparison among 25 correction method [@li2017a] and a recently updates make this numbers to 168 [@yang2020]. MetaboDrift also contain some methods for batch correction in excel [@thonusin2017]. Another idea is use spiked-in samples to validate the methods [@franceschi2012] , which might be good for targeted analysis instead of non-targeted analysis.
 
 Relative log abundance (RLA) plots[@delivera2012] and heatmap often used to show the variances among the samples.
 

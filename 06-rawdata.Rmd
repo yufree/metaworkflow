@@ -24,13 +24,13 @@ You could use [msxpertsuite](https://salsa.debian.org/debichem-team/msxpertsuite
 
 ## Peak extraction
 
-GC/LC-MS data are usually be shown as a matrix with column standing for retention times and row standing for masses after bin them into small cell.
+GC/LC-MS data are usually shown as a matrix with column standing for retention times and row standing for masses after bin them into small cell.
 
 ```{r singledata, fig.show='hold', fig.cap='Demo of GC/LC-MS data',echo=FALSE,out.width='90%'}
 knitr::include_graphics('images/singledata.png')
 ```
 
-Conversation from the mass-retention time matrix into a vector with selected MS peaks at certain retention time is the basic idea of Peak extraction. You could EIC for each mass to charge ratio and use the change of trace slope to determine whether there is a peak or not. Then we could make integration for this peak and get peak area and retention time.
+Conversation from the mass-retention time matrix into a vector with selected MS peaks at certain retention time is the basic idea of Peak extraction. You could generate an EIC for each mass to charge ratio and use the change of trace slope to determine whether there is a peak or not. Then we could make integration for this peak and get peak area and retention time.
 
 ```{r demoeic, fig.show='hold', fig.cap='Demo of EIC with peak'}
 intensity <- c(10,10,10,10,10,14,19,25,30,33,26,21,16,12,11,10,9,10,11,10)
@@ -40,7 +40,7 @@ plot(intensity~time, type = 'o', main = 'EIC')
 
 However, due to the accuracy of instrument, the detected mass to charge ratio would have some shift and EIC would fail if different scan get the intensity from different mass to charge ratio.
 
-In the `matchedfilter` algorithm [@smith2006], they solve this issue by bin the data in m/z dimension. The adjacent chromatographic slices could be combined to find a clean signal fitting fixed second-derivative Gaussian with full width at half-maximum (fwhm) of 30s to find peaks with about 1.5-4 times the signal peak width. The the integration is performed on the fitted area.
+In the `matchedfilter` algorithm [@smith2006], they solve this issue by bin the data in m/z dimension. The adjacent chromatographic slices could be combined to find a clean signal fitting fixed second-derivative Gaussian with full width at half-maximum (fwhm) of 30s to find peaks with about 1.5-4 times the signal peak width. The integration is performed on the fitted area.
 
 ```{r matchedfilter, fig.show='hold', fig.cap='Demo of matchedfilter',echo=FALSE,out.width='90%'}
 knitr::include_graphics('images/matchedfilter.jpg')
