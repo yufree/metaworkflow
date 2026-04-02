@@ -33,7 +33,6 @@ This is an online handout for mass spectrometry based metabolomics data analysis
 -   Batch correction
 -   Annotation
 -   Omics analysis
--   Exposome
 
 This is a book written in **Bookdown**. You could contribute it by a pull request in Github. A workshop based on this book could be found [here](https://github.com/yufree/mdaw). Meanwhile, a docker image [xcmsrocker](https://hub.docker.com/r/yufree/xcmsrocker/) is available for metabolomics reproducible research.
 
