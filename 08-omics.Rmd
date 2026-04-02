@@ -4,35 +4,35 @@ bibliography: references.bib
 
 # Omics analysis
 
-When you get the filtered ions, the next step is making annotations for them. Such annotations would be helpful for omics studies. Omics analysis try to combine the information from other 'omics' to answer one specific question. Since we have got the annotations, Omics analysis could be performed.Upload the data obtained from the **xcms** to other tools or databases.
+When you get the filtered ions, the next step is making annotations for them. Such annotations would be helpful for omics studies. Omics analysis tries to combine the information from other 'omics' to answer one specific question. Since we have got the annotations, omics analysis could be performed. Upload the data obtained from **xcms** or other platforms to other tools or databases.
 
 You will get an updated database list [here](http://metabolomicssociety.org/resources/metabolomics-databases).
 
-Right now, it is hard to connect different omics databases such as gene, protein and metabolites together for a whole scope of certain biological process. However, you might select few metabolites across those databases and find something interesting.
+Right now, it is hard to connect different omics databases such as gene, protein and metabolites together for a whole scope of certain biological process. However, you might select a few metabolites across those databases and find something interesting.
 
 ## From Bottom-up to Top-down
 
-Bottom-up analysis mean the model for each metabolite. In this case, we could find out which metabolite will be affected by our experiment design. However, take care of multiple comparison issue.
+Bottom-up analysis means the model for each metabolite. In this case, we could find out which metabolite will be affected by our experiment design. However, take care of multiple comparison issue.
 
 $$
-metabolite = f(control/treatment, co-variables)
+metabolite = f(control/treatment, co\text{-}variables)
 $$
 
-Top-down analysis mean the model for output. In this case, we could evaluate the contribution of each metabolites. You need variable selection to make a better model.
+Top-down analysis means the model for output. In this case, we could evaluate the contribution of each metabolite. You need variable selection to make a better model.
 
 $$
-control/treatment = f(metabolite 1,metabolite 2,...,metaboliteN,co-varuables)
+control/treatment = f(metabolite 1,metabolite 2,...,metaboliteN,co\text{-}variables)
 $$
 
-For omics study, you might need to integrate dataset from different sources.
+For omics study, you might need to integrate datasets from different sources.
 
 $$
-control/treatment = f(metabolites, proteins, genes, miRNA,co-varuables)
+control/treatment = f(metabolites, proteins, genes, miRNA,co\text{-}variables)
 $$
 
 ## Pathway analysis
 
-Pathway analysis maps annotated data into known pathway and make statistical analysis to find the influenced pathway or the compounds with high influences on certain pathway.
+Pathway analysis maps annotated data into known pathways and makes statistical analysis to find the influenced pathway or the compounds with high influences on certain pathway.
 
 ### Pathway Database
 
@@ -42,40 +42,46 @@ Pathway analysis maps annotated data into known pathway and make statistical ana
 
 -   [BioCyc](https://biocyc.org/) is a collection of 14558 Pathway/Genome Databases (PGDBs), plus software tools for exploring them.
 
--   [Reactome](https://reactome.org/what-is-reactome) is an open-source, open access, manually curated and peer-reviewed pathway database. Our goal is to provide intuitive bioinformatics tools for the visualization, interpretation and analysis of pathway knowledge to support basic and clinical research, genome analysis, modeling, systems biology and education.
+-   [Reactome](https://reactome.org/what-is-reactome) is an open-source, open access, manually curated and peer-reviewed pathway database. It provides intuitive bioinformatics tools for the visualization, interpretation and analysis of pathway knowledge to support basic and clinical research, genome analysis, modeling, systems biology and education.
 
 -   [WikiPathway](https://www.wikipathways.org/index.php/WikiPathways) is a database of biological pathways maintained by and for the scientific community.
 
 ### Pathway software
 
--   [Pathway Commons](http://www.pathwaycommons.org/) online tools for pathway analysis
+-   [MetaboAnalyst](https://www.metaboanalyst.ca/) is the most widely used platform for metabolomics pathway analysis[@pang2024]. It integrates Mummichog for pathway activity prediction directly from m/z features without prior annotation, as well as conventional over-representation analysis and pathway topology analysis using annotated compound lists.
 
--   [RaMP](https://github.com/Mathelab/RaMP-DB) could make pathway analysis for batch search
+-   [FELLA](https://bioconductor.org/packages/release/bioc/html/FELLA.html) is an R package that performs metabolite enrichment analysis using KEGG sub-network topology rather than simple pathway lists, which can capture cross-pathway connections[@fella2015].
 
--   [metabox](https://github.com/kwanjeeraw/metabox) could make pathway analysis
+-   [ChemRICH](https://chemrich.fiehnlab.ucdavis.edu/) performs Chemical Similarity Enrichment Analysis as an alternative to biochemical pathway mapping[@barupal2018]. Instead of relying on incomplete pathway databases, ChemRICH groups metabolites by chemical similarity (e.g., Tanimoto scores) and tests for enrichment within these chemical classes. This is particularly useful for untargeted metabolomics where many identified metabolites may not map to known pathways.
 
--   [impala](http://impala.molgen.mpg.de/) is used for pathway enrichment analysis
+-   [RaMP-DB](https://github.com/Mathelab/RaMP-DB) is a relational database that integrates pathway information from KEGG, Reactome, WikiPathways and HMDB for batch pathway analysis[@zhang2023b].
+
+-   [Pathway Commons](http://www.pathwaycommons.org/) online tools for pathway analysis.
+
+-   [metabox](https://github.com/kwanjeeraw/metabox) could make pathway analysis.
+
+-   [impala](http://impala.molgen.mpg.de/) is used for pathway enrichment analysis.
 
 -   [Metscape](http://metscape.med.umich.edu/) based on Debiased Sparse Partial Correlation (DSPC) algorithm [@basu2017] to make annotation.
 
 ## Network analysis
 
-[Mummichog](https://code.google.com/archive/p/atcg/wikis/mummichog_for_metabolomics.wiki) could make pathway and network analysis without annotation.
+[Mummichog](https://www.metaboanalyst.ca/) could make pathway and network analysis without annotation. The algorithm is now integrated into MetaboAnalyst[@pang2024].
 
-[MSS](http://web1.sph.emory.edu/users/tyu8/MSS): sequential feature screening procedure to select important sub-network and identify the optimal matching for metabolimics data [@cai2017].
+[MSS](http://web1.sph.emory.edu/users/tyu8/MSS): sequential feature screening procedure to select important sub-network and identify the optimal matching for metabolomics data [@cai2017].
 
-[Metapone](https://bioconductor.org/packages/devel/bioc/html/metapone.html) is joint pathway testing package for untargeted metabolomics data [@tian2022].
+[Metapone](https://bioconductor.org/packages/devel/bioc/html/metapone.html) is a joint pathway testing package for untargeted metabolomics data [@tian2022].
 
 ## Omics integration
 
--   [Blast](https://blast.ncbi.nlm.nih.gov/Blast.cgi) finds regions of similarity between biological sequences. The program compares nucleotide or protein sequences to sequence databases and calculates the statistical significance.
+Multi-omics integration aims to combine data from different omics layers (genomics, transcriptomics, proteomics, metabolomics) to gain a more comprehensive understanding of biological systems. Several approaches and tools are available:
+
+-   [mixOmics](https://mixomics.org/) is an R package for multi-omics data integration using multivariate projection-based methods including sparse PLS, DIABLO (Data Integration Analysis for Biomarker discovery using Latent cOmponents) and other supervised/unsupervised approaches[@rohart2017].
+
+-   [MOFA+](https://biofam.github.io/MOFA2/) (Multi-Omics Factor Analysis) is a statistical framework for comprehensive integration of multi-modal data. It identifies shared and dataset-specific sources of variation across omics layers using a Bayesian factor model[@argelaguet2020]. MOFA+ extends the original MOFA to support single-cell data and multiple sample groups.
 
 -   [The Omics Discovery Index (OmicsDI)](https://www.omicsdi.org/) provides a knowledge discovery framework across heterogeneous omics data (genomics, proteomics, transcriptomics and metabolomics).
 
--   [Omics Data Integration Project](https://github.com/cran/mixOmics)
-
 -   Standardized multi-omics of Earth's microbiomes could check this GNPS based work[@shaffer2022].
 
-- Windows Scanning Multiomics: Integrated Metabolomics and Proteomics[@shi2023]
-
-
+-   Windows Scanning Multiomics: Integrated Metabolomics and Proteomics[@shi2023].

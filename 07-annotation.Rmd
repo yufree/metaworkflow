@@ -38,14 +38,16 @@ Use separation methods such as chromatography, ion mobility MS, MS/MS. Reversed-
 
 ## Annotation v.s. identification
 
-According to the definition from the Chemical Analysis Working Group of the Metabolomics Standards Intitvative[@sumner2007; @viant2017]. Four levels of confidence could be assigned to identification:
+According to the definition from the Chemical Analysis Working Group of the Metabolomics Standards Initiative[@sumner2007; @viant2017], four levels of confidence could be assigned to identification:
 
 -   Level 1 'identified metabolites'
 -   Level 2 'Putatively annotated compounds'
 -   Level 3 'Putatively characterised compound classes'
 -   Level 4 'Unknown'
 
-In practice, data analysis based annotation could reach level 2. For level 1, we need at extra methods such as MS/MS, retention time, accurate mass, 2D NMR spectra, and so on to confirm the compounds. However, standards are always required for solid proof.
+Schymanski et al. proposed a complementary five-level confidence scheme specifically designed for high-resolution mass spectrometry that has become widely adopted in environmental and exposome studies[@schymanski2014]. The levels range from Level 1 (confirmed structure by reference standard) through Level 5 (exact mass only), with intermediate levels for probable structure (Level 2, diagnostic evidence but no reference standard), tentative candidates (Level 3, evidence for possible structures), and unequivocal molecular formula (Level 4). This framework provides more granularity than the MSI scheme and is especially useful for non-target screening where reference standards are unavailable for most detected features.
+
+In practice, data analysis based annotation could reach Level 2. For Level 1, we need extra methods such as MS/MS, retention time, accurate mass, 2D NMR spectra, and so on to confirm the compounds. However, standards are always required for solid proof.
 
 For specific group of compounds such as PFASs, the communication of confidence level could be slightly different[@charbonnet2022].
 
@@ -375,7 +377,7 @@ For targeted analysis, chromatographic retention time could be the qualitative m
 
 - [RT-Transformer](https://github.com/01dadada/RT-Transformer): retention time prediction for metabolite annotation to assist in metabolite identification,which is a novel deep neural network model coupled with graph attention network and 1D-Transformer, which can predict retention times under any chromatographic methods[@xue2024].
 
-- RT prediction model(random forest) of unified-HILIC/AEX/HRMS/MS, which enables the comprehensive structural annotation of polar metabolites(Unified-HILIC/AEX/HRMS/MS)[@torigoe2024a].
+- RT prediction model(random forest) of unified-HILIC/AEX/HRMS/MS, which enables the comprehensive structural annotation of polar metabolites(Unified-HILIC/AEX/HRMS/MS)[@torigoe2024].
 
 ### ProbMetab
 
@@ -403,7 +405,7 @@ For certain group of compounds such as [Acyl-CoA](https://github.com/urikeshet/C
 
 ### KGMN
 
-Knowledge-guided multi-layer network (KGMN) integrates three-layer networks, including knowledge-based metabolic reaction network, knowledge-guided MS/MS similarity network, and global peak correlation network for annotaiton [@zhou2022].
+Knowledge-guided multi-layer network (KGMN) integrates three-layer networks, including knowledge-based metabolic reaction network, knowledge-guided MS/MS similarity network, and global peak correlation network for annotation [@zhou2022].
 
 ### CCMN
 
@@ -431,7 +433,7 @@ LibGen can generate high quality spectral libraries of Natural Products for EAD-
 
 -   [MassBank](http://www.massbank.jp/?lang=en)
 
--   [GNPS](https://gnps.ucsd.edu/ProteoSAFe/static/gnps-splash.jsp) use inner correlationship in the data and make network analysis at peaks' level instand of annotated compounds to annotate the data.
+-   [GNPS](https://gnps.ucsd.edu/ProteoSAFe/static/gnps-splash.jsp) use inner correlationship in the data and make network analysis at peaks' level instead of annotated compounds to annotate the data.
 
 -   [ReSpect](http://spectra.psc.riken.jp/): phytochemicals
 
@@ -447,7 +449,7 @@ LibGen can generate high quality spectral libraries of Natural Products for EAD-
 
 -   [GMDB](https://jcggdb.jp/rcmg/glycodb/Ms_ResultSearch) a multistage tandem mass spectral database using a variety of structurally defined glycans.
 
--   [HMDB](http://www.hmdb.ca/) is a freely available electronic database containing detailed information about small molecule metabolites found in the human body.
+-   [HMDB](http://www.hmdb.ca/) is a freely available electronic database containing detailed information about small molecule metabolites found in the human body. HMDB 5.0[@wishart2022] greatly expanded the database to over 217,000 metabolite entries with enhanced spectral data coverage and improved chemical taxonomy.
 
 -   [KEGG](https://www.genome.jp/kegg/compound/) is a collection of small molecules, biopolymers, and other chemical substances that are relevant to biological systems.
 

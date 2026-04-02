@@ -346,13 +346,25 @@ This method's performance is similar to SVA. Instead find surrogate variable fro
 
 RRmix also use a latent factor models correct the data [@jr2017]. This method could be treated as linear mixed model version SVA. No control samples are required and the unwanted variances could be removed by factor analysis. This method might be the best choice to remove the unwanted variables with common experiment design.
 
-#### Norm ISWSVR 
+#### Norm ISWSVR
 
 It is a two-step approach via combining the best-performance internal standard correction with support vector regression normalization, comprehensively removing the systematic and random errors and matrix effects[@ding2022a].
 
+#### WaveICA
+
+WaveICA[@deng2019] is a batch correction method based on wavelet analysis that decomposes signals into different frequency components. It separates batch-related variation (typically low-frequency) from biological variation, and selectively removes the batch component. WaveICA works well for large-scale untargeted metabolomics data where batch effects show non-linear patterns that cannot be captured by simple linear models.
+
+#### SERRF
+
+Systematic Error Removal Using Random Forest (SERRF)[@fan2019] uses quality control samples and random forest models to predict and remove systematic errors for each feature independently. In benchmarking studies, SERRF has shown strong performance for normalizing large-scale untargeted metabolomics and lipidomics data, particularly when pooled QC samples are available throughout the analytical run.
+
+#### ComBat
+
+ComBat[@johnson2007] was originally developed for batch correction in microarray gene expression data but has been increasingly adopted in metabolomics. It uses an empirical Bayes framework to estimate and remove batch effects while preserving biological variation. ComBat is available in the `sva` R package and works best when batch sizes are not too small. However, users should be careful when batch and biological group are confounded, as ComBat may remove real biological signals in such cases.
+
 ## Method to validate the normalization
 
-Various methods have been used for batch correction and evaluation. Simulation will ensure groud turth. Difference analysis would be a common method for evaluation. Then we could check whether this peak is true positive or false positive by settings of the simulation. Other methods need statistics or lots of standards to describ the performance of batch correction or normalization results.
+Various methods have been used for batch correction and evaluation. Simulation will ensure ground truth. Difference analysis would be a common method for evaluation. Then we could check whether this peak is true positive or false positive by settings of the simulation. Other methods need statistics or lots of standards to describe the performance of batch correction or normalization results.
 
 ## Software
 

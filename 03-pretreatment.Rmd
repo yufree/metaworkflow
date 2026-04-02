@@ -14,7 +14,7 @@ This paper discuss the influence of sample normalization[@wu2016].
 
 ## Quenching
 
-Quenching solvent is always used to stop stop enzymatic activity.
+Quenching solvent is always used to stop enzymatic activity.
 
 In this review[@lu2017], authors said:
 
@@ -48,7 +48,7 @@ nano LC-MS could be used to analysis small numbers of cells[@luo2017a].
 
 For plant like soybeans[@mahmud2017], ammonium acetate/methanol could be selected as extraction strategies compared with water/methanol and sodium phosphate/methanol. For general plant samples, check this comprehensive investigation[@bijttebier2016].
 
-For blood plasma and serum sample, a comprehensive evaluation of 12 sample preparation methods (SPM) using phospholipid and protein removal plates (PLR), solid phase extraction plates (SPE), supported liquid extraction cartridge (SLE), and conventionally used protein precipitation (PPT) were purformed. Results show PPT and PLR on the same samples by implementing a simple analytical workflow as their complementarity would allow the broadening of the visible chemical space [@chaker2022].
+For blood plasma and serum sample, a comprehensive evaluation of 12 sample preparation methods (SPM) using phospholipid and protein removal plates (PLR), solid phase extraction plates (SPE), supported liquid extraction cartridge (SLE), and conventionally used protein precipitation (PPT) were performed. Results show PPT and PLR on the same samples by implementing a simple analytical workflow as their complementarity would allow the broadening of the visible chemical space [@chaker2022].
 
 ## Derivatization
 
@@ -57,6 +57,22 @@ Derivatization is always used in GC-based metabolomics study. This paper[@miyaga
 ## Isotope label
 
 You might try heavy water to exchange oxygen atom with samples to track certain metabolites[@osipenko2022] or MS-IDF[@wang2022g].
+
+## Microsampling techniques
+
+Traditional blood sampling requires large volumes (several mL) drawn by trained personnel, which limits the temporal resolution and ecological validity of metabolomics studies. Microsampling techniques collect much smaller volumes (typically 10--30 $\mu$L) and can often be performed by participants themselves at home, making them especially attractive for longitudinal and remote studies.
+
+### Solid-phase microextraction (SPME)
+
+Solid-phase microextraction (SPME) uses a coated fiber or thin film to extract analytes directly from a biological matrix without the need for solvent extraction[@pawliszyn2012]. The coating selectively absorbs or adsorbs analytes based on their affinity to the coating material. SPME has been coupled with both GC-MS and LC-MS for metabolomics applications, and in vivo SPME probes have been developed for direct tissue sampling with minimal invasiveness[@reyes-garces2018]. A key advantage is that SPME provides a balanced coverage of metabolites across a wide polarity range, since the extraction is equilibrium-based rather than exhaustive[@li2022a].
+
+### Dried blood spots (DBS)
+
+Dried blood spots involve collecting a small volume of capillary blood (typically from a finger prick) onto filter paper cards. After drying, the cards are stable at room temperature and can be shipped by mail, making DBS ideal for large-scale population studies and remote sampling[@deglon2012]. DBS have been successfully used in newborn screening for decades and are now being applied to metabolomics studies. Challenges include hematocrit effects on spot size and analyte recovery, and the relatively small amount of material available for analysis[@manier2020].
+
+### Volumetric absorptive microsampling (VAMS)
+
+Volumetric absorptive microsampling (VAMS, commercially available as Mitra devices) collects a fixed volume of blood (typically 10 or 20 $\mu$L) onto an absorbent polymer tip, overcoming the hematocrit-dependent volume variability of DBS[@denniff2014]. VAMS devices are straightforward for self-collection and the fixed volume simplifies quantitative analysis. They have been validated for a range of metabolomics and pharmacokinetic applications.
 
 ## Storage
 

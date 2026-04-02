@@ -59,15 +59,17 @@ mzMatch is a modular, open source and platform independent data processing pipel
 
 ### PRIMe
 
-[PRIMe](http://prime.psc.riken.jp/Metabolomics_Software/) is from RIKEN and UC Davis. They update their database frequently[@tsugawa2016]. It supports mzML and major MS vendor formats. They defined own file format ABF and eco-system for omics studies. The software are updated almost everyday. You could use MS-DIAL for untargeted analysis and MRMOROBS for targeted analysis. For annotation, they developed MS-FINDER and statistic tools with excel. This platform could replaced the dear software from company and well prepared for MS/MS data analysis and lipidomics. They are open source, work on Windows and also could run within mathmamtics. However, they don't cover pathway analysis. Another feature is they always show the most recently spectral records from public repositories. You could always get the updated MSP spectra files for your own data analysis.
+[PRIMe](http://prime.psc.riken.jp/Metabolomics_Software/) is from RIKEN and UC Davis. They update their database frequently[@tsugawa2016]. It supports mzML and major MS vendor formats. They defined own file format ABF and eco-system for omics studies. The software are updated almost everyday. You could use MS-DIAL for untargeted analysis and MRMPROBS for targeted analysis. For annotation, they developed MS-FINDER and statistic tools with excel. This platform could replace the expensive software from vendors and is well prepared for MS/MS data analysis and lipidomics. They are open source, work on Windows and also could run within mathematics. However, they don't cover pathway analysis. Another feature is they always show the most recently spectral records from public repositories. You could always get the updated MSP spectra files for your own data analysis.
+
+MS-DIAL 4 added support for lipidomics with an integrated CCS and retention time atlas[@tsugawa2020]. The latest version, MS-DIAL 5, further extends the platform with multimodal mass spectrometry data mining capabilities including improved DIA deconvolution[@tsugawa2024].
 
 For PRIMe based workflow, check those papers[@lai2018; @matsuo2017; @treutler2016; @tsugawa2015; @tsugawa2016; @kind2018]. There are also extensions for their workflow[@uchino2022] and workflow for environmental science[@bonnefille2023].
 
 ### GNPS
 
-[GNPS](http://gnps.%20ucsd.edu) is an open-access knowledge base for community-wide organization and sharing of raw, processed or identified tandem mass (MS/MS) spectrometry data. It's a straight forward annotation methods for MS/MS data. Feature-based molecular networking (FBMN) within GNPS could be coupled with xcms, openMS, MS-DIAL, MZmine2, and other popular software. GNPS also have a dashboard for online mass spectrometery data analysis[@petras2021a].
+[GNPS](https://gnps.ucsd.edu) is an open-access knowledge base for community-wide organization and sharing of raw, processed or identified tandem mass (MS/MS) spectrometry data. It's a straightforward annotation method for MS/MS data. Feature-based molecular networking (FBMN) within GNPS could be coupled with xcms, OpenMS, MS-DIAL, MZmine, and other popular software. GNPS also has a dashboard for online mass spectrometry data analysis[@petras2021a]. Ion identity molecular networking[@schmid2021a] further extends GNPS by connecting features from the same compound (adducts, in-source fragments) into ion identity networks, improving both annotation accuracy and molecular networking results.
 
-Check those papers for GNPS and related projects[@aron2020; @nothias2020; @scheubert2017; @silva2018; @wang2016b;@bittremieux2023].
+Check those papers for GNPS and related projects[@aron2020; @nothias2020; @scheubert2017; @silva2018; @wang2016b; @bittremieux2023; @schmid2021a].
 
 ### OpenMS & SIRIUS
 
@@ -75,23 +77,25 @@ Check those papers for GNPS and related projects[@aron2020; @nothias2020; @scheu
 
 Check those paper for OpenMS based workflow[@bertsch2011; @pfeuffer2017; @rost2014; @rost2016; @rurik2020; @alka2020;@pfeuffer2024].
 
-OpenMS could be coupled to SIRIUS 4 for annotation. [Sirius](https://bio.informatik.uni-jena.de/software/sirius/) is a new java-based software framework for discovering a landscape of de-novo identification of metabolites using single and tandem mass spectrometry. SIRIUS 4 project integrates a collection of our tools, including [CSI:FingerID](https://www.csi-fingerid.uni-jena.de/), [ZODIAC](https://bio.informatik.uni-jena.de/software/zodiac/) and [CANOPUS](https://bio.informatik.uni-jena.de/software/canopus/). Check those papers for SIRIUS based workflow[@duhrkop2019; @duhrkop2020a; @alka2020; @ludwig2020].
+OpenMS could be coupled to SIRIUS 4 for annotation. [Sirius](https://bio.informatik.uni-jena.de/software/sirius/) is a new java-based software framework for discovering a landscape of de-novo identification of metabolites using single and tandem mass spectrometry. SIRIUS 4 project integrates a collection of our tools, including [CSI:FingerID](https://www.csi-fingerid.uni-jena.de/), [ZODIAC](https://bio.informatik.uni-jena.de/software/zodiac/) and [CANOPUS](https://bio.informatik.uni-jena.de/software/canopus/). Check those papers for SIRIUS based workflow[@duhrkop2019; @duhrkop2020; @alka2020; @ludwig2020].
 
-### MZmine 2
+### MZmine
 
-[MZmine 2](http://mzmine.github.io/) has three version developed on Java platform and the lastest version is included into [MSDK](https://msdk.github.io/). Similar function could be found from MZmine 2 as shown in XCMS online. However, MZmine 2 do not have pathway analysis. You could use metaboanalyst for that purpose. Actually, you could go into MSDK to find similar function supplied by [ProteoSuite](http://www.proteosuite.org) and [Openchrom](https://www.openchrom.net/). If you are a experienced coder for Java, you should start here.
+[MZmine](https://mzmine.github.io/) was originally developed on the Java platform. MZmine 2[@pluskal2010] was widely used in the community. In 2023, MZmine 3 was released with a completely rewritten architecture, adding support for ion mobility spectrometry data, improved feature detection, and native integration with GNPS molecular networking and SIRIUS[@schmid2023]. MZmine 3 is now the recommended version and is one of the most actively maintained open-source platforms for untargeted metabolomics. However, MZmine does not have built-in pathway analysis. You could use MetaboAnalyst for that purpose.
 
-Check those papers for MZmine based workflow[@pluskal2010; @pluskal2020].
+Check those papers for MZmine based workflow[@pluskal2010; @pluskal2020; @schmid2023].
 
 ### Emory MaHPIC
 
-This platform is composed by several R packages from Emory University including [apLCMS](https://sourceforge.net/projects/aplcms/) to collect the data, [xMSanalyzer](https://sourceforge.net/projects/xmsanalyzer/) to handle automated pipeline for large-scale, non-targeted metabolomics data, [xMSannotator](https://sourceforge.net/projects/xmsannotator/) for annotation of LC-MS data and [Mummichog](https://code.google.com/archive/p/atcg/wikis/mummichog_for_metabolomics.wiki) for pathway and network analysis for high-throughput metabolomics. This platform would be preferred by someone from environmental science to study exposome.
+This platform is composed by several R packages from Emory University including [apLCMS](https://sourceforge.net/projects/aplcms/) to collect the data, [xMSanalyzer](https://sourceforge.net/projects/xmsanalyzer/) to handle automated pipeline for large-scale, non-targeted metabolomics data, [xMSannotator](https://sourceforge.net/projects/xmsannotator/) for annotation of LC-MS data and Mummichog for pathway and network analysis for high-throughput metabolomics. Note that the original Mummichog is no longer actively maintained; its algorithm is now integrated into [MetaboAnalyst](https://www.metaboanalyst.ca/)[@pang2024]. This platform would be preferred by someone from environmental science to study exposome.
 
 You could check those papers for Emory workflow[@uppal2013; @uppal2017; @yu2009b; @li2013; @liu2020].
 
 ### Others
 
-- [PMDDA](https://yufree.github.io/pmdda/script.html) is a reproducible workflow for exhaustive MS2 data acquisition of MS1 features[@yu2022b] will data and script available online.
+- [MetaboAnalyst](https://www.metaboanalyst.ca/) is a comprehensive web-based platform for metabolomics data analysis, covering statistical analysis, pathway analysis, biomarker discovery and more. The latest version, MetaboAnalyst 6.0[@pang2024], provides a unified platform for metabolomics data processing, analysis and interpretation, integrating Mummichog for pathway analysis without prior annotation.
+
+- [PMDDA](https://yufree.github.io/pmdda/script.html) is a reproducible workflow for exhaustive MS2 data acquisition of MS1 features[@yu2022b] with data and script available online.
 
 - [tidymass](https://www.tidymass.org/) is an object-oriented reproducible analysis framework for LC–MS data[@shen2022].
 

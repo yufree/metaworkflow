@@ -58,7 +58,7 @@ qBinning is a novel algorithm for constructing extracted ion chromatograms (EICs
  
  Recent developments in 2025 have further refined peak detection. The Local Asymmetric Gaussian Fitting Algorithm offers enhanced peak detection for LC-HRMS data[@zou2025]. For large-scale cohort studies, MetCohort provides precise feature detection and correspondence[@yang2025]. Additionally, raw data simulation tools like Mzrtsim are becoming crucial for reproducible nontargeted metabolomics data analysis[@yu2025].
 
-Machine learning can also be used for feature extraxtion. Deep learning frame for LC-MS feature detection on 2D pseudo color image could improve the peak picking process [@zhao2021]. Another deep learning-assisted peak curation (NeatMS) can also be used for large-scale LC-MS metabolomics[@gloaguen2022]. A feature selection pipeline based on neural network and genetic algorithm could be applied for metabolomics data analysis[@lisitsyna2022].
+Machine learning can also be used for feature extraction. Deep learning frame for LC-MS feature detection on 2D pseudo color image could improve the peak picking process [@zhao2021]. Another deep learning-assisted peak curation (NeatMS) can also be used for large-scale LC-MS metabolomics[@gloaguen2022]. A feature selection pipeline based on neural network and genetic algorithm could be applied for metabolomics data analysis[@lisitsyna2022].
 
 ## MS/MS
 
@@ -116,7 +116,7 @@ This paper show a matlab based shift correction methods[@fu2017]. Retention time
 
 ## Filling missing values
 
-Too many zeros or NA in peaks list are problematic for statistics. Then we usually need to integreate the area exsiting a peak. `xcms 3` could use profile matrix to fill the blank. They also have function to impute the NA data by replace missing values with a proportion of the row minimum or random numbers based on the row minimum. It depends on the user to select imputation methods as well as control the minimum fraction of features appeared in single group.
+Too many zeros or NA in peaks list are problematic for statistics. Then we usually need to integrate the area of an existing peak. `xcms 3` could use profile matrix to fill the blank. They also have function to impute the NA data by replace missing values with a proportion of the row minimum or random numbers based on the row minimum. It depends on the user to select imputation methods as well as control the minimum fraction of features appeared in single group.
 
 ```{r peakfilling, fig.show='hold', echo=FALSE,out.width= '90%', fig.cap='Peak filling of GC/LC-MS data',}
 knitr::include_graphics('images/peakfiling.png')
@@ -130,7 +130,7 @@ knitr::include_graphics('images/multidata.png')
 
 ## Spectral deconvolution
 
-Without structure information about certain compound, the peak extraction would suffer influence from other compounds. At the same retention time, co-elute compounds might share similar mass. Hard electron ionization methods such as electron impact ionization (EI), APPI suffer this issue. So it would be hard to distinguish the co-elute peaks' origin and deconvolution method[] could be used to separate different groups according to the similar chromatogragh behaviors. Another computational tool **eRah** could be a better solution for the whole process[@domingo-almenara2016]. Also the **ADAD-GC3.0** could also be helpful for such issue[@ni2016]. Other solutions for GC could be found here[@styczynski2007; @tian2016; @du2013].
+Without structure information about certain compound, the peak extraction would suffer influence from other compounds. At the same retention time, co-elute compounds might share similar mass. Hard electron ionization methods such as electron impact ionization (EI), APPI suffer this issue. So it would be hard to distinguish the co-elute peaks' origin and deconvolution method[] could be used to separate different groups according to the similar chromatographic behaviors. Another computational tool **eRah** could be a better solution for the whole process[@domingo-almenara2016]. Also the **ADAD-GC3.0** could also be helpful for such issue[@ni2016]. Other solutions for GC could be found here[@styczynski2007; @tian2016; @du2013].
 
 ## Dynamic Range
 
@@ -167,4 +167,4 @@ Some peaks need to be rule out due to high RSD% and small fold changes compared 
 
 ## Power Analysis Filter
 
-As shown in $$Exprimental design(DoE)$$, the power analysis in metabolomics is ad-hoc since you don't know too much before you perform the experiment. However, we could perform power analysis after the experiment done. That is, we just rule out the peaks with a lower power for current experimental design.
+As shown in $$Experimental design(DoE)$$, the power analysis in metabolomics is ad-hoc since you don't know too much before you perform the experiment. However, we could perform power analysis after the experiment done. That is, we just rule out the peaks with a lower power for current experimental design.

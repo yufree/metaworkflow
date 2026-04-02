@@ -4,7 +4,7 @@ bibliography: references.bib
 
 # Exposome
 
-Nature or nurture debate has a similar paradigm in environmental study: is the ecological system and human health risk dominated by heredity or environment? Twins and siblings study[@lakhani2019; @polderman2015] show that both heritability and environmental factors could explain the phenotypic variance among population. The contribution of environment among different disease functional domain such as hematological and endocrine could achieve almost half of the total variances [@polderman2015]. However, besides those epidemiology proof, little is known about the influences of overall environmental exposure process at molecular level. Conventional exposure study always investigate one or several specific compounds and their environmental fate or toxicology endpoint. Exposome, on the other hand, tries to access multiple exposure factors from biological or environmental samples as much as possible without a predefined compounds list. Those endogenous and exogenous molecules can reveal the exposure process in details. Exposome could not only help to investigate the comprehensive molecules level changes, but also the interactions among molecules in an non-targeted design. By following annotation of captured compounds, exposome can discover exposure markers for certain type of pollution, as well as biomarkers for certain exposure process and discuss related physiological process. The workflow for exposome is quite similar to metabolomics[@hu2021a]. As the field grows, ethical frameworks for data-driven environmental health studies, particularly in the AI era, are becoming essential to guide research practices[@yu2025a].
+Nature or nurture debate has a similar paradigm in environmental study: is the ecological system and human health risk dominated by heredity or environment? Twins and siblings study[@lakhani2019; @polderman2015] show that both heritability and environmental factors could explain the phenotypic variance among population. The contribution of environment among different disease functional domain such as hematological and endocrine could achieve almost half of the total variances [@polderman2015]. However, besides those epidemiology proof, little is known about the influences of overall environmental exposure process at molecular level. Conventional exposure study always investigate one or several specific compounds and their environmental fate or toxicology endpoint. Exposome, on the other hand, tries to access multiple exposure factors from biological or environmental samples as much as possible without a predefined compounds list. Those endogenous and exogenous molecules can reveal the exposure process in details. Exposome could not only help to investigate the comprehensive molecules level changes, but also the interactions among molecules in an non-targeted design. By following annotation of captured compounds, exposome can discover exposure markers for certain type of pollution, as well as biomarkers for certain exposure process and discuss related physiological process. The workflow for exposome is quite similar to metabolomics[@hu2021a]. As the field grows, ethical frameworks for data-driven environmental health studies, particularly in the AI era, are becoming essential to guide research practices[@yu2025].
 
 According to [CDC](https://www.cdc.gov/niosh/topics/exposome/default.html), The exposome can be defined as the measure of all the exposures of an individual in a lifetime and how those exposures relate to health. Exposomics is the study of the exposome and relies on the application of internal and external exposure assessment methods.
 
@@ -15,6 +15,22 @@ According to [CDC](https://www.cdc.gov/niosh/topics/exposome/default.html), The 
 Human Early Life Exposome (HELIX) project[@maitre2022a], a multi-centre cohort of 1301 mother-child pairs, associated individual exposomes consisting of >100 chemical, outdoor, social and lifestyle exposures assessed in pregnancy and childhood, with multi-omics profiles (methylome, transcriptome, proteins and metabolites) in childhood. The data could be found [online](https://helixomics.isglobal.org/).
 
 “molecular gatekeepers”, key metabolites that link single or multiple exposure biomarkers with correlated clusters of endogenous metabolites, could be used to find health-relevant biological metabolites. [@yu2022c]
+
+## Exposome-Wide Association Studies (ExWAS)
+
+The Environment-Wide Association Study (EWAS, also called ExWAS) paradigm was introduced by Patel et al. as an analogue to GWAS for systematically scanning environmental factors[@patel2010]. Instead of testing one exposure at a time, ExWAS tests hundreds of environmental variables (chemical, dietary, lifestyle) for association with a health outcome in a single analysis, applying the same multiple-testing correction principles used in genomics. This approach has been applied to metabolomics data to identify metabolite signatures associated with environmental exposures in an agnostic manner, providing a systematic way to generate hypotheses about exposure-disease pathways.
+
+## Large-scale exposome projects
+
+Several large European consortia have advanced the exposome concept from theory to practice:
+
+-   The **EXPOsOMICS** project[@vineis2020] developed methods for integrating external exposure monitoring (air pollution, water contaminants) with internal omics measurements (metabolomics, transcriptomics, epigenomics) to study how environmental exposures translate into biological effects.
+
+-   The **European Human Exposome Network (EHEN)**[@vrijheid2021] brings together nine major projects to comprehensively characterize the human exposome across the life course, from prenatal to adult exposures, using harmonized protocols and multi-omics approaches.
+
+-   The concept of an exposome-wide approach has been further formalized by Vermeulen et al., who argued that measuring the totality of environmental exposures is now technically feasible and should be systematically pursued to complement genomic studies[@vermeulen2020].
+
+These projects demonstrate that metabolomics is a key layer in exposome research, providing the molecular readout of how external exposures are internalized and metabolized.
 
 ## Internal exposure
 

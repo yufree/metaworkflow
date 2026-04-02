@@ -36,7 +36,7 @@ knitr::include_graphics('images/mshistory.jpg')
 
 -   1970s, quadrupole mass analyzer
 
--   1970s, R. Graham Cooks developed mass-analyzed ion kinetic energy spectrometry, or MIKES to make MRM analysis for multi-stage mass sepctrometry
+-   1970s, R. Graham Cooks developed mass-analyzed ion kinetic energy spectrometry, or MIKES to make MRM analysis for multi-stage mass spectrometry
 
 -   1980s, MALDI rescue TOF and mass spectrometry move into biological application
 
@@ -44,7 +44,7 @@ knitr::include_graphics('images/mshistory.jpg')
 
 -   2010s, Aperture Coding mass spectrometry
 
-### History of Metabolomcis
+### History of Metabolomics
 
 You could check this report[@baker2011]. According to this book section[@kusonmano2016]:
 
@@ -70,7 +70,7 @@ knitr::include_graphics('images/metahistory.jpg')
 
 -   post-metabolomics era high-throughput analytical techniques
 
-### Defination
+### Definition
 
 Metabolomics is actually a comprehensive analysis with identification and quantification of both known and unknown compounds in an unbiased way. Metabolic fingerprinting is working on fast classification of samples based on metabolite data without quantifying or identification of the metabolites. Metabolite profiling always need a pre-defined metabolites list to be quantification[@madsen2010].
 
@@ -90,7 +90,7 @@ Those papers are recommended[@gonzalez-riano2020; @pezzatti2020; @liu2019; @barn
 
 You could firstly read those papers[@barnes2016; @kusonmano2016; @madsen2010; @uppal2016; @alonso2015] to get the concepts and issues for data analysis in metabolomics. Then this paper[@gromski2015] could be treated as a step-by-step tutorial. For GC-MS based metabolomics, check this paper[@rey-stolle2022].
 
--  A guide could be used choose a inofrmatics software and tools for lipidomics[@ni2022].
+-  A guide could be used choose an informatics software and tools for lipidomics[@ni2022].
 
 -   For annotation, this paper[@domingo-almenara2018] is a well organized review.
 
@@ -123,7 +123,7 @@ Here is the slides for metabolomics data analysis workshop and I have made prese
 
 -   For food chemistry, check this paper[@castro-puyana2017], this paper for livestock[@goldansaz2017] and those papers for nutrition[@allam-ndoul2016; @jones2012; @muller2020].
 
--   For disease related metabolomics such as oncology[@spratlin2009], Cardiovascular[@cheng2017] . This paper[@kennedy2018] cover the metabolomics realted clinic research.
+-   For disease related metabolomics such as oncology[@spratlin2009], Cardiovascular[@cheng2017] . This paper[@kennedy2018] cover the metabolomics related clinical research.
 
 -   For plant science, check those paper[@sumner2003; @jorge2016a; @hansen2018].
 
@@ -198,13 +198,13 @@ L -> O
 [6]: 'peaks grouping'
 [7]: 'peaks filling'
 [8]: 'raw peaks'
-[9]: 'data visulization'
+[9]: 'data visualization'
 [10]: 'batch effects correction'
 [11]: 'corrected peaks'
 [12]: 'annotation'
 [13]: 'metabolomics pathway analysis'
 [14]: 'omics analysis'
-[15]: 'biomarkers discovery/diagnoise'
+[15]: 'biomarkers discovery/diagnosis'
 
                   ",width = 300)
 ```
