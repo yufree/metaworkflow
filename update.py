@@ -39,9 +39,9 @@ RSS_URL = (
 REPO = "yufree/metaworkflow"
 EMBEDDINGS_FILE = "book_embeddings.json"
 EMBEDDING_MODEL = "text-embedding-3-small"
-CHAT_MODEL = "gpt-4o-mini"
+CHAT_MODEL = "gpt-5-mini"
 TOP_K = 3  # Number of candidate sections for LLM to choose from
-SIMILARITY_THRESHOLD = 0.3  # Minimum cosine similarity to consider a match
+SIMILARITY_THRESHOLD = 0.5  # Minimum cosine similarity to consider a match
 
 access_token = os.getenv("GITHUB_TOKEN")
 client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
@@ -120,7 +120,7 @@ The top candidate book sections for this article are:
   {len(top_sections)+1}. NONE - this article does not fit any of the above sections
 
 Tasks:
-1. Pick the BEST matching section number (or NONE if similarity < 0.3).
+1. Pick the BEST matching section number (or NONE if similarity < 0.5).
 2. Write a one-sentence summary of the article's contribution.
 3. Write a 1-2 sentence draft text that could be inserted into the matched section,
    in the same style as the book (informative, concise, with a citation placeholder).
