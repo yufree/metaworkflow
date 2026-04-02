@@ -174,7 +174,10 @@ div.csl-indent {
 <li><a href="./">Metabolomics Workflow</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i>License</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#history"><i class="fa fa-check"></i><b>1.1</b> History</a>
@@ -191,7 +194,8 @@ div.csl-indent {
 <li class="chapter" data-level="1.2.4" data-path="introduction.html"><a href="introduction.html#challenge"><i class="fa fa-check"></i><b>1.2.4</b> Challenge</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#trends-in-metabolomics"><i class="fa fa-check"></i><b>1.3</b> Trends in Metabolomics</a></li>
-<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#workflow-1"><i class="fa fa-check"></i><b>1.4</b> Workflow</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#glossary"><i class="fa fa-check"></i><b>1.4</b> Glossary</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#workflow-1"><i class="fa fa-check"></i><b>1.5</b> Workflow</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="experimental-design-doe.html"><a href="experimental-design-doe.html"><i class="fa fa-check"></i><b>2</b> Experimental Design (DoE)</a>
 <ul>
@@ -483,8 +487,8 @@ div.csl-indent {
 <span id="cb11-13"><a href="workflow-2.html#cb11-13" tabindex="-1"></a><span class="st">B --&gt; E</span></span>
 <span id="cb11-14"><a href="workflow-2.html#cb11-14" tabindex="-1"></a><span class="st">C --&gt; H</span></span>
 <span id="cb11-15"><a href="workflow-2.html#cb11-15" tabindex="-1"></a><span class="st">&quot;</span>)</span></code></pre></div>
-<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-05ccc5125e5cc287e6a3" style="width:672px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-05ccc5125e5cc287e6a3">{"x":{"diagram":"\nflowchart TB\nI(peak-picking) --> C\nC(visualization) --> D(normalization/batch correction)\nD --> A(annotation/identification)\nA --> H(statistical analysis)\nC --> A --> B(omics analysis)\nD --> H\nB --> H\nH --> E(experimental validation)\nA --> E\nH --> A\nB --> E\nC --> H\n"},"evals":[],"jsHooks":[]}</script>
+<div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-6ea12988f6d7e40794cf" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-6ea12988f6d7e40794cf">{"x":{"diagram":"\nflowchart TB\nI(peak-picking) --> C\nC(visualization) --> D(normalization/batch correction)\nD --> A(annotation/identification)\nA --> H(statistical analysis)\nC --> A --> B(omics analysis)\nD --> H\nB --> H\nH --> E(experimental validation)\nA --> E\nH --> A\nB --> E\nC --> H\n"},"evals":[],"jsHooks":[]}</script>
 <div id="platform-for-metabolomics-data-analysis" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> Platform for metabolomics data analysis<a href="workflow-2.html#platform-for-metabolomics-data-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Many open-source metabolomics projects are available, and a useful overview can be found <a href="http://strimmerlab.org/notes/mass-spectrometry.html">here</a>.</p>
@@ -569,14 +573,14 @@ div.csl-indent {
 </div>
 <div id="project-setup" class="section level2 hasAnchor" number="5.2">
 <h2><span class="header-section-number">5.2</span> Project Setup<a href="workflow-2.html#project-setup" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>I suggest building your data analysis projects in RStudio (Click File - New project - New dictionary - Empty project). Then assign a name for your project. I also recommend the following tips if you are familiar with it.</p>
+<p>I suggest building your data analysis projects in RStudio (Click File - New project - New Directory - Empty project). Then assign a name for your project. I also recommend the following tips if you are familiar with it.</p>
 <ul>
 <li><p>Use <a href="https://git-scm.com/">git</a>/<a href="https://github.com/">github</a> to make version control of your code and sync your project online.</p></li>
 <li><p>Don’t use your name for your project because other peoples might cooperate with you and someone might check your data when you publish your papers. Each project should be a work for one paper or one chapter in your thesis.</p></li>
 <li><p>Use <strong>workflow</strong> document(txt or doc) in your project to record all of the steps and code you performed for this project. Treat this document as digital version of your experiment notebook</p></li>
 <li><p>Use <strong>data</strong> folder in your project folder for the raw data and the results you get in data analysis</p></li>
 <li><p>Use <strong>figure</strong> folder in your project folder for the figure</p></li>
-<li><p>Use <strong>munuscript</strong> folder in your project folder for the manuscript (you could write paper in rstudio with the help of template in <a href="https://github.com/rstudio/rticles">Rmarkdown</a>)</p></li>
+<li><p>Use <strong>manuscript</strong> folder in your project folder for the manuscript (you could write paper in rstudio with the help of template in <a href="https://github.com/rstudio/rticles">Rmarkdown</a>)</p></li>
 <li><p>Just double click <span class="math display">\[yourprojectname\]</span>.Rproj to start your project</p></li>
 </ul>
 </div>

@@ -174,7 +174,10 @@ div.csl-indent {
 <li><a href="./">Metabolomics Workflow</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i>License</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#history"><i class="fa fa-check"></i><b>1.1</b> History</a>
@@ -191,7 +194,8 @@ div.csl-indent {
 <li class="chapter" data-level="1.2.4" data-path="introduction.html"><a href="introduction.html#challenge"><i class="fa fa-check"></i><b>1.2.4</b> Challenge</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#trends-in-metabolomics"><i class="fa fa-check"></i><b>1.3</b> Trends in Metabolomics</a></li>
-<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#workflow-1"><i class="fa fa-check"></i><b>1.4</b> Workflow</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#glossary"><i class="fa fa-check"></i><b>1.4</b> Glossary</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#workflow-1"><i class="fa fa-check"></i><b>1.5</b> Workflow</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="experimental-design-doe.html"><a href="experimental-design-doe.html"><i class="fa fa-check"></i><b>2</b> Experimental Design (DoE)</a>
 <ul>
@@ -716,7 +720,7 @@ div.csl-indent {
 </div>
 <div id="pooled-qc" class="section level2 hasAnchor" number="2.9">
 <h2><span class="header-section-number">2.9</span> Pooled QC<a href="experimental-design-doe.html#pooled-qc" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Pooled QC samples are unique and very important for metabolomics study. Every 10 or 20 samples, a pooled sample from all samples and blank sample in one study should be injected as quality control samples. Pooled QC samples contain the changes during the instrumental analysis and blank samples could tell where the variances come from. Meanwhile the cap of sequence should old the column with pooled QC samples. The injection sequence should be randomized. Those papers<span class="citation">(<a href="#ref-phapale2020">Phapale et al. 2020</a>; <a href="#ref-dudzik2018">Dudzik et al. 2018</a>; <a href="#ref-dunn2012">Dunn et al. 2012</a>; <a href="#ref-broadhurst2018">Broadhurst, Goodacre, Stacey N. Reinke, et al. 2018b</a>; <a href="#ref-broeckling2023">Broeckling et al. 2023</a>; <a href="#ref-gonzalez-dominguez2024">González-Domínguez et al. 2024</a>)</span> should be read for details.</p>
+<p>Pooled QC samples are unique and very important for metabolomics study. Every 10 or 20 samples, a pooled sample from all samples and blank sample in one study should be injected as quality control samples. Pooled QC samples contain the changes during the instrumental analysis and blank samples could tell where the variances come from. Meanwhile the cap of sequence should hold the column with pooled QC samples. The injection sequence should be randomized. Those papers<span class="citation">(<a href="#ref-phapale2020">Phapale et al. 2020</a>; <a href="#ref-dudzik2018">Dudzik et al. 2018</a>; <a href="#ref-dunn2012">Dunn et al. 2012</a>; <a href="#ref-broadhurst2018">Broadhurst, Goodacre, Stacey N. Reinke, et al. 2018b</a>; <a href="#ref-broeckling2023">Broeckling et al. 2023</a>; <a href="#ref-gonzalez-dominguez2024">González-Domínguez et al. 2024</a>)</span> should be read for details.</p>
 <p>If the total run is long, pooled QC samples should also be used to monitor drift over time and to support batch effect correction in later chapters. In other words, pooled QC samples are not only for instrument checking. They are also part of the data analysis design.</p>
 <p>If you need data correction, some background or calibration samples are required. However, control samples could also be used for data correction in certain DoE.</p>
 <p>Another important factors are instrumentals. High-resolution mass spectrum is always preferred. As shown in Lukas’s study <span class="citation">(<a href="#ref-najdekr2016">Najdekr et al. 2016</a>)</span>:</p>
