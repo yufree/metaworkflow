@@ -147,9 +147,63 @@ Maximum flows and minimum cuts could be used to check the largest volumns and sm
 
 Sparse network has similar number of edges and the number of nodes. Dense network has the number of edges as a quadratic function of the nodes.
 
-## Machine Learning Guidelines
+## Machine Learning and Deep Learning
 
-With the increasing application of machine learning in metabolomics, proper training and reporting are critical. Practical guidance for training machine learning models suggests rigorous validation strategies to avoid overfitting and ensure reproducibility[@zhao2025a]. Furthermore, the EMBRACE checklist provides a framework for environmental machine learning, emphasizing baseline reporting and comprehensive evaluation[@zhu2024].
+Machine learning (ML) and deep learning (DL) have been increasingly applied across the metabolomics workflow, from peak detection to biomarker discovery. However, proper application requires understanding both the opportunities and the pitfalls specific to high-dimensional, low-sample-size metabolomics data[@galal2022; @sen2023].
+
+### Where ML/DL is applied in metabolomics
+
+ML/DL methods appear at multiple stages of the metabolomics pipeline:
+
+-   **Peak detection and deconvolution**: Deep learning models can learn peak shapes from training data and improve detection in noisy spectra. NeatMS uses a convolutional neural network for peak quality assessment[@gloaguen2022], and 2D pseudo-color image-based deep learning has been applied to LC-MS feature detection[@zhao2021].
+
+-   **Spectral annotation**: ML models predict molecular fingerprints from MS/MS spectra. Tools like CSI:FingerID[@duhrkop2019], CANOPUS[@duhrkop2020], MS2DeepScore[@huber2020], and MSBERT[@zhang2024c] use various architectures (random forest, deep neural networks, transformers) to match or predict spectra. MS2Query enables analogue searching using learned spectral embeddings[@dejonge2023].
+
+-   **Retention time prediction**: Models such as RT-Transformer[@xue2024] and Retip[@bonini2020] predict chromatographic retention times from molecular structure, adding an orthogonal dimension for annotation confidence.
+
+-   **Biomarker discovery and classification**: Supervised models (random forest, SVM, PLS-DA, gradient boosting, neural networks) are commonly used to classify samples and select discriminating features. Ensemble methods and model stacking often outperform single models.
+
+-   **Data integration**: Multi-omics integration benefits from ML approaches that can handle heterogeneous data types, such as MOFA (Multi-Omics Factor Analysis) and similarity network fusion.
+
+### Common pitfalls
+
+Metabolomics datasets are particularly susceptible to ML overfitting due to the high number of features relative to the sample size (the "p >> n" problem). Common mistakes include:
+
+-   **Data leakage**: Performing feature selection, normalization, or missing value imputation before splitting data into training/test sets. All preprocessing steps that use information across samples must be performed within the cross-validation loop.
+
+-   **Inadequate validation**: Using only a single random train/test split instead of repeated k-fold cross-validation. For small sample sizes (n < 100), nested cross-validation is recommended to get unbiased performance estimates.
+
+-   **Ignoring batch effects**: If batch structure correlates with the biological groups, ML models may learn batch signatures rather than biology. Always check whether your model predictions correlate with known technical factors.
+
+-   **Reporting bias**: Reporting only the best-performing model among many tried, without adjusting for the model selection process. Permutation testing (shuffling labels to establish null performance) is essential to verify that classification accuracy exceeds what is expected by chance.
+
+### Best practices
+
+Practical guidance for training and reporting ML models in metabolomics has been proposed[@zhao2025a]. The EMBRACE checklist provides a framework for environmental ML, emphasizing baseline reporting and comprehensive evaluation[@zhu2024]. Key recommendations include:
+
+-   Always report the full cross-validation scheme, including how hyperparameters were tuned
+
+-   Include a permutation test to verify statistical significance of classification accuracy
+
+-   Report multiple metrics (accuracy, AUC, sensitivity, specificity, F1) rather than a single number
+
+-   Make code and processed data available for reproducibility
+
+-   Compare ML results against simple baselines (e.g., univariate t-test + fold change) to justify the added complexity
+
+-   For feature importance, use model-agnostic methods (e.g., SHAP values, permutation importance) that provide interpretable results
+
+### Deep learning considerations
+
+Deep learning models (autoencoders, variational autoencoders, transformers, graph neural networks) are powerful but typically require larger training sets than classical ML. In metabolomics, they are most useful when:
+
+-   Large public spectral databases are available for pretraining (e.g., MS/MS spectra prediction)
+
+-   The task involves pattern recognition in complex spectral or image data
+
+-   Transfer learning from related domains can compensate for limited sample sizes
+
+For classification tasks with fewer than a few hundred samples, classical methods (random forest, gradient boosting, regularized regression) often perform as well as or better than deep learning, with the added benefit of interpretability[@sen2023].
 
 ## Software
 

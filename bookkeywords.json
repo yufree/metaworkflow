@@ -874,5 +874,23 @@
         "keywords": [
             "Matrix effects, sensitivity, untargeted analysis, low resolution, high resolution, ion suppression, heterogeneous metabolic profiles, Trimethylsilyl derivatization, detection limits, power law functional relationship"
         ]
+    },
+    "## Data Standards and Metadata": {
+        "content": "FAIR principles, ISA-Tab, mwTab, metadata standards, MSI reporting, reproducibility, controlled vocabularies, mQACC guidelines",
+        "keywords": [
+            "data standards, metadata, FAIR principles, ISA-Tab, mwTab, reproducibility, MSI reporting, controlled vocabularies, metabolomics data management, mQACC"
+        ]
+    },
+    "## Quantitative Metabolomics": {
+        "content": "Absolute quantification, relative quantification, semi-quantification, calibration curves, isotope dilution, standard addition, ionization efficiency, response factors",
+        "keywords": [
+            "quantitative metabolomics, absolute quantification, calibration, isotope dilution, internal standards, response factor, ionization efficiency, semi-quantification, targeted analysis, dynamic range"
+        ]
+    },
+    "## Machine Learning and Deep Learning": {
+        "content": "Machine learning and deep learning applications across metabolomics workflow: peak detection, spectral annotation, retention time prediction, biomarker discovery, common pitfalls, best practices, overfitting, data leakage, cross-validation",
+        "keywords": [
+            "machine learning, deep learning, neural network, random forest, classification, biomarker discovery, overfitting, cross-validation, feature selection, SHAP"
+        ]
     }
 }

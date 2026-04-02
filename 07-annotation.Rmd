@@ -51,6 +51,54 @@ For specific group of compounds such as PFASs, the communication of confidence l
 
 Through MS/MS seemed a required step for identification, recent study found ESI might also generate fragments ions for structure identification [@xue2020a; @xue2021;@bernardo-bermejo2023;@xue2023].
 
+## The Dark Metabolome
+
+In a typical untargeted LC-MS experiment, thousands of features are detected, but only a small fraction can be annotated with known metabolite identities. The vast majority of detected features remain unidentified, a phenomenon often referred to as the "dark matter" of the metabolome[@daSilva2015]. Even in well-studied matrices like blood plasma, if a feature is detected in over 50% of samples, there is roughly a 50% chance it has a known annotation; for low-abundance features, annotation rates often fall below 5%. This annotation gap is one of the central challenges in metabolomics and has sparked active debate about its causes and solutions[@petras2017; @koelmel2025].
+
+### What makes up the dark matter?
+
+The detected features in an untargeted experiment are not all independent metabolites. A single compound can generate multiple features through several mechanisms:
+
+-   **In-source fragmentation (ISF)**: Molecules can fragment during the electrospray ionization process before entering the mass analyzer, generating fragment ions that appear as separate features. The extent of ISF is a subject of active debate (see below).
+
+-   **Adducts and multimers**: Beyond the protonated or deprotonated molecular ion, compounds readily form sodium, potassium, ammonium adducts, as well as dimers and trimers, each appearing as a separate feature.
+
+-   **Isotope peaks**: Natural isotope distributions (especially 13C, 34S, 37Cl) generate satellite peaks for every compound.
+
+-   **Multiple charge states**: Some compounds, particularly larger ones, can carry multiple charges.
+
+After accounting for these redundancies, the number of unique compounds in a sample is substantially smaller than the number of detected features. However, even after deduplication, the majority of unique compounds remain unannotated because they are absent from existing spectral databases.
+
+### The in-source fragmentation debate
+
+In 2024, Giera et al. analyzed the METLIN database of 931,000 molecular standards and reported that in-source fragmentation could account for over 70% of the peaks observed in typical LC-MS metabolomic datasets[@giera2024]. This finding suggested that the dark metabolome might be largely a measurement artifact rather than representing genuine molecular diversity. A follow-up study further examined the relationship between ISF and the dark metabolome/lipidome[@uritboonthai2025].
+
+However, this conclusion was challenged. Li and Mahieu performed a systematic analysis of 61 representative public LC-MS datasets and found that in-source fragments contribute to less than 10% of features in real experimental data[@li2025]. Their khipu-based pre-annotation approach showed that the majority of abundant features have identifiable ion patterns (adducts, isotopes, etc.), and that the dark matter is explainable in an abundance-dependent manner: most features come from real compounds, but the number of unique compounds is much smaller than the number of features. A separate perspective from de la Briere et al. further examined the impact of unintentional fragments on molecular networking and public repository-scale analysis[@delabriere2025].
+
+This debate reflects a key tension in the field: the extent of ISF depends heavily on the instrument, ionization source design, mobile phase composition and applied voltages, making it difficult to generalize from standard databases to real experimental conditions. What is clear is that both ISF and genuine molecular diversity contribute to the dark metabolome, and the relative contribution varies by sample type and analytical conditions.
+
+### A missing perspective: data-driven deduplication
+
+Notably, the above debate has largely focused on either standard-library-based estimation (Giera/Siuzdak) or ion-pattern-based pre-annotation (Li/Mahieu). Neither side has systematically addressed the question from a mass distance statistics perspective. The Paired Mass Distance (PMD) approach[@yu2019a] offers a complementary, data-driven strategy: by analyzing the frequency distribution of mass differences between all feature pairs in a dataset, high-frequency PMDs that correspond to known chemical relationships (adducts, in-source fragments, biotransformations) can be identified directly from the data without relying on a predefined adduct list or a standard compound library.
+
+The GlobalStd algorithm[@yu2019a], built on PMD analysis, takes this further by selecting independent "precursor ions" from the feature list — features whose mass differences to other features cannot be explained by high-frequency PMDs are more likely to represent unique parent compounds. This effectively collapses a feature list of thousands into a much smaller set of candidate independent compounds, providing a quantitative and data-driven estimate of the true chemical complexity in a sample. Such an approach could provide additional evidence for the dark matter debate: by applying GlobalStd to the same public datasets used by either side, one could independently estimate the ratio of redundant features to unique compounds without assumptions about ISF rates from standard libraries.
+
+Furthermore, the PMDDA workflow[@yu2022b] extends this logic to connect MS1 features with MS2 data acquisition: by using GlobalStd to prioritize truly independent precursor ions for targeted MS2 collection, it addresses both the redundancy problem and the annotation gap simultaneously.
+
+### Strategies to address the dark matter
+
+Several complementary approaches are being developed to reduce the annotation gap:
+
+-   **Pre-annotation and feature deduplication**: Tools like khipu[@li2025] and CAMERA[@kuhl2012] group related features (adducts, isotopes, fragments) based on ion pattern recognition and co-elution. The PMD/GlobalStd approach[@yu2019a] provides an orthogonal, data-driven method by identifying redundant features through mass distance frequency analysis without requiring a predefined adduct list.
+
+-   **Molecular networking**: GNPS-based molecular networking[@wang2016b] connects structurally related compounds through MS/MS spectral similarity, enabling propagation of annotations from known to unknown compounds within the same spectral family.
+
+-   **In silico prediction**: Tools like SIRIUS/CSI:FingerID[@duhrkop2019], CFM-ID[@allen2014], and MS2DeepScore[@huber2020] predict molecular properties or spectra from structure, expanding the searchable chemical space beyond experimentally characterized compounds.
+
+-   **Machine learning approaches**: Deep learning models are increasingly used to embed spectral data into chemical space, enabling analogue searching and compound class prediction even without exact database matches (see Statistical Analysis chapter for details).
+
+For a comprehensive review of bioinformatics tools tackling the dark metabolome, see Koelmel et al.[@koelmel2025].
+
 ## Molecular Formula Assignment
 
 Cheminformatics will help for MS annotation. The first task is molecular formula assignment. For a given accurate mass, the formula should be constrained by predefined element type and atom number, mass error window and rules of chemical bonding, such as double bond equivalent (DBE) and the nitrogen rule. The nitrogen rule is that an odd nominal molecular mass implies also an odd number of nitrogen. This rule should only be used with nominal (integer) masses. Degree of unsaturation or DBE use rings-plus-double-bonds equivalent (RDBE) values, which should be interger. The elements oxygen and sulphur were not taken into account. Otherwise the molecular formula will not be true.

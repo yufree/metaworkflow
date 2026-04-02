@@ -20,6 +20,54 @@ This work introduce Sequential Quantification using Isotope Dilution (SQUID), a 
 
 For metabolomics, high resolution mass spectrum should be used to make identification of compounds easier. The Mass Resolving Power is very important for annotation and high resolution mass spectrum should be calibrated in real time. The region between 400--800 m/z was influenced the most by resolution[@najdekr2016]. Orbitrap Fusion's performance was evaluated here[@barbiersainthilaire2018], as well as the comparison with Fourier transform ion cyclotron resonance (FT-ICR)[@ghaste2016; @huang2021]. Mass Difference Maps could recalibrate HRMS data [@smirnov2019].
 
+## Quantitative Metabolomics
+
+Quantification is a fundamental challenge in mass spectrometry-based metabolomics. The level of quantification achievable depends on the analytical strategy (targeted vs. untargeted) and available resources (standards, labeled compounds). Understanding the quantification hierarchy helps select appropriate methods for specific research questions[@alseekh2021].
+
+### Quantification levels
+
+Quantification in metabolomics can be categorized into several levels with decreasing accuracy:
+
+-   **Absolute quantification** uses calibration curves built with authentic chemical standards spiked into a matrix-matched blank. Stable isotope-labeled internal standards (SIL-IS) are the gold standard for correcting matrix effects and ion suppression. This approach provides concentrations in physical units (e.g., nmol/L) and is essential for clinical validation and cross-laboratory comparison.
+
+-   **Semi-quantification** uses calibration curves from structurally related surrogate standards or class-representative compounds when authentic standards are not available. The accuracy is lower, but it still provides approximate concentration values. Recent work has explored ionization efficiency prediction to enable semi-quantification without standards[@liigand2020; @kruve2020].
+
+-   **Relative quantification** compares peak areas or intensities across samples without converting to concentration units. This is the default mode in untargeted metabolomics. Proper normalization and batch correction (see Chapter 9) are critical to ensure that relative differences reflect biology rather than technical variation.
+
+### Calibration strategies
+
+For targeted quantification, several calibration strategies are commonly used:
+
+-   **External calibration**: Standard solutions of known concentration are analyzed separately from samples. Simple to implement but does not correct for matrix effects.
+
+-   **Standard addition**: Known amounts of standard are added to the sample matrix itself. Each sample effectively gets its own calibration curve, making this method robust against sample-specific matrix effects but labor-intensive.
+
+-   **Isotope dilution**: Stable isotope-labeled analogues of target compounds are spiked into each sample at known concentrations. The ratio of unlabeled (endogenous) to labeled (spiked) signal is used for quantification. This is the most accurate method because the labeled standard experiences the same matrix effects and losses as the analyte[@roberts2012].
+
+-   **Single-point calibration** is a simplified version of external or isotope dilution calibration with only one standard concentration level. It can be sufficient when the expected concentration range is narrow and the response is linear.
+
+### Untargeted quantification challenges
+
+In untargeted metabolomics, absolute quantification of all detected features is impractical because authentic standards are not available for most unknowns. Several strategies have been developed to bridge this gap[@cajka2017; @guo2024]:
+
+-   **Response factor estimation**: Ionization efficiency depends on physicochemical properties (e.g., polarity, molecular size). Machine learning models trained on known compounds can predict ionization efficiency for unknowns, enabling rough concentration estimates.
+
+-   **Class-level quantification**: Using one or a few representative standards per compound class (e.g., one phospholipid standard for all phospholipids) provides order-of-magnitude estimates.
+
+-   **QC-based normalization followed by relative quantification**: While not providing absolute concentrations, this approach combined with proper experimental design can reliably identify biologically significant changes[@broadhurst2018a].
+
+### Practical recommendations
+
+For newcomers to quantitative metabolomics[@ribbenstedt2018; @alseekh2021]:
+
+-   If your goal is biomarker discovery, relative quantification with proper QC and normalization is usually sufficient as a first step. Absolute quantification can follow for validated candidates.
+
+-   Always include at least a few internal standards across different compound classes, even in untargeted studies. These serve as anchors for quality control and semi-quantification.
+
+-   Document the dynamic range of your instrument for key metabolite classes. Signals outside the linear range require dilution series or alternative quantification approaches.
+
+-   Be aware that different ionization modes (ESI+, ESI-, APCI) show very different response factors for the same compound. Quantitative comparisons across ionization modes are not straightforward.
+
 ## Matrix effects
 
 Matrix effects could decrease the sensitivity of untargeted analysis. Such matrix effects could be checked by low resolution mass spectrometry[@yu2017] and found for high resolution mass spectrometry[@calbiani2006]. Ion suppression should also be considered as a critical issue comparing heterogeneous metabolic profiles[@ghosson2021]. This work discussed the matrix effects after Trimethylsilyl derivatization[@tarakhovskaya2023].The study[@dagan2023] investigated how the complexity of matrices affects nontargeted detection using LC-MS/MS analysis, finding that detection limits for trace compounds were significantly influenced by matrix complexity, with higher concentrations required for detection within the "top 1000" list compared to the first 10,000 peaks, suggesting a negative power law functional relationship between peak location and concentration; the research also demonstrated a correlation between power law coefficient and dilution factor, while showcasing the distribution of matrix peaks across various matrices, providing insights into the capabilities and limitations of LC-MS in analyzing nontargets in complex matrices.

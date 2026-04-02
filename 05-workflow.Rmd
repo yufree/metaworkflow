@@ -169,6 +169,44 @@ I suggest building your data analysis projects in RStudio (Click File - New proj
 
 -   Just double click $$yourprojectname$$.Rproj to start your project
 
+## Data Standards and Metadata
+
+Reproducible metabolomics research requires not only sharing raw data but also providing well-structured metadata that describes how the data was generated and processed. The FAIR principles (Findable, Accessible, Interoperable, Reusable) provide a general framework for scientific data management[@wilkinson2016], and their adoption in metabolomics is critical for cross-study comparisons and meta-analyses.
+
+### Metadata Standards
+
+The Investigation-Study-Assay (ISA) framework is the most widely adopted metadata standard in metabolomics[@sansone2012]. ISA-Tab provides a structured format to describe the experimental design (Investigation), the samples and their biological context (Study), and the analytical measurements (Assay). For metabolomics specifically, mwTab is the format used by the Metabolomics Workbench[@sud2016].
+
+When submitting data to public repositories, the minimum reporting standards proposed by the Metabolomics Standards Initiative (MSI) should be followed[@salek2013]. These standards cover the biological context, chemical analysis, data processing and statistical analysis metadata. In practice, compliance with these minimum reporting standards remains a challenge in the community[@spicer2017a].
+
+### FAIR in Metabolomics
+
+FAIR principles[@wilkinson2016] have been increasingly adopted in metabolomics workflows. Several tools and resources have been developed to make metabolomics data more FAIR[@rocca-serra2016]:
+
+-   Use persistent identifiers (e.g., InChI, SMILES) for compounds and DOIs for datasets
+
+-   Deposit raw data in open formats (mzML) to public repositories (MetaboLights[@haug2020], Metabolomics Workbench[@sud2016])
+
+-   Document the complete analytical and computational workflow with version-controlled parameters
+
+-   Use controlled vocabularies and ontologies (e.g., Chemical Entities of Biological Interest, ChEBI) for annotation
+
+The metaRbolomics initiative provides an overview of R-based tools that support FAIR-compliant metabolomics workflows[@stanstrup2019]. For quality assurance and quality control standards in practice, check the mQACC consortium guidelines[@obrien2024].
+
+### Practical Recommendations
+
+For new metabolomics practitioners, the following checklist could help improve data quality and reproducibility[@rampler2021; @broadhurst2018a]:
+
+-   Record all instrument parameters, column information and mobile phase composition in a machine-readable format
+
+-   Include pooled QC and blank samples in every analytical batch and document their preparation
+
+-   Convert vendor-specific raw files to open formats (mzML via ProteoWizard) immediately after acquisition
+
+-   Use standardized file naming conventions that encode sample metadata (group, batch, injection order)
+
+-   Track all data processing parameters (software version, peak picking thresholds, alignment settings) in a reproducible script or workflow file
+
 ## Data sharing
 
 See this paper[@haug2017]:

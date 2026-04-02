@@ -43,8 +43,21 @@ jobs:
           
       - name: Build site
         run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
+
+      - name: Set up Python for embeddings
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Regenerate book embeddings
+        run: |
+          pip install openai
+          python generate_embeddings.py
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
       - name: Update website
         uses: actions-go/push@master
         with:
           commit-message: '[Auto] update github online book preview'
-          remote: origin  
+          remote: origin

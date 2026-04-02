@@ -1,25 +1,67 @@
 name: Weekly Article Matching
+
 on:
   schedule:
     - cron: '0 0 * * 0'
   workflow_dispatch:
 
 jobs:
-  run_script:
+  # Step 1: Ensure embeddings are up-to-date
+  update-embeddings:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: '3.11'
 
       - name: Install Dependencies
-        run: pip install feedparser requests openai
+        run: pip install openai
 
-      - name: Run Python Script
+      - name: Generate Embeddings
+        run: python generate_embeddings.py
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+      - name: Commit embeddings if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet book_embeddings.json 2>/dev/null; then
+            echo "No embedding changes"
+          else
+            git add book_embeddings.json
+            git commit -m "[Auto] update book embeddings"
+            git push
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    outputs:
+      completed: ${{ steps.generate.outcome == 'success' || true }}
+
+  # Step 2: Match articles and create PR/issue
+  match-articles:
+    needs: update-embeddings
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          ref: master  # Get latest (including any embedding update)
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: pip install feedparser requests openai numpy
+
+      - name: Run Article Matching
         run: python update.py
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
