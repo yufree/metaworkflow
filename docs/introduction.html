@@ -174,7 +174,10 @@ div.csl-indent {
 <li><a href="./">Metabolomics Workflow</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i>License</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#history"><i class="fa fa-check"></i><b>1.1</b> History</a>
@@ -191,7 +194,8 @@ div.csl-indent {
 <li class="chapter" data-level="1.2.4" data-path="introduction.html"><a href="introduction.html#challenge"><i class="fa fa-check"></i><b>1.2.4</b> Challenge</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#trends-in-metabolomics"><i class="fa fa-check"></i><b>1.3</b> Trends in Metabolomics</a></li>
-<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#workflow-1"><i class="fa fa-check"></i><b>1.4</b> Workflow</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#glossary"><i class="fa fa-check"></i><b>1.4</b> Glossary</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#workflow-1"><i class="fa fa-check"></i><b>1.5</b> Workflow</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="experimental-design-doe.html"><a href="experimental-design-doe.html"><i class="fa fa-check"></i><b>2</b> Experimental Design (DoE)</a>
 <ul>
@@ -600,10 +604,168 @@ Figure 1.3: Metabolomics timeline during pre- and post-metabolomics era
 <span id="cb1-13"><a href="introduction.html#cb1-13" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(trend_df, <span class="fu">aes</span>(years, value, <span class="at">colour=</span>variable))</span>
 <span id="cb1-14"><a href="introduction.html#cb1-14" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">size=</span><span class="dv">1</span>) <span class="sc">+</span> <span class="fu">scale_y_log10</span>(<span class="st">&quot;number of papers&quot;</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code></pre></div>
 </div>
-<div id="workflow-1" class="section level2 hasAnchor" number="1.4">
-<h2><span class="header-section-number">1.4</span> Workflow<a href="introduction.html#workflow-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="htmlwidget-54a746bf77c28f96a424" style="width:300px;height:480px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-54a746bf77c28f96a424">{"x":{"diagram":"digraph workflow {\nnode [shape = box]\nA [label = \"raw data\"]\nB [label = \"open source format\"]\nC [label = \"DoE folder\"]\nD [label = \"peaks list\"]\nE [label = \"retention time correction\"]\nF [label = \"peaks grouping\"]\nG [label = \"peaks filling\"]\nH [label = \"raw peaks\"]\nI [label = \"data visualization\"]\nJ [label = \"batch effects correction\"]\nK [label = \"corrected peaks\"]\nL [label = \"annotation\"]\nM [label = \"metabolomics pathway analysis\"]\nN [label = \"omics analysis\"]\nO [label = \"biomarkers discovery/diagnosis\"]\n\nA -> B -> C -> D -> E -> F -> G -> H\nH -> I\nI -> J\nH -> J -> K -> L\nL -> M -> N\nL -> O\n                  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="glossary" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Glossary<a href="introduction.html#glossary" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The following abbreviations and terms are used throughout this book:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Abbreviation</th>
+<th>Full Name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ANOVA</td>
+<td>Analysis of Variance</td>
+</tr>
+<tr class="even">
+<td>APCI</td>
+<td>Atmospheric Pressure Chemical Ionization</td>
+</tr>
+<tr class="odd">
+<td>CID</td>
+<td>Collision-Induced Dissociation</td>
+</tr>
+<tr class="even">
+<td>DBS</td>
+<td>Dried Blood Spots</td>
+</tr>
+<tr class="odd">
+<td>DDA</td>
+<td>Data-Dependent Acquisition</td>
+</tr>
+<tr class="even">
+<td>DIA</td>
+<td>Data-Independent Acquisition</td>
+</tr>
+<tr class="odd">
+<td>DoE</td>
+<td>Design of Experiments</td>
+</tr>
+<tr class="even">
+<td>EIC</td>
+<td>Extracted Ion Chromatogram</td>
+</tr>
+<tr class="odd">
+<td>ESI</td>
+<td>Electrospray Ionization</td>
+</tr>
+<tr class="even">
+<td>ExWAS</td>
+<td>Exposome-Wide Association Study</td>
+</tr>
+<tr class="odd">
+<td>FDR</td>
+<td>False Discovery Rate</td>
+</tr>
+<tr class="even">
+<td>GC-MS</td>
+<td>Gas Chromatography-Mass Spectrometry</td>
+</tr>
+<tr class="odd">
+<td>GNPS</td>
+<td>Global Natural Products Social Molecular Networking</td>
+</tr>
+<tr class="even">
+<td>HILIC</td>
+<td>Hydrophilic Interaction Liquid Chromatography</td>
+</tr>
+<tr class="odd">
+<td>HMDB</td>
+<td>Human Metabolome Database</td>
+</tr>
+<tr class="even">
+<td>HRMS</td>
+<td>High-Resolution Mass Spectrometry</td>
+</tr>
+<tr class="odd">
+<td>ISF</td>
+<td>In-Source Fragmentation</td>
+</tr>
+<tr class="even">
+<td>LC-MS</td>
+<td>Liquid Chromatography-Mass Spectrometry</td>
+</tr>
+<tr class="odd">
+<td>ML/DL</td>
+<td>Machine Learning / Deep Learning</td>
+</tr>
+<tr class="even">
+<td>MR</td>
+<td>Mendelian Randomization</td>
+</tr>
+<tr class="odd">
+<td>MRM</td>
+<td>Multiple Reaction Monitoring</td>
+</tr>
+<tr class="even">
+<td>MS/MS (MS2)</td>
+<td>Tandem Mass Spectrometry</td>
+</tr>
+<tr class="odd">
+<td>MSI</td>
+<td>Metabolomics Standards Initiative</td>
+</tr>
+<tr class="even">
+<td>NMR</td>
+<td>Nuclear Magnetic Resonance</td>
+</tr>
+<tr class="odd">
+<td>PCA</td>
+<td>Principal Component Analysis</td>
+</tr>
+<tr class="even">
+<td>PLS-DA</td>
+<td>Partial Least Squares Discriminant Analysis</td>
+</tr>
+<tr class="odd">
+<td>PMD</td>
+<td>Paired Mass Distance</td>
+</tr>
+<tr class="even">
+<td>QC</td>
+<td>Quality Control</td>
+</tr>
+<tr class="odd">
+<td>QSPR</td>
+<td>Quantitative Structure-Property Relationship</td>
+</tr>
+<tr class="even">
+<td>ROI</td>
+<td>Region of Interest</td>
+</tr>
+<tr class="odd">
+<td>RSD</td>
+<td>Relative Standard Deviation</td>
+</tr>
+<tr class="even">
+<td>SIL-IS</td>
+<td>Stable Isotope-Labeled Internal Standard</td>
+</tr>
+<tr class="odd">
+<td>SPME</td>
+<td>Solid-Phase Microextraction</td>
+</tr>
+<tr class="even">
+<td>TOF</td>
+<td>Time-of-Flight</td>
+</tr>
+<tr class="odd">
+<td>UPLC</td>
+<td>Ultra-Performance Liquid Chromatography</td>
+</tr>
+<tr class="even">
+<td>VAMS</td>
+<td>Volumetric Absorptive Microsampling</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="workflow-1" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> Workflow<a href="introduction.html#workflow-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="htmlwidget-92196bce78d95020f40c" style="width:300px;height:480px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-92196bce78d95020f40c">{"x":{"diagram":"digraph workflow {\nnode [shape = box]\nA [label = \"raw data\"]\nB [label = \"open source format\"]\nC [label = \"DoE folder\"]\nD [label = \"peaks list\"]\nE [label = \"retention time correction\"]\nF [label = \"peaks grouping\"]\nG [label = \"peaks filling\"]\nH [label = \"raw peaks\"]\nI [label = \"data visualization\"]\nJ [label = \"batch effects correction\"]\nK [label = \"corrected peaks\"]\nL [label = \"annotation\"]\nM [label = \"metabolomics pathway analysis\"]\nN [label = \"omics analysis\"]\nO [label = \"biomarkers discovery/diagnosis\"]\n\nA -> B -> C -> D -> E -> F -> G -> H\nH -> I\nI -> J\nH -> J -> K -> L\nL -> M -> N\nL -> O\n                  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 
 </div>
 </div>

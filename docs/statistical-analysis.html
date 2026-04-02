@@ -174,7 +174,10 @@ div.csl-indent {
 <li><a href="./">Metabolomics Workflow</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#license"><i class="fa fa-check"></i>License</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#history"><i class="fa fa-check"></i><b>1.1</b> History</a>
@@ -191,7 +194,8 @@ div.csl-indent {
 <li class="chapter" data-level="1.2.4" data-path="introduction.html"><a href="introduction.html#challenge"><i class="fa fa-check"></i><b>1.2.4</b> Challenge</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#trends-in-metabolomics"><i class="fa fa-check"></i><b>1.3</b> Trends in Metabolomics</a></li>
-<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#workflow-1"><i class="fa fa-check"></i><b>1.4</b> Workflow</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#glossary"><i class="fa fa-check"></i><b>1.4</b> Glossary</a></li>
+<li class="chapter" data-level="1.5" data-path="introduction.html"><a href="introduction.html#workflow-1"><i class="fa fa-check"></i><b>1.5</b> Workflow</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="experimental-design-doe.html"><a href="experimental-design-doe.html"><i class="fa fa-check"></i><b>2</b> Experimental Design (DoE)</a>
 <ul>
@@ -522,7 +526,7 @@ Use pathway analysis and network analysis after normalization, annotation, and d
 <p>Karin Ortmayr thought fold change might be better than p-values to find the differences <span class="citation">(<a href="#ref-ortmayr2016a">Ortmayr et al. 2016</a>)</span>.</p>
 <div id="t-test-or-anova" class="section level3 hasAnchor" number="10.3.1">
 <h3><span class="header-section-number">10.3.1</span> T-test or ANOVA<a href="statistical-analysis.html#t-test-or-anova" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>If one peak show significant differences among two groups or multiple groups, T-test or ANOVA could be used to find such peaks. However, when multiple hypothesis testings are performed, the probability of false positive would increase. In this case, false discovery rate(FDR) control is required. Q value or adjusted p value could be used in this situation. At certain confidence interval, we could find peaks with significant differences after FDR control.</p>
+<p>If one peak shows significant differences among two groups or multiple groups, T-test or ANOVA could be used to find such peaks. However, when multiple hypothesis testings are performed, the probability of false positive would increase. In this case, false discovery rate(FDR) control is required. Q value or adjusted p value could be used in this situation. At certain confidence interval, we could find peaks with significant differences after FDR control.</p>
 </div>
 <div id="limma" class="section level3 hasAnchor" number="10.3.2">
 <h3><span class="header-section-number">10.3.2</span> LIMMA<a href="statistical-analysis.html#limma" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -648,8 +652,8 @@ distance = |10-54|+|13-23|+|21-16| = 59
 <h3><span class="header-section-number">10.5.2</span> PLSDA<a href="statistical-analysis.html#plsda" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>PLS-DA, OPLS-DA and HPSO-OPLS-DA <span class="citation">(<a href="#ref-yang2017a">Yang et al. 2017</a>)</span> could be used.</p>
 <p>Partial least squares discriminant analysis(PLSDA) was first used in the 1990s. However, Partial least squares(PLS) was proposed in the 1960s by Hermann Wold. Principal components analysis produces the weight matrix reflecting the covariance structure between the variables, while partial least squares produces the weight matrix reflecting the covariance structure between the variables and classes. After rotation by weight matrix, the new variables would contain relationship with classes.</p>
-<p>The classification performance of PLSDA is identical to linear discriminant analysis(LDA) if class sizes are balanced, or the columns are adjusted according to the mean of the class mean. If the number of variables exceeds the number of samples, LDA can be performed on the principal components. Quadratic discriminant analysis(QDA) could model nonlinearity relationship between variables while PLSDA is better for collinear variables. However, as a classifier, there is little advantage for PLSDA. The advantages of PLSDA is that this modle could show relationship between variables, which is not the goal of regular classifier.</p>
-<p>Different algorithms <span class="citation">(<a href="#ref-andersson2009">Andersson 2009</a>)</span> for PLSDA would show different score, while PCA always show the same score with fixed algorithm. For PCA, both new variables and classes are orthogonal. However, for PLS(Wold), only new classes are orthogonal. For PLS(Martens), only new variables are orthogonal. This paper show the details of using such methods <span class="citation">(<a href="#ref-brereton2018">Brereton and Lloyd 2018</a>)</span>.</p>
+<p>The classification performance of PLSDA is identical to linear discriminant analysis(LDA) if class sizes are balanced, or the columns are adjusted according to the mean of the class mean. If the number of variables exceeds the number of samples, LDA can be performed on the principal components. Quadratic discriminant analysis(QDA) could model nonlinearity relationship between variables while PLSDA is better for collinear variables. However, as a classifier, there is little advantage for PLSDA. The advantage of PLSDA is that this model could show relationship between variables, which is not the goal of regular classifier.</p>
+<p>Different algorithms <span class="citation">(<a href="#ref-andersson2009">Andersson 2009</a>)</span> for PLSDA would show different scores, while PCA always shows the same score with fixed algorithm. For PCA, both new variables and classes are orthogonal. However, for PLS(Wold), only new classes are orthogonal. For PLS(Martens), only new variables are orthogonal. This paper show the details of using such methods <span class="citation">(<a href="#ref-brereton2018">Brereton and Lloyd 2018</a>)</span>.</p>
 <p>Sparse PLS discriminant analysis(sPLS-DA) make an L1 penalty on the variable selection to remove the influences from unrelated variables, which make sense for high-throughput omics data <span class="citation">(<a href="#ref-lecao2011">Lê Cao et al. 2011</a>)</span>.</p>
 <p>For o-PLS-DA, s-plot could be used to find features<span class="citation">(<a href="#ref-wiklund2008">Wiklund et al. 2008</a>)</span>.</p>
 </div>
