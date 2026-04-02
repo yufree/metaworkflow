@@ -1,5 +1,5 @@
 {
-  "bioconductor.version": [],
+  "bioconductor.version": null,
   "external.libraries": [],
   "ignored.packages": [],
   "package.dependency.fields": [
@@ -9,8 +9,9 @@
   ],
   "ppm.enabled": null,
   "ppm.ignored.urls": [],
-  "r.version": [],
-  "snapshot.type": "implicit",
+  "r.version": null,
+  "snapshot.dev": false,
+  "snapshot.type": "explicit",
   "use.cache": true,
   "vcs.ignore.cellar": true,
   "vcs.ignore.library": true,

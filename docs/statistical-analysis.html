@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 10 Statistical analysis | Meta-Workflow</title>
   <meta name="description" content="This is a workflow for metabolomics studies." />
-  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 10 Statistical analysis | Meta-Workflow" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Miao YU" />
 
 
-<meta name="date" content="2024-04-10" />
+<meta name="date" content="2026-04-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,6 +56,7 @@
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.11/grViz.js"></script>
+<link href="libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet" />
 <script src="libs/d3-3.3.8/d3.min.js"></script>
 <script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
 <link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
@@ -65,8 +66,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -76,7 +78,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -138,7 +140,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -179,8 +180,8 @@ div.csl-indent {
 <li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#history"><i class="fa fa-check"></i><b>1.1</b> History</a>
 <ul>
 <li class="chapter" data-level="1.1.1" data-path="introduction.html"><a href="introduction.html#history-of-mass-spectrometry"><i class="fa fa-check"></i><b>1.1.1</b> History of Mass Spectrometry</a></li>
-<li class="chapter" data-level="1.1.2" data-path="introduction.html"><a href="introduction.html#history-of-metabolomcis"><i class="fa fa-check"></i><b>1.1.2</b> History of Metabolomcis</a></li>
-<li class="chapter" data-level="1.1.3" data-path="introduction.html"><a href="introduction.html#defination"><i class="fa fa-check"></i><b>1.1.3</b> Defination</a></li>
+<li class="chapter" data-level="1.1.2" data-path="introduction.html"><a href="introduction.html#history-of-metabolomics"><i class="fa fa-check"></i><b>1.1.2</b> History of Metabolomics</a></li>
+<li class="chapter" data-level="1.1.3" data-path="introduction.html"><a href="introduction.html#definition"><i class="fa fa-check"></i><b>1.1.3</b> Definition</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#reviews-and-tutorials"><i class="fa fa-check"></i><b>1.2</b> Reviews and tutorials</a>
 <ul>
@@ -207,13 +208,26 @@ div.csl-indent {
 <li class="chapter" data-level="3.3" data-path="pretreatment.html"><a href="pretreatment.html#extraction"><i class="fa fa-check"></i><b>3.3</b> Extraction</a></li>
 <li class="chapter" data-level="3.4" data-path="pretreatment.html"><a href="pretreatment.html#derivatization"><i class="fa fa-check"></i><b>3.4</b> Derivatization</a></li>
 <li class="chapter" data-level="3.5" data-path="pretreatment.html"><a href="pretreatment.html#isotope-label"><i class="fa fa-check"></i><b>3.5</b> Isotope label</a></li>
-<li class="chapter" data-level="3.6" data-path="pretreatment.html"><a href="pretreatment.html#storage"><i class="fa fa-check"></i><b>3.6</b> Storage</a></li>
+<li class="chapter" data-level="3.6" data-path="pretreatment.html"><a href="pretreatment.html#microsampling-techniques"><i class="fa fa-check"></i><b>3.6</b> Microsampling techniques</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="pretreatment.html"><a href="pretreatment.html#solid-phase-microextraction-spme"><i class="fa fa-check"></i><b>3.6.1</b> Solid-phase microextraction (SPME)</a></li>
+<li class="chapter" data-level="3.6.2" data-path="pretreatment.html"><a href="pretreatment.html#dried-blood-spots-dbs"><i class="fa fa-check"></i><b>3.6.2</b> Dried blood spots (DBS)</a></li>
+<li class="chapter" data-level="3.6.3" data-path="pretreatment.html"><a href="pretreatment.html#volumetric-absorptive-microsampling-vams"><i class="fa fa-check"></i><b>3.6.3</b> Volumetric absorptive microsampling (VAMS)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="pretreatment.html"><a href="pretreatment.html#storage"><i class="fa fa-check"></i><b>3.7</b> Storage</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html"><i class="fa fa-check"></i><b>4</b> Instrumental analysis</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#column-and-gradient-selection"><i class="fa fa-check"></i><b>4.1</b> Column and gradient selection</a></li>
 <li class="chapter" data-level="4.2" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#mass-resolution"><i class="fa fa-check"></i><b>4.2</b> Mass resolution</a></li>
-<li class="chapter" data-level="4.3" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#matrix-effects"><i class="fa fa-check"></i><b>4.3</b> Matrix effects</a></li>
+<li class="chapter" data-level="4.3" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#quantitative-metabolomics"><i class="fa fa-check"></i><b>4.3</b> Quantitative Metabolomics</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#quantification-levels"><i class="fa fa-check"></i><b>4.3.1</b> Quantification levels</a></li>
+<li class="chapter" data-level="4.3.2" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#calibration-strategies"><i class="fa fa-check"></i><b>4.3.2</b> Calibration strategies</a></li>
+<li class="chapter" data-level="4.3.3" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#untargeted-quantification-challenges"><i class="fa fa-check"></i><b>4.3.3</b> Untargeted quantification challenges</a></li>
+<li class="chapter" data-level="4.3.4" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#practical-recommendations"><i class="fa fa-check"></i><b>4.3.4</b> Practical recommendations</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#matrix-effects"><i class="fa fa-check"></i><b>4.4</b> Matrix effects</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="workflow-2.html"><a href="workflow-2.html"><i class="fa fa-check"></i><b>5</b> Workflow</a>
 <ul>
@@ -223,14 +237,20 @@ div.csl-indent {
 <li class="chapter" data-level="5.1.2" data-path="workflow-2.html"><a href="workflow-2.html#prime"><i class="fa fa-check"></i><b>5.1.2</b> PRIMe</a></li>
 <li class="chapter" data-level="5.1.3" data-path="workflow-2.html"><a href="workflow-2.html#gnps"><i class="fa fa-check"></i><b>5.1.3</b> GNPS</a></li>
 <li class="chapter" data-level="5.1.4" data-path="workflow-2.html"><a href="workflow-2.html#openms-sirius"><i class="fa fa-check"></i><b>5.1.4</b> OpenMS &amp; SIRIUS</a></li>
-<li class="chapter" data-level="5.1.5" data-path="workflow-2.html"><a href="workflow-2.html#mzmine-2"><i class="fa fa-check"></i><b>5.1.5</b> MZmine 2</a></li>
+<li class="chapter" data-level="5.1.5" data-path="workflow-2.html"><a href="workflow-2.html#mzmine"><i class="fa fa-check"></i><b>5.1.5</b> MZmine</a></li>
 <li class="chapter" data-level="5.1.6" data-path="workflow-2.html"><a href="workflow-2.html#emory-mahpic"><i class="fa fa-check"></i><b>5.1.6</b> Emory MaHPIC</a></li>
 <li class="chapter" data-level="5.1.7" data-path="workflow-2.html"><a href="workflow-2.html#others"><i class="fa fa-check"></i><b>5.1.7</b> Others</a></li>
 <li class="chapter" data-level="5.1.8" data-path="workflow-2.html"><a href="workflow-2.html#workflow-comparison"><i class="fa fa-check"></i><b>5.1.8</b> Workflow Comparison</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="workflow-2.html"><a href="workflow-2.html#project-setup"><i class="fa fa-check"></i><b>5.2</b> Project Setup</a></li>
-<li class="chapter" data-level="5.3" data-path="workflow-2.html"><a href="workflow-2.html#data-sharing"><i class="fa fa-check"></i><b>5.3</b> Data sharing</a></li>
-<li class="chapter" data-level="5.4" data-path="workflow-2.html"><a href="workflow-2.html#contest"><i class="fa fa-check"></i><b>5.4</b> Contest</a></li>
+<li class="chapter" data-level="5.3" data-path="workflow-2.html"><a href="workflow-2.html#data-standards-and-metadata"><i class="fa fa-check"></i><b>5.3</b> Data Standards and Metadata</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="workflow-2.html"><a href="workflow-2.html#metadata-standards"><i class="fa fa-check"></i><b>5.3.1</b> Metadata Standards</a></li>
+<li class="chapter" data-level="5.3.2" data-path="workflow-2.html"><a href="workflow-2.html#fair-in-metabolomics"><i class="fa fa-check"></i><b>5.3.2</b> FAIR in Metabolomics</a></li>
+<li class="chapter" data-level="5.3.3" data-path="workflow-2.html"><a href="workflow-2.html#practical-recommendations-1"><i class="fa fa-check"></i><b>5.3.3</b> Practical Recommendations</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="workflow-2.html"><a href="workflow-2.html#data-sharing"><i class="fa fa-check"></i><b>5.4</b> Data sharing</a></li>
+<li class="chapter" data-level="5.5" data-path="workflow-2.html"><a href="workflow-2.html#contest"><i class="fa fa-check"></i><b>5.5</b> Contest</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html"><i class="fa fa-check"></i><b>6</b> Raw data pretreatment</a>
 <ul>
@@ -258,71 +278,78 @@ div.csl-indent {
 <li class="chapter" data-level="7.1" data-path="annotation.html"><a href="annotation.html#issues-in-annotation"><i class="fa fa-check"></i><b>7.1</b> Issues in annotation</a></li>
 <li class="chapter" data-level="7.2" data-path="annotation.html"><a href="annotation.html#peak-misidentification"><i class="fa fa-check"></i><b>7.2</b> Peak misidentification</a></li>
 <li class="chapter" data-level="7.3" data-path="annotation.html"><a href="annotation.html#annotation-v.s.-identification"><i class="fa fa-check"></i><b>7.3</b> Annotation v.s. identification</a></li>
-<li class="chapter" data-level="7.4" data-path="annotation.html"><a href="annotation.html#molecular-formula-assignment"><i class="fa fa-check"></i><b>7.4</b> Molecular Formula Assignment</a></li>
-<li class="chapter" data-level="7.5" data-path="annotation.html"><a href="annotation.html#redundant-peaks"><i class="fa fa-check"></i><b>7.5</b> Redundant peaks</a>
+<li class="chapter" data-level="7.4" data-path="annotation.html"><a href="annotation.html#the-dark-metabolome"><i class="fa fa-check"></i><b>7.4</b> The Dark Metabolome</a>
 <ul>
-<li class="chapter" data-level="7.5.1" data-path="annotation.html"><a href="annotation.html#adducts-list"><i class="fa fa-check"></i><b>7.5.1</b> Adducts list</a></li>
-<li class="chapter" data-level="7.5.2" data-path="annotation.html"><a href="annotation.html#isotope"><i class="fa fa-check"></i><b>7.5.2</b> Isotope</a></li>
-<li class="chapter" data-level="7.5.3" data-path="annotation.html"><a href="annotation.html#camera"><i class="fa fa-check"></i><b>7.5.3</b> CAMERA</a></li>
-<li class="chapter" data-level="7.5.4" data-path="annotation.html"><a href="annotation.html#ramclustr"><i class="fa fa-check"></i><b>7.5.4</b> RAMClustR</a></li>
-<li class="chapter" data-level="7.5.5" data-path="annotation.html"><a href="annotation.html#biocan"><i class="fa fa-check"></i><b>7.5.5</b> BioCAn</a></li>
-<li class="chapter" data-level="7.5.6" data-path="annotation.html"><a href="annotation.html#mzmatch"><i class="fa fa-check"></i><b>7.5.6</b> mzMatch</a></li>
-<li class="chapter" data-level="7.5.7" data-path="annotation.html"><a href="annotation.html#xmsannotator"><i class="fa fa-check"></i><b>7.5.7</b> xMSannotator</a></li>
-<li class="chapter" data-level="7.5.8" data-path="annotation.html"><a href="annotation.html#mwise"><i class="fa fa-check"></i><b>7.5.8</b> mWise</a></li>
-<li class="chapter" data-level="7.5.9" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>7.5.9</b> MAIT</a></li>
-<li class="chapter" data-level="7.5.10" data-path="annotation.html"><a href="annotation.html#pmd"><i class="fa fa-check"></i><b>7.5.10</b> pmd</a></li>
-<li class="chapter" data-level="7.5.11" data-path="annotation.html"><a href="annotation.html#nontarget"><i class="fa fa-check"></i><b>7.5.11</b> nontarget</a></li>
-<li class="chapter" data-level="7.5.12" data-path="annotation.html"><a href="annotation.html#binner"><i class="fa fa-check"></i><b>7.5.12</b> Binner</a></li>
-<li class="chapter" data-level="7.5.13" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>7.5.13</b> mz.unity</a></li>
-<li class="chapter" data-level="7.5.14" data-path="annotation.html"><a href="annotation.html#ms-flo"><i class="fa fa-check"></i><b>7.5.14</b> MS-FLO</a></li>
-<li class="chapter" data-level="7.5.15" data-path="annotation.html"><a href="annotation.html#cliquems"><i class="fa fa-check"></i><b>7.5.15</b> CliqueMS</a></li>
-<li class="chapter" data-level="7.5.16" data-path="annotation.html"><a href="annotation.html#interpretmsspectrum"><i class="fa fa-check"></i><b>7.5.16</b> InterpretMSSpectrum</a></li>
-<li class="chapter" data-level="7.5.17" data-path="annotation.html"><a href="annotation.html#netid"><i class="fa fa-check"></i><b>7.5.17</b> NetID</a></li>
-<li class="chapter" data-level="7.5.18" data-path="annotation.html"><a href="annotation.html#isfrag"><i class="fa fa-check"></i><b>7.5.18</b> ISfrag</a></li>
-<li class="chapter" data-level="7.5.19" data-path="annotation.html"><a href="annotation.html#fastei"><i class="fa fa-check"></i><b>7.5.19</b> FastEI</a></li>
+<li class="chapter" data-level="7.4.1" data-path="annotation.html"><a href="annotation.html#what-makes-up-the-dark-matter"><i class="fa fa-check"></i><b>7.4.1</b> What makes up the dark matter?</a></li>
+<li class="chapter" data-level="7.4.2" data-path="annotation.html"><a href="annotation.html#the-in-source-fragmentation-debate"><i class="fa fa-check"></i><b>7.4.2</b> The in-source fragmentation debate</a></li>
+<li class="chapter" data-level="7.4.3" data-path="annotation.html"><a href="annotation.html#a-missing-perspective-data-driven-deduplication"><i class="fa fa-check"></i><b>7.4.3</b> A missing perspective: data-driven deduplication</a></li>
+<li class="chapter" data-level="7.4.4" data-path="annotation.html"><a href="annotation.html#strategies-to-address-the-dark-matter"><i class="fa fa-check"></i><b>7.4.4</b> Strategies to address the dark matter</a></li>
 </ul></li>
-<li class="chapter" data-level="7.6" data-path="annotation.html"><a href="annotation.html#ms1-ms2-connection"><i class="fa fa-check"></i><b>7.6</b> MS1 MS2 connection</a>
+<li class="chapter" data-level="7.5" data-path="annotation.html"><a href="annotation.html#molecular-formula-assignment"><i class="fa fa-check"></i><b>7.5</b> Molecular Formula Assignment</a></li>
+<li class="chapter" data-level="7.6" data-path="annotation.html"><a href="annotation.html#redundant-peaks"><i class="fa fa-check"></i><b>7.6</b> Redundant peaks</a>
 <ul>
-<li class="chapter" data-level="7.6.1" data-path="annotation.html"><a href="annotation.html#pmdda"><i class="fa fa-check"></i><b>7.6.1</b> PMDDA</a></li>
-<li class="chapter" data-level="7.6.2" data-path="annotation.html"><a href="annotation.html#hermes"><i class="fa fa-check"></i><b>7.6.2</b> HERMES</a></li>
-<li class="chapter" data-level="7.6.3" data-path="annotation.html"><a href="annotation.html#dpdda"><i class="fa fa-check"></i><b>7.6.3</b> dpDDA</a></li>
+<li class="chapter" data-level="7.6.1" data-path="annotation.html"><a href="annotation.html#adducts-list"><i class="fa fa-check"></i><b>7.6.1</b> Adducts list</a></li>
+<li class="chapter" data-level="7.6.2" data-path="annotation.html"><a href="annotation.html#isotope"><i class="fa fa-check"></i><b>7.6.2</b> Isotope</a></li>
+<li class="chapter" data-level="7.6.3" data-path="annotation.html"><a href="annotation.html#camera"><i class="fa fa-check"></i><b>7.6.3</b> CAMERA</a></li>
+<li class="chapter" data-level="7.6.4" data-path="annotation.html"><a href="annotation.html#ramclustr"><i class="fa fa-check"></i><b>7.6.4</b> RAMClustR</a></li>
+<li class="chapter" data-level="7.6.5" data-path="annotation.html"><a href="annotation.html#biocan"><i class="fa fa-check"></i><b>7.6.5</b> BioCAn</a></li>
+<li class="chapter" data-level="7.6.6" data-path="annotation.html"><a href="annotation.html#mzmatch"><i class="fa fa-check"></i><b>7.6.6</b> mzMatch</a></li>
+<li class="chapter" data-level="7.6.7" data-path="annotation.html"><a href="annotation.html#xmsannotator"><i class="fa fa-check"></i><b>7.6.7</b> xMSannotator</a></li>
+<li class="chapter" data-level="7.6.8" data-path="annotation.html"><a href="annotation.html#mwise"><i class="fa fa-check"></i><b>7.6.8</b> mWise</a></li>
+<li class="chapter" data-level="7.6.9" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>7.6.9</b> MAIT</a></li>
+<li class="chapter" data-level="7.6.10" data-path="annotation.html"><a href="annotation.html#pmd"><i class="fa fa-check"></i><b>7.6.10</b> pmd</a></li>
+<li class="chapter" data-level="7.6.11" data-path="annotation.html"><a href="annotation.html#nontarget"><i class="fa fa-check"></i><b>7.6.11</b> nontarget</a></li>
+<li class="chapter" data-level="7.6.12" data-path="annotation.html"><a href="annotation.html#binner"><i class="fa fa-check"></i><b>7.6.12</b> Binner</a></li>
+<li class="chapter" data-level="7.6.13" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>7.6.13</b> mz.unity</a></li>
+<li class="chapter" data-level="7.6.14" data-path="annotation.html"><a href="annotation.html#ms-flo"><i class="fa fa-check"></i><b>7.6.14</b> MS-FLO</a></li>
+<li class="chapter" data-level="7.6.15" data-path="annotation.html"><a href="annotation.html#cliquems"><i class="fa fa-check"></i><b>7.6.15</b> CliqueMS</a></li>
+<li class="chapter" data-level="7.6.16" data-path="annotation.html"><a href="annotation.html#interpretmsspectrum"><i class="fa fa-check"></i><b>7.6.16</b> InterpretMSSpectrum</a></li>
+<li class="chapter" data-level="7.6.17" data-path="annotation.html"><a href="annotation.html#netid"><i class="fa fa-check"></i><b>7.6.17</b> NetID</a></li>
+<li class="chapter" data-level="7.6.18" data-path="annotation.html"><a href="annotation.html#isfrag"><i class="fa fa-check"></i><b>7.6.18</b> ISfrag</a></li>
+<li class="chapter" data-level="7.6.19" data-path="annotation.html"><a href="annotation.html#fastei"><i class="fa fa-check"></i><b>7.6.19</b> FastEI</a></li>
 </ul></li>
-<li class="chapter" data-level="7.7" data-path="annotation.html"><a href="annotation.html#ms2-msn-connection"><i class="fa fa-check"></i><b>7.7</b> MS2 MSn connection</a></li>
-<li class="chapter" data-level="7.8" data-path="annotation.html"><a href="annotation.html#msms-annotation"><i class="fa fa-check"></i><b>7.8</b> MS/MS annotation</a>
+<li class="chapter" data-level="7.7" data-path="annotation.html"><a href="annotation.html#ms1-ms2-connection"><i class="fa fa-check"></i><b>7.7</b> MS1 MS2 connection</a>
 <ul>
-<li class="chapter" data-level="7.8.1" data-path="annotation.html"><a href="annotation.html#matchms"><i class="fa fa-check"></i><b>7.8.1</b> Matchms</a></li>
-<li class="chapter" data-level="7.8.2" data-path="annotation.html"><a href="annotation.html#metdna"><i class="fa fa-check"></i><b>7.8.2</b> MetDNA</a></li>
-<li class="chapter" data-level="7.8.3" data-path="annotation.html"><a href="annotation.html#metfusion"><i class="fa fa-check"></i><b>7.8.3</b> MetFusion</a></li>
-<li class="chapter" data-level="7.8.4" data-path="annotation.html"><a href="annotation.html#ms2analyzer"><i class="fa fa-check"></i><b>7.8.4</b> MS2Analyzer</a></li>
-<li class="chapter" data-level="7.8.5" data-path="annotation.html"><a href="annotation.html#metfrag"><i class="fa fa-check"></i><b>7.8.5</b> MetFrag</a></li>
-<li class="chapter" data-level="7.8.6" data-path="annotation.html"><a href="annotation.html#cfm-id"><i class="fa fa-check"></i><b>7.8.6</b> CFM-ID</a></li>
-<li class="chapter" data-level="7.8.7" data-path="annotation.html"><a href="annotation.html#lc-ms2struct"><i class="fa fa-check"></i><b>7.8.7</b> LC-MS2Struct</a></li>
-<li class="chapter" data-level="7.8.8" data-path="annotation.html"><a href="annotation.html#lipidfrag"><i class="fa fa-check"></i><b>7.8.8</b> LipidFrag</a></li>
-<li class="chapter" data-level="7.8.9" data-path="annotation.html"><a href="annotation.html#lipidmatch"><i class="fa fa-check"></i><b>7.8.9</b> Lipidmatch</a></li>
-<li class="chapter" data-level="7.8.10" data-path="annotation.html"><a href="annotation.html#barcoding"><i class="fa fa-check"></i><b>7.8.10</b> BarCoding</a></li>
-<li class="chapter" data-level="7.8.11" data-path="annotation.html"><a href="annotation.html#imet"><i class="fa fa-check"></i><b>7.8.11</b> iMet</a></li>
-<li class="chapter" data-level="7.8.12" data-path="annotation.html"><a href="annotation.html#dnms2purifier"><i class="fa fa-check"></i><b>7.8.12</b> DNMS2Purifier</a></li>
-<li class="chapter" data-level="7.8.13" data-path="annotation.html"><a href="annotation.html#idsl.csa"><i class="fa fa-check"></i><b>7.8.13</b> IDSL.CSA</a></li>
+<li class="chapter" data-level="7.7.1" data-path="annotation.html"><a href="annotation.html#pmdda"><i class="fa fa-check"></i><b>7.7.1</b> PMDDA</a></li>
+<li class="chapter" data-level="7.7.2" data-path="annotation.html"><a href="annotation.html#hermes"><i class="fa fa-check"></i><b>7.7.2</b> HERMES</a></li>
+<li class="chapter" data-level="7.7.3" data-path="annotation.html"><a href="annotation.html#dpdda"><i class="fa fa-check"></i><b>7.7.3</b> dpDDA</a></li>
 </ul></li>
-<li class="chapter" data-level="7.9" data-path="annotation.html"><a href="annotation.html#knowledge-based-annotation"><i class="fa fa-check"></i><b>7.9</b> Knowledge based annotation</a>
+<li class="chapter" data-level="7.8" data-path="annotation.html"><a href="annotation.html#ms2-msn-connection"><i class="fa fa-check"></i><b>7.8</b> MS2 MSn connection</a></li>
+<li class="chapter" data-level="7.9" data-path="annotation.html"><a href="annotation.html#msms-annotation"><i class="fa fa-check"></i><b>7.9</b> MS/MS annotation</a>
 <ul>
-<li class="chapter" data-level="7.9.1" data-path="annotation.html"><a href="annotation.html#experimental-design"><i class="fa fa-check"></i><b>7.9.1</b> Experimental design</a></li>
-<li class="chapter" data-level="7.9.2" data-path="annotation.html"><a href="annotation.html#chromatographic-retention-related-criteria"><i class="fa fa-check"></i><b>7.9.2</b> Chromatographic retention-related criteria</a></li>
-<li class="chapter" data-level="7.9.3" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>7.9.3</b> ProbMetab</a></li>
-<li class="chapter" data-level="7.9.4" data-path="annotation.html"><a href="annotation.html#mi-pack"><i class="fa fa-check"></i><b>7.9.4</b> MI-Pack</a></li>
-<li class="chapter" data-level="7.9.5" data-path="annotation.html"><a href="annotation.html#metexpert"><i class="fa fa-check"></i><b>7.9.5</b> MetExpert</a></li>
-<li class="chapter" data-level="7.9.6" data-path="annotation.html"><a href="annotation.html#mycompoundid"><i class="fa fa-check"></i><b>7.9.6</b> MycompoundID</a></li>
-<li class="chapter" data-level="7.9.7" data-path="annotation.html"><a href="annotation.html#metfamily"><i class="fa fa-check"></i><b>7.9.7</b> MetFamily</a></li>
-<li class="chapter" data-level="7.9.8" data-path="annotation.html"><a href="annotation.html#coa-blast"><i class="fa fa-check"></i><b>7.9.8</b> CoA-Blast</a></li>
-<li class="chapter" data-level="7.9.9" data-path="annotation.html"><a href="annotation.html#kgmn"><i class="fa fa-check"></i><b>7.9.9</b> KGMN</a></li>
-<li class="chapter" data-level="7.9.10" data-path="annotation.html"><a href="annotation.html#ccmn"><i class="fa fa-check"></i><b>7.9.10</b> CCMN</a></li>
+<li class="chapter" data-level="7.9.1" data-path="annotation.html"><a href="annotation.html#matchms"><i class="fa fa-check"></i><b>7.9.1</b> Matchms</a></li>
+<li class="chapter" data-level="7.9.2" data-path="annotation.html"><a href="annotation.html#metdna"><i class="fa fa-check"></i><b>7.9.2</b> MetDNA</a></li>
+<li class="chapter" data-level="7.9.3" data-path="annotation.html"><a href="annotation.html#metfusion"><i class="fa fa-check"></i><b>7.9.3</b> MetFusion</a></li>
+<li class="chapter" data-level="7.9.4" data-path="annotation.html"><a href="annotation.html#ms2analyzer"><i class="fa fa-check"></i><b>7.9.4</b> MS2Analyzer</a></li>
+<li class="chapter" data-level="7.9.5" data-path="annotation.html"><a href="annotation.html#metfrag"><i class="fa fa-check"></i><b>7.9.5</b> MetFrag</a></li>
+<li class="chapter" data-level="7.9.6" data-path="annotation.html"><a href="annotation.html#cfm-id"><i class="fa fa-check"></i><b>7.9.6</b> CFM-ID</a></li>
+<li class="chapter" data-level="7.9.7" data-path="annotation.html"><a href="annotation.html#lc-ms2struct"><i class="fa fa-check"></i><b>7.9.7</b> LC-MS2Struct</a></li>
+<li class="chapter" data-level="7.9.8" data-path="annotation.html"><a href="annotation.html#lipidfrag"><i class="fa fa-check"></i><b>7.9.8</b> LipidFrag</a></li>
+<li class="chapter" data-level="7.9.9" data-path="annotation.html"><a href="annotation.html#lipidmatch"><i class="fa fa-check"></i><b>7.9.9</b> Lipidmatch</a></li>
+<li class="chapter" data-level="7.9.10" data-path="annotation.html"><a href="annotation.html#barcoding"><i class="fa fa-check"></i><b>7.9.10</b> BarCoding</a></li>
+<li class="chapter" data-level="7.9.11" data-path="annotation.html"><a href="annotation.html#imet"><i class="fa fa-check"></i><b>7.9.11</b> iMet</a></li>
+<li class="chapter" data-level="7.9.12" data-path="annotation.html"><a href="annotation.html#dnms2purifier"><i class="fa fa-check"></i><b>7.9.12</b> DNMS2Purifier</a></li>
+<li class="chapter" data-level="7.9.13" data-path="annotation.html"><a href="annotation.html#idsl.csa"><i class="fa fa-check"></i><b>7.9.13</b> IDSL.CSA</a></li>
 </ul></li>
-<li class="chapter" data-level="7.10" data-path="annotation.html"><a href="annotation.html#ms-database-for-annotation"><i class="fa fa-check"></i><b>7.10</b> MS Database for annotation</a>
+<li class="chapter" data-level="7.10" data-path="annotation.html"><a href="annotation.html#knowledge-based-annotation"><i class="fa fa-check"></i><b>7.10</b> Knowledge based annotation</a>
 <ul>
-<li class="chapter" data-level="7.10.1" data-path="annotation.html"><a href="annotation.html#ms"><i class="fa fa-check"></i><b>7.10.1</b> MS</a></li>
-<li class="chapter" data-level="7.10.2" data-path="annotation.html"><a href="annotation.html#msms-1"><i class="fa fa-check"></i><b>7.10.2</b> MS/MS</a></li>
+<li class="chapter" data-level="7.10.1" data-path="annotation.html"><a href="annotation.html#experimental-design"><i class="fa fa-check"></i><b>7.10.1</b> Experimental design</a></li>
+<li class="chapter" data-level="7.10.2" data-path="annotation.html"><a href="annotation.html#chromatographic-retention-related-criteria"><i class="fa fa-check"></i><b>7.10.2</b> Chromatographic retention-related criteria</a></li>
+<li class="chapter" data-level="7.10.3" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>7.10.3</b> ProbMetab</a></li>
+<li class="chapter" data-level="7.10.4" data-path="annotation.html"><a href="annotation.html#mi-pack"><i class="fa fa-check"></i><b>7.10.4</b> MI-Pack</a></li>
+<li class="chapter" data-level="7.10.5" data-path="annotation.html"><a href="annotation.html#metexpert"><i class="fa fa-check"></i><b>7.10.5</b> MetExpert</a></li>
+<li class="chapter" data-level="7.10.6" data-path="annotation.html"><a href="annotation.html#mycompoundid"><i class="fa fa-check"></i><b>7.10.6</b> MycompoundID</a></li>
+<li class="chapter" data-level="7.10.7" data-path="annotation.html"><a href="annotation.html#metfamily"><i class="fa fa-check"></i><b>7.10.7</b> MetFamily</a></li>
+<li class="chapter" data-level="7.10.8" data-path="annotation.html"><a href="annotation.html#coa-blast"><i class="fa fa-check"></i><b>7.10.8</b> CoA-Blast</a></li>
+<li class="chapter" data-level="7.10.9" data-path="annotation.html"><a href="annotation.html#kgmn"><i class="fa fa-check"></i><b>7.10.9</b> KGMN</a></li>
+<li class="chapter" data-level="7.10.10" data-path="annotation.html"><a href="annotation.html#ccmn"><i class="fa fa-check"></i><b>7.10.10</b> CCMN</a></li>
 </ul></li>
-<li class="chapter" data-level="7.11" data-path="annotation.html"><a href="annotation.html#compounds-database"><i class="fa fa-check"></i><b>7.11</b> Compounds Database</a></li>
+<li class="chapter" data-level="7.11" data-path="annotation.html"><a href="annotation.html#ms-database-for-annotation"><i class="fa fa-check"></i><b>7.11</b> MS Database for annotation</a>
+<ul>
+<li class="chapter" data-level="7.11.1" data-path="annotation.html"><a href="annotation.html#ms"><i class="fa fa-check"></i><b>7.11.1</b> MS</a></li>
+<li class="chapter" data-level="7.11.2" data-path="annotation.html"><a href="annotation.html#msms-1"><i class="fa fa-check"></i><b>7.11.2</b> MS/MS</a></li>
+</ul></li>
+<li class="chapter" data-level="7.12" data-path="annotation.html"><a href="annotation.html#compounds-database"><i class="fa fa-check"></i><b>7.12</b> Compounds Database</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>8</b> Omics analysis</a>
 <ul>
@@ -368,15 +395,30 @@ div.csl-indent {
 <li class="chapter" data-level="10.6.2" data-path="statistical-analysis.html"><a href="statistical-analysis.html#build-the-network"><i class="fa fa-check"></i><b>10.6.2</b> Build the network</a></li>
 <li class="chapter" data-level="10.6.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#network-attributes"><i class="fa fa-check"></i><b>10.6.3</b> Network attributes</a></li>
 </ul></li>
-<li class="chapter" data-level="10.7" data-path="statistical-analysis.html"><a href="statistical-analysis.html#software-1"><i class="fa fa-check"></i><b>10.7</b> Software</a></li>
+<li class="chapter" data-level="10.7" data-path="statistical-analysis.html"><a href="statistical-analysis.html#machine-learning-and-deep-learning"><i class="fa fa-check"></i><b>10.7</b> Machine Learning and Deep Learning</a>
+<ul>
+<li class="chapter" data-level="10.7.1" data-path="statistical-analysis.html"><a href="statistical-analysis.html#where-mldl-is-applied-in-metabolomics"><i class="fa fa-check"></i><b>10.7.1</b> Where ML/DL is applied in metabolomics</a></li>
+<li class="chapter" data-level="10.7.2" data-path="statistical-analysis.html"><a href="statistical-analysis.html#common-pitfalls"><i class="fa fa-check"></i><b>10.7.2</b> Common pitfalls</a></li>
+<li class="chapter" data-level="10.7.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#best-practices"><i class="fa fa-check"></i><b>10.7.3</b> Best practices</a></li>
+<li class="chapter" data-level="10.7.4" data-path="statistical-analysis.html"><a href="statistical-analysis.html#deep-learning-considerations"><i class="fa fa-check"></i><b>10.7.4</b> Deep learning considerations</a></li>
+</ul></li>
+<li class="chapter" data-level="10.8" data-path="statistical-analysis.html"><a href="statistical-analysis.html#causal-inference-in-metabolomics"><i class="fa fa-check"></i><b>10.8</b> Causal inference in metabolomics</a>
+<ul>
+<li class="chapter" data-level="10.8.1" data-path="statistical-analysis.html"><a href="statistical-analysis.html#mendelian-randomization"><i class="fa fa-check"></i><b>10.8.1</b> Mendelian randomization</a></li>
+<li class="chapter" data-level="10.8.2" data-path="statistical-analysis.html"><a href="statistical-analysis.html#practical-considerations"><i class="fa fa-check"></i><b>10.8.2</b> Practical considerations</a></li>
+</ul></li>
+<li class="chapter" data-level="10.9" data-path="statistical-analysis.html"><a href="statistical-analysis.html#software-1"><i class="fa fa-check"></i><b>10.9</b> Software</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="exposome.html"><a href="exposome.html"><i class="fa fa-check"></i><b>11</b> Exposome</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="exposome.html"><a href="exposome.html#internal-exposure"><i class="fa fa-check"></i><b>11.1</b> Internal exposure</a></li>
-<li class="chapter" data-level="11.2" data-path="exposome.html"><a href="exposome.html#external-exposure"><i class="fa fa-check"></i><b>11.2</b> External exposure</a>
+<li class="chapter" data-level="11.1" data-path="exposome.html"><a href="exposome.html#exposome-wide-association-studies-exwas"><i class="fa fa-check"></i><b>11.1</b> Exposome-Wide Association Studies (ExWAS)</a></li>
+<li class="chapter" data-level="11.2" data-path="exposome.html"><a href="exposome.html#large-scale-exposome-projects"><i class="fa fa-check"></i><b>11.2</b> Large-scale exposome projects</a></li>
+<li class="chapter" data-level="11.3" data-path="exposome.html"><a href="exposome.html#internal-exposure"><i class="fa fa-check"></i><b>11.3</b> Internal exposure</a></li>
+<li class="chapter" data-level="11.4" data-path="exposome.html"><a href="exposome.html#external-exposure"><i class="fa fa-check"></i><b>11.4</b> External exposure</a>
 <ul>
-<li class="chapter" data-level="11.2.1" data-path="exposome.html"><a href="exposome.html#environmental-fate-of-compounds"><i class="fa fa-check"></i><b>11.2.1</b> Environmental fate of compounds</a></li>
-<li class="chapter" data-level="11.2.2" data-path="exposome.html"><a href="exposome.html#exposure-study-database"><i class="fa fa-check"></i><b>11.2.2</b> Exposure study database</a></li>
+<li class="chapter" data-level="11.4.1" data-path="exposome.html"><a href="exposome.html#specific-contaminants"><i class="fa fa-check"></i><b>11.4.1</b> Specific Contaminants</a></li>
+<li class="chapter" data-level="11.4.2" data-path="exposome.html"><a href="exposome.html#environmental-fate-of-compounds"><i class="fa fa-check"></i><b>11.4.2</b> Environmental fate of compounds</a></li>
+<li class="chapter" data-level="11.4.3" data-path="exposome.html"><a href="exposome.html#exposure-study-database"><i class="fa fa-check"></i><b>11.4.3</b> Exposure study database</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -417,7 +459,7 @@ div.csl-indent {
 <p>For omics studies, you should realize <strong>Multiple Comparison</strong> issue when you perform a lot of(more than 20) comparisons or tests at the same time. <strong>False Discovery Rate(FDR) control</strong> is required for multiple tests to make sure the results are not false positive. You could use Benjamini-Hochberg method to adjust raw p values or directly use Storey Q value to make FDR control.</p>
 <p>NHST is famous for the failure of p-value interpretation as well as multiple comparison issues. <strong>Bayesian Hypothesis Testing</strong> could be an options to cover some drawbacks of NHST. Bayesian Hypothesis Testing use Bayes factor to show the differences between null hypothesis and any other hypothesis.</p>
 <p><span class="math display">\[Bayes\ factor = \frac{p(D|Ha)}{p(D|H0)} = \frac{posterior\ odds}{prior\ odds}\]</span></p>
-<p><strong>Statistical model</strong> use statistics to make prediction/explanation. Most of the statistical model need to be tuned for parameters to show a better performance. Statistical model is build on real data and could be diagnosed by other general statistics such as <span class="math inline">\(R^2\)</span>, <span class="math inline">\(ROC curve\)</span>. When the models are built or compared, model selection could be preformed.</p>
+<p><strong>Statistical model</strong> use statistics to make prediction/explanation. Most of the statistical model need to be tuned for parameters to show a better performance. Statistical model is build on real data and could be diagnosed by other general statistics such as <span class="math inline">\(R^2\)</span>, <span class="math inline">\(ROC curve\)</span>. When the models are built or compared, model selection could be performed.</p>
 <p><span class="math display">\[Target = g(Statistic) = g(f(sample_1,sample_2,...,sample_n))\]</span></p>
 <p><strong>Bias-Variance Tradeoff</strong> is an important concept regarding statistical models. Certain models could be overfitted(small Bias, large variance) or underfitted(large Bias, small variance) when the parameters of models are not well selected.</p>
 <p><span class="math display">\[E[(y - \hat f)^2] = \sigma^2 + Var[\hat f] + Bias[\hat f]\]</span></p>
@@ -495,11 +537,11 @@ distance = |10-54|+|13-23|+|21-16| = 59
 </div>
 <div id="plsda" class="section level2 hasAnchor" number="10.5">
 <h2><span class="header-section-number">10.5</span> PLSDA<a href="statistical-analysis.html#plsda" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>PLS-DA, OPLS-DA and HPSO-OPLS-DA <span class="citation">(<a href="#ref-yang2017a">Qin Yang et al. 2017</a>)</span> could be used.</p>
+<p>PLS-DA, OPLS-DA and HPSO-OPLS-DA <span class="citation">(<a href="#ref-yang2017a">Yang et al. 2017</a>)</span> could be used.</p>
 <p>Partial least squares discriminant analysis(PLSDA) was first used in the 1990s. However, Partial least squares(PLS) was proposed in the 1960s by Hermann Wold. Principal components analysis produces the weight matrix reflecting the covariance structure between the variables, while partial least squares produces the weight matrix reflecting the covariance structure between the variables and classes. After rotation by weight matrix, the new variables would contain relationship with classes.</p>
 <p>The classification performance of PLSDA is identical to linear discriminant analysis(LDA) if class sizes are balanced, or the columns are adjusted according to the mean of the class mean. If the number of variables exceeds the number of samples, LDA can be performed on the principal components. Quadratic discriminant analysis(QDA) could model nonlinearity relationship between variables while PLSDA is better for collinear variables. However, as a classifier, there is little advantage for PLSDA. The advantages of PLSDA is that this modle could show relationship between variables, which is not the goal of regular classifier.</p>
-<p>Different algorithms <span class="citation">(<a href="#ref-andersson2009">Andersson 2009</a>)</span> for PLSDA would show different score, while PCA always show the same score with fixed algorithm. For PCA, both new variables and classes are orthognal. However, for PLS(Wold), only new classes are orthognal. For PLS(Martens), only new variables are orthognal. This paper show the details of using such methods <span class="citation">(<a href="#ref-brereton2018">Brereton and Lloyd 2018</a>)</span>.</p>
-<p>Sparse PLS discriminant analysis(sPLS-DA) make a L1 penal on the variable selection to remove the influences from unrelated variables, which make sense for high-throughput omics data <span class="citation">(<a href="#ref-lecao2011">Lê Cao, Boitard, and Besse 2011</a>)</span>.</p>
+<p>Different algorithms <span class="citation">(<a href="#ref-andersson2009">Andersson 2009</a>)</span> for PLSDA would show different score, while PCA always show the same score with fixed algorithm. For PCA, both new variables and classes are orthogonal. However, for PLS(Wold), only new classes are orthogonal. For PLS(Martens), only new variables are orthogonal. This paper show the details of using such methods <span class="citation">(<a href="#ref-brereton2018">Brereton and Lloyd 2018</a>)</span>.</p>
+<p>Sparse PLS discriminant analysis(sPLS-DA) make an L1 penalty on the variable selection to remove the influences from unrelated variables, which make sense for high-throughput omics data <span class="citation">(<a href="#ref-lecao2011">Lê Cao et al. 2011</a>)</span>.</p>
 <p>For o-PLS-DA, s-plot could be used to find features<span class="citation">(<a href="#ref-wiklund2008">Wiklund et al. 2008</a>)</span>.</p>
 </div>
 <div id="network-analysis-1" class="section level2 hasAnchor" number="10.6">
@@ -522,26 +564,89 @@ distance = |10-54|+|13-23|+|21-16| = 59
 <p>Sparse network has similar number of edges and the number of nodes. Dense network has the number of edges as a quadratic function of the nodes.</p>
 </div>
 </div>
-<div id="software-1" class="section level2 hasAnchor" number="10.7">
-<h2><span class="header-section-number">10.7</span> Software<a href="statistical-analysis.html#software-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="machine-learning-and-deep-learning" class="section level2 hasAnchor" number="10.7">
+<h2><span class="header-section-number">10.7</span> Machine Learning and Deep Learning<a href="statistical-analysis.html#machine-learning-and-deep-learning" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Machine learning (ML) and deep learning (DL) have been increasingly applied across the metabolomics workflow, from peak detection to biomarker discovery. However, proper application requires understanding both the opportunities and the pitfalls specific to high-dimensional, low-sample-size metabolomics data<span class="citation">(<a href="#ref-galal2022">Galal et al. 2022</a>; <a href="#ref-sen2023">Sen et al. 2021</a>)</span>.</p>
+<div id="where-mldl-is-applied-in-metabolomics" class="section level3 hasAnchor" number="10.7.1">
+<h3><span class="header-section-number">10.7.1</span> Where ML/DL is applied in metabolomics<a href="statistical-analysis.html#where-mldl-is-applied-in-metabolomics" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>ML/DL methods appear at multiple stages of the metabolomics pipeline:</p>
 <ul>
-<li><p><a href="https://github.com/xia-lab/MetaboAnalystR">MetaboAnalystR</a> <span class="citation">(<a href="#ref-chong2019">Chong, Wishart, and Xia 2019</a>)</span></p></li>
+<li><p><strong>Peak detection and deconvolution</strong>: Deep learning models can learn peak shapes from training data and improve detection in noisy spectra. NeatMS uses a convolutional neural network for peak quality assessment<span class="citation">(<a href="#ref-gloaguen2022">Gloaguen et al. 2022</a>)</span>, and 2D pseudo-color image-based deep learning has been applied to LC-MS feature detection<span class="citation">(<a href="#ref-zhao2021">Zhao et al. 2021</a>)</span>.</p></li>
+<li><p><strong>Spectral annotation</strong>: ML models predict molecular fingerprints from MS/MS spectra. Tools like CSI:FingerID<span class="citation">(<a href="#ref-duhrkop2019">Dührkop et al. 2019</a>)</span>, CANOPUS<span class="citation">(<a href="#ref-duhrkop2020">Dührkop et al. 2020</a>)</span>, MS2DeepScore<span class="citation">(<a href="#ref-huber2020">Huber et al. 2020</a>)</span>, and MSBERT<span class="citation">(<a href="#ref-zhang2024c">H. Zhang et al. 2024</a>)</span> use various architectures (random forest, deep neural networks, transformers) to match or predict spectra. MS2Query enables analogue searching using learned spectral embeddings<span class="citation">(<a href="#ref-dejonge2023"><span class="nocase">de Jonge et al.</span> 2023</a>)</span>.</p></li>
+<li><p><strong>Retention time prediction</strong>: Models such as RT-Transformer<span class="citation">(<a href="#ref-xue2024">Xue et al. 2024</a>)</span> and Retip<span class="citation">(<a href="#ref-bonini2020">Bonini et al. 2020</a>)</span> predict chromatographic retention times from molecular structure, adding an orthogonal dimension for annotation confidence.</p></li>
+<li><p><strong>Biomarker discovery and classification</strong>: Supervised models (random forest, SVM, PLS-DA, gradient boosting, neural networks) are commonly used to classify samples and select discriminating features. Ensemble methods and model stacking often outperform single models.</p></li>
+<li><p><strong>Data integration</strong>: Multi-omics integration benefits from ML approaches that can handle heterogeneous data types, such as MOFA (Multi-Omics Factor Analysis) and similarity network fusion.</p></li>
+</ul>
+</div>
+<div id="common-pitfalls" class="section level3 hasAnchor" number="10.7.2">
+<h3><span class="header-section-number">10.7.2</span> Common pitfalls<a href="statistical-analysis.html#common-pitfalls" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Metabolomics datasets are particularly susceptible to ML overfitting due to the high number of features relative to the sample size (the “p &gt;&gt; n” problem). Common mistakes include:</p>
+<ul>
+<li><p><strong>Data leakage</strong>: Performing feature selection, normalization, or missing value imputation before splitting data into training/test sets. All preprocessing steps that use information across samples must be performed within the cross-validation loop.</p></li>
+<li><p><strong>Inadequate validation</strong>: Using only a single random train/test split instead of repeated k-fold cross-validation. For small sample sizes (n &lt; 100), nested cross-validation is recommended to get unbiased performance estimates.</p></li>
+<li><p><strong>Ignoring batch effects</strong>: If batch structure correlates with the biological groups, ML models may learn batch signatures rather than biology. Always check whether your model predictions correlate with known technical factors.</p></li>
+<li><p><strong>Reporting bias</strong>: Reporting only the best-performing model among many tried, without adjusting for the model selection process. Permutation testing (shuffling labels to establish null performance) is essential to verify that classification accuracy exceeds what is expected by chance.</p></li>
+</ul>
+</div>
+<div id="best-practices" class="section level3 hasAnchor" number="10.7.3">
+<h3><span class="header-section-number">10.7.3</span> Best practices<a href="statistical-analysis.html#best-practices" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Practical guidance for training and reporting ML models in metabolomics has been proposed<span class="citation">(<a href="#ref-zhao2025a">C. Zhao et al. 2025</a>)</span>. The EMBRACE checklist provides a framework for environmental ML, emphasizing baseline reporting and comprehensive evaluation<span class="citation">(<a href="#ref-zhu2024">Zhu et al. 2024</a>)</span>. Key recommendations include:</p>
+<ul>
+<li><p>Always report the full cross-validation scheme, including how hyperparameters were tuned</p></li>
+<li><p>Include a permutation test to verify statistical significance of classification accuracy</p></li>
+<li><p>Report multiple metrics (accuracy, AUC, sensitivity, specificity, F1) rather than a single number</p></li>
+<li><p>Make code and processed data available for reproducibility</p></li>
+<li><p>Compare ML results against simple baselines (e.g., univariate t-test + fold change) to justify the added complexity</p></li>
+<li><p>For feature importance, use model-agnostic methods (e.g., SHAP values, permutation importance) that provide interpretable results</p></li>
+</ul>
+</div>
+<div id="deep-learning-considerations" class="section level3 hasAnchor" number="10.7.4">
+<h3><span class="header-section-number">10.7.4</span> Deep learning considerations<a href="statistical-analysis.html#deep-learning-considerations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Deep learning models (autoencoders, variational autoencoders, transformers, graph neural networks) are powerful but typically require larger training sets than classical ML. In metabolomics, they are most useful when:</p>
+<ul>
+<li><p>Large public spectral databases are available for pretraining (e.g., MS/MS spectra prediction)</p></li>
+<li><p>The task involves pattern recognition in complex spectral or image data</p></li>
+<li><p>Transfer learning from related domains can compensate for limited sample sizes</p></li>
+</ul>
+<p>For classification tasks with fewer than a few hundred samples, classical methods (random forest, gradient boosting, regularized regression) often perform as well as or better than deep learning, with the added benefit of interpretability<span class="citation">(<a href="#ref-sen2023">Sen et al. 2021</a>)</span>.</p>
+</div>
+</div>
+<div id="causal-inference-in-metabolomics" class="section level2 hasAnchor" number="10.8">
+<h2><span class="header-section-number">10.8</span> Causal inference in metabolomics<a href="statistical-analysis.html#causal-inference-in-metabolomics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Standard metabolomics analyses identify associations between metabolites and outcomes, but association does not imply causation. Confounding, reverse causation, and measurement error can all produce spurious associations. Several approaches are now being applied to strengthen causal claims from metabolomics data.</p>
+<div id="mendelian-randomization" class="section level3 hasAnchor" number="10.8.1">
+<h3><span class="header-section-number">10.8.1</span> Mendelian randomization<a href="statistical-analysis.html#mendelian-randomization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Mendelian randomization (MR) uses genetic variants as instrumental variables to estimate the causal effect of an exposure (e.g., a metabolite level) on an outcome (e.g., disease risk). Because genetic variants are randomly allocated at conception, they are generally not affected by the confounders that complicate observational studies. With the availability of large-scale genome-wide association studies (GWAS) for hundreds of circulating metabolites, two-sample MR has become a popular approach to test whether a metabolite is causally related to a health outcome<span class="citation">(<a href="#ref-holmes2017"><span class="nocase">Holmes et al.</span> 2018</a>)</span>. The MR-Base platform and the TwoSampleMR R package provide accessible tools for conducting such analyses<span class="citation">(<a href="#ref-hemani2018"><span class="nocase">Hemani et al.</span> 2018</a>)</span>.</p>
+<p>Key assumptions of MR include: the genetic instrument must be associated with the metabolite (relevance), must not be associated with confounders (independence), and must affect the outcome only through the metabolite (exclusion restriction). Violations of these assumptions, particularly horizontal pleiotropy, can bias results. Sensitivity analyses such as MR-Egger, weighted median, and MR-PRESSO are essential to assess robustness.</p>
+</div>
+<div id="practical-considerations" class="section level3 hasAnchor" number="10.8.2">
+<h3><span class="header-section-number">10.8.2</span> Practical considerations<a href="statistical-analysis.html#practical-considerations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>For beginners applying causal inference methods in metabolomics, it is worth noting that MR works best for metabolites with strong genetic determinants (high heritability) and is less powerful for metabolites primarily driven by recent environmental exposure. Combining MR evidence with traditional observational associations and biological pathway knowledge provides the strongest basis for causal claims. Mediation analysis and structural equation modeling are additional tools for understanding how metabolites sit on the causal path between exposure and disease.</p>
+</div>
+</div>
+<div id="software-1" class="section level2 hasAnchor" number="10.9">
+<h2><span class="header-section-number">10.9</span> Software<a href="statistical-analysis.html#software-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p><a href="https://github.com/xia-lab/MetaboAnalystR">MetaboAnalystR</a> <span class="citation">(<a href="#ref-chong2019">Chong et al. 2019</a>)</span></p></li>
 <li><p><a href="http://caret.r-forge.r-project.org/">caret</a> could employ more than 200 statistical models in a general framework to build/select models. You could also show the variable importance for some of the models.</p></li>
 <li><p><a href="https://cran.r-project.org/web/packages/caretEnsemble/index.html">caretEnsemble</a> Functions for creating ensembles of caret models</p></li>
 <li><p><a href="https://cran.r-project.org/web/packages/pROC/index.html">pROC</a> Tools for visualizing, smoothing and comparing receiver operating characteristic (ROC curves). (Partial) area under the curve (AUC) can be compared with statistical tests based on U-statistics or bootstrap. Confidence intervals can be computed for (p)AUC or ROC curves.</p></li>
 <li><p><a href="https://cran.r-project.org/web/packages/gWQS/index.html">gWQS</a> Fits Weighted Quantile Sum (WQS) regressions for continuous, binomial, multinomial and count outcomes.</p></li>
-<li><p>Community ecology tool could be used to analysis metabolomic data<span class="citation">(<a href="#ref-passosmansoldo2022">Passos Mansoldo et al. 2022</a>)</span>.</p></li>
+<li><p>Community ecology tool could be used to analysis metabolomic data<span class="citation">(<a href="#ref-passosmansoldo2022"><span class="nocase">Passos Mansoldo et al.</span> 2022</a>)</span>.</p></li>
 </ul>
 
 </div>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-andersson2009" class="csl-entry">
 Andersson, Martin. 2009. <span>“A Comparison of Nine <span>PLS1</span> Algorithms.”</span> <em>Journal of Chemometrics</em> 23 (10): 518–29. <a href="https://doi.org/10.1002/cem.1248">https://doi.org/10.1002/cem.1248</a>.
 </div>
 <div id="ref-blaise2021" class="csl-entry">
-Blaise, Benjamin J., Gonçalo D. S. Correia, Gordon A. Haggart, Izabella Surowiec, Caroline Sands, Matthew R. Lewis, Jake T. M. Pearce, et al. 2021. <span>“Statistical Analysis in Metabolic Phenotyping.”</span> <em>Nature Protocols</em>, July, 1–28. <a href="https://doi.org/10.1038/s41596-021-00579-1">https://doi.org/10.1038/s41596-021-00579-1</a>.
+Blaise, Benjamin J., Gonçalo D. S. Correia, Gordon A. Haggart, et al. 2021. <span>“Statistical Analysis in Metabolic Phenotyping.”</span> <em>Nature Protocols</em>, July, 1–28. <a href="https://doi.org/10.1038/s41596-021-00579-1">https://doi.org/10.1038/s41596-021-00579-1</a>.
+</div>
+<div id="ref-bonini2020" class="csl-entry">
+Bonini, Paolo, Tobias Kind, Hiroshi Tsugawa, Dinesh Kumar Barupal, and Oliver Fiehn. 2020. <span>“Retip: <span>Retention Time Prediction</span> for <span>Compound Annotation</span> in <span>Untargeted Metabolomics</span>.”</span> <em>Analytical Chemistry</em> 92 (11): 7515–22. <a href="https://doi.org/10.1021/acs.analchem.9b05765">https://doi.org/10.1021/acs.analchem.9b05765</a>.
 </div>
 <div id="ref-brereton2018" class="csl-entry">
 Brereton, Richard G., and Gavin R. Lloyd. 2018. <span>“Partial Least Squares Discriminant Analysis for Chemometrics and Metabolomics: <span>How</span> Scores, Loadings, and Weights Differ According to Two Common Algorithms.”</span> <em>Journal of Chemometrics</em> 32 (4): e3028. <a href="https://doi.org/10.1002/cem.3028">https://doi.org/10.1002/cem.3028</a>.
@@ -549,23 +654,65 @@ Brereton, Richard G., and Gavin R. Lloyd. 2018. <span>“Partial Least Squares D
 <div id="ref-chong2019" class="csl-entry">
 Chong, Jasmine, David S. Wishart, and Jianguo Xia. 2019. <span>“Using <span>MetaboAnalyst</span> 4.0 for <span>Comprehensive</span> and <span>Integrative Metabolomics Data Analysis</span>.”</span> <em>Current Protocols in Bioinformatics</em> 68 (1): e86. <a href="https://doi.org/10.1002/cpbi.86">https://doi.org/10.1002/cpbi.86</a>.
 </div>
+<div id="ref-dejonge2023" class="csl-entry">
+<span class="nocase">de Jonge, Niek F., Joris J. R. Louwen, Elena Chekmeneva, et al.</span> 2023. <span>“<span>MS2Query</span>: Reliable and Scalable <span>MS2</span> Mass Spectra-Based Analogue Search.”</span> <em>Nature Communications</em> 14 (1): 1752. <a href="https://doi.org/10.1038/s41467-023-37446-4">https://doi.org/10.1038/s41467-023-37446-4</a>.
+</div>
+<div id="ref-duhrkop2019" class="csl-entry">
+Dührkop, Kai, Markus Fleischauer, Marcus Ludwig, et al. 2019. <span>“<span>SIRIUS</span> 4: A Rapid Tool for Turning Tandem Mass Spectra into Metabolite Structure Information.”</span> <em>Nature Methods</em> 16 (4): 299–302. <a href="https://doi.org/10.1038/s41592-019-0344-8">https://doi.org/10.1038/s41592-019-0344-8</a>.
+</div>
+<div id="ref-duhrkop2020" class="csl-entry">
+Dührkop, Kai, Louis-Félix Nothias, Markus Fleischauer, et al. 2020. <span>“Systematic Classification of Unknown Metabolites Using High-Resolution Fragmentation Mass Spectra.”</span> <em>Nature Biotechnology</em>, November, 1–10. <a href="https://doi.org/10.1038/s41587-020-0740-8">https://doi.org/10.1038/s41587-020-0740-8</a>.
+</div>
+<div id="ref-galal2022" class="csl-entry">
+Galal, Aya, Marwa Talal, and Ahmed Moustafa. 2022. <span>“Applications of Machine Learning in Metabolomics: Disease Modeling and Classification.”</span> <em>Frontiers in Genetics</em> 13: 1017340. <a href="https://doi.org/10.3389/fgene.2022.1017340">https://doi.org/10.3389/fgene.2022.1017340</a>.
+</div>
+<div id="ref-gloaguen2022" class="csl-entry">
+Gloaguen, Yoann, Jennifer A. Kirwan, and Dieter Beule. 2022. <span>“Deep <span>Learning-Assisted Peak Curation</span> for <span>Large-Scale LC-MS Metabolomics</span>.”</span> <em>Analytical Chemistry</em> 94 (12): 4930–37. <a href="https://doi.org/10.1021/acs.analchem.1c02220">https://doi.org/10.1021/acs.analchem.1c02220</a>.
+</div>
+<div id="ref-hemani2018" class="csl-entry">
+<span class="nocase">Hemani, Gibran, Jie Zheng, Benjamin Elsworth, et al.</span> 2018. <span>“The <span>MR-Base</span> Platform Supports Systematic Causal Inference Across the Human Phenome.”</span> <em>eLife</em> 7: e34408. <a href="https://doi.org/10.7554/eLife.34408">https://doi.org/10.7554/eLife.34408</a>.
+</div>
+<div id="ref-holmes2017" class="csl-entry">
+<span class="nocase">Holmes, Michael V, Iona Y Millwood, Christiana Kartsonaki, et al.</span> 2018. <span>“<span class="nocase">Lipids, lipoproteins, and metabolites and risk of myocardial infarction and stroke</span>.”</span> <em>Journal of the American College of Cardiology</em> 71 (6): 620–32. <a href="https://doi.org/10.1016/j.jacc.2017.12.006">https://doi.org/10.1016/j.jacc.2017.12.006</a>.
+</div>
+<div id="ref-huber2020" class="csl-entry">
+Huber, Florian, Stefan Verhoeven, Christiaan Meijer, et al. 2020. <span>“Matchms - Processing and Similarity Evaluation of Mass Spectrometry Data.”</span> <em>Journal of Open Source Software</em> 5 (52): 2411. <a href="https://doi.org/10.21105/joss.02411">https://doi.org/10.21105/joss.02411</a>.
+</div>
 <div id="ref-lecao2011" class="csl-entry">
 Lê Cao, Kim-Anh, Simon Boitard, and Philippe Besse. 2011. <span>“Sparse <span>PLS</span> Discriminant Analysis: Biologically Relevant Feature Selection and Graphical Displays for Multiclass Problems.”</span> <em>BMC Bioinformatics</em> 12 (June): 253. <a href="https://doi.org/10.1186/1471-2105-12-253">https://doi.org/10.1186/1471-2105-12-253</a>.
 </div>
 <div id="ref-ortmayr2016a" class="csl-entry">
-Ortmayr, Karin, Verena Charwat, Cornelia Kasper, Stephan Hann, and Gunda Koellensperger. 2016. <span>“Uncertainty Budgeting in Fold Change Determination and Implications for Non-Targeted Metabolomics Studies in Model Systems”</span> 142 (1): 80–90. <a href="https://doi.org/10.1039/C6AN01342B">https://doi.org/10.1039/C6AN01342B</a>.
+Ortmayr, Karin, Verena Charwat, Cornelia Kasper, Stephan Hann, and Gunda Koellensperger. 2016. <em>Uncertainty Budgeting in Fold Change Determination and Implications for Non-Targeted Metabolomics Studies in Model Systems</em>. 142 (1): 80–90. <a href="https://doi.org/10.1039/C6AN01342B">https://doi.org/10.1039/C6AN01342B</a>.
 </div>
 <div id="ref-passosmansoldo2022" class="csl-entry">
-Passos Mansoldo, Felipe Raposo, Rafael Garrett, Veronica da Silva Cardoso, Marina Amaral Alves, and Alane Beatriz Vermelho. 2022. <span>“Metabology: <span>Analysis</span> of Metabolomics Data Using Community Ecology Tools.”</span> <em>Analytica Chimica Acta</em> 1232 (November): 340469. <a href="https://doi.org/10.1016/j.aca.2022.340469">https://doi.org/10.1016/j.aca.2022.340469</a>.
+<span class="nocase">Passos Mansoldo, Felipe Raposo, Rafael Garrett, Veronica da Silva Cardoso, Marina Amaral Alves, and Alane Beatriz Vermelho</span>. 2022. <span>“Metabology: <span>Analysis</span> of Metabolomics Data Using Community Ecology Tools.”</span> <em>Analytica Chimica Acta</em> 1232 (November): 340469. <a href="https://doi.org/10.1016/j.aca.2022.340469">https://doi.org/10.1016/j.aca.2022.340469</a>.
+</div>
+<div id="ref-sen2023" class="csl-entry">
+Sen, Partho, Santosh Lamichhane, Vivek B Mathema, et al. 2021. <span>“Deep Learning Meets Metabolomics: A Methodological Perspective.”</span> <em>Briefings in Bioinformatics</em> 22 (2): bbaa204. <a href="https://doi.org/10.1093/bib/bbaa204">https://doi.org/10.1093/bib/bbaa204</a>.
 </div>
 <div id="ref-wiklund2008" class="csl-entry">
-Wiklund, Susanne, Erik Johansson, Lina Sjöström, Ewa J. Mellerowicz, Ulf Edlund, John P. Shockcor, Johan Gottfries, Thomas Moritz, and Johan Trygg. 2008. <span>“Visualization of <span>GC</span>/<span>TOF-MS-Based Metabolomics Data</span> for <span>Identification</span> of <span>Biochemically Interesting Compounds Using OPLS Class Models</span>.”</span> <em>Analytical Chemistry</em> 80 (1): 115–22. <a href="https://doi.org/10.1021/ac0713510">https://doi.org/10.1021/ac0713510</a>.
+Wiklund, Susanne, Erik Johansson, Lina Sjöström, et al. 2008. <span>“Visualization of <span>GC</span>/<span>TOF-MS-Based Metabolomics Data</span> for <span>Identification</span> of <span>Biochemically Interesting Compounds Using OPLS Class Models</span>.”</span> <em>Analytical Chemistry</em> 80 (1): 115–22. <a href="https://doi.org/10.1021/ac0713510">https://doi.org/10.1021/ac0713510</a>.
+</div>
+<div id="ref-xue2024" class="csl-entry">
+Xue, Jun, Bingyi Wang, Hongchao Ji, and WeiHua Li. 2024. <span>“<span>RT-Transformer</span>: Retention Time Prediction for Metabolite Annotation to Assist in Metabolite Identification.”</span> <em>Bioinformatics</em> 40 (3): btae084. <a href="https://doi.org/10.1093/bioinformatics/btae084">https://doi.org/10.1093/bioinformatics/btae084</a>.
 </div>
 <div id="ref-yamamoto2014" class="csl-entry">
 Yamamoto, Hiroyuki, Tamaki Fujimori, Hajime Sato, Gen Ishikawa, Kenjiro Kami, and Yoshiaki Ohashi. 2014. <span>“Statistical Hypothesis Testing of Factor Loading in Principal Component Analysis and Its Application to Metabolite Set Enrichment Analysis.”</span> <em>BMC Bioinformatics</em> 15 (February): 51. <a href="https://doi.org/10.1186/1471-2105-15-51">https://doi.org/10.1186/1471-2105-15-51</a>.
 </div>
 <div id="ref-yang2017a" class="csl-entry">
 Yang, Qin, Shan-Shan Lin, Jiang-Tao Yang, Li-Juan Tang, and Ru-Qin Yu. 2017. <span>“Detection of Inborn Errors of Metabolism Utilizing <span>GC-MS</span> Urinary Metabolomics Coupled with a Modified Orthogonal Partial Least Squares Discriminant Analysis.”</span> <em>Talanta</em> 165 (April): 545–52. <a href="https://doi.org/10.1016/j.talanta.2017.01.018">https://doi.org/10.1016/j.talanta.2017.01.018</a>.
+</div>
+<div id="ref-zhang2024c" class="csl-entry">
+Zhang, Hailiang, Qiong Yang, Ting Xie, Yue Wang, Zhimin Zhang, and Hongmei Lu. 2024. <span>“<span>MSBERT</span>: <span>Embedding Tandem Mass Spectra</span> into <span>Chemically Rational Space</span> by <span>Mask Learning</span> and <span>Contrastive Learning</span>.”</span> <em>Analytical Chemistry</em> 96 (42): 16599–608. <a href="https://doi.org/10.1021/acs.analchem.4c02426">https://doi.org/10.1021/acs.analchem.4c02426</a>.
+</div>
+<div id="ref-zhao2025a" class="csl-entry">
+Zhao, Chen, Tingting Zhao, Qiming Shen, Zhifeng Tang, Xiaoxiao Li, and Tao Huan. 2025. <span>“Practical <span>Guidance</span> for <span>Training Machine Learning Models</span> in <span>Metabolomics</span> and <span>Mass Spectrometry Research</span>.”</span> <em>Analytical Chemistry</em>, ahead of print, October. <a href="https://doi.org/10.1021/acs.analchem.5c01417">https://doi.org/10.1021/acs.analchem.5c01417</a>.
+</div>
+<div id="ref-zhao2021" class="csl-entry">
+Zhao, Fan, Shuai Huang, and Xiaozhe Zhang. 2021. <span>“High Sensitivity and Specificity Feature Detection in Liquid Chromatography–Mass Spectrometry Data: <span>A</span> Deep Learning Framework.”</span> <em>Talanta</em> 222 (January): 121580. <a href="https://doi.org/10.1016/j.talanta.2020.121580">https://doi.org/10.1016/j.talanta.2020.121580</a>.
+</div>
+<div id="ref-zhu2024" class="csl-entry">
+Zhu, Yuming, Miao Yu, and Yanqiu Ge. 2024. <span>“EMBRACE the Uncertainty: An Evaluation Framework for Environmental Machine Learning.”</span> <em>Environmental Science &amp; Technology</em> 58 (51): 22505–16. <a href="https://doi.org/10.1021/acs.est.4c07726">https://doi.org/10.1021/acs.est.4c07726</a>.
 </div>
 </div>
             </section>
@@ -588,42 +735,42 @@ Yang, Qin, Shan-Shan Lin, Jiang-Tao Yang, Li-Juan Tang, and Ru-Qin Yu. 2017. <sp
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/yufree/metaworkflow/edit/master/10-statistics.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["Metabolomics.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/yufree/metaworkflow/edit/master/10-statistics.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["Metabolomics.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

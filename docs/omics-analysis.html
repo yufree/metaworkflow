@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 8 Omics analysis | Meta-Workflow</title>
   <meta name="description" content="This is a workflow for metabolomics studies." />
-  <meta name="generator" content="bookdown 0.38 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 8 Omics analysis | Meta-Workflow" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Miao YU" />
 
 
-<meta name="date" content="2024-04-10" />
+<meta name="date" content="2026-04-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -56,6 +56,7 @@
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.11/grViz.js"></script>
+<link href="libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet" />
 <script src="libs/d3-3.3.8/d3.min.js"></script>
 <script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
 <link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
@@ -65,8 +66,9 @@
 
 
 <style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -76,7 +78,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -138,7 +140,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging div.csl-entry {
   margin-left:2em;
@@ -179,8 +180,8 @@ div.csl-indent {
 <li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#history"><i class="fa fa-check"></i><b>1.1</b> History</a>
 <ul>
 <li class="chapter" data-level="1.1.1" data-path="introduction.html"><a href="introduction.html#history-of-mass-spectrometry"><i class="fa fa-check"></i><b>1.1.1</b> History of Mass Spectrometry</a></li>
-<li class="chapter" data-level="1.1.2" data-path="introduction.html"><a href="introduction.html#history-of-metabolomcis"><i class="fa fa-check"></i><b>1.1.2</b> History of Metabolomcis</a></li>
-<li class="chapter" data-level="1.1.3" data-path="introduction.html"><a href="introduction.html#defination"><i class="fa fa-check"></i><b>1.1.3</b> Defination</a></li>
+<li class="chapter" data-level="1.1.2" data-path="introduction.html"><a href="introduction.html#history-of-metabolomics"><i class="fa fa-check"></i><b>1.1.2</b> History of Metabolomics</a></li>
+<li class="chapter" data-level="1.1.3" data-path="introduction.html"><a href="introduction.html#definition"><i class="fa fa-check"></i><b>1.1.3</b> Definition</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#reviews-and-tutorials"><i class="fa fa-check"></i><b>1.2</b> Reviews and tutorials</a>
 <ul>
@@ -207,13 +208,26 @@ div.csl-indent {
 <li class="chapter" data-level="3.3" data-path="pretreatment.html"><a href="pretreatment.html#extraction"><i class="fa fa-check"></i><b>3.3</b> Extraction</a></li>
 <li class="chapter" data-level="3.4" data-path="pretreatment.html"><a href="pretreatment.html#derivatization"><i class="fa fa-check"></i><b>3.4</b> Derivatization</a></li>
 <li class="chapter" data-level="3.5" data-path="pretreatment.html"><a href="pretreatment.html#isotope-label"><i class="fa fa-check"></i><b>3.5</b> Isotope label</a></li>
-<li class="chapter" data-level="3.6" data-path="pretreatment.html"><a href="pretreatment.html#storage"><i class="fa fa-check"></i><b>3.6</b> Storage</a></li>
+<li class="chapter" data-level="3.6" data-path="pretreatment.html"><a href="pretreatment.html#microsampling-techniques"><i class="fa fa-check"></i><b>3.6</b> Microsampling techniques</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="pretreatment.html"><a href="pretreatment.html#solid-phase-microextraction-spme"><i class="fa fa-check"></i><b>3.6.1</b> Solid-phase microextraction (SPME)</a></li>
+<li class="chapter" data-level="3.6.2" data-path="pretreatment.html"><a href="pretreatment.html#dried-blood-spots-dbs"><i class="fa fa-check"></i><b>3.6.2</b> Dried blood spots (DBS)</a></li>
+<li class="chapter" data-level="3.6.3" data-path="pretreatment.html"><a href="pretreatment.html#volumetric-absorptive-microsampling-vams"><i class="fa fa-check"></i><b>3.6.3</b> Volumetric absorptive microsampling (VAMS)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="pretreatment.html"><a href="pretreatment.html#storage"><i class="fa fa-check"></i><b>3.7</b> Storage</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html"><i class="fa fa-check"></i><b>4</b> Instrumental analysis</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#column-and-gradient-selection"><i class="fa fa-check"></i><b>4.1</b> Column and gradient selection</a></li>
 <li class="chapter" data-level="4.2" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#mass-resolution"><i class="fa fa-check"></i><b>4.2</b> Mass resolution</a></li>
-<li class="chapter" data-level="4.3" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#matrix-effects"><i class="fa fa-check"></i><b>4.3</b> Matrix effects</a></li>
+<li class="chapter" data-level="4.3" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#quantitative-metabolomics"><i class="fa fa-check"></i><b>4.3</b> Quantitative Metabolomics</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#quantification-levels"><i class="fa fa-check"></i><b>4.3.1</b> Quantification levels</a></li>
+<li class="chapter" data-level="4.3.2" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#calibration-strategies"><i class="fa fa-check"></i><b>4.3.2</b> Calibration strategies</a></li>
+<li class="chapter" data-level="4.3.3" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#untargeted-quantification-challenges"><i class="fa fa-check"></i><b>4.3.3</b> Untargeted quantification challenges</a></li>
+<li class="chapter" data-level="4.3.4" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#practical-recommendations"><i class="fa fa-check"></i><b>4.3.4</b> Practical recommendations</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#matrix-effects"><i class="fa fa-check"></i><b>4.4</b> Matrix effects</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="workflow-2.html"><a href="workflow-2.html"><i class="fa fa-check"></i><b>5</b> Workflow</a>
 <ul>
@@ -223,14 +237,20 @@ div.csl-indent {
 <li class="chapter" data-level="5.1.2" data-path="workflow-2.html"><a href="workflow-2.html#prime"><i class="fa fa-check"></i><b>5.1.2</b> PRIMe</a></li>
 <li class="chapter" data-level="5.1.3" data-path="workflow-2.html"><a href="workflow-2.html#gnps"><i class="fa fa-check"></i><b>5.1.3</b> GNPS</a></li>
 <li class="chapter" data-level="5.1.4" data-path="workflow-2.html"><a href="workflow-2.html#openms-sirius"><i class="fa fa-check"></i><b>5.1.4</b> OpenMS &amp; SIRIUS</a></li>
-<li class="chapter" data-level="5.1.5" data-path="workflow-2.html"><a href="workflow-2.html#mzmine-2"><i class="fa fa-check"></i><b>5.1.5</b> MZmine 2</a></li>
+<li class="chapter" data-level="5.1.5" data-path="workflow-2.html"><a href="workflow-2.html#mzmine"><i class="fa fa-check"></i><b>5.1.5</b> MZmine</a></li>
 <li class="chapter" data-level="5.1.6" data-path="workflow-2.html"><a href="workflow-2.html#emory-mahpic"><i class="fa fa-check"></i><b>5.1.6</b> Emory MaHPIC</a></li>
 <li class="chapter" data-level="5.1.7" data-path="workflow-2.html"><a href="workflow-2.html#others"><i class="fa fa-check"></i><b>5.1.7</b> Others</a></li>
 <li class="chapter" data-level="5.1.8" data-path="workflow-2.html"><a href="workflow-2.html#workflow-comparison"><i class="fa fa-check"></i><b>5.1.8</b> Workflow Comparison</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="workflow-2.html"><a href="workflow-2.html#project-setup"><i class="fa fa-check"></i><b>5.2</b> Project Setup</a></li>
-<li class="chapter" data-level="5.3" data-path="workflow-2.html"><a href="workflow-2.html#data-sharing"><i class="fa fa-check"></i><b>5.3</b> Data sharing</a></li>
-<li class="chapter" data-level="5.4" data-path="workflow-2.html"><a href="workflow-2.html#contest"><i class="fa fa-check"></i><b>5.4</b> Contest</a></li>
+<li class="chapter" data-level="5.3" data-path="workflow-2.html"><a href="workflow-2.html#data-standards-and-metadata"><i class="fa fa-check"></i><b>5.3</b> Data Standards and Metadata</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="workflow-2.html"><a href="workflow-2.html#metadata-standards"><i class="fa fa-check"></i><b>5.3.1</b> Metadata Standards</a></li>
+<li class="chapter" data-level="5.3.2" data-path="workflow-2.html"><a href="workflow-2.html#fair-in-metabolomics"><i class="fa fa-check"></i><b>5.3.2</b> FAIR in Metabolomics</a></li>
+<li class="chapter" data-level="5.3.3" data-path="workflow-2.html"><a href="workflow-2.html#practical-recommendations-1"><i class="fa fa-check"></i><b>5.3.3</b> Practical Recommendations</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="workflow-2.html"><a href="workflow-2.html#data-sharing"><i class="fa fa-check"></i><b>5.4</b> Data sharing</a></li>
+<li class="chapter" data-level="5.5" data-path="workflow-2.html"><a href="workflow-2.html#contest"><i class="fa fa-check"></i><b>5.5</b> Contest</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html"><i class="fa fa-check"></i><b>6</b> Raw data pretreatment</a>
 <ul>
@@ -258,71 +278,78 @@ div.csl-indent {
 <li class="chapter" data-level="7.1" data-path="annotation.html"><a href="annotation.html#issues-in-annotation"><i class="fa fa-check"></i><b>7.1</b> Issues in annotation</a></li>
 <li class="chapter" data-level="7.2" data-path="annotation.html"><a href="annotation.html#peak-misidentification"><i class="fa fa-check"></i><b>7.2</b> Peak misidentification</a></li>
 <li class="chapter" data-level="7.3" data-path="annotation.html"><a href="annotation.html#annotation-v.s.-identification"><i class="fa fa-check"></i><b>7.3</b> Annotation v.s. identification</a></li>
-<li class="chapter" data-level="7.4" data-path="annotation.html"><a href="annotation.html#molecular-formula-assignment"><i class="fa fa-check"></i><b>7.4</b> Molecular Formula Assignment</a></li>
-<li class="chapter" data-level="7.5" data-path="annotation.html"><a href="annotation.html#redundant-peaks"><i class="fa fa-check"></i><b>7.5</b> Redundant peaks</a>
+<li class="chapter" data-level="7.4" data-path="annotation.html"><a href="annotation.html#the-dark-metabolome"><i class="fa fa-check"></i><b>7.4</b> The Dark Metabolome</a>
 <ul>
-<li class="chapter" data-level="7.5.1" data-path="annotation.html"><a href="annotation.html#adducts-list"><i class="fa fa-check"></i><b>7.5.1</b> Adducts list</a></li>
-<li class="chapter" data-level="7.5.2" data-path="annotation.html"><a href="annotation.html#isotope"><i class="fa fa-check"></i><b>7.5.2</b> Isotope</a></li>
-<li class="chapter" data-level="7.5.3" data-path="annotation.html"><a href="annotation.html#camera"><i class="fa fa-check"></i><b>7.5.3</b> CAMERA</a></li>
-<li class="chapter" data-level="7.5.4" data-path="annotation.html"><a href="annotation.html#ramclustr"><i class="fa fa-check"></i><b>7.5.4</b> RAMClustR</a></li>
-<li class="chapter" data-level="7.5.5" data-path="annotation.html"><a href="annotation.html#biocan"><i class="fa fa-check"></i><b>7.5.5</b> BioCAn</a></li>
-<li class="chapter" data-level="7.5.6" data-path="annotation.html"><a href="annotation.html#mzmatch"><i class="fa fa-check"></i><b>7.5.6</b> mzMatch</a></li>
-<li class="chapter" data-level="7.5.7" data-path="annotation.html"><a href="annotation.html#xmsannotator"><i class="fa fa-check"></i><b>7.5.7</b> xMSannotator</a></li>
-<li class="chapter" data-level="7.5.8" data-path="annotation.html"><a href="annotation.html#mwise"><i class="fa fa-check"></i><b>7.5.8</b> mWise</a></li>
-<li class="chapter" data-level="7.5.9" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>7.5.9</b> MAIT</a></li>
-<li class="chapter" data-level="7.5.10" data-path="annotation.html"><a href="annotation.html#pmd"><i class="fa fa-check"></i><b>7.5.10</b> pmd</a></li>
-<li class="chapter" data-level="7.5.11" data-path="annotation.html"><a href="annotation.html#nontarget"><i class="fa fa-check"></i><b>7.5.11</b> nontarget</a></li>
-<li class="chapter" data-level="7.5.12" data-path="annotation.html"><a href="annotation.html#binner"><i class="fa fa-check"></i><b>7.5.12</b> Binner</a></li>
-<li class="chapter" data-level="7.5.13" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>7.5.13</b> mz.unity</a></li>
-<li class="chapter" data-level="7.5.14" data-path="annotation.html"><a href="annotation.html#ms-flo"><i class="fa fa-check"></i><b>7.5.14</b> MS-FLO</a></li>
-<li class="chapter" data-level="7.5.15" data-path="annotation.html"><a href="annotation.html#cliquems"><i class="fa fa-check"></i><b>7.5.15</b> CliqueMS</a></li>
-<li class="chapter" data-level="7.5.16" data-path="annotation.html"><a href="annotation.html#interpretmsspectrum"><i class="fa fa-check"></i><b>7.5.16</b> InterpretMSSpectrum</a></li>
-<li class="chapter" data-level="7.5.17" data-path="annotation.html"><a href="annotation.html#netid"><i class="fa fa-check"></i><b>7.5.17</b> NetID</a></li>
-<li class="chapter" data-level="7.5.18" data-path="annotation.html"><a href="annotation.html#isfrag"><i class="fa fa-check"></i><b>7.5.18</b> ISfrag</a></li>
-<li class="chapter" data-level="7.5.19" data-path="annotation.html"><a href="annotation.html#fastei"><i class="fa fa-check"></i><b>7.5.19</b> FastEI</a></li>
+<li class="chapter" data-level="7.4.1" data-path="annotation.html"><a href="annotation.html#what-makes-up-the-dark-matter"><i class="fa fa-check"></i><b>7.4.1</b> What makes up the dark matter?</a></li>
+<li class="chapter" data-level="7.4.2" data-path="annotation.html"><a href="annotation.html#the-in-source-fragmentation-debate"><i class="fa fa-check"></i><b>7.4.2</b> The in-source fragmentation debate</a></li>
+<li class="chapter" data-level="7.4.3" data-path="annotation.html"><a href="annotation.html#a-missing-perspective-data-driven-deduplication"><i class="fa fa-check"></i><b>7.4.3</b> A missing perspective: data-driven deduplication</a></li>
+<li class="chapter" data-level="7.4.4" data-path="annotation.html"><a href="annotation.html#strategies-to-address-the-dark-matter"><i class="fa fa-check"></i><b>7.4.4</b> Strategies to address the dark matter</a></li>
 </ul></li>
-<li class="chapter" data-level="7.6" data-path="annotation.html"><a href="annotation.html#ms1-ms2-connection"><i class="fa fa-check"></i><b>7.6</b> MS1 MS2 connection</a>
+<li class="chapter" data-level="7.5" data-path="annotation.html"><a href="annotation.html#molecular-formula-assignment"><i class="fa fa-check"></i><b>7.5</b> Molecular Formula Assignment</a></li>
+<li class="chapter" data-level="7.6" data-path="annotation.html"><a href="annotation.html#redundant-peaks"><i class="fa fa-check"></i><b>7.6</b> Redundant peaks</a>
 <ul>
-<li class="chapter" data-level="7.6.1" data-path="annotation.html"><a href="annotation.html#pmdda"><i class="fa fa-check"></i><b>7.6.1</b> PMDDA</a></li>
-<li class="chapter" data-level="7.6.2" data-path="annotation.html"><a href="annotation.html#hermes"><i class="fa fa-check"></i><b>7.6.2</b> HERMES</a></li>
-<li class="chapter" data-level="7.6.3" data-path="annotation.html"><a href="annotation.html#dpdda"><i class="fa fa-check"></i><b>7.6.3</b> dpDDA</a></li>
+<li class="chapter" data-level="7.6.1" data-path="annotation.html"><a href="annotation.html#adducts-list"><i class="fa fa-check"></i><b>7.6.1</b> Adducts list</a></li>
+<li class="chapter" data-level="7.6.2" data-path="annotation.html"><a href="annotation.html#isotope"><i class="fa fa-check"></i><b>7.6.2</b> Isotope</a></li>
+<li class="chapter" data-level="7.6.3" data-path="annotation.html"><a href="annotation.html#camera"><i class="fa fa-check"></i><b>7.6.3</b> CAMERA</a></li>
+<li class="chapter" data-level="7.6.4" data-path="annotation.html"><a href="annotation.html#ramclustr"><i class="fa fa-check"></i><b>7.6.4</b> RAMClustR</a></li>
+<li class="chapter" data-level="7.6.5" data-path="annotation.html"><a href="annotation.html#biocan"><i class="fa fa-check"></i><b>7.6.5</b> BioCAn</a></li>
+<li class="chapter" data-level="7.6.6" data-path="annotation.html"><a href="annotation.html#mzmatch"><i class="fa fa-check"></i><b>7.6.6</b> mzMatch</a></li>
+<li class="chapter" data-level="7.6.7" data-path="annotation.html"><a href="annotation.html#xmsannotator"><i class="fa fa-check"></i><b>7.6.7</b> xMSannotator</a></li>
+<li class="chapter" data-level="7.6.8" data-path="annotation.html"><a href="annotation.html#mwise"><i class="fa fa-check"></i><b>7.6.8</b> mWise</a></li>
+<li class="chapter" data-level="7.6.9" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>7.6.9</b> MAIT</a></li>
+<li class="chapter" data-level="7.6.10" data-path="annotation.html"><a href="annotation.html#pmd"><i class="fa fa-check"></i><b>7.6.10</b> pmd</a></li>
+<li class="chapter" data-level="7.6.11" data-path="annotation.html"><a href="annotation.html#nontarget"><i class="fa fa-check"></i><b>7.6.11</b> nontarget</a></li>
+<li class="chapter" data-level="7.6.12" data-path="annotation.html"><a href="annotation.html#binner"><i class="fa fa-check"></i><b>7.6.12</b> Binner</a></li>
+<li class="chapter" data-level="7.6.13" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>7.6.13</b> mz.unity</a></li>
+<li class="chapter" data-level="7.6.14" data-path="annotation.html"><a href="annotation.html#ms-flo"><i class="fa fa-check"></i><b>7.6.14</b> MS-FLO</a></li>
+<li class="chapter" data-level="7.6.15" data-path="annotation.html"><a href="annotation.html#cliquems"><i class="fa fa-check"></i><b>7.6.15</b> CliqueMS</a></li>
+<li class="chapter" data-level="7.6.16" data-path="annotation.html"><a href="annotation.html#interpretmsspectrum"><i class="fa fa-check"></i><b>7.6.16</b> InterpretMSSpectrum</a></li>
+<li class="chapter" data-level="7.6.17" data-path="annotation.html"><a href="annotation.html#netid"><i class="fa fa-check"></i><b>7.6.17</b> NetID</a></li>
+<li class="chapter" data-level="7.6.18" data-path="annotation.html"><a href="annotation.html#isfrag"><i class="fa fa-check"></i><b>7.6.18</b> ISfrag</a></li>
+<li class="chapter" data-level="7.6.19" data-path="annotation.html"><a href="annotation.html#fastei"><i class="fa fa-check"></i><b>7.6.19</b> FastEI</a></li>
 </ul></li>
-<li class="chapter" data-level="7.7" data-path="annotation.html"><a href="annotation.html#ms2-msn-connection"><i class="fa fa-check"></i><b>7.7</b> MS2 MSn connection</a></li>
-<li class="chapter" data-level="7.8" data-path="annotation.html"><a href="annotation.html#msms-annotation"><i class="fa fa-check"></i><b>7.8</b> MS/MS annotation</a>
+<li class="chapter" data-level="7.7" data-path="annotation.html"><a href="annotation.html#ms1-ms2-connection"><i class="fa fa-check"></i><b>7.7</b> MS1 MS2 connection</a>
 <ul>
-<li class="chapter" data-level="7.8.1" data-path="annotation.html"><a href="annotation.html#matchms"><i class="fa fa-check"></i><b>7.8.1</b> Matchms</a></li>
-<li class="chapter" data-level="7.8.2" data-path="annotation.html"><a href="annotation.html#metdna"><i class="fa fa-check"></i><b>7.8.2</b> MetDNA</a></li>
-<li class="chapter" data-level="7.8.3" data-path="annotation.html"><a href="annotation.html#metfusion"><i class="fa fa-check"></i><b>7.8.3</b> MetFusion</a></li>
-<li class="chapter" data-level="7.8.4" data-path="annotation.html"><a href="annotation.html#ms2analyzer"><i class="fa fa-check"></i><b>7.8.4</b> MS2Analyzer</a></li>
-<li class="chapter" data-level="7.8.5" data-path="annotation.html"><a href="annotation.html#metfrag"><i class="fa fa-check"></i><b>7.8.5</b> MetFrag</a></li>
-<li class="chapter" data-level="7.8.6" data-path="annotation.html"><a href="annotation.html#cfm-id"><i class="fa fa-check"></i><b>7.8.6</b> CFM-ID</a></li>
-<li class="chapter" data-level="7.8.7" data-path="annotation.html"><a href="annotation.html#lc-ms2struct"><i class="fa fa-check"></i><b>7.8.7</b> LC-MS2Struct</a></li>
-<li class="chapter" data-level="7.8.8" data-path="annotation.html"><a href="annotation.html#lipidfrag"><i class="fa fa-check"></i><b>7.8.8</b> LipidFrag</a></li>
-<li class="chapter" data-level="7.8.9" data-path="annotation.html"><a href="annotation.html#lipidmatch"><i class="fa fa-check"></i><b>7.8.9</b> Lipidmatch</a></li>
-<li class="chapter" data-level="7.8.10" data-path="annotation.html"><a href="annotation.html#barcoding"><i class="fa fa-check"></i><b>7.8.10</b> BarCoding</a></li>
-<li class="chapter" data-level="7.8.11" data-path="annotation.html"><a href="annotation.html#imet"><i class="fa fa-check"></i><b>7.8.11</b> iMet</a></li>
-<li class="chapter" data-level="7.8.12" data-path="annotation.html"><a href="annotation.html#dnms2purifier"><i class="fa fa-check"></i><b>7.8.12</b> DNMS2Purifier</a></li>
-<li class="chapter" data-level="7.8.13" data-path="annotation.html"><a href="annotation.html#idsl.csa"><i class="fa fa-check"></i><b>7.8.13</b> IDSL.CSA</a></li>
+<li class="chapter" data-level="7.7.1" data-path="annotation.html"><a href="annotation.html#pmdda"><i class="fa fa-check"></i><b>7.7.1</b> PMDDA</a></li>
+<li class="chapter" data-level="7.7.2" data-path="annotation.html"><a href="annotation.html#hermes"><i class="fa fa-check"></i><b>7.7.2</b> HERMES</a></li>
+<li class="chapter" data-level="7.7.3" data-path="annotation.html"><a href="annotation.html#dpdda"><i class="fa fa-check"></i><b>7.7.3</b> dpDDA</a></li>
 </ul></li>
-<li class="chapter" data-level="7.9" data-path="annotation.html"><a href="annotation.html#knowledge-based-annotation"><i class="fa fa-check"></i><b>7.9</b> Knowledge based annotation</a>
+<li class="chapter" data-level="7.8" data-path="annotation.html"><a href="annotation.html#ms2-msn-connection"><i class="fa fa-check"></i><b>7.8</b> MS2 MSn connection</a></li>
+<li class="chapter" data-level="7.9" data-path="annotation.html"><a href="annotation.html#msms-annotation"><i class="fa fa-check"></i><b>7.9</b> MS/MS annotation</a>
 <ul>
-<li class="chapter" data-level="7.9.1" data-path="annotation.html"><a href="annotation.html#experimental-design"><i class="fa fa-check"></i><b>7.9.1</b> Experimental design</a></li>
-<li class="chapter" data-level="7.9.2" data-path="annotation.html"><a href="annotation.html#chromatographic-retention-related-criteria"><i class="fa fa-check"></i><b>7.9.2</b> Chromatographic retention-related criteria</a></li>
-<li class="chapter" data-level="7.9.3" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>7.9.3</b> ProbMetab</a></li>
-<li class="chapter" data-level="7.9.4" data-path="annotation.html"><a href="annotation.html#mi-pack"><i class="fa fa-check"></i><b>7.9.4</b> MI-Pack</a></li>
-<li class="chapter" data-level="7.9.5" data-path="annotation.html"><a href="annotation.html#metexpert"><i class="fa fa-check"></i><b>7.9.5</b> MetExpert</a></li>
-<li class="chapter" data-level="7.9.6" data-path="annotation.html"><a href="annotation.html#mycompoundid"><i class="fa fa-check"></i><b>7.9.6</b> MycompoundID</a></li>
-<li class="chapter" data-level="7.9.7" data-path="annotation.html"><a href="annotation.html#metfamily"><i class="fa fa-check"></i><b>7.9.7</b> MetFamily</a></li>
-<li class="chapter" data-level="7.9.8" data-path="annotation.html"><a href="annotation.html#coa-blast"><i class="fa fa-check"></i><b>7.9.8</b> CoA-Blast</a></li>
-<li class="chapter" data-level="7.9.9" data-path="annotation.html"><a href="annotation.html#kgmn"><i class="fa fa-check"></i><b>7.9.9</b> KGMN</a></li>
-<li class="chapter" data-level="7.9.10" data-path="annotation.html"><a href="annotation.html#ccmn"><i class="fa fa-check"></i><b>7.9.10</b> CCMN</a></li>
+<li class="chapter" data-level="7.9.1" data-path="annotation.html"><a href="annotation.html#matchms"><i class="fa fa-check"></i><b>7.9.1</b> Matchms</a></li>
+<li class="chapter" data-level="7.9.2" data-path="annotation.html"><a href="annotation.html#metdna"><i class="fa fa-check"></i><b>7.9.2</b> MetDNA</a></li>
+<li class="chapter" data-level="7.9.3" data-path="annotation.html"><a href="annotation.html#metfusion"><i class="fa fa-check"></i><b>7.9.3</b> MetFusion</a></li>
+<li class="chapter" data-level="7.9.4" data-path="annotation.html"><a href="annotation.html#ms2analyzer"><i class="fa fa-check"></i><b>7.9.4</b> MS2Analyzer</a></li>
+<li class="chapter" data-level="7.9.5" data-path="annotation.html"><a href="annotation.html#metfrag"><i class="fa fa-check"></i><b>7.9.5</b> MetFrag</a></li>
+<li class="chapter" data-level="7.9.6" data-path="annotation.html"><a href="annotation.html#cfm-id"><i class="fa fa-check"></i><b>7.9.6</b> CFM-ID</a></li>
+<li class="chapter" data-level="7.9.7" data-path="annotation.html"><a href="annotation.html#lc-ms2struct"><i class="fa fa-check"></i><b>7.9.7</b> LC-MS2Struct</a></li>
+<li class="chapter" data-level="7.9.8" data-path="annotation.html"><a href="annotation.html#lipidfrag"><i class="fa fa-check"></i><b>7.9.8</b> LipidFrag</a></li>
+<li class="chapter" data-level="7.9.9" data-path="annotation.html"><a href="annotation.html#lipidmatch"><i class="fa fa-check"></i><b>7.9.9</b> Lipidmatch</a></li>
+<li class="chapter" data-level="7.9.10" data-path="annotation.html"><a href="annotation.html#barcoding"><i class="fa fa-check"></i><b>7.9.10</b> BarCoding</a></li>
+<li class="chapter" data-level="7.9.11" data-path="annotation.html"><a href="annotation.html#imet"><i class="fa fa-check"></i><b>7.9.11</b> iMet</a></li>
+<li class="chapter" data-level="7.9.12" data-path="annotation.html"><a href="annotation.html#dnms2purifier"><i class="fa fa-check"></i><b>7.9.12</b> DNMS2Purifier</a></li>
+<li class="chapter" data-level="7.9.13" data-path="annotation.html"><a href="annotation.html#idsl.csa"><i class="fa fa-check"></i><b>7.9.13</b> IDSL.CSA</a></li>
 </ul></li>
-<li class="chapter" data-level="7.10" data-path="annotation.html"><a href="annotation.html#ms-database-for-annotation"><i class="fa fa-check"></i><b>7.10</b> MS Database for annotation</a>
+<li class="chapter" data-level="7.10" data-path="annotation.html"><a href="annotation.html#knowledge-based-annotation"><i class="fa fa-check"></i><b>7.10</b> Knowledge based annotation</a>
 <ul>
-<li class="chapter" data-level="7.10.1" data-path="annotation.html"><a href="annotation.html#ms"><i class="fa fa-check"></i><b>7.10.1</b> MS</a></li>
-<li class="chapter" data-level="7.10.2" data-path="annotation.html"><a href="annotation.html#msms-1"><i class="fa fa-check"></i><b>7.10.2</b> MS/MS</a></li>
+<li class="chapter" data-level="7.10.1" data-path="annotation.html"><a href="annotation.html#experimental-design"><i class="fa fa-check"></i><b>7.10.1</b> Experimental design</a></li>
+<li class="chapter" data-level="7.10.2" data-path="annotation.html"><a href="annotation.html#chromatographic-retention-related-criteria"><i class="fa fa-check"></i><b>7.10.2</b> Chromatographic retention-related criteria</a></li>
+<li class="chapter" data-level="7.10.3" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>7.10.3</b> ProbMetab</a></li>
+<li class="chapter" data-level="7.10.4" data-path="annotation.html"><a href="annotation.html#mi-pack"><i class="fa fa-check"></i><b>7.10.4</b> MI-Pack</a></li>
+<li class="chapter" data-level="7.10.5" data-path="annotation.html"><a href="annotation.html#metexpert"><i class="fa fa-check"></i><b>7.10.5</b> MetExpert</a></li>
+<li class="chapter" data-level="7.10.6" data-path="annotation.html"><a href="annotation.html#mycompoundid"><i class="fa fa-check"></i><b>7.10.6</b> MycompoundID</a></li>
+<li class="chapter" data-level="7.10.7" data-path="annotation.html"><a href="annotation.html#metfamily"><i class="fa fa-check"></i><b>7.10.7</b> MetFamily</a></li>
+<li class="chapter" data-level="7.10.8" data-path="annotation.html"><a href="annotation.html#coa-blast"><i class="fa fa-check"></i><b>7.10.8</b> CoA-Blast</a></li>
+<li class="chapter" data-level="7.10.9" data-path="annotation.html"><a href="annotation.html#kgmn"><i class="fa fa-check"></i><b>7.10.9</b> KGMN</a></li>
+<li class="chapter" data-level="7.10.10" data-path="annotation.html"><a href="annotation.html#ccmn"><i class="fa fa-check"></i><b>7.10.10</b> CCMN</a></li>
 </ul></li>
-<li class="chapter" data-level="7.11" data-path="annotation.html"><a href="annotation.html#compounds-database"><i class="fa fa-check"></i><b>7.11</b> Compounds Database</a></li>
+<li class="chapter" data-level="7.11" data-path="annotation.html"><a href="annotation.html#ms-database-for-annotation"><i class="fa fa-check"></i><b>7.11</b> MS Database for annotation</a>
+<ul>
+<li class="chapter" data-level="7.11.1" data-path="annotation.html"><a href="annotation.html#ms"><i class="fa fa-check"></i><b>7.11.1</b> MS</a></li>
+<li class="chapter" data-level="7.11.2" data-path="annotation.html"><a href="annotation.html#msms-1"><i class="fa fa-check"></i><b>7.11.2</b> MS/MS</a></li>
+</ul></li>
+<li class="chapter" data-level="7.12" data-path="annotation.html"><a href="annotation.html#compounds-database"><i class="fa fa-check"></i><b>7.12</b> Compounds Database</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>8</b> Omics analysis</a>
 <ul>
@@ -368,15 +395,30 @@ div.csl-indent {
 <li class="chapter" data-level="10.6.2" data-path="statistical-analysis.html"><a href="statistical-analysis.html#build-the-network"><i class="fa fa-check"></i><b>10.6.2</b> Build the network</a></li>
 <li class="chapter" data-level="10.6.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#network-attributes"><i class="fa fa-check"></i><b>10.6.3</b> Network attributes</a></li>
 </ul></li>
-<li class="chapter" data-level="10.7" data-path="statistical-analysis.html"><a href="statistical-analysis.html#software-1"><i class="fa fa-check"></i><b>10.7</b> Software</a></li>
+<li class="chapter" data-level="10.7" data-path="statistical-analysis.html"><a href="statistical-analysis.html#machine-learning-and-deep-learning"><i class="fa fa-check"></i><b>10.7</b> Machine Learning and Deep Learning</a>
+<ul>
+<li class="chapter" data-level="10.7.1" data-path="statistical-analysis.html"><a href="statistical-analysis.html#where-mldl-is-applied-in-metabolomics"><i class="fa fa-check"></i><b>10.7.1</b> Where ML/DL is applied in metabolomics</a></li>
+<li class="chapter" data-level="10.7.2" data-path="statistical-analysis.html"><a href="statistical-analysis.html#common-pitfalls"><i class="fa fa-check"></i><b>10.7.2</b> Common pitfalls</a></li>
+<li class="chapter" data-level="10.7.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#best-practices"><i class="fa fa-check"></i><b>10.7.3</b> Best practices</a></li>
+<li class="chapter" data-level="10.7.4" data-path="statistical-analysis.html"><a href="statistical-analysis.html#deep-learning-considerations"><i class="fa fa-check"></i><b>10.7.4</b> Deep learning considerations</a></li>
+</ul></li>
+<li class="chapter" data-level="10.8" data-path="statistical-analysis.html"><a href="statistical-analysis.html#causal-inference-in-metabolomics"><i class="fa fa-check"></i><b>10.8</b> Causal inference in metabolomics</a>
+<ul>
+<li class="chapter" data-level="10.8.1" data-path="statistical-analysis.html"><a href="statistical-analysis.html#mendelian-randomization"><i class="fa fa-check"></i><b>10.8.1</b> Mendelian randomization</a></li>
+<li class="chapter" data-level="10.8.2" data-path="statistical-analysis.html"><a href="statistical-analysis.html#practical-considerations"><i class="fa fa-check"></i><b>10.8.2</b> Practical considerations</a></li>
+</ul></li>
+<li class="chapter" data-level="10.9" data-path="statistical-analysis.html"><a href="statistical-analysis.html#software-1"><i class="fa fa-check"></i><b>10.9</b> Software</a></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="exposome.html"><a href="exposome.html"><i class="fa fa-check"></i><b>11</b> Exposome</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="exposome.html"><a href="exposome.html#internal-exposure"><i class="fa fa-check"></i><b>11.1</b> Internal exposure</a></li>
-<li class="chapter" data-level="11.2" data-path="exposome.html"><a href="exposome.html#external-exposure"><i class="fa fa-check"></i><b>11.2</b> External exposure</a>
+<li class="chapter" data-level="11.1" data-path="exposome.html"><a href="exposome.html#exposome-wide-association-studies-exwas"><i class="fa fa-check"></i><b>11.1</b> Exposome-Wide Association Studies (ExWAS)</a></li>
+<li class="chapter" data-level="11.2" data-path="exposome.html"><a href="exposome.html#large-scale-exposome-projects"><i class="fa fa-check"></i><b>11.2</b> Large-scale exposome projects</a></li>
+<li class="chapter" data-level="11.3" data-path="exposome.html"><a href="exposome.html#internal-exposure"><i class="fa fa-check"></i><b>11.3</b> Internal exposure</a></li>
+<li class="chapter" data-level="11.4" data-path="exposome.html"><a href="exposome.html#external-exposure"><i class="fa fa-check"></i><b>11.4</b> External exposure</a>
 <ul>
-<li class="chapter" data-level="11.2.1" data-path="exposome.html"><a href="exposome.html#environmental-fate-of-compounds"><i class="fa fa-check"></i><b>11.2.1</b> Environmental fate of compounds</a></li>
-<li class="chapter" data-level="11.2.2" data-path="exposome.html"><a href="exposome.html#exposure-study-database"><i class="fa fa-check"></i><b>11.2.2</b> Exposure study database</a></li>
+<li class="chapter" data-level="11.4.1" data-path="exposome.html"><a href="exposome.html#specific-contaminants"><i class="fa fa-check"></i><b>11.4.1</b> Specific Contaminants</a></li>
+<li class="chapter" data-level="11.4.2" data-path="exposome.html"><a href="exposome.html#environmental-fate-of-compounds"><i class="fa fa-check"></i><b>11.4.2</b> Environmental fate of compounds</a></li>
+<li class="chapter" data-level="11.4.3" data-path="exposome.html"><a href="exposome.html#exposure-study-database"><i class="fa fa-check"></i><b>11.4.3</b> Exposure study database</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
@@ -402,82 +444,104 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="omics-analysis" class="section level1 hasAnchor" number="8">
 <h1><span class="header-section-number">Chapter 8</span> Omics analysis<a href="omics-analysis.html#omics-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>When you get the filtered ions, the next step is making annotations for them. Such annotations would be helpful for omics studies. Omics analysis try to combine the information from other ‘omics’ to answer one specific question. Since we have got the annotations, Omics analysis could be performed.Upload the data obtained from the <strong>xcms</strong> to other tools or databases.</p>
+<p>When you get the filtered ions, the next step is making annotations for them. Such annotations would be helpful for omics studies. Omics analysis tries to combine the information from other ‘omics’ to answer one specific question. Since we have got the annotations, omics analysis could be performed. Upload the data obtained from <strong>xcms</strong> or other platforms to other tools or databases.</p>
 <p>You will get an updated database list <a href="http://metabolomicssociety.org/resources/metabolomics-databases">here</a>.</p>
-<p>Right now, it is hard to connect different omics databases such as gene, protein and metabolites together for a whole scope of certain biological process. However, you might select few metabolites across those databases and find something interesting.</p>
+<p>Right now, it is hard to connect different omics databases such as gene, protein and metabolites together for a whole scope of certain biological process. However, you might select a few metabolites across those databases and find something interesting.</p>
 <div id="from-bottom-up-to-top-down" class="section level2 hasAnchor" number="8.1">
 <h2><span class="header-section-number">8.1</span> From Bottom-up to Top-down<a href="omics-analysis.html#from-bottom-up-to-top-down" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Bottom-up analysis mean the model for each metabolite. In this case, we could find out which metabolite will be affected by our experiment design. However, take care of multiple comparison issue.</p>
+<p>Bottom-up analysis means the model for each metabolite. In this case, we could find out which metabolite will be affected by our experiment design. However, take care of multiple comparison issue.</p>
 <p><span class="math display">\[
-metabolite = f(control/treatment, co-variables)
+metabolite = f(control/treatment, co\text{-}variables)
 \]</span></p>
-<p>Top-down analysis mean the model for output. In this case, we could evaluate the contribution of each metabolites. You need variable selection to make a better model.</p>
+<p>Top-down analysis means the model for output. In this case, we could evaluate the contribution of each metabolite. You need variable selection to make a better model.</p>
 <p><span class="math display">\[
-control/treatment = f(metabolite 1,metabolite 2,...,metaboliteN,co-varuables)
+control/treatment = f(metabolite 1,metabolite 2,...,metaboliteN,co\text{-}variables)
 \]</span></p>
-<p>For omics study, you might need to integrate dataset from different sources.</p>
+<p>For omics study, you might need to integrate datasets from different sources.</p>
 <p><span class="math display">\[
-control/treatment = f(metabolites, proteins, genes, miRNA,co-varuables)
+control/treatment = f(metabolites, proteins, genes, miRNA,co\text{-}variables)
 \]</span></p>
 </div>
 <div id="pathway-analysis" class="section level2 hasAnchor" number="8.2">
 <h2><span class="header-section-number">8.2</span> Pathway analysis<a href="omics-analysis.html#pathway-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Pathway analysis maps annotated data into known pathway and make statistical analysis to find the influenced pathway or the compounds with high influences on certain pathway.</p>
+<p>Pathway analysis maps annotated data into known pathways and makes statistical analysis to find the influenced pathway or the compounds with high influences on certain pathway.</p>
 <div id="pathway-database" class="section level3 hasAnchor" number="8.2.1">
 <h3><span class="header-section-number">8.2.1</span> Pathway Database<a href="omics-analysis.html#pathway-database" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li><p><a href="http://smpdb.ca/view">SMPDB</a> (The Small Molecule Pathway Database) is an interactive, visual database containing more than 618 small molecule pathways found in humans. More than 70% of these pathways (&gt;433) are not found in any other pathway database. The pathways include metabolic, drug, and disease pathways.</p></li>
 <li><p><a href="https://www.genome.jp/kegg/">KEGG</a> (Kyoto Encyclopedia of Genes and Genomes) is one of the most complete and widely used databases containing metabolic pathways (495 reference pathways) from a wide variety of organisms (&gt;4,700). These pathways are hyperlinked to metabolite and protein/enzyme information. Currently KEGG has &gt;17,000 compounds (from animals, plants and bacteria), 10,000 drugs (including different salt forms and drug carriers) and nearly 11,000 glycan structures.</p></li>
 <li><p><a href="https://biocyc.org/">BioCyc</a> is a collection of 14558 Pathway/Genome Databases (PGDBs), plus software tools for exploring them.</p></li>
-<li><p><a href="https://reactome.org/what-is-reactome">Reactome</a> is an open-source, open access, manually curated and peer-reviewed pathway database. Our goal is to provide intuitive bioinformatics tools for the visualization, interpretation and analysis of pathway knowledge to support basic and clinical research, genome analysis, modeling, systems biology and education.</p></li>
+<li><p><a href="https://reactome.org/what-is-reactome">Reactome</a> is an open-source, open access, manually curated and peer-reviewed pathway database. It provides intuitive bioinformatics tools for the visualization, interpretation and analysis of pathway knowledge to support basic and clinical research, genome analysis, modeling, systems biology and education.</p></li>
 <li><p><a href="https://www.wikipathways.org/index.php/WikiPathways">WikiPathway</a> is a database of biological pathways maintained by and for the scientific community.</p></li>
 </ul>
 </div>
 <div id="pathway-software" class="section level3 hasAnchor" number="8.2.2">
 <h3><span class="header-section-number">8.2.2</span> Pathway software<a href="omics-analysis.html#pathway-software" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li><p><a href="http://www.pathwaycommons.org/">Pathway Commons</a> online tools for pathway analysis</p></li>
-<li><p><a href="https://github.com/Mathelab/RaMP-DB">RaMP</a> could make pathway analysis for batch search</p></li>
-<li><p><a href="https://github.com/kwanjeeraw/metabox">metabox</a> could make pathway analysis</p></li>
-<li><p><a href="http://impala.molgen.mpg.de/">impala</a> is used for pathway enrichment analysis</p></li>
+<li><p><a href="https://www.metaboanalyst.ca/">MetaboAnalyst</a> is the most widely used platform for metabolomics pathway analysis<span class="citation">(<a href="#ref-pang2024">Pang et al. 2024</a>)</span>. It integrates Mummichog for pathway activity prediction directly from m/z features without prior annotation, as well as conventional over-representation analysis and pathway topology analysis using annotated compound lists.</p></li>
+<li><p><a href="https://bioconductor.org/packages/release/bioc/html/FELLA.html">FELLA</a> is an R package that performs metabolite enrichment analysis using KEGG sub-network topology rather than simple pathway lists, which can capture cross-pathway connections<span class="citation">(<a href="#ref-fella2015">Picart-Armada et al. 2018</a>)</span>.</p></li>
+<li><p><a href="https://chemrich.fiehnlab.ucdavis.edu/">ChemRICH</a> performs Chemical Similarity Enrichment Analysis as an alternative to biochemical pathway mapping<span class="citation">(<a href="#ref-barupal2018">Barupal and Fiehn 2017</a>)</span>. Instead of relying on incomplete pathway databases, ChemRICH groups metabolites by chemical similarity (e.g., Tanimoto scores) and tests for enrichment within these chemical classes. This is particularly useful for untargeted metabolomics where many identified metabolites may not map to known pathways.</p></li>
+<li><p><a href="https://github.com/Mathelab/RaMP-DB">RaMP-DB</a> is a relational database that integrates pathway information from KEGG, Reactome, WikiPathways and HMDB for batch pathway analysis<span class="citation">(<a href="#ref-zhang2023b">B. Zhang et al. 2023</a>)</span>.</p></li>
+<li><p><a href="http://www.pathwaycommons.org/">Pathway Commons</a> online tools for pathway analysis.</p></li>
+<li><p><a href="https://github.com/kwanjeeraw/metabox">metabox</a> could make pathway analysis.</p></li>
+<li><p><a href="http://impala.molgen.mpg.de/">impala</a> is used for pathway enrichment analysis.</p></li>
 <li><p><a href="http://metscape.med.umich.edu/">Metscape</a> based on Debiased Sparse Partial Correlation (DSPC) algorithm <span class="citation">(<a href="#ref-basu2017">Basu et al. 2017</a>)</span> to make annotation.</p></li>
 </ul>
 </div>
 </div>
 <div id="network-analysis" class="section level2 hasAnchor" number="8.3">
 <h2><span class="header-section-number">8.3</span> Network analysis<a href="omics-analysis.html#network-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><a href="https://code.google.com/archive/p/atcg/wikis/mummichog_for_metabolomics.wiki">Mummichog</a> could make pathway and network analysis without annotation.</p>
-<p><a href="http://web1.sph.emory.edu/users/tyu8/MSS">MSS</a>: sequential feature screening procedure to select important sub-network and identify the optimal matching for metabolimics data <span class="citation">(<a href="#ref-cai2017">Q. Cai et al. 2017</a>)</span>.</p>
-<p><a href="https://bioconductor.org/packages/devel/bioc/html/metapone.html">Metapone</a> is joint pathway testing package for untargeted metabolomics data <span class="citation">(<a href="#ref-tian2022">L. Tian et al. 2022</a>)</span>.</p>
+<p><a href="https://www.metaboanalyst.ca/">Mummichog</a> could make pathway and network analysis without annotation. The algorithm is now integrated into MetaboAnalyst<span class="citation">(<a href="#ref-pang2024">Pang et al. 2024</a>)</span>.</p>
+<p><a href="http://web1.sph.emory.edu/users/tyu8/MSS">MSS</a>: sequential feature screening procedure to select important sub-network and identify the optimal matching for metabolomics data <span class="citation">(<a href="#ref-cai2017">Cai et al. 2017</a>)</span>.</p>
+<p><a href="https://bioconductor.org/packages/devel/bioc/html/metapone.html">Metapone</a> is a joint pathway testing package for untargeted metabolomics data <span class="citation">(<a href="#ref-tian2022">Tian et al. 2022</a>)</span>.</p>
 </div>
 <div id="omics-integration" class="section level2 hasAnchor" number="8.4">
 <h2><span class="header-section-number">8.4</span> Omics integration<a href="omics-analysis.html#omics-integration" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Multi-omics integration aims to combine data from different omics layers (genomics, transcriptomics, proteomics, metabolomics) to gain a more comprehensive understanding of biological systems. Several approaches and tools are available:</p>
 <ul>
-<li><p><a href="https://blast.ncbi.nlm.nih.gov/Blast.cgi">Blast</a> finds regions of similarity between biological sequences. The program compares nucleotide or protein sequences to sequence databases and calculates the statistical significance.</p></li>
+<li><p><a href="https://mixomics.org/">mixOmics</a> is an R package for multi-omics data integration using multivariate projection-based methods including sparse PLS, DIABLO (Data Integration Analysis for Biomarker discovery using Latent cOmponents) and other supervised/unsupervised approaches<span class="citation">(<a href="#ref-rohart2017">Rohart et al. 2017</a>)</span>.</p></li>
+<li><p><a href="https://biofam.github.io/MOFA2/">MOFA+</a> (Multi-Omics Factor Analysis) is a statistical framework for comprehensive integration of multi-modal data. It identifies shared and dataset-specific sources of variation across omics layers using a Bayesian factor model<span class="citation">(<a href="#ref-argelaguet2020">Argelaguet et al. 2020</a>)</span>. MOFA+ extends the original MOFA to support single-cell data and multiple sample groups.</p></li>
 <li><p><a href="https://www.omicsdi.org/">The Omics Discovery Index (OmicsDI)</a> provides a knowledge discovery framework across heterogeneous omics data (genomics, proteomics, transcriptomics and metabolomics).</p></li>
-<li><p><a href="https://github.com/cran/mixOmics">Omics Data Integration Project</a></p></li>
 <li><p>Standardized multi-omics of Earth’s microbiomes could check this GNPS based work<span class="citation">(<a href="#ref-shaffer2022">Shaffer et al. 2022</a>)</span>.</p></li>
-<li><p>Windows Scanning Multiomics: Integrated Metabolomics and Proteomics<span class="citation">(<a href="#ref-shi2023">Shi et al. 2023</a>)</span></p></li>
+<li><p>Windows Scanning Multiomics: Integrated Metabolomics and Proteomics<span class="citation">(<a href="#ref-shi2023">Shi et al. 2023</a>)</span>.</p></li>
 </ul>
 
 </div>
 </div>
 <h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-argelaguet2020" class="csl-entry">
+Argelaguet, Ricard, Damien Arnol, Danila Bredikhin, et al. 2020. <span>“<span class="nocase">MOFA+: a statistical framework for comprehensive integration of multi-modal single-cell data</span>.”</span> <em>Genome Biology</em> 21: 111. <a href="https://doi.org/10.1186/s13059-020-02015-1">https://doi.org/10.1186/s13059-020-02015-1</a>.
+</div>
+<div id="ref-barupal2018" class="csl-entry">
+Barupal, Dinesh Kumar, and Oliver Fiehn. 2017. <span>“<span class="nocase">Chemical Similarity Enrichment Analysis (ChemRICH) as alternative to biochemical pathway mapping for metabolomic datasets</span>.”</span> <em>Scientific Reports</em> 7: 14567. <a href="https://doi.org/10.1038/s41598-017-15231-w">https://doi.org/10.1038/s41598-017-15231-w</a>.
+</div>
 <div id="ref-basu2017" class="csl-entry">
 Basu, Sumanta, William Duren, Charles R. Evans, Charles F. Burant, George Michailidis, and Alla Karnovsky. 2017. <span>“Sparse Network Modeling and Metscape-Based Visualization Methods for the Analysis of Large-Scale Metabolomics Data.”</span> <em>Bioinformatics</em> 33 (10): 1545–53. <a href="https://doi.org/10.1093/bioinformatics/btx012">https://doi.org/10.1093/bioinformatics/btx012</a>.
 </div>
 <div id="ref-cai2017" class="csl-entry">
 Cai, Qingpo, Jessica A. Alvarez, Jian Kang, and Tianwei Yu. 2017. <span>“Network <span>Marker Selection</span> for <span>Untargeted LC</span>–<span>MS Metabolomics Data</span>.”</span> <em>Journal of Proteome Research</em> 16 (3): 1261–69. <a href="https://doi.org/10.1021/acs.jproteome.6b00861">https://doi.org/10.1021/acs.jproteome.6b00861</a>.
 </div>
+<div id="ref-pang2024" class="csl-entry">
+Pang, Zhiqiang, Lei Xu, Charles Viau, et al. 2024. <span>“<span>MetaboAnalystR</span> 4.0: A Unified <span>LC-MS</span> Workflow for Global Metabolomics.”</span> <em>Nature Communications</em> 15 (1): 3675. <a href="https://doi.org/10.1038/s41467-024-48009-6">https://doi.org/10.1038/s41467-024-48009-6</a>.
+</div>
+<div id="ref-fella2015" class="csl-entry">
+Picart-Armada, Sergio, Francesc Fernández-Albert, Maria Vinaixa, Oscar Yanes, and Alexandre Perera-Lluna. 2018. <span>“<span>FELLA</span>: An <span>R</span> Package to Enrich Metabolomics Data.”</span> <em>BMC Bioinformatics</em> 19: 538. <a href="https://doi.org/10.1186/s12859-018-2487-5">https://doi.org/10.1186/s12859-018-2487-5</a>.
+</div>
+<div id="ref-rohart2017" class="csl-entry">
+Rohart, Florian, Benoı̂t Gautier, Amrit Singh, and Kim-Anh Lê Cao. 2017. <span>“<span class="nocase">mixOmics</span>: An <span>R</span> Package for ’Omics Feature Selection and Multiple Data Integration.”</span> <em>PLOS Computational Biology</em> 13 (11): e1005752. <a href="https://doi.org/10.1371/journal.pcbi.1005752">https://doi.org/10.1371/journal.pcbi.1005752</a>.
+</div>
 <div id="ref-shaffer2022" class="csl-entry">
-Shaffer, Justin P., Louis-Félix Nothias, Luke R. Thompson, Jon G. Sanders, Rodolfo A. Salido, Sneha P. Couvillion, Asker D. Brejnrod, et al. 2022. <span>“Standardized Multi-Omics of <span>Earth</span>’s Microbiomes Reveals Microbial and Metabolite Diversity.”</span> <em>Nature Microbiology</em> 7 (12): 2128–50. <a href="https://doi.org/10.1038/s41564-022-01266-x">https://doi.org/10.1038/s41564-022-01266-x</a>.
+Shaffer, Justin P., Louis-Félix Nothias, Luke R. Thompson, et al. 2022. <span>“Standardized Multi-Omics of <span>Earth</span>’s Microbiomes Reveals Microbial and Metabolite Diversity.”</span> <em>Nature Microbiology</em> 7 (12): 2128–50. <a href="https://doi.org/10.1038/s41564-022-01266-x">https://doi.org/10.1038/s41564-022-01266-x</a>.
 </div>
 <div id="ref-shi2023" class="csl-entry">
-Shi, Jiachen, Jialiang Zhao, Yu Zhang, Yanan Wang, Chin Ping Tan, Yong-Jiang Xu, and Yuanfa Liu. 2023. <span>“Windows <span>Scanning Multiomics</span>: <span>Integrated Metabolomics</span> and <span>Proteomics</span>.”</span> <em>Analytical Chemistry</em>, December. <a href="https://doi.org/10.1021/acs.analchem.3c03785">https://doi.org/10.1021/acs.analchem.3c03785</a>.
+Shi, Jiachen, Jialiang Zhao, Yu Zhang, et al. 2023. <span>“Windows <span>Scanning Multiomics</span>: <span>Integrated Metabolomics</span> and <span>Proteomics</span>.”</span> <em>Analytical Chemistry</em>, ahead of print, December. <a href="https://doi.org/10.1021/acs.analchem.3c03785">https://doi.org/10.1021/acs.analchem.3c03785</a>.
 </div>
 <div id="ref-tian2022" class="csl-entry">
-Tian, Leqi, Zhenjiang Li, Guoxuan Ma, Xiaoyue Zhang, Ziyin Tang, Siheng Wang, Jian Kang, Donghai Liang, and Tianwei Yu. 2022. <span>“Metapone: A <span>Bioconductor</span> Package for Joint Pathway Testing for Untargeted Metabolomics Data.”</span> <em>Bioinformatics</em> 38 (14): 3662–64. <a href="https://doi.org/10.1093/bioinformatics/btac364">https://doi.org/10.1093/bioinformatics/btac364</a>.
+Tian, Leqi, Zhenjiang Li, Guoxuan Ma, et al. 2022. <span>“Metapone: A <span>Bioconductor</span> Package for Joint Pathway Testing for Untargeted Metabolomics Data.”</span> <em>Bioinformatics</em> 38 (14): 3662–64. <a href="https://doi.org/10.1093/bioinformatics/btac364">https://doi.org/10.1093/bioinformatics/btac364</a>.
+</div>
+<div id="ref-zhang2023b" class="csl-entry">
+Zhang, Bofei, Shunchao Hu, Elizabeth Baskin, Andrew Patt, Jalal K Siddiqui, and Ewy A Mathé. 2023. <span>“<span class="nocase">RaMP-DB 2.0: a renovated knowledgebase for deriving biological and chemical insight from metabolites, proteins, and genes</span>.”</span> <em>Bioinformatics</em> 39 (1): btac726. <a href="https://doi.org/10.1093/bioinformatics/btac726">https://doi.org/10.1093/bioinformatics/btac726</a>.
 </div>
 </div>
             </section>
@@ -500,42 +564,42 @@ Tian, Leqi, Zhenjiang Li, Guoxuan Ma, Xiaoyue Zhang, Ziyin Tang, Siheng Wang, Ji
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/yufree/metaworkflow/edit/master/08-omics.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["Metabolomics.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/yufree/metaworkflow/edit/master/08-omics.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["Metabolomics.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>
