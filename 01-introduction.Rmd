@@ -4,19 +4,23 @@ bibliography: references.bib
 
 # Introduction
 
-Information in living organism communicates along the Central Dogma in different scales from individual, population, community to ecosystem. Metabolomics (i.e., the profiling and quantification of metabolites) is a relatively new field of "omics" studies. Different from other omics studies, metabolomics always focused on small molecular (molecular weight below 1500 Da) with much lower mass than polypeptide with single or doubled charged ions. Here is a demo of the position of metabolomics in "omics" studies[\@b.dunn2011].
+Biological information flows across multiple scales, from individuals to populations, communities, and ecosystems. Metabolomics, the profiling and quantification of metabolites, is a relatively new member of the omics family. Compared with other omics fields, metabolomics focuses on small molecules, typically with molecular weights below 1500 Da. Figure \@ref(fig:metaintro) illustrates the position of metabolomics within the broader omics landscape[\@b.dunn2011].
 
 ```{r metaintro, fig.show='hold', fig.cap='The complex interactions of functional levels in biological systems.',echo=FALSE,out.width='90%'}
 knitr::include_graphics('images/metaintro.png')
 ```
 
-Metabolomics studies always employ GC-MS[@theodoridis2012; @beale2018], GC\*GC-MS[@tian2016], LC-MS[@gika2014], LC-MS/MS[@begou2017], IM-MS[@levy2019], infrared ion spectroscopy[@martens2017] or NMR[\@b.dunn2011] to measure metabolites. For analytical methods, this review could be checked[@zhang2012e]. The overall technique progress of metabolomics (2012-2018) could be found here[@miggiels2019]. However, this workflow will only cover mass spectrometry based metabolomics or XC-MS based research.
+Metabolomics studies commonly employ GC-MS[@theodoridis2012; @beale2018], GC\*GC-MS[@tian2016], LC-MS[@gika2014], LC-MS/MS[@begou2017], IM-MS[@levy2019], infrared ion spectroscopy[@martens2017], or NMR[\@b.dunn2011] to measure metabolites. For broader discussion of analytical methods, see[@zhang2012e], and for an overview of technical progress during 2012-2018, see[@miggiels2019]. This book focuses on mass spectrometry-based metabolomics, especially XC-MS workflows.
+
+Exposomics extends metabolomics toward the comprehensive measurement of environmental, dietary, lifestyle, and xenobiotic exposures together with their biological responses. Because untargeted mass spectrometry is widely used in both fields, exposomics shares many analytical foundations with metabolomics, including sample preparation, feature detection, annotation, normalization, and statistical modeling. However, exposomics also introduces broader questions in exposure science, epidemiology, ethics, and causal interpretation. Therefore, this book focuses on metabolomics workflows, while exposomics is acknowledged as an important related direction beyond the present scope.
+
+Despite its power, metabolomics has several important limitations. No single analytical platform can comprehensively measure the entire metabolome because metabolites differ widely in polarity, abundance, volatility, stability, and ionization behavior. Untargeted studies also face major challenges in confident annotation and identification, while signal intensities can be strongly affected by matrix effects, batch effects, and pre-analytical variation during sample collection, storage, and extraction. Compared with other omics fields, metabolomics usually has lower analytical throughput and higher per-sample experimental complexity, which often limits practical sample size in real studies. As a result, many metabolomics datasets are not large enough to provide stable effect size estimation or strong independent validation, making reproducibility, cross-study comparison, and causal interpretation more difficult.
 
 ## History
 
 ### History of Mass Spectrometry
 
-Here is a historical commentary for mass spectrometry[@yatesiii2011]. In details, here is a summary:
+For a broader historical commentary on mass spectrometry, see[@yatesiii2011]. A brief summary is given below:
 
 -   1913, Sir Joseph John Thomson "Rays of Positive Electricity and Their Application to Chemical Analyses."
 

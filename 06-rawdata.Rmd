@@ -2,13 +2,13 @@
 bibliography: references.bib
 ---
 
-# Raw data pretreatment
+# Raw Data Pretreatment
 
-Raw data from the instruments such as LC-MS or GC-MS were hard to be analyzed. To make it clear, the structure of those data could be summarized as:
+Raw data from instruments such as LC-MS or GC-MS are not immediately ready for statistical analysis. Before downstream interpretation, they must be converted into features, aligned across samples, and filtered to reduce technical noise. At a basic level, these data can be summarized as:
 
--   Indexed scan with time-stamp
+-   Indexed scans with time stamps
 
--   Each scan contains a full scan mass spectra
+-   Each scan contains a full-scan mass spectrum
 
 Common formats for open source mass spectrum data are mzxml, mzml or CDF. However, **MassComp** might shrink the data size[@yang2019].
 
@@ -47,6 +47,28 @@ knitr::include_graphics('images/matchedfilter.jpg')
 ```
 
 The `Centwave` algorithm [@tautenhahn2008] based on detection of regions of interest(ROI) and the following Continuous Wavelet Transform (CWT) is preferred for high-resolution mass spectrum. ROI means a region with stable mass for a certain time. When we find the ROIs, the peak shape is evaluated and ROI could be extended if needed. This algorithm use `prefilter` to accelerate the processing speed. `prefilter` with 3 and 100 means the ROI should contain 3 scan with intensity above 100. Centwave use a peak width range which should be checked on pool QC. Another important parameter is `ppm`. It is the maximum allowed deviation between scans when locating regions of interest (ROIs), which is different from vendor number and you need to extend them larger than the company claimed. For `profparam`, it's used for fill peaks or align peaks instead of peak picking. `snthr` is the cutoff of signal to noise ratio.
+
+### Parameter selection guidance
+
+Peak picking parameters should not be selected only from software defaults. They should be chosen according to instrument type, chromatographic peak width, data resolution, noise level, and QC behavior.
+
+For practical tuning:
+
+-   **Use matchedFilter** mainly for lower-resolution data or older workflows where m/z binning is acceptable.
+
+-   **Use Centwave** for high-resolution LC-MS data when accurate m/z tracking across scans is important.
+
+-   **Check peak width on pooled QC samples first** and use that observed range to set `peakwidth`.
+
+-   **Set `ppm` wider than the nominal vendor mass accuracy** because chromatographic and signal fluctuations usually make the effective tolerance larger than the specification sheet suggests.
+
+-   **Use `prefilter` to suppress very small noisy regions**, but do not set it so aggressively that low-abundance biological signals disappear.
+
+-   **Use `snthresh` according to matrix complexity**: cleaner samples can tolerate lower thresholds, while dirty matrices often need higher thresholds to reduce false peaks.
+
+-   **Inspect a subset of known peaks manually** after parameter tuning instead of relying only on total feature count.
+
+In general, a good parameter set should improve reproducibility of pooled QC features, preserve expected peak shape, and avoid inflating feature counts with obvious noise. More detected features do not always mean better preprocessing.
 
 An Open-source feature detection algorithm for non-target LC–MS analytics could be found here to understand peak picking process[@dietrich2022]. Pseudo F-ratio moving window could also be used to select untargeted region of interest for gas chromatography – mass spectrometry data[@giebelhaus2022].
 
@@ -110,13 +132,57 @@ Other related papers could be found here to cover SWATH and other topic in DIA[@
 
 ## Retention Time Correction
 
-For single file, we could get peaks. However, we should make the peaks align across samples for as features and retention time corrections should be performed. The basic idea behind retention time correction is that use the high quality grouped peaks to make a new retention time. You might choose `obiwarp`(for dramatic shifts) or loess regression(fast) method to get the corrected retention time for all of the samples. Remember the original retention times might be changed and you might need cross-correct the data. After the correction, you could group the peaks again for a better cross-sample peaks list. However, if you directly use `obiwarp`, you don't have to group peaks before correction.
+For single file, we could get peaks. However, we should make the peaks align across samples as features and retention time correction should be performed. The basic idea behind retention time correction is to use high-quality grouped peaks to infer a corrected retention time mapping between samples.
+
+In practice, retention time correction is needed because column aging, temperature fluctuation, matrix differences, gradient drift, and long acquisition queues all shift the same compound across runs. Without proper correction, the same metabolite may be treated as different features in different samples.
+
+You might choose `obiwarp` for dramatic shifts or nonlinear drift, while loess-based correction is often faster and useful when shifts are smoother. Remember the original retention times might be changed and you might need cross-correct the data. After the correction, you could group the peaks again for a better cross-sample peak list. However, if you directly use `obiwarp`, you do not have to group peaks before correction.
+
+Some practical rules are:
+
+-   **Use pooled QC samples to evaluate retention time stability before correction.**
+
+-   **Use obiwarp when drift is substantial or when samples span long acquisition sequences.**
+
+-   **Use loess or feature-based local correction when many shared peaks are already available and drift is moderate.**
+
+-   **Re-group peaks after correction** because grouping before correction is often only an intermediate step.
+
+-   **Do not over-correct**: if retention time correction forces unrelated peaks together, feature quality may become worse rather than better.
+
+If MS/MS data or retention indices are available, they may further support alignment and correction, especially in GC-MS or more complex LC-MS studies.
 
 This paper show a matlab based shift correction methods[@fu2017]. Retention time correction is a Parametric time warping process and this paper is a good start [@wehrens2015]. Meanwhile, you could use MS2 for retention time correction[@li2017b]. This work is a python based RI system and peak shift correction model, significantly enhancing alignment accuracy[@hao2023].
 
 ## Filling missing values
 
 Too many zeros or NA in peaks list are problematic for statistics. Then we usually need to integrate the area of an existing peak. `xcms 3` could use profile matrix to fill the blank. They also have function to impute the NA data by replace missing values with a proportion of the row minimum or random numbers based on the row minimum. It depends on the user to select imputation methods as well as control the minimum fraction of features appeared in single group.
+
+Feature filling should be treated differently from statistical imputation. Feature filling tries to recover a signal from the raw data at an expected m/z-retention time location after grouping. Imputation replaces missing values in the processed data matrix when no trustworthy raw signal can be integrated.
+
+### Feature filling choices
+
+The main decision is whether the missing value likely reflects:
+
+-   **a true absent feature**
+
+-   **a weak but real signal missed during peak detection**
+
+-   **a misalignment or grouping problem**
+
+-   **a technical failure in one run**
+
+Feature filling is most appropriate when the feature is consistently detected in related samples or QC samples but missing in a subset of runs because of low intensity or imperfect peak detection. It is less appropriate when the feature is sporadic, poorly aligned, or likely due to noise.
+
+As a practical guide:
+
+-   **Use feature filling after retention time correction and grouping**, not before.
+
+-   **Use pooled QC behavior to judge whether a feature is real and stable enough to be filled.**
+
+-   **Avoid aggressive filling of rare features** that appear in only a small fraction of samples.
+
+-   **Separate feature filling from later statistical imputation** so that readers know whether a value comes from integrated raw signal or a post hoc replacement rule.
 
 ```{r peakfilling, fig.show='hold', echo=FALSE,out.width= '90%', fig.cap='Peak filling of GC/LC-MS data',}
 knitr::include_graphics('images/peakfiling.png')
@@ -127,6 +193,24 @@ With many groups of samples, you will get another data matrix with column standi
 ```{r multidata, fig.show='hold', fig.cap='Demo of many GC/LC-MS data',echo=FALSE,out.width='90%'}
 knitr::include_graphics('images/multidata.png')
 ```
+
+## QC design in preprocessing
+
+QC samples are not only for later normalization. They are also central to raw data preprocessing. Pooled QC samples provide a practical reference for parameter tuning, retention time correction assessment, peak reproducibility, and feature filtering.
+
+During preprocessing, QC samples can be used to:
+
+-   **estimate realistic peak width and signal intensity ranges**
+
+-   **check whether peak picking parameters are too loose or too strict**
+
+-   **evaluate retention time drift across the run sequence**
+
+-   **identify unstable features with high RSD before downstream statistics**
+
+-   **decide whether missing features are likely biological absences or preprocessing failures**
+
+Therefore, QC design in Chapter 2 should be connected directly to preprocessing. If pooled QC samples are well designed and inserted regularly across the run order, raw data processing becomes much easier to optimize and to justify.
 
 ## Spectral deconvolution
 

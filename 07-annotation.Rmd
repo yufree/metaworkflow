@@ -4,27 +4,41 @@ bibliography: references.bib
 
 # Annotation
 
-When you get the peaks table or features table, annotation of the peaks would help you. Check this review[@domingo-almenara2018] or other reviews[@chaleckis2019; @lai2018; @nash2019; @viant2017; @allard2017; @domingo-almenara2018] for a detailed notes on annotation. The first paper proposed five levels regarding currently computational annotation strategies.
+Once a peak table or feature table has been generated, annotation becomes the key step that connects mass spectrometry signals to chemical meaning. For broader overviews, see[@domingo-almenara2018; @chaleckis2019; @lai2018; @nash2019; @viant2017; @allard2017]. The first review proposed five levels for current computational annotation strategies.
 
--   Level 1: Peak Grouping: MS Psedospectra extraction based on peak shape similarity and peak abundance correlation
+-   Level 1: Peak grouping: MS pseudospectra extraction based on peak shape similarity and peak abundance correlation
 
--   Level 2: Peak Annotation: Adducts, Neutral losses, isotopes, and other mass relationships based on mass distances
+-   Level 2: Peak annotation: adducts, neutral losses, isotopes, and other mass relationships based on mass distances
 
--   Level 3: Biochemical knowledge based on putative identification, potential biochemical reaction and related statistical analysis
+-   Level 3: Biochemical knowledge based on putative identification, potential biochemical reactions, and related statistical analysis
 
--   Level 4: Use and integration of tandem MS data based on data dependent/independent acquisition mode or **in silico** prediction
+-   Level 4: Use and integration of tandem MS data based on data-dependent or data-independent acquisition mode, or **in silico** prediction
 
--   Level 5: Retention time prediction based on library-available retention index or quantitative structure-retention relationships (QSRR) models.
+-   Level 5: Retention time prediction based on library-available retention indices or quantitative structure-retention relationship (QSRR) models.
 
 Most of the software are at level 1 or 2. If we only have compounds structure, we could guess ions under different ionization method. If we have mass spectrum, we could match the mass spectral by a similarity analysis to the database. In metabolomics, we only have mass spectrum or mass-to-charge ratios. Single mass-to-charge ratio is not enough for identification. That's the one bottleneck for annotation. So prediction is always performed on MS/MS data.
 
-## Issues in annotation
+## A practical annotation workflow
+
+In practice, annotation is easier to understand as a workflow rather than as a list of tools. A useful order is:
+
+1. **understand annotation limits and confidence levels**
+2. **constrain candidate formulas from accurate mass and isotopic information**
+3. **collapse redundant MS1 features such as adducts, isotopes, and in-source fragments**
+4. **connect representative MS1 features to MS2 or MSn data**
+5. **rank candidate structures with MS/MS libraries and in silico tools**
+6. **refine the result with retention, biochemical knowledge, and experimental context**
+7. **report annotation confidence clearly instead of overclaiming identification**
+
+The dark metabolome debate is part of this workflow rather than a side topic: before interpreting unknowns, we need to ask how many features represent real unique compounds and how many are redundant signals from the same chemistry.
+
+## Step 0: understand annotation limits
 
 The major issue in annotation is the redundancy peaks from same metabolite. Unlike genomes, peaks or features from peak selection are not independent with each other. Adducts, in-source fragments and isotopes would lead to wrong annotation. A common solution is that use known adducts, neutral losses, molecular multimers or multiple charged ions to compare mass distances.
 
 Another issue is about the MS/MS database. Only 10% of known metabolites in databases have experimental spectral data. Thus *in silico* prediction is required. Some works try to fill the gap between experimental data, theoretical values(from chemical database like chemspider) and prediction together. Here is a nice review about MS/MS prediction[@hufsky2014].
 
-## Peak misidentification
+### Common sources of peak misidentification
 
 -   Isomer
 
@@ -36,7 +50,7 @@ Use separation methods such as chromatography, ion mobility MS, MS/MS. Reversed-
 
 -   In-source degradation products
 
-## Annotation v.s. identification
+### Annotation vs. Identification
 
 According to the definition from the Chemical Analysis Working Group of the Metabolomics Standards Initiative[@sumner2007; @viant2017], four levels of confidence could be assigned to identification:
 
@@ -53,11 +67,11 @@ For specific group of compounds such as PFASs, the communication of confidence l
 
 Through MS/MS seemed a required step for identification, recent study found ESI might also generate fragments ions for structure identification [@xue2020a; @xue2021;@bernardo-bermejo2023;@xue2023].
 
-## The Dark Metabolome
+### The Dark Metabolome
 
 In a typical untargeted LC-MS experiment, thousands of features are detected, but only a small fraction can be annotated with known metabolite identities. The vast majority of detected features remain unidentified, a phenomenon often referred to as the "dark matter" of the metabolome[@daSilva2015]. Even in well-studied matrices like blood plasma, if a feature is detected in over 50% of samples, there is roughly a 50% chance it has a known annotation; for low-abundance features, annotation rates often fall below 5%. This annotation gap is one of the central challenges in metabolomics and has sparked active debate about its causes and solutions[@petras2017; @koelmel2025].
 
-### What makes up the dark matter?
+#### What makes up the dark matter?
 
 The detected features in an untargeted experiment are not all independent metabolites. A single compound can generate multiple features through several mechanisms:
 
@@ -71,7 +85,7 @@ The detected features in an untargeted experiment are not all independent metabo
 
 After accounting for these redundancies, the number of unique compounds in a sample is substantially smaller than the number of detected features. However, even after deduplication, the majority of unique compounds remain unannotated because they are absent from existing spectral databases.
 
-### The in-source fragmentation debate
+#### The in-source fragmentation debate
 
 In 2024, Giera et al. analyzed the METLIN database of 931,000 molecular standards and reported that in-source fragmentation could account for over 70% of the peaks observed in typical LC-MS metabolomic datasets[@giera2024]. This finding suggested that the dark metabolome might be largely a measurement artifact rather than representing genuine molecular diversity. A follow-up study further examined the relationship between ISF and the dark metabolome/lipidome[@uritboonthai2025].
 
@@ -79,7 +93,7 @@ However, this conclusion was challenged. Li and Mahieu performed a systematic an
 
 This debate reflects a key tension in the field: the extent of ISF depends heavily on the instrument, ionization source design, mobile phase composition and applied voltages, making it difficult to generalize from standard databases to real experimental conditions. What is clear is that both ISF and genuine molecular diversity contribute to the dark metabolome, and the relative contribution varies by sample type and analytical conditions.
 
-### A missing perspective: data-driven deduplication
+#### A missing perspective: data-driven deduplication
 
 Notably, the above debate has largely focused on either standard-library-based estimation (Giera/Siuzdak) or ion-pattern-based pre-annotation (Li/Mahieu). Neither side has systematically addressed the question from a mass distance statistics perspective. The Paired Mass Distance (PMD) approach[@yu2019a] offers a complementary, data-driven strategy: by analyzing the frequency distribution of mass differences between all feature pairs in a dataset, high-frequency PMDs that correspond to known chemical relationships (adducts, in-source fragments, biotransformations) can be identified directly from the data without relying on a predefined adduct list or a standard compound library.
 
@@ -87,7 +101,7 @@ The GlobalStd algorithm[@yu2019a], built on PMD analysis, takes this further by 
 
 Furthermore, the PMDDA workflow[@yu2022b] extends this logic to connect MS1 features with MS2 data acquisition: by using GlobalStd to prioritize truly independent precursor ions for targeted MS2 collection, it addresses both the redundancy problem and the annotation gap simultaneously.
 
-### Strategies to address the dark matter
+#### Strategies to address the dark matter
 
 Several complementary approaches are being developed to reduce the annotation gap:
 
@@ -101,7 +115,9 @@ Several complementary approaches are being developed to reduce the annotation ga
 
 For a comprehensive review of bioinformatics tools tackling the dark metabolome, see Koelmel et al.[@koelmel2025].
 
-## Molecular Formula Assignment
+## Step 1: constrain candidates by molecular formula
+
+Once the annotation limits are clear, the next step is to reduce the candidate space using accurate mass, isotope patterns, and chemical plausibility rules before structural searching.
 
 Cheminformatics will help for MS annotation. The first task is molecular formula assignment. For a given accurate mass, the formula should be constrained by predefined element type and atom number, mass error window and rules of chemical bonding, such as double bond equivalent (DBE) and the nitrogen rule. The nitrogen rule is that an odd nominal molecular mass implies also an odd number of nitrogen. This rule should only be used with nominal (integer) masses. Degree of unsaturation or DBE use rings-plus-double-bonds equivalent (RDBE) values, which should be interger. The elements oxygen and sulphur were not taken into account. Otherwise the molecular formula will not be true.
 
@@ -201,7 +217,9 @@ Here is some other Cheminformatics tools, which could be used to assign meaningf
 - BUDDY can perform molecular formula discovery via bottom-up MS/MS interrogation[@xing2023].
 
 
-## Redundant peaks
+## Step 2: collapse redundant MS1 features
+
+Before MS/MS ranking or database matching, it is usually necessary to reduce the feature table into a smaller set of representative precursor candidates.
 
 Full scan mass spectra always contain lots of redundant peaks such as adducts, isotope, fragments, multiple charged ions and other oligomers. Such peaks dominated the features table[@xu2015; @sindelar2020; @mahieu2017]. Annotation tools could label those peaks either by known list or frequency analysis of the paired mass distances[@ju2020; @kouril2020].
 
@@ -281,7 +299,9 @@ De Novo Recognition of In-Source Fragments for Liquid Chromatography--Mass Spect
 
 Ultra-fast and accurate electron ionization mass spectrum matching for compound identification with million-scale in-silico library[@yang2023a]
 
-## MS1 MS2 connection
+## Step 3: connect MS1 features to MS2 acquisition
+
+After redundant features are reduced, the next task is to connect the representative MS1 features to informative MS2 data for structural ranking.
 
 ### PMDDA
 
@@ -295,11 +315,13 @@ A molecular-formula-oriented method to target the metabolome[@gine2021].
 
 Similar work can be found here with inclusion list of differential and preidentified ions (dpDDA)[@zhang2023].
 
-## MS2 MSn connection
+### Extending from MS2 to MSn
 
 A computational approach to generate adatabase of high-resolution-MS n spectra by converting existing low-resolution MSn spectra using complementary high-resolution-MS2 spectra generated by beam-type CAD[@lieng2023].
 
-## MS/MS annotation
+## Step 4: score and prioritize candidates with MS/MS
+
+MS/MS evidence is usually the most informative step for moving from formula-level annotation to candidate structure ranking.
 
 MS/MS annotation is performed to generate a matching score with library spectra. The most popular matching algorithm is dot product similarity. A recent study found spectral entropy algorithm outperformed dot product similarity [@li2021;@li2023b;]. Comparison of Cosine, Modified Cosine, and Neutral Loss Based Spectrum Alignment showed modified cosine similarity outperformed neutral loss matching and the cosine similarity in all cases. The performance of MS/MS spectrum alignment depends on the location and type of the modification, as well as the chemical compound class of fragmented molecules[@bittremieux2022]. This work proposed a method weighting low-intensity MS/MS ions and m/z frequency for spectral library annotation, which will be help to annotate unknown spectra[@englerhart2024]. [BLINK](https://github.com/biorack/blink) enables ultrafast tandem mass spectrometry cosine similarity scoring[@harwood2023]. MS2Query enable the reliable and scalable MS2 mass spectra-based analogue search by machine learning[@dejonge2023]. However, A spectroscopic test suggests that fragment ion structure annotations in MS/MS libraries are frequently incorrect[@vantetering2024]. 
 
@@ -359,7 +381,9 @@ XGBoost based MS/MS spectral cleaning tool using intensity ratio fluctuation, ap
 
 Composite Spectra Analysis for Chemical Annotation of Untargeted Metabolomics Datasets[@baygi2023].
 
-## Knowledge based annotation
+## Step 5: refine annotation with retention, biology, and prior knowledge
+
+After candidate structures are ranked by MS/MS evidence, orthogonal information can further improve confidence or reject implausible assignments.
 
 ### Experimental design
 
@@ -413,7 +437,9 @@ CCMNs were then constructed using metabolic features shared classes, which facil
 
 
 
-## MS Database for annotation
+## Step 6: search spectral databases
+
+Spectral databases are most useful after candidate space has already been narrowed by formula, feature grouping, and MS/MS evidence.
 
 ### MS
 
@@ -453,7 +479,9 @@ LibGen can generate high quality spectral libraries of Natural Products for EAD-
 
 -   [KEGG](https://www.genome.jp/kegg/compound/) is a collection of small molecules, biopolymers, and other chemical substances that are relevant to biological systems.
 
-## Compounds Database
+## Step 7: search compound databases
+
+Compound databases extend the searchable chemical space beyond spectral libraries, but they should be used with explicit uncertainty because many candidate structures will share the same elemental formula or similar exact mass.
 
 -   [PubChem](https://pubchem.ncbi.nlm.nih.gov/) is an open chemistry database at the National Institutes of Health (NIH).
 

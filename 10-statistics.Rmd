@@ -2,9 +2,9 @@
 bibliography: references.bib
 ---
 
-# Statistical analysis
+# Statistical Analysis
 
-The general purposes for metabolomics study are strongly associated with research goal. However, since metabolomics are usually performed in a non-targeted mode, statistical analysis methods are always started with the exploratory analysis. The basic target for an exploratory analysis is:
+The statistical strategy in a metabolomics study depends strongly on the research goal. Because many metabolomics experiments are performed in an untargeted mode, analysis often begins with exploratory methods before moving to formal hypothesis testing or predictive modeling. The basic goals of exploratory analysis are:
 
 -   Find the relationship among variables
 
@@ -12,35 +12,66 @@ The general purposes for metabolomics study are strongly associated with researc
 
 This is basically unsupervised analysis.
 
-However, sometimes we have group information which could be used to find biomarkers or correlation between variables and groups or continuous variables. This type of data need supervised methods to process. A general discussion about statistical analysis in metabolic phenotyping can be found here[@blaise2021]. Before we talk the details of algorithms, let's cover some basic statistical concepts.
+However, many studies also include group labels or continuous outcomes that can be used to identify biomarkers or model associations between variables and phenotype. These settings require supervised methods. For a broader discussion of statistical analysis in metabolic phenotyping, see[@blaise2021]. Before discussing specific algorithms, it is useful to review a few core concepts.
 
 ## Basic Statistical Analysis
 
-**Statistic** is used to describe certain property or variables among the samples. It could be designed for certain purpose to extract signal and remove noise. Statistical models and inference are both based on statistic instead of the data.
+**A statistic** is a numerical summary used to describe properties of variables or samples. It can be designed to extract signal, reduce noise, or support inference. Statistical models and hypothesis tests are built from such summaries rather than from raw observations alone.
 
 $$Statistic = f(sample_1,sample_2,...,sample_n)$$
 
-**Null Hypothesis Significance Testing (NHST)** is often used to make statistical inference. P value is the probability of certain statistics happens under H0 (pre-defined distribution).
+**Null Hypothesis Significance Testing (NHST)** is commonly used for statistical inference. A p-value is the probability of observing a statistic at least as extreme as the one obtained, assuming the null hypothesis holds.
 
-For omics studies, you should realize **Multiple Comparison** issue when you perform a lot of(more than 20) comparisons or tests at the same time. **False Discovery Rate(FDR) control** is required for multiple tests to make sure the results are not false positive. You could use Benjamini-Hochberg method to adjust raw p values or directly use Storey Q value to make FDR control.
+In omics studies, the **multiple-comparison** problem appears as soon as many metabolites are tested at the same time. **False discovery rate (FDR) control** is therefore essential to limit false positives. Common approaches include the Benjamini-Hochberg adjustment of raw p-values or direct estimation of q-values using Storey's method.
 
-NHST is famous for the failure of p-value interpretation as well as multiple comparison issues. **Bayesian Hypothesis Testing** could be an options to cover some drawbacks of NHST. Bayesian Hypothesis Testing use Bayes factor to show the differences between null hypothesis and any other hypothesis.
+NHST is widely used, but p-values are often misinterpreted and do not by themselves quantify evidence in favor of an alternative model. **Bayesian hypothesis testing** can address some of these limitations by using Bayes factors to compare the null hypothesis with an alternative hypothesis.
 
 $$Bayes\ factor = \frac{p(D|Ha)}{p(D|H0)} = \frac{posterior\ odds}{prior\ odds}$$
 
-**Statistical model** use statistics to make prediction/explanation. Most of the statistical model need to be tuned for parameters to show a better performance. Statistical model is build on real data and could be diagnosed by other general statistics such as $R^2$, $ROC curve$. When the models are built or compared, model selection could be performed.
+**Statistical models** use measured data to support prediction or explanation. Most models require parameter tuning to achieve good performance, and they can be evaluated with metrics such as $R^2$ or ROC curves. Once candidate models are fitted, model selection can be used to compare their performance and choose an appropriate balance between interpretability and predictive accuracy.
 
 $$Target = g(Statistic) = g(f(sample_1,sample_2,...,sample_n))$$
 
-**Bias-Variance Tradeoff** is an important concept regarding statistical models. Certain models could be overfitted(small Bias, large variance) or underfitted(large Bias, small variance) when the parameters of models are not well selected.
+The **bias-variance tradeoff** is a core concept in statistical modeling. Poorly tuned models may be overfitted (low bias, high variance) or underfitted (high bias, low variance).
 
 $$E[(y - \hat f)^2] = \sigma^2 + Var[\hat f] + Bias[\hat f]$$
 
-**Cross validation** could be used to find the best model based on training-testing strategy such as Jacknife, bootstraping resampling and n-fold cross validation.
+**Cross-validation** is commonly used to compare models through repeated training-testing schemes such as jackknife resampling, bootstrap resampling, or k-fold cross-validation.
 
-**Regularization** for models could also be used to find the model with best prediction performance. Rigid regression, LASSO or other general regularization could be employed to build a robust models.
+**Regularization** can also improve predictive performance and robustness. Ridge regression, LASSO, and related penalties are widely used for this purpose.
 
-For supervised models, linear model and tree based model are two basic categories. **Linear model** could be useful to tell the independent or correlated relationship of variables and the influences on the predicted variables. **Tree based model**, on the other hand, try to build a hierarchical structure for the variables such as bagging, random forest or boosting. Linear model could be treated as special case of tree based model with single layer. Other models like Support Vector Machine (SVM), Artificial Neural Network (ANN) or Deep Learning are also make various assumptions on the data. However, if you final target is prediction, you could try any of those models or even weighted combine their prediction to make meta-prediction.
+For supervised analysis, **linear models** and **tree-based models** are two common starting points. Linear models are useful when the goal is to estimate interpretable relationships between variables and outcomes. Tree-based models, including bagging, random forest, and boosting, instead learn hierarchical decision structures and often perform well for prediction. Other model families, such as Support Vector Machines (SVMs), artificial neural networks (ANNs), and deep learning methods, make different assumptions and may also be useful depending on data size and study goals. If prediction is the main objective, comparing several model classes is usually more informative than relying on a single algorithm.
+
+## A practical method-choice guide
+
+For most metabolomics studies, statistical analysis can be organized around a few common goals:
+
+1. **Do I want to test individual metabolites?**  
+   Use univariate methods such as t-test, ANOVA, LIMMA, or regression models with multiple-testing correction.
+
+2. **Do I want to explore overall sample structure without using group labels?**  
+   Use unsupervised methods such as PCA, clustering, and exploratory visualization.
+
+3. **Do I want to build a supervised separation model between groups?**  
+   Consider PLS-DA, sPLS-DA, OPLS-DA, regularized regression, random forest, or SVM, but only with careful validation.
+
+4. **Do I want feature selection for biomarker discovery?**  
+   Use sparse supervised methods, penalized regression, or tree-based models, and compare them with simpler baselines.
+
+5. **Do I want network-level or systems-level interpretation?**  
+   Use pathway analysis and network analysis after normalization, annotation, and differential analysis are already stable.
+
+As a rough guide:
+
+-   **Small two-group untargeted study**: start with PCA, QC checks, t-test or LIMMA, and simple effect-size reporting.
+
+-   **Multi-group or covariate-rich study**: use ANOVA, linear models, LIMMA, and adjusted regression rather than many separate t-tests.
+
+-   **Biomarker panel discovery**: compare univariate methods with sPLS-DA, regularized regression, and random forest instead of relying on one classifier.
+
+-   **Mechanism-oriented study**: combine univariate analysis, PCA, pathway analysis, and network interpretation.
+
+-   **Prediction-focused study with external validation**: supervised ML is reasonable, but model selection, nested validation, and batch control become critical.
 
 ## Differences analysis
 
@@ -64,23 +95,19 @@ Linear Models for MicroArray Data(LIMMA) model could also be used for high-dimen
 
 Another way to make difference analysis is based on Bayesian mixture model without p value. Such model would not use hypothesis testing and directly generate the posterior estimation of parameters. A posterior probability could be used to check whether certain peaks could be related to different condition. If we want to make comparison between classical model like LIMMA and Bayesian mixture model. We need to use simulation to find the cutoff.
 
-## PCA
+## Exploratory multivariate analysis
 
-In most cases, PCA is used as an exploratory data analysis(EDA) method. In most of those most cases, PCA is just served as visualization method. I mean, when I need to visualize some high-dimension data, I would use PCA.
+### PCA
 
-So, the basic idea behind PCA is compression. When you have 100 samples with concentrations of certain compound, you could plot the concentrations with samples' ID. However, if you have 100 compounds to be analyzed, it would by hard to show the relationship between the samples. Actually, you need to show a matrix with sample and compounds (100 \* 100 with the concentrations filled into the matrix) in an informal way.
+In metabolomics, PCA is primarily an exploratory data analysis method. It is widely used for visualization, but its value goes beyond plotting alone. PCA compresses a high-dimensional data matrix into a smaller set of orthogonal components that capture as much variance as possible. For example, instead of visualizing 100 metabolites across 100 samples directly, PCA projects the data into a smaller number of principal components that summarize the dominant structure of the dataset.
 
-The PCA would say: OK, guys, I could convert your data into only 100 \* 2 matrix with the loss of information minimized. Yeah, that is what the mathematical guys or computer programmer do. You just run the command of PCA. The new two "compounds" might have the cor-relationship between the original 100 compounds and retain the variances between them. After such projection, you would see the compressed relationship between the 100 samples. If some samples' data are similar, they would be projected together in new two "compounds" plot. That is why PCA could be used for cluster and the new "compounds" could be referred as principal components(PCs).
+This projection makes it easier to inspect sample relationships, outliers, QC clustering, and batch structure. Samples with similar metabolite patterns will tend to project near each other in score plots, while dissimilar samples will separate along the principal components. Although two principal components are commonly plotted for convenience, they are usually not sufficient to represent the whole dataset. In many cases, several PCs are needed to explain most of the variance.
 
-However, you might ask why only two new compounds could finished such task. I have to say, two PCs are just good for visualization. In most cases, we need to collect PCs standing for more than 80% variances in our data if you want to recovery the data with PCs. If each compound have no relationship between each other, the PCs are still those 100 compounds. So you have found a property of the PCs: PCs are orthogonal between each other.
+PCA can also be used to explore metabolite relationships through loadings, which describe how strongly each metabolite contributes to a principal component. Metabolites with similar loadings often show similar abundance patterns across samples. In this way, PCA helps summarize both sample-level structure and variable-level structure.
 
-Another issue is how to find the relationship between the compounds. We could use PCA to find the relationship between samples. However, we could also extract the influences of the compounds on certain PCs. You might find many compounds showed the same loading on the first PC. That means the concentrations pattern between the compounds are looked similar. So PCA could also be used to explore the relationship between the compounds.
+Besides visualization, PCA loadings can sometimes be used for downstream interpretation. Yamamoto et al.[@yamamoto2014] used statistical testing on loading-related correlations to identify peaks associated with biologically meaningful PCs. Such approaches are most useful when a relatively small number of PCs explain a large proportion of the variance.
 
-OK, next time you might recall PCA when you need it instead of other paper showed them.
-
-Besides, there are some other usage of PCA. Loadings are actually correlation coefficients between peaks and their PC scores. Yamamoto et.al. [@yamamoto2014] used t-test on this correlation coefficient and thought the peaks with statistically significant correlation to the PC score have biological meanings for further study such as annotation. However, such analysis works better when few PCs could explain most of the variances in the dataset.
-
-## Cluster Analysis
+### Cluster Analysis
 
 After we got a lot of samples and analyzed the concentrations of many compounds in them, we may ask about the relationship between the samples. You might have the sampling information such as the date and the position and you could use boxplot or violin plot to explore the relationships among those categorical variables. However, you could also use the data to find some potential relationship.
 
@@ -109,7 +136,32 @@ The basic idea behind the K means is that generate three virtual samples and cal
 
 OK, the basic idea behind the cluster analysis could be summarized as define the distances, set your cut-off and find the group. By this way, you might show potential relationships among samples.
 
-## PLSDA
+## Supervised multivariate discrimination
+
+### PCA / PLS-DA / sPLS-DA / OPLS-DA
+
+These methods are often used together in metabolomics papers, but they answer different questions and should not be treated as interchangeable.
+
+| Method | Uses class labels | Main purpose | Strengths | Main risks / limitations |
+|------|------|------|------|------|
+| PCA | No | Explore global structure and major variance directions | Simple, robust, useful for QC, outliers, and batch patterns | May miss group separation when biological variance is smaller than technical variance |
+| PLS-DA | Yes | Find latent components related to class separation | Handles collinearity well and gives interpretable loadings | Easily overfits in small high-dimensional studies |
+| sPLS-DA | Yes | Class separation with embedded feature selection | More suitable for biomarker discovery because it removes many irrelevant variables | Feature selection can still be unstable without resampling |
+| OPLS-DA | Yes | Separate predictive variation from orthogonal variation | Often gives clearer visual separation and easier interpretation | Can appear more convincing than justified if validation is weak |
+
+In practical terms:
+
+-   **PCA** is usually the first multivariate method to run because it does not use labels and is useful for checking QC clustering, outliers, batch effects, and dominant variance structure.
+
+-   **PLS-DA** is useful when the goal is supervised discrimination and interpretation of class-related latent variables, but it should never be trusted from score plots alone.
+
+-   **sPLS-DA** is often a better choice than standard PLS-DA when the goal is feature prioritization, because sparse penalties reduce noise from irrelevant metabolites.
+
+-   **OPLS-DA** can be useful when you want to isolate variation related to the class from variation unrelated to the class, but it requires especially careful validation because attractive separation plots can be misleading.
+
+No supervised separation method should be interpreted without cross-validation, permutation testing, and comparison with simpler alternatives.
+
+### PLSDA
 
 PLS-DA, OPLS-DA and HPSO-OPLS-DA [@yang2017a] could be used.
 
@@ -122,6 +174,22 @@ Different algorithms [@andersson2009] for PLSDA would show different score, whil
 Sparse PLS discriminant analysis(sPLS-DA) make an L1 penalty on the variable selection to remove the influences from unrelated variables, which make sense for high-throughput omics data [@lecao2011].
 
 For o-PLS-DA, s-plot could be used to find features[@wiklund2008].
+
+### When to choose which method
+
+For typical metabolomics study designs:
+
+-   **Exploratory cohort profiling**: use PCA first, then clustering if you want to inspect natural sample grouping.
+
+-   **Two-class discrimination with moderate sample size**: use PCA for diagnostics and then compare PLS-DA with simpler classifiers or univariate baselines.
+
+-   **Biomarker shortlist generation in high-dimensional data**: prefer sPLS-DA or regularized regression because they embed feature selection.
+
+-   **Need to separate class-related from unrelated structured variation**: consider OPLS-DA, but validate with permutation tests and external or nested cross-validation.
+
+-   **Very small sample size with many features**: avoid over-interpreting any supervised latent-variable model; rely more on PCA, univariate analysis, and conservative reporting.
+
+-   **Prediction as the main goal**: compare PLS-DA family methods against random forest, SVM, or penalized regression rather than assuming latent-variable methods are best.
 
 ## Network analysis
 

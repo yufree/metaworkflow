@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Experimental Design (DoE) | Meta-Workflow</title>
+  <meta name="description" content="This is a workflow for metabolomics studies." />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Experimental Design (DoE) | Meta-Workflow" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/images/cover.png" />
+  <meta property="og:description" content="This is a workflow for metabolomics studies." />
+  <meta name="github-repo" content="yufree/metaworkflow" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Experimental Design (DoE) | Meta-Workflow" />
+  
+  <meta name="twitter:description" content="This is a workflow for metabolomics studies." />
+  <meta name="twitter:image" content="/images/cover.png" />
+
+<meta name="author" content="Miao YU" />
+
+
+<meta name="date" content="2026-04-02" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="introduction.html"/>
+<link rel="next" href="pretreatment.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/viz-1.8.2/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.11/grViz.js"></script>
+<link href="libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet" />
+<script src="libs/d3-3.3.8/d3.min.js"></script>
+<script src="libs/dagre-0.4.0/dagre-d3.min.js"></script>
+<link href="libs/mermaid-0.3.0/dist/mermaid.css" rel="stylesheet" />
+<script src="libs/mermaid-0.3.0/dist/mermaid.slim.min.js"></script>
+<script src="libs/chromatography-0.1/chromatography.js"></script>
+<script src="libs/DiagrammeR-binding-1.0.11/DiagrammeR.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Metabolomics Workflow</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="introduction.html"><a href="introduction.html#history"><i class="fa fa-check"></i><b>1.1</b> History</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="introduction.html"><a href="introduction.html#history-of-mass-spectrometry"><i class="fa fa-check"></i><b>1.1.1</b> History of Mass Spectrometry</a></li>
+<li class="chapter" data-level="1.1.2" data-path="introduction.html"><a href="introduction.html#history-of-metabolomics"><i class="fa fa-check"></i><b>1.1.2</b> History of Metabolomics</a></li>
+<li class="chapter" data-level="1.1.3" data-path="introduction.html"><a href="introduction.html#definition"><i class="fa fa-check"></i><b>1.1.3</b> Definition</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="introduction.html"><a href="introduction.html#reviews-and-tutorials"><i class="fa fa-check"></i><b>1.2</b> Reviews and tutorials</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="introduction.html"><a href="introduction.html#workflow"><i class="fa fa-check"></i><b>1.2.1</b> Workflow</a></li>
+<li class="chapter" data-level="1.2.2" data-path="introduction.html"><a href="introduction.html#data-analysis"><i class="fa fa-check"></i><b>1.2.2</b> Data analysis</a></li>
+<li class="chapter" data-level="1.2.3" data-path="introduction.html"><a href="introduction.html#application"><i class="fa fa-check"></i><b>1.2.3</b> Application</a></li>
+<li class="chapter" data-level="1.2.4" data-path="introduction.html"><a href="introduction.html#challenge"><i class="fa fa-check"></i><b>1.2.4</b> Challenge</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="introduction.html"><a href="introduction.html#trends-in-metabolomics"><i class="fa fa-check"></i><b>1.3</b> Trends in Metabolomics</a></li>
+<li class="chapter" data-level="1.4" data-path="introduction.html"><a href="introduction.html#workflow-1"><i class="fa fa-check"></i><b>1.4</b> Workflow</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="experimental-design-doe.html"><a href="experimental-design-doe.html"><i class="fa fa-check"></i><b>2</b> Experimental Design (DoE)</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="experimental-design-doe.html"><a href="experimental-design-doe.html#study-objective"><i class="fa fa-check"></i><b>2.1</b> Study objective</a></li>
+<li class="chapter" data-level="2.2" data-path="experimental-design-doe.html"><a href="experimental-design-doe.html#stable-isotope-labeling-in-doe"><i class="fa fa-check"></i><b>2.2</b> Stable isotope labeling in DoE</a></li>
+<li class="chapter" data-level="2.3" data-path="experimental-design-doe.html"><a href="experimental-design-doe.html#homogeneity-study"><i class="fa fa-check"></i><b>2.3</b> Homogeneity study</a></li>
+<li class="chapter" data-level="2.4" data-path="experimental-design-doe.html"><a href="experimental-design-doe.html#heterogeneity-study"><i class="fa fa-check"></i><b>2.4</b> Heterogeneity study</a></li>
+<li class="chapter" data-level="2.5" data-path="experimental-design-doe.html"><a href="experimental-design-doe.html#power-analysis"><i class="fa fa-check"></i><b>2.5</b> Power analysis</a></li>
+<li class="chapter" data-level="2.6" data-path="experimental-design-doe.html"><a href="experimental-design-doe.html#multi-batch-planning"><i class="fa fa-check"></i><b>2.6</b> Multi-batch planning</a></li>
+<li class="chapter" data-level="2.7" data-path="experimental-design-doe.html"><a href="experimental-design-doe.html#confounder-balancing"><i class="fa fa-check"></i><b>2.7</b> Confounder balancing</a></li>
+<li class="chapter" data-level="2.8" data-path="experimental-design-doe.html"><a href="experimental-design-doe.html#optimization"><i class="fa fa-check"></i><b>2.8</b> Optimization</a></li>
+<li class="chapter" data-level="2.9" data-path="experimental-design-doe.html"><a href="experimental-design-doe.html#pooled-qc"><i class="fa fa-check"></i><b>2.9</b> Pooled QC</a></li>
+<li class="chapter" data-level="2.10" data-path="experimental-design-doe.html"><a href="experimental-design-doe.html#simple-study-design-decision-tree"><i class="fa fa-check"></i><b>2.10</b> Simple study-design decision tree</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="pretreatment.html"><a href="pretreatment.html"><i class="fa fa-check"></i><b>3</b> Pretreatment</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="pretreatment.html"><a href="pretreatment.html#collection"><i class="fa fa-check"></i><b>3.1</b> Collection</a></li>
+<li class="chapter" data-level="3.2" data-path="pretreatment.html"><a href="pretreatment.html#quenching"><i class="fa fa-check"></i><b>3.2</b> Quenching</a></li>
+<li class="chapter" data-level="3.3" data-path="pretreatment.html"><a href="pretreatment.html#extraction"><i class="fa fa-check"></i><b>3.3</b> Extraction</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="pretreatment.html"><a href="pretreatment.html#extraction-selection-flowchart"><i class="fa fa-check"></i><b>3.3.1</b> Extraction selection flowchart</a></li>
+<li class="chapter" data-level="3.3.2" data-path="pretreatment.html"><a href="pretreatment.html#protein-precipitation-spe-and-lle"><i class="fa fa-check"></i><b>3.3.2</b> Protein precipitation, SPE, and LLE</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="pretreatment.html"><a href="pretreatment.html#derivatization"><i class="fa fa-check"></i><b>3.4</b> Derivatization</a></li>
+<li class="chapter" data-level="3.5" data-path="pretreatment.html"><a href="pretreatment.html#isotope-label"><i class="fa fa-check"></i><b>3.5</b> Isotope label</a></li>
+<li class="chapter" data-level="3.6" data-path="pretreatment.html"><a href="pretreatment.html#microsampling-techniques"><i class="fa fa-check"></i><b>3.6</b> Microsampling techniques</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="pretreatment.html"><a href="pretreatment.html#solid-phase-microextraction-spme"><i class="fa fa-check"></i><b>3.6.1</b> Solid-phase microextraction (SPME)</a></li>
+<li class="chapter" data-level="3.6.2" data-path="pretreatment.html"><a href="pretreatment.html#dried-blood-spots-dbs"><i class="fa fa-check"></i><b>3.6.2</b> Dried blood spots (DBS)</a></li>
+<li class="chapter" data-level="3.6.3" data-path="pretreatment.html"><a href="pretreatment.html#volumetric-absorptive-microsampling-vams"><i class="fa fa-check"></i><b>3.6.3</b> Volumetric absorptive microsampling (VAMS)</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="pretreatment.html"><a href="pretreatment.html#automation"><i class="fa fa-check"></i><b>3.7</b> Automation</a></li>
+<li class="chapter" data-level="3.8" data-path="pretreatment.html"><a href="pretreatment.html#storage"><i class="fa fa-check"></i><b>3.8</b> Storage</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html"><i class="fa fa-check"></i><b>4</b> Instrumental Analysis</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#ionization-mode-selection"><i class="fa fa-check"></i><b>4.1</b> Ionization mode selection</a></li>
+<li class="chapter" data-level="4.2" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#column-and-gradient-selection"><i class="fa fa-check"></i><b>4.2</b> Column and gradient selection</a></li>
+<li class="chapter" data-level="4.3" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#mass-resolution"><i class="fa fa-check"></i><b>4.3</b> Mass resolution</a></li>
+<li class="chapter" data-level="4.4" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#instrument-comparison"><i class="fa fa-check"></i><b>4.4</b> Instrument comparison</a></li>
+<li class="chapter" data-level="4.5" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#scan-speed-and-dwell-time"><i class="fa fa-check"></i><b>4.5</b> Scan speed and dwell time</a></li>
+<li class="chapter" data-level="4.6" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#quantitative-metabolomics"><i class="fa fa-check"></i><b>4.6</b> Quantitative Metabolomics</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#quantification-levels"><i class="fa fa-check"></i><b>4.6.1</b> Quantification levels</a></li>
+<li class="chapter" data-level="4.6.2" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#calibration-strategies"><i class="fa fa-check"></i><b>4.6.2</b> Calibration strategies</a></li>
+<li class="chapter" data-level="4.6.3" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#untargeted-quantification-challenges"><i class="fa fa-check"></i><b>4.6.3</b> Untargeted quantification challenges</a></li>
+<li class="chapter" data-level="4.6.4" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#practical-recommendations"><i class="fa fa-check"></i><b>4.6.4</b> Practical recommendations</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="instrumental-analysis.html"><a href="instrumental-analysis.html#matrix-effects"><i class="fa fa-check"></i><b>4.7</b> Matrix effects</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="workflow-2.html"><a href="workflow-2.html"><i class="fa fa-check"></i><b>5</b> Workflow</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="workflow-2.html"><a href="workflow-2.html#platform-for-metabolomics-data-analysis"><i class="fa fa-check"></i><b>5.1</b> Platform for metabolomics data analysis</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="workflow-2.html"><a href="workflow-2.html#recommended-pipelines-by-use-case"><i class="fa fa-check"></i><b>5.1.1</b> Recommended pipelines by use case</a></li>
+<li class="chapter" data-level="5.1.2" data-path="workflow-2.html"><a href="workflow-2.html#xcms-xcms-online"><i class="fa fa-check"></i><b>5.1.2</b> XCMS &amp; XCMS online</a></li>
+<li class="chapter" data-level="5.1.3" data-path="workflow-2.html"><a href="workflow-2.html#prime"><i class="fa fa-check"></i><b>5.1.3</b> PRIMe</a></li>
+<li class="chapter" data-level="5.1.4" data-path="workflow-2.html"><a href="workflow-2.html#gnps"><i class="fa fa-check"></i><b>5.1.4</b> GNPS</a></li>
+<li class="chapter" data-level="5.1.5" data-path="workflow-2.html"><a href="workflow-2.html#openms-sirius"><i class="fa fa-check"></i><b>5.1.5</b> OpenMS &amp; SIRIUS</a></li>
+<li class="chapter" data-level="5.1.6" data-path="workflow-2.html"><a href="workflow-2.html#mzmine"><i class="fa fa-check"></i><b>5.1.6</b> MZmine</a></li>
+<li class="chapter" data-level="5.1.7" data-path="workflow-2.html"><a href="workflow-2.html#emory-mahpic"><i class="fa fa-check"></i><b>5.1.7</b> Emory MaHPIC</a></li>
+<li class="chapter" data-level="5.1.8" data-path="workflow-2.html"><a href="workflow-2.html#others"><i class="fa fa-check"></i><b>5.1.8</b> Others</a></li>
+<li class="chapter" data-level="5.1.9" data-path="workflow-2.html"><a href="workflow-2.html#workflow-comparison"><i class="fa fa-check"></i><b>5.1.9</b> Workflow Comparison</a></li>
+<li class="chapter" data-level="5.1.10" data-path="workflow-2.html"><a href="workflow-2.html#a-simple-opinionated-choice-guide"><i class="fa fa-check"></i><b>5.1.10</b> A simple opinionated choice guide</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="workflow-2.html"><a href="workflow-2.html#project-setup"><i class="fa fa-check"></i><b>5.2</b> Project Setup</a></li>
+<li class="chapter" data-level="5.3" data-path="workflow-2.html"><a href="workflow-2.html#data-standards-and-metadata"><i class="fa fa-check"></i><b>5.3</b> Data Standards and Metadata</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="workflow-2.html"><a href="workflow-2.html#metadata-standards"><i class="fa fa-check"></i><b>5.3.1</b> Metadata Standards</a></li>
+<li class="chapter" data-level="5.3.2" data-path="workflow-2.html"><a href="workflow-2.html#fair-in-metabolomics"><i class="fa fa-check"></i><b>5.3.2</b> FAIR in Metabolomics</a></li>
+<li class="chapter" data-level="5.3.3" data-path="workflow-2.html"><a href="workflow-2.html#practical-recommendations-1"><i class="fa fa-check"></i><b>5.3.3</b> Practical Recommendations</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="workflow-2.html"><a href="workflow-2.html#data-sharing"><i class="fa fa-check"></i><b>5.4</b> Data sharing</a></li>
+<li class="chapter" data-level="5.5" data-path="workflow-2.html"><a href="workflow-2.html#contest"><i class="fa fa-check"></i><b>5.5</b> Contest</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html"><i class="fa fa-check"></i><b>6</b> Raw Data Pretreatment</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#data-visualization"><i class="fa fa-check"></i><b>6.1</b> Data visualization</a></li>
+<li class="chapter" data-level="6.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#peak-extraction"><i class="fa fa-check"></i><b>6.2</b> Peak extraction</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#parameter-selection-guidance"><i class="fa fa-check"></i><b>6.2.1</b> Parameter selection guidance</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#msms"><i class="fa fa-check"></i><b>6.3</b> MS/MS</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#mrm"><i class="fa fa-check"></i><b>6.3.1</b> MRM</a></li>
+<li class="chapter" data-level="6.3.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#dda"><i class="fa fa-check"></i><b>6.3.2</b> DDA</a></li>
+<li class="chapter" data-level="6.3.3" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#dia"><i class="fa fa-check"></i><b>6.3.3</b> DIA</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#retention-time-correction"><i class="fa fa-check"></i><b>6.4</b> Retention Time Correction</a></li>
+<li class="chapter" data-level="6.5" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#filling-missing-values"><i class="fa fa-check"></i><b>6.5</b> Filling missing values</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#feature-filling-choices"><i class="fa fa-check"></i><b>6.5.1</b> Feature filling choices</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#qc-design-in-preprocessing"><i class="fa fa-check"></i><b>6.6</b> QC design in preprocessing</a></li>
+<li class="chapter" data-level="6.7" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#spectral-deconvolution"><i class="fa fa-check"></i><b>6.7</b> Spectral deconvolution</a></li>
+<li class="chapter" data-level="6.8" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#dynamic-range"><i class="fa fa-check"></i><b>6.8</b> Dynamic Range</a>
+<ul>
+<li class="chapter" data-level="6.8.1" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#non-detects"><i class="fa fa-check"></i><b>6.8.1</b> Non-detects</a></li>
+<li class="chapter" data-level="6.8.2" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#over-detection-limit"><i class="fa fa-check"></i><b>6.8.2</b> Over Detection Limit</a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#rsdfold-change-filter"><i class="fa fa-check"></i><b>6.9</b> RSD/fold change Filter</a></li>
+<li class="chapter" data-level="6.10" data-path="raw-data-pretreatment.html"><a href="raw-data-pretreatment.html#power-analysis-filter"><i class="fa fa-check"></i><b>6.10</b> Power Analysis Filter</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="annotation.html"><a href="annotation.html"><i class="fa fa-check"></i><b>7</b> Annotation</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="annotation.html"><a href="annotation.html#a-practical-annotation-workflow"><i class="fa fa-check"></i><b>7.1</b> A practical annotation workflow</a></li>
+<li class="chapter" data-level="7.2" data-path="annotation.html"><a href="annotation.html#step-0-understand-annotation-limits"><i class="fa fa-check"></i><b>7.2</b> Step 0: understand annotation limits</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="annotation.html"><a href="annotation.html#common-sources-of-peak-misidentification"><i class="fa fa-check"></i><b>7.2.1</b> Common sources of peak misidentification</a></li>
+<li class="chapter" data-level="7.2.2" data-path="annotation.html"><a href="annotation.html#annotation-vs.-identification"><i class="fa fa-check"></i><b>7.2.2</b> Annotation vs. Identification</a></li>
+<li class="chapter" data-level="7.2.3" data-path="annotation.html"><a href="annotation.html#the-dark-metabolome"><i class="fa fa-check"></i><b>7.2.3</b> The Dark Metabolome</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="annotation.html"><a href="annotation.html#step-1-constrain-candidates-by-molecular-formula"><i class="fa fa-check"></i><b>7.3</b> Step 1: constrain candidates by molecular formula</a></li>
+<li class="chapter" data-level="7.4" data-path="annotation.html"><a href="annotation.html#step-2-collapse-redundant-ms1-features"><i class="fa fa-check"></i><b>7.4</b> Step 2: collapse redundant MS1 features</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="annotation.html"><a href="annotation.html#adducts-list"><i class="fa fa-check"></i><b>7.4.1</b> Adducts list</a></li>
+<li class="chapter" data-level="7.4.2" data-path="annotation.html"><a href="annotation.html#isotope"><i class="fa fa-check"></i><b>7.4.2</b> Isotope</a></li>
+<li class="chapter" data-level="7.4.3" data-path="annotation.html"><a href="annotation.html#camera"><i class="fa fa-check"></i><b>7.4.3</b> CAMERA</a></li>
+<li class="chapter" data-level="7.4.4" data-path="annotation.html"><a href="annotation.html#ramclustr"><i class="fa fa-check"></i><b>7.4.4</b> RAMClustR</a></li>
+<li class="chapter" data-level="7.4.5" data-path="annotation.html"><a href="annotation.html#biocan"><i class="fa fa-check"></i><b>7.4.5</b> BioCAn</a></li>
+<li class="chapter" data-level="7.4.6" data-path="annotation.html"><a href="annotation.html#mzmatch"><i class="fa fa-check"></i><b>7.4.6</b> mzMatch</a></li>
+<li class="chapter" data-level="7.4.7" data-path="annotation.html"><a href="annotation.html#xmsannotator"><i class="fa fa-check"></i><b>7.4.7</b> xMSannotator</a></li>
+<li class="chapter" data-level="7.4.8" data-path="annotation.html"><a href="annotation.html#mwise"><i class="fa fa-check"></i><b>7.4.8</b> mWise</a></li>
+<li class="chapter" data-level="7.4.9" data-path="annotation.html"><a href="annotation.html#mait"><i class="fa fa-check"></i><b>7.4.9</b> MAIT</a></li>
+<li class="chapter" data-level="7.4.10" data-path="annotation.html"><a href="annotation.html#pmd"><i class="fa fa-check"></i><b>7.4.10</b> pmd</a></li>
+<li class="chapter" data-level="7.4.11" data-path="annotation.html"><a href="annotation.html#nontarget"><i class="fa fa-check"></i><b>7.4.11</b> nontarget</a></li>
+<li class="chapter" data-level="7.4.12" data-path="annotation.html"><a href="annotation.html#binner"><i class="fa fa-check"></i><b>7.4.12</b> Binner</a></li>
+<li class="chapter" data-level="7.4.13" data-path="annotation.html"><a href="annotation.html#mz.unity"><i class="fa fa-check"></i><b>7.4.13</b> mz.unity</a></li>
+<li class="chapter" data-level="7.4.14" data-path="annotation.html"><a href="annotation.html#ms-flo"><i class="fa fa-check"></i><b>7.4.14</b> MS-FLO</a></li>
+<li class="chapter" data-level="7.4.15" data-path="annotation.html"><a href="annotation.html#cliquems"><i class="fa fa-check"></i><b>7.4.15</b> CliqueMS</a></li>
+<li class="chapter" data-level="7.4.16" data-path="annotation.html"><a href="annotation.html#interpretmsspectrum"><i class="fa fa-check"></i><b>7.4.16</b> InterpretMSSpectrum</a></li>
+<li class="chapter" data-level="7.4.17" data-path="annotation.html"><a href="annotation.html#netid"><i class="fa fa-check"></i><b>7.4.17</b> NetID</a></li>
+<li class="chapter" data-level="7.4.18" data-path="annotation.html"><a href="annotation.html#isfrag"><i class="fa fa-check"></i><b>7.4.18</b> ISfrag</a></li>
+<li class="chapter" data-level="7.4.19" data-path="annotation.html"><a href="annotation.html#fastei"><i class="fa fa-check"></i><b>7.4.19</b> FastEI</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="annotation.html"><a href="annotation.html#step-3-connect-ms1-features-to-ms2-acquisition"><i class="fa fa-check"></i><b>7.5</b> Step 3: connect MS1 features to MS2 acquisition</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="annotation.html"><a href="annotation.html#pmdda"><i class="fa fa-check"></i><b>7.5.1</b> PMDDA</a></li>
+<li class="chapter" data-level="7.5.2" data-path="annotation.html"><a href="annotation.html#hermes"><i class="fa fa-check"></i><b>7.5.2</b> HERMES</a></li>
+<li class="chapter" data-level="7.5.3" data-path="annotation.html"><a href="annotation.html#dpdda"><i class="fa fa-check"></i><b>7.5.3</b> dpDDA</a></li>
+<li class="chapter" data-level="7.5.4" data-path="annotation.html"><a href="annotation.html#extending-from-ms2-to-msn"><i class="fa fa-check"></i><b>7.5.4</b> Extending from MS2 to MSn</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="annotation.html"><a href="annotation.html#step-4-score-and-prioritize-candidates-with-msms"><i class="fa fa-check"></i><b>7.6</b> Step 4: score and prioritize candidates with MS/MS</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="annotation.html"><a href="annotation.html#matchms"><i class="fa fa-check"></i><b>7.6.1</b> Matchms</a></li>
+<li class="chapter" data-level="7.6.2" data-path="annotation.html"><a href="annotation.html#metdna"><i class="fa fa-check"></i><b>7.6.2</b> MetDNA</a></li>
+<li class="chapter" data-level="7.6.3" data-path="annotation.html"><a href="annotation.html#metfusion"><i class="fa fa-check"></i><b>7.6.3</b> MetFusion</a></li>
+<li class="chapter" data-level="7.6.4" data-path="annotation.html"><a href="annotation.html#ms2analyzer"><i class="fa fa-check"></i><b>7.6.4</b> MS2Analyzer</a></li>
+<li class="chapter" data-level="7.6.5" data-path="annotation.html"><a href="annotation.html#metfrag"><i class="fa fa-check"></i><b>7.6.5</b> MetFrag</a></li>
+<li class="chapter" data-level="7.6.6" data-path="annotation.html"><a href="annotation.html#cfm-id"><i class="fa fa-check"></i><b>7.6.6</b> CFM-ID</a></li>
+<li class="chapter" data-level="7.6.7" data-path="annotation.html"><a href="annotation.html#lc-ms2struct"><i class="fa fa-check"></i><b>7.6.7</b> LC-MS2Struct</a></li>
+<li class="chapter" data-level="7.6.8" data-path="annotation.html"><a href="annotation.html#lipidfrag"><i class="fa fa-check"></i><b>7.6.8</b> LipidFrag</a></li>
+<li class="chapter" data-level="7.6.9" data-path="annotation.html"><a href="annotation.html#lipidmatch"><i class="fa fa-check"></i><b>7.6.9</b> Lipidmatch</a></li>
+<li class="chapter" data-level="7.6.10" data-path="annotation.html"><a href="annotation.html#barcoding"><i class="fa fa-check"></i><b>7.6.10</b> BarCoding</a></li>
+<li class="chapter" data-level="7.6.11" data-path="annotation.html"><a href="annotation.html#imet"><i class="fa fa-check"></i><b>7.6.11</b> iMet</a></li>
+<li class="chapter" data-level="7.6.12" data-path="annotation.html"><a href="annotation.html#dnms2purifier"><i class="fa fa-check"></i><b>7.6.12</b> DNMS2Purifier</a></li>
+<li class="chapter" data-level="7.6.13" data-path="annotation.html"><a href="annotation.html#idsl.csa"><i class="fa fa-check"></i><b>7.6.13</b> IDSL.CSA</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="annotation.html"><a href="annotation.html#step-5-refine-annotation-with-retention-biology-and-prior-knowledge"><i class="fa fa-check"></i><b>7.7</b> Step 5: refine annotation with retention, biology, and prior knowledge</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="annotation.html"><a href="annotation.html#experimental-design"><i class="fa fa-check"></i><b>7.7.1</b> Experimental design</a></li>
+<li class="chapter" data-level="7.7.2" data-path="annotation.html"><a href="annotation.html#chromatographic-retention-related-criteria"><i class="fa fa-check"></i><b>7.7.2</b> Chromatographic retention-related criteria</a></li>
+<li class="chapter" data-level="7.7.3" data-path="annotation.html"><a href="annotation.html#probmetab"><i class="fa fa-check"></i><b>7.7.3</b> ProbMetab</a></li>
+<li class="chapter" data-level="7.7.4" data-path="annotation.html"><a href="annotation.html#mi-pack"><i class="fa fa-check"></i><b>7.7.4</b> MI-Pack</a></li>
+<li class="chapter" data-level="7.7.5" data-path="annotation.html"><a href="annotation.html#metexpert"><i class="fa fa-check"></i><b>7.7.5</b> MetExpert</a></li>
+<li class="chapter" data-level="7.7.6" data-path="annotation.html"><a href="annotation.html#mycompoundid"><i class="fa fa-check"></i><b>7.7.6</b> MycompoundID</a></li>
+<li class="chapter" data-level="7.7.7" data-path="annotation.html"><a href="annotation.html#metfamily"><i class="fa fa-check"></i><b>7.7.7</b> MetFamily</a></li>
+<li class="chapter" data-level="7.7.8" data-path="annotation.html"><a href="annotation.html#coa-blast"><i class="fa fa-check"></i><b>7.7.8</b> CoA-Blast</a></li>
+<li class="chapter" data-level="7.7.9" data-path="annotation.html"><a href="annotation.html#kgmn"><i class="fa fa-check"></i><b>7.7.9</b> KGMN</a></li>
+<li class="chapter" data-level="7.7.10" data-path="annotation.html"><a href="annotation.html#ccmn"><i class="fa fa-check"></i><b>7.7.10</b> CCMN</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="annotation.html"><a href="annotation.html#step-6-search-spectral-databases"><i class="fa fa-check"></i><b>7.8</b> Step 6: search spectral databases</a>
+<ul>
+<li class="chapter" data-level="7.8.1" data-path="annotation.html"><a href="annotation.html#ms"><i class="fa fa-check"></i><b>7.8.1</b> MS</a></li>
+<li class="chapter" data-level="7.8.2" data-path="annotation.html"><a href="annotation.html#msms-1"><i class="fa fa-check"></i><b>7.8.2</b> MS/MS</a></li>
+</ul></li>
+<li class="chapter" data-level="7.9" data-path="annotation.html"><a href="annotation.html#step-7-search-compound-databases"><i class="fa fa-check"></i><b>7.9</b> Step 7: search compound databases</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="omics-analysis.html"><a href="omics-analysis.html"><i class="fa fa-check"></i><b>8</b> Omics Analysis</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="omics-analysis.html"><a href="omics-analysis.html#from-bottom-up-to-top-down"><i class="fa fa-check"></i><b>8.1</b> From Bottom-up to Top-down</a></li>
+<li class="chapter" data-level="8.2" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-analysis"><i class="fa fa-check"></i><b>8.2</b> Pathway analysis</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="omics-analysis.html"><a href="omics-analysis.html#a-practical-pathway-analysis-workflow"><i class="fa fa-check"></i><b>8.2.1</b> A practical pathway analysis workflow</a></li>
+<li class="chapter" data-level="8.2.2" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-database"><i class="fa fa-check"></i><b>8.2.2</b> Pathway Database</a></li>
+<li class="chapter" data-level="8.2.3" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-software"><i class="fa fa-check"></i><b>8.2.3</b> Pathway software</a></li>
+<li class="chapter" data-level="8.2.4" data-path="omics-analysis.html"><a href="omics-analysis.html#pathway-interpretation-pitfalls"><i class="fa fa-check"></i><b>8.2.4</b> Pathway interpretation pitfalls</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="omics-analysis.html"><a href="omics-analysis.html#network-analysis"><i class="fa fa-check"></i><b>8.3</b> Network analysis</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="omics-analysis.html"><a href="omics-analysis.html#network-construction-choices"><i class="fa fa-check"></i><b>8.3.1</b> Network construction choices</a></li>
+<li class="chapter" data-level="8.3.2" data-path="omics-analysis.html"><a href="omics-analysis.html#network-interpretation-pitfalls"><i class="fa fa-check"></i><b>8.3.2</b> Network interpretation pitfalls</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="omics-analysis.html"><a href="omics-analysis.html#omics-integration"><i class="fa fa-check"></i><b>8.4</b> Omics integration</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="peak-normalization.html"><a href="peak-normalization.html"><i class="fa fa-check"></i><b>9</b> Peak Normalization</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="peak-normalization.html"><a href="peak-normalization.html#batch-effects"><i class="fa fa-check"></i><b>9.1</b> Batch effects</a></li>
+<li class="chapter" data-level="9.2" data-path="peak-normalization.html"><a href="peak-normalization.html#batch-effects-classification"><i class="fa fa-check"></i><b>9.2</b> Batch effects classification</a></li>
+<li class="chapter" data-level="9.3" data-path="peak-normalization.html"><a href="peak-normalization.html#batch-effects-visualization"><i class="fa fa-check"></i><b>9.3</b> Batch effects visualization</a></li>
+<li class="chapter" data-level="9.4" data-path="peak-normalization.html"><a href="peak-normalization.html#source-of-batch-effects"><i class="fa fa-check"></i><b>9.4</b> Source of batch effects</a></li>
+<li class="chapter" data-level="9.5" data-path="peak-normalization.html"><a href="peak-normalization.html#avoid-batch-effects-by-doe"><i class="fa fa-check"></i><b>9.5</b> Avoid batch effects by DoE</a></li>
+<li class="chapter" data-level="9.6" data-path="peak-normalization.html"><a href="peak-normalization.html#post-hoc-data-normalization"><i class="fa fa-check"></i><b>9.6</b> <em>post hoc</em> data normalization</a></li>
+<li class="chapter" data-level="9.7" data-path="peak-normalization.html"><a href="peak-normalization.html#method-selection-flowchart"><i class="fa fa-check"></i><b>9.7</b> Method selection flowchart</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="peak-normalization.html"><a href="peak-normalization.html#unsupervised-methods"><i class="fa fa-check"></i><b>9.7.1</b> Unsupervised methods</a></li>
+<li class="chapter" data-level="9.7.2" data-path="peak-normalization.html"><a href="peak-normalization.html#supervised-methods"><i class="fa fa-check"></i><b>9.7.2</b> Supervised methods</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="peak-normalization.html"><a href="peak-normalization.html#method-to-validate-the-normalization"><i class="fa fa-check"></i><b>9.8</b> Method to validate the normalization</a></li>
+<li class="chapter" data-level="9.9" data-path="peak-normalization.html"><a href="peak-normalization.html#software"><i class="fa fa-check"></i><b>9.9</b> Software</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="statistical-analysis.html"><a href="statistical-analysis.html"><i class="fa fa-check"></i><b>10</b> Statistical Analysis</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="statistical-analysis.html"><a href="statistical-analysis.html#basic-statistical-analysis"><i class="fa fa-check"></i><b>10.1</b> Basic Statistical Analysis</a></li>
+<li class="chapter" data-level="10.2" data-path="statistical-analysis.html"><a href="statistical-analysis.html#a-practical-method-choice-guide"><i class="fa fa-check"></i><b>10.2</b> A practical method-choice guide</a></li>
+<li class="chapter" data-level="10.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#differences-analysis"><i class="fa fa-check"></i><b>10.3</b> Differences analysis</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="statistical-analysis.html"><a href="statistical-analysis.html#t-test-or-anova"><i class="fa fa-check"></i><b>10.3.1</b> T-test or ANOVA</a></li>
+<li class="chapter" data-level="10.3.2" data-path="statistical-analysis.html"><a href="statistical-analysis.html#limma"><i class="fa fa-check"></i><b>10.3.2</b> LIMMA</a></li>
+<li class="chapter" data-level="10.3.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#bayesian-mixture-model"><i class="fa fa-check"></i><b>10.3.3</b> Bayesian mixture model</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="statistical-analysis.html"><a href="statistical-analysis.html#exploratory-multivariate-analysis"><i class="fa fa-check"></i><b>10.4</b> Exploratory multivariate analysis</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="statistical-analysis.html"><a href="statistical-analysis.html#pca"><i class="fa fa-check"></i><b>10.4.1</b> PCA</a></li>
+<li class="chapter" data-level="10.4.2" data-path="statistical-analysis.html"><a href="statistical-analysis.html#cluster-analysis"><i class="fa fa-check"></i><b>10.4.2</b> Cluster Analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="statistical-analysis.html"><a href="statistical-analysis.html#supervised-multivariate-discrimination"><i class="fa fa-check"></i><b>10.5</b> Supervised multivariate discrimination</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="statistical-analysis.html"><a href="statistical-analysis.html#pca-pls-da-spls-da-opls-da"><i class="fa fa-check"></i><b>10.5.1</b> PCA / PLS-DA / sPLS-DA / OPLS-DA</a></li>
+<li class="chapter" data-level="10.5.2" data-path="statistical-analysis.html"><a href="statistical-analysis.html#plsda"><i class="fa fa-check"></i><b>10.5.2</b> PLSDA</a></li>
+<li class="chapter" data-level="10.5.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#when-to-choose-which-method"><i class="fa fa-check"></i><b>10.5.3</b> When to choose which method</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="statistical-analysis.html"><a href="statistical-analysis.html#network-analysis-1"><i class="fa fa-check"></i><b>10.6</b> Network analysis</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="statistical-analysis.html"><a href="statistical-analysis.html#vertex-and-edge"><i class="fa fa-check"></i><b>10.6.1</b> Vertex and edge</a></li>
+<li class="chapter" data-level="10.6.2" data-path="statistical-analysis.html"><a href="statistical-analysis.html#build-the-network"><i class="fa fa-check"></i><b>10.6.2</b> Build the network</a></li>
+<li class="chapter" data-level="10.6.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#network-attributes"><i class="fa fa-check"></i><b>10.6.3</b> Network attributes</a></li>
+</ul></li>
+<li class="chapter" data-level="10.7" data-path="statistical-analysis.html"><a href="statistical-analysis.html#machine-learning-and-deep-learning"><i class="fa fa-check"></i><b>10.7</b> Machine Learning and Deep Learning</a>
+<ul>
+<li class="chapter" data-level="10.7.1" data-path="statistical-analysis.html"><a href="statistical-analysis.html#where-mldl-is-applied-in-metabolomics"><i class="fa fa-check"></i><b>10.7.1</b> Where ML/DL is applied in metabolomics</a></li>
+<li class="chapter" data-level="10.7.2" data-path="statistical-analysis.html"><a href="statistical-analysis.html#common-pitfalls"><i class="fa fa-check"></i><b>10.7.2</b> Common pitfalls</a></li>
+<li class="chapter" data-level="10.7.3" data-path="statistical-analysis.html"><a href="statistical-analysis.html#best-practices"><i class="fa fa-check"></i><b>10.7.3</b> Best practices</a></li>
+<li class="chapter" data-level="10.7.4" data-path="statistical-analysis.html"><a href="statistical-analysis.html#deep-learning-considerations"><i class="fa fa-check"></i><b>10.7.4</b> Deep learning considerations</a></li>
+</ul></li>
+<li class="chapter" data-level="10.8" data-path="statistical-analysis.html"><a href="statistical-analysis.html#causal-inference-in-metabolomics"><i class="fa fa-check"></i><b>10.8</b> Causal inference in metabolomics</a>
+<ul>
+<li class="chapter" data-level="10.8.1" data-path="statistical-analysis.html"><a href="statistical-analysis.html#mendelian-randomization"><i class="fa fa-check"></i><b>10.8.1</b> Mendelian randomization</a></li>
+<li class="chapter" data-level="10.8.2" data-path="statistical-analysis.html"><a href="statistical-analysis.html#practical-considerations"><i class="fa fa-check"></i><b>10.8.2</b> Practical considerations</a></li>
+</ul></li>
+<li class="chapter" data-level="10.9" data-path="statistical-analysis.html"><a href="statistical-analysis.html#software-1"><i class="fa fa-check"></i><b>10.9</b> Software</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/yufree/metaworkflow" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Meta-Workflow</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="experimental-design-doe" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Experimental Design (DoE)<a href="experimental-design-doe.html#experimental-design-doe" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Before you perform any metabolomics experiment, a clean and meaningful experimental design is the best start. Compared with many other omics fields, metabolomics often has lower throughput, stronger pre-analytical variation, and higher per-sample analytical burden. As a result, study design is not only a statistical issue but also a practical issue. Depending on different research purposes, experimental design can be classified into homogeneity and heterogeneity study. Stable isotope labeling will not be discussed here as a full analytical topic, but it should still be considered during study design because it can improve metabolite tracing, compound assignment, normalization, and quantitative confidence in specific applications<span class="citation">(<a href="#ref-jang2018">Jang et al. 2018</a>)</span>.</p>
+<div id="study-objective" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Study objective<a href="experimental-design-doe.html#study-objective" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The first step in DoE is to define the primary objective of the study. Different objectives lead to different requirements for sample size, quality control, and validation:</p>
+<ul>
+<li><p><strong>Method validation or system assessment</strong>: focus on stability, repeatability, drift, and feature reproducibility.</p></li>
+<li><p><strong>Biomarker discovery</strong>: focus on detecting differences between groups while controlling false discoveries.</p></li>
+<li><p><strong>Mechanistic study</strong>: focus on pathway-level interpretation, time-course changes, and confounder control.</p></li>
+<li><p><strong>Validation study</strong>: focus on reproducing an already observed effect size in an independent cohort or batch.</p></li>
+</ul>
+<p>In practice, discovery and validation should not be mixed in the same conclusion. A small metabolomics study may be useful for hypothesis generation, but it is often underpowered for stable effect size estimation and external validation.</p>
+</div>
+<div id="stable-isotope-labeling-in-doe" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Stable isotope labeling in DoE<a href="experimental-design-doe.html#stable-isotope-labeling-in-doe" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Stable isotope labeling is not required for every metabolomics study, but it can strongly affect experimental design when the goal is flux analysis, pathway tracing, internal standardization, or improved metabolite annotation. In those cases, labeling strategy should be decided before sample collection because it changes the biological model, sample preparation, acquisition settings, and downstream data analysis.</p>
+<p>For DoE, the main questions are:</p>
+<ul>
+<li><p><strong>Is the study focused on steady-state metabolite abundance or metabolic flux?</strong> Flux-oriented studies often require stable isotope labeling.</p></li>
+<li><p><strong>Will isotope-labeled internal standards be added?</strong> If yes, they should be introduced consistently and as early as possible in the workflow to capture technical variation.</p></li>
+<li><p><strong>Does labeling affect group comparison or sample size?</strong> Labeled experiments are often more expensive and lower throughput, so the total number of biological replicates may be reduced.</p></li>
+<li><p><strong>Is the analytical platform and software prepared for isotopologue analysis?</strong> This should be planned before data acquisition.</p></li>
+</ul>
+<p>Therefore, even when stable isotope labeling is not covered in detail in this book, it should be treated as a design-level decision rather than a late-stage technical add-on.</p>
+</div>
+<div id="homogeneity-study" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Homogeneity study<a href="experimental-design-doe.html#homogeneity-study" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In homogeneity study, the research purpose is about method validation in most cases. Pooled sample made from multiple samples or technical replicates from same population will be used. Variances within the samples should be attributed to factors other than the samples themselves. For example, we want to know if sample injection order will affect the intensities of the unknown peaks, one pooled sample or technical replicates samples should be used.</p>
+<p>Another experimental design for homogeneity study will use biological replicates to find the common features from a group of samples. Biological replicates mean samples from same population with same biological process. For example, we wanted to know metabolites profiles of a certain species and we could collected lots of the individual samples from the population. Then only the peaks/compounds appeared in all samples will be used to describe the metabolites profiles of this species. Technical replicates could also be used with biological replicates.</p>
+</div>
+<div id="heterogeneity-study" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Heterogeneity study<a href="experimental-design-doe.html#heterogeneity-study" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In heterogeneity study, the research purpose is to find the differences among samples. You need at least a baseline to perform the comparison. Such baseline could be generated by random process, control samples or background knowledge. For example, outlier detection can be performed to find abnormal samples in unsupervised manners. Distribution or spatial analysis could be used to find geological relationship of known and unknown compounds. Temporal trend of metabolites profile could be found by time series or cohort studies. Clinical trial or random control trial is also an important class of heterogeneity studies. In this cases, you need at least two groups: treated group and control group. Also you could treat this group information as the one primary variable or primary variables to be explored for certain research purposes. In the following discussion about experimental design, we will use random control trial as model to discuss important issues.</p>
+</div>
+<div id="power-analysis" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Power analysis<a href="experimental-design-doe.html#power-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Supposing we have control and treated groups, the number of samples in each group should be carefully calculated. For each metabolite, such comparison could be treated as one t-test. You need to perform a power analysis to estimate whether a biologically meaningful effect can be detected under realistic variance and sample number assumptions. In metabolomics, this step is often difficult because variance differs across metabolites and pilot studies are usually small. Therefore, power analysis should be treated as a planning tool, not as an exact answer.</p>
+<p>For practical planning, the key quantities are:</p>
+<ul>
+<li><p><strong>Effect size</strong>: the expected difference between groups. This can be absolute difference, fold change, or standardized effect size.</p></li>
+<li><p><strong>Variance</strong>: usually estimated from pilot data, technical replicates, pooled QC samples, or previous studies.</p></li>
+<li><p><strong>Power</strong>: one minus Type II error probability, often set to 0.8 or 0.9.</p></li>
+<li><p><strong>Significance level</strong>: Type I error probability, often 0.05 before multiple testing adjustment.</p></li>
+</ul>
+<p>For example, we have two groups of samples with 10 samples in each group. Then we set the power at 0.9, the standard deviation at 1 and the significance level at 0.05. Then the meaningful delta between the two groups should be higher than 1.53367 under this design. We could also set the delta first and then estimate the minimum number of samples per group. To get quantities such as standard deviation or delta for power analysis, you generally need preliminary or pilot experiments.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="experimental-design-doe.html#cb2-1" tabindex="-1"></a><span class="fu">power.t.test</span>(<span class="at">n=</span><span class="dv">10</span>,<span class="at">sd=</span><span class="dv">1</span>,<span class="at">sig.level =</span> <span class="fl">0.05</span>,<span class="at">power =</span> <span class="fl">0.9</span>)</span></code></pre></div>
+<pre><code>## 
+##      Two-sample t test power calculation 
+## 
+##               n = 10
+##           delta = 1.53367
+##              sd = 1
+##       sig.level = 0.05
+##           power = 0.9
+##     alternative = two.sided
+## 
+## NOTE: n is number in *each* group</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="experimental-design-doe.html#cb4-1" tabindex="-1"></a><span class="fu">power.t.test</span>(<span class="at">delta =</span> <span class="dv">5</span>,<span class="at">sd=</span><span class="dv">1</span>,<span class="at">sig.level =</span> <span class="fl">0.05</span>,<span class="at">power =</span> <span class="fl">0.9</span>)</span></code></pre></div>
+<pre><code>## 
+##      Two-sample t test power calculation 
+## 
+##               n = 2.328877
+##           delta = 5
+##              sd = 1
+##       sig.level = 0.05
+##           power = 0.9
+##     alternative = two.sided
+## 
+## NOTE: n is number in *each* group</code></pre>
+<p>If the study includes more than two groups, a one-way ANOVA design could be used for initial planning:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="experimental-design-doe.html#cb6-1" tabindex="-1"></a><span class="fu">power.anova.test</span>(<span class="at">groups =</span> <span class="dv">3</span>, <span class="at">between.var =</span> <span class="dv">1</span>, <span class="at">within.var =</span> <span class="dv">1</span>, <span class="at">power =</span> <span class="fl">0.8</span>)</span></code></pre></div>
+<pre><code>## 
+##      Balanced one-way analysis of variance power calculation 
+## 
+##          groups = 3
+##               n = 5.939198
+##     between.var = 1
+##      within.var = 1
+##       sig.level = 0.05
+##           power = 0.8
+## 
+## NOTE: n is number in each group</code></pre>
+<p>For paired designs such as pre/post intervention studies, paired power analysis is usually more appropriate than treating the samples as independent:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="experimental-design-doe.html#cb8-1" tabindex="-1"></a><span class="fu">power.t.test</span>(<span class="at">delta =</span> <span class="fl">0.5</span>, <span class="at">sd =</span> <span class="dv">1</span>, <span class="at">sig.level =</span> <span class="fl">0.05</span>, <span class="at">power =</span> <span class="fl">0.8</span>, <span class="at">type =</span> <span class="st">&quot;paired&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+##      Paired t test power calculation 
+## 
+##               n = 33.3672
+##           delta = 0.5
+##              sd = 1
+##       sig.level = 0.05
+##           power = 0.8
+##     alternative = two.sided
+## 
+## NOTE: n is number of *pairs*, sd is std.dev. of *differences* within pairs</code></pre>
+<p>However, since sometimes we cannot perform a preliminary experiment, we may directly compute the power based on false discovery rate control. If the power is lower than a certain value, say 0.8, we may exclude that peak from significant features or interpret it as exploratory evidence only.</p>
+<p>In this review <span class="citation">(<a href="#ref-oberg2009">Oberg and Vitek 2009</a>)</span>, author suggest to estimate an average <span class="math inline">\(\alpha\)</span> according to this equation <span class="citation">(<a href="#ref-benjamini1995">Benjamini and Hochberg 1995</a>)</span> and then use normal way to calculate the sample numbers:</p>
+<p><span class="math display">\[
+\alpha_{ave} \leq (1-\beta_{ave})\cdot q\frac{1}{1+(1-q)\cdot m_0/m_1}
+\]</span></p>
+<p>Other study <span class="citation">(<a href="#ref-blaise2016a">Blaise et al. 2016</a>)</span> show a method based on simulation to estimate the sample size. They used BY correction to limit the influences from correlations. Other investigation could be found here<span class="citation">(<a href="#ref-saccenti2016">Saccenti and Timmerman 2016</a>; <a href="#ref-blaise2013">Blaise 2013</a>)</span>. However, the nature of omics study make the power analysis hard to use one number for all metabolites and all the methods are trying to find a balance to represent more peaks with least samples.</p>
+<p>For study planning, it is also useful to distinguish <strong>discovery</strong> and <strong>validation</strong>:</p>
+<ul>
+<li><p><strong>Discovery studies</strong> can tolerate more uncertainty in effect size estimation, but should prioritize broad coverage, pooled QC design, and careful confounder recording.</p></li>
+<li><p><strong>Validation studies</strong> should be designed around a narrower set of metabolites or pathways, with independent samples and more stable quantitative conditions.</p></li>
+<li><p>In small discovery studies, reported effect sizes are often unstable and may be inflated. Therefore, validation cohorts generally need to be planned using more conservative assumptions than the pilot study suggests.</p></li>
+</ul>
+<p>As a rough rule, effect sizes that look large in a small metabolomics pilot may shrink substantially in larger cohorts. This is one reason why limited sample size can prevent reproducible effect size estimation for validation.</p>
+<p>The following tools may help:</p>
+<ul>
+<li><p><a href="https://github.com/cran/MetSizeR">MetSizeR</a> GUI Tool for Estimating Sample Sizes for metabolomics Experiments<span class="citation">(<a href="#ref-nyamundanda2013">Nyamundanda et al. 2013</a>)</span>.</p></li>
+<li><p><a href="https://www.bioconductor.org/packages/release/bioc/vignettes/MSstats/inst/doc/MSstats.html">MSstats</a> Protein/Peptide significance analysis <span class="citation">(<a href="#ref-choi2014">Choi et al. 2014</a>)</span>.</p></li>
+<li><p><a href="https://cran.rstudio.com/web/packages/enviGCMS/index.html">enviGCMS</a> GC/LC-MS Data Analysis for Environmental Science<span class="citation">(<a href="#ref-yu2017">Yu et al. 2017</a>)</span>.</p></li>
+</ul>
+</div>
+<div id="multi-batch-planning" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Multi-batch planning<a href="experimental-design-doe.html#multi-batch-planning" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In many metabolomics studies, all samples cannot be measured in one analytical batch. This is common in longitudinal, clinical, population, or multi-center studies. In such cases, batch planning should be treated as part of the study design rather than left to post hoc normalization.</p>
+<p>The basic rules are:</p>
+<ul>
+<li><p><strong>Represent all major biological groups in every batch</strong> whenever possible.</p></li>
+<li><p><strong>Avoid perfect confounding</strong> such as all cases in one batch and all controls in another batch.</p></li>
+<li><p><strong>Use a consistent pooled QC strategy</strong> across all batches.</p></li>
+<li><p><strong>Record batch-related variables</strong> such as date, instrument, column, operator, run order, maintenance status, and reagent lot.</p></li>
+<li><p><strong>Keep batch size and group ratio similar</strong> if the study must be split across multiple runs.</p></li>
+</ul>
+<p>An example allocation for a two-group study is shown below:</p>
+<table>
+<colgroup>
+<col width="12%" />
+<col width="14%" />
+<col width="19%" />
+<col width="23%" />
+<col width="14%" />
+<col width="14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Batch</th>
+<th align="right">Case</th>
+<th align="right">Control</th>
+<th align="right">Pooled QC</th>
+<th align="right">Blank</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td align="right">20</td>
+<td align="right">20</td>
+<td align="right">every 5-10 injections</td>
+<td align="right">yes</td>
+<td>randomized within batch</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td align="right">20</td>
+<td align="right">20</td>
+<td align="right">every 5-10 injections</td>
+<td align="right">yes</td>
+<td>same instrument settings</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td align="right">20</td>
+<td align="right">20</td>
+<td align="right">every 5-10 injections</td>
+<td align="right">yes</td>
+<td>same preparation protocol</td>
+</tr>
+</tbody>
+</table>
+<p>This type of balanced allocation makes later normalization more credible. If one batch contains a very different case/control ratio from another batch, downstream correction becomes much more difficult because biological effects and batch effects become partially indistinguishable.</p>
+</div>
+<div id="confounder-balancing" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> Confounder balancing<a href="experimental-design-doe.html#confounder-balancing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If there are other co-factors, a linear model or randomizing would be applied to eliminate their influences. You need to record the values of those co-factors for further data analysis. Common co-factors in metabolomics studies are age, gender, location, diet, medication, body mass index, collection time, circadian phase, fasting state, storage time, and study site.</p>
+<p>Confounder control could be achieved by:</p>
+<ul>
+<li><p><strong>Matching</strong>: select samples so that key confounders are similar across groups.</p></li>
+<li><p><strong>Stratification</strong>: analyze within strata such as sex, site, or age range.</p></li>
+<li><p><strong>Randomization</strong>: randomize sample preparation order and injection order after recruitment.</p></li>
+<li><p><strong>Regression adjustment</strong>: include confounders in downstream statistical models.</p></li>
+</ul>
+<p>An ideal sample sheet should balance both biology and logistics:</p>
+<table>
+<thead>
+<tr class="header">
+<th>SampleID</th>
+<th>Group</th>
+<th>Sex</th>
+<th>AgeBin</th>
+<th>BMIBin</th>
+<th>Site</th>
+<th>Batch</th>
+<th align="right">RunOrder</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>S01</td>
+<td>Case</td>
+<td>F</td>
+<td>40-49</td>
+<td>25-29</td>
+<td>A</td>
+<td>1</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td>S02</td>
+<td>Control</td>
+<td>F</td>
+<td>40-49</td>
+<td>25-29</td>
+<td>A</td>
+<td>1</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td>S03</td>
+<td>Case</td>
+<td>M</td>
+<td>50-59</td>
+<td>30-34</td>
+<td>B</td>
+<td>1</td>
+<td align="right">3</td>
+</tr>
+<tr class="even">
+<td>S04</td>
+<td>Control</td>
+<td>M</td>
+<td>50-59</td>
+<td>30-34</td>
+<td>B</td>
+<td>1</td>
+<td align="right">4</td>
+</tr>
+</tbody>
+</table>
+<p>This does not mean every factor must be perfectly balanced, but the major confounders should not be strongly correlated with treatment group or analytical batch. If batch is correlated with treatment, downstream correction may either remove true biology or preserve technical bias.</p>
+</div>
+<div id="optimization" class="section level2 hasAnchor" number="2.8">
+<h2><span class="header-section-number">2.8</span> Optimization<a href="experimental-design-doe.html#optimization" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>One experiment can contain lots of factors with different levels and only one set of parameters for different factors will show the best sensitivity or reproducibility for certain study. To find this set of parameters, Plackett-Burman Design (PBD), Response Surface Methodology (RSM), Central Composite Design (CCD), and Taguchi methods could be used to optimize the parameters for metabolomics study. The target could be the quality of peaks, the numbers of peaks, the stability of peaks intensity, and/or the statistics of the combination of those targets. You could check those paper for details<span class="citation">(<a href="#ref-jacyna2019">Jacyna et al. 2019</a>; <a href="#ref-box2005">Box et al. 2005</a>)</span>.</p>
+</div>
+<div id="pooled-qc" class="section level2 hasAnchor" number="2.9">
+<h2><span class="header-section-number">2.9</span> Pooled QC<a href="experimental-design-doe.html#pooled-qc" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Pooled QC samples are unique and very important for metabolomics study. Every 10 or 20 samples, a pooled sample from all samples and blank sample in one study should be injected as quality control samples. Pooled QC samples contain the changes during the instrumental analysis and blank samples could tell where the variances come from. Meanwhile the cap of sequence should old the column with pooled QC samples. The injection sequence should be randomized. Those papers<span class="citation">(<a href="#ref-phapale2020">Phapale et al. 2020</a>; <a href="#ref-dudzik2018">Dudzik et al. 2018</a>; <a href="#ref-dunn2012">Dunn et al. 2012</a>; <a href="#ref-broadhurst2018">Broadhurst, Goodacre, Stacey N. Reinke, et al. 2018b</a>; <a href="#ref-broeckling2023">Broeckling et al. 2023</a>; <a href="#ref-gonzalez-dominguez2024">González-Domínguez et al. 2024</a>)</span> should be read for details.</p>
+<p>If the total run is long, pooled QC samples should also be used to monitor drift over time and to support batch effect correction in later chapters. In other words, pooled QC samples are not only for instrument checking. They are also part of the data analysis design.</p>
+<p>If you need data correction, some background or calibration samples are required. However, control samples could also be used for data correction in certain DoE.</p>
+<p>Another important factors are instrumentals. High-resolution mass spectrum is always preferred. As shown in Lukas’s study <span class="citation">(<a href="#ref-najdekr2016">Najdekr et al. 2016</a>)</span>:</p>
+<blockquote>
+<p>the most effective mass resolving powers for profiling analyses of metabolite rich biofluids on the Orbitrap Elite were around 60000-120000 fwhm to retrieve the highest amount of information. The region between 400-800 m/z was influenced the most by resolution.</p>
+</blockquote>
+<p>However, elimination of peaks with high RSD% within group were always omitted by most study. Based on pre-experiment, you could get a description of RSD% distribution and set cut-off to use stable peaks for further data analysis. To my knowledge, 30% is suitable considering the batch effects.</p>
+<p>Adding certified reference material or standard reference material will help to evaluate the quality large scale data collection or important metabolites<span class="citation">(<a href="#ref-wise2022">Wise 2022</a>; <a href="#ref-wright2022">Wright et al. 2022</a>)</span>.</p>
+<p>For quality control in long term, ScreenDB provide a data analysis strategy for HRMS data founded on structured query language database archiving<span class="citation">(<a href="#ref-mardal2023">Mardal et al. 2023</a>)</span>.</p>
+<p>AVIR develops a computational solution to automatically recognize metabolic features with computational variation in a metabolomics data set<span class="citation">(<a href="#ref-zhang2024a">Z. Zhang et al. 2024</a>)</span>.</p>
+</div>
+<div id="simple-study-design-decision-tree" class="section level2 hasAnchor" number="2.10">
+<h2><span class="header-section-number">2.10</span> Simple study-design decision tree<a href="experimental-design-doe.html#simple-study-design-decision-tree" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The following questions can be used as a practical decision tree before data collection:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Is the goal method validation, biomarker discovery, mechanism study, or validation?</strong><br />
+Method validation favors homogeneity studies; biological discovery and validation favor heterogeneity studies.</p></li>
+<li><p><strong>Is the analysis targeted or untargeted?</strong><br />
+Untargeted studies usually need broader QC coverage, stronger annotation planning, and more conservative interpretation of statistical significance.</p></li>
+<li><p><strong>Can all samples be run in one batch?</strong><br />
+If yes, randomize run order and inject pooled QC regularly. If no, distribute all biological groups across all batches and keep the QC design unchanged across batches.</p></li>
+<li><p><strong>Are major confounders known before recruitment or sample selection?</strong><br />
+If yes, balance or match them in advance. If no, at least record them completely for later adjustment.</p></li>
+<li><p><strong>Do pilot data exist for variance and effect size estimation?</strong><br />
+If yes, use them for power analysis. If no, use conservative assumptions, treat the study as exploratory, and avoid overclaiming reproducibility.</p></li>
+<li><p><strong>Is there an independent validation plan?</strong><br />
+If no, the study should be framed as discovery or hypothesis generation. If yes, reserve independent samples, batches, or cohorts instead of validating on the same data source.</p></li>
+</ol>
+<p>In short, a good metabolomics DoE should answer four practical questions before the first injection: <strong>what is the objective, how many samples are needed, how will confounders and batches be controlled, and how will findings be validated</strong>.</p>
+
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-benjamini1995" class="csl-entry">
+Benjamini, Yoav, and Yosef Hochberg. 1995. <span>“Controlling the <span>False Discovery Rate</span>: <span>A Practical</span> and <span>Powerful Approach</span> to <span>Multiple Testing</span>.”</span> <em>Journal of the Royal Statistical Society. Series B (Methodological)</em> 57 (1): 289–300. <a href="https://www.jstor.org/stable/2346101">https://www.jstor.org/stable/2346101</a>.
+</div>
+<div id="ref-blaise2013" class="csl-entry">
+Blaise, Benjamin J. 2013. <span>“Data-<span>Driven Sample Size Determination</span> for <span>Metabolic Phenotyping Studies</span>.”</span> <em>Analytical Chemistry</em> 85 (19): 8943–50. <a href="https://doi.org/10.1021/ac4022314">https://doi.org/10.1021/ac4022314</a>.
+</div>
+<div id="ref-blaise2016a" class="csl-entry">
+Blaise, Benjamin J., Gonçalo Correia, Adrienne Tin, et al. 2016. <span>“Power <span>Analysis</span> and <span>Sample Size Determination</span> in <span>Metabolic Phenotyping</span>.”</span> <em>Analytical Chemistry</em> 88 (10): 5179–88. <a href="https://doi.org/10.1021/acs.analchem.6b00188">https://doi.org/10.1021/acs.analchem.6b00188</a>.
+</div>
+<div id="ref-box2005" class="csl-entry">
+Box, George E. P., J. Stuart Hunter, and William G. Hunter. 2005. <em>Statistics for <span>Experimenters</span></em>. Wiley-Interscience.
+</div>
+<div id="ref-broadhurst2018" class="csl-entry">
+Broadhurst, David, Royston Goodacre, Stacey N. Reinke, et al. 2018b. <span>“Guidelines and Considerations for the Use of System Suitability and Quality Control Samples in Mass Spectrometry Assays Applied in Untargeted Clinical Metabolomic Studies.”</span> <em>Metabolomics</em> 14 (6). <a href="https://doi.org/10.1007/s11306-018-1367-3">https://doi.org/10.1007/s11306-018-1367-3</a>.
+</div>
+<div id="ref-broeckling2023" class="csl-entry">
+Broeckling, Corey D., Richard D. Beger, Leo L. Cheng, et al. 2023. <span>“Current <span>Practices</span> in <span>LC-MS Untargeted Metabolomics</span>: <span>A Scoping Review</span> on the <span>Use</span> of <span>Pooled Quality Control Samples</span>.”</span> <em>Analytical Chemistry</em> 95 (51): 18645–54. <a href="https://doi.org/10.1021/acs.analchem.3c02924">https://doi.org/10.1021/acs.analchem.3c02924</a>.
+</div>
+<div id="ref-choi2014" class="csl-entry">
+Choi, Meena, Ching-Yun Chang, Timothy Clough, et al. 2014. <span>“<span>MSstats</span>: An <span>R</span> Package for Statistical Analysis of Quantitative Mass Spectrometry-Based Proteomic Experiments.”</span> <em>Bioinformatics</em> 30 (17): 2524–26. <a href="https://doi.org/10.1093/bioinformatics/btu305">https://doi.org/10.1093/bioinformatics/btu305</a>.
+</div>
+<div id="ref-dudzik2018" class="csl-entry">
+Dudzik, Danuta, Cecilia Barbas-Bernardos, Antonia García, and Coral Barbas. 2018. <span>“Quality Assurance Procedures for Mass Spectrometry Untargeted Metabolomics. A Review.”</span> <em>Journal of Pharmaceutical and Biomedical Analysis</em>, Review issue 2017, vol. 147 (January): 149–73. <a href="https://doi.org/10.1016/j.jpba.2017.07.044">https://doi.org/10.1016/j.jpba.2017.07.044</a>.
+</div>
+<div id="ref-dunn2012" class="csl-entry">
+Dunn, Warwick B, Ian D Wilson, Andrew W Nicholls, and David Broadhurst. 2012. <span>“The Importance of Experimental Design and <span>QC</span> Samples in Large-Scale and <span class="nocase">MS-driven</span> Untargeted Metabolomic Studies of Humans.”</span> <em>Bioanalysis</em> 4 (18): 2249–64. <a href="https://doi.org/10.4155/bio.12.204">https://doi.org/10.4155/bio.12.204</a>.
+</div>
+<div id="ref-gonzalez-dominguez2024" class="csl-entry">
+González-Domínguez, Álvaro, Núria Estanyol-Torres, Carl Brunius, Rikard Landberg, and Raúl González-Domínguez. 2024. <span>“<span>QComics</span>: <span>Recommendations</span> and <span>Guidelines</span> for <span>Robust</span>, <span>Easily Implementable</span> and <span>Reportable Quality Control</span> of <span>Metabolomics Data</span>.”</span> <em>Analytical Chemistry</em> 96 (3): 1064–72. <a href="https://doi.org/10.1021/acs.analchem.3c03660">https://doi.org/10.1021/acs.analchem.3c03660</a>.
+</div>
+<div id="ref-jacyna2019" class="csl-entry">
+Jacyna, Julia, Marta Kordalewska, and Michał J. Markuszewski. 2019. <span>“Design of <span>Experiments</span> in Metabolomics-Related Studies: <span>An</span> Overview.”</span> <em>Journal of Pharmaceutical and Biomedical Analysis</em> 164 (February): 598–606. <a href="https://doi.org/10.1016/j.jpba.2018.11.027">https://doi.org/10.1016/j.jpba.2018.11.027</a>.
+</div>
+<div id="ref-jang2018" class="csl-entry">
+Jang, Cholsoon, Li Chen, and Joshua D. Rabinowitz. 2018. <span>“Metabolomics and <span>Isotope Tracing</span>.”</span> <em>Cell</em> 173 (4): 822–37. <a href="https://doi.org/10.1016/j.cell.2018.03.055">https://doi.org/10.1016/j.cell.2018.03.055</a>.
+</div>
+<div id="ref-mardal2023" class="csl-entry">
+Mardal, Marie, Petur W. Dalsgaard, Brian S. Rasmussen, Kristian Linnet, and Christian B. Mollerup. 2023. <span>“Scalable <span>Analysis</span> of <span>Untargeted LC-HRMS Data</span> by <span>Means</span> of <span>SQL Database Archiving</span>.”</span> <em>Analytical Chemistry</em>, ahead of print, February. <a href="https://doi.org/10.1021/acs.analchem.2c03769">https://doi.org/10.1021/acs.analchem.2c03769</a>.
+</div>
+<div id="ref-najdekr2016" class="csl-entry">
+Najdekr, Lukáš, David Friedecký, Ralf Tautenhahn, et al. 2016. <span>“Influence of <span>Mass Resolving Power</span> in <span>Orbital Ion-Trap Mass Spectrometry-Based Metabolomics</span>.”</span> <em>Analytical Chemistry</em> 88 (23): 11429–35. <a href="https://doi.org/10.1021/acs.analchem.6b02319">https://doi.org/10.1021/acs.analchem.6b02319</a>.
+</div>
+<div id="ref-nyamundanda2013" class="csl-entry">
+Nyamundanda, Gift, Isobel Claire Gormley, Yue Fan, William M. Gallagher, and Lorraine Brennan. 2013. <span>“<span>MetSizeR</span>: Selecting the Optimal Sample Size for Metabolomic Studies Using an Analysis Based Approach.”</span> <em>BMC Bioinformatics</em> 14: 338. <a href="https://doi.org/10.1186/1471-2105-14-338">https://doi.org/10.1186/1471-2105-14-338</a>.
+</div>
+<div id="ref-oberg2009" class="csl-entry">
+Oberg, Ann L., and Olga Vitek. 2009. <span>“Statistical <span>Design</span> of <span>Quantitative Mass Spectrometry-Based Proteomic Experiments</span>.”</span> <em>Journal of Proteome Research</em> 8 (5): 2144–56. <a href="https://doi.org/10.1021/pr8010099">https://doi.org/10.1021/pr8010099</a>.
+</div>
+<div id="ref-phapale2020" class="csl-entry">
+Phapale, Prasad, Vineeta Rai, Ashok Kumar Mohanty, and Sanjeeva Srivastava. 2020. <span>“Untargeted <span>Metabolomics Workshop Report</span>: <span>Quality Control Considerations</span> from <span>Sample Preparation</span> to <span>Data Analysis</span>.”</span> <em>Journal of the American Society for Mass Spectrometry</em> 31 (9): 2006–10. <a href="https://doi.org/10.1021/jasms.0c00224">https://doi.org/10.1021/jasms.0c00224</a>.
+</div>
+<div id="ref-saccenti2016" class="csl-entry">
+Saccenti, Edoardo, and Marieke E. Timmerman. 2016. <span>“Approaches to <span>Sample Size Determination</span> for <span>Multivariate Data</span>: <span>Applications</span> to <span>PCA</span> and <span>PLS-DA</span> of <span>Omics Data</span>.”</span> <em>Journal of Proteome Research</em> 15 (8): 2379–93. <a href="https://doi.org/10.1021/acs.jproteome.5b01029">https://doi.org/10.1021/acs.jproteome.5b01029</a>.
+</div>
+<div id="ref-wise2022" class="csl-entry">
+Wise, Stephen A. 2022. <span>“What If Using Certified Reference Materials (<span>CRMs</span>) Was a Requirement to Publish in Analytical/Bioanalytical Chemistry Journals?”</span> <em>Analytical and Bioanalytical Chemistry</em> 414 (24): 7015–22. <a href="https://doi.org/10.1007/s00216-022-04163-8">https://doi.org/10.1007/s00216-022-04163-8</a>.
+</div>
+<div id="ref-wright2022" class="csl-entry">
+Wright, Elliott J., Daniel G. Beach, and Pearse McCarron. 2022. <span>“Non-Target Analysis and Stability Assessment of Reference Materials Using Liquid Chromatography-High-Resolution Mass Spectrometry.”</span> <em>Analytica Chimica Acta</em> 1201 (April): 339622. <a href="https://doi.org/10.1016/j.aca.2022.339622">https://doi.org/10.1016/j.aca.2022.339622</a>.
+</div>
+<div id="ref-yu2017" class="csl-entry">
+Yu, Miao, Xingwang Hou, Qian Liu, Yawei Wang, Jiyan Liu, and Guibin Jiang. 2017. <span>“Evaluation and Reduction of the Analytical Uncertainties in <span>GC-MS</span> Analysis Using a Boundary Regression Model.”</span> <em>Talanta</em> 164 (March): 141–47. <a href="https://doi.org/10.1016/j.talanta.2016.11.046">https://doi.org/10.1016/j.talanta.2016.11.046</a>.
+</div>
+<div id="ref-zhang2024a" class="csl-entry">
+Zhang, Zixuan, Huaxu Yu, Ethan Wong-Ma, et al. 2024. <span>“Reducing <span>Quantitative Uncertainty Caused</span> by <span>Data Processing</span> in <span>Untargeted Metabolomics</span>.”</span> <em>Analytical Chemistry</em> 96 (9): 3727–32. <a href="https://doi.org/10.1021/acs.analchem.3c04046">https://doi.org/10.1021/acs.analchem.3c04046</a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="introduction.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="pretreatment.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/yufree/metaworkflow/edit/master/02-doe.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["Metabolomics.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

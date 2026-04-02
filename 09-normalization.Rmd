@@ -2,17 +2,17 @@
 bibliography: references.bib
 ---
 
-# Peaks normalization
+# Peak Normalization
 
 ## Batch effects
 
-Batch effects are the variances caused by factor other than the experimental design. We could simply make a linear model for the intensity of one peak:
+Batch effects are sources of variation that arise from factors other than the biological design of the study. A simple model for the intensity of one peak is:
 
 $$Intensity =  Average + Condition + Batch + Error$$
 
-Research is focused on condition contribution part and overall average or random error could be estimated. However, we know little about the batch contribution. Sometimes we could use known variables such as injection order or operators as the batch part. However, in most cases we such variable is unknown. Almost all the batch correction methods are trying to use some estimations to balance or remove the batch effect.
+The main scientific interest is usually the condition term, while the average and random error can often be estimated directly. The batch contribution is more difficult, because some technical drivers are known, such as injection order or operator, but many are only partially observed or completely hidden. Most batch-correction methods attempt to estimate and remove this unwanted variation without erasing the biological signal of interest.
 
-For analytical chemistry, internal standards or pool quality control samples are actually standing for the batch contribution part in the model. However, it's impractical to get all the internal standards when the data is collected untargeted. For methods using internal standards or pool quality control samples, the variations among those samples are usually removed as median, quantile, mean or the ratios. Other ways like quantile regression, centering and scaling based on distribution within samples could be treated as using the stable distribution of peaks intensity to remove batch effects. 
+In analytical chemistry, internal standards or pooled quality-control samples often serve as proxies for the batch term in this model. However, it is impractical to cover the entire metabolome with internal standards in untargeted data. In methods based on internal standards or pooled QC samples, variation is usually adjusted by median, quantile, mean, or ratio-based correction. Other approaches, such as quantile regression, centering, and scaling based on within-sample intensity distributions, similarly rely on stable signal structure to reduce batch effects.
 
 ## Batch effects classification
 
@@ -130,6 +130,37 @@ Supervised methods will use the group information or batch information in experi
 Since the real batch effects are always unknown, it's hard to make validation for different normalization methods. Li et.al developed NOREVA to make comparision among 25 correction method [@li2017a] and a recently updates make this numbers to 168 [@yang2020]. MetaboDrift also contain some methods for batch correction in excel [@thonusin2017]. Another idea is use spiked-in samples to validate the methods [@franceschi2012] , which might be good for targeted analysis instead of non-targeted analysis.
 
 Relative log abundance (RLA) plots[@delivera2012] and heatmap often used to show the variances among the samples.
+
+## Method selection flowchart
+
+In practice, the choice of normalization method should begin with study design rather than with software availability.
+
+1. **Are pooled QC samples available across the analytical run?**  
+   If yes, QC-based methods such as ratio normalization, regression-based correction, SERRF, or QC-aware drift models are often strong first choices.
+
+2. **Are stable isotope-labeled internal standards available for the compounds or classes of interest?**  
+   If yes, internal-standard-based correction should usually be prioritized for those targets.
+
+3. **Is the batch structure known?**  
+   If yes, supervised methods such as ComBat, regression calibration, or other model-based approaches can be considered.
+
+4. **Is the major problem global scale difference or feature-specific drift?**  
+   Global scale differences may respond to centering, scaling, or total-abundance normalization, while feature-specific drift usually needs peak-wise correction.
+
+5. **Is the study exploratory or confirmatory?**  
+   Exploratory studies often prefer more conservative methods that do not overfit. Confirmatory or large-cohort studies may justify more complex supervised correction.
+
+As a rough guide:
+
+-   **Have pooled QC and obvious drift**: start with QC-based correction or SERRF.
+
+-   **Have known batch labels but limited QC**: consider regression-based methods or ComBat, while checking group-batch confounding carefully.
+
+-   **Have strong internal standards for a targeted panel**: internal-standard normalization should be primary.
+
+-   **Have no QC and no reliable batch covariates**: use conservative unsupervised normalization and interpret results cautiously.
+
+-   **Have strong hidden unwanted variation**: consider latent factor methods such as SVA, RUV, or RRmix.
 
 ### Unsupervised methods
 
@@ -249,6 +280,43 @@ $$\hat I_{p,s} = \frac{I_{p,s} * median(I_{IS})}{I_{IS,s}}$$
 
 Some methods also use pooled calibration samples and multiple internal standard strategy to correct the data [@vanderkloet2009; @sysi-aho2007]. Also some methods only use QC samples to handle the data [@kuligowski2015].
 
+#### Practical R examples
+
+The following toy examples illustrate common normalization ideas in R.
+
+**Log transformation and autoscaling**
+
+```{r}
+set.seed(1)
+x <- matrix(rexp(50, rate = 0.2), nrow = 10)
+x_log <- log2(x + 1)
+x_scaled <- scale(x_log)
+head(x_scaled)
+```
+
+**Internal-standard-based correction**
+
+```{r}
+set.seed(2)
+feature <- rnorm(10, 1000, 150)
+is_signal <- rnorm(10, 500, 40)
+feature_cor <- feature * median(is_signal) / is_signal
+cbind(feature, feature_cor)
+```
+
+**Simple QC-based drift correction by injection order**
+
+```{r}
+set.seed(3)
+inj <- 1:12
+qc_index <- c(1,4,7,10)
+signal <- 100 + inj * 3 + rnorm(12, 0, 5)
+qc_fit <- loess(signal[qc_index] ~ inj[qc_index], span = 0.8)
+drift <- predict(qc_fit, inj)
+signal_cor <- signal - drift + median(signal[qc_index])
+cbind(inj, signal, round(signal_cor, 2))
+```
+
 ### Supervised methods
 
 #### Regression calibration
@@ -365,6 +433,26 @@ ComBat[@johnson2007] was originally developed for batch correction in microarray
 ## Method to validate the normalization
 
 Various methods have been used for batch correction and evaluation. Simulation will ensure ground truth. Difference analysis would be a common method for evaluation. Then we could check whether this peak is true positive or false positive by settings of the simulation. Other methods need statistics or lots of standards to describe the performance of batch correction or normalization results.
+
+In practice, validation should ask a simple question: **did the method reduce technical variation while preserving expected biological structure?**
+
+Useful validation strategies include:
+
+-   **Pooled QC clustering**: QC samples should become tighter in PCA or other unsupervised projections after correction.
+
+-   **RSD reduction in QC samples**: a successful method often lowers the relative standard deviation of stable QC features.
+
+-   **Known biology preservation**: expected differences between biological groups should remain interpretable after normalization.
+
+-   **Injection-order trend reduction**: feature intensity should show weaker association with run order after correction when drift is technical.
+
+-   **Replicate concordance**: technical or biological replicates should become more consistent, not less.
+
+-   **Negative control behavior**: blank samples and background features should not become artificially structured by the correction.
+
+Simulation is useful for benchmarking because the truth is known, but real studies should also be checked with QC samples, internal standards, known metabolites, and sensitivity analyses across multiple normalization methods.
+
+A good normalization method is not necessarily the one that removes the most variation. It is the one that removes unwanted variation without erasing the biology that the study was designed to measure.
 
 ## Software
 

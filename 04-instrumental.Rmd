@@ -2,11 +2,33 @@
 bibliography: references.bib
 ---
 
-# Instrumental analysis
+# Instrumental Analysis
 
-To get more information in the samples, full scan is preferred on GC/LC-MS. Each scan would collect a mass spectrum to cover the setting mass range. If you narrow down your mass range and keep the same scan time, each mass would gain the collection time and you would get a higher sensitivity. However, if you expand your scan range, the sensitivity for each mass would decrease. You could also extend the collection time for each scan. However, it would affect the separation process.
+Instrumental settings determine how much chemical information can be captured from a sample and how reliably those signals can be quantified. In GC-MS and LC-MS workflows, full-scan acquisition is often preferred for broad profiling because each scan collects a mass spectrum across the selected m/z range. If the scan range is narrowed while scan time is held constant, each m/z value receives more sampling time and sensitivity improves. If the scan range is widened, sensitivity per m/z decreases. Increasing scan time can also improve sensitivity, but it may compromise chromatographic resolution.
 
-Full scan is performed synchronously with the separation process. For a better separation on chromatograph, each peak should have at least 10 points to get a nice peak shape. If you want to separate two peaks with a retention time differences of 10s. Assuming the half peak width is 5s, you need to collect 10 mass spectrum within 10s. So the dwell time for each scan is 1s. If you use a high resolution column and the half peak width is 1s, you need to finish a scan within 0.2s. As we discussed above, shorter dwell time would decrease the sensitivity. Thus there is a trade-off between separation and sensitivity. If you use UPLC, the separation could be finished within 20 min while you need to calculate if you mass spectrometry could still show a good sensitivity. Recently a study [@cai2021] show 6 points will be enough to generate peaks with 20 points with optimized workflow.
+Full-scan acquisition occurs synchronously with chromatographic separation. To preserve peak shape, each chromatographic peak should usually be sampled at least 10 times. For example, if two peaks are separated by 10 s and the half peak width is 5 s, the instrument should acquire roughly 10 spectra within that time window, corresponding to a cycle time near 1 s. If a high-resolution column produces peaks with half widths near 1 s, the cycle time must be closer to 0.2 s. Shorter dwell or cycle times generally reduce sensitivity, so there is always a trade-off between separation and signal quality. In UPLC workflows, where separation may finish within 20 min, it is especially important to check whether the mass spectrometer can keep pace without undersampling peaks. A recent study[@cai2021] suggested that, under optimized conditions, even 6 points can still recover peak shapes similar to those obtained with 20 points.
+
+## Ionization mode selection
+
+Ionization mode is one of the most important instrumental decisions in metabolomics because it determines which compounds can be detected efficiently and how severe matrix effects may become. No single source works best for the whole metabolome.
+
+-   **ESI+** is commonly used for compounds that protonate easily, such as amines, many lipids, peptides, and some xenobiotics. It is often sensitive but can be strongly affected by salt and matrix effects.
+
+-   **ESI-** is often preferred for acidic compounds such as organic acids, phosphorylated metabolites, bile acids, and many phenolic compounds. It may provide cleaner spectra for some metabolite classes that ionize poorly in positive mode.
+
+-   **APCI** is often more suitable for less polar and more thermally stable compounds. It may show reduced ion suppression compared with ESI for some neutral or weakly polar analytes.
+
+-   **APPI** is useful for relatively non-polar compounds and certain lipids, steroids, and aromatic compounds that are difficult to ionize efficiently by ESI.
+
+As a practical rule:
+
+-   use **ESI** for most broad LC-MS metabolomics workflows
+
+-   use **both ESI+ and ESI-** when broader coverage is needed
+
+-   consider **APCI or APPI** when the target analytes are less polar, when ESI suffers strong suppression, or when lipid and xenobiotic coverage is unsatisfactory
+
+The pretreatment solvent, chromatographic condition, and analyte class should all be considered together with the ionization mode rather than chosen independently.
 
 ## Column and gradient selection
 
@@ -19,6 +41,38 @@ This work introduce Sequential Quantification using Isotope Dilution (SQUID), a 
 ## Mass resolution
 
 For metabolomics, high resolution mass spectrum should be used to make identification of compounds easier. The Mass Resolving Power is very important for annotation and high resolution mass spectrum should be calibrated in real time. The region between 400--800 m/z was influenced the most by resolution[@najdekr2016]. Orbitrap Fusion's performance was evaluated here[@barbiersainthilaire2018], as well as the comparison with Fourier transform ion cyclotron resonance (FT-ICR)[@ghaste2016; @huang2021]. Mass Difference Maps could recalibrate HRMS data [@smirnov2019].
+
+## Instrument comparison
+
+Different mass analyzers provide different trade-offs in resolution, scan speed, sensitivity, dynamic range, and suitability for quantitative work.
+
+| Instrument type | Main strengths | Main limitations | Typical role in metabolomics |
+|------|------|------|------|
+| Quadrupole | Simple, robust, good filtering | Low resolving power in full scan | Front-end filtering, targeted acquisition |
+| Triple quadrupole (QQQ) | Excellent sensitivity and quantitative performance in MRM/SRM | Limited untargeted discovery capability | Targeted quantification and validation |
+| Q-TOF | Good balance of high resolution, accurate mass, and MS/MS speed | Usually lower quantitative precision than QQQ for targeted assays | Untargeted profiling and MS/MS acquisition |
+| Orbitrap | High mass accuracy and high resolving power | Scan speed and duty cycle may become limiting at very high resolution | Untargeted profiling, formula assignment, annotation |
+| FT-ICR | Extremely high resolving power and mass accuracy | Expensive, slower, less common in routine workflows | Advanced structural analysis and specialized applications |
+
+In general, QQQ is preferred when the primary goal is robust quantification of known metabolites, while Q-TOF and Orbitrap platforms are commonly preferred for untargeted metabolomics because they support broad profiling and annotation. The choice is therefore linked to study objective rather than instrument prestige alone.
+
+## Scan speed and dwell time
+
+Practical scan-speed planning is essential because the instrument must sample chromatographic peaks often enough to preserve peak shape and enable reliable integration. A useful rule is to collect at least 8--12 points across a chromatographic peak, although optimized workflows may sometimes work with fewer[@cai2021].
+
+For example:
+
+-   if a peak is 12 s wide, a cycle time of about 1 s still gives about 12 points
+
+-   if a peak is 3 s wide, the cycle time should be closer to 0.25--0.35 s
+
+-   if UPLC produces sub-second peak widths, very high-resolution full scans or too many MS/MS events may undersample the peak
+
+For full-scan HRMS, slower scans usually increase ion statistics and sensitivity, but they reduce the number of points across a peak. For data-dependent MS/MS, the total cycle time includes both the survey scan and all triggered fragmentation scans. Therefore, too many MS/MS events per cycle can damage quantification and peak detection in MS1.
+
+For targeted methods such as MRM, dwell time should be long enough to maintain sensitivity but short enough to monitor all transitions with enough peak definition. If too many transitions are monitored at once, each transition gets too little time and quantitative precision will decrease. Scheduled MRM can reduce this burden by monitoring each transition only around its expected retention time window.
+
+Therefore, scan speed should always be tuned together with chromatographic peak width, m/z range, resolving power, and acquisition mode. Fast chromatography without compatible mass spectrometer timing will reduce data quality rather than improve throughput.
 
 ## Quantitative Metabolomics
 

@@ -4,7 +4,7 @@ bibliography: references.bib
 
 # Pretreatment
 
-Pretreatment will affect the results of metabolomics and cover the sample treatment from crude samples to injection vials for instrumental analysis. The purpose of sample pretreatment is the to retain more interesting compounds while remove unrelated compounds. For metabolomics studies, we might not know 'interesting' compounds in advance and the unrelated compounds are highly depended on research purpose. For example, Gel Permeation Chromatograph(GPC), Florisil, Alumina, Silica gel could be used to remove lipid while alcohols and strong acid/base could make protein denaturation to release more compounds. However, if we are interested in small lipid or peptide, such pretreatment methods should be changed. In general, sample collection, quenching, extraction methods, derivatization, and storage should be optimized in pretreatment.
+Pretreatment strongly affects metabolomics results and covers the workflow from crude samples to injection vials for instrumental analysis. The goal is to preserve biologically meaningful compounds while removing as much irrelevant matrix background as possible. In metabolomics, however, the compounds of interest are often not known in advance, so pretreatment must be chosen according to study purpose, sample matrix, and analytical platform. For example, Gel Permeation Chromatography (GPC), Florisil, alumina, and silica gel can remove lipids, while alcohols and strong acids or bases can denature proteins and release additional compounds. If the study focuses on small lipids or peptides, these choices may need to change substantially. In practice, sample collection, quenching, extraction, derivatization, and storage should all be optimized as part of pretreatment.
 
 ## Collection
 
@@ -50,9 +50,66 @@ For plant like soybeans[@mahmud2017], ammonium acetate/methanol could be selecte
 
 For blood plasma and serum sample, a comprehensive evaluation of 12 sample preparation methods (SPM) using phospholipid and protein removal plates (PLR), solid phase extraction plates (SPE), supported liquid extraction cartridge (SLE), and conventionally used protein precipitation (PPT) were performed. Results show PPT and PLR on the same samples by implementing a simple analytical workflow as their complementarity would allow the broadening of the visible chemical space [@chaker2022].
 
+### Extraction selection flowchart
+
+In practice, extraction should be selected according to the study purpose, sample matrix, and metabolite class of interest rather than by habit alone. A simple decision logic is:
+
+1. **Is the study untargeted or targeted?**  
+   Untargeted studies usually prefer broader and more orthogonal extraction conditions, while targeted studies may prioritize recovery for a defined chemical class.
+
+2. **Is the major interest polar metabolites, lipids, or both?**  
+   Polar metabolites often favor aqueous organic mixtures such as methanol/acetonitrile/water, while lipids often require biphasic extraction or non-polar solvents.
+
+3. **Does the matrix contain high protein or phospholipid background?**  
+   Plasma, serum, and tissue extracts may need additional cleanup such as protein precipitation, phospholipid removal, SPE, or liquid-liquid extraction.
+
+4. **Is sample amount limited?**  
+   Small-volume studies may need simpler and more reproducible extraction strategies with fewer transfers.
+
+5. **Is absolute quantification or high-throughput screening required?**  
+   High-throughput studies usually favor simpler workflows, while quantitative studies may justify more selective cleanup or isotope-labeled standards.
+
+As a rough guide:
+
+-   **Broad untargeted polar metabolomics**: water/methanol/acetonitrile mixtures are often a good starting point.
+
+-   **Lipid-focused or broad lipid coverage**: LLE or biphasic extraction is often more suitable.
+
+-   **Clinical plasma/serum screening**: protein precipitation is often the simplest first-pass method, followed by SPE or phospholipid removal if matrix effects are severe.
+
+-   **Very dirty matrices**: SPE or multi-step cleanup may improve selectivity at the cost of coverage.
+
+### Protein precipitation, SPE, and LLE
+
+The three common strategies have different goals and trade-offs:
+
+| Method | Main purpose | Strengths | Limitations | Common use |
+|------|------|------|------|------|
+| Protein precipitation (PPT) | Remove proteins quickly with organic solvent | Fast, cheap, high-throughput, simple to automate | Limited selectivity, matrix effects may remain, lipid/phospholipid background can still be high | Plasma, serum, routine untargeted screening |
+| Solid-phase extraction (SPE) | Selective cleanup or enrichment on sorbent | Better cleanup, can enrich target classes, reduces matrix complexity | More steps, more cost, analyte loss possible, method development required | Targeted assays, dirty matrices, class-selective enrichment |
+| Liquid-liquid extraction (LLE) | Partition compounds by polarity into different phases | Good orthogonality, useful for lipids and broad chemical space separation | More labor-intensive, emulsion risk, reproducibility can suffer if handling is inconsistent | Lipidomics, biphasic extraction, broad coverage workflows |
+
+PPT is often the most practical starting point for biofluids because it is simple and scalable. SPE is useful when background suppression is severe or when the study targets a narrower compound class. LLE is often preferred when the aim is to separate polar and non-polar metabolite fractions or to improve lipid coverage.
+
 ## Derivatization
 
-Derivatization is always used in GC-based metabolomics study. This paper[@miyagawa2019] compared sequential derivatization methods and found different compounds would show different fluctuations during oximation or silylation process. This paper summarized derivatization methods for LC-MS [@zhao2020].
+Derivatization is always used in GC-based metabolomics study because many metabolites are too polar, thermally unstable, or non-volatile to be directly analyzed by GC-MS. This paper[@miyagawa2019] compared sequential derivatization methods and found different compounds would show different fluctuations during oximation or silylation process. This paper summarized derivatization methods for LC-MS [@zhao2020].
+
+For GC-MS metabolomics, derivatization is not a minor technical detail. It is a major source of variation and should be planned as part of pretreatment. In many workflows, oximation is performed first to stabilize carbonyl compounds and reduce multiple derivative forms, followed by silylation to increase volatility and improve chromatographic behavior. If the timing, reagent freshness, residual water, or temperature is not controlled, the same metabolite may show unstable peak areas or multiple derivative peaks across samples.
+
+The main practical points are:
+
+-   **Control water content** because moisture can strongly interfere with silylation efficiency.
+
+-   **Keep derivatization timing consistent** across all samples because reaction time can change peak intensity.
+
+-   **Use the same reagent lot and temperature conditions** within a study when possible.
+
+-   **Treat batch processing carefully** because derivatized samples may not remain stable for long waiting times.
+
+-   **Expect compound-dependent behavior** since sugars, amino acids, organic acids, and carbonyl compounds may respond differently.
+
+Therefore, derivatization should be optimized and documented with the same care as extraction solvent, especially in GC-MS studies or whenever semi-quantitative comparison is important.
 
 ## Isotope label
 
@@ -73,6 +130,24 @@ Dried blood spots involve collecting a small volume of capillary blood (typicall
 ### Volumetric absorptive microsampling (VAMS)
 
 Volumetric absorptive microsampling (VAMS, commercially available as Mitra devices) collects a fixed volume of blood (typically 10 or 20 $\mu$L) onto an absorbent polymer tip, overcoming the hematocrit-dependent volume variability of DBS[@denniff2014]. VAMS devices are straightforward for self-collection and the fixed volume simplifies quantitative analysis. They have been validated for a range of metabolomics and pharmacokinetic applications.
+
+## Automation
+
+Automation is increasingly important in metabolomics pretreatment, especially for large cohorts, longitudinal studies, and multi-batch projects. Automated liquid handling can improve reproducibility by reducing manual pipetting error, controlling timing more tightly, and standardizing solvent addition, mixing, and aliquoting across many samples.
+
+Automation is especially useful for:
+
+-   **protein precipitation in plates**
+
+-   **SPE plate workflows**
+
+-   **addition of internal standards**
+
+-   **batch-wise derivatization with controlled timing**
+
+-   **aliquoting pooled QC and blanks**
+
+However, automation does not automatically solve pretreatment problems. Plate layout, dead volume, edge effects, carryover, tip selection, solvent compatibility, and evaporation still need to be checked carefully. In some cases, a simple manual workflow may be more robust than a poorly optimized automated one. Therefore, automation should be treated as a reproducibility tool that still requires validation.
 
 ## Storage
 

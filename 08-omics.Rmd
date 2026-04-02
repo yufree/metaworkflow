@@ -2,17 +2,17 @@
 bibliography: references.bib
 ---
 
-# Omics analysis
+# Omics Analysis
 
-When you get the filtered ions, the next step is making annotations for them. Such annotations would be helpful for omics studies. Omics analysis tries to combine the information from other 'omics' to answer one specific question. Since we have got the annotations, omics analysis could be performed. Upload the data obtained from **xcms** or other platforms to other tools or databases.
+After filtering and annotation, the next step is often to place metabolomics results into a broader biological context. Omics analysis aims to connect metabolite-level findings with pathways, networks, and other omics layers in order to answer a specific biological question. At this stage, data generated from **xcms** or other preprocessing platforms can be transferred into pathway tools, databases, or multi-omics integration frameworks.
 
 You will get an updated database list [here](http://metabolomicssociety.org/resources/metabolomics-databases).
 
-Right now, it is hard to connect different omics databases such as gene, protein and metabolites together for a whole scope of certain biological process. However, you might select a few metabolites across those databases and find something interesting.
+It is still difficult to connect genes, proteins, metabolites, and other molecular entities seamlessly across all databases for a complete view of one biological process. In practice, however, even partial integration across these layers can generate useful mechanistic insight.
 
 ## From Bottom-up to Top-down
 
-Bottom-up analysis means the model for each metabolite. In this case, we could find out which metabolite will be affected by our experiment design. However, take care of multiple comparison issue.
+Bottom-up analysis models each metabolite separately. In this setting, the goal is to identify which metabolites are associated with the experimental design or phenotype of interest. As always, multiple-comparison control is essential.
 
 $$
 metabolite = f(control/treatment, co\text{-}variables)
@@ -33,6 +33,23 @@ $$
 ## Pathway analysis
 
 Pathway analysis maps annotated data into known pathways and makes statistical analysis to find the influenced pathway or the compounds with high influences on certain pathway.
+
+### A practical pathway analysis workflow
+
+In practice, pathway analysis is not simply uploading a metabolite list into a website. A more reliable workflow is:
+
+1. **Start from a filtered and normalized feature table** with clear sample grouping and statistical results.
+2. **Separate annotated metabolites from unknown features.** Known compounds can enter classical pathway enrichment, while unknown features may require mummichog-like approaches or chemical-class analysis.
+3. **Harmonize metabolite identifiers** before pathway mapping. Different tools may expect KEGG IDs, HMDB IDs, PubChem identifiers, or metabolite names, and identifier mismatch is a common source of failure.
+4. **Choose the pathway strategy**:
+   - over-representation analysis for a list of significant metabolites
+   - topology-based analysis when pathway position and connectivity are important
+   - mummichog-like analysis when many signals remain unannotated
+   - chemical similarity enrichment when pathway databases are incomplete
+5. **Inspect pathway hits manually** rather than accepting the ranked list directly. Check whether the mapped metabolites are biologically coherent, whether the direction of change is consistent, and whether the pathway result is driven by only one or two compounds.
+6. **Return to metabolite-level evidence** after pathway ranking. A pathway hit is only as strong as the features and annotations supporting it.
+
+Therefore, pathway analysis should be treated as a downstream interpretation step built on annotation, normalization, and statistical modeling rather than as a shortcut around them.
 
 ### Pathway Database
 
@@ -64,6 +81,26 @@ Pathway analysis maps annotated data into known pathways and makes statistical a
 
 -   [Metscape](http://metscape.med.umich.edu/) based on Debiased Sparse Partial Correlation (DSPC) algorithm [@basu2017] to make annotation.
 
+### Pathway interpretation pitfalls
+
+Pathway analysis is useful, but it is also easy to over-interpret. Common pitfalls include:
+
+-   **identifier mismatch**: the same metabolite may appear under different names or map to multiple database entries
+
+-   **small hit count**: a pathway may look significant because only one or two metabolites are mapped
+
+-   **database incompleteness**: many metabolites, especially lipids, xenobiotics, and unknowns, are poorly represented in pathway resources
+
+-   **background set problems**: enrichment results depend strongly on what is treated as the metabolite universe
+
+-   **false confidence from annotation uncertainty**: weak or putative annotations can produce very confident-looking pathways
+
+-   **pathway redundancy**: overlapping pathways may all appear significant because they share the same few metabolites
+
+-   **mixing association with mechanism**: a significant pathway does not prove causal involvement
+
+For these reasons, pathway results should be presented as biological hypotheses supported by mapped metabolites, not as proof that a pathway is definitively activated or inhibited.
+
 ## Network analysis
 
 [Mummichog](https://www.metaboanalyst.ca/) could make pathway and network analysis without annotation. The algorithm is now integrated into MetaboAnalyst[@pang2024].
@@ -71,6 +108,58 @@ Pathway analysis maps annotated data into known pathways and makes statistical a
 [MSS](http://web1.sph.emory.edu/users/tyu8/MSS): sequential feature screening procedure to select important sub-network and identify the optimal matching for metabolomics data [@cai2017].
 
 [Metapone](https://bioconductor.org/packages/devel/bioc/html/metapone.html) is a joint pathway testing package for untargeted metabolomics data [@tian2022].
+
+### Network construction choices
+
+Network analysis in metabolomics can mean very different things, so the first task is to define what the edges represent.
+
+-   **Pathway networks** connect metabolites through known biochemical reactions or curated pathway relationships. These are useful for interpretation but limited by database coverage.
+
+-   **Correlation or partial-correlation networks** connect metabolites with similar behavior across samples. These are useful for discovering coordinated modules, but edges represent statistical association rather than known chemistry.
+
+-   **MS/MS similarity or molecular networks** connect compounds by fragmentation similarity. These are especially useful for annotation propagation and chemical family discovery.
+
+-   **Multi-omics networks** connect metabolites with genes, proteins, or microbiome features based on known biology or statistical association.
+
+The choice depends on the question:
+
+-   use **pathway networks** when you already have confident annotation and want biochemical interpretation
+
+-   use **correlation networks** when you want to discover modules or co-regulated metabolite sets
+
+-   use **molecular networks** when the study is rich in MS/MS and compound family discovery is important
+
+-   use **multi-omics networks** when the goal is cross-layer integration rather than metabolite-only structure
+
+For correlation-style networks, construction choices matter a lot:
+
+-   **Pearson correlation** is simple and common, but sensitive to outliers and linearity assumptions
+
+-   **Spearman correlation** is more robust for monotonic relationships and often safer for metabolomics
+
+-   **Partial correlation** can reduce indirect associations but usually needs more samples and careful regularization
+
+-   **Sparse graphical models** may improve interpretability in high-dimensional settings, but assumptions must be checked
+
+Threshold choice is also critical. Very low correlation cutoffs produce dense, hard-to-interpret networks; very high cutoffs may miss meaningful modules. In practice, thresholds should be justified by sample size, expected noise level, and network stability rather than chosen only for visual appeal.
+
+### Network interpretation pitfalls
+
+As with pathway analysis, network plots can be visually persuasive but biologically misleading if used carelessly.
+
+-   **Correlation is not mechanism**: two metabolites can correlate because of shared sample structure, batch effects, diet, or other confounders
+
+-   **hub nodes may reflect abundance or detectability**, not biological centrality
+
+-   **small sample sizes create unstable networks**, especially in untargeted studies with many features
+
+-   **different preprocessing choices change the network** substantially, including normalization, filtering, and missing-value handling
+
+-   **community detection is method-dependent**, so modules should not be treated as unique truths
+
+-   **annotated and unknown features may mix**, which can be useful for discovery but difficult to interpret confidently
+
+Therefore, network analysis should usually be used for hypothesis generation, prioritization, and visualization of structure in the data rather than as standalone proof of biological regulation.
 
 ## Omics integration
 

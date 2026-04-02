@@ -2,9 +2,39 @@
 bibliography: references.bib
 ---
 
-# Experimental design(DoE)
+# Experimental Design (DoE)
 
-Before you perform any metabolomics experiment, a clean and meaningful experimental design is the best start. Depending on different research purposes, experimental design can be classified into homogeneity and heterogeneity study. Technique such as isotope labeled media will not be discussed in this chapter while this paper[@jang2018] could be a good start.
+Before you perform any metabolomics experiment, a clean and meaningful experimental design is the best start. Compared with many other omics fields, metabolomics often has lower throughput, stronger pre-analytical variation, and higher per-sample analytical burden. As a result, study design is not only a statistical issue but also a practical issue. Depending on different research purposes, experimental design can be classified into homogeneity and heterogeneity study. Stable isotope labeling will not be discussed here as a full analytical topic, but it should still be considered during study design because it can improve metabolite tracing, compound assignment, normalization, and quantitative confidence in specific applications[@jang2018].
+
+## Study objective
+
+The first step in DoE is to define the primary objective of the study. Different objectives lead to different requirements for sample size, quality control, and validation:
+
+-   **Method validation or system assessment**: focus on stability, repeatability, drift, and feature reproducibility.
+
+-   **Biomarker discovery**: focus on detecting differences between groups while controlling false discoveries.
+
+-   **Mechanistic study**: focus on pathway-level interpretation, time-course changes, and confounder control.
+
+-   **Validation study**: focus on reproducing an already observed effect size in an independent cohort or batch.
+
+In practice, discovery and validation should not be mixed in the same conclusion. A small metabolomics study may be useful for hypothesis generation, but it is often underpowered for stable effect size estimation and external validation.
+
+## Stable isotope labeling in DoE
+
+Stable isotope labeling is not required for every metabolomics study, but it can strongly affect experimental design when the goal is flux analysis, pathway tracing, internal standardization, or improved metabolite annotation. In those cases, labeling strategy should be decided before sample collection because it changes the biological model, sample preparation, acquisition settings, and downstream data analysis.
+
+For DoE, the main questions are:
+
+-   **Is the study focused on steady-state metabolite abundance or metabolic flux?** Flux-oriented studies often require stable isotope labeling.
+
+-   **Will isotope-labeled internal standards be added?** If yes, they should be introduced consistently and as early as possible in the workflow to capture technical variation.
+
+-   **Does labeling affect group comparison or sample size?** Labeled experiments are often more expensive and lower throughput, so the total number of biological replicates may be reduced.
+
+-   **Is the analytical platform and software prepared for isotopologue analysis?** This should be planned before data acquisition.
+
+Therefore, even when stable isotope labeling is not covered in detail in this book, it should be treated as a design-level decision rather than a late-stage technical add-on.
 
 ## Homogeneity study
 
@@ -18,14 +48,38 @@ In heterogeneity study, the research purpose is to find the differences among sa
 
 ## Power analysis
 
-Supposing we have control and treated groups, the numbers of samples in each group should be carefully calculated.For each metabolite, such comparison could be treated as one t-test. You need to perform a Power analysis to get the numbers. For example, we have two groups of samples with 10 samples in each group. Then we set the power at 0.9, which means one minus Type II error probability, the standard deviation at 1 and the significance level (Type 1 error probability) at 0.05. Then we will get the meaningful delta between the two groups should be higher than 1.53367 under this experiment design. Also we could set the delta to get the minimized numbers of the samples in each group. To get those data such as the standard deviation or delta for power analysis, you need to perform preliminary or pilot experiments.
+Supposing we have control and treated groups, the number of samples in each group should be carefully calculated. For each metabolite, such comparison could be treated as one t-test. You need to perform a power analysis to estimate whether a biologically meaningful effect can be detected under realistic variance and sample number assumptions. In metabolomics, this step is often difficult because variance differs across metabolites and pilot studies are usually small. Therefore, power analysis should be treated as a planning tool, not as an exact answer.
+
+For practical planning, the key quantities are:
+
+-   **Effect size**: the expected difference between groups. This can be absolute difference, fold change, or standardized effect size.
+
+-   **Variance**: usually estimated from pilot data, technical replicates, pooled QC samples, or previous studies.
+
+-   **Power**: one minus Type II error probability, often set to 0.8 or 0.9.
+
+-   **Significance level**: Type I error probability, often 0.05 before multiple testing adjustment.
+
+For example, we have two groups of samples with 10 samples in each group. Then we set the power at 0.9, the standard deviation at 1 and the significance level at 0.05. Then the meaningful delta between the two groups should be higher than 1.53367 under this design. We could also set the delta first and then estimate the minimum number of samples per group. To get quantities such as standard deviation or delta for power analysis, you generally need preliminary or pilot experiments.
 
 ```{r}
 power.t.test(n=10,sd=1,sig.level = 0.05,power = 0.9)
 power.t.test(delta = 5,sd=1,sig.level = 0.05,power = 0.9)
 ```
 
-However, since sometimes we could not perform preliminary experiment, we could directly compute the power based on false discovery rate control. If the power is lower than certain value, say 0.8, we just exclude this peak as significant features.
+If the study includes more than two groups, a one-way ANOVA design could be used for initial planning:
+
+```{r}
+power.anova.test(groups = 3, between.var = 1, within.var = 1, power = 0.8)
+```
+
+For paired designs such as pre/post intervention studies, paired power analysis is usually more appropriate than treating the samples as independent:
+
+```{r}
+power.t.test(delta = 0.5, sd = 1, sig.level = 0.05, power = 0.8, type = "paired")
+```
+
+However, since sometimes we cannot perform a preliminary experiment, we may directly compute the power based on false discovery rate control. If the power is lower than a certain value, say 0.8, we may exclude that peak from significant features or interpret it as exploratory evidence only.
 
 In this review [@oberg2009], author suggest to estimate an average $\alpha$ according to this equation [@benjamini1995] and then use normal way to calculate the sample numbers:
 
@@ -35,11 +89,74 @@ $$
 
 Other study [@blaise2016a] show a method based on simulation to estimate the sample size. They used BY correction to limit the influences from correlations. Other investigation could be found here[@saccenti2016; @blaise2013]. However, the nature of omics study make the power analysis hard to use one number for all metabolites and all the methods are trying to find a balance to represent more peaks with least samples.
 
+For study planning, it is also useful to distinguish **discovery** and **validation**:
+
+-   **Discovery studies** can tolerate more uncertainty in effect size estimation, but should prioritize broad coverage, pooled QC design, and careful confounder recording.
+
+-   **Validation studies** should be designed around a narrower set of metabolites or pathways, with independent samples and more stable quantitative conditions.
+
+-   In small discovery studies, reported effect sizes are often unstable and may be inflated. Therefore, validation cohorts generally need to be planned using more conservative assumptions than the pilot study suggests.
+
+As a rough rule, effect sizes that look large in a small metabolomics pilot may shrink substantially in larger cohorts. This is one reason why limited sample size can prevent reproducible effect size estimation for validation.
+
+The following tools may help:
+
 -   [MetSizeR](https://github.com/cran/MetSizeR) GUI Tool for Estimating Sample Sizes for metabolomics Experiments[@nyamundanda2013].
 
 -   [MSstats](https://www.bioconductor.org/packages/release/bioc/vignettes/MSstats/inst/doc/MSstats.html) Protein/Peptide significance analysis [@choi2014].
 
 -   [enviGCMS](https://cran.rstudio.com/web/packages/enviGCMS/index.html) GC/LC-MS Data Analysis for Environmental Science[@yu2017].
+
+## Multi-batch planning
+
+In many metabolomics studies, all samples cannot be measured in one analytical batch. This is common in longitudinal, clinical, population, or multi-center studies. In such cases, batch planning should be treated as part of the study design rather than left to post hoc normalization.
+
+The basic rules are:
+
+-   **Represent all major biological groups in every batch** whenever possible.
+
+-   **Avoid perfect confounding** such as all cases in one batch and all controls in another batch.
+
+-   **Use a consistent pooled QC strategy** across all batches.
+
+-   **Record batch-related variables** such as date, instrument, column, operator, run order, maintenance status, and reagent lot.
+
+-   **Keep batch size and group ratio similar** if the study must be split across multiple runs.
+
+An example allocation for a two-group study is shown below:
+
+| Batch | Case | Control | Pooled QC | Blank | Notes |
+|------|------:|--------:|----------:|------:|-------|
+| 1 | 20 | 20 | every 5-10 injections | yes | randomized within batch |
+| 2 | 20 | 20 | every 5-10 injections | yes | same instrument settings |
+| 3 | 20 | 20 | every 5-10 injections | yes | same preparation protocol |
+
+This type of balanced allocation makes later normalization more credible. If one batch contains a very different case/control ratio from another batch, downstream correction becomes much more difficult because biological effects and batch effects become partially indistinguishable.
+
+## Confounder balancing
+
+If there are other co-factors, a linear model or randomizing would be applied to eliminate their influences. You need to record the values of those co-factors for further data analysis. Common co-factors in metabolomics studies are age, gender, location, diet, medication, body mass index, collection time, circadian phase, fasting state, storage time, and study site.
+
+Confounder control could be achieved by:
+
+-   **Matching**: select samples so that key confounders are similar across groups.
+
+-   **Stratification**: analyze within strata such as sex, site, or age range.
+
+-   **Randomization**: randomize sample preparation order and injection order after recruitment.
+
+-   **Regression adjustment**: include confounders in downstream statistical models.
+
+An ideal sample sheet should balance both biology and logistics:
+
+| SampleID | Group | Sex | AgeBin | BMIBin | Site | Batch | RunOrder |
+|---------|-------|-----|--------|--------|------|-------|---------:|
+| S01 | Case | F | 40-49 | 25-29 | A | 1 | 1 |
+| S02 | Control | F | 40-49 | 25-29 | A | 1 | 2 |
+| S03 | Case | M | 50-59 | 30-34 | B | 1 | 3 |
+| S04 | Control | M | 50-59 | 30-34 | B | 1 | 4 |
+
+This does not mean every factor must be perfectly balanced, but the major confounders should not be strongly correlated with treatment group or analytical batch. If batch is correlated with treatment, downstream correction may either remove true biology or preserve technical bias.
 
 ## Optimization
 
@@ -49,7 +166,7 @@ One experiment can contain lots of factors with different levels and only one se
 
 Pooled QC samples are unique and very important for metabolomics study. Every 10 or 20 samples, a pooled sample from all samples and blank sample in one study should be injected as quality control samples. Pooled QC samples contain the changes during the instrumental analysis and blank samples could tell where the variances come from. Meanwhile the cap of sequence should old the column with pooled QC samples. The injection sequence should be randomized. Those papers[@phapale2020; @dudzik2018; @dunn2012; @broadhurst2018;@broeckling2023;@gonzalez-dominguez2024] should be read for details.
 
-If there are other co-factors, a linear model or randomizing would be applied to eliminate their influences. You need to record the values of those co-factors for further data analysis. Common co-factors in metabolomics studies are age, gender, location, etc.
+If the total run is long, pooled QC samples should also be used to monitor drift over time and to support batch effect correction in later chapters. In other words, pooled QC samples are not only for instrument checking. They are also part of the data analysis design.
 
 If you need data correction, some background or calibration samples are required. However, control samples could also be used for data correction in certain DoE.
 
@@ -64,3 +181,27 @@ Adding certified reference material or standard reference material will help to 
 For quality control in long term, ScreenDB provide a data analysis strategy for HRMS data founded on structured query language database archiving[@mardal2023].
 
 AVIR develops a computational solution to automatically recognize metabolic features with computational variation in a metabolomics data set[@zhang2024a].
+
+## Simple study-design decision tree
+
+The following questions can be used as a practical decision tree before data collection:
+
+1. **Is the goal method validation, biomarker discovery, mechanism study, or validation?**  
+   Method validation favors homogeneity studies; biological discovery and validation favor heterogeneity studies.
+
+2. **Is the analysis targeted or untargeted?**  
+   Untargeted studies usually need broader QC coverage, stronger annotation planning, and more conservative interpretation of statistical significance.
+
+3. **Can all samples be run in one batch?**  
+   If yes, randomize run order and inject pooled QC regularly. If no, distribute all biological groups across all batches and keep the QC design unchanged across batches.
+
+4. **Are major confounders known before recruitment or sample selection?**  
+   If yes, balance or match them in advance. If no, at least record them completely for later adjustment.
+
+5. **Do pilot data exist for variance and effect size estimation?**  
+   If yes, use them for power analysis. If no, use conservative assumptions, treat the study as exploratory, and avoid overclaiming reproducibility.
+
+6. **Is there an independent validation plan?**  
+   If no, the study should be framed as discovery or hypothesis generation. If yes, reserve independent samples, batches, or cohorts instead of validating on the same data source.
+
+In short, a good metabolomics DoE should answer four practical questions before the first injection: **what is the objective, how many samples are needed, how will confounders and batches be controlled, and how will findings be validated**.

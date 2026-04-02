@@ -15,13 +15,13 @@ download.file(js_cdn_url, dist_loc)
 
 # Workflow
 
-You could check this book for metabolomics data analysis [@li2020a].
+This chapter focuses on practical workflow choices for metabolomics data analysis, from preprocessing platforms to project organization and data sharing[@li2020a].
 
 ```{r}
 DiagrammeR::mermaid("
 flowchart TB
 I(peak-picking) --> C
-C(visulization) --> D(normalization/batch correction)
+C(visualization) --> D(normalization/batch correction)
 D --> A(annotation/identification)
 A --> H(statistical analysis)
 C --> A --> B(omics analysis)
@@ -37,15 +37,33 @@ C --> H
 
 ## Platform for metabolomics data analysis
 
-Here is a list for related open source [projects](http://strimmerlab.org/notes/mass-spectrometry.html)
+Many open-source metabolomics projects are available, and a useful overview can be found [here](http://strimmerlab.org/notes/mass-spectrometry.html).
+
+### Recommended pipelines by use case
+
+The metabolomics software ecosystem is now large enough that too many choices can slow down a project rather than help it. In practice, most users do not need to evaluate dozens of tools before starting. A more useful strategy is to choose a workflow according to study type, software background, and whether the main goal is data processing, annotation, or downstream interpretation.
+
+Practical recommendations are:
+
+-   **If you are new to untargeted LC-MS metabolomics and want a local reproducible workflow**: use `ProteoWizard/msconvert -> xcms or xcmsrocker -> IPO or AutoTuner if needed -> annotation tools -> MetaboAnalyst for downstream statistics and pathway analysis`.
+
+-   **If you prefer a graphical interface and strong MS/MS support**: use `MS-DIAL -> MS-FINDER or GNPS/SIRIUS -> MetaboAnalyst or other downstream tools`.
+
+-   **If you want strong community networking and MS/MS-centered interpretation**: use `MZmine or MS-DIAL -> GNPS feature-based molecular networking -> SIRIUS if needed -> pathway/statistical tools`.
+
+-   **If your goal is targeted quantification and validation**: use vendor software or triple-quadrupole-oriented workflows first, then export quantitative tables for statistical analysis in R or MetaboAnalyst.
+
+-   **If you work at large scale and need scripted, reproducible analysis**: choose an R- or Python-based workflow such as xcms, tidymass, OpenMS, or Asari rather than a click-based interface alone.
+
+These are not the only valid choices, but they are realistic starting points. In most cases, it is better to complete one coherent workflow end to end than to combine too many partially overlapping tools.
 
 ### XCMS & XCMS online
 
-[XCMS online](https://xcmsonline.scripps.edu/landing_page.php?pgcontent=mainPage) is hosted by Scripps Institute. If your datasets are not large, XCMS online would be the best option for you. Recently they updated the online version to support more functions for systems biology. They use metlin and iso metlin to annotate the MS/MS data. Pathway analysis is also supported. Besides, to accelerate the process, xcms online employed stream (windows only). You could use stream to connect your instrument workstation to their server and process the data along with the data acquisition automate. They also developed apps for xcms online, but I think apps for slack would be even cooler to control the data processing.
+[XCMS online](https://xcmsonline.scripps.edu/landing_page.php?pgcontent=mainPage) is hosted by Scripps Institute. If your datasets are not large and you want a web-based workflow, XCMS online is still one of the most accessible starting points. They use METLIN and isoMETLIN to annotate the MS/MS data, and pathway analysis is also supported. This is a reasonable option for teaching, pilot studies, or users who are not ready to script their workflow locally.
 
-[xcms](https://bioconductor.org/packages/release/bioc/html/xcms.html) is different from xcms online while they might share the same code. I used it almost every data to run local metabolomics data analysis. Recently, they will change their version to xcms 3 with major update for object class. Their data format would integrate into the MSnbase package and the parameters would be easy to set up for each step. Normally, I will use msconvert-IPO-xcms-xMSannotator-metaboanalyst as workflow to process the offline data. It could accelerate the process by parallel processing. However, if you are not familiar with R, you would better to choose some software below. For xcms, 1000 files will need around 5 hours to generate the peaks list on a regular workstation.
+[xcms](https://bioconductor.org/packages/release/bioc/html/xcms.html) is different from XCMS online although they share some conceptual background. For local metabolomics data analysis, xcms remains one of the most flexible and reproducible options, especially for users who are comfortable with R. A practical default workflow is `msconvert -> IPO or AutoTuner -> xcms -> annotation tools -> MetaboAnalyst or R-based downstream analysis`. If you want full scripting, parameter tracking, and scalability, this is still one of the strongest starting points. If you are not familiar with R, the learning curve is real and a GUI-centered platform may be easier.
 
-[IPO](https://github.com/rietho/IPO) A Tool for automated Optimization of XCMS Parameters [@libiseller2015] and [Warpgroup](https://github.com/nathaniel-mahieu/warpgroup) is used for chromatogram subregion detection, consensus integration bound determination and accurate missing value integration[@mahieu2016]. A case study to compare different xcms parameters with IPO can be found for GC-MS [@dossantos2023]. Another option is AutoTuner, which are much faster than IPO[@mclean2020]. Recently, MetaboAnalystR 3.0 could also optimize the parameters for xcms while you need to perform the following analysis within this software[@pang2020]. For IPO, ten files will need \~12 hours to generate the optimized results on a regular workstation. [Paramounter](https://github.com/HuanLab/Paramounter) is a direct measurement of universal parameters to process metabolomics data in a “White Box”[@guo2022]. Another research use machine learning method to compare different optimization methods and they are all better than the default setting of xcms[@lassen2021]. It could be extended to include ion mobility[@dodds2022].
+[IPO](https://github.com/rietho/IPO) is a tool for automated optimization of xcms parameters[@libiseller2015], and [Warpgroup](https://github.com/nathaniel-mahieu/warpgroup) is used for chromatogram subregion detection, consensus integration bound determination and accurate missing value integration[@mahieu2016]. A case study to compare different xcms parameters with IPO can be found for GC-MS[@dossantos2023]. Another option is AutoTuner, which is much faster than IPO[@mclean2020]. In practice, parameter optimization is most useful when you have representative QC files and enough time to test settings. It is not always necessary for every small project, and default settings should not be treated as universally safe.
 
 Check those papers for the XCMS based workflow[@forsberg2018; @huan2017; @mahieu2016a; @montenegro-burke2017; @domingo-almenara2020; @stancliffe2022]. For metlin related annotation, check those papers[@guijas2018; @tautenhahn2012; @xue2020; @domingo-almenara2018a].
 
@@ -59,7 +77,7 @@ mzMatch is a modular, open source and platform independent data processing pipel
 
 ### PRIMe
 
-[PRIMe](http://prime.psc.riken.jp/Metabolomics_Software/) is from RIKEN and UC Davis. They update their database frequently[@tsugawa2016]. It supports mzML and major MS vendor formats. They defined own file format ABF and eco-system for omics studies. The software are updated almost everyday. You could use MS-DIAL for untargeted analysis and MRMPROBS for targeted analysis. For annotation, they developed MS-FINDER and statistic tools with excel. This platform could replace the expensive software from vendors and is well prepared for MS/MS data analysis and lipidomics. They are open source, work on Windows and also could run within mathematics. However, they don't cover pathway analysis. Another feature is they always show the most recently spectral records from public repositories. You could always get the updated MSP spectra files for your own data analysis.
+[PRIMe](http://prime.psc.riken.jp/Metabolomics_Software/) is from RIKEN and UC Davis. They update their database frequently[@tsugawa2016]. You could use MS-DIAL for untargeted analysis and MRMPROBS for targeted analysis. For annotation, they developed MS-FINDER and statistic tools with Excel. This platform is especially strong for MS/MS-rich workflows, lipidomics, and users who want a mature GUI. In my view, MS-DIAL is one of the best first choices for users who want serious untargeted analysis without committing to an R-based workflow from the start. The main limitation is that pathway analysis is not the center of this ecosystem, so downstream interpretation may still move to other tools.
 
 MS-DIAL 4 added support for lipidomics with an integrated CCS and retention time atlas[@tsugawa2020]. The latest version, MS-DIAL 5, further extends the platform with multimodal mass spectrometry data mining capabilities including improved DIA deconvolution[@tsugawa2024].
 
@@ -67,21 +85,21 @@ For PRIMe based workflow, check those papers[@lai2018; @matsuo2017; @treutler201
 
 ### GNPS
 
-[GNPS](https://gnps.ucsd.edu) is an open-access knowledge base for community-wide organization and sharing of raw, processed or identified tandem mass (MS/MS) spectrometry data. It's a straightforward annotation method for MS/MS data. Feature-based molecular networking (FBMN) within GNPS could be coupled with xcms, OpenMS, MS-DIAL, MZmine, and other popular software. GNPS also has a dashboard for online mass spectrometry data analysis[@petras2021a]. Ion identity molecular networking[@schmid2021a] further extends GNPS by connecting features from the same compound (adducts, in-source fragments) into ion identity networks, improving both annotation accuracy and molecular networking results.
+[GNPS](https://gnps.ucsd.edu) is an open-access knowledge base for community-wide organization and sharing of raw, processed or identified tandem mass (MS/MS) spectrometry data. It is not a full replacement for primary preprocessing software, but it is one of the most useful platforms for MS/MS-centered annotation, feature-based molecular networking, and community data sharing. Feature-based molecular networking within GNPS could be coupled with xcms, OpenMS, MS-DIAL, MZmine, and other popular software. If your study relies heavily on tandem MS interpretation, GNPS should be considered early rather than added only at the end.
 
 Check those papers for GNPS and related projects[@aron2020; @nothias2020; @scheubert2017; @silva2018; @wang2016b; @bittremieux2023; @schmid2021a].
 
 ### OpenMS & SIRIUS
 
-[OpenMS](https://www.openms.de/) is another good platform for mass spectrum data analysis developed with C++. You could use them as plugin of [KNIME](https://www.knime.org/). I suggest anyone who want to be a data scientist to get familiar with platform like KNIME because they supplied various API for different programme language, which is easy to use and show every steps for others. Also TOPPView in OpenMS could be the best software to visualize the MS data. You could always use the metabolomics workflow to train starter about details in data processing. pyOpenMS and OpenSWATH are also used in this platform. If you want to turn into industry, this platform fit you best because you might get a clear idea about solution and workflow.
+[OpenMS](https://www.openms.de/) is another good platform for mass spectrum data analysis developed with C++. You could use it as a plugin of [KNIME](https://www.knime.org/). OpenMS is a strong option when transparency of workflow steps, interoperability, and scalable processing are more important than a minimal learning curve. TOPPView is also one of the better tools for visualizing MS data. If you want a workflow that is explicit, modular, and suitable for engineering-style data pipelines, OpenMS is a good choice.
 
 Check those paper for OpenMS based workflow[@bertsch2011; @pfeuffer2017; @rost2014; @rost2016; @rurik2020; @alka2020;@pfeuffer2024].
 
-OpenMS could be coupled to SIRIUS 4 for annotation. [Sirius](https://bio.informatik.uni-jena.de/software/sirius/) is a new java-based software framework for discovering a landscape of de-novo identification of metabolites using single and tandem mass spectrometry. SIRIUS 4 project integrates a collection of our tools, including [CSI:FingerID](https://www.csi-fingerid.uni-jena.de/), [ZODIAC](https://bio.informatik.uni-jena.de/software/zodiac/) and [CANOPUS](https://bio.informatik.uni-jena.de/software/canopus/). Check those papers for SIRIUS based workflow[@duhrkop2019; @duhrkop2020; @alka2020; @ludwig2020].
+OpenMS could be coupled to SIRIUS for annotation. [SIRIUS](https://bio.informatik.uni-jena.de/software/sirius/) is a software framework for de novo identification of metabolites using single and tandem mass spectrometry. It integrates tools such as [CSI:FingerID](https://www.csi-fingerid.uni-jena.de/), [ZODIAC](https://bio.informatik.uni-jena.de/software/zodiac/) and [CANOPUS](https://bio.informatik.uni-jena.de/software/canopus/). If your project emphasizes formula assignment, structural class prediction, and in silico annotation, SIRIUS is one of the most important downstream tools to learn.
 
 ### MZmine
 
-[MZmine](https://mzmine.github.io/) was originally developed on the Java platform. MZmine 2[@pluskal2010] was widely used in the community. In 2023, MZmine 3 was released with a completely rewritten architecture, adding support for ion mobility spectrometry data, improved feature detection, and native integration with GNPS molecular networking and SIRIUS[@schmid2023]. MZmine 3 is now the recommended version and is one of the most actively maintained open-source platforms for untargeted metabolomics. However, MZmine does not have built-in pathway analysis. You could use MetaboAnalyst for that purpose.
+[MZmine](https://mzmine.github.io/) was originally developed on the Java platform. In 2023, MZmine 3 was released with a completely rewritten architecture, adding support for ion mobility spectrometry data, improved feature detection, and native integration with GNPS molecular networking and SIRIUS[@schmid2023]. MZmine 3 is now one of the most actively maintained open-source platforms for untargeted metabolomics. If you want a GUI workflow with strong modern integration to annotation tools, MZmine is one of the best current choices. Like MS-DIAL, it usually needs to be paired with other tools for pathway analysis.
 
 Check those papers for MZmine based workflow[@pluskal2010; @pluskal2020; @schmid2023].
 
@@ -93,7 +111,7 @@ You could check those papers for Emory workflow[@uppal2013; @uppal2017; @yu2009b
 
 ### Others
 
-- [MetaboAnalyst](https://www.metaboanalyst.ca/) is a comprehensive web-based platform for metabolomics data analysis, covering statistical analysis, pathway analysis, biomarker discovery and more. The latest version, MetaboAnalyst 6.0[@pang2024], provides a unified platform for metabolomics data processing, analysis and interpretation, integrating Mummichog for pathway analysis without prior annotation.
+- [MetaboAnalyst](https://www.metaboanalyst.ca/) is a comprehensive web-based platform for metabolomics data analysis, covering statistical analysis, pathway analysis, biomarker discovery and more. The latest version, MetaboAnalyst 6.0[@pang2024], provides a unified platform for metabolomics data processing, analysis and interpretation, integrating Mummichog for pathway analysis without prior annotation. My suggestion is to use it mainly for **downstream statistics, visualization, and pathway interpretation**, not as the only place where all upstream preprocessing decisions are made.
 
 - [PMDDA](https://yufree.github.io/pmdda/script.html) is a reproducible workflow for exhaustive MS2 data acquisition of MS1 features[@yu2022b] with data and script available online.
 
@@ -101,59 +119,29 @@ You could check those papers for Emory workflow[@uppal2013; @uppal2017; @yu2009b
 
 - [R for mass spectrometry](https://www.rformassspectrometry.org/) is a R software collection for the analysis and interpretation of high throughput mass spectrometry assays.
 
--   [MAVEN](http://genomics-pubs.princeton.edu/mzroll/index.php?show=index) from Princeton University [@melamud2010; @clasquin2012].
-
--   [metabolomics](https://github.com/cran/metabolomics) is a CRAN package for analysis of metabolomics data.
-
--   [autoGCMSDataAnal](http://software.tobaccodb.org/software/autogcmsdataanal) is a Matlab based comprehensive data analysis strategy for GC-MS-based untargeted metabolomics and [AntDAS2](http://software.tobaccodb.org/software/antdas2) provided An automatic data analysis strategy for UPLC-HRMS-based metabolomics[@yu2019; @zhang2020].
-
--   [enviGCMS](https://github.com/yufree/enviGCMS) from environmental non-targeted analysis and [rmwf](https://github.com/yufree/rmwf) for reproducible metabolomics workflow [@yu2020; @yu2019a].
-
--   Pseudotargeted metabolomics method [@zheng2020; @wang2016a].
-
--   [pySM](https://github.com/alexandrovteam/pySM) provides a reference implementation of our pipeline for False Discovery Rate-controlled metabolite annotation of high-resolution imaging mass spectrometry data [@palmer2017].
-
--   [TinyMS](https://github.com/griquelme/tidyms) is a Python-Based Pipeline for Preprocessing LC--MS Data for Untargeted Metabolomics Workflows [@riquelme2020]
-
--   [MetaboliteDetector](https://md.tu-bs.de/) is a QT4 based software package for the analysis of GC/MS based metabolomics data [@hiller2009].
-
--   [W4M](http://workflow4metabolomics.org/) and [metaX](http://metax.genomics.cn/) could analysis data online [@giacomoni2015; @wen2017; @jalili2020].
-
--   [FTMSVisualization](https://github.com/wkew/FTMSVisualization) is a suite of tools for visualizing complex mixture FT-MS data [@kew2017]
-
--   [magma](http://www.emetabolomics.org/magma) could predict and match MS/MS files.
-
--   [metabCombiner](https://github.com/hhabra/metabCombiner) Paired Untargeted LC-HRMS Metabolomics Feature Matching and Concatenation of Disparately Acquired Data Sets[@habra2021]
-
--   [SLAW](https://github.com/zamboni-lab/SLAW) is a scalable and self-Optimizing processing workflow for Untargeted LC-MS with a docker image [@delabriere2021].
-
--   [patRoon](https://github.com/rickhelmus/patRoon): open source software platform for environmental mass spectrometry based non-target screening [@helmus2021].
-
-- 'shape-orientated' algorithm: A new 'shape-orientated' continuous wavelet transform (CWT)-based algorithm employing an adapted Marr wavelet (AMW) with a shape matching index (SMI), defined as peak height normalized wavelet coefficient for feature filtering, was developed for chromatographic peak detection and quantification. [@bai2022]
-
-- automRm An R Package for Fully Automatic LC-QQQ-MS Data Preprocessing Powered by Machine Learning. [@eilertz2022] 
-
-- [IDSL.UFA](https://ufa.idsl.me/)Intrinsic Peak Analysis (IPA) for HRMS Data. [@baygi2022]
-
-- [DEIMoS](https://github.com/pnnl/deimos): An Open-Source Tool for Processing High-Dimensional Mass Spectrometry Data [@colby2022]
-
-- Omics Untargeted Key Script is a tools to make untargeted LC-MS metabolomic profiling with the latest computational features readily accessible in a ready-to-use unified manner to a research community[@plyushchenko2022].
-
-- [MetEx](http://www.metaboex.cn/MetEx) is a targeted extraction strategy for improving the coverage and accuracy of metabolite annotation[@zheng2022a].
-
-- Asari:Trackable and scalable LC-MS metabolomics data processing software in Python[@li2023a]
-
-- NOMspectra: An Open-Source Python Package for Processing High Resolution Mass Spectrometry Data on Natural Organic Matter[@volikov2023]
-
-- MARS:A Multipurpose Software for Untargeted LC−MS-Based Metabolomics and Exposomics with GUI in C++ [@goracci2024]
-
-- MeRgeION: a Multifunctional R Pipeline for Small Molecule LC-MS/MS Data Processing, Searching, and Organizing [@liu2023a]
+-   Additional tools exist for specialized settings such as GC-MS, imaging MS, environmental non-target screening, feature matching across studies, high-dimensional ion mobility data, and automated QQQ preprocessing[@melamud2010; @clasquin2012; @yu2019; @zhang2020; @palmer2017; @riquelme2020; @hiller2009; @giacomoni2015; @wen2017; @jalili2020; @kew2017; @habra2021; @delabriere2021; @helmus2021; @bai2022; @eilertz2022; @baygi2022; @colby2022; @plyushchenko2022; @zheng2022a; @li2023a; @volikov2023; @goracci2024; @liu2023a]. For most readers, these are better treated as second-round options after one core workflow is already working.
 
 ### Workflow Comparison
 
 Here are some comparisons for different workflow and you could make selection based on their works[@myers2017; @weber2017; @li2018a;@liao2023].
 
 [xcmsrocker](https://github.com/yufree/xcmsrocker) is a docker image for metabolomics to compare R based software with template[@yu2022b].
+
+### A simple opinionated choice guide
+
+If a short list is needed instead of a long catalog:
+
+-   **For reproducible R-based untargeted metabolomics**: xcms and related R tools
+
+-   **For GUI-centered untargeted workflows with strong MS/MS support**: MS-DIAL or MZmine
+
+-   **For MS/MS networking and community annotation**: GNPS
+
+-   **For in silico structural annotation**: SIRIUS
+
+-   **For downstream statistics and pathway analysis**: MetaboAnalyst or scripted analysis in R
+
+This is enough for many real projects. The best workflow is usually not the one with the most software, but the one where every step is documented, reproducible, and appropriate for the study objective.
 
 ## Project Setup
 
@@ -215,15 +203,25 @@ For new metabolomics practitioners, the following checklist could help improve d
 
 See this paper[@haug2017]:
 
--   [MetaboLights](http://www.ebi.ac.uk/metabolights/) EU based
+-   [MetaboLights](http://www.ebi.ac.uk/metabolights/) is a major general-purpose international repository and a good default choice for many studies.
 
--   [The Metabolomics Workbench](http://www.metabolomicsworkbench.org/) US based
+-   [The Metabolomics Workbench](http://www.metabolomicsworkbench.org/) is another major repository with strong adoption, especially in the United States, and uses the mwTab ecosystem.
 
--   [MetaboBank](https://mb2.ddbj.nig.ac.jp/) Japan based
+-   [MetaboBank](https://mb2.ddbj.nig.ac.jp/) is a useful repository in Japan and Asia-Pacific contexts.
 
--   [MetabolomeXchange](http://www.metabolomexchange.org/site/) search engine
+-   [MetabolomeXchange](http://www.metabolomexchange.org/site/) is best treated as a discovery portal rather than the primary home for your submission.
 
--   [MetabolomeExpress](https://www.metabolome-express.org/) a public place to process, interpret and share GC/MS metabolomics datasets[@carroll2010].
+-   [MetabolomeExpress](https://www.metabolome-express.org/) is a public place to process, interpret and share GC/MS metabolomics datasets[@carroll2010].
+
+In practice, the decision can be simple:
+
+-   choose **MetaboLights** if you want a broadly recognized default repository with strong international visibility
+
+-   choose **Metabolomics Workbench** if your community, funder, journal, or collaborators already work within that ecosystem
+
+-   use **MetaboBank** when it best matches your regional infrastructure or collaboration network
+
+Whichever repository you choose, the important point is to deposit raw data in open formats when possible, include metadata that satisfy MSI-style minimum reporting, and provide enough information for another group to reproduce the computational workflow.
 
 ## Contest
 
